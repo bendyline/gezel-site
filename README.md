@@ -5,14 +5,25 @@ The website for Gezel, published with GitHub Pages.
 ## How it works
 
 This is a plain static site — no build step, no dependencies. Files in the repo
-root are served as-is. Push to `main` and
-[.github/workflows/pages.yml](.github/workflows/pages.yml) uploads the repo and
-deploys it.
+root are served as-is by
+[.github/workflows/pages.yml](.github/workflows/pages.yml).
+
+## Publishing
+
+Deploys are **manual** — pushing to `main` does not publish. To publish:
+
+**Actions → Deploy to GitHub Pages → Run workflow**, and pick the branch to
+deploy from.
+
+Or from the CLI:
+
+```sh
+gh workflow run pages.yml
+```
 
 ## One-time setup
 
 In the repo on GitHub: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-After that, every push to `main` publishes automatically.
 
 ## Local preview
 
