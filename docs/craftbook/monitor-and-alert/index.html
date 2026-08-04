@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch a Page or API and Alert — Gezel Handboek</title>
+<meta name="description" content="Build a watcher that polls a web page or API endpoint on a schedule, detects a meaningful change or threshold breach, and fires an alert (and only alerts on real changes, not noise).">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/monitor-and-alert/">Watch a Page or API and Alert</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Watch a Page or API and Alert</h1>
+<p>Build a watcher that polls a web page or API endpoint on a schedule, detects a meaningful change or threshold breach, and fires an alert (and only alerts on real changes, not noise). Scopes the watched target, the exact change/threshold condition, and the dedup/cooldown policy FIRST, then builds the poll-diff-notify loop with persisted state, then tests it against simulated change and no-change inputs so it neither misses a real change nor spams on every poll. Condition-and-cooldown-before-build is the wisdom that separates a useful monitor from an alert-fatigue generator.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the monitor</td><td>Planner</td><td>target, change condition, dedup + cooldown policy</td></tr><tr><td>2</td><td>Build the watcher</td><td>Developer</td><td>poll, extract, diff vs state, alert on real change</td></tr><tr><td>3</td><td>Test the watcher</td><td>Developer</td><td>assert it alerts on change, stays silent otherwise</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<p>Say something like "watch a page for changes" or "alert me when this changes" or "monitor an API" or "notify on a price drop" or "uptime watcher" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

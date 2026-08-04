@@ -1,0 +1,67 @@
+/*
+ * Site overrides for the generated Handboek under docs/.
+ *
+ * The export ships its own baseline at docs/assets/handboek.css, which
+ * already implements the Gezel design guidelines (parchment canvas, warm
+ * ink, sage masthead, terracotta accent, mostly-square corners). This file
+ * is linked *after* it, so anything here wins.
+ *
+ * It lives at the site root on purpose: `pnpm docs:site` wipes docs/ on
+ * every run, so a stylesheet kept inside that directory would not survive
+ * regeneration.
+ *
+ * Regenerate the docs from a sibling gezel checkout:
+ *   cd ../gezel && pnpm docs:site
+ */
+
+/* ---------------------------------------------------------------------
+ * Brand fonts
+ *
+ * The guidelines call for PT Serif (headings) and Hanken Grotesk (all
+ * other text), self-hosted — no CDN, no runtime fetch. The baseline names
+ * both families first in its font stacks and falls back to system faces,
+ * so dropping the WOFF2 files into fonts/ and uncommenting these blocks is
+ * all it takes to pick them up site-wide.
+ *
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('fonts/HankenGrotesk-Variable.woff2') format('woff2-variations');
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PT Serif';
+  src: url('fonts/PTSerif-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PT Serif';
+  src: url('fonts/PTSerif-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+ * ------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------
+ * Token overrides
+ *
+ * Everything in the baseline derives from these, so retuning the palette
+ * or the reading measure is a one-line change rather than a rule-by-rule
+ * override. Uncomment and adjust as the marketing site's look settles.
+ * ------------------------------------------------------------------- */
+:root {
+  /* --hb-measure: 46rem; */          /* wider article column */
+  /* --hb-canvas: #eae5d6; */         /* page background */
+  /* --hb-accent: #b0724c; */         /* links, focus, selected */
+}
+
+/* ---------------------------------------------------------------------
+ * Site chrome
+ *
+ * The masthead wordmark linking back out to this site is real markup
+ * (`a.hb-wordmark`), emitted by the export's `--home` flag and styled by
+ * the baseline as lowercase italic PT Serif. Restyle it here if needed:
+ *
+.hb-wordmark { font-size: 1.3rem; }
+ * ------------------------------------------------------------------- */

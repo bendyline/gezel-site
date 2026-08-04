@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The security model: tokens, sandboxing, and consent — Gezel Handboek</title>
+<meta name="description" content="The guardrails between your crew and your computer.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a class="hb-current" aria-current="page" href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>The security model</h1>
+<p>Giving AI hands means deciding, carefully, what those hands may touch.</p>
+<p><strong>It is important to note: gezel is still in early beta.</strong> Undoubtedly there are still security flaws or broader design holes in the security regimen of gezel.</p>
+<p><strong>Our security model is not designed to be perfect.</strong> In many places, the security design focuses on keeping honest models honest via layers of "defense in depth". This lets gezel still be useful without requiring you to make every fiddly technical security decision, and without requiring exotic and complicated isolation mechanisms (e.g., containers). Think of the security design like multiple 5-foot-tall chain-link fences: it keeps things corralled, but a determined attacker (a purpose-built malicious program already on your machine) could hop over them.</p>
+<p>Also, most of this guidance applies whenever a model acts through gezel's own tools — local models and direct API providers (OpenAI and Anthropic keys) alike. If you work through the Claude CLI, Codex CLI, or GitHub Copilot, those harnesses run their own tool loops under their own security designs: gezel configures them — permission modes, sandbox settings — but the enforcement is theirs. Like us, those providers put a lot of work and thought into securely managing threads, but flaws can happen anywhere.</p>
+<h2 id="how-gezel-secures-a-model-s-hands">How gezel secures a model's hands</h2>
+<p>Gezel layers its guardrails:</p>
+<h3 id="the-service-is-locked-to-your-machine">The service is locked to your machine</h3>
+<p>The background service only accepts connections from your own computer, over an encrypted local channel, with a token that rotates every time the service starts. Other software on the machine can't impersonate the app, and nothing is reachable from the network.</p>
+<h3 id="workspaces-have-walls">Workspaces have walls</h3>
+<p>A gezel working in a project sees that project's workspace — not your whole disk. Paths a model asks for are checked against the workspace boundary before any file is read or written, so "../" tricks and symlink hops end at the wall.</p>
+<h3 id="scripts-run-in-layered-isolation">Scripts run in layered isolation</h3>
+<p>When a gezel runs code, that code doesn't run inside the app and doesn't get your full user powers. It runs in a separate process wrapped in several independent layers, so no single slip opens the whole machine:</p>
+<ul><li><p><strong>Its own small world.</strong> The script gets a fresh scratch area, and its writes are confined to that area and the project workspace — not your disk. The JavaScript runtime itself enforces the file boundary.</p></li><li><p><strong>No calling for backup.</strong> The script can't launch other programs, spawn workers, or load native extensions. A script also can't quietly open its own connection to the internet — when a gezel needs the web, it goes through gezel's named tools (search, fetch, the browser), which are policy-checked and show up in History. In most configurations, whatever a gezel does, it does alone, inside the fence of the project workspace.</p></li><li><p><strong>The operating system holds the outer wall.</strong> When a script is meant to run without network access, that's enforced by the OS itself — macOS's sandbox on Mac, a confined service on Linux — not by asking the code to behave. If the machine can't provide that wall, gezel refuses to run the script at all rather than quietly settle for less.</p></li><li><p><strong>A time and memory leash.</strong> Every run has a deadline and can be capped on memory, so a runaway script gets stopped instead of dragging your machine down.</p></li></ul>
+<p>The layers deliberately overlap: even if one were bypassed, the next is still standing.</p>
+<h3 id="mutations-need-consent">Mutations need consent</h3>
+<p>Reading is cheap; changing things is not. Writes to project files, anything touching git, and outward-facing actions go through per-project consent you control in Settings. Git itself stays yours: gezellen work in your working copy but don't commit, branch, or push on their own.</p>
+<h3 id="where-possible-we-never-let-a-gezel-directly-connect-to-services">Where possible, we never let a gezel directly connect to services</h3>
+<p>We still want gezel to be useful, and being useful means connecting to services like e-mail or data services. But we never let the local gezel just have access to pull that data directly. Instead, outside of the purview of a gezel, we have a system of connectors and toolsets that pull down data and place it in the gezel workspace; for example, each e-mail is a file in your workspace folder. The gezel can then reason over that e-mail as a file in an isolated folder. If it needs to work with e-mail (e.g., send an e-mail), it does so through an abstracted request, with your permission.</p>
+<h3 id="leverage-the-node-js-npm-open-source-ecosystem">Leverage the node.js/NPM open source ecosystem</h3>
+<p>At your direction, gezel can download additional scripts and tools to extend what you can do with gezel. For this, we use the NPM (node.js) package manager. NPM is a package catalog owned and managed by GitHub/Microsoft, and is used by millions of developers for building many of the apps you may already be using. NPM is not perfect, and there have been compromises of NPM. Gezel applies the standard hardening locally: packages install with their install-time scripts disabled — the classic supply-chain trick never runs — and the code they bring executes inside the script sandbox described above. The collective eyes of the community on this open source catalog, coupled with those local practices, help make this the best but always imperfect system for people to leverage other people's honest open source at scale.</p>
+<h3 id="everything-is-on-the-record">Everything is on the record</h3>
+<p>Tool calls, project changes, crew changes — all land in the History log. Supervision you can't audit isn't supervision; the log is the floor the rest stands on.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#how-gezel-secures-a-model-s-hands">How gezel secures a model's hands</a></li>
+<li class="hb-h3"><a href="#the-service-is-locked-to-your-machine">The service is locked to your machine</a></li>
+<li class="hb-h3"><a href="#workspaces-have-walls">Workspaces have walls</a></li>
+<li class="hb-h3"><a href="#scripts-run-in-layered-isolation">Scripts run in layered isolation</a></li>
+<li class="hb-h3"><a href="#mutations-need-consent">Mutations need consent</a></li>
+<li class="hb-h3"><a href="#where-possible-we-never-let-a-gezel-directly-connect-to-services">Where possible, we never let a gezel directly connect to services</a></li>
+<li class="hb-h3"><a href="#leverage-the-node-js-npm-open-source-ecosystem">Leverage the node.js/NPM open source ecosystem</a></li>
+<li class="hb-h3"><a href="#everything-is-on-the-record">Everything is on the record</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

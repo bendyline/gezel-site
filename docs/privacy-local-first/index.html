@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local-first: your data stays on your disk — Gezel Handboek</title>
+<meta name="description" content="No gezel cloud, no hidden database — files you can open and back up.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a aria-current="true" href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2 class="hb-current">Concepts</h2>
+<ul>
+<li><a href="../welcome/">What is gezel?</a></li>
+<li><a href="../the-crew/">Your crew: gezellen, the Meester, and the Voorman</a></li>
+<li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
+<li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
+<li><a href="../craftbooks-overview/">Craftbooks: procedures your crew can follow</a></li>
+<li><a href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
+<li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
+<li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
+<li><a class="hb-current" aria-current="page" href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
+<li><a href="../connected-apps/">Connected apps: let other tools use your gezels</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../craftbooks-overview/">Concepts</a>
+</nav>
+<article class="hb-article">
+<h1>Local-first: your data stays on your disk</h1>
+<p>Gezel is built on one stubborn idea: <strong>your work belongs to you, on your machine, in files you can read.</strong></p>
+<h2 id="what-that-means-in-practice">What that means in practice</h2>
+<ul><li><p><strong>No gezel account.</strong> There is no sign-up, no gezel server holding your chats. The app talks directly from your computer to the AI provider you configured — and to no one else.</p></li><li><p><strong>Files all the way down.</strong> Gezels, their characters, their memories, your projects, your chat history — all ordinary files in one folder. Back it up, sync it, move it to a new machine, grep it. The <a href="../where-files-live/">Where files live</a> article gives the map.</p></li><li><p><strong>Local models mean local everything.</strong> Run a model on your own hardware and your words never leave the machine at all — no provider, no network, no exceptions.</p></li></ul>
+<h2 id="what-does-leave-your-machine">What does leave your machine</h2>
+<p>When you use a cloud provider, the text of your conversation (and any files a gezel reads for you in that conversation) goes to that provider to generate the response — the same as using their product directly, under their terms. You choose the provider; gezel adds no middleman of its own.</p>
+<h2 id="credentials">Credentials</h2>
+<p>Provider keys are stored in gezel's config file on your disk and sent only to that provider. The background service on your machine is protected by a token that rotates every start, so other software on the computer can't quietly borrow your crew.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#what-that-means-in-practice">What that means in practice</a></li>
+<li class="hb-h2"><a href="#what-does-leave-your-machine">What does leave your machine</a></li>
+<li class="hb-h2"><a href="#credentials">Credentials</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

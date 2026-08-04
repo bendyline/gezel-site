@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Retrospective</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"craftbook/engineering-retrospective","duration":14,"blocks":[{"id":"engineering-retrospective","startTime":0,"duration":6,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Engineering Retrospective","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":28,"offset":27}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":28,"offset":27}}},"title":"Engineering Retrospective","contents":[{"type":"paragraph","children":[{"type":"text","value":"Build a data-grounded engineering retrospective from git history: activity, hotspots, review patterns, and per-person growth notes for a given window.","position":{"start":{"line":3,"column":1,"offset":29},"end":{"line":3,"column":151,"offset":179}}}],"position":{"start":{"line":3,"column":1,"offset":29},"end":{"line":3,"column":151,"offset":179}}}],"children":[{"id":"how-it-runs","startTime":6,"duration":8,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":2,"children":[{"type":"text","value":"How it runs","position":{"start":{"line":5,"column":4,"offset":184},"end":{"line":5,"column":15,"offset":195}}}],"position":{"start":{"line":5,"column":1,"offset":181},"end":{"line":5,"column":15,"offset":195}}},"title":"How it runs","contents":[{"type":"table","align":[null,null,null,null],"children":[{"type":"tableRow","children":[{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"#","position":{"start":{"line":7,"column":3,"offset":199},"end":{"line":7,"column":4,"offset":200}}}],"position":{"start":{"line":7,"column":1,"offset":197},"end":{"line":7,"column":5,"offset":201}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Step","position":{"start":{"line":7,"column":7,"offset":203},"end":{"line":7,"column":11,"offset":207}}}],"position":{"start":{"line":7,"column":5,"offset":201},"end":{"line":7,"column":12,"offset":208}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Who runs it","position":{"start":{"line":7,"column":14,"offset":210},"end":{"line":7,"column":25,"offset":221}}}],"position":{"start":{"line":7,"column":12,"offset":208},"end":{"line":7,"column":26,"offset":222}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"What happens","position":{"start":{"line":7,"column":28,"offset":224},"end":{"line":7,"column":40,"offset":236}}}],"position":{"start":{"line":7,"column":26,"offset":222},"end":{"line":7,"column":42,"offset":238}}}],"position":{"start":{"line":7,"column":1,"offset":197},"end":{"line":7,"column":42,"offset":238}}},{"type":"tableRow","children":[{"type":"tableCell","children":[{"type":"text","value":"1","position":{"start":{"line":9,"column":3,"offset":267},"end":{"line":9,"column":4,"offset":268}}}],"position":{"start":{"line":9,"column":1,"offset":265},"end":{"line":9,"column":5,"offset":269}}},{"type":"tableCell","children":[{"type":"text","value":"/retro — Weekly Engineering Retrospective","position":{"start":{"line":9,"column":7,"offset":271},"end":{"line":9,"column":48,"offset":312}}}],"position":{"start":{"line":9,"column":5,"offset":269},"end":{"line":9,"column":49,"offset":313}}},{"type":"tableCell","children":[{"type":"text","value":"—","position":{"start":{"line":9,"column":51,"offset":315},"end":{"line":9,"column":52,"offset":316}}}],"position":{"start":{"line":9,"column":49,"offset":313},"end":{"line":9,"column":53,"offset":317}}},{"type":"tableCell","children":[],"position":{"start":{"line":9,"column":53,"offset":317},"end":{"line":9,"column":57,"offset":321}}}],"position":{"start":{"line":9,"column":1,"offset":265},"end":{"line":9,"column":57,"offset":321}}}],"position":{"start":{"line":7,"column":1,"offset":197},"end":{"line":9,"column":57,"offset":321}}},{"type":"paragraph","children":[{"type":"text","value":"Say something like \"weekly retro\" or \"what did we ship\" or \"engineering retrospective\" in chat to start it.","position":{"start":{"line":11,"column":1,"offset":323},"end":{"line":11,"column":108,"offset":430}}}],"position":{"start":{"line":11,"column":1,"offset":323},"end":{"line":11,"column":108,"offset":430}}}]}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"Build a data-grounded engineering retrospective from git history: activity,","startTime":0,"endTime":3,"audioSegment":0},{"text":"hotspots, review patterns, and per-person growth notes for a given window.","startTime":3,"endTime":6,"audioSegment":0},{"text":"#StepWho runs itWhat happens1/retro — Weekly Engineering Retrospective—","startTime":6,"endTime":10,"audioSegment":0},{"text":"Say something like \"weekly retro\" or \"what did we ship\" or \"engineering retrospective\" in chat to start it.","startTime":10,"endTime":14,"audioSegment":0}],"version":1},"startBlock":{"title":"Engineering Retrospective","subtitle":"Build a data-grounded engineering retrospective from git history: activity, hotspots, review patterns, and per-person growth notes for a given window.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

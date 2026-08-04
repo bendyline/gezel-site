@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The gezel command line — Gezel Handboek</title>
+<meta name="description" content="Headless gezel — start the service, run one-shot work, export docs.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a class="hb-current" aria-current="page" href="../cli-reference/">The gezel command line</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>The gezel command line</h1>
+<p>The <code>gezel</code> command drives the same service the desktop app uses — handy on servers, in scripts, or when you just live in a terminal.</p>
+<h2 id="everyday-commands">Everyday commands</h2>
+<pre class="squisq-code-block"><code>gezel start                 ensure the service is running
+gezel start --port 8080 --foreground
+                            run it attached, on a fixed port
+gezel status                is it up, and where
+gezel stop                  stop it
+gezel run "..."             one-shot: send a prompt, print the reply</code></pre>
+<h2 id="working-with-the-crew">Working with the crew</h2>
+<pre class="squisq-code-block"><code>gezel agent list            your gezellen
+gezel task list             tasks in flight
+gezel env skills list       importable skills</code></pre>
+<h2 id="this-documentation">This documentation</h2>
+<pre class="squisq-code-block"><code>gezel handboek export --out ./site</code></pre>
+<p>renders the Handboek — the same articles you're reading now — as a static website, for publishing or offline reading.</p>
+<p>Run <code>gezel --help</code> (or <code>--help</code> on any subcommand) for the full surface.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#everyday-commands">Everyday commands</a></li>
+<li class="hb-h2"><a href="#working-with-the-crew">Working with the crew</a></li>
+<li class="hb-h2"><a href="#this-documentation">This documentation</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

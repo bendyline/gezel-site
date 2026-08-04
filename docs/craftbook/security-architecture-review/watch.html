@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Architecture Review</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"craftbook/security-architecture-review","duration":15,"blocks":[{"id":"security-architecture-review","startTime":0,"duration":7,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Security Architecture Review","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":31,"offset":30}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":31,"offset":30}}},"title":"Security Architecture Review","contents":[{"type":"paragraph","children":[{"type":"text","value":"A structured security architecture review: walk the stack for secrets, dependencies, auth, and common vulnerability classes, then report findings ranked by severity and confidence.","position":{"start":{"line":3,"column":1,"offset":32},"end":{"line":3,"column":181,"offset":212}}}],"position":{"start":{"line":3,"column":1,"offset":32},"end":{"line":3,"column":181,"offset":212}}}],"children":[{"id":"how-it-runs","startTime":7,"duration":8,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":2,"children":[{"type":"text","value":"How it runs","position":{"start":{"line":5,"column":4,"offset":217},"end":{"line":5,"column":15,"offset":228}}}],"position":{"start":{"line":5,"column":1,"offset":214},"end":{"line":5,"column":15,"offset":228}}},"title":"How it runs","contents":[{"type":"table","align":[null,null,null,null],"children":[{"type":"tableRow","children":[{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"#","position":{"start":{"line":7,"column":3,"offset":232},"end":{"line":7,"column":4,"offset":233}}}],"position":{"start":{"line":7,"column":1,"offset":230},"end":{"line":7,"column":5,"offset":234}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Step","position":{"start":{"line":7,"column":7,"offset":236},"end":{"line":7,"column":11,"offset":240}}}],"position":{"start":{"line":7,"column":5,"offset":234},"end":{"line":7,"column":12,"offset":241}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Who runs it","position":{"start":{"line":7,"column":14,"offset":243},"end":{"line":7,"column":25,"offset":254}}}],"position":{"start":{"line":7,"column":12,"offset":241},"end":{"line":7,"column":26,"offset":255}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"What happens","position":{"start":{"line":7,"column":28,"offset":257},"end":{"line":7,"column":40,"offset":269}}}],"position":{"start":{"line":7,"column":26,"offset":255},"end":{"line":7,"column":42,"offset":271}}}],"position":{"start":{"line":7,"column":1,"offset":230},"end":{"line":7,"column":42,"offset":271}}},{"type":"tableRow","children":[{"type":"tableCell","children":[{"type":"text","value":"1","position":{"start":{"line":9,"column":3,"offset":300},"end":{"line":9,"column":4,"offset":301}}}],"position":{"start":{"line":9,"column":1,"offset":298},"end":{"line":9,"column":5,"offset":302}}},{"type":"tableCell","children":[{"type":"text","value":"/cso — Chief Security Officer Audit (v2)","position":{"start":{"line":9,"column":7,"offset":304},"end":{"line":9,"column":47,"offset":344}}}],"position":{"start":{"line":9,"column":5,"offset":302},"end":{"line":9,"column":48,"offset":345}}},{"type":"tableCell","children":[{"type":"text","value":"Developer","position":{"start":{"line":9,"column":50,"offset":347},"end":{"line":9,"column":59,"offset":356}}}],"position":{"start":{"line":9,"column":48,"offset":345},"end":{"line":9,"column":60,"offset":357}}},{"type":"tableCell","children":[],"position":{"start":{"line":9,"column":60,"offset":357},"end":{"line":9,"column":64,"offset":361}}}],"position":{"start":{"line":9,"column":1,"offset":298},"end":{"line":9,"column":64,"offset":361}}}],"position":{"start":{"line":7,"column":1,"offset":230},"end":{"line":9,"column":64,"offset":361}}},{"type":"paragraph","children":[{"type":"text","value":"Say something like \"security audit\" or \"check for vulnerabilities\" or \"owasp review\" in chat to start it.","position":{"start":{"line":11,"column":1,"offset":363},"end":{"line":11,"column":106,"offset":468}}}],"position":{"start":{"line":11,"column":1,"offset":363},"end":{"line":11,"column":106,"offset":468}}}]}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"A structured security architecture review: walk the stack for secrets, dependencies, auth,","startTime":0,"endTime":3.5,"audioSegment":0},{"text":"and common vulnerability classes, then report findings ranked by severity and confidence.","startTime":3.5,"endTime":7,"audioSegment":0},{"text":"#StepWho runs itWhat happens1/cso — Chief Security Officer Audit (v2)Developer","startTime":7,"endTime":11,"audioSegment":0},{"text":"Say something like \"security audit\" or \"check for vulnerabilities\" or \"owasp review\" in chat to start it.","startTime":11,"endTime":15,"audioSegment":0}],"version":1},"startBlock":{"title":"Security Architecture Review","subtitle":"A structured security architecture review: walk the stack for secrets, dependencies, auth, and common vulnerability classes, then report findings ranked by severity and confidence.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

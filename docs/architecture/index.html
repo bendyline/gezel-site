@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How gezel runs: app, daemon, and tools — Gezel Handboek</title>
+<meta name="description" content="The desktop app, the background service, and how a gezel acts.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a class="hb-current" aria-current="page" href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>How gezel runs</h1>
+<p>Gezel is two cooperating pieces:</p>
+<ul><li><p><strong>The app</strong> — the window you see. It draws the workshop and talks to the service over a private, authenticated local connection.</p></li><li><p><strong>The service (</strong><code>gezeld</code><strong>)</strong> — a background process on your machine that owns everything real: your files, your threads, the connections to AI providers. It keeps working when the window is closed, which is what makes scheduled jobs and long-running tasks possible.</p></li></ul>
+<p>The app finds or starts the service automatically. On a standard install the service runs machine-wide; there is also a per-user mode, and Settings lets you enable start-at-login so your crew is always on duty.</p>
+<h2 id="how-a-gezel-acts">How a gezel acts</h2>
+<p>A language model on its own can only produce text. A gezel gets <strong>tools</strong> — reading and writing workspace files, saving memories, running scripts, creating tasks, messaging other gezellen. Tools are how a gezel's words become work, and every tool call is subject to the same consent and audit rules regardless of which AI provider is behind the gezel.</p>
+<p>The <a href="../tools-and-toolsets/">Tools and toolsets</a> article lists every group; each role article shows exactly which groups that role carries.</p>
+<h2 id="providers">Providers</h2>
+<p>The service speaks to AI providers through one pluggable layer: GitHub Copilot, OpenAI, Anthropic, and local engines all plug into the same seam. That's why switching providers — or giving one gezel a different model than the rest of the crew — is a setting, not a migration.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#how-a-gezel-acts">How a gezel acts</a></li>
+<li class="hb-h2"><a href="#providers">Providers</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

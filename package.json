@@ -1,0 +1,14 @@
+{
+  "name": "gezel-site",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The website for Gezel, published with GitHub Pages.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "sitemap": "node build-sitemap.mjs",
+    "preview": "node serve.mjs --open /",
+    "preview:docs": "node serve.mjs --open /docs/"
+  }
+}

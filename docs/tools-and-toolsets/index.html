@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools and toolsets — Gezel Handboek</title>
+<meta name="description" content="Every built-in tool group and what it lets a gezel do.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a class="hb-current" aria-current="page" href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Tools and toolsets</h1>
+<p>Tools are a gezel's hands: without them, an AI model can only talk. Gezel's tools are bundled into named <strong>groups</strong>, and each role carries the groups that fit its trade — a reviewer gets file reading, a developer gets file writing and code execution, a coordinator gets team management. You can add or remove groups per gezel, and third-party toolsets from the gilde catalog extend the set further.</p>
+<p>Every tool call is mediated: consent rules and the audit log apply no matter which group a tool came from.</p>
+<h2 id="custom-mcp-toolsets">Custom MCP toolsets</h2>
+<p>In any Toolsets panel, choose <strong>Add toolset → Custom MCP</strong> to import a local JSON file or paste its contents. Gezel understands both common configuration envelopes:</p>
+<ul><li><p>VS Code workspace format: a top-level <code>servers</code> object.</p></li><li><p>Claude/Cursor format: a top-level <code>mcpServers</code> object.</p></li></ul>
+<p>Both local <code>stdio</code> servers and remote Streamable HTTP/SSE servers are supported. Imported environment values and HTTP headers go into Gezel's secret store rather than the ordinary installed-toolsets JSON. Provider-native MCP integrations that only accept local processes (currently Copilot and Claude CLI) load the <code>stdio</code> entries and skip hosted entries.</p>
+<p>A project can also declare its approved MCP toolsets as files in its working folder. Gezel discovers <code>.gezel/mcp.json</code>, <code>.vscode/mcp.json</code>, and the common root <code>.mcp.json</code> automatically. When names overlap, the Gezel-specific file wins, then VS Code, then the root file. Changing one of these files rebuilds that project's MCP bridges, so the new set applies on the next turn.</p>
+<p>Project-file discovery is project consent, not a way around the install-wide security posture: unconfined third-party MCP servers remain available only when non-builtin toolsets are enabled by <strong>Settings → Security &amp; Compliance</strong>. VS Code <code>${input:…}</code> prompt variables are not imported because they need an interactive value; use an environment variable or literal value instead.</p>
+<h2 id="the-built-in-groups">The built-in groups</h2>
+<h3 id="memory">Memory</h3>
+<p>Persistent notes a gezel can search, recall, and write back. Backed by the gezel's per-day memory files plus a vector index.</p>
+<p>Tools: <code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></p>
+<h3 id="workspace-file-reading">Workspace File Reading</h3>
+<p>Read, list, search, and diff files in the project workspace. Mirrors Node's <code>fs</code> reads plus content/glob search. Diagnose-only — pair with <code>workspace-fs-write</code> to actually mutate.</p>
+<p>Tools: <code>list_dir</code>, <code>read_file</code>, <code>stat</code>, <code>validate</code>, <code>search_files</code>, <code>find_files</code>, <code>diff_files</code></p>
+<h3 id="code-intelligence">Code Intelligence</h3>
+<p>Navigate and understand the codebase via the workspace index instead of reading whole files: outline a file's symbols, jump to a definition, read just one symbol's source, find usages, and map the repo. Every result carries line ranges so the model reads only the span it needs — a big context saver for small/medium local models.</p>
+<p>Tools: <code>outline_file</code>, <code>find_symbol</code>, <code>read_symbol</code>, <code>find_references</code>, <code>map_repo</code>, <code>search_code</code>, <code>file_review</code>, <code>list_file_issues</code></p>
+<h3 id="security-intelligence">Security Intelligence</h3>
+<p>Static security analysis pushed into the index and reused as tools: run a whole-repo scan (dependency inventory + opportunistic semgrep/osv-scanner/gitleaks), get a posture overview with candidate systemic themes, list findings by severity/category, map the attack surface (entry points, routes, auth boundaries, secret touchpoints), inventory dependencies with advisories, and trace import-graph reachability for source→sink flows. The substrate for a deep, systemic security review.</p>
+<p>Tools: <code>security_scan</code>, <code>security_overview</code>, <code>scan_findings</code>, <code>map_attack_surface</code>, <code>list_dependencies</code>, <code>trace_taint</code></p>
+<h3 id="document-intelligence">Document Intelligence</h3>
+<p>Search and read office documents (Word, PDF, PowerPoint, Excel) that gezel has converted to markdown in the index. Keyword-search across a document corpus and read any document as scannable markdown on demand — no need to wrestle with binary files.</p>
+<p>Tools: <code>search_docs</code>, <code>read_doc_as_markdown</code></p>
+<h3 id="image-intelligence">Image Intelligence</h3>
+<p>Navigate an indexed image library: search images by filename/caption/dimensions, summarize a folder of images for review or reorganizing, and find visually similar images. Built for folder-operations over large image collections.</p>
+<p>Tools: <code>search_images</code>, <code>find_similar_images</code>, <code>describe_folder</code></p>
+<h3 id="entity-intelligence">Entity Intelligence</h3>
+<p>Cross-file entities the index resolved from structured metadata — email senders, document parties — and where each appears. Ask "every email from X" or "every contract naming Y" and get a dated, cross-file view.</p>
+<p>Tools: <code>find_entity</code>, <code>list_entity_mentions</code></p>
+<h3 id="workspace-file-writing">Workspace File Writing</h3>
+<p>Create, write, surgically edit, rename, and delete files in the project workspace. Always paired with <code>workspace-fs-read</code> for the roles that build (developer, designer, reviewer); split out so coordinator roles (voorman) can investigate without being tempted to do the building themselves.</p>
+<p>Tools: <code>write_file</code>, <code>append_to_file</code>, <code>replace_in_file</code>, <code>replace_lines</code>, <code>apply_patch</code>, <code>insert_at_marker</code>, <code>copy_artifact_to_workspace</code>, <code>make_dir</code>, <code>delete_path</code>, <code>rename</code></p>
+<h3 id="archive-tools">Archive Tools</h3>
+<p>List and extract zip / tar archives in the workspace.</p>
+<p>Tools: <code>list_archive</code>, <code>extract_archive</code></p>
+<h3 id="documents">Documents</h3>
+<p>Cross-project shared library — mission docs, guidelines, and any markdown the user wants every gezel to be able to find.</p>
+<p>Tools: <code>list_documents</code>, <code>read_document</code>, <code>write_document</code>, <code>delete_document</code>, <code>search_documents</code></p>
+<h3 id="project-artifacts">Project Artifacts</h3>
+<p>Project-scoped read-write outputs (reports, scratch files, scripts a gezel produces, and large outputs auto-saved by tools that exceed the inline cap).</p>
+<p>Tools: <code>list_artifacts</code>, <code>read_artifact</code>, <code>write_artifact</code>, <code>grep_artifact</code></p>
+<h3 id="task-management">Task Management</h3>
+<p>Create, assign, advance, and report on tasks. The full task surface including notes, steps, and child instance spawning.</p>
+<p>Tools: <code>list_tasks</code>, <code>get_task</code>, <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>import_skill</code>, <code>create_task</code>, <code>start_plan</code>, <code>invoke_craftbook</code>, <code>update_task</code>, <code>set_outcomes</code>, <code>verify_outcome</code>, <code>add_verification_step</code>, <code>set_task_status</code>, <code>activate_task</code>, <code>list_task_children</code>, <code>add_task_step</code>, <code>advance_task_step</code>, <code>assign_task</code>, <code>read_task_notes</code>, <code>write_task_note</code>, <code>spawn_task_instances</code></p>
+<h3 id="craftbook-authoring">Craftbook Authoring</h3>
+<p>Read and write a whole craftbook, add/remove/reorder steps, set the entry step, and attach focused deliverable gates. <code>craftbook_write</code> is the atomic create/replace path; the large surgical update schema is loaded only inside an explicit craftbook-editing session. The unified surface targets either a task's embedded craftbook or a standalone local template.</p>
+<p>Tools: <code>craftbook_read</code>, <code>craftbook_write</code>, <code>craftbook_add_step</code>, <code>set_step_deliverable</code>, <code>craftbook_remove_step</code>, <code>craftbook_reorder_steps</code>, <code>craftbook_set_entry</code>, <code>craftbook_update</code>, <code>export_task_craftbook</code></p>
+<h3 id="task-visibility">Task Visibility</h3>
+<p>Read-only task surface for delegation roles — list tasks, inspect a specific task, read its notes. The "ping projects to see status" subset, without any of the mutation tools (create, update, assign, status, advance) that belong to the assignee or voorman. Pair with <code>team-management</code> for a complete delegation surface.</p>
+<p>Tools: <code>list_tasks</code>, <code>get_task</code>, <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>read_task_notes</code></p>
+<h3 id="craftbook-launcher">Craftbook Launcher</h3>
+<p>Procedure-first task launch surface for coordinators: rank applicable craftbooks and invoke a selected recipe after its required setup is ready.</p>
+<p>Tools: <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>invoke_craftbook</code></p>
+<h3 id="team-project-management">Team &amp; Project Management</h3>
+<p>Spin up other gezels, message them, browse the gilde of templates, and manage projects + project membership. The Meester surface.</p>
+<p>Tools: <code>list_gezels</code>, <code>create_gezel</code>, <code>update_gezel</code>, <code>ensure_gezel</code>, <code>message_gezel</code>, <code>list_projects</code>, <code>start_project</code>, <code>start_job</code>, <code>fetch_repo</code>, <code>fetch_diff</code>, <code>update_project</code>, <code>list_gilde</code>, <code>list_project_types</code>, <code>apply_project_type</code>, <code>start_project_from_type</code>, <code>export_project_type</code>, <code>import_project_type</code>, <code>list_project_gezels</code>, <code>add_gezel_to_project</code>, <code>remove_gezel_from_project</code>, <code>list_suggested_work</code>, <code>enable_suggested_work</code>, <code>disable_suggested_work</code></p>
+<h3 id="audio">Audio</h3>
+<p>Speech-to-text (<code>transcribe_audio</code>) and text-to-speech (<code>synthesize_speech</code>). Heavy — only useful for gezels that do voice work.</p>
+<p>Tools: <code>transcribe_audio</code>, <code>synthesize_speech</code></p>
+<h3 id="code-execution">Code Execution</h3>
+<p>Run Node scripts, npm install, run package scripts, invoke npx. Sandboxed to the project workspace.</p>
+<p>Tools: <code>run_nodejs_script</code>, <code>derive_file</code>, <code>npm_install</code>, <code>run_npx</code>, <code>run_installed_script</code>, <code>run_package_script</code>, <code>list_packages</code>, <code>list_package_scripts</code>, <code>list_scripts</code>, <code>get_script_run</code></p>
+<h3 id="browser-automation">Browser Automation</h3>
+<p>Drive a headless Chromium via Playwright scripts. Heavy — only useful for gezels that genuinely need browser work.</p>
+<p>Tools: <code>run_playwright_script</code></p>
+<h3 id="git-github">Git &amp; GitHub</h3>
+<p>Run read-only git commands inside the project workspace, inspect GitHub pull requests, post review comments, open PRs, and check workflow status for linked project repositories.</p>
+<p>Tools: <code>run_git</code>, <code>github_pr_list</code>, <code>github_pr_view</code>, <code>github_pr_files</code>, <code>github_pr_diff</code>, <code>github_pr_comments</code>, <code>github_pr_comment</code>, <code>github_pr_create</code>, <code>github_workflow_runs</code>, <code>github_check_status</code></p>
+<h3 id="web-access">Web Access</h3>
+<p>Search the web (when a keyed backend like Brave is configured) or Wikipedia, fetch URL contents, and find interactive elements on a browser-controlled page (after a Playwright navigate / click / type). <code>web_search</code> only registers when a real keyed backend is configured; <code>wikipedia_search</code> only registers for non-cloud models (cloud models already have Wikipedia in training).</p>
+<p>Tools: <code>web_search</code>, <code>wikipedia_search</code>, <code>fetch_url</code>, <code>browser_find_page_element</code></p>
+<h3 id="image-tools">Image Tools</h3>
+<p>Render charts/diagrams, read and describe existing images, and generate new images via the configured image model.</p>
+<p>Tools: <code>render_image</code>, <code>read_image_as_base64</code>, <code>generate_image</code>, <code>describe_image</code>, <code>read_image_metadata</code></p>
+<h3 id="video-tools">Video Tools</h3>
+<p>Generate short video clips via the configured local video model (LTX / WAN).</p>
+<p>Tools: <code>generate_video</code></p>
+<h3 id="audit-history">Audit &amp; History</h3>
+<p>Search the install-wide audit log of who did what and when, plus past chat transcripts.</p>
+<p>Tools: <code>search_history</code>, <code>search_sessions</code></p>
+<h3 id="handboek">Handboek</h3>
+<p>Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup. In every role's kit so a gezel answers 'how does gezel work?' from the real docs instead of guessing.</p>
+<p>Tools: <code>how_do_i</code></p>
+<h3 id="user-interaction">User Interaction</h3>
+<p>Pose a structured question mid-turn — to the user (<code>ask_user_question</code>), to a specific gezel (<code>ask_gezel</code>), or to a role-shaped specialist (<code>ask_specialist</code>) — instead of guessing.</p>
+<p>Tools: <code>ask_user_question</code>, <code>ask_gezel</code>, <code>ask_specialist</code></p>
+<h3 id="role-delegation-downward">Role Delegation (downward)</h3>
+<p>Hand work to a teammate by ROLE instead of by name: <code>delegate_&lt;role&gt;</code> (async hand-off) and <code>consult_&lt;role&gt;</code> (sync question) for each doer role — developer, designer, reviewer, planner, researcher, builder, writer, image-generator. The target lives in the tool identity (no free-text <code>gezel</code>/<code>role</code> argument), which small/medium local models route far more reliably. Each resolves to the project gezel of that role, creating one on demand. Orchestrator (meester/voorman) surface; gated by the <code>tools.gezels-as-roles</code> behavior.</p>
+<p>Tools: <code>delegate_developer</code>, <code>consult_developer</code>, <code>delegate_designer</code>, <code>consult_designer</code>, <code>delegate_reviewer</code>, <code>consult_reviewer</code>, <code>delegate_planner</code>, <code>consult_planner</code>, <code>delegate_researcher</code>, <code>consult_researcher</code>, <code>delegate_builder</code>, <code>consult_builder</code>, <code>delegate_writer</code>, <code>consult_writer</code>, <code>delegate_image_generator</code>, <code>consult_image_generator</code></p>
+<h3 id="role-delegation-escalation">Role Delegation (escalation)</h3>
+<p>Reach a coordination role by ROLE: <code>delegate_voorman</code> / <code>consult_voorman</code> and <code>delegate_meester</code> / <code>consult_meester</code>. The escalation counterpart to <code>role-delegation</code> — lets a specialist hand work or questions UP to their voorman or the meester. Gated by the <code>tools.gezels-as-roles</code> behavior.</p>
+<p>Tools: <code>delegate_voorman</code>, <code>consult_voorman</code>, <code>delegate_meester</code>, <code>consult_meester</code></p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#custom-mcp-toolsets">Custom MCP toolsets</a></li>
+<li class="hb-h2"><a href="#the-built-in-groups">The built-in groups</a></li>
+<li class="hb-h3"><a href="#memory">Memory</a></li>
+<li class="hb-h3"><a href="#workspace-file-reading">Workspace File Reading</a></li>
+<li class="hb-h3"><a href="#code-intelligence">Code Intelligence</a></li>
+<li class="hb-h3"><a href="#security-intelligence">Security Intelligence</a></li>
+<li class="hb-h3"><a href="#document-intelligence">Document Intelligence</a></li>
+<li class="hb-h3"><a href="#image-intelligence">Image Intelligence</a></li>
+<li class="hb-h3"><a href="#entity-intelligence">Entity Intelligence</a></li>
+<li class="hb-h3"><a href="#workspace-file-writing">Workspace File Writing</a></li>
+<li class="hb-h3"><a href="#archive-tools">Archive Tools</a></li>
+<li class="hb-h3"><a href="#documents">Documents</a></li>
+<li class="hb-h3"><a href="#project-artifacts">Project Artifacts</a></li>
+<li class="hb-h3"><a href="#task-management">Task Management</a></li>
+<li class="hb-h3"><a href="#craftbook-authoring">Craftbook Authoring</a></li>
+<li class="hb-h3"><a href="#task-visibility">Task Visibility</a></li>
+<li class="hb-h3"><a href="#craftbook-launcher">Craftbook Launcher</a></li>
+<li class="hb-h3"><a href="#team-project-management">Team &amp; Project Management</a></li>
+<li class="hb-h3"><a href="#audio">Audio</a></li>
+<li class="hb-h3"><a href="#code-execution">Code Execution</a></li>
+<li class="hb-h3"><a href="#browser-automation">Browser Automation</a></li>
+<li class="hb-h3"><a href="#git-github">Git &amp; GitHub</a></li>
+<li class="hb-h3"><a href="#web-access">Web Access</a></li>
+<li class="hb-h3"><a href="#image-tools">Image Tools</a></li>
+<li class="hb-h3"><a href="#video-tools">Video Tools</a></li>
+<li class="hb-h3"><a href="#audit-history">Audit &amp; History</a></li>
+<li class="hb-h3"><a href="#handboek">Handboek</a></li>
+<li class="hb-h3"><a href="#user-interaction">User Interaction</a></li>
+<li class="hb-h3"><a href="#role-delegation-downward">Role Delegation (downward)</a></li>
+<li class="hb-h3"><a href="#role-delegation-escalation">Role Delegation (escalation)</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

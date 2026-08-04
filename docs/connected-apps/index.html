@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connected apps: let other tools use your gezels — Gezel Handboek</title>
+<meta name="description" content="Editors and other programs can talk to your crew through standard AI endpoints — with your approval, on your terms.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a aria-current="true" href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2 class="hb-current">Concepts</h2>
+<ul>
+<li><a href="../welcome/">What is gezel?</a></li>
+<li><a href="../the-crew/">Your crew: gezellen, the Meester, and the Voorman</a></li>
+<li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
+<li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
+<li><a href="../craftbooks-overview/">Craftbooks: procedures your crew can follow</a></li>
+<li><a href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
+<li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
+<li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
+<li><a href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
+<li><a class="hb-current" aria-current="page" href="../connected-apps/">Connected apps: let other tools use your gezels</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../craftbooks-overview/">Concepts</a>
+</nav>
+<article class="hb-article">
+<h1>Connected apps</h1>
+<p>Gezel isn't only a place you visit — it can also serve your models and gezellen to <em>other</em> programs on your computer. A code editor, a writing tool, or a browser extension that knows how to talk to an AI service can talk to gezel instead, and get your local models with all of gezel's know-how applied.</p>
+<p>Everything described here lives in <strong>Settings → Connected Apps</strong>.</p>
+<h2 id="how-an-app-connects">How an app connects</h2>
+<p>Apps speak to gezel using the same "OpenAI-style" language most AI tools already know. Two things make it work:</p>
+<ol><li><p><strong>An address.</strong> Gezel listens at <code>https://127.0.0.1:6228/v1</code> on your machine. Apps that let you set a custom AI server go here.</p></li><li><p><strong>Permission.</strong> The first time an app asks for access, gezel shows you an approval request — who is asking, and for what. Nothing gets through until you approve, and you can revoke any app later from the same panel.</p></li></ol>
+<h2 id="who-answers-gezel-choices-and-the-fallback">Who answers: gezel choices and the fallback</h2>
+<p>Gezel presents your crew to connected apps as model choices, including each gezel's name and role. When an app chooses one, that gezel answers with their character, model, and settings.</p>
+<p>Some apps cannot choose from that list and ask for a hardcoded model such as <code>gpt-4o</code>. The <strong>fallback gezel</strong> answers those requests. It defaults to your Meester, so there is always a useful front door; you can choose another gezel from <strong>Settings → Connected Apps</strong>.</p>
+<h2 id="supporting-behaviors">Supporting behaviors</h2>
+<p>Gezel knows how to get the best out of each model — catching runaway rambling, tidying leaked reasoning, applying model-specific fixes. The <strong>Supporting behaviors</strong> switch controls whether connected apps get that help too. On (the default) is recommended; off gives plain serving with just the model's tuned settings.</p>
+<h2 id="emulating-ollama">Emulating Ollama</h2>
+<p>Some tools don't ask where your AI lives — they simply look for <a href="https://ollama.com">Ollama</a> on its standard port. The <strong>Emulate Ollama</strong> switch makes gezel answer there, so those tools discover your crew with zero setup.</p>
+<p>One honest caveat, spelled out next to the switch: Ollama's convention is no password. While emulation is on, any program on this computer can use your models without asking first. Gezel keeps this off unless you turn it on, only ever answers your own machine, and refuses to take the port if the real Ollama is already running.</p>
+<h2 id="keeping-an-eye-on-things">Keeping an eye on things</h2>
+<p>Every chat an app completes through these endpoints is recorded in the <strong>History</strong> tab (look for "App chat" entries), and the tokens they consume count in the <strong>Usage</strong> view — so you can always see who has been using your models, and how much.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#how-an-app-connects">How an app connects</a></li>
+<li class="hb-h2"><a href="#who-answers-gezel-choices-and-the-fallback">Who answers: gezel choices and the fallback</a></li>
+<li class="hb-h2"><a href="#supporting-behaviors">Supporting behaviors</a></li>
+<li class="hb-h2"><a href="#emulating-ollama">Emulating Ollama</a></li>
+<li class="hb-h2"><a href="#keeping-an-eye-on-things">Keeping an eye on things</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

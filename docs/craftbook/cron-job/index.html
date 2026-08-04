@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheduled Batch Job — Gezel Handboek</title>
+<meta name="description" content="Build a scheduled batch job that runs on a cadence, processes a unit of work, is safe to re-run, and reports its outcome.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/cron-job/">Scheduled Batch Job</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Scheduled Batch Job</h1>
+<p>Build a scheduled batch job that runs on a cadence, processes a unit of work, is safe to re-run, and reports its outcome. Scopes the job FIRST — trigger cadence, the work it does, batch/chunk size, idempotency, failure/partial-failure handling, and observable output — then implements the runnable job, then tests a clean run, an empty run, a partial-failure run, and re-run safety. Covers cron scheduling semantics, batch processing, idempotent reruns, chunking, structured logging, exit codes, and graceful partial-failure handling.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the job</td><td>Planner</td><td>lock cadence, work unit, idempotency, failure handling</td></tr><tr><td>2</td><td>Build the job</td><td>Developer</td><td>implement the runnable batch job</td></tr><tr><td>3</td><td>Write job tests</td><td>Developer</td><td>test clean, empty, partial-failure, and re-run</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<p>Say something like "build a cron job" or "scheduled batch job" or "nightly job" or "recurring task script" or "batch processor" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

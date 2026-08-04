@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate and Send Recurring Invoices — Gezel Handboek</title>
+<meta name="description" content="Run a recurring billing batch: for each active client/subscription due this period, generate a correctly-numbered, line-itemed invoice with taxes and totals, render it, and send it — once, idempotently, with a sent-log.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/recurring-invoice-run/">Generate and Send Recurring Invoices</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Generate and Send Recurring Invoices</h1>
+<p>Run a recurring billing batch: for each active client/subscription due this period, generate a correctly-numbered, line-itemed invoice with taxes and totals, render it, and send it — once, idempotently, with a sent-log. Locks the invoice template, the numbering scheme, the tax/total math, and the due/idempotency rules FIRST, then builds the generate-render-send batch keyed to a billing-run log, then verifies every due client was invoiced exactly once, totals are arithmetically correct, and numbers are sequential with no gaps or dupes. Locking numbering and math up front is what keeps recurring billing audit-clean instead of producing duplicate or mis-totaled invoices.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the invoice run</td><td>Planner</td><td>template, numbering, tax/total math, due + idempotency</td></tr><tr><td>2</td><td>Build the invoice run</td><td>Developer</td><td>select due, number, compute, render, send, log</td></tr><tr><td>3</td><td>Verify the run</td><td>Reviewer</td><td>once-per-client, correct math, gap-free numbering</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<p>Say something like "generate recurring invoices" or "send monthly invoices" or "automate billing" or "invoice run" or "recurring invoice batch" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

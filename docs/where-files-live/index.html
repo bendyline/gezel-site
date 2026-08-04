@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where files live — Gezel Handboek</title>
+<meta name="description" content="The gezel home folder, mapped.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a class="hb-current" aria-current="page" href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Where files live</h1>
+<p>Everything gezel knows lives in one folder — the <strong>gezel home</strong> — as plain files. On macOS and Linux that's <code>~/.gezel</code> in your home directory (a machine-wide service uses a system location instead; Settings shows the active path).</p>
+<pre class="squisq-code-block"><code>~/.gezel/
+  config.json         providers, default model, the current Meester
+  gezels/
+    {gezel}/
+      gezel.md        name, role, model choice
+      about.md        the gezel's character
+      poppetje.json   the carved-figure look
+      sessions/       chat threads, one file each
+      memories/       daily notes + lessons
+  projects/
+    {project}/
+      project.json    name, working folder, crew settings
+      documents/      About + Mission Objectives
+      artifacts/      everything the crew produces
+  documents/          the shared library
+  history.jsonl       the audit log
+  logs/               service logs (rolling)</code></pre>
+<h2 id="what-you-can-safely-do">What you can safely do</h2>
+<ul><li><p><strong>Read anything.</strong> It's your data; nothing breaks by looking.</p></li><li><p><strong>Back up or sync the whole folder.</strong> Copying the folder copies your entire workshop.</p></li><li><p><strong>Edit with care.</strong> Character files (<code>about.md</code>) and documents are meant to be edited — from the app or any text editor. For structured files (<code>config.json</code>, thread files), prefer the app so nothing gets malformed.</p></li></ul>
+<p>A few subfolders are machinery rather than your data — <code>runtime/</code>, <code>service/</code>, <code>bin/</code>, <code>index/</code>, <code>logs/</code> hold the service's own working state and rebuildable caches. Leave those to gezel; deleting them is at worst an inconvenience, never data loss.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

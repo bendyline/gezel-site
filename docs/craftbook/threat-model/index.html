@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightweight Threat Model — Gezel Handboek</title>
+<meta name="description" content="Produce a lightweight threat model for a feature or system using a structured method (STRIDE over a simple data-flow diagram) and output a prioritized mitigation plan.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/threat-model/">Lightweight Threat Model</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Lightweight Threat Model</h1>
+<p>Produce a lightweight threat model for a feature or system using a structured method (STRIDE over a simple data-flow diagram) and output a prioritized mitigation plan. First scopes the system by drawing its data-flow — actors, processes, data stores, and trust boundaries — and locks what is in scope, then enumerates threats per element using STRIDE (spoofing, tampering, repudiation, info-disclosure, denial-of-service, elevation-of-privilege) and rates each by likelihood and impact, then writes a threat-model report mapping each credible threat to a concrete mitigation and an owner. Use this for a threat model, security design review, STRIDE analysis, attack-surface mapping, or thinking through what could go wrong before building a feature — it yields a structured, prioritized set of threats and mitigations rather than an ad-hoc list of worries.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the system</td><td>Planner</td><td>draw the data-flow + trust boundaries, lock scope</td></tr><tr><td>2</td><td>Enumerate threats</td><td>Reviewer</td><td>STRIDE each element, rate likelihood × impact</td></tr><tr><td>3</td><td>Write the threat model</td><td>Reviewer</td><td>prioritized threats mapped to mitigations</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<p>Say something like "threat model this" or "STRIDE analysis" or "what could go wrong with this design" or "security design review" or "map the attack surface" or "model the threats" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

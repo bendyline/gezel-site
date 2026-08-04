@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Review — Gezel Handboek</title>
+<meta name="description" content="Snapshot-driven code review.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/code-review/">Code Review</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Code Review</h1>
+<p>Snapshot-driven code review. Consumes a staged change-set snapshot (reviews//manifest.json + changes.diff in the project artifacts drawer) and emits a gated markdown report artifact with severity-ranked, file-cited findings and an approve/request-changes verdict. Shared by commit reviews (uncommitted work vs the last save) and branch reviews (this branch vs the default branch); the Gezel Review panel stages the snapshot and launches this book automatically.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the change set</td><td>Reviewer</td><td>Read the staged snapshot (manifest + diff) and write a scope note naming the review kind, the changed files, and the themes to check.</td></tr><tr><td>2</td><td>Review and write the report</td><td>Reviewer</td><td>Walk the diff hunk by hunk and write the complete review report artifact. Writing the report IS the advance — the completion gate checks structure, citations, and verdict consistency.</td></tr><tr><td>3</td><td>Deliver the verdict</td><td>Reviewer</td><td>The report passed its gate. Stamp the verdict to task notes and point the user at the report.</td></tr></tbody></table></div>
+<p>Say something like "review my uncommitted changes" or "review the working tree" or "review this branch against main" or "review the staged change set" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

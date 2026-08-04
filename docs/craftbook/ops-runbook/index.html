@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Execute an Ops Runbook — Gezel Handboek</title>
+<meta name="description" content="Execute a written operational procedure step by step with verification and a stop-on-anomaly rule.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/ops-runbook/">Execute an Ops Runbook</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Execute an Ops Runbook</h1>
+<p>Execute a written operational procedure step by step with verification and a stop-on-anomaly rule. Inventories the runbook and its preconditions FIRST, then executes each step in order — act, verify the step's own check, record verbatim evidence in a run log — halting immediately when observed state does not match what the procedure expects, then writes an outcome report (clean completion, or a halt report naming the failing step, expected vs. observed, and the steps deliberately not executed). Recording verbatim evidence and refusing to run past an anomaly is the wisdom that separates a trustworthy operator from one who papers over broken state.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Inventory the runbook</td><td>Researcher</td><td>read the procedure end-to-end, list steps and checks, confirm preconditions</td></tr><tr><td>2</td><td>Execute and record</td><td>Researcher</td><td>per step: act, verify, record verbatim evidence; STOP at the first anomaly</td></tr><tr><td>3</td><td>Report the outcome</td><td>Researcher</td><td>COMPLETED summary or HALTED report with expected vs. observed</td></tr></tbody></table></div>
+<p>Say something like "run the runbook" or "execute this procedure" or "follow the maintenance procedure" or "run this checklist" or "execute the runbook steps" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

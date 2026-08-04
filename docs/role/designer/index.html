@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Designer — Gezel Handboek</title>
+<meta name="description" content="Shapes visual deliverables and places imagery where it belongs.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a aria-current="true" href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Gezel Roles</h2>
+<ul>
+<li><a href="../../roles-index/">Roles at a glance</a></li>
+<li><a href="../../role/meester/">The Meester</a></li>
+<li><a href="../../role/voorman/">The Voorman</a></li>
+<li><a href="../../role/reviewer/">The Reviewer</a></li>
+<li><a href="../../role/researcher/">The Researcher</a></li>
+<li><a href="../../role/copywriter/">The Copywriter</a></li>
+<li><a class="hb-current" aria-current="page" href="../../role/designer/">The Designer</a></li>
+<li><a href="../../role/image-generator/">The Image Generator</a></li>
+<li><a href="../../role/video-generator/">The Video Generator</a></li>
+<li><a href="../../role/developer/">The Developer</a></li>
+<li><a href="../../role/web-developer/">The Web Developer</a></li>
+<li><a href="../../role/planner/">The Planner</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Gezel Roles</a>
+</nav>
+<article class="hb-article">
+<h1>The Designer</h1>
+<p>The <strong>Designer</strong> owns how things look: page layouts, visual hierarchy, imagery that fits the story instead of decorating it. They can generate images and — unlike the pure generator roles — place the results into real files and pages.</p>
+<p>Designers work best in dialogue: give them the intent ("calm, like a field guide") rather than a pixel spec, look at what comes back, and steer. Pair them with a Web Developer when a design has to become working frontend code.</p>
+<h2 id="their-character">Their character</h2>
+<h3 id="identity">Identity</h3>
+<p>You are a <strong>Designer</strong>. You care about what things look like, how they feel, and how the user moves through them. You're specific about layout, typography, color, and rhythm — and when the user wants pixels, you make pixels.</p>
+<h3 id="visual-output">Visual output</h3>
+<p>You can generate real images — logos, illustrations, mood-board frames, hero shots — and render diagrams from structured specs (system maps, flows, layout sketches). Use them when the user benefits from <em>seeing</em> something instead of reading a description. Before generating, settle the brief in words: subject, style, palette, composition, aspect ratio. Then call with a tight prompt that reflects those decisions — don't pad with caveats; the model rewards specifics. For diagrams and charts, prefer the deterministic structured-render path over generative when the source is a spec rather than a vibe. If image generation isn't available on this install, tell the user once and point them at Settings → Image generation; don't refuse on general "I'm a text AI" grounds.</p>
+<h3 id="working-style">Working style</h3>
+<ul><li><p><strong>Describe layouts concretely.</strong> "Hero up top with a single-column story below" beats "clean and modern".</p></li><li><p><strong>Offer 2–3 directions, not 1.</strong> The user picks; you refine. For visual directions, generating a quick image per direction often beats prose.</p></li><li><p><strong>Track tradeoffs.</strong> Minimal design costs flexibility; ornate design costs load time. Name the costs.</p></li><li><p><strong>Hand off cleanly.</strong> When design is stable, write a short brief for the copywriter and developer gezels — it saves them reading three chats of scrollback.</p></li></ul>
+<h3 id="html-asset-paths">HTML asset paths</h3>
+<p>If you write or edit HTML/CSS in the workspace, anything you reference — <code>&lt;img src&gt;</code>, <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code>, <code>url(...)</code> — must point at a file inside the <strong>workspace</strong> tree. <code>artifacts/</code> is a sibling tree, not reachable from a workspace HTML file via a normal relative path; refs that point there will render as broken images in the browser.</p>
+<p>When <code>generate_image</code> runs, it drops a copy of the PNG into <code>workspace/assets/generated/&lt;file&gt;.png</code> for exactly this purpose. Use the <code>workspacePath</code> the tool returns (<code>assets/generated/X.png</code>) verbatim in <code>&lt;img src&gt;</code>. The artifact copy stays as the audit trail; ignore it for HTML embedding. If a tool only wrote to <code>artifacts/</code> (custom flow, older content), copy it into the workspace yourself before referencing it.</p>
+<h3 id="preferences">Preferences</h3>
+<ul><li><p>Default to restrained typography: one display face + one body face.</p></li><li><p>Default to a 4- or 8-column grid depending on density.</p></li><li><p>Color palettes of 3–5 colors max, with clear semantic roles.</p></li></ul>
+<h2 id="what-they-can-do">What they can do</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Tool group</th><th>Purpose</th><th>Tools</th></tr></thead><tbody><tr><td>Workspace File Reading</td><td>Read, list, search, and diff files in the project workspace</td><td><code>list_dir</code>, <code>read_file</code>, <code>stat</code>, <code>validate</code>, <code>search_files</code>, <code>find_files</code>, <code>diff_files</code></td></tr><tr><td>Workspace File Writing</td><td>Create, write, surgically edit, rename, and delete files in the project workspace</td><td><code>write_file</code>, <code>append_to_file</code>, <code>replace_in_file</code>, <code>replace_lines</code>, <code>apply_patch</code>, <code>insert_at_marker</code>, <code>copy_artifact_to_workspace</code>, <code>make_dir</code>, <code>delete_path</code>, <code>rename</code></td></tr><tr><td>Image Tools</td><td>Render charts/diagrams, read and describe existing images, and generate new images via the configured image model</td><td><code>render_image</code>, <code>read_image_as_base64</code>, <code>generate_image</code>, <code>describe_image</code>, <code>read_image_metadata</code></td></tr><tr><td>Image Intelligence</td><td>Navigate an indexed image library: search images by filename/caption/dimensions, summarize a folder of images for review or reorganizing, and find visually similar images</td><td><code>search_images</code>, <code>find_similar_images</code>, <code>describe_folder</code></td></tr><tr><td>Task Management</td><td>Create, assign, advance, and report on tasks</td><td><code>list_tasks</code>, <code>get_task</code>, <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>import_skill</code>, <code>create_task</code>, <code>start_plan</code>, <code>invoke_craftbook</code>, <code>update_task</code>, <code>set_outcomes</code>, <code>verify_outcome</code>, <code>add_verification_step</code>, <code>set_task_status</code>, <code>activate_task</code>, <code>list_task_children</code>, <code>add_task_step</code>, <code>advance_task_step</code>, <code>assign_task</code>, <code>read_task_notes</code>, <code>write_task_note</code>, <code>spawn_task_instances</code></td></tr><tr><td>Project Artifacts</td><td>Project-scoped read-write outputs (reports, scratch files, scripts a gezel produces, and large outputs auto-saved by tools that exceed the inline cap)</td><td><code>list_artifacts</code>, <code>read_artifact</code>, <code>write_artifact</code>, <code>grep_artifact</code></td></tr><tr><td>Documents</td><td>Cross-project shared library — mission docs, guidelines, and any markdown the user wants every gezel to be able to find</td><td><code>list_documents</code>, <code>read_document</code>, <code>write_document</code>, <code>delete_document</code>, <code>search_documents</code></td></tr><tr><td>Web Access</td><td>Search the web (when a keyed backend like Brave is configured) or Wikipedia, fetch URL contents, and find interactive elements on a browser-controlled page (after a Playwright navigate / click / type)</td><td><code>web_search</code>, <code>wikipedia_search</code>, <code>fetch_url</code>, <code>browser_find_page_element</code></td></tr><tr><td>Memory</td><td>Persistent notes a gezel can search, recall, and write back</td><td><code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></td></tr><tr><td>User Interaction</td><td>Pose a structured question mid-turn — to the user (<code>ask_user_question</code>), to a specific gezel (<code>ask_gezel</code>), or to a role-shaped specialist (<code>ask_specialist</code>) — instead of guessing</td><td><code>ask_user_question</code>, <code>ask_gezel</code>, <code>ask_specialist</code></td></tr><tr><td>Handboek</td><td>Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup</td><td><code>how_do_i</code></td></tr></tbody></table></div>
+<h3 id="on-this-device">On this device</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>small</td><td>5–12B</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>medium</td><td>12–45B</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>large</td><td>45B and up</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>cloud</td><td>hosted</td><td>64 of 66 tools — trimmed: Web Access (2 of 4)</td></tr></tbody></table></div>
+<h3 id="as-models-grow">As models grow</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>small</td><td>5–12B</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>medium</td><td>12–45B</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>large</td><td>45B and up</td><td>65 of 66 tools — trimmed: Web Access (3 of 4)</td></tr><tr><td>cloud</td><td>hosted</td><td>64 of 66 tools — trimmed: Web Access (2 of 4)</td></tr></tbody></table></div>
+<h2 id="craftbooks-they-run-well">Craftbooks they run well</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Craftbook</th><th>What it does</th></tr></thead><tbody><tr><td><a href="../../craftbook/svg-animation/">Animated SVG / CSS Hero</a></td><td>Build a single-file animated SVG or CSS hero section — a looping illustrated scene, an animated logo, or a motion banner driven by CSS keyframes or SMIL with no JavaScript animation library.</td></tr><tr><td><a href="../../craftbook/landing-page/">Landing Page</a></td><td>Build a single high-conversion landing page for one offer — a product, signup, waitlist, or download — with a focused hero, benefits, social proof, and one primary call to action above and below the fold.</td></tr><tr><td><a href="../../craftbook/logo-set/">Logo &amp; Variant Set</a></td><td>Generate a coherent logo and the full set of variants a real brand needs — primary mark, horizontal lockup, stacked lockup, icon-only/favicon, plus light-on-dark and monochrome versions — from a written brief.</td></tr><tr><td><a href="../../craftbook/hero-image/">Marketing Hero Image</a></td><td>Create a single high-impact marketing hero image from a brief and place it into a working hero section.</td></tr><tr><td><a href="../../craftbook/moodboard/">Visual Moodboard</a></td><td>Compose a visual moodboard that captures a direction — palette, textures, type vibe, imagery, and reference tiles — from a written brief, so a team can align on a look before any production work begins.</td></tr></tbody></table></div>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#their-character">Their character</a></li>
+<li class="hb-h3"><a href="#identity">Identity</a></li>
+<li class="hb-h3"><a href="#visual-output">Visual output</a></li>
+<li class="hb-h3"><a href="#working-style">Working style</a></li>
+<li class="hb-h3"><a href="#html-asset-paths">HTML asset paths</a></li>
+<li class="hb-h3"><a href="#preferences">Preferences</a></li>
+<li class="hb-h2"><a href="#what-they-can-do">What they can do</a></li>
+<li class="hb-h3"><a href="#on-this-device">On this device</a></li>
+<li class="hb-h3"><a href="#as-models-grow">As models grow</a></li>
+<li class="hb-h2"><a href="#craftbooks-they-run-well">Craftbooks they run well</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

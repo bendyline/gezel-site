@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novel Writing Room</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"project-type/novel-writing-room","duration":18,"blocks":[{"id":"novel-writing-room","startTime":0,"duration":18,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Novel Writing Room","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":21,"offset":20}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":21,"offset":20}}},"title":"Novel Writing Room","contents":[{"type":"paragraph","children":[{"type":"text","value":"A room for the long haul of a novel. A warm Schrijfmaat (\"writing mate\") logs every writing session, keeps the chapter board honest, and reads drafts like a friend who wants the book to exist — with a live board of words and chapters.","position":{"start":{"line":3,"column":1,"offset":22},"end":{"line":3,"column":235,"offset":256}}}],"position":{"start":{"line":3,"column":1,"offset":22},"end":{"line":3,"column":235,"offset":256}}},{"type":"paragraph","children":[{"type":"strong","children":[{"type":"text","value":"Crew it sets up","position":{"start":{"line":5,"column":3,"offset":260},"end":{"line":5,"column":18,"offset":275}}}],"position":{"start":{"line":5,"column":1,"offset":258},"end":{"line":5,"column":20,"offset":277}}}],"position":{"start":{"line":5,"column":1,"offset":258},"end":{"line":5,"column":20,"offset":277}}},{"type":"table","align":[null,null],"children":[{"type":"tableRow","children":[{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Gezel template","position":{"start":{"line":7,"column":3,"offset":281},"end":{"line":7,"column":17,"offset":295}}}],"position":{"start":{"line":7,"column":1,"offset":279},"end":{"line":7,"column":18,"offset":296}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Voorman","position":{"start":{"line":7,"column":20,"offset":298},"end":{"line":7,"column":27,"offset":305}}}],"position":{"start":{"line":7,"column":18,"offset":296},"end":{"line":7,"column":29,"offset":307}}}],"position":{"start":{"line":7,"column":1,"offset":279},"end":{"line":7,"column":29,"offset":307}}},{"type":"tableRow","children":[{"type":"tableCell","children":[{"type":"text","value":"schrijfmaat","position":{"start":{"line":9,"column":3,"offset":324},"end":{"line":9,"column":14,"offset":335}}}],"position":{"start":{"line":9,"column":1,"offset":322},"end":{"line":9,"column":15,"offset":336}}},{"type":"tableCell","children":[{"type":"text","value":"Yes — leads the project","position":{"start":{"line":9,"column":17,"offset":338},"end":{"line":9,"column":40,"offset":361}}}],"position":{"start":{"line":9,"column":15,"offset":336},"end":{"line":9,"column":42,"offset":363}}}],"position":{"start":{"line":9,"column":1,"offset":322},"end":{"line":9,"column":42,"offset":363}}}],"position":{"start":{"line":7,"column":1,"offset":279},"end":{"line":9,"column":42,"offset":363}}},{"type":"paragraph","children":[{"type":"strong","children":[{"type":"text","value":"Craftbooks it installs:","position":{"start":{"line":11,"column":3,"offset":367},"end":{"line":11,"column":26,"offset":390}}}],"position":{"start":{"line":11,"column":1,"offset":365},"end":{"line":11,"column":28,"offset":392}}},{"type":"text","value":" ","position":{"start":{"line":11,"column":28,"offset":392},"end":{"line":11,"column":29,"offset":393}}},{"type":"inlineCode","value":"copy-review","position":{"start":{"line":11,"column":29,"offset":393},"end":{"line":11,"column":42,"offset":406}}},{"type":"text","value":", ","position":{"start":{"line":11,"column":42,"offset":406},"end":{"line":11,"column":44,"offset":408}}},{"type":"inlineCode","value":"ebook-compile","position":{"start":{"line":11,"column":44,"offset":408},"end":{"line":11,"column":59,"offset":423}}}],"position":{"start":{"line":11,"column":1,"offset":365},"end":{"line":11,"column":59,"offset":423}}}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"A room for the long haul of a novel.","startTime":0,"endTime":3,"audioSegment":0},{"text":"A warm Schrijfmaat (\"writing mate\") logs every writing session, keeps the chapter board honest,","startTime":3,"endTime":6,"audioSegment":0},{"text":"and reads drafts like a friend who wants the book to exist — with a live board of words and chapters.","startTime":6,"endTime":9,"audioSegment":0},{"text":"Crew it sets up","startTime":9,"endTime":12,"audioSegment":0},{"text":"Gezel templateVoormanschrijfmaatYes — leads the project","startTime":12,"endTime":15,"audioSegment":0},{"text":"Craftbooks it installs: copy-review, ebook-compile","startTime":15,"endTime":18,"audioSegment":0}],"version":1},"startBlock":{"title":"Novel Writing Room","subtitle":"A room for the long haul of a novel. A warm Schrijfmaat (\"writing mate\") logs every writing session, keeps the chapter board honest, and reads drafts like a friend who wants the book to exist — with a live board of words and chapters.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

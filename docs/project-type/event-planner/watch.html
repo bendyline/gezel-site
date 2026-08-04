@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Planner</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"project-type/event-planner","duration":14,"blocks":[{"id":"event-planner","startTime":0,"duration":14,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Event Planner","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":16,"offset":15}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":16,"offset":15}}},"title":"Event Planner","contents":[{"type":"paragraph","children":[{"type":"text","value":"Plan the wedding, the milestone birthday, the reunion. A composed Ceremoniemeester (\"master of ceremonies\") keeps the guest list sacred, the budget honest, and the day-of runbook ready — with a live countdown board.","position":{"start":{"line":3,"column":1,"offset":17},"end":{"line":3,"column":216,"offset":232}}}],"position":{"start":{"line":3,"column":1,"offset":17},"end":{"line":3,"column":216,"offset":232}}},{"type":"paragraph","children":[{"type":"strong","children":[{"type":"text","value":"Crew it sets up","position":{"start":{"line":5,"column":3,"offset":236},"end":{"line":5,"column":18,"offset":251}}}],"position":{"start":{"line":5,"column":1,"offset":234},"end":{"line":5,"column":20,"offset":253}}}],"position":{"start":{"line":5,"column":1,"offset":234},"end":{"line":5,"column":20,"offset":253}}},{"type":"table","align":[null,null],"children":[{"type":"tableRow","children":[{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Gezel template","position":{"start":{"line":7,"column":3,"offset":257},"end":{"line":7,"column":17,"offset":271}}}],"position":{"start":{"line":7,"column":1,"offset":255},"end":{"line":7,"column":18,"offset":272}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Voorman","position":{"start":{"line":7,"column":20,"offset":274},"end":{"line":7,"column":27,"offset":281}}}],"position":{"start":{"line":7,"column":18,"offset":272},"end":{"line":7,"column":29,"offset":283}}}],"position":{"start":{"line":7,"column":1,"offset":255},"end":{"line":7,"column":29,"offset":283}}},{"type":"tableRow","children":[{"type":"tableCell","children":[{"type":"text","value":"ceremoniemeester","position":{"start":{"line":9,"column":3,"offset":300},"end":{"line":9,"column":19,"offset":316}}}],"position":{"start":{"line":9,"column":1,"offset":298},"end":{"line":9,"column":20,"offset":317}}},{"type":"tableCell","children":[{"type":"text","value":"Yes — leads the project","position":{"start":{"line":9,"column":22,"offset":319},"end":{"line":9,"column":45,"offset":342}}}],"position":{"start":{"line":9,"column":20,"offset":317},"end":{"line":9,"column":47,"offset":344}}}],"position":{"start":{"line":9,"column":1,"offset":298},"end":{"line":9,"column":47,"offset":344}}}],"position":{"start":{"line":7,"column":1,"offset":255},"end":{"line":9,"column":47,"offset":344}}},{"type":"paragraph","children":[{"type":"strong","children":[{"type":"text","value":"Craftbooks it installs:","position":{"start":{"line":11,"column":3,"offset":348},"end":{"line":11,"column":26,"offset":371}}}],"position":{"start":{"line":11,"column":1,"offset":346},"end":{"line":11,"column":28,"offset":373}}},{"type":"text","value":" ","position":{"start":{"line":11,"column":28,"offset":373},"end":{"line":11,"column":29,"offset":374}}},{"type":"inlineCode","value":"runbook","position":{"start":{"line":11,"column":29,"offset":374},"end":{"line":11,"column":38,"offset":383}}}],"position":{"start":{"line":11,"column":1,"offset":346},"end":{"line":11,"column":38,"offset":383}}}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"Plan the wedding, the milestone birthday, the reunion.","startTime":0,"endTime":2.3333333333333335,"audioSegment":0},{"text":"A composed Ceremoniemeester (\"master of ceremonies\") keeps the guest list sacred,","startTime":2.3333333333333335,"endTime":4.666666666666667,"audioSegment":0},{"text":"the budget honest, and the day-of runbook ready — with a live countdown board.","startTime":4.666666666666667,"endTime":7,"audioSegment":0},{"text":"Crew it sets up","startTime":7,"endTime":9.333333333333334,"audioSegment":0},{"text":"Gezel templateVoormanceremoniemeesterYes — leads the project","startTime":9.333333333333334,"endTime":11.666666666666668,"audioSegment":0},{"text":"Craftbooks it installs: runbook","startTime":11.666666666666668,"endTime":14,"audioSegment":0}],"version":1},"startBlock":{"title":"Event Planner","subtitle":"Plan the wedding, the milestone birthday, the reunion. A composed Ceremoniemeester (\"master of ceremonies\") keeps the guest list sacred, the budget honest, and the day-of runbook ready — with a live countdown board.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Models, tiers, and what runs on this device — Gezel Handboek</title>
+<meta name="description" content="Cloud or local, big or small — how gezel matches models to work.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a aria-current="true" href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2 class="hb-current">Concepts</h2>
+<ul>
+<li><a href="../welcome/">What is gezel?</a></li>
+<li><a href="../the-crew/">Your crew: gezellen, the Meester, and the Voorman</a></li>
+<li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
+<li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
+<li><a href="../craftbooks-overview/">Craftbooks: procedures your crew can follow</a></li>
+<li><a class="hb-current" aria-current="page" href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
+<li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
+<li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
+<li><a href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
+<li><a href="../connected-apps/">Connected apps: let other tools use your gezels</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../craftbooks-overview/">Concepts</a>
+</nav>
+<article class="hb-article">
+<h1>Models, tiers, and what runs on this device</h1>
+<p>Gezel doesn't come with its own AI — it puts <em>your</em> choice of AI to work. That can be a cloud provider (OpenAI, Anthropic, GitHub Copilot) or a model running locally on your own machine. With a local model, your data never leaves the room.</p>
+<h2 id="tiers-matching-the-model-to-the-job">Tiers: matching the model to the job</h2>
+<p>Models come in sizes, and size matters for what a gezel can be trusted to do alone. Gezel groups them into <strong>tiers</strong>:</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Size (in billions of parameters)</th><th>Good at</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>quick drafts, simple lookups</td></tr><tr><td>small</td><td>5–12B</td><td>everyday chat, focused single tasks</td></tr><tr><td>medium</td><td>12–45B</td><td>multi-step work with tools</td></tr><tr><td>large</td><td>45B and up, local</td><td>most roles, unsupervised steps</td></tr><tr><td>cloud</td><td>hosted frontier models</td><td>everything</td></tr></tbody></table></div>
+<p>Every role declares a <strong>model floor</strong> — the minimum tier it needs to work unsupervised. A reviewer gating your deliverables needs more headroom than a gezel drafting a shopping list, and gezel enforces that automatically.</p>
+<h2 id="on-this-device">On this device</h2>
+<p>Gezel classifies each device as tiny, small, medium, or large from the memory available to local models. Open this page in the app to see the current device.</p>
+<h3 id="installed-local-models">Installed local models</h3>
+<p>Gezel runs local models (llama.cpp, MLX, Ollama and friends) alongside cloud providers — the Models catalog in the app shows what fits your machine.</p>
+<h2 id="choosing">Choosing</h2>
+<p>You don't have to get this right up front. Set a default provider in Settings, and override it per gezel only when a companion needs something different — a big cloud model for your reviewer, a fast local one for day-to-day chat. Gezel checks each new model's fitness on your hardware before recommending it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#tiers-matching-the-model-to-the-job">Tiers: matching the model to the job</a></li>
+<li class="hb-h2"><a href="#on-this-device">On this device</a></li>
+<li class="hb-h3"><a href="#installed-local-models">Installed local models</a></li>
+<li class="hb-h2"><a href="#choosing">Choosing</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

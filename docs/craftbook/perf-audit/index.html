@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Audit — Gezel Handboek</title>
+<meta name="description" content="Audit an application or page for performance problems with measurements, then produce a report of the highest-impact optimizations.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/perf-audit/">Performance Audit</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Performance Audit</h1>
+<p>Audit an application or page for performance problems with measurements, then produce a report of the highest-impact optimizations. First scopes the workloads and locks a performance budget and checklist (load time and Core Web Vitals, bundle/asset weight, render and main-thread cost, network waterfall and request count, server/query latency, memory and re-render churn), then MEASURES each against a baseline using real profiling rather than guessing, then writes a report that ranks bottlenecks by impact-vs-effort with a specific fix and the expected gain for each. Use this for a performance audit, speed optimization, finding bottlenecks, a Lighthouse-style review, reducing load time, or profiling slowness — it grounds every recommendation in a measured number and an estimated payoff, not 'it feels slow'.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the perf budget</td><td>Reviewer</td><td>lock workloads, a budget, and a metrics checklist</td></tr><tr><td>2</td><td>Measure the baseline</td><td>Developer</td><td>profile each workload, locate the real bottlenecks</td></tr><tr><td>3</td><td>Write the perf report</td><td>Reviewer</td><td>rank optimizations by impact vs effort</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<p>Say something like "performance audit" or "why is this slow" or "find the bottleneck" or "optimize load time" or "speed this up" or "profile the app" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

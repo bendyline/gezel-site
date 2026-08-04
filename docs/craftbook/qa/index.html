@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QA — Gezel Handboek</title>
+<meta name="description" content="Live UI QA pass with a real browser.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/qa/">QA</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>QA</h1>
+<p>Live UI QA pass with a real browser. Navigates the target, interacts with the golden-path flow, captures findings, fixes atomically, re-tests.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Smoke</td><td>Reviewer</td><td>Navigate to the target URL and verify the page loads + the golden-path element is visible.</td></tr><tr><td>2</td><td>Exercise the flow</td><td>Reviewer</td><td>Walk the golden path. Click the primary CTA, fill the form, submit, watch the result.</td></tr><tr><td>3</td><td>Edges</td><td>Reviewer</td><td>Try a small set of edge cases: empty input, oversized input, invalid input, double-click, browser back.</td></tr><tr><td>4</td><td>Triage</td><td>Reviewer</td><td>Surface what broke. Stamp a clear finding and STOP — fix happens in a separate task.</td></tr><tr><td>5</td><td>Summary</td><td>Reviewer</td><td>Clean pass. Stamp a brief 'QA passed' note and DONE.</td></tr><tr><td>6</td><td>Halted</td><td>Reviewer</td><td>Smoke failed before any real testing happened. Surface it.</td></tr></tbody></table></div>
+<p>Say something like "qa this" or "test the ui" or "check the site" or "qa the app" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Planner</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"project-type/trip-planner","duration":14,"blocks":[{"id":"trip-planner","startTime":0,"duration":14,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Trip Planner","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":15,"offset":14}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":15,"offset":14}}},"title":"Trip Planner","contents":[{"type":"paragraph","children":[{"type":"text","value":"Plan a trip you'll actually be present for. A Reisleider (\"tour leader\") builds the day-by-day itinerary with slack in it, keeps the packing list checkable on a live board, and helps the journal happen.","position":{"start":{"line":3,"column":1,"offset":16},"end":{"line":3,"column":203,"offset":218}}}],"position":{"start":{"line":3,"column":1,"offset":16},"end":{"line":3,"column":203,"offset":218}}},{"type":"paragraph","children":[{"type":"strong","children":[{"type":"text","value":"Crew it sets up","position":{"start":{"line":5,"column":3,"offset":222},"end":{"line":5,"column":18,"offset":237}}}],"position":{"start":{"line":5,"column":1,"offset":220},"end":{"line":5,"column":20,"offset":239}}}],"position":{"start":{"line":5,"column":1,"offset":220},"end":{"line":5,"column":20,"offset":239}}},{"type":"table","align":[null,null],"children":[{"type":"tableRow","children":[{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Gezel template","position":{"start":{"line":7,"column":3,"offset":243},"end":{"line":7,"column":17,"offset":257}}}],"position":{"start":{"line":7,"column":1,"offset":241},"end":{"line":7,"column":18,"offset":258}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Voorman","position":{"start":{"line":7,"column":20,"offset":260},"end":{"line":7,"column":27,"offset":267}}}],"position":{"start":{"line":7,"column":18,"offset":258},"end":{"line":7,"column":29,"offset":269}}}],"position":{"start":{"line":7,"column":1,"offset":241},"end":{"line":7,"column":29,"offset":269}}},{"type":"tableRow","children":[{"type":"tableCell","children":[{"type":"text","value":"reisleider","position":{"start":{"line":9,"column":3,"offset":286},"end":{"line":9,"column":13,"offset":296}}}],"position":{"start":{"line":9,"column":1,"offset":284},"end":{"line":9,"column":14,"offset":297}}},{"type":"tableCell","children":[{"type":"text","value":"Yes — leads the project","position":{"start":{"line":9,"column":16,"offset":299},"end":{"line":9,"column":39,"offset":322}}}],"position":{"start":{"line":9,"column":14,"offset":297},"end":{"line":9,"column":41,"offset":324}}}],"position":{"start":{"line":9,"column":1,"offset":284},"end":{"line":9,"column":41,"offset":324}}}],"position":{"start":{"line":7,"column":1,"offset":241},"end":{"line":9,"column":41,"offset":324}}},{"type":"paragraph","children":[{"type":"strong","children":[{"type":"text","value":"Craftbooks it installs:","position":{"start":{"line":11,"column":3,"offset":328},"end":{"line":11,"column":26,"offset":351}}}],"position":{"start":{"line":11,"column":1,"offset":326},"end":{"line":11,"column":28,"offset":353}}},{"type":"text","value":" ","position":{"start":{"line":11,"column":28,"offset":353},"end":{"line":11,"column":29,"offset":354}}},{"type":"inlineCode","value":"pre-departure-countdown","position":{"start":{"line":11,"column":29,"offset":354},"end":{"line":11,"column":54,"offset":379}}}],"position":{"start":{"line":11,"column":1,"offset":326},"end":{"line":11,"column":54,"offset":379}}}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"Plan a trip you'll actually be present for.","startTime":0,"endTime":2.3333333333333335,"audioSegment":0},{"text":"A Reisleider (\"tour leader\") builds the day-by-day itinerary with slack in it,","startTime":2.3333333333333335,"endTime":4.666666666666667,"audioSegment":0},{"text":"keeps the packing list checkable on a live board, and helps the journal happen.","startTime":4.666666666666667,"endTime":7,"audioSegment":0},{"text":"Crew it sets up","startTime":7,"endTime":9.333333333333334,"audioSegment":0},{"text":"Gezel templateVoormanreisleiderYes — leads the project","startTime":9.333333333333334,"endTime":11.666666666666668,"audioSegment":0},{"text":"Craftbooks it installs: pre-departure-countdown","startTime":11.666666666666668,"endTime":14,"audioSegment":0}],"version":1},"startBlock":{"title":"Trip Planner","subtitle":"Plan a trip you'll actually be present for. A Reisleider (\"tour leader\") builds the day-by-day itinerary with slack in it, keeps the packing list checkable on a live board, and helps the journal happen.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

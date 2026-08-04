@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email / Inbox</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"project-type/email","duration":6,"blocks":[{"id":"email-inbox","startTime":0,"duration":6,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Email / Inbox","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":16,"offset":15}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":16,"offset":15}}},"title":"Email / Inbox","contents":[{"type":"paragraph","children":[{"type":"text","value":"Sync an email account into a project as canonical markdown, then triage, draft, and summarize correspondence with a gezel.","position":{"start":{"line":3,"column":1,"offset":17},"end":{"line":3,"column":123,"offset":139}}}],"position":{"start":{"line":3,"column":1,"offset":17},"end":{"line":3,"column":123,"offset":139}}}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"Sync an email account into a project as canonical markdown,","startTime":0,"endTime":3,"audioSegment":0},{"text":"then triage, draft, and summarize correspondence with a gezel.","startTime":3,"endTime":6,"audioSegment":0}],"version":1},"startBlock":{"title":"Email / Inbox","subtitle":"Sync an email account into a project as canonical markdown, then triage, draft, and summarize correspondence with a gezel.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

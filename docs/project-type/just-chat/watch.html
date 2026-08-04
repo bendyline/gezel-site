@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Chat</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"project-type/just-chat","duration":14,"blocks":[{"id":"just-chat","startTime":0,"duration":14,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Just Chat","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":12,"offset":11}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":12,"offset":11}}},"title":"Just Chat","contents":[{"type":"paragraph","children":[{"type":"text","value":"A quiet room for talking — no tasks, no workspace, no deliverables. Just an open thread with a gezel of your choosing: brainstorming, writing back and forth, asking questions, thinking out loud. Ideal for a warm companion gezel or a small on-device model that's happiest simply conversing.","position":{"start":{"line":3,"column":1,"offset":13},"end":{"line":3,"column":290,"offset":302}}}],"position":{"start":{"line":3,"column":1,"offset":13},"end":{"line":3,"column":290,"offset":302}}}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"A quiet room for talking — no tasks, no workspace, no deliverables.","startTime":0,"endTime":3.5,"audioSegment":0},{"text":"Just an open thread with a gezel of your choosing: brainstorming,","startTime":3.5,"endTime":7,"audioSegment":0},{"text":"writing back and forth, asking questions, thinking out loud.","startTime":7,"endTime":10.5,"audioSegment":0},{"text":"Ideal for a warm companion gezel or a small on-device model that's happiest simply conversing.","startTime":10.5,"endTime":14,"audioSegment":0}],"version":1},"startBlock":{"title":"Just Chat","subtitle":"A quiet room for talking — no tasks, no workspace, no deliverables. Just an open thread with a gezel of your choosing: brainstorming, writing back and forth, asking questions, thinking out loud. Ideal for a warm companion gezel or a small on-device model that's happiest simply conversing.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

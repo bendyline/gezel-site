@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser QA Audit</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"craftbook/browser-qa-audit","duration":17,"blocks":[{"id":"browser-qa-audit","startTime":0,"duration":8,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Browser QA Audit","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":19,"offset":18}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":19,"offset":18}}},"title":"Browser QA Audit","contents":[{"type":"paragraph","children":[{"type":"text","value":"Exercise a running app in a real browser, triage what breaks, and produce a report-only QA findings list with a health score — no code changes.","position":{"start":{"line":3,"column":1,"offset":20},"end":{"line":3,"column":144,"offset":163}}}],"position":{"start":{"line":3,"column":1,"offset":20},"end":{"line":3,"column":144,"offset":163}}}],"children":[{"id":"how-it-runs","startTime":8,"duration":9,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":2,"children":[{"type":"text","value":"How it runs","position":{"start":{"line":5,"column":4,"offset":168},"end":{"line":5,"column":15,"offset":179}}}],"position":{"start":{"line":5,"column":1,"offset":165},"end":{"line":5,"column":15,"offset":179}}},"title":"How it runs","contents":[{"type":"table","align":[null,null,null,null],"children":[{"type":"tableRow","children":[{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"#","position":{"start":{"line":7,"column":3,"offset":183},"end":{"line":7,"column":4,"offset":184}}}],"position":{"start":{"line":7,"column":1,"offset":181},"end":{"line":7,"column":5,"offset":185}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Step","position":{"start":{"line":7,"column":7,"offset":187},"end":{"line":7,"column":11,"offset":191}}}],"position":{"start":{"line":7,"column":5,"offset":185},"end":{"line":7,"column":12,"offset":192}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"Who runs it","position":{"start":{"line":7,"column":14,"offset":194},"end":{"line":7,"column":25,"offset":205}}}],"position":{"start":{"line":7,"column":12,"offset":192},"end":{"line":7,"column":26,"offset":206}}},{"type":"tableCell","isHeader":true,"children":[{"type":"text","value":"What happens","position":{"start":{"line":7,"column":28,"offset":208},"end":{"line":7,"column":40,"offset":220}}}],"position":{"start":{"line":7,"column":26,"offset":206},"end":{"line":7,"column":42,"offset":222}}}],"position":{"start":{"line":7,"column":1,"offset":181},"end":{"line":7,"column":42,"offset":222}}},{"type":"tableRow","children":[{"type":"tableCell","children":[{"type":"text","value":"1","position":{"start":{"line":9,"column":3,"offset":251},"end":{"line":9,"column":4,"offset":252}}}],"position":{"start":{"line":9,"column":1,"offset":249},"end":{"line":9,"column":5,"offset":253}}},{"type":"tableCell","children":[{"type":"text","value":"/qa-only: Report-Only QA Testing","position":{"start":{"line":9,"column":7,"offset":255},"end":{"line":9,"column":39,"offset":287}}}],"position":{"start":{"line":9,"column":5,"offset":253},"end":{"line":9,"column":40,"offset":288}}},{"type":"tableCell","children":[{"type":"text","value":"Developer","position":{"start":{"line":9,"column":42,"offset":290},"end":{"line":9,"column":51,"offset":299}}}],"position":{"start":{"line":9,"column":40,"offset":288},"end":{"line":9,"column":52,"offset":300}}},{"type":"tableCell","children":[],"position":{"start":{"line":9,"column":52,"offset":300},"end":{"line":9,"column":56,"offset":304}}}],"position":{"start":{"line":9,"column":1,"offset":249},"end":{"line":9,"column":56,"offset":304}}}],"position":{"start":{"line":7,"column":1,"offset":181},"end":{"line":9,"column":56,"offset":304}}},{"type":"paragraph","children":[{"type":"text","value":"Say something like \"qa report only\" or \"just report bugs\" or \"test but dont fix\" in chat to start it.","position":{"start":{"line":11,"column":1,"offset":306},"end":{"line":11,"column":102,"offset":407}}}],"position":{"start":{"line":11,"column":1,"offset":306},"end":{"line":11,"column":102,"offset":407}}},{"type":"paragraph","children":[{"type":"text","value":"Needs toolsets: ","position":{"start":{"line":13,"column":1,"offset":409},"end":{"line":13,"column":17,"offset":425}}},{"type":"inlineCode","value":"microsoft-playwright-mcp","position":{"start":{"line":13,"column":17,"offset":425},"end":{"line":13,"column":43,"offset":451}}},{"type":"text","value":".","position":{"start":{"line":13,"column":43,"offset":451},"end":{"line":13,"column":44,"offset":452}}}],"position":{"start":{"line":13,"column":1,"offset":409},"end":{"line":13,"column":44,"offset":452}}}]}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"Exercise a running app in a real browser, triage what breaks,","startTime":0,"endTime":4,"audioSegment":0},{"text":"and produce a report-only QA findings list with a health score — no code changes.","startTime":4,"endTime":8,"audioSegment":0},{"text":"#StepWho runs itWhat happens1/qa-only: Report-Only QA TestingDeveloper","startTime":8,"endTime":11,"audioSegment":0},{"text":"Say something like \"qa report only\" or \"just report bugs\" or \"test but dont fix\" in chat to start it.","startTime":11,"endTime":14,"audioSegment":0},{"text":"Needs toolsets: microsoft-playwright-mcp.","startTime":14,"endTime":17,"audioSegment":0}],"version":1},"startBlock":{"title":"Browser QA Audit","subtitle":"Exercise a running app in a real browser, triage what breaks, and produce a report-only QA findings list with a health score — no code changes.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

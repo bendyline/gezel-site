@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ship — Gezel Handboek</title>
+<meta name="description" content="End-to-end release procedure: run tests, run a review pass, commit/push, open the PR, wait for CI to come back green, hand off for merge.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul>
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/ship/">Ship</a></li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Ship</h1>
+<p>End-to-end release procedure: run tests, run a review pass, commit/push, open the PR, wait for CI to come back green, hand off for merge. Requires a GitHub-connected project on a feature branch.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Preflight</td><td>Developer</td><td>Confirm the working tree is in a shippable state: branch is right, no uncommitted weirdness, what is/isn't included.</td></tr><tr><td>2</td><td>Run tests</td><td>Developer</td><td>Run the project's test command. Branches on failure to a triage step; on success advances to the review pass.</td></tr><tr><td>3</td><td>Self-review pass</td><td>Reviewer</td><td>Walk your own diff before opening the PR. Last chance to catch obvious mistakes.</td></tr><tr><td>4</td><td>Open PR</td><td>Developer</td><td>Push the branch + open the pull request.</td></tr><tr><td>5</td><td>Wait for CI</td><td>Developer</td><td>Poll workflow runs / check status until the gate is green or fails.</td></tr><tr><td>6</td><td>Summary</td><td>Developer</td><td>Stamp a final summary. PR opened, CI green, ready to merge.</td></tr><tr><td>7</td><td>Halted</td><td>Developer</td><td>Something blocked the ship — tests, CI, or push. Report DONE_WITH_CONCERNS.</td></tr></tbody></table></div>
+<p>Say something like "ship this" or "ship it" or "open a pr" or "open the pr" or "release this" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

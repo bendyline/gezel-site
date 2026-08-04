@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Image Generator — Gezel Handboek</title>
+<meta name="description" content="A fixed-function specialist — prompts in, pictures out.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a aria-current="true" href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Gezel Roles</h2>
+<ul>
+<li><a href="../../roles-index/">Roles at a glance</a></li>
+<li><a href="../../role/meester/">The Meester</a></li>
+<li><a href="../../role/voorman/">The Voorman</a></li>
+<li><a href="../../role/reviewer/">The Reviewer</a></li>
+<li><a href="../../role/researcher/">The Researcher</a></li>
+<li><a href="../../role/copywriter/">The Copywriter</a></li>
+<li><a href="../../role/designer/">The Designer</a></li>
+<li><a class="hb-current" aria-current="page" href="../../role/image-generator/">The Image Generator</a></li>
+<li><a href="../../role/video-generator/">The Video Generator</a></li>
+<li><a href="../../role/developer/">The Developer</a></li>
+<li><a href="../../role/web-developer/">The Web Developer</a></li>
+<li><a href="../../role/planner/">The Planner</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Gezel Roles</a>
+</nav>
+<article class="hb-article">
+<h1>The Image Generator</h1>
+<p>The <strong>Image Generator</strong> does one thing on purpose: turn descriptions into images. Illustrations, hero images, textures, mockup art — ask, refine, ask again. Results land in the project's artifacts, ready for a Designer or you to place.</p>
+<p>This is a deliberately narrow, fixed-function role. It doesn't edit your files or wander the workspace; keeping it single-purpose makes it safe to hand loose creative prompts without side effects. Gezel's install dialog likes to give these gezellen painterly names — Picasso, Vermeer — because a character beats a button.</p>
+<h2 id="their-character">Their character</h2>
+<h3 id="what-this-gezel-does">What this gezel does</h3>
+<p>This gezel is a <strong>pass-through to image generation</strong>. There's no LLM behind it — when you @mention them with a prompt, the message goes straight to the configured image engine and the result lands in chat.</p>
+<h3 id="how-to-use-it">How to use it</h3>
+<p>Type the prompt you'd give to a stable-diffusion-like model:</p>
+<blockquote><p>@{name} two horses jumping a cow, oil on canvas, dramatic lighting</p></blockquote>
+<p>The image is saved into your project's <code>artifacts/generated/</code> folder and rendered inline in the chat bubble. To iterate, ask again with a new prompt — there's no conversation memory because there's no model on this side of the wire.</p>
+<h3 id="settings">Settings</h3>
+<p>This gezel has no <code>about.md</code> to edit (no system prompt). The image engine + model are picked in Settings → Image generation. Per-gezel defaults — width, height, sampling steps, model id — are editable in the gezel's edit dialog under "Default arguments".</p>
+<h2 id="what-they-can-do">What they can do</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Tool group</th><th>Purpose</th><th>Tools</th></tr></thead><tbody><tr><td>Image Tools</td><td>Render charts/diagrams, read and describe existing images, and generate new images via the configured image model</td><td><code>render_image</code>, <code>read_image_as_base64</code>, <code>generate_image</code>, <code>describe_image</code>, <code>read_image_metadata</code></td></tr><tr><td>Image Intelligence</td><td>Navigate an indexed image library: search images by filename/caption/dimensions, summarize a folder of images for review or reorganizing, and find visually similar images</td><td><code>search_images</code>, <code>find_similar_images</code>, <code>describe_folder</code></td></tr><tr><td>Task Management</td><td>Create, assign, advance, and report on tasks</td><td><code>list_tasks</code>, <code>get_task</code>, <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>import_skill</code>, <code>create_task</code>, <code>start_plan</code>, <code>invoke_craftbook</code>, <code>update_task</code>, <code>set_outcomes</code>, <code>verify_outcome</code>, <code>add_verification_step</code>, <code>set_task_status</code>, <code>activate_task</code>, <code>list_task_children</code>, <code>add_task_step</code>, <code>advance_task_step</code>, <code>assign_task</code>, <code>read_task_notes</code>, <code>write_task_note</code>, <code>spawn_task_instances</code></td></tr><tr><td>Project Artifacts</td><td>Project-scoped read-write outputs (reports, scratch files, scripts a gezel produces, and large outputs auto-saved by tools that exceed the inline cap)</td><td><code>list_artifacts</code>, <code>read_artifact</code>, <code>write_artifact</code>, <code>grep_artifact</code></td></tr><tr><td>Documents</td><td>Cross-project shared library — mission docs, guidelines, and any markdown the user wants every gezel to be able to find</td><td><code>list_documents</code>, <code>read_document</code>, <code>write_document</code>, <code>delete_document</code>, <code>search_documents</code></td></tr><tr><td>Memory</td><td>Persistent notes a gezel can search, recall, and write back</td><td><code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></td></tr><tr><td>User Interaction</td><td>Pose a structured question mid-turn — to the user (<code>ask_user_question</code>), to a specific gezel (<code>ask_gezel</code>), or to a role-shaped specialist (<code>ask_specialist</code>) — instead of guessing</td><td><code>ask_user_question</code>, <code>ask_gezel</code>, <code>ask_specialist</code></td></tr><tr><td>Handboek</td><td>Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup</td><td><code>how_do_i</code></td></tr></tbody></table></div>
+<h3 id="on-this-device">On this device</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>full kit (45 tools)</td></tr><tr><td>small</td><td>5–12B</td><td>full kit (45 tools)</td></tr><tr><td>medium</td><td>12–45B</td><td>full kit (45 tools)</td></tr><tr><td>large</td><td>45B and up</td><td>full kit (45 tools)</td></tr><tr><td>cloud</td><td>hosted</td><td>full kit (45 tools)</td></tr></tbody></table></div>
+<h3 id="as-models-grow">As models grow</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>full kit (45 tools)</td></tr><tr><td>small</td><td>5–12B</td><td>full kit (45 tools)</td></tr><tr><td>medium</td><td>12–45B</td><td>full kit (45 tools)</td></tr><tr><td>large</td><td>45B and up</td><td>full kit (45 tools)</td></tr><tr><td>cloud</td><td>hosted</td><td>full kit (45 tools)</td></tr></tbody></table></div>
+<h2 id="craftbooks-they-run-well">Craftbooks they run well</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Craftbook</th><th>What it does</th></tr></thead><tbody><tr><td><a href="../../craftbook/icon-pack/">Coherent Icon Pack</a></td><td>Produce a coherent set of UI icons that look like they belong to one family — consistent grid, stroke weight, corner radius, optical sizing, and metaphor language — from a named list of concepts.</td></tr><tr><td><a href="../../craftbook/logo-set/">Logo &amp; Variant Set</a></td><td>Generate a coherent logo and the full set of variants a real brand needs — primary mark, horizontal lockup, stacked lockup, icon-only/favicon, plus light-on-dark and monochrome versions — from a written brief.</td></tr><tr><td><a href="../../craftbook/hero-image/">Marketing Hero Image</a></td><td>Create a single high-impact marketing hero image from a brief and place it into a working hero section.</td></tr><tr><td><a href="../../craftbook/thumbnail-generator/">Thumbnail Generator</a></td><td>Derive a consistent set of thumbnails or responsive size-variants from a folder of source images — square crops for grids, srcset widths for the web, smart-cropped to keep the subject centered — and emit them with predictable names.</td></tr></tbody></table></div>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#their-character">Their character</a></li>
+<li class="hb-h3"><a href="#what-this-gezel-does">What this gezel does</a></li>
+<li class="hb-h3"><a href="#how-to-use-it">How to use it</a></li>
+<li class="hb-h3"><a href="#settings">Settings</a></li>
+<li class="hb-h2"><a href="#what-they-can-do">What they can do</a></li>
+<li class="hb-h3"><a href="#on-this-device">On this device</a></li>
+<li class="hb-h3"><a href="#as-models-grow">As models grow</a></li>
+<li class="hb-h2"><a href="#craftbooks-they-run-well">Craftbooks they run well</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

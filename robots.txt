@@ -1,0 +1,5 @@
+# gezel.com — a local-first desktop app for a team of AI agents.
+User-agent: *
+Allow: /
+
+Sitemap: https://gezel.com/sitemap.xml

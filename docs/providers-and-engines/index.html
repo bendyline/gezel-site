@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Providers and engines — Gezel Handboek</title>
+<meta name="description" content="Working with cloud models through the Claude and Codex CLIs, local engines, and how credentials are handled.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a class="hb-current" aria-current="page" href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Providers and engines</h1>
+<p>A <strong>provider</strong> is where a gezel's intelligence comes from. Gezel supports both kinds:</p>
+<h2 id="cloud-providers">Cloud providers</h2>
+<p>The first-class way to reach cloud models is through a coding CLI you already have installed and signed in:</p>
+<ul><li><p><strong>Claude CLI</strong> — if Anthropic's <code>claude</code> command (Claude Code) is on your machine, gezel finds it automatically and drives it directly. Your existing login carries over — a Claude subscription works as-is, with no API key to manage. Gezel wires its own tools (memories, tasks, team management, documents, history) into each conversation, so your gezels keep their full craft while Claude does the thinking.</p></li><li><p><strong>Codex CLI</strong> — same idea for OpenAI's <code>codex</code> command. Whatever the CLI is signed in with (a ChatGPT account via <code>codex login</code>, or an API key in your environment) is what gezel uses.</p></li></ul>
+<p>This interop is the recommended path because the account you already pay for keeps working, the CLIs bring their own strong agentic loop, and there's no separate credential to create or store. Settings shows whether each CLI was detected, and you can point gezel at a specific binary if it lives somewhere unusual.</p>
+<p>Two more cloud options:</p>
+<ul><li><p><strong>GitHub Copilot</strong> — sign in with your GitHub account from Settings; your Copilot plan's quota applies and gezel shows the real usage buckets.</p></li><li><p><strong>OpenAI</strong> and <strong>Anthropic</strong> API keys — paste a key; usage is billed by the provider per token.</p></li></ul>
+<p>Cloud models are the strongest option and need no hardware to speak of. The trade is that conversation content goes to that provider to be processed, under their terms.</p>
+<h2 id="local-engines">Local engines</h2>
+<p>Gezel bundles and manages native engines that run models directly on your machine — llama.cpp and friends, with Ollama supported too if you already use it. Local means private and free per use; the trade is that model quality depends on what your hardware can lift. The <a href="../local-models-and-tiers/">Models and tiers</a> article explains how gezel matches local models to roles, and the built-in fitness check ("de proeve") verifies a model actually behaves before your crew relies on it.</p>
+<h2 id="mixing">Mixing</h2>
+<p>Providers are per-gezel, not all-or-nothing. A common setup: a local model for everyday companions, a cloud model for the roles where judgment matters most (reviewer, developer). Set the install default in Settings and override an individual gezel from its detail page.</p>
+<h2 id="credentials">Credentials</h2>
+<p>The CLI providers store no credentials in gezel at all — auth stays with the CLI's own login. For the key-based providers, keys live in gezel's config file on your disk, are sent only to their own provider, and are never proxied through any gezel server — there isn't one.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#cloud-providers">Cloud providers</a></li>
+<li class="hb-h2"><a href="#local-engines">Local engines</a></li>
+<li class="hb-h2"><a href="#mixing">Mixing</a></li>
+<li class="hb-h2"><a href="#credentials">Credentials</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>
