@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building connected apps with gezel-app-sdk — Gezel Handboek</title>
+<meta name="description" content="Discover Gezel, ask for user consent, and use local models or product APIs from another app.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+<li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a class="hb-current" aria-current="page" href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../how-we-test-models/">How we test models</a></li>
+<li><a href="../model-scorecard/">Model scorecard</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Building connected apps with gezel-app-sdk</h1>
+<p><code>@bendyline/gezel-app-sdk</code> is for software that runs <em>beside</em> Gezel. It lets a desktop or Node application discover the logged-in user's daemon, trust its loopback TLS certificate, ask the user for a scoped connection, remember the issued token securely, and use OpenAI-shaped model APIs.</p>
+<p>This differs from <code>@bendyline/gezel-sdk</code>, whose scripts run <em>inside</em> Gezel's sandbox. A connected app owns its own interface and process. Gezel owns model discovery and downloads, consent, revocation, and the local inference service.</p>
+<p>The <a href="../connected-apps/">Connected apps</a> article explains what the user sees. This article covers the developer side.</p>
+<h2 id="install-and-connect">Install and connect</h2>
+<p>The Node entry requires Node.js 24 or newer:</p>
+<pre class="squisq-code-block"><code class="language-bash">npm install @bendyline/gezel-app-sdk</code></pre>
+<p>The normal third-party flow is: detect Gezel, request the narrowest scope, let the user approve in the desktop app, and store the resulting token in the operating system's credential store.</p>
+<pre class="squisq-code-block"><code class="language-ts">import { connect, detectGezel } from '@bendyline/gezel-app-sdk';
+
+// Demo only: this lasts for one process. Replace it with Keychain,
+// Credential Manager, libsecret, or your existing secure credential vault.
+const demoTokens = new Map&lt;string, string&gt;();
+const tokenStorage = {
+  load: (appId: string) =&gt; demoTokens.get(appId) ?? null,
+  save: (appId: string, token: string) =&gt; demoTokens.set(appId, token),
+  delete: (appId: string) =&gt; demoTokens.delete(appId),
+};
+
+const status = await detectGezel();
+if (!status.running) {
+  throw new Error('Start Gezel, then connect this app again.');
+}
+
+const app = await connect({
+  appId: 'acme.notes',
+  appName: 'Acme Notes',
+  scopes: ['openai'],
+  tokenStorage,
+});
+
+const available = await app.models();
+const model = available.data[0];
+if (!model) throw new Error('No Gezel models are available.');
+
+const stream = await app.chat({
+  model: model.id,
+  messages: [{ role: 'user', content: 'Give this note a short title.' }],
+  stream: true,
+});
+
+for await (const chunk of stream) {
+  process.stdout.write(chunk.choices[0]?.delta?.content ?? '');
+}</code></pre>
+<p>The in-memory map keeps the quickstart self-contained, but a real application must replace it with secure operating-system storage; do not save the token in source code, a project file, or plain-text preferences. <code>connect()</code> verifies a stored token still has the requested scopes. If it was revoked or is too narrow, the SDK discards it and starts a fresh visible consent flow.</p>
+<p>Call <code>app.models()</code> rather than hardcoding a model id. The response is the authoritative list available to this connection and can include both raw models and eligible gezels. Selecting a gezel gives the caller that gezel's character and tuned model, while your app keeps ownership of its interface and conversation loop.</p>
+<h2 id="consent-and-scopes">Consent and scopes</h2>
+<p>Every connection has a stable <code>appId</code>, a user-visible name, and one or more scopes. The user can review and revoke it under <strong>Settings → Connected Apps</strong>.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Scope</th><th>Use it for</th><th>Approval</th></tr></thead><tbody><tr><td><code>openai</code></td><td>Model listing, chat, embeddings, and ensuring a local model is present</td><td>Click approval by default</td></tr><tr><td><code>product</code></td><td>The ordinary Gezel product API through <code>@bendyline/gezel-client</code></td><td>Approval plus a requester-visible verification code</td></tr><tr><td><code>remote-inference</code></td><td>Gezel's paired-device inference surface</td><td>Click approval by default</td></tr></tbody></table></div>
+<p>Third-party applications should not request the first-party <code>cli</code> scope or call <code>authorizeLocalOwner()</code>. Those surfaces are reserved for Gezel's own command line and same-user clients. Ask for <code>product</code> only when the application truly needs projects, tasks, gezels, or other product state; add <code>openai</code> only if that same application also performs inference.</p>
+<p>Stateful scopes require <code>onVerificationCode</code>. Show the code in the requesting application so the user can type it into Gezel's approval dialog:</p>
+<pre class="squisq-code-block"><code class="language-ts">import { authorizeLocal } from '@bendyline/gezel-app-sdk';
+
+const authorized = await authorizeLocal({
+  appId: 'acme.editor',
+  appName: 'Acme Editor',
+  scopes: ['product'],
+  tokenStorage,
+  onVerificationCode(code) {
+    showConnectionCode(code);
+  },
+});</code></pre>
+<p>The daemon generates the code and never sends it to the Gezel desktop approval surface. This proves that the person approving the grant can also see the application that requested it.</p>
+<h2 id="use-the-full-product-api">Use the full product API</h2>
+<p>The app SDK's <code>GezelApp</code> class deliberately stays focused on the OpenAI-compatible surface. When a connected app also needs projects, tasks, chats, scripts, or other Gezel state, use <code>authorizeLocal()</code> to obtain the approved transport and pass it to the typed client:</p>
+<pre class="squisq-code-block"><code class="language-ts">import { authorizeLocal } from '@bendyline/gezel-app-sdk';
+import { GezelClient } from '@bendyline/gezel-client/node';
+
+const authorized = await authorizeLocal({
+  appId: 'acme.editor',
+  appName: 'Acme Editor',
+  scopes: ['product'],
+  tokenStorage,
+  onVerificationCode: showConnectionCode,
+});
+
+const client = new GezelClient(authorized);
+const projects = await client.listProjects();</code></pre>
+<p>This pairing is the supported route for a rich integration: the app SDK owns discovery, pinned TLS, consent, and scoped credentials; <code>@bendyline/gezel-client</code> owns the typed product API. Avoid hand-written <code>/api</code> requests when the client already covers the endpoint.</p>
+<h2 id="model-and-inference-methods">Model and inference methods</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Method</th><th>Purpose</th></tr></thead><tbody><tr><td><code>app.models()</code></td><td>List the models and gezels exposed to this app</td></tr><tr><td><code>app.chat()</code></td><td>OpenAI-compatible chat completion, streaming or complete</td></tr><tr><td><code>app.embeddings()</code></td><td>OpenAI-compatible embeddings when the selected provider supports them</td></tr><tr><td><code>app.ensureModel()</code></td><td>Make sure a catalog model is installed and warm</td></tr><tr><td><code>app.streamEnsureEvents()</code></td><td>Follow model download progress and completion over SSE</td></tr><tr><td><code>app.revokeMyToken()</code></td><td>Let the app revoke its own connection</td></tr></tbody></table></div>
+<p><code>detectGezel()</code> is a useful preflight, but it does not authorize anything. <code>connect()</code> returns a ready <code>GezelApp</code>; <code>authorize()</code> returns the generic base URL, token, and trusted <code>fetch</code>; <code>connectLocal()</code> combines the full Node-native local flow with non-sensitive daemon diagnostics.</p>
+<p>Ordinary third-party apps should ask the user to start Gezel when discovery reports <code>daemon_not_running</code>. The optional start-if-missing path is only for native integrations that deliberately bundle the matching <code>gezeld</code> package.</p>
+<h2 id="tls-browsers-and-errors">TLS, browsers, and errors</h2>
+<p>The local daemon uses a per-launch self-signed certificate. The Node SDK reads the public certificate from Gezel's runtime directory and constructs a pinned <code>fetch</code>, so you should not disable TLS verification globally or replace the transport with an unpinned client.</p>
+<p>A browser cannot read <code>~/.gezel/runtime/</code> and cannot perform this local trust setup itself. Use a desktop helper to complete discovery and consent, then pass the resolved address and scoped token to a renderer that imports <code>GezelApp</code> from <code>@bendyline/gezel-app-sdk/browser</code>. Pure websites should not attempt to bypass the browser's loopback TLS protections.</p>
+<p>Catch <code>GezelSdkError</code> and branch on its <code>code</code>. Common cases include <code>daemon_not_running</code>, <code>user_denied</code>, <code>approval_timeout</code>, <code>verification_code_handler_required</code>, <code>model_not_found</code>, <code>embeddings_not_supported</code>, <code>missing_scope:&lt;scope&gt;</code>, and <code>provider_error</code>. Treat denial as a normal user choice, and give timeouts and missing-daemon errors an obvious retry path.</p>
+<p>The daemon publishes the current public OpenAPI document at unauthenticated <code>GET /v1/openapi.json</code>. Use it for route inspection or code generation; use the SDK types for ordinary application code.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#install-and-connect">Install and connect</a></li>
+<li class="hb-h2"><a href="#consent-and-scopes">Consent and scopes</a></li>
+<li class="hb-h2"><a href="#use-the-full-product-api">Use the full product API</a></li>
+<li class="hb-h2"><a href="#model-and-inference-methods">Model and inference methods</a></li>
+<li class="hb-h2"><a href="#tls-browsers-and-errors">TLS, browsers, and errors</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

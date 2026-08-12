@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How we test models — Gezel Handboek</title>
+<meta name="description" content="What the model scores mean, how they are measured, and what they don't tell you.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+<li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a class="hb-current" aria-current="page" href="../how-we-test-models/">How we test models</a></li>
+<li><a href="../model-scorecard/">Model scorecard</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>How we test models</h1>
+<p>Gezel can run many different AI models, and they are not equally good at the work. A model that writes a lovely paragraph may be hopeless at filling in a spreadsheet correctly; a small one that fits comfortably on a laptop may quietly get dates wrong.</p>
+<p>So we measure. This article explains how, because a score is only worth something if you know what was counted.</p>
+<h2 id="tasks-not-questions">Tasks, not questions</h2>
+<p>We don't quiz models with trivia. We give them <strong>real jobs</strong> and check the work they hand back.</p>
+<p>A job looks like this: here is a meeting transcript, an out-of-date agenda, and a list of who works here. Produce a written brief and a table of action items with the right owner, the right date, and the right dependencies. Then we open the files and check them. Did the September 14th decision survive? Did the cancelled proposal stay cancelled? Is the action assigned to someone who actually works here?</p>
+<p>Every task is checked the same way for every model, by a program rather than a person, so nobody's favourite gets the benefit of the doubt.</p>
+<h2 id="two-sets-of-jobs">Two sets of jobs</h2>
+<p><strong>The core set</strong> is general capability — writing a small working program, fixing a bug from a description of the symptoms, following a checklist and stopping when something looks wrong, turning several documents into one reconciled summary.</p>
+<h3 id="core-11-tests">Core (11 tests)</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Test</th><th>What the task entails</th></tr></thead><tbody><tr><td>Tic-tac-toe (<code>tictactoe</code>)</td><td>Create a new project and build a working two-player tic-tac-toe game in a single HTML file, including a clear win state.</td></tr><tr><td>Pet shop (<code>petshop</code>)</td><td>Build a single-page pet-shop website, generate a custom logo with the image tool, and make sure the page uses that logo.</td></tr><tr><td>Tank combat (<code>tankcombat</code>)</td><td>Build a playable top-down tank game in one HTML file, with keyboard controls, shooting, an enemy tank, and a visible score.</td></tr><tr><td>Schema migration (<code>schema-migration</code>)</td><td>Refactor a small multi-file TypeScript app from one name field to first and last names, preserve every record, add tests and notes, and pass the type check.</td></tr><tr><td>Tests as the specification (<code>failing-tests-spec</code>)</td><td>Work out an order-lifecycle state machine from its tests alone, implement it, and make every test pass without changing the tests.</td></tr><tr><td>Debug from symptoms (<code>symptom-debug</code>)</td><td>Diagnose an undocumented pagination error from the failing output, then fix the implementation without changing the acceptance check.</td></tr><tr><td>Data wrangling (<code>data-wrangle</code>)</td><td>Clean three messy CSV exports, standardise dates and email addresses, remove duplicates, sort the records, and produce the exact required JSON.</td></tr><tr><td>Incident postmortem (<code>incident-postmortem</code>)</td><td>Read five evidence files and write a structured, blame-free postmortem with accurate facts and citations, without inventing unmeasured impact.</td></tr><tr><td>Runbook anomaly (<code>ops-runbook-anomaly</code>)</td><td>Follow a maintenance checklist step by step, verify and record each action, and stop with a grounded report when a planted backup check fails.</td></tr><tr><td>Plan and estimate (<code>plan-and-estimate</code>)</td><td>Produce an office-relocation plan with valid owners, correctly ordered dependencies, risks, and a checkable definition of done for every task.</td></tr><tr><td>Conflict synthesis (<code>conflict-synthesis</code>)</td><td>Reconcile five documents that disagree about a launch date, budget, and owner; show each conflict and use the authoritative answer consistently.</td></tr></tbody></table></div>
+<p><strong>The productivity set</strong> is office work — a customer notice written to a hard word limit, a meeting turned into an action register, a research brief with its sources cited, an A/B test read-out, a spreadsheet model, a slide deck, a Word document.</p>
+<h3 id="productivity-13-tests">Productivity (13 tests)</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Test</th><th>What the task entails</th></tr></thead><tbody><tr><td>Constrained communications (<code>constrained-comms</code>)</td><td>Write a 140–220 word customer outage notice containing the required facts and disclosures while avoiding banned or unsupported claims.</td></tr><tr><td>Plan the week (<code>craftbook-week-plan</code>)</td><td>Turn eight calendar events into a five-day plan, flag meetings that need preparation, resolve a Tuesday conflict, and protect focus time.</td></tr><tr><td>A/B test read-out (<code>craftbook-ab-test-readout</code>)</td><td>Calculate the experiment results correctly and apply a pre-set decision rule, including a safety measure that overrides an otherwise positive result.</td></tr><tr><td>Annotated bibliography (<code>craftbook-annotated-bibliography</code>)</td><td>Produce six consistently formatted source entries, each with a summary, an evaluation of the source, and its relevance to the question.</td></tr><tr><td>Records intake (<code>records-intake</code>)</td><td>Combine registrations from emails, phone notes, and an old CSV into one correctly shaped, deduplicated record set with standardised dates.</td></tr><tr><td>Plan and estimate (<code>plan-and-estimate</code>)</td><td>Produce an office-relocation plan with valid owners, correctly ordered dependencies, risks, and a checkable definition of done for every task.</td></tr><tr><td>Meeting follow-up (<code>meeting-followup</code>)</td><td>Reconcile a noisy transcript, stale agenda, and current staff list into a decision brief and an exact action register with owners, dates, dependencies, questions, and risks.</td></tr><tr><td>Spreadsheet model (<code>craftbook-spreadsheet-model</code>)</td><td>Calculate the correct roll-ups from seeded records and turn them into a useful spreadsheet-style model and read-out that highlights the main risk.</td></tr><tr><td>Conflict synthesis (<code>conflict-synthesis</code>)</td><td>Reconcile five documents that disagree about a launch date, budget, and owner; show each conflict and use the authoritative answer consistently.</td></tr><tr><td>Theme round-trip (<code>docblocks-theme-roundtrip</code>)</td><td>Read the theme from a brand document, apply it to a presentation, inspect the result, and report only fonts, colours, page counts, and unresolved styles returned by the document tools.</td></tr><tr><td>Research to Word (<code>craftbook-research-to-document</code>)</td><td>Turn reviewed, source-grounded Markdown into a real editable Word document, preview it, and save the finished <code>.docx</code> as an artifact.</td></tr><tr><td>PowerPoint deck (<code>craftbook-powerpoint-deck</code>)</td><td>Acquire and cite source material, create an outline, make every slide match it, and save a real editable <code>.pptx</code> presentation.</td></tr><tr><td>Wikipedia research brief (<code>wikipedia-research-brief</code>)</td><td>Use a closed local copy of Wikipedia to select the relevant sources and write a cited 700–1,500 word brief with correct chronology and careful treatment of a disputed claim.</td></tr></tbody></table></div>
+<p>A model gets a score on each set. They measure different things, and it is normal for a model to be strong on one and weak on the other. Plan and estimate and conflict synthesis deliberately appear in both sets because they test capabilities that matter to each.</p>
+<h2 id="what-passed-means">What "passed" means</h2>
+<p>A task passes when the finished work meets every requirement that was stated in the instructions. Not most of them. There is no partial credit for a beautiful document with the wrong numbers in it — that is precisely the failure that costs you an afternoon.</p>
+<p>Some tasks are checked by arithmetic. For the A/B test read-out we know what the right answer is, because we made the data up: the conversion lift is 1.25 percentage points and the refund rate rose by 0.23. A model that reports different figures fails, however confident the prose sounds.</p>
+<p>Some are checked by opening the file. When a task asks for a PowerPoint, we check the result is really a PowerPoint file and not a text document with the wrong name on it.</p>
+<h2 id="why-we-run-everything-three-times">Why we run everything three times</h2>
+<p>Models are not perfectly consistent. The same model given the same job twice can succeed once and fail once.</p>
+<p>So each job is run three times, and we report how many succeeded. If a model has only been run once or twice we print the raw count — "1 of 1" — rather than a percentage, because "100%" from a single attempt is not a fact, it is a coin toss that happened to land well.</p>
+<h2 id="when-the-machine-breaks-the-model-isn-t-blamed">When the machine breaks, the model isn't blamed</h2>
+<p>Sometimes a run fails for reasons that have nothing to do with the model: the graphics driver falls over, the machine runs out of memory, someone stops the run. Those attempts are recorded and set aside rather than counted as failures.</p>
+<p>If enough of a model's attempts are lost that its results no longer stand up, we leave it out of the table rather than publish a score with a hole in it. A missing model means "not measured properly yet", never "measured and found wanting".</p>
+<h2 id="what-we-deliberately-don-t-claim">What we deliberately don't claim</h2>
+<p><strong>Scores from different rounds are not comparable.</strong> Every number comes from one machine, on one day, with one version of gezel and one version of the task set. Change any of those and you have a different experiment. When a model was measured in an earlier round we list it separately and say why — we never quietly merge it into a newer table to make the list look fuller.</p>
+<p><strong>Quality scores are an opinion, not a measurement.</strong> Alongside the pass/fail checks we ask a large AI model to rate qualities like clarity, grounding and candour, and we publish that as a Quality column. Read it with two caveats.</p>
+<p>First, it only covers work that got <em>produced</em>. A model that gives up early is graded on the few pieces it did finish, so a high quality score over a small number of pieces can mean "good when it manages it" rather than "good". That is why the count always travels with the score — <code>6.5/10 (18 pieces)</code> next to <code>6.5/10 (26 pieces)</code> are not the same claim.</p>
+<p>Second, the rating model changes over time, so quality scores are comparable <em>within</em> a round and not across rounds. The pass/fail results are the ones that track.</p>
+<p><strong>A score is not a recommendation for your machine.</strong> Results come from one particular computer. A model that scores well on a large desktop may not fit on a laptop at all. The Models catalogue in the app is what knows your hardware.</p>
+<p><strong>A score is not a ceiling.</strong> These are tasks we chose. A model that does poorly here may be excellent at something we didn't think to measure.</p>
+<h2 id="adding-a-model">Adding a model</h2>
+<p>New models get added to the same rounds and run through the same jobs, with the same number of attempts, on the same machine. Nothing is graded on a curve, and nothing is added to a table it didn't actually run in.</p>
+<p>The current results are in <a href="../model-scorecard/">Model scorecard</a>.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#tasks-not-questions">Tasks, not questions</a></li>
+<li class="hb-h2"><a href="#two-sets-of-jobs">Two sets of jobs</a></li>
+<li class="hb-h3"><a href="#core-11-tests">Core (11 tests)</a></li>
+<li class="hb-h3"><a href="#productivity-13-tests">Productivity (13 tests)</a></li>
+<li class="hb-h2"><a href="#what-passed-means">What &quot;passed&quot; means</a></li>
+<li class="hb-h2"><a href="#why-we-run-everything-three-times">Why we run everything three times</a></li>
+<li class="hb-h2"><a href="#when-the-machine-breaks-the-model-isn-t-blamed">When the machine breaks, the model isn't blamed</a></li>
+<li class="hb-h2"><a href="#what-we-deliberately-don-t-claim">What we deliberately don't claim</a></li>
+<li class="hb-h2"><a href="#adding-a-model">Adding a model</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

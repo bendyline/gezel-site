@@ -18,6 +18,7 @@
 <a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
 </nav>
 </header>
 <div class="hb-layout">
@@ -39,7 +40,7 @@
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/root-cause-investigation/">Root-Cause Investigation</a></li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -48,6 +49,11 @@
 </section>
 <section>
 <h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
 
 
 </section>
@@ -61,7 +67,7 @@
 <h1>Root-Cause Investigation</h1>
 <p>Debug systematically: reproduce the failure and find the true root cause before changing any code, then fix and verify.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Phase 1: Root Cause Investigation</td><td>—</td><td></td></tr><tr><td>2</td><td>Phase 2: Pattern Analysis</td><td>—</td><td></td></tr><tr><td>3</td><td>Phase 3: Hypothesis Testing</td><td>—</td><td></td></tr><tr><td>4</td><td>Phase 4: Implementation</td><td>—</td><td></td></tr><tr><td>5</td><td>Phase 5: Verification &amp; Report</td><td>—</td><td></td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce and bound the failure</td><td>Developer</td><td>Establish a stable failing case, expected behavior, environment, and blast radius.</td></tr><tr><td>2</td><td>Prove the root cause</td><td>Researcher</td><td>Test competing hypotheses and identify the causal mechanism before modifying code.</td></tr><tr><td>3</td><td>Implement the smallest fix and verify it</td><td>Developer</td><td>Correct the proven mechanism and demonstrate both regression coverage and non-regression.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>
 <p>Say something like "debug this" or "fix this bug" or "why is this broken" or "root cause analysis" or "investigate this error" in chat to start it.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>

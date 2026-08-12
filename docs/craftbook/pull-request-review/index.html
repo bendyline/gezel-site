@@ -18,6 +18,7 @@
 <a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
 </nav>
 </header>
 <div class="hb-layout">
@@ -39,7 +40,7 @@
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/pull-request-review/">Pull Request Review</a></li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -51,6 +52,11 @@
 
 
 </section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
+
+
+</section>
 </nav>
 </aside>
 <main class="hb-main">
@@ -59,10 +65,10 @@
 </nav>
 <article class="hb-article">
 <h1>Pull Request Review</h1>
-<p>Staff-engineer-style PR review. Loads PR context, walks a per-file diff, applies a safety/quality checklist, and posts a structured summary. Requires a GitHub-connected project on a feature branch.</p>
+<p>Staff-engineer-style PR review. Defaults to the open pull request for the project's checked-out branch when one exists, accepts an explicit PR number from any branch, walks the full diff, and produces a structured local verdict. Requires a GitHub-connected project.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Load PR context</td><td>Reviewer</td><td>Resolve which PR to review (current branch's open PR by default) and fetch its metadata + the unified diff. Writes pr.number, pr.title, pr.head into the task notes.</td></tr><tr><td>2</td><td>Scan diff</td><td>Reviewer</td><td>Walk the diff applying the safety/quality checklist. The diff-scan script returns a structured findings array.</td></tr><tr><td>3</td><td>Raise findings</td><td>Reviewer</td><td>Surface concrete issues with file citations. Use <code>github_pr_comment</code> to post the structured summary to the PR.</td></tr><tr><td>4</td><td>Approve</td><td>Reviewer</td><td>Clean PR — write a brief approval note. Don't gold-plate.</td></tr><tr><td>5</td><td>Summary</td><td>Reviewer</td><td>Stamp a final summary into the task notes for the user.</td></tr></tbody></table></div>
-<p>Say something like "review this pr" or "code review" or "check my diff" or "review the changes" in chat to start it.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the pull request</td><td>Reviewer</td><td>Resolve an explicit PR or the unique open PR for the checked-out branch, then record its metadata, changed files, existing review context, and review themes.</td></tr><tr><td>2</td><td>Review and write the report</td><td>Reviewer</td><td>Walk the full PR diff and every changed file, then write a gated report with concrete citations and a verdict. The report is local; this recipe never posts to GitHub automatically.</td></tr><tr><td>3</td><td>Deliver the verdict</td><td>Reviewer</td><td>The report passed its gates. Summarize the verdict and point the user to the local report.</td></tr></tbody></table></div>
+<p>Say something like "review this pr" or "review the current pr" or "review this pull request" or "pr review" or "review the github pull request" in chat to start it.</p>
 <p>Needs toolsets: <code>github</code>.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>

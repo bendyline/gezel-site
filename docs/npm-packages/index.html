@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gezel on npm: the package map — Gezel Handboek</title>
+<meta name="description" content="Choose the command line, SDK, daemon, client, or lower-level package for your integration.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+<li><a class="hb-current" aria-current="page" href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../how-we-test-models/">How we test models</a></li>
+<li><a href="../model-scorecard/">Model scorecard</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Gezel on npm</h1>
+<p>The desktop app is the simplest way to use gezel, but the same system is also available as a family of npm packages. You can install the <code>gezel</code> command, write a repeatable script, connect another app to local models, embed the daemon, or reuse the schemas and clients that Gezel itself uses.</p>
+<p>All eleven packages published from the Gezel repository require Node.js 24 or newer and expose public, semver-versioned contracts. You normally install only the package at the top of your use case; npm brings in its required Gezel dependencies for you.</p>
+<h2 id="choose-your-starting-point">Choose your starting point</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>You want to…</th><th>Start with</th></tr></thead><tbody><tr><td>Use gezel from a terminal or server</td><td><a href="../cli-reference/"><code>@bendyline/gezel-cli</code></a></td></tr><tr><td>Write an automation that runs inside Gezel</td><td><a href="../writing-scripts-with-gezel-sdk/"><code>@bendyline/gezel-sdk</code></a></td></tr><tr><td>Let a desktop or Node app use the user's Gezel models</td><td><a href="../building-connected-apps-with-gezel-app-sdk/"><code>@bendyline/gezel-app-sdk</code></a></td></tr><tr><td>Call the full daemon API from TypeScript</td><td><code>@bendyline/gezel-client</code></td></tr><tr><td>Run or embed a daemon yourself</td><td><code>@bendyline/gezel-service</code> together with <code>@bendyline/gezel-client</code></td></tr><tr><td>Give an MCP client Gezel's tools</td><td><code>@bendyline/gezel-mcp</code></td></tr><tr><td>Share Gezel's schemas or parse its files</td><td><code>@bendyline/gezel</code></td></tr></tbody></table></div>
+<p>For example, the command-line install is:</p>
+<pre class="squisq-code-block"><code class="language-bash">npm install -g @bendyline/gezel-cli
+gezel</code></pre>
+<p>A library belongs in the application that uses it:</p>
+<pre class="squisq-code-block"><code class="language-bash">npm install @bendyline/gezel-app-sdk</code></pre>
+<h2 id="every-published-package">Every published package</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Package</th><th>What it does</th><th>Who normally installs it directly</th></tr></thead><tbody><tr><td><code>@bendyline/gezel</code></td><td>Core TypeScript types, Zod schemas, path helpers, the <code>gezel.md</code> parser, native-platform helpers, and reusable gate checks. It is the shared wire-contract source of truth.</td><td>Library authors who need Gezel's data contracts or on-disk formats.</td></tr><tr><td><code>@bendyline/gezel-client</code></td><td>Typed HTTP and event-stream client for the complete <code>gezeld</code> product API: projects, gezels, chats, tasks, scripts, models, memories, usage, and more. Its <code>/node</code> entry also contains local daemon discovery helpers.</td><td>Integrations that already have an authorized connection and need more than the OpenAI-compatible app surface.</td></tr><tr><td><code>@bendyline/gezel-sdk</code></td><td>The small, typed API available to TypeScript scripts inside Gezel's sandbox: <code>defineScript</code>, <code>gezel.fs</code>, <code>gezel.task</code>, <code>gezel.llm</code>, and the other capability-gated namespaces.</td><td>Script and craftbook authors. See <a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a>.</td></tr><tr><td><code>@bendyline/gezel-app-sdk</code></td><td>Local discovery, pinned TLS, user consent, scoped token storage, model setup, chat, embeddings, and model listing for third-party applications.</td><td>Desktop and Node application developers. See <a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a>.</td></tr><tr><td><code>@bendyline/gezel-plugin-sdk</code></td><td>The historical plugin helper surface. It remains supported for compatibility, but new extensions should use <code>@bendyline/gezel-sdk</code>.</td><td>Maintainers of existing Gezel plugins.</td></tr><tr><td><code>@bendyline/gezel-catalog</code></td><td>Loads model definitions, toolsets, connector types, project types, gezel roles, and craftbooks from the separately released Gilde content.</td><td>Catalog tooling, tests, and embedders that need to resolve catalog items outside the daemon.</td></tr><tr><td><code>@bendyline/gezel-connectors-spectral</code></td><td>An isolated subprocess host for compatible Prismatic components. Keeping it out of the daemon process isolates its SDK and vendored connectors.</td><td>Usually nobody directly; <code>@bendyline/gezel-service</code> resolves and spawns it.</td></tr><tr><td><code>@bendyline/gezel-script-stdlib</code></td><td>The trusted, read-only standard library of gate scripts that ships with Gezel. Its plain TypeScript sources run in place under the <code>standard</code> script scope.</td><td>Usually the daemon; craftbook authors may inspect it for reusable standard checks.</td></tr><tr><td><code>@bendyline/gezel-mcp</code></td><td>The stdio Model Context Protocol server that exposes workspace, memory, artifact, document, task, team, execution, history, and media tools. It calls back into a running daemon.</td><td>MCP hosts and custom agent harnesses that need Gezel's tool surface.</td></tr><tr><td><code>@bendyline/gezel-service</code></td><td><code>gezeld</code>, the local daemon. It owns state, provider routing, chat sessions, tools, tasks, engines, and the HTTP API, and includes the browser UI and Handboek.</td><td>Headless operators and applications deliberately embedding or managing a Gezel daemon.</td></tr><tr><td><code>@bendyline/gezel-cli</code></td><td>The <code>gezel</code> terminal interface, one-shot runner, service manager, model and engine manager, media commands, and Handboek exporter. It does not expose a supported JavaScript API.</td><td>People using <a href="../cli-reference/">the gezel command line</a>.</td></tr></tbody></table></div>
+<h2 id="packages-that-work-together">Packages that work together</h2>
+<p><code>@bendyline/gezel-app-sdk</code> and <code>@bendyline/gezel-client</code> solve different halves of a connected application. The app SDK discovers the logged-in user's daemon, pins its loopback certificate, asks for consent, and returns a scoped connection. Pass that connection to <code>GezelClient</code> when the application also needs the full product API.</p>
+<p><code>@bendyline/gezel-service</code> is the runtime, while <code>@bendyline/gezel-client</code> is its supported control surface. Prefer the client over hand-written <code>/api</code> calls, and do not assume the service runs inside your process: the desktop app, CLI, and remote deployments all use the same HTTP boundary.</p>
+<p><code>@bendyline/gezel-sdk</code> is different from both. Its code runs <em>inside</em> Gezel's script sandbox and receives only the capabilities declared by the script. It is for automations attached to projects and craftbooks, not for connecting a separate application.</p>
+<h2 id="the-companion-gilde-package">The companion Gilde package</h2>
+<p><code>@bendyline/gilde</code> contains the catalog data: model entries, toolsets, roles, craftbooks, connector types, and project types. It is released from the separate Gilde repository and consumed at an exact version by <code>@bendyline/gezel-catalog</code>. Install it directly only when you are working with the catalog content itself; ordinary Gezel consumers receive it through the catalog package.</p>
+<p>The Electron app, React UI, VS Code extension, evaluation viewer, and deployment-only ML runtime are private workspaces rather than public npm packages. The desktop app and extension have their own distribution paths, the React UI is bundled into <code>@bendyline/gezel-service</code>, and the evaluation and ML workspaces support development and complete application builds.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#choose-your-starting-point">Choose your starting point</a></li>
+<li class="hb-h2"><a href="#every-published-package">Every published package</a></li>
+<li class="hb-h2"><a href="#packages-that-work-together">Packages that work together</a></li>
+<li class="hb-h2"><a href="#the-companion-gilde-package">The companion Gilde package</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

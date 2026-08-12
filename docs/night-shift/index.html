@@ -18,6 +18,7 @@
 <a href="../craftbooks-index/">Craftbooks</a>
 <a href="../project-types-index/">Project Types</a>
 <a href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
 </nav>
 </header>
 <div class="hb-layout">
@@ -59,6 +60,11 @@
 
 
 </section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
 </nav>
 </aside>
 <main class="hb-main">
@@ -74,11 +80,11 @@
 <p>These are <strong>suggestions, never surprises</strong>: nothing runs until you turn it on. The toggles live with the crew list in each project's Settings, and appear the moment a suggesting role joins. Turning one off pauses it — your run history stays — and "don't suggest this" hides it for that project.</p>
 <div class="hb-table-scroll"><table><thead><tr><th>Role</th><th>Suggested craftbook</th><th>When</th></tr></thead><tbody><tr><td>Veiligheidsmeester (Chief Security Officer)</td><td><code>security-architecture-review</code></td><td>Night Shift, once per night</td></tr><tr><td>Veiligheidsmeester (Chief Security Officer)</td><td><code>dependency-audit</code></td><td>Night Shift, once per night</td></tr><tr><td>Vertaler (Translator)</td><td><code>translate-content</code></td><td>Night Shift, once per night</td></tr></tbody></table></div>
 <h2 id="what-night-work-looks-like">What night work looks like</h2>
-<p>Night work is deliberately quiet-handed. The suggested craftbooks write <strong>reports, findings, and sidecar files</strong> — a security posture report in the artifacts drawer, translations beside the originals — rather than editing your work in place. Each enabled item runs <strong>at most once per night</strong>, inside the window, and everything it does lands in History like any other work.</p>
+<p>Night work is deliberately quiet-handed. The suggested craftbooks write <strong>reports, findings, and sidecar files</strong> — a security posture report in the artifacts drawer, translations beside the originals — rather than editing your work in place. Each enabled item runs <strong>at most once per night</strong>, inside the window. Its task transitions and tool completions that Gezel observes land in History like other work.</p>
 <p>Some values are shared across night work: the Translator's target language, for instance, is a <strong>project property</strong> — set once in project Settings (or the first time you enable the translation run) and reused by every run after that.</p>
 <h2 id="the-morning-review">The morning review</h2>
 <p>When the window closes, gezel gathers what the shift accomplished and puts it where you'll see it: the moon menu grows a <strong>Done last night</strong> list, the Home greeting gains a <strong>Last night</strong> tab, and a single question card summarizes the night with links to every report.</p>
-<p>Reports can go further than prose. A recommendation that is genuinely one click away — fire a craftbook, delegate a fix, apply a reviewed set of file edits — appears <strong>inside the report as an action card</strong>. You see exactly what would run (including the full diff for file edits) and fire it, or dismiss it, right from the page. Nothing a report suggests ever runs on its own: firing is always your click, and everything fired lands in History like any other work.</p>
+<p>Reports can go further than prose. A recommendation that is genuinely one click away — fire a craftbook, delegate a fix, apply a reviewed set of file edits — appears <strong>inside the report as an action card</strong>. You see exactly what would run (including the full diff for file edits) and fire it, or dismiss it, right from the page. Nothing a report suggests ever runs on its own: firing is always your click, and Gezel records the resulting task and observed tool activity in History.</p>
 <p>For the Night Shift to run while the app is closed, enable the background service in Settings.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>

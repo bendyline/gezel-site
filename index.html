@@ -868,7 +868,7 @@
         var bits = [];
         var when = formatDate(release.published);
         if (when) bits.push("Released " + when);
-        bits.push('<a href="' + release.notesUrl + '">Release notes</a>');
+        bits.push('<a href="docs/whats-new-index/">Release notes</a>');
         if (release.checksumsUrl) bits.push('<a href="' + release.checksumsUrl + '">SHA-256</a>');
         bits.push('<a href="' + RELEASES + '">All releases</a>');
         metaEl.innerHTML = bits.join('<span class="sep">·</span>');

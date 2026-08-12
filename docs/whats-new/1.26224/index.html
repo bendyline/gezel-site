@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26224 — 12 August 2026 — Gezel Handboek</title>
+<meta name="description" content="Measured model scores, per-model memory controls, editable Office documents, and much stricter rules about what a gezel may install.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul>
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26224 — 12 August 2026</h1>
+<p>This is the first release with written release notes, so it covers everything since <strong>1.26219</strong> on 7 August.</p>
+<p>If you read only one thing: gezel now publishes <strong>measured scores</strong> for the models it ships, your gezellen are much more tightly fenced in about what they may install on your machine, and Word, PowerPoint, Excel and PDF files in a project can now be edited as ordinary text.</p>
+<h2 id="model-scores-you-can-actually-check">Model scores you can actually check</h2>
+<p>Choosing a local model used to mean guessing. Now there is a scoreboard.</p>
+<p>The new <strong>Model scorecard</strong> in the Technical section of this Handboek lists every model we have tested and how many jobs it actually finished correctly — writing a small working program, fixing a bug from its symptoms, following a procedure and stopping when something is wrong, turning a pile of documents into one summary, and a set of everyday office and knowledge tasks. Each job is run three times on a real machine and checked by a program, not by an opinion. A companion article, <strong>How we test models</strong>, explains what was counted and what the numbers do not tell you.</p>
+<p>The first published set covers four models measured on an M4 Max: gemma4-e4b, gemma4-12b, gemma4-31b and ornith-9b, on both task sets. Alongside the pass counts you now also get speed, how much memory a model needed in practice, and a separate quality read from a judging pass.</p>
+<p>Two rules keep the board honest. A model that was only partly measured is <strong>withheld</strong> rather than shown with a flattering gap, and earlier rounds of testing are kept visible separately instead of being quietly overwritten.</p>
+<h2 id="your-gezellen-are-better-managed">Your gezellen are better managed</h2>
+<p>A gezel that can install software is useful. A gezel that can install <em>anything, anywhere</em> is not something you should have to think about. This release closes that gap.</p>
+<ul><li><p><strong>Installing packages is now registry-only and tied to one project.</strong> A gezel can ask for a published package by name and version, into a project that already exists, and nothing else. Names, versions and destinations are all checked before anything runs.</p></li><li><p><strong>Approving a command now approves that exact command.</strong> Previously, approving a script meant approving the words in it. Now gezel takes a fingerprint of the actual files the command would read — the script, its wrapper, the files it imports — so an approval you gave yesterday cannot be reused tomorrow for a script whose contents have changed underneath it.</p></li><li><p><strong>Names are checked everywhere.</strong> Gezel, project, session and document identifiers now go through one shared rule, applied on disk, in the schemas, and on every web request, so a hand-crafted name cannot walk out of the folder it belongs in.</p></li><li><p><strong>On Linux and macOS, gezel's home folder is now locked to your account</strong> (<code>0700</code>). Other accounts on the same machine can no longer read your conversations or files.</p></li></ul>
+<p>None of this changes anything you do day to day. It changes what happens when something goes wrong.</p>
+<h2 id="word-powerpoint-excel-and-pdf-files-are-editable-now">Word, PowerPoint, Excel and PDF files are editable now</h2>
+<p>Open a project and select a <code>.docx</code>, <code>.pptx</code>, <code>.xlsx</code>, <code>.pdf</code> or <code>.html</code> file, and gezel shows you its contents as clean Markdown you can read and search. The original file stays exactly where it was.</p>
+<p>Editing is deliberately a second step. The imported text is read-only until you choose <strong>Allow editing via markdown</strong> from the file's menu, and the first time you do, gezel takes a copy of the untouched original and keeps it. It is opt-in because rewriting someone's PowerPoint should never be something that happens by accident.</p>
+<h2 id="real-control-over-local-models-and-memory">Real control over local models and memory</h2>
+<p>If you run models on your own machine, this is the release where the machine stops being a mystery.</p>
+<ul><li><p><strong>Set the context size per model.</strong> A slider in each model manager, instead of one setting for everything.</p></li><li><p><strong>Set a memory budget</strong>, decide whether a model may <strong>spill into ordinary RAM</strong> when it does not fit on the graphics card, and have models <strong>unload themselves when idle</strong> so a forgotten model stops holding your machine hostage.</p></li><li><p><strong>An emergency stop.</strong> The engine pill now has a "stop everything" action that cancels every chat in flight, clears anything queued, and drops gezel back into reactive mode — one place to press when something has run away from you.</p></li><li><p>Behind those controls, gezel is better at fitting a model into the memory you actually have: it will trade parallel capacity down to two lanes when doing so buys a meaningfully larger context, rather than refusing or thrashing.</p></li></ul>
+<h2 id="threads-that-are-easier-to-follow">Threads that are easier to follow</h2>
+<ul><li><p><strong>Thread titles are derived the same way everywhere.</strong> The name you see in the sidebar, in search and in the thread list is now the same name, worked out once instead of three times slightly differently.</p></li><li><p><strong>Recent threads appear as pills</strong> above the conversation, so hopping between the two or three things you have going takes one click and puts you back where you were looking. Threads that are working, or that hit an error, are shown first — you should not have to go hunting for the one that needs you.</p></li><li><p><strong>Terminal threads show their last command</strong> in the list, so you can tell them apart at a glance.</p></li><li><p>Chat references are more compact, the file tree and sidebar behave more predictably, and the Handboek's own table of contents now collapses by section, with craftbooks grouped into shelves rather than one long list.</p></li></ul>
+<h2 id="connecting-gezel-to-other-things">Connecting gezel to other things</h2>
+<ul><li><p><strong>Codex CLI can now use your local models.</strong> A setup card in Settings writes a dedicated profile for the OpenAI Codex command-line tool that points it at gezel, so a coding tool you already use can run against a model on your own machine.</p></li><li><p><strong>New GitHub connectors</strong> bring pull requests, releases and wiki pages in as project material, alongside the existing Google Calendar connector. Connector output now lands in the project's artifacts, where the rest of your work lives.</p></li><li><p><strong>The OpenAI-compatible endpoint speaks the Responses API</strong>, including streaming — so apps built against the newer OpenAI shape work against gezel without a translation layer of their own.</p></li><li><p>Four new Handboek articles document all of this for developers: the npm package map, writing scripts with the gezel SDK, building connected apps with the app SDK, and how we test models.</p></li></ul>
+<h2 id="catalog-updates-without-an-app-update">Catalog updates without an app update</h2>
+<p>Gezel's descriptions of models, craftbooks and roles — the <em>gilde</em> content — can now be refreshed on its own, without waiting for a new version of the app. It checks about once a day, verifies what it downloads, and only switches over after confirming that everything that worked before still works.</p>
+<p>It is <strong>off unless you turn it on</strong>, under Settings → About → Catalog content, and it will never touch a machine that has been pointed at a local content folder.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p>Windows machines without a working CUDA setup no longer get probed for one.</p></li><li><p>The Nemotron model family is recognized under its aliases and given the right tool format.</p></li><li><p>Installing gezel from npm no longer runs any install-time scripts; a permission repair that used to happen at install time now happens once, lazily, the first time it is needed.</p></li><li><p>Refreshed underlying editor and content packages (squisq 2.7.1, gilde 0.1.21).</p></li><li><p>A large set of new automated tests covering everyday office work — meeting follow-ups, research briefs, document round-trips, and whether a gezel reaches for the right tool — so regressions in ordinary tasks get caught before you meet them.</p></li></ul>
+<h2 id="anything-to-do">Anything to do?</h2>
+<p>No. Update when you are offered it. Your gezellen, projects, threads and files are ordinary files on your disk and are read as-is by the new version.</p>
+<p>If you run local models and have been fighting for memory, it is worth a visit to the model manager for the new per-model context and memory settings. And if you want to see which model to trust with what, start at the <a href="../../model-scorecard/">Model scorecard</a>.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#model-scores-you-can-actually-check">Model scores you can actually check</a></li>
+<li class="hb-h2"><a href="#your-gezellen-are-better-managed">Your gezellen are better managed</a></li>
+<li class="hb-h2"><a href="#word-powerpoint-excel-and-pdf-files-are-editable-now">Word, PowerPoint, Excel and PDF files are editable now</a></li>
+<li class="hb-h2"><a href="#real-control-over-local-models-and-memory">Real control over local models and memory</a></li>
+<li class="hb-h2"><a href="#threads-that-are-easier-to-follow">Threads that are easier to follow</a></li>
+<li class="hb-h2"><a href="#connecting-gezel-to-other-things">Connecting gezel to other things</a></li>
+<li class="hb-h2"><a href="#catalog-updates-without-an-app-update">Catalog updates without an app update</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing scripts with gezel-sdk — Gezel Handboek</title>
+<meta name="description" content="Build typed, capability-limited automations that run inside a Gezel project.">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+<li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a class="hb-current" aria-current="page" href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../how-we-test-models/">How we test models</a></li>
+<li><a href="../model-scorecard/">Model scorecard</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Writing scripts with gezel-sdk</h1>
+<p>A Gezel script is a small TypeScript automation that runs in a sandbox. It can inspect a project, create an artifact, update a task, ask a model a focused question, call an approved tool, or decide whether a craftbook step may advance. The <code>@bendyline/gezel-sdk</code> package is the typed bridge between that script and Gezel.</p>
+<p>Scripts are project-scoped by default and live as readable files under <code>~/.gezel/projects/{projectId}/scripts/</code>. They can be run manually, attached to the start or end of a task step, used as a completion gate, or called by another script.</p>
+<h2 id="start-in-the-app">Start in the app</h2>
+<p>Turn on <strong>Settings → About → Advanced → Show advanced features</strong>, then open <strong>Scripts</strong> from the sidebar. Choose a project and select <strong>New script</strong>. You can describe the automation for an AI draft, start from a working template, or begin with the blank skeleton.</p>
+<p>The built-in editor supplies autocomplete for the exact SDK version used by the running daemon. Saving checks the metadata, TypeScript syntax, and Node-compatible type syntax; <strong>Run</strong> supplies a form for the inputs declared by the script and shows its output, logs, calls, and errors.</p>
+<p>You do not need to install the SDK into each Gezel project. The daemon places its matching SDK in the sandbox at run time. Install <code>@bendyline/gezel-sdk</code> in a separate source repository only when that repository authors reusable scripts and should type-check them itself:</p>
+<pre class="squisq-code-block"><code class="language-bash">npm install --save-dev @bendyline/gezel-sdk</code></pre>
+<h2 id="the-shape-of-a-script">The shape of a script</h2>
+<p>Every script exports a static <code>meta</code> block, reads validated input from <code>gezel.input</code>, and stamps one final result with <code>gezel.output()</code>. This gate checks that a workspace contains a README before a task step can finish:</p>
+<pre class="squisq-code-block"><code class="language-ts">import {
+  defineScript,
+  gezel,
+  type GateScriptResult,
+  type InferredInput,
+} from '@bendyline/gezel-sdk';
+
+export const meta = defineScript({
+  name: 'require-readme',
+  description: 'Require a README before this step can finish.',
+  kind: 'gate',
+  inputs: {
+    path: {
+      type: 'string',
+      description: 'Workspace-relative README path.',
+      default: 'README.md',
+    },
+  },
+  requires: ['workspace.read'],
+} as const);
+
+const input = gezel.input as InferredInput&lt;typeof meta&gt;;
+const files = await gezel.fs.listAll();
+
+const result: GateScriptResult = files.includes(input.path)
+  ? { decision: 'approve', message: `${input.path} is present.` }
+  : {
+      decision: 'reject',
+      message: `Add ${input.path} with setup and usage instructions, then try again.`,
+    };
+
+gezel.output(result);</code></pre>
+<p>The file name is the script's invocation name, so keep it aligned with <code>meta.name</code>. Input descriptors drive the manual-run form and <code>InferredInput</code>; output descriptors document an action script's result. A gate instead returns <code>approve</code> or <code>reject</code>. A rejection must include a useful <code>message</code> because Gezel gives it directly to the working gezel as the repair instruction.</p>
+<h2 id="declare-capabilities-before-using-them">Declare capabilities before using them</h2>
+<p>The <code>requires</code> list is both documentation and an enforced permission boundary. A call fails with <code>CAPABILITY_DENIED</code> when the matching capability was not declared, and project or installation policy can still deny a declared capability.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Capability</th><th>SDK surface</th></tr></thead><tbody><tr><td><code>workspace.read</code>, <code>workspace.write</code></td><td><code>gezel.fs</code> for project workspace files</td></tr><tr><td><code>artifacts.read</code>, <code>artifacts.write</code></td><td><code>gezel.artifacts</code> for generated project outputs</td></tr><tr><td><code>documents.read</code>, <code>documents.write</code></td><td><code>gezel.documents</code> for the shared document library</td></tr><tr><td><code>tasks.read</code>, <code>tasks.write</code></td><td><code>gezel.task</code> for task records, steps, and notes</td></tr><tr><td><code>memory.read</code>, <code>memory.write</code></td><td><code>gezel.memory</code> for project memories</td></tr><tr><td><code>llm</code></td><td><code>gezel.llm.oneShot()</code></td></tr><tr><td><code>network</code></td><td><code>gezel.mcp.call()</code> and <code>gezel.http</code></td></tr><tr><td><code>credential:&lt;name&gt;</code> plus <code>network</code></td><td><code>gezel.http.authed()</code> with a project-approved named credential</td></tr></tbody></table></div>
+<p><code>gezel.input</code>, <code>gezel.output()</code>, <code>gezel.log()</code>, and <code>gezel.script.run()</code> need no capability. A nested script runs under its own metadata and permission set, and nesting is limited to four levels.</p>
+<p>Ask only for what the script needs. In particular, use <code>gezel.fs</code> for workspace I/O rather than importing Node's <code>fs</code>: raw filesystem code runs in an isolated scratch directory and cannot see the project workspace. For authenticated HTTP, the service attaches the named credential and scrubs it from the response; the secret value never enters the script.</p>
+<h2 id="actions-gates-and-hooks">Actions, gates, and hooks</h2>
+<p>An action script produces ordinary structured output. Declare <code>outputs</code> in <code>meta</code>, then call <code>gezel.output()</code> exactly once with that shape. Actions are useful for reports, task updates, model-assisted transforms, and small integrations.</p>
+<p>A gate script sets <code>kind: 'gate'</code> and returns a <code>GateScriptResult</code>. <code>approve</code> allows the step to complete. <code>reject</code> holds the step and explains what must change. Optional <code>goto</code> routing can send work back to an earlier step, while an approved <code>handoff</code> can pass a message and parameters to the next step.</p>
+<p>After a script works manually, attach it from a task's step automation controls. Craftbooks can also ship scripts and connect them to step entry, exit, and gate moments. Gezel preserves a trace for each run: input, stamped output, logs, host calls, duration, trigger, and any error.</p>
+<h2 id="reusable-helpers">Reusable helpers</h2>
+<p>The package has three public entry points:</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Import</th><th>Purpose</th></tr></thead><tbody><tr><td><code>@bendyline/gezel-sdk</code></td><td><code>defineScript</code>, <code>gezel</code>, metadata types, inferred input/output types, and gate result types</td></tr><tr><td><code>@bendyline/gezel-sdk/checks</code></td><td>Reusable gate-check predicates, <code>gateResult()</code>, and <code>workspaceFromGezel()</code> for adapting <code>gezel.fs</code> to check helpers</td></tr><tr><td><code>@bendyline/gezel-sdk/stores</code></td><td>File-backed <code>logStore</code>, <code>rosterStore</code>, and integer-cents <code>ledgerStore</code> helpers for scripts that maintain structured project state</td></tr></tbody></table></div>
+<p>The separate <code>@bendyline/gezel-script-stdlib</code> package contains Gezel's trusted standard gate scripts. Use those by their <code>standard</code> scope when they already express the check you need; write a project script when the behavior belongs to one project, and a reusable craftbook script when it belongs to a workflow others will install.</p>
+<p>If the code lives in another application rather than inside Gezel's sandbox, use <a href="../building-connected-apps-with-gezel-app-sdk/">gezel-app-sdk</a> instead.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#start-in-the-app">Start in the app</a></li>
+<li class="hb-h2"><a href="#the-shape-of-a-script">The shape of a script</a></li>
+<li class="hb-h2"><a href="#declare-capabilities-before-using-them">Declare capabilities before using them</a></li>
+<li class="hb-h2"><a href="#actions-gates-and-hooks">Actions, gates, and hooks</a></li>
+<li class="hb-h2"><a href="#reusable-helpers">Reusable helpers</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

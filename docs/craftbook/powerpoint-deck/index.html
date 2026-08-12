@@ -18,6 +18,7 @@
 <a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
 </nav>
 </header>
 <div class="hb-layout">
@@ -39,7 +40,7 @@
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/powerpoint-deck/">PowerPoint from Content</a></li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 286 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -48,6 +49,11 @@
 </section>
 <section>
 <h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
 
 
 </section>
@@ -61,7 +67,7 @@
 <h1>PowerPoint from Content</h1>
 <p>Turn source content into a real editable PowerPoint file (.pptx), not an HTML deck. Locks the narrative and one message per slide, writes ordinary Markdown with one H1 per slide, then uses DocBlocks for theme-aware conversion, visual preview, and artifact saving. No Developer is needed merely to export the deck.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Outline the deck</td><td>Planner</td><td>Lock the audience, purpose, takeaway, and one message per slide.</td></tr><tr><td>2</td><td>Write the Markdown deck</td><td>Copywriter</td><td>Write deck.md with one H1 heading per slide.</td></tr><tr><td>3</td><td>Publish the PowerPoint</td><td>Designer</td><td>Convert deck.md with DocBlocks, preview every slide, and save deck.pptx.</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Review the saved PowerPoint against the narrative and visual criteria.</td></tr><tr><td>5</td><td>Finish</td><td>Designer</td><td>All narrative, slide, and file checks passed.</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Acquire and verify sources</td><td>Researcher</td><td>Read the exact supplied source or retrieve authoritative sources before outlining.</td></tr><tr><td>2</td><td>Lock the slide outline</td><td>Planner</td><td>Lock the audience, purpose, sequence, evidence, and one message per slide.</td></tr><tr><td>3</td><td>Write the Markdown deck</td><td>Copywriter</td><td>Write deck.md with exactly one matching H1 per locked outline slide.</td></tr><tr><td>4</td><td>Review narrative and grounding</td><td>Reviewer</td><td>Verify slide parity, factual traceability, and presentation readiness before conversion.</td></tr><tr><td>5</td><td>Publish the PowerPoint</td><td>Designer</td><td>Convert deck.md with DocBlocks, preview every slide, retain an artifact, and deliver {{outputPath}}.</td></tr><tr><td>6</td><td>Evaluate the saved deck</td><td>Reviewer</td><td>Review the PPTX against the locked source, outline, and visual criteria.</td></tr><tr><td>7</td><td>Finish</td><td>Designer</td><td>All research, narrative, slide, and file checks passed.</td></tr></tbody></table></div>
 <p>Say something like "make a powerpoint" or "create a pptx" or "powerpoint from this content" or "turn this into a presentation" or "build a slide deck file" or "export these slides to powerpoint" in chat to start it.</p>
 <p>Needs toolsets: <code>docblocks</code>.</p>
 </article>

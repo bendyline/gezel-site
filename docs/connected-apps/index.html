@@ -18,6 +18,7 @@
 <a href="../craftbooks-index/">Craftbooks</a>
 <a href="../project-types-index/">Project Types</a>
 <a href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
 </nav>
 </header>
 <div class="hb-layout">
@@ -59,6 +60,11 @@
 
 
 </section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
 </nav>
 </aside>
 <main class="hb-main">
@@ -71,7 +77,16 @@
 <p>Everything described here lives in <strong>Settings → Connected Apps</strong>.</p>
 <h2 id="how-an-app-connects">How an app connects</h2>
 <p>Apps speak to gezel using the same "OpenAI-style" language most AI tools already know. Two things make it work:</p>
-<ol><li><p><strong>An address.</strong> Gezel listens at <code>https://127.0.0.1:6228/v1</code> on your machine. Apps that let you set a custom AI server go here.</p></li><li><p><strong>Permission.</strong> The first time an app asks for access, gezel shows you an approval request — who is asking, and for what. Nothing gets through until you approve, and you can revoke any app later from the same panel.</p></li></ol>
+<ol><li><p><strong>An address.</strong> The address panel in <strong>Settings → Connected Apps</strong> shows where gezel is listening on your machine. On most personal installs that is <code>https://127.0.0.1:6228/v1</code>; when the Gezel machine service is installed, the app API moves to a per-launch port (shown in the panel) because the machine service holds 6228. For apps that need an address that never changes, turn on <strong>Ollama emulation</strong> — it always answers at <code>http://127.0.0.1:11434</code>.</p></li><li><p><strong>Permission.</strong> The first time an app asks for access, gezel shows you an approval request — who is asking, and for what. Nothing gets through until you approve, and you can revoke any app later from the same panel.</p></li></ol>
+<h2 id="codex-and-other-agent-harnesses">Codex and other agent harnesses</h2>
+<p>The authenticated address also serves the OpenAI <strong>Responses API</strong> at <code>/v1/responses</code>. That lets a harness such as Codex keep ownership of its coding tools, sandbox, approvals, and conversation loop while a model installed in gezel supplies the inference.</p>
+<p>For Codex, use <strong>Use a gezel in Codex</strong> in this Settings screen. Gezel creates an isolated <code>gezel-local</code> Codex profile, a model catalog, and a dedicated revocable credential. It does not edit Codex's main configuration, authentication, conversations, sandbox rules, or approval settings. Start Codex with the command shown on the card (<code>codex --profile gezel-local</code>).</p>
+<p>Keep Gezel running while Codex uses the local model. If you want the model bridge available without keeping the desktop window open, turn on Gezel's daemon autostart setting.</p>
+<p>The managed profile talks to a narrow, authenticated loopback bridge. Operationally it provides the stable address that an Ollama-style integration needs, but it keeps bearer authentication: only the Responses and model-discovery routes are present, and the credential grants no access to Gezel projects, files, terminals, or settings. The token is read by Codex through a command-backed provider credential rather than copied into a project or shell profile. Revoking the Codex entry under Connected Apps immediately stops it from using the bridge.</p>
+<p>One-click setup is available only when the desktop and the Gezel service are on the same computer. In remote-service mode the card stays read-only, because writing a profile on the service host would not configure Codex on the computer in front of you.</p>
+<p>Codex custom providers use <code>wire_api = "responses"</code>. The managed profile also sets the top-level <code>web_search = "disabled"</code>: Codex otherwise advertises a provider-hosted search tool that a local inference server cannot truthfully execute. Do not combine the Gezel profile with Codex's <code>--search</code> flag, which explicitly turns that hosted tool back on. Ordinary Codex tools such as shell commands, patching, and helper-agent namespaces remain available because Codex executes those itself.</p>
+<p>The setup card puts eligible gezels first. Choosing one gives Codex that gezel's character (<code>about.md</code>), effective local model, and tuning while Codex keeps its own tools, sandbox, approvals, and conversation loop. The profile stores the stable gezel id, so renaming the gezel does not break the connection. Raw installed models remain available in a separate fallback group for users who want inference without a gezel persona.</p>
+<p>A gezel appears here only when its effective local model is installed and can participate in Codex's caller-executed tool loop. The facade does not attach Gezel chat sessions, memories, project context, or MCP tools, and it does not silently route unknown aliases through the fallback gezel. It also refuses <code>codex-cli:</code> / <code>anthropic-cli:</code> targets because those are full nested agent harnesses rather than inference providers.</p>
 <h2 id="who-answers-gezel-choices-and-the-fallback">Who answers: gezel choices and the fallback</h2>
 <p>Gezel presents your crew to connected apps as model choices, including each gezel's name and role. When an app chooses one, that gezel answers with their character, model, and settings.</p>
 <p>Some apps cannot choose from that list and ask for a hardcoded model such as <code>gpt-4o</code>. The <strong>fallback gezel</strong> answers those requests. It defaults to your Meester, so there is always a useful front door; you can choose another gezel from <strong>Settings → Connected Apps</strong>.</p>
@@ -82,6 +97,7 @@
 <p>One honest caveat, spelled out next to the switch: Ollama's convention is no password. While emulation is on, any program on this computer can use your models without asking first. Gezel keeps this off unless you turn it on, only ever answers your own machine, and refuses to take the port if the real Ollama is already running.</p>
 <h2 id="keeping-an-eye-on-things">Keeping an eye on things</h2>
 <p>Every chat an app completes through these endpoints is recorded in the <strong>History</strong> tab (look for "App chat" entries), and the tokens they consume count in the <strong>Usage</strong> view — so you can always see who has been using your models, and how much.</p>
+<p>If you are developing one of these applications, continue with the technical guide <a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a>.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>
@@ -90,6 +106,7 @@
 <h2>On this page</h2>
 <ul>
 <li class="hb-h2"><a href="#how-an-app-connects">How an app connects</a></li>
+<li class="hb-h2"><a href="#codex-and-other-agent-harnesses">Codex and other agent harnesses</a></li>
 <li class="hb-h2"><a href="#who-answers-gezel-choices-and-the-fallback">Who answers: gezel choices and the fallback</a></li>
 <li class="hb-h2"><a href="#supporting-behaviors">Supporting behaviors</a></li>
 <li class="hb-h2"><a href="#emulating-ollama">Emulating Ollama</a></li>

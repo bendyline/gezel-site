@@ -18,6 +18,7 @@
 <a href="../craftbooks-index/">Craftbooks</a>
 <a href="../project-types-index/">Project Types</a>
 <a aria-current="true" href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
 </nav>
 </header>
 <div class="hb-layout">
@@ -52,7 +53,17 @@
 <li><a class="hb-current" aria-current="page" href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
 <li><a href="../cli-reference/">The gezel command line</a></li>
+<li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../how-we-test-models/">How we test models</a></li>
+<li><a href="../model-scorecard/">Model scorecard</a></li>
 </ul>
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
 
 </section>
 </nav>
@@ -64,7 +75,7 @@
 <article class="hb-article">
 <h1>Tools and toolsets</h1>
 <p>Tools are a gezel's hands: without them, an AI model can only talk. Gezel's tools are bundled into named <strong>groups</strong>, and each role carries the groups that fit its trade — a reviewer gets file reading, a developer gets file writing and code execution, a coordinator gets team management. You can add or remove groups per gezel, and third-party toolsets from the gilde catalog extend the set further.</p>
-<p>Every tool call is mediated: consent rules and the audit log apply no matter which group a tool came from.</p>
+<p>Calls through Gezel's built-in tool groups are mediated by its policy, consent, and audit layers. Provider-native tools, approved package commands, and third-party MCP servers have different boundaries; the <a href="../security-model/">security model</a> explains those exceptions.</p>
 <h2 id="custom-mcp-toolsets">Custom MCP toolsets</h2>
 <p>In any Toolsets panel, choose <strong>Add toolset → Custom MCP</strong> to import a local JSON file or paste its contents. Gezel understands both common configuration envelopes:</p>
 <ul><li><p>VS Code workspace format: a top-level <code>servers</code> object.</p></li><li><p>Claude/Cursor format: a top-level <code>mcpServers</code> object.</p></li></ul>
@@ -77,7 +88,7 @@
 <p>Tools: <code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></p>
 <h3 id="workspace-file-reading">Workspace File Reading</h3>
 <p>Read, list, search, and diff files in the project workspace. Mirrors Node's <code>fs</code> reads plus content/glob search. Diagnose-only — pair with <code>workspace-fs-write</code> to actually mutate.</p>
-<p>Tools: <code>list_dir</code>, <code>read_file</code>, <code>stat</code>, <code>validate</code>, <code>search_files</code>, <code>find_files</code>, <code>diff_files</code></p>
+<p>Tools: <code>list_dir</code>, <code>read_file</code>, <code>read_files</code>, <code>stat</code>, <code>validate</code>, <code>grep_files</code>, <code>find_files</code>, <code>diff_files</code></p>
 <h3 id="code-intelligence">Code Intelligence</h3>
 <p>Navigate and understand the codebase via the workspace index instead of reading whole files: outline a file's symbols, jump to a definition, read just one symbol's source, find usages, and map the repo. Every result carries line ranges so the model reads only the span it needs — a big context saver for small/medium local models.</p>
 <p>Tools: <code>outline_file</code>, <code>find_symbol</code>, <code>read_symbol</code>, <code>find_references</code>, <code>map_repo</code>, <code>search_code</code>, <code>file_review</code>, <code>list_file_issues</code></p>
@@ -119,7 +130,7 @@
 <p>Tools: <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>invoke_craftbook</code></p>
 <h3 id="team-project-management">Team &amp; Project Management</h3>
 <p>Spin up other gezels, message them, browse the gilde of templates, and manage projects + project membership. The Meester surface.</p>
-<p>Tools: <code>list_gezels</code>, <code>create_gezel</code>, <code>update_gezel</code>, <code>ensure_gezel</code>, <code>message_gezel</code>, <code>list_projects</code>, <code>start_project</code>, <code>start_job</code>, <code>fetch_repo</code>, <code>fetch_diff</code>, <code>update_project</code>, <code>list_gilde</code>, <code>list_project_types</code>, <code>apply_project_type</code>, <code>start_project_from_type</code>, <code>export_project_type</code>, <code>import_project_type</code>, <code>list_project_gezels</code>, <code>add_gezel_to_project</code>, <code>remove_gezel_from_project</code>, <code>list_suggested_work</code>, <code>enable_suggested_work</code>, <code>disable_suggested_work</code></p>
+<p>Tools: <code>list_gezels</code>, <code>create_gezel</code>, <code>update_gezel</code>, <code>ensure_gezel</code>, <code>message_gezel</code>, <code>list_projects</code>, <code>start_project</code>, <code>fetch_repo</code>, <code>fetch_diff</code>, <code>update_project</code>, <code>list_gilde</code>, <code>list_project_types</code>, <code>apply_project_type</code>, <code>start_project_from_type</code>, <code>export_project_type</code>, <code>import_project_type</code>, <code>list_project_gezels</code>, <code>add_gezel_to_project</code>, <code>remove_gezel_from_project</code>, <code>list_suggested_work</code>, <code>enable_suggested_work</code>, <code>disable_suggested_work</code></p>
 <h3 id="audio">Audio</h3>
 <p>Speech-to-text (<code>transcribe_audio</code>) and text-to-speech (<code>synthesize_speech</code>). Heavy — only useful for gezels that do voice work.</p>
 <p>Tools: <code>transcribe_audio</code>, <code>synthesize_speech</code></p>
