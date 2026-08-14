@@ -704,7 +704,7 @@
       var RELEASES = "https://github.com/" + REPO + "/releases";
       var RELEASE_NAME = "Gezel Early Beta";
       var API = "https://api.github.com/repos/" + REPO + "/releases?per_page=100";
-      var CACHE_KEY = "gezel:early-beta-release";
+      var CACHE_KEY = "gezel:early-beta-release:v2";
       var CACHE_TTL = 30 * 60 * 1000;
 
       // Release assets are named Gezel-<version>-<os>-<arch>.<ext>. Anything else
@@ -808,6 +808,28 @@
           checksumsUrl: sums ? sums.browser_download_url : null,
           builds: builds
         };
+      }
+
+      function isEarlyBeta(candidate) {
+        var name = (candidate.name || "").trim();
+        return name === RELEASE_NAME || name.indexOf(RELEASE_NAME + " ") === 0;
+      }
+
+      // npm package releases share this repository and can eventually fill an
+      // entire API page. Follow GitHub's pagination until the newest versioned
+      // "Gezel Early Beta v..." release is found.
+      function fetchEarlyBeta(url) {
+        return fetch(url, { headers: { Accept: "application/vnd.github+json" } })
+          .then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            var link = r.headers.get("Link") || "";
+            var next = link.match(/<([^>]+)>;\s*rel="next"/);
+            return r.json().then(function (data) {
+              var earlyBeta = data.find(isEarlyBeta);
+              if (earlyBeta) return earlyBeta;
+              return next ? fetchEarlyBeta(next[1]) : null;
+            });
+          });
       }
 
       // Architecture detection describes the machine you are browsing from, so
@@ -958,15 +980,8 @@
         release = parse(cached);
         render();
       } else {
-        fetch(API, { headers: { Accept: "application/vnd.github+json" } })
-          .then(function (r) {
-            if (!r.ok) throw new Error(r.status);
-            return r.json();
-          })
-          .then(function (data) {
-            var earlyBeta = data.find(function (candidate) {
-              return candidate.name === RELEASE_NAME;
-            });
+        fetchEarlyBeta(API)
+          .then(function (earlyBeta) {
             if (!earlyBeta) return fail();
             try {
               sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data: earlyBeta }));
