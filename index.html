@@ -702,8 +702,9 @@
     (function () {
       var REPO = "bendyline/gezel";
       var RELEASES = "https://github.com/" + REPO + "/releases";
-      var API = "https://api.github.com/repos/" + REPO + "/releases/latest";
-      var CACHE_KEY = "gezel:latest-release";
+      var RELEASE_NAME = "Gezel Early Beta";
+      var API = "https://api.github.com/repos/" + REPO + "/releases?per_page=100";
+      var CACHE_KEY = "gezel:early-beta-release";
       var CACHE_TTL = 30 * 60 * 1000;
 
       // Release assets are named Gezel-<version>-<os>-<arch>.<ext>. Anything else
@@ -963,10 +964,14 @@
             return r.json();
           })
           .then(function (data) {
+            var earlyBeta = data.find(function (candidate) {
+              return candidate.name === RELEASE_NAME;
+            });
+            if (!earlyBeta) return fail();
             try {
-              sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data: data }));
+              sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data: earlyBeta }));
             } catch (e) {}
-            release = parse(data);
+            release = parse(earlyBeta);
             if (!release.builds.length) return fail();
             render();
           })
