@@ -87,11 +87,11 @@
 <p>Persistent notes a gezel can search, recall, and write back. Backed by the gezel's per-day memory files plus a vector index.</p>
 <p>Tools: <code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></p>
 <h3 id="workspace-file-reading">Workspace File Reading</h3>
-<p>Read, list, search, and diff files in the project workspace. Mirrors Node's <code>fs</code> reads plus content/glob search. Diagnose-only — pair with <code>workspace-fs-write</code> to actually mutate.</p>
-<p>Tools: <code>list_dir</code>, <code>read_file</code>, <code>read_files</code>, <code>stat</code>, <code>validate</code>, <code>grep_files</code>, <code>find_files</code>, <code>diff_files</code></p>
+<p>Read, list, search, and diff files in the project workspace, and retrieve a referenced Boekwachter issue's durable metadata. Mirrors Node's <code>fs</code> reads plus content/glob search. Diagnose-only — pair with <code>workspace-fs-write</code> to actually mutate.</p>
+<p>Tools: <code>list_dir</code>, <code>read_file</code>, <code>read_files</code>, <code>stat</code>, <code>validate</code>, <code>grep_files</code>, <code>find_files</code>, <code>diff_files</code>, <code>get_file_issue</code></p>
 <h3 id="code-intelligence">Code Intelligence</h3>
 <p>Navigate and understand the codebase via the workspace index instead of reading whole files: outline a file's symbols, jump to a definition, read just one symbol's source, find usages, and map the repo. Every result carries line ranges so the model reads only the span it needs — a big context saver for small/medium local models.</p>
-<p>Tools: <code>outline_file</code>, <code>find_symbol</code>, <code>read_symbol</code>, <code>find_references</code>, <code>map_repo</code>, <code>search_code</code>, <code>file_review</code>, <code>list_file_issues</code></p>
+<p>Tools: <code>outline_file</code>, <code>find_symbol</code>, <code>read_symbol</code>, <code>find_references</code>, <code>map_repo</code>, <code>search_code</code>, <code>file_review</code>, <code>list_file_issues</code>, <code>set_file_issue_status</code></p>
 <h3 id="security-intelligence">Security Intelligence</h3>
 <p>Static security analysis pushed into the index and reused as tools: run a whole-repo scan (dependency inventory + opportunistic semgrep/osv-scanner/gitleaks), get a posture overview with candidate systemic themes, list findings by severity/category, map the attack surface (entry points, routes, auth boundaries, secret touchpoints), inventory dependencies with advisories, and trace import-graph reachability for source→sink flows. The substrate for a deep, systemic security review.</p>
 <p>Tools: <code>security_scan</code>, <code>security_overview</code>, <code>scan_findings</code>, <code>map_attack_surface</code>, <code>list_dependencies</code>, <code>trace_taint</code></p>
@@ -142,7 +142,7 @@
 <p>Tools: <code>run_playwright_script</code></p>
 <h3 id="git-github">Git &amp; GitHub</h3>
 <p>Run read-only git commands inside the project workspace, inspect GitHub pull requests, post review comments, open PRs, and check workflow status for linked project repositories.</p>
-<p>Tools: <code>run_git</code>, <code>github_pr_list</code>, <code>github_pr_view</code>, <code>github_pr_files</code>, <code>github_pr_diff</code>, <code>github_pr_comments</code>, <code>github_pr_comment</code>, <code>github_pr_create</code>, <code>github_workflow_runs</code>, <code>github_check_status</code></p>
+<p>Tools: <code>run_git</code>, <code>github_pr_list</code>, <code>github_pr_view</code>, <code>github_pr_files</code>, <code>github_pr_file</code>, <code>github_pr_diff</code>, <code>github_pr_comments</code>, <code>github_pr_comment</code>, <code>github_pr_create</code>, <code>github_workflow_runs</code>, <code>github_check_status</code></p>
 <h3 id="web-access">Web Access</h3>
 <p>Search the web (when a keyed backend like Brave is configured) or Wikipedia, fetch URL contents, and find interactive elements on a browser-controlled page (after a Playwright navigate / click / type). <code>web_search</code> only registers when a real keyed backend is configured; <code>wikipedia_search</code> only registers for non-cloud models (cloud models already have Wikipedia in training).</p>
 <p>Tools: <code>web_search</code>, <code>wikipedia_search</code>, <code>fetch_url</code>, <code>browser_find_page_element</code></p>

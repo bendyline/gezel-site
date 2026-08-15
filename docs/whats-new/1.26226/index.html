@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26226 — 14 August 2026 — Gezel Handboek</title>
+<meta name="description" content="Five more models on the scorecard, file problems you can hand straight to a gezel, a much fuller terminal app, and memory that keeps working when its index breaks.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul>
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26226 — 14 August 2026</h1>
+<p>Two days of work since <strong>1.26224</strong>, and a dense two days.</p>
+<p>If you read only one thing: the problems gezel finds in your files stopped being a list you read and became work you can hand to someone, the terminal version of gezel caught up with the app, and the model scoreboard more than doubled.</p>
+<p>Also: a new model - Qwen 3.8 27B Q4 - is now available. We're doing more testing and additional tuning over the next couple days, but if Qwen 3.6 is any indication, it should be really good!</p>
+<h2 id="problems-in-your-files-became-work-you-can-hand-off">Problems in your files became work you can hand off</h2>
+<p>Gezel's <em>boekwachter</em> — the keeper of the books, the crew member who reads through a project and notes what looks wrong — used to produce a list. You read it, and then it was on you.</p>
+<p>Now each finding is a tracked issue with its own reference (<code>BW-1</code>, <code>BW-2</code>, and so on) that survives restarts and re-scans. Each one is <strong>open</strong>, <strong>in progress</strong>, <strong>resolved</strong> or <strong>dismissed</strong>, and you move it between those yourself. Closed ones fold away until you ask to see them.</p>
+<p>The part that matters: there is now a <strong>Fix this</strong> button. Press it and gezel opens a dialog that has already worked out what kind of gezel this file needs — a writer for a document, a designer for an image, a developer for code, a researcher for a spreadsheet — and offers you the ones on your crew who fit. Choose one and it becomes a task, linked back to the issue, so the file, the finding and the work are the same thread rather than three things you hold in your head. Each file also shows a plain health score out of ten and the reason behind it.</p>
+<h2 id="the-terminal-app-caught-up">The terminal app caught up</h2>
+<p>If you use <code>gezel</code> from a terminal, this release is mostly for you.</p>
+<ul><li><p>Many stability fixes for the npm '@bendyline/gezel-cli' package and command line</p></li><li><p><code>/open</code> — type it in a chat and gezel offers you the files that conversation just touched, plus the project's artifacts and workspace folders, and opens the one you pick. This works in the desktop app's message box too.</p></li><li><p><code>gezel mode &lt;read-only|reactive|reactive+tasks|full-play&gt;</code>, or <code>/mode</code> inside a session — the same four settings for how much gezel is allowed to do on its own that the app has, now in one word from the command line.</p></li><li><p><code>gezel do &lt;craftbook&gt;</code> and <code>/do</code> — start a piece of standard work (a <em>craftbook</em> is gezel's word for a written-down procedure) without leaving the terminal.</p></li><li><p><code>/allow</code> and <code>/disallow</code> — turn a project's write permissions on and off in place.</p></li><li><p><code>/model download</code> — pick and fetch a new on-device model from inside a session.</p></li><li><p>First-run setup in the terminal now shows the same model information the app does, and pressing Ctrl+C actually shuts down the background service it started instead of leaving it running.</p></li></ul>
+<p>The rest of the commands are in the <a href="../../cli-reference/">command-line reference</a>.</p>
+<h2 id="memory-that-does-not-give-up">Memory that does not give up</h2>
+<p>Your gezels' memories are ordinary Markdown files, and a search index sits on top of them to make recall fast. Previously, trouble with the index could take memory down with it — a first-time download of the search model failing because you were offline was enough to turn memory off for the rest of the session.</p>
+<p>That is fixed in three places. Saving a memory now always writes the Markdown first, and reports the indexing as deferred rather than failing; the index catches up on its own afterwards. Searching falls back to plain text search when the fast path is unavailable, and tells you it did. And a failed model download is now treated as something that might clear — gezel waits a minute and tries again, instead of concluding that memory is broken.</p>
+<h2 id="connectors-are-now-an-explicit-preview">Connectors are now an explicit preview</h2>
+<p>Connectors — the things that pull a calendar, a repository or a social account into a project — have moved behind a switch in <strong>Settings → Advanced → Show very early work-in-progress features</strong>, and it is off. So are the project types and craftbooks that depend on them.</p>
+<p>This is a step back in visibility and a step forward in honesty. They are not finished, they change shape between releases, and having them sitting in every project's settings implied a stability they do not have yet.</p>
+<p>Behind that switch, they got considerably better. Bluesky, X, LinkedIn and Instagram joined the connectors gezel can talk to, with a deliberate three-step path to publishing anything: a gezel <strong>drafts</strong> a post, <strong>queues</strong> it, and only then can <strong>publish</strong> it — and publishing is denied unless you have said otherwise, one time at a time. Overnight work never publishes; it leaves things in the outbox for you. Gezel ships no social-media app credentials of its own, so connecting an account means registering your own developer app, which the connection panel now walks you through and stores the secret in your operating system's keychain. Posts and mentions that come back land in the project's artifacts and are searchable alongside everything else.</p>
+<h2 id="five-more-models-measured">Five more models measured</h2>
+<p>The <a href="../../model-scorecard/">Model scorecard</a> went from four models to nine.</p>
+<p>The new entries are <strong>gemma4-26b</strong>, <strong>qwen3.6-27b</strong>, <strong>qwen3.6-35b-a3b</strong>, <strong>muse-glimmer-30b</strong> and <strong>nemotron3.5-lightning-30b</strong>, all measured the same way as the first four: every job run three times on a real machine and checked by a program. The picture that emerges is more interesting than "bigger is better". On general capability, gemma4-26b and qwen3.6-27b both finished every job. On the office and knowledge set, the small ornith-9b still beats several models three times its size. And qwen3.6-27b and qwen3.6-35b-a3b earn the highest marks from the separate quality read, at a fraction of the memory gemma4-26b needs.</p>
+<p><a href="../../how-we-test-models/">How we test models</a> explains what the numbers do and do not tell you. It is worth five minutes before you pick.</p>
+<p>While you are on the models screen, every catalog model now says <strong>who made it and who prepared the version you download</strong>. Those are often different organizations — a company trains the model, someone else converts and compresses it so it runs on your machine — and until now gezel showed you only one name. The terminal app shows the same line when it offers you a model.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>A job's single gezel is now called the Builder</strong> rather than the Ambachtsman. Same gezel, a more simple word.</p></li><li><p><strong>Codex and Claude sessions have their own permission setting per project</strong>, separate from what gezel's own tools may do — so you can let one edit and keep the other reading.</p></li><li><p><strong>Settings → About lists your running local engines</strong> and, for each, the context window it actually got at launch. A model that suddenly seems to have lost the plot is very often one whose window came out smaller than the instructions it carries; this turns that from a log hunt into a glance.</p></li><li><p><strong>The "stop everything" button now also unloads local engines</strong> and drops gezel to Reactive, and it is reachable from Settings as well as the engine pill.</p></li><li><p><strong>Model files gezel cannot read appear under "Models needing attention"</strong> with their size and an Update or Remove button, instead of vanishing while still using your disk.</p></li><li><p><strong>App updates show a real download progress bar</strong> rather than an unmoving "downloading".</p></li><li><p><strong>If gezel itself crashes, you get a plain dialog</strong> offering to open a pre-filled report in your browser. Nothing is sent anywhere unless you press it.</p></li><li><p><strong>Your graphics setup is re-checked at every launch</strong>, so installing or removing a driver is noticed instead of remembered wrongly from the first run.</p></li><li><p><strong>The prompt cache display no longer counts shared groundwork as conversations</strong>, so the number matches what you have open.</p></li><li><p><strong>Craftbooks now say what each step is supposed to produce</strong>, and the finished result is checked against that rather than against the attempt.</p></li><li><p><strong>Asking for the same piece of work twice in one turn returns the task already running</strong> instead of starting a duplicate.</p></li><li><p>Refreshed underlying editor and catalog content packages (squisq 2.7.2, gilde 0.1.28).</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong>The Output Pane API (</strong><code>window.gezel</code><strong>) is documented and at version 1.</strong> Interactive pages pinned into a project's Output pane get a frozen <code>gezel</code> object with <code>page</code>, <code>tools</code>, <code>data</code> and <code>ui</code> — reads are declared in the project type's manifest and enforced per request on the server, so a page can never read past its declaration. The earlier hand-rolled postMessage pattern keeps working.</p></li><li><p><strong>Pull request files and diffs are properly paginated</strong> for tools that read them, so a large PR no longer silently loses its later files.</p></li><li><p><strong>Dependency operations in the repository are leased.</strong> <code>pnpm deps:status</code> diagnoses, <code>pnpm deps:install</code> adds only what is genuinely missing, and <code>pnpm deps:repair</code> is the one explicit reconciliation path; builds and tests hold a shared read lease and can run alongside each other.</p></li><li><p><code>node-pty</code>** is now an optional dependency**, so an npm install of gezel no longer fails on machines without a build toolchain.</p></li></ul>
+<h2 id="anything-to-do">Anything to do?</h2>
+<p>No. Update when you are offered it.</p>
+<p>Two settings are worth a visit. If connectors disappeared from your projects, they are behind <strong>Settings → Advanced → Show very early work-in-progress features</strong> — turn it on and they come back exactly as they were. And if you run models on your own machine, the new scorecard entries may change which one you want: start at the <a href="../../model-scorecard/">Model scorecard</a>.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#problems-in-your-files-became-work-you-can-hand-off">Problems in your files became work you can hand off</a></li>
+<li class="hb-h2"><a href="#the-terminal-app-caught-up">The terminal app caught up</a></li>
+<li class="hb-h2"><a href="#memory-that-does-not-give-up">Memory that does not give up</a></li>
+<li class="hb-h2"><a href="#connectors-are-now-an-explicit-preview">Connectors are now an explicit preview</a></li>
+<li class="hb-h2"><a href="#five-more-models-measured">Five more models measured</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>
