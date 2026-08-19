@@ -93,11 +93,13 @@
                       pictures, and recordings (rebuilt automatically —
                       safe to delete, not a place to put your own files)
   documents/          the shared library
+  ambient/            ambient dashboard images (dated PNGs + latest.png),
+                      made to be shown as wallpaper or lock screen
   history.jsonl       the audit log
   logs/               service logs (rolling)</code></pre>
 <h2 id="what-you-can-safely-do">What you can safely do</h2>
 <ul><li><p><strong>Read anything.</strong> It's your data; nothing breaks by looking.</p></li><li><p><strong>Back up or sync the whole folder.</strong> Copying the folder copies your entire workshop.</p></li><li><p><strong>Edit with care.</strong> Character files (<code>about.md</code>) and documents are meant to be edited — from the app or any text editor. For structured files (<code>config.json</code>, thread files), prefer the app so nothing gets malformed.</p></li></ul>
-<p>A few subfolders are machinery rather than your data — <code>runtime/</code>, <code>service/</code>, <code>bin/</code>, <code>index/</code>, <code>logs/</code> hold the service's own working state and rebuildable caches. Leave those to gezel; deleting them is at worst an inconvenience, never data loss.</p>
+<p>A few subfolders are machinery rather than your data — <code>runtime/</code>, <code>service/</code>, <code>bin/</code>, <code>index/</code>, <code>logs/</code> hold the service's own working state and rebuildable caches. Leave those to gezel; deleting them is at worst an inconvenience, never data loss. The <code>ambient/</code> folder is regenerated too — point your wallpaper or lock-screen slideshow at it freely, but don't store your own images there.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

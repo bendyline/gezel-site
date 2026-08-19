@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26231 — 19 August 2026 — Gezel Handboek</title>
+<meta name="description" content="A live dashboard on your desktop wallpaper, disk space you can see and reclaim, backup and restore, your local models inside VS Code, and Qwen 3.8 27B tops the scorecard.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul>
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26231 — 19 August 2026</h1>
+<p>Five days since <strong>1.26226</strong>, and a big five days.</p>
+<p>If you read only one thing: gezel can now paint a picture of your whole workshop onto your desktop wallpaper, you can finally see what is using your disk and get it back, and the models running on your own machine can be used from VS Code, OpenCode and pi without leaving those apps.</p>
+<h2 id="your-desktop-can-show-you-the-workshop">Your desktop can show you the workshop</h2>
+<p>This is new, and it is easier to see than to describe.</p>
+<p>Turn on <strong>Settings → Ambient dashboard</strong> and the <em>meester</em> — the gezel who acts as your guildmaster and front door — periodically composes a single-page summary of everything going on: your projects, what the crew has been doing, what is waiting on you. It renders to an image. On the desktop app, that image then becomes your wallpaper, and it keeps itself current.</p>
+<p>It is off by default and stays off until you ask, because each render costs a model call and a page render. When you do turn it on, gezel captures your existing wallpaper first and puts it back if you ever turn the feature off.</p>
+<p>It also takes the picture seriously. The image is built at your primary display's exact physical pixel size, so your desktop's Fill or Zoom setting cannot crop it, and the content is kept clear of menu bars, notches, docks and taskbars while the artwork still runs to the edges. There are eleven visual themes to pick from — the default is <em>gezellig</em>, a warm dark one — and you can choose the refresh interval, starting at every fifteen minutes.</p>
+<h2 id="disk-space-you-can-see-clean-up-and-back-up">Disk space you can see, clean up, and back up</h2>
+<p>Gezel keeps models, engines, caches, projects and conversations on your computer, which is the point, but until now the only way to find out what that cost you was to go looking in folders.</p>
+<p><strong>Settings → About</strong> now has a storage card that breaks the whole install down by category — downloaded models, native engines, engine caches, toolsets, projects, gezels, documents, git checkouts, derived caches, backups — with a size against each. From there:</p>
+<ul><li><p><strong>Clean up</strong> walks you through what is safe to remove, category by category, with the space you would get back shown before you commit. Anything gezel can rebuild on its own is offered first; the things that are genuinely yours are the ones it asks hardest about.</p></li><li><p><strong>Back up</strong> writes your crew, projects, documents and settings to a single file you choose.</p></li><li><p><strong>Restore</strong> reads one of those files back, shows you exactly what it found and what it would change, and only then applies it.</p></li></ul>
+<p>If you use gezel from a terminal, the same three are there as <code>gezel cleanup</code>, <code>gezel backup &lt;file&gt;</code> and <code>gezel restore &lt;file&gt;</code>, each with a preview and a confirmation before anything is written or deleted.</p>
+<p>And if you ever uninstall gezel, the prompts now point you at both of these first, rather than letting you find out afterwards.</p>
+<h2 id="the-document-library-is-a-real-project-now">The document library is a real project now</h2>
+<p>The shared document library — the folder where you keep the things that should be true for every project, like a mission statement or house style — used to be indexed by a separate, thinner mechanism than your projects were. That is gone. The library is now a project in its own right, and inherits everything projects get.</p>
+<p>In practice that means library documents are searched the same way project files are: full content indexing, Office documents converted so their text is findable, meaning-based search alongside keyword search, a watcher that notices your edits, and idle-time enrichment. A <strong>Boekwachter</strong> — a librarian gezel — is recruited to the library once, and its presence is what opts the library into the parts that use a model.</p>
+<p>Two deliberate limits. The library cannot be deleted or archived, and it does not appear in your list of projects, because it is not a job you work on. And nothing gezel generates is ever written into your documents folder — the search index and any converted copies are kept in gezel's own home. That matters if your documents folder is synced to a cloud drive, which is a normal thing to want and was previously a way to get a database file synced across your machines.</p>
+<p>Alongside this, the file browsers throughout the app are now one thing rather than three. Documents, a project's workspace and a project's artifacts all use the same pane, so drag-and-drop import, resizing and collapsing, the list and grid views, previews for files that are not text, and editing with autosave work identically wherever you are. There is also a <strong>show hidden files</strong> toggle, and it remembers your choice.</p>
+<h2 id="your-local-models-inside-vs-code-opencode-and-pi">Your local models, inside VS Code, OpenCode and pi</h2>
+<p>Gezel could already lend a model to Codex. Three more join it, each set up from <strong>Settings → Connected Apps</strong> with one button.</p>
+<p><strong>VS Code</strong> needs no extension — it uses VS Code's own support for custom model endpoints, so your crew simply appears in VS Code's native model picker while VS Code keeps its own tools, permissions and conversations. Gezel adds exactly one provider entry to the profile you choose and leaves every other entry alone. One tradeoff is worth knowing before you press it: without an extension, VS Code cannot offer gezel its encrypted secret store, so the credential is written in plain text. Gezel keeps that credential inference-only — it can ask for a completion and list models, and it cannot read your projects, files, terminals, chats or settings — and you can revoke it on its own at any time.</p>
+<p><strong>OpenCode</strong> and <strong>pi</strong> work the same way, and both offer a choice. By default gezel writes its own configuration file and hands you a command that points the tool at it for that run, touching nothing of yours. Or you can press <strong>Add to OpenCode</strong> / <strong>Add to pi</strong>, which installs one small gezel-owned file into that tool's own plugin folder so your crew is available in every session without a command. That file holds no password, does nothing when gezel is not running, and is removed when you remove the setup.</p>
+<p>For all four, gezel will not silently overwrite something it did not write. If a file was hand-edited or came from a different gezel installation, the card says <strong>Needs attention</strong> and does nothing until you pick <strong>Repair</strong>, which keeps the original beside it as a <code>.backup</code>.</p>
+<p>The full detail is in <a href="../../connected-apps/">Connected apps</a>.</p>
+<h2 id="qwen-3-8-27b-is-measured-and-it-leads">Qwen 3.8 27B is measured, and it leads</h2>
+<p>The <a href="../../model-scorecard/">model scorecard</a> has a tenth entry, and it is the new best on the board: <strong>qwen3.8-27b-q4</strong> scores 8.2 on the general set and 7.1 on the office-and-knowledge set, ahead of every other model measured on both. That is the follow-up promised in the last release, run the same way as the rest — every job three times on a real machine, checked by a program and read by a separate judge.</p>
+<p>Its speed is ordinary for its size, so the choice against something like gemma4-26b is still the usual one: gemma4-26b answers roughly four times faster, qwen3.8-27b answers considerably better. <a href="../../how-we-test-models/">How we test models</a> explains what these numbers do and do not tell you.</p>
+<p>Two accuracy fixes land with it. Gezel's estimate of how much memory a model will actually need is now measured rather than assumed on Apple Silicon, and on the other engines it accounts for the extra memory an image-capable model needs — so a model that fits now reliably fits, and one that does not is refused before it wastes your time. And on Apple Silicon, a model's private "thinking" no longer leaks into the answer you read, and no longer runs several times longer than it should have; on one measured model that was seven times more thinking than the same model on the other engine, for no benefit.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>Projects have icons.</strong> A small maker's mark by project type, inherited automatically and overridable per project, in the sidebar and everywhere a project is named.</p></li><li><p><strong>Messages gezel wrote to itself are labeled "System", not "You"</strong> — handoffs and dispatched work no longer look like something you typed.</p></li><li><p><strong>Search from the title bar opens instantly</strong> with a loading state, finds names before it finishes searching content, tells you when a lookup failed rather than showing an empty result, matches on a gezel's role as well as its name, and stops repeating the same memory snippet back at you.</p></li><li><p><strong>The History detail pane is readable.</strong> Labeled sections for context, details, changes and timing, with real dates and durations, instead of a block of raw data.</p></li><li><p><strong>Night Shift shows a tally</strong> of what the crew actually got through, both so far tonight and last night, in the moon menu.</p></li><li><p><strong>Task descriptions save as you type</strong>, like every other long-form editor in the app. No more losing a description to a missed Save button.</p></li><li><p><strong>File mentions in chat now cover workspace files, not only artifacts</strong> — gezel links what it names, and you can open it from the message.</p></li><li><p><strong>Live speed readings are exact</strong>, per model and per engine, rather than estimated.</p></li><li><p><strong>Changing a setting no longer kills a running model.</strong> Idle engines are released; work in progress is left alone. Only emergency stop and shutdown still stop everything, and if an engine does go away mid-answer the message now says whether gezel stopped it or it crashed.</p></li><li><p><strong>Models installed for the whole machine are shown as read-only</strong> rather than offering you a Delete that could not work.</p></li><li><p><strong>Preview panes follow your theme</strong>, including when it is set to follow the system.</p></li><li><p><strong>Voice output no longer hangs</strong> on a stalled load or stream; it gives up and says so.</p></li><li><p><strong>Folder moves keep a snapshot</strong>, listed in Settings with the details openable.</p></li><li><p><strong>A stale meester pointer now prefers an existing gezel who has the Meester role</strong>, instead of picking whoever came first.</p></li><li><p>Refreshed editor and catalog content packages (squisq 2.8.0, gilde 0.1.36).</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong>Multi-turn file edits.</strong> MCP file-edit tools take <code>partial: true</code> to open a path as a draft: intermediate states are not validated, so a model can build a file larger than one turn's output — and <code>advance_task_step</code> / <code>verify_outcome</code> stay blocked until the file parses again.</p></li><li><p><strong>Task gates got much stricter.</strong> Launch parameters interpolate through every gate field, an unresolved <code>{{param}}</code> is now an infrastructure error rather than a silent miss, gate attempt budgets survive self-loop reactivation, and a tool failure that never recovered is surfaced in the thread instead of being inferred from a stalled step.</p></li><li><p><strong>Deterministic fan-out work moved out of prompts.</strong> <code>publishCorpusBatches</code> in the script standard library replaces asking a model to retype a batch manifest, and the fan-out input is checked against its source.</p></li><li><p><strong>Catalog schemas have one export source</strong> plus a freshness test, so a core schema change can no longer drift from committed gilde schemas without failing.</p></li><li><p><strong>Packaged POSIX launches reuse the installer's service tree</strong> when it matches the shipped bundle and is not writable by the calling account, instead of unpacking a byte-identical copy per account.</p></li><li><p><strong>New endpoints</strong>: <code>/api/ambient-dashboard</code>, <code>/api/storage/*</code>, <code>/api/vscode-setup</code>, <code>/api/opencode-setup</code>, <code>/api/pi-setup</code>, all with client methods.</p></li><li><p><strong>Linux <code>.deb</code> packages are verified to be zstd-compressed</strong> at release time, and release manifests are formatted by a script rather than by hand.</p></li></ul>
+<h2 id="anything-to-do">Anything to do?</h2>
+<p>No. Update when you are offered it.</p>
+<p>Three things are worth a visit. <strong>Settings → About</strong> now tells you what gezel is using on disk, and it is worth a look if you have been downloading models. <strong>Settings → Ambient dashboard</strong> is the new wallpaper feature, and it is off until you turn it on. And if you use VS Code, OpenCode or pi, <strong>Settings → Connected Apps</strong> will put your own models in them in about one click.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#your-desktop-can-show-you-the-workshop">Your desktop can show you the workshop</a></li>
+<li class="hb-h2"><a href="#disk-space-you-can-see-clean-up-and-back-up">Disk space you can see, clean up, and back up</a></li>
+<li class="hb-h2"><a href="#the-document-library-is-a-real-project-now">The document library is a real project now</a></li>
+<li class="hb-h2"><a href="#your-local-models-inside-vs-code-opencode-and-pi">Your local models, inside VS Code, OpenCode and pi</a></li>
+<li class="hb-h2"><a href="#qwen-3-8-27b-is-measured-and-it-leads">Qwen 3.8 27B is measured, and it leads</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>
