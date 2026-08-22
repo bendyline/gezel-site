@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26234 — 22 August 2026 — Gezel Handboek</title>
+<meta name="description" content="Reference libraries your crew can cite, gezels that look things up on their own, links between projects, and people grouped in your photos.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
+<li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26234 — 22 August 2026</h1>
+<p>Three days after <strong>1.26231</strong>, and this one is about knowing things.</p>
+<p>If you read only one thing: your gezels can now look things up — in your project, in your linked projects, and in reference libraries you install — and tell you where each answer came from.</p>
+<h2 id="reference-libraries-your-crew-can-search-and-cite">Reference libraries your crew can search and cite</h2>
+<p>A <strong>knowledge catalog</strong> is a body of reference material packaged as a single file with a <code>.gezk</code> extension: an encyclopedia, a set of manuals, a standards library, your own notes. Install one and it becomes something your gezels — the named AI craftspeople you work with — can search and quote, with the source named every time.</p>
+<p>Install them from <strong>Settings → Knowledge</strong>, by file path, by <code>https://</code> URL, or with a file picker. Once at least one catalog is registered, a <strong>Knowledge</strong> area appears in the sidebar: a catalog and topic list on the left, the documents in the middle, the article on the right, with its license, its origin, and a <strong>Copy citation</strong> button. There is also an <strong>Ask a gezel</strong> button on any article, so you can go from reading to asking without retyping what you were reading.</p>
+<p>Each project decides how much of this it sees. Project settings carry a knowledge row with three choices: all your catalogs, only the ones you pick, or none for this project.</p>
+<p>You can build your own. <code>gezel knowledge init</code> and <code>gezel knowledge build</code> turn a folder of Markdown into a catalog, entirely offline — no daemon, no account, nothing uploaded. The whole thing stays on your device, including the search.</p>
+<h2 id="your-gezels-can-look-things-up-now">Your gezels can look things up now</h2>
+<p>Until this release, a gezel knew what was in the conversation and what you had told it. If the answer was in a file three folders away, it had to guess that the file existed and go read it.</p>
+<p>Now there is a general <code>search</code> tool covering the active project's workspace and artifacts, the project's memory, the gezel's own memory, folder and architecture summaries, and your shared documents library — ranked together, with a citation on every result.</p>
+<p>Alongside it, gezel can put a small block of relevant material onto a turn <em>before</em> the model answers, so it starts with the right context instead of hunting for it. <strong>Settings → Project knowledge &amp; memory</strong> controls how much:</p>
+<ul><li><p><strong>Off</strong> — nothing is added. The gezel can still call <code>search</code> itself.</p></li><li><p><strong>Lean</strong> — paths and short hints, about 320 tokens.</p></li><li><p><strong>Balanced</strong> — a diversified set of excerpts, about 1,000 tokens. This is the default.</p></li><li><p><strong>Deep</strong> — broader excerpts including project and area summaries, about 2,800 tokens.</p></li></ul>
+<p>There is an optional token cap if you want a specific number, and gezel applies a second ceiling based on your model's context window, so a small local model is never crowded out of its own answer. That is the reason the modes are worth knowing about: on a memory-constrained model, Lean genuinely answers better than Deep.</p>
+<p>Two habits of the feature are worth stating plainly. Retrieved text is labeled <strong>untrusted evidence</strong> in the prompt — it is material to consider, and it cannot instruct the gezel or override you. And model-facing search is bound to the project you are in: a gezel cannot reach into your other projects, other gezels' memories, or your conversation history to answer a question.</p>
+<h2 id="linking-one-project-to-another">Linking one project to another</h2>
+<p>Sometimes a project genuinely needs a neighbour's material. Project settings now have a <strong>Linked projects</strong> list — pick up to 32.</p>
+<p>A link is one-way and it does not chain. Linking A to B lets work in A search and read B; it does not give B anything, and it does not reach whatever B is linked to. Linked files show up under a <code>../project-id/...</code> path so it is always obvious which side a result came from, and the whole arrangement is visible on the one screen where you granted it.</p>
+<h2 id="people-in-your-photos">People in your photos</h2>
+<p>Turn on <strong>Recognize people in photos</strong> in Settings and gezel looks for faces in the photos it has indexed and groups the same person across them. Name someone once and you can find them anywhere. A <strong>People</strong> panel appears in each project's overview.</p>
+<p>This runs entirely on your machine — the photos and the face data never leave it — and turning it on downloads the face models once, about 260 MB. It is off until you ask, and there is a <strong>Turn off and erase face data</strong> button that deletes every stored face signature, person, and name across every project. Your photos are not touched by that; only what gezel worked out about them.</p>
+<p>Separately, the file browser can now show <strong>visually similar images</strong> in a project from any image you are previewing.</p>
+<h2 id="every-task-gets-its-own-folder">Every task gets its own folder</h2>
+<p>Small change, and it removes a whole class of quiet damage.</p>
+<p>Work a gezel does for you lands in the project's artifacts drawer. Until now, two runs of the same procedure — a <strong>craftbook</strong>, gezel's word for a repeatable recipe — wrote to the same filenames and silently overwrote each other's working notes. Two tasks running at once could do it to each other.</p>
+<p>Every task now gets <code>artifacts/tasks/&lt;number&gt;/</code> as its own working folder, created when the task is created, and shared by the shards of a task that fans out into parallel work. Nothing to configure; a task's material simply stays a task's material.</p>
+<h2 id="a-better-first-five-minutes">A better first five minutes</h2>
+<p>Opening gezel for the first time used to mean an empty composer while a multi-gigabyte model downloaded in the background.</p>
+<p>The <strong>meester</strong> — the guildmaster gezel who is your front door — now greets you with a short introduction, an explanation of their role, and a few openers you can press instead of thinking of an opening line. It is a written introduction, clearly presented as one, not words put in the meester's mouth.</p>
+<p>And if you send a message while the model is still arriving, gezel now says "43% downloaded — hang tight" instead of telling you to download a model from a list that is not on screen.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>Chat reads like people talking.</strong> Hand-offs between gezels now render as a short line — who passed what to whom, and about which task — instead of the paragraph of tool-calling instructions the model was actually sent.</p></li><li><p><strong>Thread previews are readable.</strong> The one-line summary under a thread no longer shows raw tool-call markup or hidden reasoning; it says what happened in words.</p></li><li><p><strong>Tool activity says what it touched</strong>, and file paths in it are clickable straight into References.</p></li><li><p><strong>Word and LibreOffice lock files are hidden.</strong> The stray <code>~$report.docx</code> files that appear while a document is open no longer clutter the file browser.</p></li><li><p><strong>File references resolve properly.</strong> A reference to a specific path no longer falls back to matching some other file with the same name at the root, and old mis-resolved links in existing threads are repaired.</p></li><li><p><strong><code>/connect</code> and <code>/disconnect</code> in the CLI</strong> hook VS Code, OpenCode, pi, and Codex up to your local models — the same thing Settings → Connected Apps does, from the terminal.</p></li><li><p><strong>Dates and times are consistent</strong> across cards, threads, and panels, and the local-engine setting says "This Mac" or "This PC" rather than a generic device label.</p></li><li><p><strong>Tasks can be updated in bulk</strong> — select several and set their status at once.</p></li><li><p><strong>Local models re-answer faster.</strong> The llama.cpp cache-reuse restriction that cost multi-slot setups their prompt cache is gone, and an MLX bug that made reasoning stay on for turns that had asked for it to be off — inflating both time and tokens — is fixed.</p></li><li><p><strong>Windows app updates are steadier.</strong> Staged runtime cleanup retries rather than failing when a virus scanner or indexer holds a file open, and installer-staged service trees are now verified and reused on Windows the way they already were elsewhere.</p></li><li><p><strong>The Handboek uses the warm light reading surface</strong> when your theme is light, in both document and video modes.</p></li><li><p>Refreshed catalog content package (gilde 0.1.39).</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong><code>.gezk</code>, the knowledge catalog format</strong>, is frozen as v1 and implemented in a new <code>@bendyline/gezel-knowledge</code> package: a deterministic compiler, verified archive reading, Ed25519 manifest signing, a Markdown adapter, and a read-only two-stage <code>bit384+int8</code> retrieval handle. It depends only on core.</p></li><li><p><strong>New endpoints</strong>: <code>/api/knowledge/*</code> for install, enable, quarantine, browse and search; <code>/api/projects/:id/tools/find-similar-images</code>; a people surface for face grouping; and machine-broker knowledge asset endpoints under <code>/v1/remote/manage/knowledge/*</code>. All with client methods.</p></li><li><p><strong>AI Apps</strong> — a project type, crew, craftbooks, scripts, data, and an optional dashboard composed into one reusable experience — have a written guide: <a href="../../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a>. They package as <code>.gezapp</code> files, and a gezel can export or import one for you.</p></li><li><p><strong>Retrieval is auditable.</strong> Every injected context block records the query hash, policy, estimated tokens, result scores, provenance, and citations as a history event. Raw queries and retrieved text are deliberately not copied into telemetry.</p></li><li><p><strong><code>search_code</code> and <code>search_documents</code> are now compatibility aliases</strong> for the unified <code>search</code> tool. <code>grep_files</code> remains the right tool for exact strings and regular expressions.</p></li><li><p><strong>Craftbook steps can scope retrieval</strong>, including to <code>knowledge</code> alone, and address their task folder through the reserved <code>{{task.dir}}</code> token.</p></li><li><p><strong>Embedding instructions are model-aware.</strong> The e5 family gets its required <code>query:</code> and <code>passage:</code> prefixes; other families are unchanged. There is a new cross-lingual calibration benchmark with a first Dutch/English baseline.</p></li><li><p>New architecture notes: <a href="../../decisions/0008-per-task-artifact-folders.md">per-task artifact folders</a>, the <code>.gezk</code> format, knowledge catalogs, project linking, and project retrieval.</p></li></ul>
+<h2 id="anything-to-do">Anything to do?</h2>
+<p>No. Update when you are offered it.</p>
+<p>Two settings are worth a visit. <strong>Settings → Project knowledge &amp; memory</strong> is where you decide how much your gezels look up on their own; Balanced is a good place to start, and Lean is the better answer on a small local model. <strong>Settings → Knowledge</strong> is empty until you install a catalog or build one, and it is the interesting half of this release.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#reference-libraries-your-crew-can-search-and-cite">Reference libraries your crew can search and cite</a></li>
+<li class="hb-h2"><a href="#your-gezels-can-look-things-up-now">Your gezels can look things up now</a></li>
+<li class="hb-h2"><a href="#linking-one-project-to-another">Linking one project to another</a></li>
+<li class="hb-h2"><a href="#people-in-your-photos">People in your photos</a></li>
+<li class="hb-h2"><a href="#every-task-gets-its-own-folder">Every task gets its own folder</a></li>
+<li class="hb-h2"><a href="#a-better-first-five-minutes">A better first five minutes</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

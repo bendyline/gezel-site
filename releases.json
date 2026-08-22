@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-08-22T16:56:56.351Z",
+  "repo": "bendyline/gezel",
+  "releasesUrl": "https://github.com/bendyline/gezel/releases",
+  "tag": "v1.26234.58",
+  "version": "1.26234.58",
+  "published": "2026-08-22T16:53:22Z",
+  "notesUrl": "https://github.com/bendyline/gezel/releases/tag/v1.26234.58",
+  "checksumsUrl": "https://github.com/bendyline/gezel/releases/download/v1.26234.58/SHA256SUMS",
+  "builds": [
+    {
+      "name": "Gezel-1.26234.58-linux-arm64.deb",
+      "platform": "linux",
+      "arch": "arm64",
+      "format": "deb",
+      "size": 935268980,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26234.58/Gezel-1.26234.58-linux-arm64.deb"
+    },
+    {
+      "name": "Gezel-1.26234.58-linux-aarch64.rpm",
+      "platform": "linux",
+      "arch": "arm64",
+      "format": "rpm",
+      "size": 776838261,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26234.58/Gezel-1.26234.58-linux-aarch64.rpm"
+    },
+    {
+      "name": "Gezel-1.26234.58-linux-amd64.deb",
+      "platform": "linux",
+      "arch": "x64",
+      "format": "deb",
+      "size": 1344633572,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26234.58/Gezel-1.26234.58-linux-amd64.deb"
+    },
+    {
+      "name": "Gezel-1.26234.58-linux-x86_64.rpm",
+      "platform": "linux",
+      "arch": "x64",
+      "format": "rpm",
+      "size": 1164879921,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26234.58/Gezel-1.26234.58-linux-x86_64.rpm"
+    },
+    {
+      "name": "Gezel-1.26234.58-mac-arm64.pkg",
+      "platform": "mac",
+      "arch": "arm64",
+      "format": "pkg",
+      "size": 387486974,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26234.58/Gezel-1.26234.58-mac-arm64.pkg"
+    },
+    {
+      "name": "Gezel-1.26234.58-windows-x64.exe",
+      "platform": "windows",
+      "arch": "x64",
+      "format": "exe",
+      "size": 808914680,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26234.58/Gezel-1.26234.58-windows-x64.exe"
+    }
+  ]
+}

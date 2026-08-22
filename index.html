@@ -702,20 +702,18 @@
     (function () {
       var REPO = "bendyline/gezel";
       var RELEASES = "https://github.com/" + REPO + "/releases";
-      var RELEASE_NAME = "Gezel Early Beta";
-      var API = "https://api.github.com/repos/" + REPO + "/releases?per_page=100";
-      var CACHE_KEY = "gezel:early-beta-release:v2";
-      var CACHE_TTL = 30 * 60 * 1000;
 
-      // Release assets are named Gezel-<version>-<os>-<arch>.<ext>. Anything else
-      // in the release — blockmaps, electron-updater manifests, the SBOM, the
-      // checksum file — is machinery, not something a person downloads, so the
-      // pattern is an allow-list rather than a set of exclusions.
+      // The download listing is generated at publish time by the gezel repo's
+      // scripts/latest-app-release.mjs and committed beside this file. Reading it
+      // is one same-origin request that cannot be rate-limited.
       //
-      // .zip is deliberately absent: the mac zip exists only so electron-updater
-      // has something to pull for auto-updates, alongside latest-mac.yml and the
-      // blockmap. The .pkg is the installer a person actually wants.
-      var ASSET_RE = /^Gezel-.+-(mac|windows|linux)-([a-z0-9_]+)\.(pkg|dmg|exe|msi|deb|rpm|appimage)$/i;
+      // It replaced a walk over the GitHub releases API, which had to page past
+      // ~90 npm-package releases sharing this repository to reach the desktop
+      // build — several round trips before the button became live, and nothing at
+      // all once a shared IP exhausted the anonymous quota. Which release counts
+      // as the app release, and which of its assets a person should be offered,
+      // is decided by the generator now.
+      var LISTING = "releases.json";
 
       var PLATFORM_LABEL = { mac: "macOS", windows: "Windows", linux: "Linux" };
       var ARCH_ALIASES = { aarch64: "arm64", arm64: "arm64", amd64: "x64", x86_64: "x64", x64: "x64" };
@@ -784,52 +782,29 @@
         return build.arch;
       }
 
+      // Ordering a build against its siblings is presentation, so rank is applied
+      // here rather than baked into the published listing.
       function parse(data) {
-        var builds = (data.assets || []).map(function (a) {
-          var m = ASSET_RE.exec(a.name);
-          if (!m) return null;
-          var format = m[3].toLowerCase();
+        var builds = (data.builds || []).map(function (b) {
+          var arch = String(b.arch || "").toLowerCase();
+          var format = String(b.format || "").toLowerCase();
           return {
-            platform: m[1].toLowerCase(),
-            arch: ARCH_ALIASES[m[2].toLowerCase()] || m[2].toLowerCase(),
+            platform: String(b.platform || "").toLowerCase(),
+            arch: ARCH_ALIASES[arch] || arch,
             format: format,
             rank: FORMAT_RANK[format] == null ? 9 : FORMAT_RANK[format],
-            size: a.size,
-            url: a.browser_download_url
+            size: b.size,
+            url: b.url
           };
-        }).filter(Boolean);
-
-        var sums = (data.assets || []).filter(function (a) { return /^SHA256SUMS$/i.test(a.name); })[0];
+        }).filter(function (b) { return b.url && PLATFORM_LABEL[b.platform]; });
 
         return {
-          version: data.tag_name || "",
-          published: data.published_at || data.created_at || "",
-          notesUrl: data.html_url || RELEASES,
-          checksumsUrl: sums ? sums.browser_download_url : null,
+          version: data.tag || "",
+          published: data.published || "",
+          notesUrl: data.notesUrl || RELEASES,
+          checksumsUrl: data.checksumsUrl || null,
           builds: builds
         };
-      }
-
-      function isEarlyBeta(candidate) {
-        var name = (candidate.name || "").trim();
-        return name === RELEASE_NAME || name.indexOf(RELEASE_NAME + " ") === 0;
-      }
-
-      // npm package releases share this repository and can eventually fill an
-      // entire API page. Follow GitHub's pagination until the newest versioned
-      // "Gezel Early Beta v..." release is found.
-      function fetchEarlyBeta(url) {
-        return fetch(url, { headers: { Accept: "application/vnd.github+json" } })
-          .then(function (r) {
-            if (!r.ok) throw new Error(r.status);
-            var link = r.headers.get("Link") || "";
-            var next = link.match(/<([^>]+)>;\s*rel="next"/);
-            return r.json().then(function (data) {
-              var earlyBeta = data.find(isEarlyBeta);
-              if (earlyBeta) return earlyBeta;
-              return next ? fetchEarlyBeta(next[1]) : null;
-            });
-          });
       }
 
       // Architecture detection describes the machine you are browsing from, so
@@ -939,21 +914,14 @@
         }
       }
 
-      // GitHub unreachable or rate-limited: the button still works, it just
-      // sends people to the releases page instead of straight at a file.
+      // No usable listing — missing, malformed, or a release that shipped no
+      // desktop build. The button still works, it just sends people to the
+      // releases page instead of straight at a file.
       function fail() {
         btn.classList.remove("is-pending");
         btn.href = RELEASES;
         btnMain.textContent = "Download Gezel";
         btnSub.textContent = "See all builds on GitHub";
-      }
-
-      function readCache() {
-        try {
-          var hit = JSON.parse(sessionStorage.getItem(CACHE_KEY));
-          if (hit && Date.now() - hit.at < CACHE_TTL) return hit.data;
-        } catch (e) {}
-        return null;
       }
 
       keys.forEach(function (k) {
@@ -975,23 +943,17 @@
 
       setPlatform(platform);
 
-      var cached = readCache();
-      if (cached) {
-        release = parse(cached);
-        render();
-      } else {
-        fetchEarlyBeta(API)
-          .then(function (earlyBeta) {
-            if (!earlyBeta) return fail();
-            try {
-              sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data: earlyBeta }));
-            } catch (e) {}
-            release = parse(earlyBeta);
-            if (!release.builds.length) return fail();
-            render();
-          })
-          .catch(fail);
-      }
+      fetch(LISTING)
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          release = parse(data);
+          if (!release.builds.length) return fail();
+          render();
+        })
+        .catch(fail);
     })();
   </script>
 </body>

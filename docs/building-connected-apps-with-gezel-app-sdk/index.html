@@ -46,18 +46,39 @@
 </section>
 <section>
 <h2 class="hb-current">Technical</h2>
+<ul class="hb-sidebar-entries">
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">How Gezel works</h3>
 <ul>
 <li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
 <li><a href="../where-files-live/">Where files live</a></li>
 <li><a href="../providers-and-engines/">Providers and engines</a></li>
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">The Gezel Command Line</h3>
+<ul>
 <li><a href="../cli-reference/">The gezel command line</a></li>
 <li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Developer</h3>
+<ul>
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a class="hb-current" aria-current="page" href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Models and Testing</h3>
+<ul>
 <li><a href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+</ul>
+</li>
 </ul>
 
 </section>
@@ -76,6 +97,7 @@
 <h1>Building connected apps with gezel-app-sdk</h1>
 <p><code>@bendyline/gezel-app-sdk</code> is for software that runs <em>beside</em> Gezel. It lets a desktop or Node application discover the logged-in user's daemon, trust its loopback TLS certificate, ask the user for a scoped connection, remember the issued token securely, and use OpenAI-shaped model APIs.</p>
 <p>This differs from <code>@bendyline/gezel-sdk</code>, whose scripts run <em>inside</em> Gezel's sandbox. A connected app owns its own interface and process. Gezel owns model discovery and downloads, consent, revocation, and the local inference service.</p>
+<p>If the experience should live inside a Gezel project as a custom crew, dashboard, craftbooks, scripts, and data, see <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a> instead.</p>
 <p>The <a href="../connected-apps/">Connected apps</a> article explains what the user sees. This article covers the developer side.</p>
 <h2 id="install-and-connect">Install and connect</h2>
 <p>The Node entry requires Node.js 24 or newer:</p>

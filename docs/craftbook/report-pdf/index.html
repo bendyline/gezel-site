@@ -36,9 +36,14 @@
 </section>
 <section>
 <h2 class="hb-current">Craftbooks</h2>
-<ul>
+<ul class="hb-sidebar-entries">
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">General work</h3>
+<ul>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/report-pdf/">Formatted Report</a></li>
+</ul>
+</li>
 </ul>
 <p class="hb-more"><a href="../../craftbooks-index/">All 290 craftbooks</a></p>
 </section>
@@ -67,7 +72,7 @@
 <h1>Formatted Report</h1>
 <p>Produce a polished, print-ready PDF report from Markdown with DocBlocks — no hand-built HTML or browser print translator. Locks the audience, source facts, structure, and acceptance criteria first; writes the complete report as report.md; then converts, previews, and saves report.pdf in the project's artifacts drawer.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Outline the report</td><td>Planner</td><td>Lock the audience, source facts, section order, and acceptance criteria.</td></tr><tr><td>2</td><td>Write the Markdown report</td><td>Copywriter</td><td>Write the complete report.md source to the locked outline.</td></tr><tr><td>3</td><td>Publish the PDF</td><td>Copywriter</td><td>Convert report.md with DocBlocks, preview every page, and save report.pdf.</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Review the saved PDF against the locked content and layout criteria.</td></tr><tr><td>5</td><td>Finish</td><td>Copywriter</td><td>All content and PDF checks passed.</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Outline the report</td><td>Planner</td><td>Lock the audience, source facts, section order, and acceptance criteria.</td></tr><tr><td>2</td><td>Write the Markdown report</td><td>Copywriter</td><td>Write the complete report.md source to the locked outline.</td></tr><tr><td>3</td><td>Publish the PDF</td><td>Copywriter</td><td>Convert report.md with DocBlocks, preview every page, and save {{workPath}}/report.pdf.</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Review the saved PDF against the locked content and layout criteria.</td></tr><tr><td>5</td><td>Finish</td><td>Copywriter</td><td>All content and PDF checks passed.</td></tr></tbody></table></div>
 <p>Say something like "formatted report" or "make a pdf report" or "create a pdf" or "export this report to pdf" or "quarterly report" or "printable document" or "report with cover page" in chat to start it.</p>
 <p>Needs toolsets: <code>docblocks</code>.</p>
 </article>

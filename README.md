@@ -75,6 +75,36 @@ baseline. Most adjustments are token overrides (`--hb-canvas`, `--hb-accent`,
 Every article also has a `watch.html` beside it — the same content as an
 auto-playing captioned slideshow, rendered by the squisq player.
 
+## Downloads (`releases.json`)
+
+`releases.json` at the repo root is **generated** too, by the same
+`pnpm docs:site` run. It lists the latest published desktop release and its
+installers, and the download section of [index.html](index.html) reads it with a
+single same-origin request.
+
+It replaced a walk over the GitHub releases API from the visitor's browser. That
+walk had to page past ~90 npm-package releases sharing the `bendyline/gezel`
+repository before it reached the desktop build — several round trips before the
+download button went live, and nothing at all once a shared IP exhausted the
+anonymous rate limit.
+
+Which release counts is decided upstream by
+`scripts/latest-app-release.mjs`, using the same rule as the desktop updater:
+the greatest **stable** tag matching `v<semver>` exactly. Draft releases,
+`native-v*` engine releases, and npm-package releases can never appear.
+
+Refresh it without regenerating the docs:
+
+```sh
+cd ../gezel && pnpm docs:releases
+```
+
+Like `handboek.css`, it lives at the site root rather than in `docs/` so
+regenerating the Handboek cannot wipe it — a docs publish on a day GitHub is
+unreachable keeps the previous listing rather than leaving the page with no
+downloads. If the file is missing entirely, the button still works; it just
+links the releases page instead of an installer.
+
 ## Notes
 
 - `.nojekyll` disables Jekyll processing, so files and folders starting with `_`
