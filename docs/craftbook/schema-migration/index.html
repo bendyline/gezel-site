@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Schema / Type Migration — Gezel Handboek</title>
-<meta name="description" content="Plan and execute a multi-file schema or type migration safely — changing a data model, type definition, or interface across the codebase while keeping everything compiling and consistent.">
+<meta name="description" content="Migrate a schema or data shape with the expand/contract discipline: reads accept both shapes while the data moves, the old shape is dropped only after every record is transformed, and real suite runs between stages prove no record was ever stranded.">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -39,13 +39,13 @@
 <ul class="hb-sidebar-entries">
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li class="hb-sidebar-subcategory">
-<h3 class="hb-sidebar-subcategory-title">Maintenance &amp; review</h3>
+<h3 class="hb-sidebar-subcategory-title">Code · Testing &amp; fixes</h3>
 <ul>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/schema-migration/">Schema / Type Migration</a></li>
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 290 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -70,9 +70,9 @@
 </nav>
 <article class="hb-article">
 <h1>Schema / Type Migration</h1>
-<p>Plan and execute a multi-file schema or type migration safely — changing a data model, type definition, or interface across the codebase while keeping everything compiling and consistent. Plans the migration FIRST — the before/after shape, every call-site and file touched, the ordering that never leaves the tree broken, and the backout — then applies the change file-by-file, then a reviewer verifies the tree still builds and nothing referencing the old shape remains. Covers find-all-references, safe edit ordering, backward-compatibility shims, codemod-style changes, and compile/test-green verification.</p>
+<p>Migrate a schema or data shape with the expand/contract discipline: reads accept both shapes while the data moves, the old shape is dropped only after every record is transformed, and real suite runs between stages prove no record was ever stranded.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Plan the migration</td><td>Planner</td><td>lock before/after, touched files, ordering, backout</td></tr><tr><td>2</td><td>Apply the migration</td><td>Developer</td><td>edit each touched file in the planned order</td></tr><tr><td>3</td><td>Verify the tree</td><td>Reviewer</td><td>confirm it compiles, tests pass, old shape is gone</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Plan the expand/contract migration</td><td>Planner</td><td>Document the current and target shapes from the real files and stage the work as expand, migrate, contract - with per-stage data safety and rollback.</td></tr><tr><td>2</td><td>Execute the stages</td><td>Developer</td><td>Apply expand, migrate, contract at the real sites with the suite run between stages; reads accept both shapes until the plan retires the dual-read.</td></tr><tr><td>3</td><td>Prove no record was stranded</td><td>Developer</td><td>Check every record is in the target shape with values intact, the old shape is gone where contract says, and the whole suite is green.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>
 <p>Say something like "migrate a schema" or "change a type everywhere" or "multi-file migration" or "rename a model across the codebase" or "type migration" in chat to start it.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>

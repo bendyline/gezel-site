@@ -55,6 +55,7 @@
 <li><a href="../providers-and-engines/">Providers and engines</a></li>
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../verifying-your-download/">Verifying your download</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -111,6 +112,14 @@ gezel run "..."             one-shot: send a prompt, print the reply</code></pre
 <pre class="squisq-code-block"><code>gezel agent list            your gezellen
 gezel task list             tasks in flight
 gezel env skills list       importable skills</code></pre>
+<h2 id="ai-apps">AI Apps</h2>
+<pre class="squisq-code-block"><code>gezel app new my-app        scaffold an app source folder
+gezel app validate my-app   check a source folder or .gezapp (--json for tooling)
+gezel app pack my-app       produce my-app-1.0.0.gezapp
+gezel app add &lt;file&gt; --yes  review and install a package
+gezel app apply my-app      outfit the current folder as a project
+gezel app serve my-app      share its page as a mini-site</code></pre>
+<p>The full story — the source-folder format, both script forms, and the loop an AI agent can drive — is <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a>.</p>
 <h2 id="this-documentation">This documentation</h2>
 <pre class="squisq-code-block"><code>gezel handboek export --out ./site</code></pre>
 <p>renders the Handboek — the same articles you're reading now — as a static website, for publishing or offline reading.</p>
@@ -125,6 +134,7 @@ gezel env skills list       importable skills</code></pre>
 <ul>
 <li class="hb-h2"><a href="#everyday-commands">Everyday commands</a></li>
 <li class="hb-h2"><a href="#working-with-the-crew">Working with the crew</a></li>
+<li class="hb-h2"><a href="#ai-apps">AI Apps</a></li>
 <li class="hb-h2"><a href="#this-documentation">This documentation</a></li>
 </ul>
 </nav>

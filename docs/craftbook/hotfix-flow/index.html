@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hotfix Flow — Gezel Handboek</title>
-<meta name="description" content="Drive an expedited production hotfix from red to green: reproduce the live defect with a failing test, apply the smallest safe fix that makes it pass without scope-creeping into a refactor, and verify the fix plus a clean regression check before it ships out-of-band.">
+<meta name="description" content="Stop a live failure with the smallest change that fixes it at the real site: reproduce with the least machinery that demonstrates the failure, patch minimally with the proper repair recorded as follow-up, validate with a rollback path, and pass an enforced review of the blast radius.">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -39,13 +39,13 @@
 <ul class="hb-sidebar-entries">
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li class="hb-sidebar-subcategory">
-<h3 class="hb-sidebar-subcategory-title">Maintenance &amp; review</h3>
+<h3 class="hb-sidebar-subcategory-title">Code · Testing &amp; fixes</h3>
 <ul>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/hotfix-flow/">Hotfix Flow</a></li>
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 290 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -70,10 +70,10 @@
 </nav>
 <article class="hb-article">
 <h1>Hotfix Flow</h1>
-<p>Drive an expedited production hotfix from red to green: reproduce the live defect with a failing test, apply the smallest safe fix that makes it pass without scope-creeping into a refactor, and verify the fix plus a clean regression check before it ships out-of-band. The ordering is the whole discipline — reproduce FIRST (a failing test that captures the bug is the contract the fix must satisfy), then fix minimally, then verify the new test passes and nothing else broke. Use this for urgent production bugs, expedited patch releases, and out-of-band fixes where speed matters but a regression would be worse than the original bug.</p>
+<p>Stop a live failure with the smallest change that fixes it at the real site: reproduce with the least machinery that demonstrates the failure, patch minimally with the proper repair recorded as follow-up, validate with a rollback path, and pass an enforced review of the blast radius.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce with a failing test</td><td>Developer</td><td>capture the live defect as a failing, deterministic test</td></tr><tr><td>2</td><td>Apply the minimal fix</td><td>Developer</td><td>smallest safe change that turns the failing test green</td></tr><tr><td>3</td><td>Verify and regression-check</td><td>Reviewer</td><td>confirm green plus no regressions before shipping</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
-<p>Say something like "hotfix this bug" or "urgent production fix" or "expedited patch" or "fix the live defect" or "out-of-band fix" in chat to start it.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce with the least machinery</td><td>Developer</td><td>Establish the failure cheaply and concretely: a command, a probe, or a focused test — whatever demonstrates it fastest.</td></tr><tr><td>2</td><td>Smallest change that stops the bleeding</td><td>Developer</td><td>Fix the cause at the real defect site with the minimum blast radius; defer the proper repair into Follow-up.</td></tr><tr><td>3</td><td>Re-run the reproduction and record rollback</td><td>Developer</td><td>Prove the failure is gone, be explicit about what was and was not verified, and write the escape route.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>
+<p>Say something like "hotfix this bug" or "urgent production fix" or "expedited patch" or "fix the live defect" or "out-of-band fix" or "emergency fix" or "stop the bleeding" in chat to start it.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

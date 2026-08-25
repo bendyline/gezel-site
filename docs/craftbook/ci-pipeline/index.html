@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CI Pipeline from Scratch — Gezel Handboek</title>
-<meta name="description" content="Build a continuous-integration pipeline that installs, lints, tests, and builds on every push/PR — fast, cached, and gating merges on green.">
+<meta name="description" content="Author a CI pipeline grounded in what the repo actually has: inventory the real package scripts, write the workflow at the conventional location with caching and merge-gating on green, and verify every command it invokes against the manifests — honest that CI itself cannot run locally.">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -39,13 +39,13 @@
 <ul class="hb-sidebar-entries">
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li class="hb-sidebar-subcategory">
-<h3 class="hb-sidebar-subcategory-title">Maintenance &amp; review</h3>
+<h3 class="hb-sidebar-subcategory-title">Code · Release &amp; deploy</h3>
 <ul>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/ci-pipeline/">CI Pipeline from Scratch</a></li>
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 290 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -70,10 +70,10 @@
 </nav>
 <article class="hb-article">
 <h1>CI Pipeline from Scratch</h1>
-<p>Build a continuous-integration pipeline that installs, lints, tests, and builds on every push/PR — fast, cached, and gating merges on green. Scopes the pipeline contract FIRST — triggers, the job/stage graph, the matrix, caching strategy, and the gates — then writes the CI workflow YAML, then a reviewer validates the syntax, stage ordering, caching, and that it actually fails on a broken build. Covers CI triggers, job/stage dependencies, dependency caching, build matrices, status checks, fail-fast gating, and a valid workflow file.</p>
+<p>Author a CI pipeline grounded in what the repo actually has: inventory the real package scripts, write the workflow at the conventional location with caching and merge-gating on green, and verify every command it invokes against the manifests — honest that CI itself cannot run locally. Adds a publish-on-tag release job only when the repo shows one.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the pipeline</td><td>Planner</td><td>lock triggers, stages, matrix, caching, gates</td></tr><tr><td>2</td><td>Write the workflow</td><td>Developer</td><td>implement the CI workflow YAML</td></tr><tr><td>3</td><td>Verify the workflow</td><td>Reviewer</td><td>confirm syntax, ordering, caching, gating</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
-<p>Say something like "set up ci" or "create a ci pipeline" or "github actions workflow" or "build a ci/cd pipeline" or "add automated testing on push" in chat to start it.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Inventory the repo</td><td>Developer</td><td>Read the real scripts and layout, then plan stages, caching, and triggers — never a command that does not exist.</td></tr><tr><td>2</td><td>Author the workflow</td><td>Developer</td><td>Write the real workflow file(s) at the conventional location — minimal, cached, pinned, gating merges on green.</td></tr><tr><td>3</td><td>Verify against the manifests</td><td>Developer</td><td>Read the workflow back and match every invoked command to the manifest line that provides it; honest about what only a live run proves.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>
+<p>Say something like "set up ci" or "create a ci pipeline" or "github actions workflow" or "build a ci/cd pipeline" or "add automated testing on push" or "set up a release pipeline" or "ci/cd for releases" or "publish on tag workflow" or "github actions release" or "automate the release" in chat to start it.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

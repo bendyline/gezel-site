@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fix a Flaky Test — Gezel Handboek</title>
+<meta name="description" content="Hunt down an intermittently failing test and make it deterministic: reproduce the flake with real recorded runs, isolate the nondeterminism mechanism, remove it at the real site — never by deleting, skipping, or retrying the test — and prove stability with three consecutive green runs.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Craftbooks</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Code · Testing &amp; fixes</h3>
+<ul>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/flaky-test-fix/">Fix a Flaky Test</a></li>
+</ul>
+</li>
+</ul>
+<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+</nav>
+<article class="hb-article">
+<h1>Fix a Flaky Test</h1>
+<p>Hunt down an intermittently failing test and make it deterministic: reproduce the flake with real recorded runs, isolate the nondeterminism mechanism, remove it at the real site — never by deleting, skipping, or retrying the test — and prove stability with three consecutive green runs.</p>
+<h2 id="how-it-runs">How it runs</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce the flake with recorded runs</td><td>Developer</td><td>Run the suite repeatedly until the intermittent failure is a recorded fact, and characterize when it appears.</td></tr><tr><td>2</td><td>Isolate the mechanism</td><td>Researcher</td><td>Pin the nondeterminism with a targeted experiment and name the defect site. No fixes yet.</td></tr><tr><td>3</td><td>Remove the nondeterminism</td><td>Developer</td><td>Make the outcome deterministic at the real site — isolation, cleanup, awaits, seeding — never masking.</td></tr><tr><td>4</td><td>Prove stability</td><td>Developer</td><td>Three consecutive green suite runs, read from real receipts — one green run means nothing for a flake.</td></tr><tr><td>5</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>6</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>8</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>
+<p>Say something like "fix this flaky test" or "deflake" or "test fails intermittently" or "fails in CI but passes locally" or "intermittent test failure" in chat to start it.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

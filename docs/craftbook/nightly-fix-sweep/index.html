@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QA — Gezel Handboek</title>
-<meta name="description" content="Live UI QA pass with a real browser.">
+<title>Nightly Fix Sweep — Gezel Handboek</title>
+<meta name="description" content="Turn a night's open code findings into reviewable change proposals: triage the leads, cluster what belongs together, and draft one focused proposal per cluster for the user to read and apply in the morning.">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -39,13 +39,13 @@
 <ul class="hb-sidebar-entries">
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li class="hb-sidebar-subcategory">
-<h3 class="hb-sidebar-subcategory-title">Maintenance &amp; review</h3>
+<h3 class="hb-sidebar-subcategory-title">Code · Testing &amp; fixes</h3>
 <ul>
-<li><a class="hb-current" aria-current="page" href="../../craftbook/qa/">QA</a></li>
+<li><a class="hb-current" aria-current="page" href="../../craftbook/nightly-fix-sweep/">Nightly Fix Sweep</a></li>
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 290 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -69,11 +69,11 @@
 <a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
 </nav>
 <article class="hb-article">
-<h1>QA</h1>
-<p>Live UI QA pass with a real browser. Navigates the target, interacts with the golden-path flow, captures findings, fixes atomically, re-tests.</p>
+<h1>Nightly Fix Sweep</h1>
+<p>Turn a night's open code findings into reviewable change proposals: triage the leads, cluster what belongs together, and draft one focused proposal per cluster for the user to read and apply in the morning. The project's files are never touched.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Smoke</td><td>Reviewer</td><td>Navigate to the target URL and verify the page loads + the golden-path element is visible.</td></tr><tr><td>2</td><td>Exercise the flow</td><td>Reviewer</td><td>Walk the golden path. Click the primary CTA, fill the form, submit, watch the result.</td></tr><tr><td>3</td><td>Edges</td><td>Reviewer</td><td>Try a small set of edge cases: empty input, oversized input, invalid input, double-click, browser back.</td></tr><tr><td>4</td><td>Triage</td><td>Reviewer</td><td>Surface what broke. Stamp a clear finding and STOP — fix happens in a separate task.</td></tr><tr><td>5</td><td>Summary</td><td>Reviewer</td><td>Clean pass. Stamp a brief 'QA passed' note and DONE.</td></tr><tr><td>6</td><td>Halted</td><td>Reviewer</td><td>Smoke failed before any real testing happened. Surface it.</td></tr></tbody></table></div>
-<p>Say something like "qa this" or "test the ui" or "check the site" or "qa the app" in chat to start it.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Triage the leads into clusters</td><td>Developer</td><td></td></tr><tr><td>2</td><td>Draft the proposals</td><td>—</td><td></td></tr><tr><td>3</td><td>Hand over</td><td>—</td><td></td></tr></tbody></table></div>
+<p>Say something like "sweep the open findings" or "nightly fixes" or "draft fixes for the open issues" or "fix the boekwachter findings" in chat to start it.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

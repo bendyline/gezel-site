@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Behavior-Preserving Refactor — Gezel Handboek</title>
-<meta name="description" content="Refactor a module to improve its structure, readability, or design WITHOUT changing observable behavior — the defining constraint is that the tests stay green throughout.">
+<meta name="description" content="Restructure code without changing what it does, with proof at every stage: a green suite recorded before anything moves (characterization tests pinned first when coverage is thin), small reversible stages that keep the tests green, a re-measured structure target, and an enforced independent review.">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -39,13 +39,13 @@
 <ul class="hb-sidebar-entries">
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li class="hb-sidebar-subcategory">
-<h3 class="hb-sidebar-subcategory-title">Maintenance &amp; review</h3>
+<h3 class="hb-sidebar-subcategory-title">Code · Testing &amp; fixes</h3>
 <ul>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/refactor-module/">Behavior-Preserving Refactor</a></li>
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 290 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -70,9 +70,9 @@
 </nav>
 <article class="hb-article">
 <h1>Behavior-Preserving Refactor</h1>
-<p>Refactor a module to improve its structure, readability, or design WITHOUT changing observable behavior — the defining constraint is that the tests stay green throughout. Plans the refactor FIRST — the target structure, the seams to introduce, the safe step sequence, and the green-tests guardrail — then refactors in small reversible steps, then a reviewer confirms behavior is unchanged and the code is genuinely cleaner. Covers extract-function/module, dependency seams, removing duplication, naming, and test-green-as-invariant refactoring.</p>
+<p>Restructure code without changing what it does, with proof at every stage: a green suite recorded before anything moves (characterization tests pinned first when coverage is thin), small reversible stages that keep the tests green, a re-measured structure target, and an enforced independent review.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Plan the refactor</td><td>Planner</td><td>lock target structure, steps, green-tests guardrail</td></tr><tr><td>2</td><td>Refactor</td><td>Developer</td><td>apply small reversible steps, tests green throughout</td></tr><tr><td>3</td><td>Verify behavior preserved</td><td>Reviewer</td><td>confirm tests green and code is genuinely cleaner</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Capture the baseline</td><td>Developer</td><td>Record the current truth before changing anything: suite green, structural measurements, and the guardrail — with characterization tests added first where coverage is thin.</td></tr><tr><td>2</td><td>Plan reversible stages</td><td>Developer</td><td>Design the target structure and an ordered sequence of small stages, each individually reversible and each leaving the tree working. No source edits.</td></tr><tr><td>3</td><td>Restructure stage by stage</td><td>Developer</td><td>Execute the planned stages at the real sites, keeping the suite green between stages.</td></tr><tr><td>4</td><td>Re-measure and verify</td><td>Developer</td><td>Re-measure with the same method as the baseline, quote both figures, and record the suite green.</td></tr><tr><td>5</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>6</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>8</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>
 <p>Say something like "refactor this module" or "clean up the code" or "improve code structure" or "behavior-preserving refactor" or "reduce duplication" in chat to start it.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>

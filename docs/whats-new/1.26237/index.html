@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26237 — 25 August 2026 — Gezel Handboek</title>
+<meta name="description" content="Change proposals you read before any file is edited, fixes drafted overnight, a Try again button for stuck tasks, and AI Apps you can share as a link.">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
+<li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
+<li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26237 — 25 August 2026</h1>
+<p>Three days after <strong>1.26234</strong>, and this one is about work you get to look at before it lands.</p>
+<p>If you read only one thing: when a gezel fixes a problem in your files now, it doesn't change them. It writes the change up, you read it, and it happens when you say so.</p>
+<h2 id="your-crew-proposes-changes-instead-of-making-them">Your crew proposes changes instead of making them</h2>
+<p>A <strong>gezel</strong> — one of the AI workers on your crew — used to edit your files directly, or not at all. There was no third option, which meant every fix was a small act of trust: you found out what it did by looking at what it had already done.</p>
+<p>Now there is a third option. The gezel works exactly as before, but the edits are collected into a <strong>change proposal</strong> instead of being written to your project. Your files are untouched. The proposal shows up in the project's <strong>Proposals</strong> tab — which only appears once there's something in it — with the gezel's reasoning written out and every edit laid out line by line. You read it, and you press Apply. Or you don't.</p>
+<p>The useful consequence is that this works on folders your crew has no permission to write to. You never have to hand over edit access to get a fix drafted, and you don't have to give it to the night shift either.</p>
+<p>Two things a proposal will tell you plainly. If a file changed after the proposal was written — you edited it, or a teammate did — it's marked <strong>out of date</strong>, and applying it asks you to confirm first, naming the files that moved. And if two proposals touch the same file, both say so, because applying one puts the other out of date. If you'd rather read the change somewhere else entirely, every proposal exports as a zip with the diffs, the notes, and the <code>git apply</code> line to use them.</p>
+<p>Fixes always arrive this way. Press <strong>Fix</strong> on a problem your <strong>Boekwachter</strong> — the crew member who reads your project and files issues about it — has flagged, and what you get back is a proposal, not an edited file. Other work uses proposals where they fit: a task whose recipe supports drafting will propose rather than edit whenever it runs unattended, or whenever writing was never on the table.</p>
+<h2 id="overnight-they-write-themselves">Overnight, they write themselves</h2>
+<p>If a project has both a Boekwachter and a developer on its crew, the night shift now includes fixing. The Boekwachter finds the problems, and overnight the developer works through them — grouping related ones together and writing one proposal per group.</p>
+<p>What's waiting in the morning is a set of proposals, not a changed project. The home panel that summarizes the night now leads with them, since they're the part that's waiting on a decision rather than on being read, and each row says which project, how many files, and how many lines change.</p>
+<p>This is on by default, but only for projects that already have that pair on the crew — assembling one is the opt-in. Turn it off per project with <strong>Fix problems overnight</strong> in the project's settings. There's a limit of 40 issues per project per night, deliberately: above that the developer spends the window triaging and you wake up to a queue nobody will get through. The whole thing runs on a model on your own machine if that's what you use — no network, nobody's cloud. More in <a href="../../night-shift/">The night shift</a>.</p>
+<h2 id="a-stuck-task-has-a-try-again-button">A stuck task has a Try again button</h2>
+<p>When a task pauses to ask for help — it ran out of attempts on a step, or kept failing the same check — getting it moving again meant flipping its status back to active by hand. That usually did nothing. The counters that stopped it were still spent, so the scheduler would look at it on the next pass and pause it right back.</p>
+<p>The needs-input card now has <strong>Try again</strong>, and it does the three things that were actually required: clears the counters that tripped the pause, sets the task working again, and gets the assignee started immediately instead of waiting out a stall window. It continues the same conversation, so the gezel can see its own failed attempts, and it's pointed at the note explaining why it stopped — a retry that repeats the attempt word for word is a wasted turn.</p>
+<p>It doesn't try to judge whether retrying can work. If the fix was an edit you made between the pause and the click, refusing the button would just hide it from the person who already fixed the problem.</p>
+<h2 id="craftbooks-are-shelved-by-subject">Craftbooks are shelved by subject</h2>
+<p>A <strong>craftbook</strong> is a saved recipe for a piece of work. There are close to 300 of them, and browsing was organized by where a recipe fits in a project's life — starters, maintenance, general. On a code project that collapsed into two enormous piles, the larger of which was called "General work" and was mostly recipes about writing, media, and household admin.</p>
+<p>The browse rail in the new-task dialog now shelves them by what the work is <em>about</em>, split into recipes for working on software and everything else. "Recommended" still sits on top and still knows what kind of project you're in.</p>
+<h2 id="build-an-ai-app-then-share-it-as-a-link">Build an AI App, then share it as a link</h2>
+<p>An <strong>AI App</strong> packages a project type, a crew, craftbooks, scripts, and pages into one reusable thing. Last release it got a written guide. This release it gets the full loop from the command line:</p>
+<pre class="squisq-code-block"><code>gezel app new my-app        scaffold a source folder
+gezel app validate my-app   check it
+gezel app pack my-app       produce my-app-1.0.0.gezapp
+gezel app add &lt;file&gt; --yes  review and install one
+gezel app apply my-app      outfit the current folder with it
+gezel app serve my-app      share its pages as a mini-site</code></pre>
+<p><code>serve</code> is the new one worth knowing about. It turns an applied app into a small website — the app's pages, working the way they do in the Output pane — and prints a share link. Add <code>--chat</code> and visitors get their own conversation with the project's lead gezel. The site lives on your machine; putting it in front of anyone else means running a tunnel yourself, and the printed output tells you how.</p>
+<p>Visitors are not you. The share link mints a browser session that means nothing to the rest of gezel: no access to your projects, your files, or any other part of the daemon. Visitor chat has no tools at all, is rate-limited, and never feeds your gezel's memory. Pages can read and invoke only what the app's manifest declared. Sites are temporary — they end when you stop them or when the daemon restarts.</p>
+<p>All of this is command line only for now; there's no button in the app. Three worked example apps ship in the repo, and the details are in <a href="../../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a> and the <a href="../../cli-reference/">CLI reference</a>.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>Eleven more local models have measured scores</strong> — several Gemma 4 and Qwen 3.5 builds, Mistral 7B, and others — so the <a href="../../model-scorecard/">scoreboard</a> covers more of what you might actually download.</p></li><li><p><strong>The fitness column reached the DwarfStar engine</strong>, which is where it matters most: those are the models where "it loads" and "you can work with it" are furthest apart. Each row now shows the measured reading speed alongside the badge, because on a large model the wait you feel is the prompt being read, not the reply being written.</p></li><li><p><strong>Models kept only for compatibility are marked as such</strong>, so they stop looking like a reasonable thing to download.</p></li><li><p><strong>Model sizes read more honestly.</strong> Bit-depth labels are approximate on purpose (<code>~4</code>, <code>~8</code>) and now fall back to what the model file says about itself when the catalog text names no depth at all, and the memory figure beside the download size accounts for what the context window costs on your device.</p></li><li><p><strong>Your laptop stops cooking itself.</strong> When background summarizing kept timing out, it retried within milliseconds, forever — one captured morning spent four hours waking a large model on a closed-lid MacBook, overheating it, and timing out the call the heat had caused. A streak of timeouts now backs off for a while, measured on time the machine was actually awake, so sleeping through the cooldown doesn't count as recovering from it.</p></li><li><p><strong>Questions from Claude are real question cards.</strong> If you run Claude as your provider, its clarifying questions used to arrive as a generic Allow/Deny box. They now render as the question they are, with the options laid out.</p></li><li><p><strong>Rate-limit messages say something useful.</strong> "Claude subscription rate limit (seven-day): allowed_warning. Resets 5:00:00 PM." is now stated in plain words with the reset given relative to now — a seven-day window resets on a future weekday, and a bare clock time was wrong by days. It also stops repeating on every reply.</p></li><li><p><strong>The Artificial Intelligence settings header shows which engine and model a new chat gets.</strong> Answering that used to mean opening the tab and reading two controls.</p></li><li><p><strong>Scripts have a shared library.</strong> The Scripts view's source picker now has one, for scripts every project can run.</p></li><li><p><strong>Git status says when it gave up.</strong> Repeated failures now read as "Skipped after repeated failures" rather than looking like nothing happened.</p></li><li><p><strong>Craftbooks that depend on an up-to-date index can now ensure one</strong> before they start, and say honestly in their report what could not be brought current.</p></li><li><p>Catalog content moved to <code>@bendyline/gilde</code> 0.1.41.</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong>Change proposals have an HTTP surface</strong>: <code>/api/projects/:id/diffpacks</code> for the lifecycle, plus a zip export carrying the per-file diffs, notes, manifest, and an <code>APPLY.md</code>. The draft tree and sealed diffs are write-denied through the artifact store, so a model cannot forge a diff it never drafted.</p></li><li><p><strong><code>gezel app</code> gained an authoring track</strong> — <code>new</code>, <code>validate</code>, <code>pack</code>, and <code>schemas</code> run locally without the daemon. <code>gezel app serve</code>'s control surface is <code>/api/app-serve</code>, documented in the repo's <code>docs/app-serve.md</code>.</p></li><li><p><strong>Task retry is <code>POST /api/projects/:id/tasks/:num/retry</code></strong>, exposed as <code>retryTask</code> on the typed client. It reports whether a turn was actually dispatched and why not.</p></li><li><p><strong>Keyed locking moved into core</strong> and replaced ad-hoc mutex patterns across a dozen modules; long-running deadlines that can outlive a laptop nap now budget in awake time rather than wall clock.</p></li><li><p><strong>The script RPC channel handles backpressure.</strong> A large request over the inherited descriptor could short-write and raise <code>EAGAIN</code> while the parent drained the first chunk; writes now retry against a bounded synchronous pause instead of hanging until the runner's timeout.</p></li><li><p><strong>New craftbook gate checks</strong> for codebase-review reports, corpus coverage provenance, and workspace existence, plus stdlib scripts to drive them.</p></li><li><p>Two new repo guards: one on layering direction, one on the resolved default provider.</p></li></ul>
+<h2 id="anything-to-do">Anything to do?</h2>
+<p>No — update when you're offered it.</p>
+<p>Two places are worth a visit afterwards. If you have a project with a Boekwachter and a developer on the crew, look at <strong>Fix problems overnight</strong> in that project's settings and decide whether you want it; it's on by default. And if you run local models, the model tables have more measured numbers on them than they did three days ago.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#your-crew-proposes-changes-instead-of-making-them">Your crew proposes changes instead of making them</a></li>
+<li class="hb-h2"><a href="#overnight-they-write-themselves">Overnight, they write themselves</a></li>
+<li class="hb-h2"><a href="#a-stuck-task-has-a-try-again-button">A stuck task has a Try again button</a></li>
+<li class="hb-h2"><a href="#craftbooks-are-shelved-by-subject">Craftbooks are shelved by subject</a></li>
+<li class="hb-h2"><a href="#build-an-ai-app-then-share-it-as-a-link">Build an AI App, then share it as a link</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reproduce-Then-Fix a Bug — Gezel Handboek</title>
-<meta name="description" content="Fix a bug the disciplined way: first write a failing test that reproduces it, then make the smallest change that turns the test green without breaking others, then verify and guard against regression.">
+<meta name="description" content="Fix a bug the disciplined way, with proof at every step: a failing test that reproduces it (verified red by a real test run), the smallest change at the real defect site, a green suite afterwards, and an enforced independent review of the fix.">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -39,13 +39,13 @@
 <ul class="hb-sidebar-entries">
 <li><a href="../../craftbooks-index/">Every craftbook</a></li>
 <li class="hb-sidebar-subcategory">
-<h3 class="hb-sidebar-subcategory-title">Maintenance &amp; review</h3>
+<h3 class="hb-sidebar-subcategory-title">Code · Testing &amp; fixes</h3>
 <ul>
 <li><a class="hb-current" aria-current="page" href="../../craftbook/bug-fix-tdd/">Reproduce-Then-Fix a Bug</a></li>
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 290 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -70,9 +70,9 @@
 </nav>
 <article class="hb-article">
 <h1>Reproduce-Then-Fix a Bug</h1>
-<p>Fix a bug the disciplined way: first write a failing test that reproduces it, then make the smallest change that turns the test green without breaking others, then verify and guard against regression. Reproduces FIRST with a red test that captures the exact wrong behavior — because a bug you cannot reproduce you cannot prove fixed — then applies the minimal fix, then a reviewer confirms the new test passes, root cause is addressed, and the suite is green. Covers test-driven bug fixing, regression tests, minimal diffs, root-cause vs symptom, and red-green verification.</p>
+<p>Fix a bug the disciplined way, with proof at every step: a failing test that reproduces it (verified red by a real test run), the smallest change at the real defect site, a green suite afterwards, and an enforced independent review of the fix.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce with a failing test</td><td>Developer</td><td>write a red test that captures the wrong behavior</td></tr><tr><td>2</td><td>Apply the minimal fix</td><td>Developer</td><td>smallest change that turns the test green</td></tr><tr><td>3</td><td>Verify the fix</td><td>Reviewer</td><td>confirm green, root cause fixed, no regressions</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce with a failing test</td><td>Developer</td><td>Establish the failure on the real code, as a running test that fails for the right reason.</td></tr><tr><td>2</td><td>Locate the defect</td><td>Researcher</td><td>Name the defect site and the causal chain from it to the symptom. No source edits.</td></tr><tr><td>3</td><td>Make the smallest fix</td><td>Developer</td><td>Change the real defect site, minimally, keeping the new test as a regression guard.</td></tr><tr><td>4</td><td>Validate red-to-green</td><td>Developer</td><td>Re-run the original reproduction and the whole suite; record the real results.</td></tr><tr><td>5</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>6</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>8</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>
 <p>Say something like "fix this bug" or "reproduce and fix" or "tdd bug fix" or "write a regression test" or "debug and fix" in chat to start it.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
