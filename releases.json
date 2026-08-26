@@ -1,12 +1,13 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-25T20:10:35.926Z",
+  "generatedAt": "2026-08-26T02:50:26.221Z",
   "repo": "bendyline/gezel",
   "releasesUrl": "https://github.com/bendyline/gezel/releases",
   "tag": "v1.26237.59",
   "version": "1.26237.59",
   "published": "2026-08-25T20:08:53Z",
   "notesUrl": "https://github.com/bendyline/gezel/releases/tag/v1.26237.59",
+  "notesPath": "docs/whats-new/1.26237/",
   "checksumsUrl": "https://github.com/bendyline/gezel/releases/download/v1.26237.59/SHA256SUMS",
   "builds": [
     {

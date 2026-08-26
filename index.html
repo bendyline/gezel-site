@@ -715,6 +715,11 @@
       // is decided by the generator now.
       var LISTING = "releases.json";
 
+      // Where "Release notes" points when the listing names no article for the
+      // release on offer — an older listing, or a build that shipped without
+      // its own what's-new page.
+      var NOTES_INDEX = "docs/whats-new-index/";
+
       var PLATFORM_LABEL = { mac: "macOS", windows: "Windows", linux: "Linux" };
       var ARCH_ALIASES = { aarch64: "arm64", arm64: "arm64", amd64: "x64", x86_64: "x64", x64: "x64" };
       var FORMAT_LABEL = {
@@ -733,7 +738,7 @@
       var noteEl = document.getElementById("releaseNote");
       var keys = Array.prototype.slice.call(document.querySelectorAll(".tray-key"));
 
-      var release = null;      // { version, published, notesUrl, checksumsUrl, builds[] }
+      var release = null;      // { version, published, notesUrl, notesPath, checksumsUrl, builds[] }
       var archConfirmed = false;
       var detected = detectPlatform();
       var platform = detected;
@@ -798,10 +803,18 @@
           };
         }).filter(function (b) { return b.url && PLATFORM_LABEL[b.platform]; });
 
+        // notesPath is the Handboek article for this exact release, written by
+        // the generator only when the page it names exists. The pattern check
+        // is a guard against a malformed listing reaching innerHTML, and the
+        // fallback is the what's-new index — never a dead link.
+        var notesPath = String(data.notesPath || "");
+        if (!/^docs\/whats-new\/[0-9]+(\.[0-9]+)*\/$/.test(notesPath)) notesPath = "";
+
         return {
           version: data.tag || "",
           published: data.published || "",
           notesUrl: data.notesUrl || RELEASES,
+          notesPath: notesPath || NOTES_INDEX,
           checksumsUrl: data.checksumsUrl || null,
           builds: builds
         };
@@ -866,7 +879,7 @@
         var bits = [];
         var when = formatDate(release.published);
         if (when) bits.push("Released " + when);
-        bits.push('<a href="docs/whats-new-index/">Release notes</a>');
+        bits.push('<a href="' + release.notesPath + '">Release notes</a>');
         if (release.checksumsUrl) bits.push('<a href="' + release.checksumsUrl + '">SHA-256</a>');
         bits.push('<a href="' + RELEASES + '">All releases</a>');
         metaEl.innerHTML = bits.join('<span class="sep">·</span>');

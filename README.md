@@ -93,6 +93,14 @@ Which release counts is decided upstream by
 the greatest **stable** tag matching `v<semver>` exactly. Draft releases,
 `native-v*` engine releases, and npm-package releases can never appear.
 
+The listing also carries `notesPath` — the Handboek "What's new" article for
+that exact release (`docs/whats-new/<major>.<minor>/`), which is what the
+**Release notes** link in the download section points at. The generator writes
+it only after checking the page exists on disk, because not every build gets its
+own article; when it doesn't, the field is `null` and the link falls back to the
+what's-new index. That check is why a full `pnpm docs:site` renders the docs
+first and refreshes the listing second.
+
 Refresh it without regenerating the docs:
 
 ```sh
