@@ -121,3 +121,6 @@ links the releases page instead of an installer.
   site. They are inert as static files — the Pages workflow has no build step.
 - To use a custom domain, add a `CNAME` file containing the domain (e.g.
   `gezel.com`) to the repo root and configure it under Settings → Pages.
+
+Third-party components and their licenses are listed in
+[`NOTICE.md`](NOTICE.md).

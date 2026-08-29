@@ -1,8 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="34" height="34" role="img" aria-label="Gezel">
-  <rect width="34" height="34" rx="7" fill="#eae5d6"/>
-  <g fill="none" stroke="#b0724c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M17 6 C 20 9.5, 20 13, 17 16.5 C 14 13, 14 9.5, 17 6 Z"/>
-    <path d="M17 28 C 20 24.5, 20 21, 17 17.5 C 14 21, 14 24.5, 17 28 Z"/>
-    <path d="M17 6 L 17 28"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <!--
+    Transparent outline treatment based on Gezel's native 16 px tray mark.
+    The browser chooses a warmer, lighter stroke against dark tab chrome.
+  -->
+  <style>
+    .bench { color: #955d40; }
+    @media (prefers-color-scheme: dark) {
+      .bench { color: #dfa477; }
+    }
+  </style>
+
+  <g class="bench" transform="translate(.55 .45) scale(.92)" fill="none"
+     stroke="currentColor" stroke-width=".9" stroke-linecap="round"
+     stroke-linejoin="round">
+    <rect x="3.35" y="2.45" width="12.3" height="2.9" rx=".52"/>
+    <path d="M4.25 6.25h1.9l-.8 9.45h-1.9z"/>
+    <path d="M12.85 6.25h1.9l.8 9.45h-1.9z"/>
+    <rect x="6.85" y="10.15" width="5.3" height="1.55" rx=".32"/>
+
+    <rect x=".15" y="2.85" width="1.95" height="2.65" rx=".38"/>
+    <path d="M1.12 .8v6.75"/>
+    <circle cx="1.12" cy=".8" r=".46" fill="currentColor" stroke="none"/>
+    <circle cx="1.12" cy="7.55" r=".46" fill="currentColor" stroke="none"/>
+    <circle cx="1.12" cy="4.15" r=".32"/>
   </g>
 </svg>
