@@ -70,6 +70,7 @@
       --surface: #ddd3bd;
       --text: #1c1c1c;
       --muted: #666;
+      --muted-strong: #4d4d4d;
       --accent: #b0724c;
       --accent-hover: #996142;
       /* Quiet accent, for state that must read as selected without competing
@@ -89,6 +90,7 @@
         --surface: #1f2124;
         --text: #f0f0f0;
         --muted: #999;
+        --muted-strong: #b8b8b8;
         --accent: #c0875d;
         --accent-hover: #d5a07a;
         --accent-soft: rgba(192, 135, 93, 0.18);
@@ -135,7 +137,8 @@
     .masthead-nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 8px 20px;
     }
     .masthead-nav a {
       display: inline-flex;
@@ -305,7 +308,8 @@
       gap: 16px;
     }
     .use {
-      display: block;
+      display: flex;
+      flex-direction: column;
       background: var(--panel);
       border: 1px solid var(--border);
       box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
@@ -337,10 +341,25 @@
     }
     .use p {
       margin: 0 7px;
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       line-height: 1.45;
-      color: var(--muted);
+      color: var(--muted-strong);
     }
+    /* These tiles are links, so each one says where it goes. `margin-top: auto`
+       pins the line to the foot of the tile, which lines the four up across the
+       row however long the blurbs above them run. */
+    .use-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: auto 7px 0;
+      padding-top: 14px;
+      color: var(--sage);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .use-cta .arrow { transition: transform 140ms ease; }
+    a.use:hover .use-cta .arrow { transform: translateX(3px); }
     .download {
       background: var(--panel);
       border: 1px solid var(--border);
@@ -354,7 +373,7 @@
       font-family: var(--serif);
       font-weight: 700;
       font-size: 1.5rem;
-      margin: 0 0 0.4em;
+      margin: 0;
     }
     .download p { color: var(--muted); margin: 0 0 20px; }
     /* The sprite itself is never painted — only its symbols, via <use>. */
@@ -363,12 +382,23 @@
     /* The rail is pinned to the card's left edge and the build column takes
        whatever is left, so switching platforms — which changes how many build
        chips render — never reflows the keys out from under the pointer. */
+    /* The heading shares the first two tracks with the tray and the button, so
+       the requirements panel runs the full height of the card beside them
+       rather than starting a heading's worth of space down. */
     .picker {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) 250px;
+      grid-template-areas:
+        "head head specs"
+        "tray main specs";
       align-items: center;
-      gap: 28px;
+      gap: 18px 28px;
       margin: 0 0 4px;
     }
+    .picker h2 { grid-area: head; }
+    .tray { grid-area: tray; }
+    .pick-main { grid-area: main; }
+    .specs { grid-area: specs; }
     .tray {
       display: flex;
       flex-direction: column;
@@ -414,6 +444,60 @@
       fill: currentColor;
       opacity: 0.7;
     }
+    /* "Will this run on my machine?" answered beside the button rather than in
+       prose below the fold. Contents swap with the selected platform, because
+       the answer is a graphics card on Windows/Linux and unified memory on a
+       Mac — one combined list would ask everyone to read the half that is not
+       about them. */
+    .specs {
+      align-self: stretch;
+      border-left: 1px solid var(--border);
+      padding-left: 24px;
+      text-align: left;
+    }
+    .specs h3 {
+      margin: 0 0 12px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+    .spec-set[hidden] { display: none; }
+    .spec-list { margin: 0; }
+    .spec-list dt {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+    .spec-list dd {
+      margin: 3px 0 12px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--muted-strong);
+    }
+    .spec-list dd:last-child { margin-bottom: 0; }
+    .spec-gets {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .download .spec-note {
+      margin: 14px 0 0;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .spec-note a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: var(--border);
+    }
+    .spec-note a:hover { color: var(--accent); }
     /* Command-line panel: takes the download button's place in the column, so
        it is sized to sit in the same footprint rather than to fill the card. */
     .cli {
@@ -499,7 +583,6 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      flex: 1;
       min-width: 0;
     }
     /* Build picker: one chip per (arch, format) the selected platform ships.
@@ -614,13 +697,7 @@
       margin: 0 0 0.5em;
       color: var(--sage);
     }
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-      text-align: justify;
-      hyphens: auto;
-    }
+    .card p { margin: 0; color: var(--muted); font-size: 0.96rem; }
     /* Numbered walkthrough — deliberately unpanelled so it doesn't read as
        another row of the .card tiles sitting right below it. */
     .how { margin: 0 0 48px; }
@@ -661,16 +738,7 @@
       margin: 0 0 0.4em;
       color: var(--sage);
     }
-    /* Justified in a column this narrow needs hyphenation, or the last words
-       of a line get stretched into rivers of whitespace. */
-    .step p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.5;
-      text-align: justify;
-      hyphens: auto;
-    }
+    .step p { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.5; }
     .divider {
       display: flex;
       align-items: center;
@@ -712,18 +780,37 @@
       .hero { grid-template-columns: 1fr; gap: 28px; }
       .hero-media { max-width: 560px; }
     }
+    @media (max-width: 900px) {
+      .picker {
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas:
+          "head head"
+          "tray main"
+          "specs specs";
+      }
+      .specs {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding: 20px 0 0;
+      }
+    }
     @media (max-width: 720px) {
       .cards { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; gap: 22px; }
       .masthead { flex-direction: column; align-items: flex-start; }
       .download-btn { width: 100%; }
-      .picker { flex-direction: column; align-items: stretch; gap: 16px; }
+      .picker {
+        grid-template-columns: 1fr;
+        grid-template-areas: "head" "tray" "main" "specs";
+        align-items: stretch;
+        gap: 16px;
+      }
       /* Four keys will not fit across a phone, so they pair off two-by-two
          instead of shrinking until "Command Line" wraps mid-label. */
       .tray { display: grid; grid-template-columns: repeat(2, 1fr); }
       .tray-key { min-width: 0; justify-content: center; gap: 7px; padding: 10px 8px; }
       .tray-key span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .pick-main { align-items: stretch; flex: none; }
+      .pick-main { align-items: stretch; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -756,6 +843,7 @@
           </svg>
           GitHub
         </a>
+        <a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
       </nav>
       <span class="status-badge">Early beta</span>
     </header>
@@ -767,12 +855,14 @@
              bare brand word. Styling keeps them looking exactly as before. -->
         <h1>
           <em class="wordmark">gezel</em>
-          <span class="tagline"><u>Your team</u> of AI craftsmen</span>
+          <span class="tagline">Your team of AI craftsmen</span>
         </h1>
         <p class="lede">
-          Gezel is a desktop app for Windows/Mac/Linux for assembling a team of AI agents powered by your device.
-          Each <em>gezel</em> - Dutch for "journeyman" or "companion" - has a specialized role that makes the most of your hardware.
-          Everything you make lives on your device. No cloud, no lock-in, no mystery - just free, honest open source software.
+          <div>Gezel is a free desktop app for <strong>getting things done</strong>.</div>        
+          <p>Describe the job and a crew of AI specialists
+          takes it on — researching, drafting, building, reviewing — each working from a tested craftbook,
+          with over 200 to draw on. They work on your own machine, on local AI models. No cloud account,
+          no subscription, nothing leaving the building. It’s your team.</p>
         </p>
       </div>
 
@@ -800,8 +890,8 @@
     </section>
 
     <section class="download" id="download">
-      <h2>Download Gezel -- totally free open source</h2>
       <div class="picker">
+        <h2>Download Gezel — totally free, open source</h2>
         <div class="tray" role="group" aria-label="Platform selection">
           <button class="tray-key" data-platform="mac" aria-pressed="false">
             <svg class="tray-icon" aria-hidden="true" focusable="false"><use href="#i-apple"/></svg>
@@ -845,6 +935,38 @@
             <p class="cli-note">Needs <a href="https://nodejs.org/">Node.js</a> 24 or newer. <a href="/docs/cli-reference/">CLI reference</a></p>
           </div>
         </div>
+
+        <aside class="specs" aria-labelledby="specsTitle">
+          <h3 id="specsTitle">What you need</h3>
+
+          <div class="spec-set" data-specs="desktop">
+            <dl class="spec-list">
+              <dt>Minimum</dt>
+              <dd>A graphics card with 8&nbsp;GB of its own memory — NVIDIA RTX 2070, 3070, 4060, 5060 or better; AMD Radeon 6600, 7600, 9050 or better.
+                <span class="spec-gets">Runs the everyday models: chat, drafting, focused single tasks.</span>
+              </dd>
+              <dt>Recommended</dt>
+              <dd>16&nbsp;GB or more of graphics memory — NVIDIA RTX 4080, 5070&nbsp;Ti, AMD Radeon 9070 and up.
+                <span class="spec-gets">Adds the larger models, for multi-step work with tools.</span>
+              </dd>
+            </dl>
+          </div>
+
+          <div class="spec-set" data-specs="mac" hidden>
+            <dl class="spec-list">
+              <dt>Minimum</dt>
+              <dd>A Mac with an M1 chip or newer and 16&nbsp;GB of memory.
+                <span class="spec-gets">Runs the everyday models: chat, drafting, focused single tasks.</span>
+              </dd>
+              <dt>Recommended</dt>
+              <dd>24&nbsp;GB of memory or more.
+                <span class="spec-gets">Adds the larger models, for multi-step work with tools.</span>
+              </dd>
+            </dl>
+          </div>
+
+          <p class="spec-note">Models download separately the first time you use them. <a href="/docs/local-models-and-tiers/">Models and tiers</a></p>
+        </aside>
       </div>
       <p class="release-meta" id="releaseMeta">
         <a href="https://github.com/bendyline/gezel/releases">All releases</a>
@@ -868,24 +990,28 @@
                width="480" height="480" loading="lazy" decoding="async">
           <h3>Build pages</h3>
           <p>Sites, dashboards, and games.</p>
+          <span class="use-cta">See the role <span class="arrow" aria-hidden="true">→</span></span>
         </a>
         <a class="use" href="/docs/role/researcher/">
           <img class="use-illustration" src="/assets/woodcuts/research-docs.webp" alt=""
                width="480" height="480" loading="lazy" decoding="async">
           <h3>Research docs</h3>
           <p>Answers searched, cross-checked, and cited.</p>
+          <span class="use-cta">See the role <span class="arrow" aria-hidden="true">→</span></span>
         </a>
         <a class="use" href="/docs/role/reviewer/">
           <img class="use-illustration" src="/assets/woodcuts/review-code.webp" alt=""
                width="480" height="480" loading="lazy" decoding="async">
           <h3>Review code</h3>
           <p>A skeptic's read of the work before it ships.</p>
+          <span class="use-cta">See the role <span class="arrow" aria-hidden="true">→</span></span>
         </a>
         <a class="use" href="/docs/project-types-index/">
           <img class="use-illustration" src="/assets/woodcuts/personal-growth.webp" alt=""
                width="480" height="480" loading="lazy" decoding="async">
           <h3>Personal growth</h3>
           <p>Tutors and coaches that track your progress.</p>
+          <span class="use-cta">See project types <span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </div>
     </section>
@@ -903,11 +1029,11 @@
       <div class="steps">
         <div class="step">
           <h3>Install the Gezel app</h3>
-          <p>Download Gezel for your device. Gezel suggests the best possible AI local models that work on your device.</p>
+          <p>Download Gezel for your device. It measures the memory your machine can spare, then recommends the local AI models that will run well on it — no cloud account required.</p>
         </div>
         <div class="step">
           <h3>Speak with the meester</h3>
-          <p>Your first conversation is with the Meester -- your concierge for getting things done. Describe the work and they set up the project and add gezellen to staff it. Your project crew selects from a broad library of craftbooks that are included with gezel.</p>
+          <p>Your first conversation is with the Meester — your concierge for getting things done. Describe the work and they set up the project and add the gezellen needed to complete your tasks.</p>
         </div>
         <div class="step">
           <h3>Track as your crew builds</h3>
@@ -931,7 +1057,7 @@
       <div class="cards">
         <div class="card">
           <h3>Role-based gezel crews</h3>
-          <p>Every gezel has a role - for example, developer, writer, researcher - and a focused prompt and set of tools. This helps ensure AI models - especially local ones - remain focused so they can do their best.</p>
+          <p>Every gezel has <a href="/docs/roles-index/">a role</a> - for example, developer, writer, researcher - and a focused prompt and set of tools. This helps ensure AI models - especially local ones - remain focused so they can do their best.</p>
         </div>
         <div class="card">
           <h3>Craftbooks</h3>
@@ -950,6 +1076,7 @@
     <footer>
       <p>© 2026 Bendyline. Released under the MIT license.</p>
       <p><a href="https://github.com/bendyline/gezel">github.com/bendyline/gezel</a></p>
+      <p><a href="https://github.com/bendyline/gezel/issues">Report an issue</a></p>
     </footer>
   </div>
 
@@ -1015,6 +1142,7 @@
       var btnSub = document.getElementById("btnSub");
       var variantsEl = document.getElementById("variants");
       var cliEl = document.getElementById("cli");
+      var specSets = Array.prototype.slice.call(document.querySelectorAll("[data-specs]"));
       var metaEl = document.getElementById("releaseMeta");
       var noteEl = document.getElementById("releaseNote");
       var keys = Array.prototype.slice.call(document.querySelectorAll(".tray-key"));
@@ -1130,6 +1258,13 @@
         render();
       }
 
+      // Windows and Linux share one answer; macOS gets its own. Both sets ship
+      // in the HTML so the panel is still right with scripting off.
+      function showSpecs(p) {
+        var want = p === "mac" ? "mac" : "desktop";
+        specSets.forEach(function (el) { el.hidden = el.dataset.specs !== want; });
+      }
+
       // The CLI ships from npm, not from the release listing, so its key hides
       // everything the listing drives and shows the two commands instead.
       function showCli(on) {
@@ -1178,6 +1313,9 @@
       }
 
       function render() {
+        // The CLI drives the same local models as the app, so it answers the
+        // hardware question for the machine you are actually on.
+        showSpecs(platform === "cli" ? detected : platform);
         showCli(platform === "cli");
         if (platform === "cli") return;
 

@@ -78,13 +78,14 @@
 <p>Models come in sizes, and size matters for what a gezel can be trusted to do alone. Gezel groups them into <strong>tiers</strong>:</p>
 <div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Size (in billions of parameters)</th><th>Good at</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>quick drafts, simple lookups</td></tr><tr><td>small</td><td>5–12B</td><td>everyday chat, focused single tasks</td></tr><tr><td>medium</td><td>12–45B</td><td>multi-step work with tools</td></tr><tr><td>large</td><td>45B and up, local</td><td>most roles, unsupervised steps</td></tr><tr><td>cloud</td><td>hosted frontier models</td><td>everything</td></tr></tbody></table></div>
 <p>Every role declares a <strong>model floor</strong> — the minimum tier it needs to work unsupervised. A reviewer gating your deliverables needs more headroom than a gezel drafting a shopping list, and gezel enforces that automatically.</p>
+<p>A tier says what a size class <em>should</em> manage. For what individual models actually did — measured, on a real machine — see the <strong><a href="../model-scorecard/">Model scorecard</a></strong>. It is the fastest way to pick a local model you can trust with a given job, and <a href="../how-we-test-models/">How we test models</a> explains what the numbers do and do not tell you.</p>
 <h2 id="on-this-device">On this device</h2>
-<p>Gezel classifies each device as tiny, small, medium, or large from the memory available to local models. Open this page in the app to see the current device.</p>
+<p>Gezel classifies each device as tiny, small, medium, or large from the memory available to local models.</p>
 <h3 id="installed-local-models">Installed local models</h3>
 <p>Gezel runs local models (llama.cpp, MLX, Ollama and friends) alongside cloud providers — the Models catalog in the app shows what fits your machine.</p>
 <h2 id="choosing">Choosing</h2>
 <p>You don't have to get this right up front. Set a default provider in Settings, and override it per gezel only when a companion needs something different — a big cloud model for your reviewer, a fast local one for day-to-day chat. Gezel checks each new model's fitness on your hardware before recommending it.</p>
-<p>The public <a href="https://gezelgilde.com/models/">Gezel Gilde model catalog</a> lists the local chat, image, and video models Gezel knows about, including their download size, context, license, supported engines, and hardware tier.</p>
+<p>The public <a href="https://gezelgilde.com/models/">Gezel Gilde model catalog</a> lists the local chat, image, and video models Gezel knows about, including their download size, context, license, supported engines, and hardware tier. Once you have a shortlist that fits, the <a href="../model-scorecard/">Model scorecard</a> shows how those models actually performed.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>
