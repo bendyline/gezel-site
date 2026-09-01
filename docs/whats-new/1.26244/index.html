@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26244 — 1 September 2026 — Gezel Handboek</title>
+<meta name="description" content="Spreadsheets your crew can actually count, documents read aloud, dictation and spell-checking, and local models that stop stalling out at five minutes.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26244/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26244/">
+<meta property="og:title" content="1.26244 — 1 September 2026">
+<meta name="twitter:title" content="1.26244 — 1 September 2026">
+<meta property="og:description" content="Spreadsheets your crew can actually count, documents read aloud, dictation and spell-checking, and local models that stop stalling out at five minutes.">
+<meta name="twitter:description" content="Spreadsheets your crew can actually count, documents read aloud, dictation and spell-checking, and local models that stop stalling out at five minutes.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26244.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Spreadsheets your crew can actually count">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26244.png">
+<meta name="twitter:image:alt" content="Spreadsheets your crew can actually count">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
+<li><a href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
+<li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
+<li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26244 — 1 September 2026</h1>
+<p>Seven days after <strong>1.26237</strong>, and this one is mostly about data you already had and couldn't use.</p>
+<p>If you read only one thing: a spreadsheet or a big CSV sitting in your project is now something a <strong>gezel</strong> — one of the AI workers on your crew — can count, group and total, rather than something it can only read prose about.</p>
+<h2 id="your-spreadsheets-become-something-your-crew-can-count">Your spreadsheets become something your crew can count</h2>
+<p>Two kinds of file were handled badly, at exactly the sizes where it hurt.</p>
+<p>A CSV too large to read was effectively invisible. It was too big to open in a conversation, and nothing indexed it, so asking about it got you nothing. And a spreadsheet was converted to prose — which meant a gezel could describe your numbers but could not add them up. Both failures were quiet. You'd ask a question about a file that was right there and get an apology.</p>
+<p>Now CSV, TSV and XLSX files in a project's folder become <strong>tables</strong>, in the background, without you setting anything up. A gezel asks the table a question — how many orders per region last quarter, which customers appear twice, what the median is — and gets back the answer. Not the rows. That distinction is the whole point: because the answer is what comes back, the size of the file stops mattering. A 200 MB export and a 20-row list work the same way.</p>
+<p>Tables keep themselves current. Edit the file and the table is rebuilt; delete the file and the table goes. A very large file may be handed to the overnight pass rather than done while you wait.</p>
+<p>The same machinery now backs <strong>connectors</strong>, the synced copies of outside sources like a mailbox or an issue tracker. Sources that produce rows rather than documents — server logs, request traces, billing exports — can land as tables instead, which is what makes millions of records possible at all; the document-shaped mirror tops out around twenty thousand. Azure Monitor logs are the first of these.</p>
+<p>A project's <strong>Overview</strong> lists whatever became a table, and the <strong>Connections</strong> tab shows each synced source with its row count and the stretch of time it covers.</p>
+<p>Reading is all your crew can do here. A gezel may ask a question; it may not change, add to, or delete anything in a table, and it doesn't get handed the rows unless it explicitly asks for a few.</p>
+<h2 id="documents-that-read-themselves-aloud">Documents that read themselves aloud</h2>
+<p>Any document, artifact or project file can now be read out loud. Open it and press narrate — the whole thing, or just the part you've selected. When it's done you can save the audio as an MP3 and take it with you.</p>
+<p>This needs the text-to-speech engine, a one-time download in <strong>Settings → Audio</strong>, where you can also listen to the available voices before you pick one. Like everything else here it runs on your own machine; nothing is sent anywhere to be spoken.</p>
+<h2 id="talk-to-your-crew-instead-of-typing">Talk to your crew instead of typing</h2>
+<p>The chat box has a microphone. Press it and speak, and your words appear in the box as you say them rather than all at once when you stop — so you can see it getting you right, and fix a word without starting over.</p>
+<p>Speech recognition is the other half of that Audio settings pair, also a one-time download, also entirely local.</p>
+<h2 id="spelling-and-grammar-with-no-network">Spelling and grammar, with no network</h2>
+<p>Markdown documents in the editor are now proofed as you write: misspellings and grammar problems are underlined, with suggestions, and a word you accept into your own dictionary stays accepted. It's English only for now, and it runs inside the app — there's no service being asked about your writing.</p>
+<p>Separately, right-clicking in any text box in the desktop app now gives you the ordinary editing menu you'd expect, including the system's own spelling suggestions.</p>
+<h2 id="local-models-stop-stalling-out-at-five-minutes">Local models stop stalling out at five minutes</h2>
+<p>A long prompt on a large local model is genuinely slow before it says anything at all — a 27B model reading seventy thousand tokens can take a quarter of an hour to produce its first word. Underneath the deadline gezel had set for that work sat a second, invisible five-minute one, and it was always the shorter of the two. It killed long turns and then blamed the model, reporting that the engine had crashed or run out of memory and suggesting you try again — advice that could never work, because the same prompt hit the same wall every time.</p>
+<p>That second deadline is gone. The only limit on a local turn now is the one gezel set for it, sized to how much there is to read.</p>
+<p>Batch work also got faster. When a job fans out into several pieces running at once — a review split across a few dozen files at a time — those pieces share the same crew member, the same project and the same recipe, and differ only in which files they're looking at. They used to each read the identical shared preamble from cold. Now the first one through warms it and the rest inherit it: in a matched before-and-after, 22,500 tokens read cold became 12,800. On the llama.cpp engine, models that can predict several tokens at once now do so by default.</p>
+<h2 id="chat-shows-what-your-crew-is-actually-doing">Chat shows what your crew is actually doing</h2>
+<p>When a gezel starts a <strong>craftbook</strong> — a saved recipe for a piece of work — the conversation now shows a card for it: which recipe, what its steps are, and how far along it is. Before, that arrived as a line of tool output that told you a tool had been called and little else.</p>
+<p>Half-written messages also survive now. The chat box used to lose a draft the moment you went to Settings and came back, or switched to another gezel. It keeps them.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>You can check that your download is really ours.</strong> <a href="../../verifying-your-download/">Verifying your download</a> is a new page explaining the two things published beside every release: a list of checksums, and a signed record naming the build that produced them. Most people never need it — macOS and Windows check our signature for you. On Linux it's the only verification there is, because <code>.deb</code> and <code>.rpm</code> files carry no signature your package manager looks at.</p></li><li><p><strong>Knowledge catalogs are verified before they install.</strong> Publisher keys are built into the app, and settings can add trust but never remove it, so nothing you configure can quietly turn the check off.</p></li><li><p><strong>The scoreboard on gezel.com can be filtered.</strong> Pick a machine, a model, a size class or a date and the <a href="../../model-scorecard/">model scorecard</a> narrows to it — useful now that the rounds span a Mac, a Windows desktop with a Radeon card, and a DGX Spark. Inside the app it stays a plain stack of rounds.</p></li><li><p><strong><a href="../../how-we-test-models/">How we test models</a> explains the two hard sets.</strong> One is developer work; the other asks a model to write the recipe rather than follow it. Nobody scores full marks on either, and the article now says so — a low number there is headroom, not breakage.</p></li><li><p><strong>A finished document typed into the chat gets saved anyway.</strong> Caught in the wild: twelve kilobytes of completed review that the model wrote out in conversation instead of saving to a file, and which was then thrown away. It's recovered now.</p></li><li><p><strong>Granite models are supported</strong>, and DGX Spark machines have experimental support through the ds4 engine.</p></li><li><p><strong>When a gezel is told it has rambled</strong>, the correction it reads now names only tools that turn actually has. It used to recommend file-writing tools to sessions that had none, which is a hard instruction to follow.</p></li><li><p><strong>Files show what they are in the file lists</strong>, with an icon per type.</p></li><li><p>Catalog content moved to <code>@bendyline/gilde</code> 0.1.51.</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong>Three new tools — <code>list_tables</code>, <code>describe_table</code>, <code>query_table</code></strong> — registered only for projects that actually have a table, which is why role tool counts move from 82 to 85 there and stay put elsewhere. Queries are checked by DuckDB's own parser rather than a keyword list, and only a single <code>SELECT</code> is accepted; <code>WITH … INSERT</code> and every <code>EXPLAIN</code> form are refused.</p></li><li><p><strong>Two data layouts, deliberately different.</strong> Connector corpora live at <code>artifacts/data/&lt;corpus&gt;/tables/</code> and are append-only, time-partitioned, compacted and retained. Workspace tables live at <code>artifacts/tabular/</code> and are snapshots — one content hash, one materialization, replaced wholesale. Both are write-denied to gezels and neither is text- or vector-indexed.</p></li><li><p><strong><code>patientFetch()</code> is the only dispatcher local engines may use.</strong> Node's undici caps header and body timeouts at five minutes, which was the invisible deadline above; a repo guard now fails the build when an engine provider builder forgets it.</p></li><li><p><strong>Shared-band prompt-prefix reuse is on by default on MLX</strong>, with <code>mlxSharedBandPrefix.enabled: false</code> to opt out.</p></li><li><p>Three architecture decisions are written down: observation corpora, shared-band prefix reuse, and workspace tables, alongside a full contract document for the tabular connector shape.</p></li></ul>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
+<p>Two places are worth a visit. If you want documents read aloud or want to dictate instead of type, <strong>Settings → Audio</strong> has both engines and a voice preview; they're one-time downloads and they run on your machine. And if any of your projects has a spreadsheet or a large CSV in it, open that project's <strong>Overview</strong> — whatever became a table is listed there, and your crew can be asked about it straight away.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#your-spreadsheets-become-something-your-crew-can-count">Your spreadsheets become something your crew can count</a></li>
+<li class="hb-h2"><a href="#documents-that-read-themselves-aloud">Documents that read themselves aloud</a></li>
+<li class="hb-h2"><a href="#talk-to-your-crew-instead-of-typing">Talk to your crew instead of typing</a></li>
+<li class="hb-h2"><a href="#spelling-and-grammar-with-no-network">Spelling and grammar, with no network</a></li>
+<li class="hb-h2"><a href="#local-models-stop-stalling-out-at-five-minutes">Local models stop stalling out at five minutes</a></li>
+<li class="hb-h2"><a href="#chat-shows-what-your-crew-is-actually-doing">Chat shows what your crew is actually doing</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1070 @@
+{
+  "version": 1,
+  "cards": {
+    "welcome": {
+      "specHash": "e5c680641e026059d10e1cbb0bdc871ddc4f060e8586da75b62e7b233ce00858"
+    },
+    "the-crew": {
+      "specHash": "ff3565523c1223270956ee8741c4ea1af33159f34295e59d73248641647209c1"
+    },
+    "projects-and-threads": {
+      "specHash": "7db884aecb9b5ed4c7dc617303f7ac445dc30ec218192bc92a08439e9de5c148"
+    },
+    "memory-and-documents": {
+      "specHash": "07f68fd9ee1ae2bd83658213c4fb4517dc8e7bf5358b510e8f4c9f442bdc14a4"
+    },
+    "craftbooks-overview": {
+      "specHash": "4cefd949701076764bdcdcccd1e8f9cbc14d53b8c95310ef5c14c3e439162586"
+    },
+    "local-models-and-tiers": {
+      "specHash": "857bfff3c004b5ba5db77bc9be26966ed6b3028f682439541cc17cab5ea3f3a4"
+    },
+    "tasks-and-supervision": {
+      "specHash": "5c379885891519c80819e98c2095174c298875c142a693e75609a738fcfd5653"
+    },
+    "night-shift": {
+      "specHash": "8d863a6456debfd071ee439b128a606032240b8a7413ff8a93744f71087cf3eb"
+    },
+    "privacy-local-first": {
+      "specHash": "eae5f22b514a03db16dae594fba71bd121caf7ef259bb2b5de18c936b3d9c45b"
+    },
+    "connected-apps": {
+      "specHash": "96178653a5ef5f06cd3822570fd44f28d4c9e0ec74fbb510536eeeed3b9867bb"
+    },
+    "roles-index": {
+      "specHash": "f96969f876c4f27182845d706e0fa7f73cac88c16a414f740676063a1d5d93e2"
+    },
+    "role/meester": {
+      "specHash": "5864018b713780dc9c88f0da36861c6789b0a187e5b59c6592f5953cc26513d3"
+    },
+    "role/voorman": {
+      "specHash": "30e965f69c1848d3dbfdae57b582a07981a13da9888d51c8797c92919992bf0b"
+    },
+    "role/reviewer": {
+      "specHash": "1c62fce60c2e309b5692687311029674bc6786482f40fd48e20de9cbf3e6a922"
+    },
+    "role/researcher": {
+      "specHash": "c160bc9475a2cca0fd446b4ccec6a707d9bdb7d89599ef0d1d318144694863a2"
+    },
+    "role/copywriter": {
+      "specHash": "d8a41125a8d66d2041f22658d155a779b52ba279b085a52e9733e0111b9a7069"
+    },
+    "role/designer": {
+      "specHash": "4c31555d606a5ae2edfd1745d8f8089869735ecadcf9800fc281caab803a4b7f"
+    },
+    "role/image-generator": {
+      "specHash": "77651b10546f1930d6f10265bf1976b8993ebdf5c9b4c4c9b2b28e35554eecf0"
+    },
+    "role/video-generator": {
+      "specHash": "f78e658678552016c84835fac03ac7378e2c97ff2432d3f43ac632d95631b76d"
+    },
+    "role/developer": {
+      "specHash": "93dc5dbd6a761c7874cc8c108f1ca9a8be019dc8149b7713d0bb35142734ec79"
+    },
+    "role/web-developer": {
+      "specHash": "a71eb74a10a58edb050f6027fcd1fe8b201767d26f25898739169dea48859477"
+    },
+    "role/planner": {
+      "specHash": "203671ea80ca8fc28f5a56db437816a875fcb54ba288b1d1bc4f288ad3080d72"
+    },
+    "craftbooks-index": {
+      "specHash": "9c89fc24a39345edb18fd20a2c5e88e1f1be8904682709de6e38f9e83cbda329"
+    },
+    "craftbook/ad-variations": {
+      "specHash": "7b673e4db8d99d913fa1ef0a39e9b341e5b10d888254794194f6f2f26f2019f5"
+    },
+    "craftbook/ab-test-readout": {
+      "specHash": "2cdf4cba96dc4d927d414ab6026f402f25c6e2cb9a200af48a3882575e3de47b"
+    },
+    "craftbook/a11y-audit": {
+      "specHash": "710fe8455630ee7ead68c76f606d60717d462037908ee58b8f20b4dd7adbbec4"
+    },
+    "craftbook/accessibility-retrofit": {
+      "specHash": "b43d8db94067dd7b9cfd50d2440d86f06202d0f26f6e2991ae560bcb1eeb8bbe"
+    },
+    "craftbook/narrated-slideshow": {
+      "specHash": "30f90ae584f0fc9aac3575d31318c8c12556d45464d41aeb95ff42152ba30cd4"
+    },
+    "craftbook/svg-animation": {
+      "specHash": "edd3b0c9bd71876d12dad703b76a88b752ef2756e4f0a1f55a99bfee2201b7d3"
+    },
+    "craftbook/anniversary-cut": {
+      "specHash": "f2b66dd03a45db777ce0390c51da4f0cc9b23bfbf53039430ac3bc727a138676"
+    },
+    "craftbook/annotated-bibliography": {
+      "specHash": "595bd38326aaba11a730bb34eb33af2dc1fafedd9377df1c4ba2b69df8e3b63c"
+    },
+    "craftbook/annual-document-review": {
+      "specHash": "69a6fa733f5e41017bbcf3e26a061396ecfa757b6eafe0866eb39a3c86de7d4e"
+    },
+    "craftbook/anomaly-scan": {
+      "specHash": "791c2954bee9ace3d656e3f77a50fea35eb37e0d3219d0824d1e176865332426"
+    },
+    "craftbook/sql-analysis": {
+      "specHash": "c203075d8bbda2c571b12ded812bc146d6bcf508131e22004624aeae7f387827"
+    },
+    "craftbook/api-contract-review": {
+      "specHash": "d60e941cac8192ff5e56a9e3c8246790d32ca1f9b5a825e68fdd5faa50292ba1"
+    },
+    "craftbook/apply-review-findings": {
+      "specHash": "d5cdbc75f47946dbf00162dc412c241d445d093bafe7688016123d60223f6dab"
+    },
+    "craftbook/artifact-integrity-review": {
+      "specHash": "7734db02810cbc38453b1a4bcf4bd5b2494c0e4af3dee52cc72936f1782088a8"
+    },
+    "craftbook/audio-ad-spot": {
+      "specHash": "08e00902c0639123fac39a5fc4915524f7f86cc2c9922b80f6807c4c7600cf13"
+    },
+    "craftbook/audio-highlight-reel": {
+      "specHash": "5dc46e5e3e1c27c6fc367ed1a70aeb4410286ff3e9e31a01cde7c30a28bbe132"
+    },
+    "craftbook/subscription-audit": {
+      "specHash": "00692a2904aac81299c24563f677ecffa811eb4b057e608eb158e8a745627be2"
+    },
+    "craftbook/auth-flow": {
+      "specHash": "31961fdcaa1327e83c62fdf87a03a5b2acdb01b935bdb5396c65b211a763d275"
+    },
+    "craftbook/booking-automation": {
+      "specHash": "c06c7fae245fb91de41bcc512b4a441bbc460251c02153a9f3c4a6bec9588fe1"
+    },
+    "craftbook/image-batch-edit": {
+      "specHash": "38c20d7854a626e27038f8ab9a128a2512cb6bc7cfb1e9111e999a1661e2112b"
+    },
+    "craftbook/form-fill-batch": {
+      "specHash": "a2e640609b8f8cc2a140f7f47c6cf96ddaa852105dbd617de24d0f501b805559"
+    },
+    "craftbook/refactor-module": {
+      "specHash": "e58c759b5805ec0b53118fd46d1b62430513c7f2d89f1e3edbdd195c3c701a66"
+    },
+    "craftbook/board-deck": {
+      "specHash": "16f2d81110dbe07b9d8e88d3f5a950535d0f454948ce0884c64254d270e82114"
+    },
+    "craftbook/tone-rewrite": {
+      "specHash": "6cb912db960337ac455168f8cf33a33bb953ffd0e9041f998c687ce6d12c6100"
+    },
+    "craftbook/branding-website": {
+      "specHash": "3cd1c0f0115ed4fcc3afa0a50b4c3a95a3bf16bd1d331fe4a6fa14db49bf60d8"
+    },
+    "craftbook/chrome-extension": {
+      "specHash": "4d9d42f28fc5a0c4286caab8f5968328580511850dcde050ca886d549805326a"
+    },
+    "craftbook/browser-qa-audit": {
+      "specHash": "7b0c5a7af92b534f80327c258bd27cf43b06866c1f5bed97b0b3016c8ed06443"
+    },
+    "craftbook/regex-builder": {
+      "specHash": "e3e2458e5629fd19b05fe6bbff849a8ba4c2b54cbf2c71a90afd0e2ea6fef3e5"
+    },
+    "craftbook/build-loop": {
+      "specHash": "d3fba62dd1ca731db89554e657dc1f43957a1b7150874a154e039a38947e179c"
+    },
+    "craftbook/crm-update-batch": {
+      "specHash": "c63468e91d616c99f74b0a935c37bd0b791b35215218a3f8f1f0d452a4030740"
+    },
+    "craftbook/product-descriptions": {
+      "specHash": "50d8690299329eeb73ffd5e7325c3e3e3a5f4ecd87c02bb42475a5c19d1ee472"
+    },
+    "craftbook/canvas-generative-art": {
+      "specHash": "58ad637af4435479f3111399bf7a1d3f9ebf1ae9be11bb0386522dff335c91a2"
+    },
+    "craftbook/recipe-capture": {
+      "specHash": "e304e4c2d5effa172a880639cebd987676524d7553d767e52570d296f4ec4422"
+    },
+    "craftbook/visit-prep": {
+      "specHash": "d885da5a8f6c7fe58755b948609e07e7abdca5e55beb5f441b99053095469868"
+    },
+    "craftbook/careful-mode": {
+      "specHash": "9edf52663e04b7abc1eee87b6eb2512d7aa5e473af72ff70c42a908341a23d9e"
+    },
+    "craftbook/item-intake": {
+      "specHash": "4d2c11341e861d1d4076225360eb146ce23ff2bdb32a3c47a777c9151f0ab217"
+    },
+    "craftbook/expense-categorize": {
+      "specHash": "f35288024397a92bf9fe2726dc9465f5ae5aedf054a1d9690932571e068009e3"
+    },
+    "craftbook/character-sheet": {
+      "specHash": "8284df61932daf63077e6e853e60fc4f3d8ca75341cae81867d83a619b57e970"
+    },
+    "craftbook/character-turnaround": {
+      "specHash": "8de2eba7c623aed2d0fa98b5bb12fde938eda408a2c58d19a07cf9bc134d3856"
+    },
+    "craftbook/chart-pack": {
+      "specHash": "e1527ea19f46cb24b0897140070f302b9898590e46f4b244a72a55cbde078f78"
+    },
+    "craftbook/ci-pipeline": {
+      "specHash": "250d4c0f8c2951eea73e3212f4d55cfec0ff6b90d5b1967cd00654d886416eff"
+    },
+    "craftbook/citation-audit": {
+      "specHash": "6db6bdb515532785a08ad28727ca0704457b86327979dc631d098981b9b3163b"
+    },
+    "craftbook/research-report": {
+      "specHash": "0d0bc871d797565e8506f1e45bd802a880749b4ae205589123cb5de1c88eb5db"
+    },
+    "craftbook/doc-intake-pipeline": {
+      "specHash": "5e99afe09945e01376113e546dccd117fded476d266047ecd7f09998f137bc64"
+    },
+    "craftbook/dataset-clean": {
+      "specHash": "be2e463be5b71dd9dc241fdcc2e89f7c1fe9e12b72d7270723ae56ba02095158"
+    },
+    "craftbook/month-close": {
+      "specHash": "09197e5c301d3275b15650dbd202061d0dce9632a92040ece16257920e3a5506"
+    },
+    "craftbook/code-review": {
+      "specHash": "964725998d71a341f9768ae1875c5eba57c8c5c1f2b127c05a0f41086fed38b8"
+    },
+    "craftbook/codebase-refactoring-review": {
+      "specHash": "39e8d66e7cd344c93fb122f56b1cc6fddb7fb0e0e98826e60cf02098d33da756"
+    },
+    "craftbook/codebase-ux-review": {
+      "specHash": "ae55f7246df0565c09f8c528ed196a1225a26eca3a605207c01995c566a9d62b"
+    },
+    "craftbook/codemod-sweep": {
+      "specHash": "74c5dba152e2d708a2b463c5621918d82d72e362d0ee9402cc3fee7daf9e25b5"
+    },
+    "craftbook/icon-pack": {
+      "specHash": "ba2e5778d08254d46cca11c3f6ca522c3cf1e977993ccf10f4eec9ed01672fbb"
+    },
+    "craftbook/cohort-analysis": {
+      "specHash": "a180261cc1159f651e7f58d7a4ab886f193141c7facada1b37ffc36886cc11fc"
+    },
+    "craftbook/cli-tool": {
+      "specHash": "273ae74fcfa0e478e56931a2c9f2a469d2a911ef8bd9164a77dadc7c086fa3d2"
+    },
+    "craftbook/company-research-brief": {
+      "specHash": "b78254274661e6afcd3e12c82efbebc3f04ac8e6806e7785d8975f9f9faa25e5"
+    },
+    "craftbook/compat-check": {
+      "specHash": "b8c7329c7ae7fce642fb74087691a9d9b21cfb325c49220261f9ff502960b61b"
+    },
+    "craftbook/competitive-analysis": {
+      "specHash": "2a249151c712d02a207962e2c19980944b35a1dd3b4fcf63a0a1ea7c225823ac"
+    },
+    "craftbook/comprehensive-codebase-review": {
+      "specHash": "31ab3d8127f9174ccff3326264c912430888aea80e22f872234cb2d005f32739"
+    },
+    "craftbook/dockerize-app": {
+      "specHash": "f46f4fc6ed13d7cb5da3e0535d2359e97f9c1fb71772dab86aaa7e5658e65962"
+    },
+    "craftbook/content-accuracy-review": {
+      "specHash": "c5a363fd326957018bfd27f046713071959a456e52631377d0fc31f87d1d0e7a"
+    },
+    "craftbook/contract-template": {
+      "specHash": "d86fbc26cadeec5e95ff6dca9355e40e63ff3999f077a9ef6e912c80d2c11a45"
+    },
+    "craftbook/corpus-synthesis": {
+      "specHash": "8241af42166ae1d8648b929fcd82b4292ad1ba8e922662bb0df9b0ab8f814c73"
+    },
+    "craftbook/web-app-crud": {
+      "specHash": "ab2d176df3a75714ba3a809fb97c9ef6a8116e32e7de64ed2c1ad47c43511b0d"
+    },
+    "craftbook/csv-transformer": {
+      "specHash": "fc759dabed1d4aa85aa9463d4841d894a62a5e613b0bc569ce410809c1a805af"
+    },
+    "craftbook/album-curate": {
+      "specHash": "70d46f81ff73cf865c507694cb28fddca0a1e1e0683eb9f43e2260133e298e4a"
+    },
+    "craftbook/reading-list": {
+      "specHash": "31d1d3d881c1c4f80f0d456bc6f7625f452d879b8ab877a2cc9bde4dcf2c89d5"
+    },
+    "craftbook/case-study": {
+      "specHash": "f44a3afa99a7cc01a8c5ac5183bb91bae9be539f1e44eb90a4d13980a7556ecd"
+    },
+    "craftbook/case-study-writeup": {
+      "specHash": "f44a3afa99a7cc01a8c5ac5183bb91bae9be539f1e44eb90a4d13980a7556ecd"
+    },
+    "craftbook/calendar-brief": {
+      "specHash": "fe5a8ecdbb0f5cf7a3ca064c562b1a71ea25d87a954ff4bb82e9af48a5222ecd"
+    },
+    "craftbook/corpus-email-digest": {
+      "specHash": "f10b56b1a6b280269cccbc068b626ad14837d3166b44e0441193c29b6d1e31bc"
+    },
+    "craftbook/dashboard-spec": {
+      "specHash": "e2c20820a6744ae1787e8b2a2760b463d34368edc640591928d7f692da6f424d"
+    },
+    "craftbook/data-dictionary": {
+      "specHash": "232cb75c68db846c7b79fb715e91a67bb42061151262279723e9aa2cb51b4637"
+    },
+    "craftbook/data-quality-audit": {
+      "specHash": "4ded797111a81251f8a2a75e1a25062897e7c1f84e4acb3999fa97b6ce639c2b"
+    },
+    "craftbook/data-viz-page": {
+      "specHash": "079236b7c253f3835f2ae20ffb952b977b5757391497a52e115dfb1689780209"
+    },
+    "craftbook/data-to-report": {
+      "specHash": "a6204e76238055a7192479744736df7fa080f4d7641791abcb81aba19d49ed93"
+    },
+    "craftbook/evidence-brief": {
+      "specHash": "5d15670354d69e8954c54c1d50abb58b2873b667b0ffd2ada908382ecbebf991"
+    },
+    "craftbook/deep-security-review": {
+      "specHash": "e5d2beaf870965f1cdb8977a2b95a71e160905f147687e4f82ffd77dc26e5980"
+    },
+    "craftbook/dependency-audit": {
+      "specHash": "a38449d23c9c07d598670b20e12ba56bd80b0fb340726ec2a1037b486127a6c5"
+    },
+    "craftbook/deploy-checklist": {
+      "specHash": "19d95448d273dde2a7b5adbae588baf6233004b8770eb7eb15fb9223ae7d2279"
+    },
+    "craftbook/design-system-consultation": {
+      "specHash": "ba8bc915bbfb12d0efdd87132fef8df1d2bdb2e6796f032c374bcebdab1652c4"
+    },
+    "craftbook/invitation-design": {
+      "specHash": "1db2e08a6a5ab1a30439c23f1cc5f74c2838527f4a622e9829aa77af4bd47214"
+    },
+    "craftbook/db-index-tuning": {
+      "specHash": "b12c1fdcff3e9dd291fa0b93e1c22a8227cb5aef1f60d69edcd5d494e533e465"
+    },
+    "craftbook/diagram-from-text": {
+      "specHash": "614e25e68b5cbb442a83fa4706acafe69bba60705763eb2978f8261deb44edc3"
+    },
+    "craftbook/board-game-web": {
+      "specHash": "d85d518f0953ba20a527639379dfc21214aede4e21324c752b323d45c0505775"
+    },
+    "craftbook/documentation-drift-review": {
+      "specHash": "339f9ec99c9eb0288dd17afb6c328f074eed96d0d06be8ea29f21a43e8496849"
+    },
+    "craftbook/doc-rewrite": {
+      "specHash": "d44135cffbef72c46eb3e8cc0e2d488b15dbc93cdc03a6eaaa9c55a9d3eae7ce"
+    },
+    "craftbook/docs-site": {
+      "specHash": "e8f5816164320f2fce043cd95512932638c584700dfff89db344375527388e16"
+    },
+    "craftbook/glossary-build": {
+      "specHash": "a0e215c76551c60b9fc8c8cda78359c6907fc90933cc6110616aae792d68c74b"
+    },
+    "craftbook/draft-social-post": {
+      "specHash": "34986adc4a979be9e05953ee1871f2409024d3802cfa27d784f91a60220f745c"
+    },
+    "craftbook/due-diligence-brief": {
+      "specHash": "9f0e2fab6e72392ad43b1027d4a229d48004e35060058b73373a1052f37ffcd4"
+    },
+    "craftbook/ebook-compile": {
+      "specHash": "6d846053b6370bce59ac3bbd3a221c16fc62c0010d7b6495dac241715b8e7a7d"
+    },
+    "craftbook/edit-notes": {
+      "specHash": "2e06e0dbeab4e4f5d4a8643925bae5640de6b3f92ccaaa52c8e6f1c8ce4daaf5"
+    },
+    "craftbook/copy-review": {
+      "specHash": "776a82293a79f17971cd6c14d63910aaaaa72b6f4aa3e69344c731038473ee49"
+    },
+    "craftbook/feedback-widget": {
+      "specHash": "84bd08374e5b0b267b75ed018969a2b2e6204fdd9a451c2c251bb5e74cde7617"
+    },
+    "craftbook/engineering-retrospective": {
+      "specHash": "657df43e74e35a22b82bc4017f494cd165b003caf929fcb7024f2413622dfe67"
+    },
+    "craftbook/lead-enrichment": {
+      "specHash": "300f04cf1ba54e24bae554873acbac00174c08fa56123380f5d965ee4346dd72"
+    },
+    "craftbook/data-pipeline-etl": {
+      "specHash": "e638f5e6cc71a90f6071545dacf71cd826417dd2f40effc27850eb1c4b981d33"
+    },
+    "craftbook/ops-runbook": {
+      "specHash": "49b5d5e74411fb220c91bea09d1484b811b9238971e7dc1711e8b7eb0123bfde"
+    },
+    "craftbook/executive-level-review": {
+      "specHash": "fc4044d93b847e0346edfec6e365c844c4289f4274b17ca505ce2460bd4c766e"
+    },
+    "craftbook/fact-check": {
+      "specHash": "dc727dae217cc61e1da99d1f6598ff6c6329202a31aedd963107854820efdd6c"
+    },
+    "craftbook/family-story-chapter": {
+      "specHash": "e2c2209606943307a5a630af686ace483ab526a0f35325f53beed95042268a30"
+    },
+    "craftbook/faq-from-docs": {
+      "specHash": "c6c5589afae641d011c84334875825fe4717be2ea4f4111a15a55691d8fbe83e"
+    },
+    "craftbook/favicon-set": {
+      "specHash": "e02ab3c2fc633c75104e39aa4cb8461a66eddd062114c3e0a048758763169aff"
+    },
+    "craftbook/flaky-test-fix": {
+      "specHash": "a8872935919128c675258aa6e6f55f813128cdaa55ae9a25f24c31ee04377515"
+    },
+    "craftbook/feature-flag-rollout": {
+      "specHash": "78cfd6f46bb3ef016a773bc4a98944be6867a522e7c1e6cfa41cec860d628fc3"
+    },
+    "craftbook/crossword-forge": {
+      "specHash": "9b6d474467da3511353d60c4cc355da84cb2b4465de7209d134808b28fb003e2"
+    },
+    "craftbook/report-pdf": {
+      "specHash": "fa00d34d990a66800426c8d99bc2f2e9d5cadeacdfd503577a9f136f6d944922"
+    },
+    "craftbook/freeze-scope": {
+      "specHash": "100af08bcf59bdb72013a51fdbae1c2901d4016209eb5c62c73936e5d2c1f854"
+    },
+    "craftbook/game-with-screens": {
+      "specHash": "9d8bdec4dad25b2953fea20dd17d4edebfaccd2727dd1188126a72c241ba2269"
+    },
+    "craftbook/drive-wrap-up": {
+      "specHash": "1f1c163eb891552b06b18471eaea967ce2845666597954835bb20be34a6dfede"
+    },
+    "craftbook/sprite-sheet": {
+      "specHash": "91a866855f9b844620cfa2cd269afb09bdd871c9d45820cd41e233c7dc69211c"
+    },
+    "craftbook/onboarding-checklist": {
+      "specHash": "132e18cf289d78e59d7e04dfea0cbfe299bec80f5789cd3b36d77308cabc70a3"
+    },
+    "craftbook/recurring-invoice-run": {
+      "specHash": "d652ac684eb5441cdb5bce8b8f82f0def92e51cc16eaade3b959a30c76110de2"
+    },
+    "craftbook/graphql-api": {
+      "specHash": "343e7beaebf3b9fa69235f33e507fa40b0b7966d37260f8c450ebf3a89240d5b"
+    },
+    "craftbook/grpc-service": {
+      "specHash": "f1fd7c2793cf15082a652a7ef19e1055c432f838f69e8f9001712b6c0f52fa3b"
+    },
+    "craftbook/holiday-card-run": {
+      "specHash": "c8bb3a979660a0ff38e34641113ae30823b1f0b07f009b31fcf395759ea09fb5"
+    },
+    "craftbook/hotfix-flow": {
+      "specHash": "e66ca59cb689519b9f9919ccf8c73bbdfc859d7278e838b9a262c7ddbf72384c"
+    },
+    "craftbook/html-arcade-game": {
+      "specHash": "11ad5ea4ccfcc707a2d74c398a542d0dcb1861066402dfcab26d2542cbb9c7e2"
+    },
+    "craftbook/html-puzzle-game": {
+      "specHash": "b16f0f01b41e0e81276f70ed66fb589c06511af87f75f9d244a7caf33560549f"
+    },
+    "craftbook/idea-office-hours": {
+      "specHash": "324c249df141dc08d05f0d2deecfe842d45423566bee799eecca6b68e3b8b5a5"
+    },
+    "craftbook/idle-clicker-game": {
+      "specHash": "a2f06c6674ee58e1633ef0cdb33c46fd24369d2d44b392c6f65fc2b1c9ed60b6"
+    },
+    "craftbook/image-dedup-cluster": {
+      "specHash": "e7c3bd0fb2e7e66303875a7a671d11cd16b5ff4ee89f3179453e42eed1a96b8a"
+    },
+    "craftbook/image-palette-extract": {
+      "specHash": "6bfb51e813b70eb01d155164cb285bae6aafdfd50fafd7d4fe3ac507e0860620"
+    },
+    "craftbook/image-seo-rename": {
+      "specHash": "5db9186841dc0698b410ddbfcb540bd601a64cf90bf5172c0dfb62811673a7a3"
+    },
+    "craftbook/ux-update": {
+      "specHash": "7ca453a3e7b22c8e7883331636ae1b5a2e1916b10d783f24e089d02b4eba9c55"
+    },
+    "craftbook/webhook-handler": {
+      "specHash": "8a6559877faafd6f30287a4b3955e682eb5710399ffec54d3f822b1b6af9b390"
+    },
+    "craftbook/inbox-triage": {
+      "specHash": "096b1040bd2328c9f910587fa2223cd864bfc1d07f566d0c92f8e7ef14b05203"
+    },
+    "craftbook/incident-comms-templates": {
+      "specHash": "ce79c3c6f1509bc3f2033dc9ee572b6cc43c702ba526bc63194b231525b26981"
+    },
+    "craftbook/incident-postmortem": {
+      "specHash": "47e3bad23444785e717c36938f5895596112c60643b412a392ac3fa8e0ee497a"
+    },
+    "craftbook/image-set-index": {
+      "specHash": "0b73b44d87082427bf8c4e9d8d045f565e1b9bdb7cda52377f694fe6727dc4ff"
+    },
+    "craftbook/pwa-offline": {
+      "specHash": "2a472fd5cadf6469da20c8148b91dd3c2c79b60990268b798bc038c5ace06dec"
+    },
+    "craftbook/insurance-inventory": {
+      "specHash": "14817110c3ead1387745d046fe74f3cbff1782911a3d55da2ce7f08662ae8586"
+    },
+    "craftbook/physics-toy": {
+      "specHash": "dfc4ed37bd3843ac38d643a37923cf02ec5c0ae76d9dd34f8e58ce52d808f278"
+    },
+    "craftbook/interactive-quiz": {
+      "specHash": "948409291f43c374f95cd877bd5852d78533dc78af21f84942ffe6e16a7005fd"
+    },
+    "craftbook/pitch-deck": {
+      "specHash": "025c2f8b5475fdda3489263a03a4cb78bc79f46f1474e4f8641b558267d74809"
+    },
+    "craftbook/invoice-generator": {
+      "specHash": "cd991608ff48fb8a0adebd8b24c6bee39002d9ad967e75e73d9fb069658f3522"
+    },
+    "craftbook/data-join-merge": {
+      "specHash": "e8aa094b819cec89c91544dd702c24cf6592835dd534e09e1d3befb4d4351d84"
+    },
+    "craftbook/juice-pass": {
+      "specHash": "f824b69c0286f1f123e1cab59ed624c0afa60525a578c782f9aa39f69a2b2ed3"
+    },
+    "craftbook/knowledge-base-article": {
+      "specHash": "f3a099c065c92cedf7cea5ba04c67ad50c23763c46664c2dbc3a5cf8b49bdc90"
+    },
+    "craftbook/kpi-scorecard": {
+      "specHash": "5de9d3702985a47839245b1d74c50e6974add1b1742e7cf05f264feb7a8ab1a1"
+    },
+    "craftbook/landing-page": {
+      "specHash": "bcbe13ea3dd7754b6db9a30343d1cb442cf18a056628364df25c86b04dfe5dd7"
+    },
+    "craftbook/landing-copy": {
+      "specHash": "b17d2ce26e58653d8766d6b9bba70f4170305dff4c39cd370b74885f5ffaf880"
+    },
+    "craftbook/cookbook-layout": {
+      "specHash": "4b3e1f5e49487343b45bb455783b745d3df85a3f13e6fc5b4ff389a065f93e52"
+    },
+    "craftbook/puzzle-pack-layout": {
+      "specHash": "8a9c5ebbe934070d2efeacdef4543280f9c86ef7f2c90c89e7853f6badcfdbf9"
+    },
+    "craftbook/email-sequence": {
+      "specHash": "609d0ca7e370f35aca2e9b23da94268f7949be3df13ea6d846dbca01873bb06f"
+    },
+    "craftbook/threat-model": {
+      "specHash": "e4493e50dc4087c29ae926f8a49e1fcdea85d51ba633c69c45338e755a24571e"
+    },
+    "craftbook/literature-review": {
+      "specHash": "26f4fc41b426602c62fa1a4ec710731bbc847404e54c9c057610a4b648c70f16"
+    },
+    "craftbook/localize-content": {
+      "specHash": "c7332d0bcac1b9218ffe58d2daa88086b98b4ab268ffcc96772abd16cf578645"
+    },
+    "craftbook/practice-session": {
+      "specHash": "98fee54a718ff0969185cfdbc380582a697d925c005af631a204c5fedfb38d43"
+    },
+    "craftbook/logo-set": {
+      "specHash": "5597bf0e432355c88c8498fa6d63909a02c8979739a8667c8ca646cf3913445d"
+    },
+    "craftbook/market-scan": {
+      "specHash": "fa5b082a8d64d75c8067704409ad8c9c977deeb124d3fb7c6331af4c083fd229"
+    },
+    "craftbook/hero-image": {
+      "specHash": "61d2eab9cd277167af13512fa29d1a59d3ae8a19e99a23d31665cad012f4116c"
+    },
+    "craftbook/audiobook-master-pack": {
+      "specHash": "661fcc1431fe3ebc85630c608fd715c895aed3fa26fd76bd4f8c1e50da9ddfb5"
+    },
+    "craftbook/meeting-minutes": {
+      "specHash": "5d890dfe24aa6d0480c34eb2e2861a041df3bd3563016b630c5909fbd709dd8a"
+    },
+    "craftbook/meeting-notes-to-actions": {
+      "specHash": "c54d3efdd567202ea8599fadaaee268a862add9160476c8f9609ae0973b35545"
+    },
+    "craftbook/meeting-prep-brief": {
+      "specHash": "988e4aad706d610f4ace64c8005ab6f5b63269878ec3852281bf80e68088e17d"
+    },
+    "craftbook/meeting-summary-audio": {
+      "specHash": "791422208c6794e89002d4d6ed058cb4befb36e5fec5407074b920b077e47524"
+    },
+    "craftbook/memory-prompt-session": {
+      "specHash": "40f7f12c63a8df6dbd98a9e9bf4398a040edda9c6df94de45018e8b137bf8ff3"
+    },
+    "craftbook/message-queue-consumer": {
+      "specHash": "51df7011e75129b7cbd310f0c5b330ff8f6e0162d24718d673c0bbadbb2283cf"
+    },
+    "craftbook/spa-dashboard": {
+      "specHash": "b0d095db707fc68551c0ccc01afaba22dcffbd74745c642087af26e7b458f56b"
+    },
+    "craftbook/micro-game-jam": {
+      "specHash": "571c05e09dd7b8be556a50703a4c458061d1a975d72f532beff03420e32bbfee"
+    },
+    "craftbook/data-export-migrate": {
+      "specHash": "9a6f7b3e3d0e00dae31f54953f1d2421ceddba6da5a1557d4061cd23e5cfde3e"
+    },
+    "craftbook/mock-interview": {
+      "specHash": "a9e22e45d9566bcc3f6b1a71507cdb8eb7628b90323c0bc2df9dd7462ba9bec1"
+    },
+    "craftbook/state-machine": {
+      "specHash": "ee85f089b0557334757669206c4e24c831d12921a89d41fe1b7ec771ab8a5d9e"
+    },
+    "craftbook/alert-rules": {
+      "specHash": "d4b408f82d63722c2d1c64d1fd85078e53a1074139e2295a37fa2598ab388786"
+    },
+    "craftbook/invoice-run": {
+      "specHash": "cef521fd467a7317c48297dfeb7f0d180773aca51d62cb4618f05f6bd54508cb"
+    },
+    "craftbook/monthly-recording-review": {
+      "specHash": "4d5f368da3b4333aaa238d7685e205b3357ec96c74630e0162e00fc1a66c6381"
+    },
+    "craftbook/morning-report": {
+      "specHash": "7972321ec5249aaf87959d4f1c279b86d784dd9eb671e0340f6fb4aae947545b"
+    },
+    "craftbook/morning-brief": {
+      "specHash": "c48afb0497bd417f7ccd0a83e7406912bc45b7b1cf5886145d6d8f5b54253491"
+    },
+    "craftbook/broadcast-announcement": {
+      "specHash": "eeab43da44faf7e685e97d2070a961fdc31b020c0ed378094b27785e86170aae"
+    },
+    "craftbook/form-wizard": {
+      "specHash": "4d9dc3976a9ccb961f42e5c2823ae061b6f22bb22f2a744fdd3f0a1bb3e86282"
+    },
+    "craftbook/music-metadata-tag": {
+      "specHash": "9f435b4bb56b8d2d9ef8abd428997d7787fc05d9c75746ba3084b6b985aa64cf"
+    },
+    "craftbook/chapter-narration-run": {
+      "specHash": "f62e5df0a1c371d71e2ec2630a8ffccbb85e6f61a03eef27918657aed3b3bf7e"
+    },
+    "craftbook/newsletter-issue": {
+      "specHash": "5ec9f0302ef82cd5f9c3acdb4bbaab3f25d89a79168f37227d1013d551130638"
+    },
+    "craftbook/nightly-fix-sweep": {
+      "specHash": "c6e284f151d68117694af650febde6ff859106e331ad6bbe0272d6a735f36b54"
+    },
+    "craftbook/notification-router": {
+      "specHash": "6b290f405a2642fa143e76d6741e5a9e7509ecd19f31d880063e46991ad69119"
+    },
+    "craftbook/ocr-extract": {
+      "specHash": "e2a9466255c6b8a6c1486f719612192645893186bac602f23b7e389e372ba4df"
+    },
+    "craftbook/offer-compare": {
+      "specHash": "e4332325cdb01395ba22a71579d3788d3cb0487701cf7a73329e5de2cdddfc81"
+    },
+    "craftbook/office-hours": {
+      "specHash": "337a50d77bd55b1bc4025582c2989b45c264159cbf8266bcdd6b02f69d93327d"
+    },
+    "craftbook/escalation-playbook": {
+      "specHash": "24d61e6107cb0921b8ef39ec09add824b77dbc8c58fc24b32d2c267f2571c59f"
+    },
+    "craftbook/oncall-handoff": {
+      "specHash": "d9b2c4ebd45414cf48d1363aecb58c58d2258a0b251649304ccef39c3dceb8cd"
+    },
+    "craftbook/script-automation": {
+      "specHash": "d125fc2eaf6d93a74f17b9b20e9d25ed553ab969471a15fc9843452e9fb353e4"
+    },
+    "craftbook/one-pager": {
+      "specHash": "a310d52a7713136414f1f6da2db0be8183d7f7f43f574333c027ba3abcf55f48"
+    },
+    "craftbook/runbook": {
+      "specHash": "363af63616a3a22e20eac5db1362a918f43271333aa7dde5bad65198c1e5ca8d"
+    },
+    "craftbook/comparison-matrix": {
+      "specHash": "d93211ea43cc6e7befde6c362877f0169eef6168781648b90384958f8c236792"
+    },
+    "craftbook/page-spread": {
+      "specHash": "d9bf89ed7d2e73f3042ebb3e12a3db2ebdc9e403ac5b8dbc21e3230610b5e2fb"
+    },
+    "craftbook/parser-grammar": {
+      "specHash": "8c3e3f72ac22a627672bce79294996f4ed6851bceaf53184d1ad0fdb8c1da5dc"
+    },
+    "craftbook/perf-audit": {
+      "specHash": "7f87810d31c60586b20ef410a4b7fe5f94dd2bba85073bb5365d759afcd317da"
+    },
+    "craftbook/weekly-review": {
+      "specHash": "19428c59a00022c96850072ad8995b516d66d786becb95b8ff691a1cea6c613d"
+    },
+    "craftbook/pest-diagnosis": {
+      "specHash": "d376ce9b2f43eb751db7f5b14224c30961e08f89b9f5572f75b718af2ffcbf95"
+    },
+    "craftbook/photo-cull": {
+      "specHash": "d291c03c34e84104533ff4c9f41380971aa61fd3557dde29bcfdbfe08bc9f18e"
+    },
+    "craftbook/plan": {
+      "specHash": "eb93493cc138ed6ff584378c2cffe8f6bb9108dd897a12c84d1b9a3cd379e661"
+    },
+    "craftbook/episode-plan": {
+      "specHash": "88ab087dab842ed5d8506656b94511938fca2fda20be75e1222b360c28d9f736"
+    },
+    "craftbook/week-plan": {
+      "specHash": "b16ae7490e208701f6fdcffa5fd241e67ad0bedde1a288da0f2d01c941ae3fb4"
+    },
+    "craftbook/weekly-menu-plan": {
+      "specHash": "f8d394ada2c4fbf57b2416bc2c06da670fb9ebeee8cf392551bb838295b8d439"
+    },
+    "craftbook/playtest-report": {
+      "specHash": "d8c403b24f2c5939543fb66919628d6af26e70265cb467c457c5fbd9396fdc6c"
+    },
+    "craftbook/podcast-chaptering": {
+      "specHash": "58bec97a65f4ae6bd565b6a5de1d3f674e92c12d3e9cb259dffa0c2bed32eb48"
+    },
+    "craftbook/portfolio-site": {
+      "specHash": "7d26fd9a33bf08fdffd1725a2ce42aac3cbf47fdb662d4aaf0357fe6e4c6f25a"
+    },
+    "craftbook/thank-you-sweep": {
+      "specHash": "34bf98b19c8aff34808be354152eb14254c626a265950ed5d84e419ecd7a9ccd"
+    },
+    "craftbook/powerpoint-deck": {
+      "specHash": "696996c89cf0c591a538a0f4be3b69e1e2779ef99e6abd00c1af0d2b5d1f9c55"
+    },
+    "craftbook/practice-exam": {
+      "specHash": "d4792bf0eec3284323aa4afc983f2162686e8d5c79e14247d8f2a5748782e539"
+    },
+    "craftbook/pre-departure-countdown": {
+      "specHash": "376ae78d3c1702c4e626ef110d9b67ecf8653eb77ad9b6e01c226967b2193ff9"
+    },
+    "craftbook/press-release": {
+      "specHash": "fbcad3033afaeac0eb8c547ffab187c3fddc7f6b1846b66a55e06ec798287ea9"
+    },
+    "craftbook/pricing-page": {
+      "specHash": "3d2e5c5adeb68cc5c17bd3cccad6e8b6aa3326ec32473ce7f3b0afe1872decd9"
+    },
+    "craftbook/onboarding-flow": {
+      "specHash": "942f16fc94dea2e0b5d96a18cb4e6022e435165dbe17b565a402b14cd71005f5"
+    },
+    "craftbook/config-scaffold": {
+      "specHash": "711b15abbe215e5c21c13dd2e33bd62a3493fadad80e925d4ee0a8541ec29111"
+    },
+    "craftbook/proposal-sow": {
+      "specHash": "f7dcba00325cb7e2d01095fcea633496f803597d2524a1e3ee51abf97b5583b0"
+    },
+    "craftbook/pull-request-review": {
+      "specHash": "bba85809600194c405e68c0774a66b0dbdfb7286a0ee7138a23100c23cb9387a"
+    },
+    "craftbook/quarterly-summary": {
+      "specHash": "be2f3a5968ae8670dfec8e07386c3993b570a2a820d930877e1ecfb6506a048e"
+    },
+    "craftbook/receipt-intake": {
+      "specHash": "04a8dbbb5feea8149e315c967bd1a7997d1188be6e8b9d3cddb3f61309db2502"
+    },
+    "craftbook/receipt-ocr-ledger": {
+      "specHash": "5b764fa33e1f83a199443ea1a9b9c2308e524b1b64626251a56bff95677a69b4"
+    },
+    "craftbook/reception-report": {
+      "specHash": "9227b67c7accfe9352819dc567d62d13caee1820c479765219d8b376159885fa"
+    },
+    "craftbook/record-a-relative": {
+      "specHash": "89638d9aacaf229ab30d65b4d7a4a4a00f08a3d54f7de289334d455ab6bb472e"
+    },
+    "craftbook/status-report": {
+      "specHash": "9b135aca454dfe08b7735438331eba3f1398c3a7ac1a868905b23ddc00cfdeb3"
+    },
+    "craftbook/release-announcement": {
+      "specHash": "5aeea12235f9b56d8a7f36b09cb571235b1827574c89d4c45220a811312f8cdc"
+    },
+    "craftbook/release-artifact-sanity-check": {
+      "specHash": "4c9671b56a275053fdf4b1668b468826a9434219566c0a224843346b25691200"
+    },
+    "craftbook/release-notes": {
+      "specHash": "6d431f92b923c82c47d1bbde09309a38667b5af9f6da6e2eee4741ec3cdd7d88"
+    },
+    "craftbook/release-readiness-review": {
+      "specHash": "945f1b0984aef5a2aef31cd04a94bcc5ebdea78d97a51274d35272afdf47ce0b"
+    },
+    "craftbook/reliability-review": {
+      "specHash": "0ff042711fd73efb1ec85617a51397b7ab45a4a676739dbd1fe67ddaf0daf44e"
+    },
+    "craftbook/bug-fix-tdd": {
+      "specHash": "aeb901f68eea4ee624595359e965d91447eda98072797beac172a7d63340d7c7"
+    },
+    "craftbook/email-template": {
+      "specHash": "9a3ba7e92e553e69d347339af3bb96746ae32e311b90e94405b647376711925e"
+    },
+    "craftbook/rest-api": {
+      "specHash": "33d4a8351bea94519a6acbd2c8a49246adff96c30df4158f2ab611d2b25e9d08"
+    },
+    "craftbook/resume-cv": {
+      "specHash": "96099845cb5ebb545b124c67ccf6e1231e9f1538dfec5cbee99f86116389505e"
+    },
+    "craftbook/library-package": {
+      "specHash": "5d57d687b22d489d23791a51ad59075264879e5a58d5b9ac1cec5a80480de6d1"
+    },
+    "craftbook/web-component": {
+      "specHash": "dfe128201e3f8f67b8f5492b80ab0bb9697b1b5bbe910b6a439c822c33af7577"
+    },
+    "craftbook/reviewer-loop": {
+      "specHash": "e20e96387939b1b7ce220b66b66d90fd36ab715ae2a2eb210a1dcfbb619f7227"
+    },
+    "craftbook/rollback-plan": {
+      "specHash": "898757d46c1bde096eba2ee3128a15f9ca630d05a429bbd5fb67d04e981a3481"
+    },
+    "craftbook/root-cause-investigation": {
+      "specHash": "a5d6e239c72d09fc6bd1fe00195e953408fb4cc808f3a0fcebf4ddd365c961f7"
+    },
+    "craftbook/rough-cut-assembly": {
+      "specHash": "d597e92e989440469674651b606c884e92ab1b8409acb7d845b8910a0bf27db0"
+    },
+    "craftbook/digest-from-feeds": {
+      "specHash": "b69a61ed67c62d3cfc94aed502ab02f7585ceda7acc31bc14486dd9991a38977"
+    },
+    "craftbook/mod-scaffold": {
+      "specHash": "7bd254266b7b47626321d178d409901674f398b6dcdf17306908253d12e8bb90"
+    },
+    "craftbook/backup-routine": {
+      "specHash": "6d2981d96690ae89061d1256ac5326218f2d73b1447df906da852f73469ee5ca"
+    },
+    "craftbook/cron-job": {
+      "specHash": "f3b782327a4efc6c51657a5de63bf657273eadc079524f32e0178e1d17b140e2"
+    },
+    "craftbook/schema-migration": {
+      "specHash": "bf884d9b23334b42e8153c9c6b1f0dd2cfa75b40f820c0bb27e93163d6ca7a79"
+    },
+    "craftbook/scrape-to-structured": {
+      "specHash": "2d08bd040b296d3e8a044decd99ba6051a553b539e0c0284637ba96dfcb47093"
+    },
+    "craftbook/seasonal-maintenance-sweep": {
+      "specHash": "693f87d8a855694d29d413d2b5e9bbd4d956b758dc6448f5296e88c555995fcf"
+    },
+    "craftbook/security-architecture-review": {
+      "specHash": "92b31febdccfd14a56cfbf5d68942b653f3a41b89b434e23ba3df0c1ac82c590"
+    },
+    "craftbook/pr-security-review": {
+      "specHash": "ad9b73e073110276c41c0dbe18caf67f142dcb8f7bb7da47a4a3d1011e515f19"
+    },
+    "craftbook/blog-post": {
+      "specHash": "42f657788c58cb2ad2cc099eed169dd310d9c6484bade5604cd59efface004e2"
+    },
+    "craftbook/seo-meta-pack": {
+      "specHash": "c33bb6e33c12ad03e1c5463ddb51dcd6942c4959d502a10087eacebe45882e99"
+    },
+    "craftbook/ship": {
+      "specHash": "386f35afffbb2092b4f692eea496d44cd1c7d7ce8270a055a382461cd9879d82"
+    },
+    "craftbook/forecast-model": {
+      "specHash": "67578c727ddd82548bae1be206d75aff0662f5cd8193a7655514e6e3834ece90"
+    },
+    "craftbook/content-deck": {
+      "specHash": "7b6756fcc1ed1c2aa2c3f87e596b12a7cdfbe85e2056ef2076d84d5fc634c8e5"
+    },
+    "craftbook/social-digest": {
+      "specHash": "cddb0b63c03d7ad96e4284a06531fa234e9e21707715371e3f6eec5247ea6bac"
+    },
+    "craftbook/social-thread": {
+      "specHash": "5fa66ce4a66646a9569d05033e0975e3da58c3c3765ad7d2f5bb4131d27a6565"
+    },
+    "craftbook/source-quality-audit": {
+      "specHash": "1e55be1d371e3101e8f98b79ec30196daa86b0a07a7e04cbf697ac5bef12dfa4"
+    },
+    "craftbook/spec-authoring": {
+      "specHash": "435f43c2080520c1466022d0b6d3fbf2b8025ac82b7a69cfa20ae8d6f0550db7"
+    },
+    "craftbook/spreadsheet-model": {
+      "specHash": "dd6966868da65c697cf3933cd8209bde5a6b365e3199ee5f40fbd6382f66c988"
+    },
+    "craftbook/standup-summary": {
+      "specHash": "a15279ee76f2e549056d6449b793e75f0e0066a0f91135f17310e49fb8d49080"
+    },
+    "craftbook/subtitle-generator": {
+      "specHash": "7ac1337f3e36c097722b5f6b90771b9fe3285830b390699abea3f9f2fb0f5f11"
+    },
+    "craftbook/summarize-long": {
+      "specHash": "1d70492af9cc68d9106586d3f46f0e284e5b18bf46034ebb02f237f0afd5f009"
+    },
+    "craftbook/survey-analysis": {
+      "specHash": "686b8af469094ecb26294c45243a764c6896a6de632a37a0c0bf6c936541dbe7"
+    },
+    "craftbook/tailor-resume": {
+      "specHash": "4882032db19a234ea0e61e58ef46f6f1adfe74e8904c0420dee28284afbb20f9"
+    },
+    "craftbook/cover-letter": {
+      "specHash": "42b9593e381cb3dbbf567e23ead0adf2d14370e3b0afa6792771f3a72182134d"
+    },
+    "craftbook/perf-optimization": {
+      "specHash": "0f773718cd12489d2b806a2d198272d3f8dfa21d21a1b0c2383bafee22c6eb0e"
+    },
+    "craftbook/handbook-section": {
+      "specHash": "4886fa6ba891cac342f44424b7edb3311a020de2695d237ad7cfefc74183ac31"
+    },
+    "craftbook/spec-doc": {
+      "specHash": "43195c35222bfbd1ffcf9cf9655ba234970c13842fecd201168251deb910504c"
+    },
+    "craftbook/technical-documentation": {
+      "specHash": "11c735ba36e4d502fa23e09b5650e8d96eeeef1d5fddd893b58ba70913f12b54"
+    },
+    "craftbook/test-coverage-review": {
+      "specHash": "4c8d009d3a1dbe1970d6f46df2b43d9e6312b7604ea3f073e2290f5db306a5eb"
+    },
+    "craftbook/test-suite-backfill": {
+      "specHash": "318a4c63c273efd1f25c9347a0a8c82fa05ad3338a21d292f02dbb109bf563b1"
+    },
+    "craftbook/folder-to-audio": {
+      "specHash": "9888c09001349225a924fc668a1db64f3242401ce5a6a74b9e6090a988fd1b95"
+    },
+    "craftbook/thank-you-batch": {
+      "specHash": "8d2a7444842d0214b0640ed99c95fb81468563253a4f1f4a70eb792e1e0cc105"
+    },
+    "craftbook/thumbnail-generator": {
+      "specHash": "d9dd2109f94247a6021d34e09f8f56059a90cf90b672faeb7d1350bc6d0823b7"
+    },
+    "craftbook/tileset-batch": {
+      "specHash": "e3812b79b623d2216734841611f11d8e280ac31dd22ff1a2e3956ab56990a269"
+    },
+    "craftbook/topic-explainer": {
+      "specHash": "6113acbf319018574b4acdaacc4e23c47568d5e5f2ad53e53d1058b62181b26b"
+    },
+    "craftbook/price-tracker": {
+      "specHash": "4ceb3af626eb82d48aa3304ff536a676cc26438fa612ed64b9e57ee605ba994d"
+    },
+    "craftbook/transcribe-index": {
+      "specHash": "bb4d3c48979c52507cfcc747bbffd329c67d02a19cd7fe61618746349c678d77"
+    },
+    "craftbook/transcribe-audio": {
+      "specHash": "75fdc4b96ac2f2997eee192071cee059d417950e0b8388475309f90ac97f7de4"
+    },
+    "craftbook/transcribe-and-shownotes": {
+      "specHash": "79cf1fe4e5585a7dff5ff41b36b6fde6d6d56f6c3a434ce5aed5a9e79f9b7915"
+    },
+    "craftbook/translate-content": {
+      "specHash": "06c3848e9f667da244203920496abc50b49f49114c093e005cee4fc81a104158"
+    },
+    "craftbook/type-safety-pass": {
+      "specHash": "50bf8ae099cbe549a68db747b6d08d5f9e946ef075a5db8a5612b741681399de"
+    },
+    "craftbook/sdk-wrapper": {
+      "specHash": "6ed99619bc3b01d1c839a202800137d1155a2c833b01921e9d05734e96e25672"
+    },
+    "craftbook/dependency-upgrade": {
+      "specHash": "4344964985ddcede0320d18042b32d7a617baed056ecb090baf7f2352e080ced"
+    },
+    "craftbook/design-review": {
+      "specHash": "8c9c786b5bd102ec08bf509d191bb850f913b9ac75d142ed332ab076e19291df"
+    },
+    "craftbook/version-bump": {
+      "specHash": "775ac636d2b15b87b095cd04eb0b451d62e15b1d33e059c7d06cc6e2fbf5f7a7"
+    },
+    "craftbook/video-storyboard": {
+      "specHash": "86fcdb29bd8b6594685ee653df52901d07437e4907c4c1c5abbdb0fc85e9abb1"
+    },
+    "craftbook/moodboard": {
+      "specHash": "7df4d5c7cd4bf27e8940b9d014f6e2283ac7ff2c3251419b0f1e8d491f9688ef"
+    },
+    "craftbook/voiceover-script": {
+      "specHash": "7d4c0479fd4462155255e6e80cd8a223b3eb54d9e22d272891f71bc41307b131"
+    },
+    "craftbook/monitor-and-alert": {
+      "specHash": "93244aa5d1468be7f25c8bbb7f9d7d0c103747f6186a19d97eade93089301480"
+    },
+    "craftbook/weak-spot-drill": {
+      "specHash": "6e1ecdd20fa10654ac0c0be3a63a38a6e82ef66310dc26014379a7f7f31a978d"
+    },
+    "craftbook/chapter-weave": {
+      "specHash": "d8d4060fddd4bc0dc334273fc9b7dd4e3cf465e200abb524103ea06f2980b1e3"
+    },
+    "craftbook/weekly-walkthrough": {
+      "specHash": "8b7ed648a17198c9821723c946a609e008e9343dc9cb1b769ca909bd24e331ab"
+    },
+    "craftbook/weekly-pipeline-review": {
+      "specHash": "62c77eceff4681f265da6555f9ec6e662d3dc935e1321eec32fef0be98fa4132"
+    },
+    "craftbook/whitepaper": {
+      "specHash": "2c4241622acbaaa78f38ffca6f30f52cbd631205fa69e521cf1c44e6b691eb31"
+    },
+    "craftbook/research-to-document": {
+      "specHash": "07e002abdbb64e2746de4be7adb1117a2db9a9ecdd0dd60390029a209cd49b76"
+    },
+    "craftbook/automation-recipe": {
+      "specHash": "5b6b78e6ad277109f5c0e3226ab4f2b81cbfb55a707b13bac87ebcf9335787bc"
+    },
+    "craftbook/year-in-review": {
+      "specHash": "025ec4b50b25a4b55aec74ae2a2d6323773fd38334c814c32f1d5002cbe341bf"
+    },
+    "craftbook/youtube-chapters-seo": {
+      "specHash": "2a8050ef7f7d8b75bded5cf4085a385f972e984a849949484cc4d1b40d88db78"
+    },
+    "project-types-index": {
+      "specHash": "5728cd4a1b423e34bbf73703b2a3bb870a9f56cfc2f281daf007d0cfe68797ed"
+    },
+    "project-type/caregiving-binder": {
+      "specHash": "39b19758b9e4df851640a90495011a5d83e0721177f930240c634498efa901a7"
+    },
+    "project-type/checkers": {
+      "specHash": "5f1bae5da651f3c21fc4d54aeba78c071d7c2edd50d0e92307887fec1a5ce95e"
+    },
+    "project-type/chess": {
+      "specHash": "db9372254d0dcc0813250b394cca0d1032a8a4b50a9615ea164407922455e556"
+    },
+    "project-type/design-scheme": {
+      "specHash": "70927bd4ba4e5fd183fd5cf5c74cdaebc625f8b9d6b38a5078e61614d6ed9ac8"
+    },
+    "project-type/email": {
+      "specHash": "8f60d83aa48537152a12db7517b9e392bde6dd7953425fe96c927bb037a517d2"
+    },
+    "project-type/event-planner": {
+      "specHash": "a9cac448b477656b2af87a99e3f21aa24a76fa5d21120fc6dfb8202d61fd6849"
+    },
+    "project-type/fitness-coach": {
+      "specHash": "fd6e940ae9fb7f6cfd235983ed88a8ae947fcd9aaf56baf454ee9b4e6d256759"
+    },
+    "project-type/flashcards": {
+      "specHash": "2d03ab11fd639284fad54e99c9feea7c4433f9100914a95d17b5077a628465f9"
+    },
+    "project-type/freelance-office": {
+      "specHash": "1871401c47a811bddcaf35c08809f38edeaf9fb80894ed72b0fc520e229708e1"
+    },
+    "project-type/fundraiser-hq": {
+      "specHash": "fbf57187147c032bb396f5571c5cc39b5c8d2d0b5f4bb1058cef7b282e100013"
+    },
+    "project-type/go": {
+      "specHash": "9e902f54bef3ca2ed3ea2398e85942cea7cb2f4f87c713b56da1f56e4e0ccd66"
+    },
+    "project-type/household-budget": {
+      "specHash": "d6317edcce0f643110b43b502b7d85948df8b0861f3fe9cfc06bf62c0f4b8ded"
+    },
+    "project-type/household-manual": {
+      "specHash": "5ee6f2237848f7817b745858661b85b70d333f9af2c34a489fe4d3968b60eb6a"
+    },
+    "project-type/image-feed": {
+      "specHash": "9adf749b7fcda528ebe546991f21dbd6f799e76aa94d3958405d75d363d109ab"
+    },
+    "project-type/job-hunt": {
+      "specHash": "8374249eef58e620726556b961d6dd00caf00e84ea2c1877400f5f9c00c6fc72"
+    },
+    "project-type/just-chat": {
+      "specHash": "47bf4789192f054398977f01036825e52cd28c03c9740ac174b3afc64a7bb08d"
+    },
+    "project-type/language-trainer": {
+      "specHash": "e1d6abc096573880b608355059e208f3f685dd1425271ed0cea5490b835daeed"
+    },
+    "project-type/life-binder": {
+      "specHash": "0244e2ceb7e5cd7fbcc45605286e094028c1a0a41e30e028bf3bbb3a296cc863"
+    },
+    "project-type/meal-planner": {
+      "specHash": "acc8cdf38a0c4e18640040c6f311b8e20ddb3cfd4aa2ed81db30399f9a8ee74d"
+    },
+    "project-type/novel-writing-room": {
+      "specHash": "718e103eb991fce1b3b585f6da7ad55badb8ed20885c435784e64362b6ccd42f"
+    },
+    "project-type/social-feed": {
+      "specHash": "d8da5c681ca4b2ebf0e99e71688c6f7efa0507114d613716395a5fe15c462558"
+    },
+    "project-type/software-project": {
+      "specHash": "f12785efc4825ffeb0292f58ef9cb3c7aa643ae78ba3710573992d3cc74e627d"
+    },
+    "project-type/trip-planner": {
+      "specHash": "a612b92e1131a7b3895222f6d8aadf0687ae019fb103a624e36a9ab97008c29b"
+    },
+    "architecture": {
+      "specHash": "074973ef1786420d4f8c891537f33388c60c500d61443007488edc9be010a69a"
+    },
+    "where-files-live": {
+      "specHash": "b87e18e3f03501263c78cdc8b3aa98391af070b0af84bb9229152fba85eff1ea"
+    },
+    "providers-and-engines": {
+      "specHash": "e22f0a66a837fdbb48e0c051bdac9da05989190cc49c42b7d95faab66419569e"
+    },
+    "tools-and-toolsets": {
+      "specHash": "fdea46e7ae381319c85632adf5588a8b507ce32d767a08eb6da6f4ae0d2ddbee"
+    },
+    "security-model": {
+      "specHash": "84b6a9a21490423de04147117cb5f5b9b276dd865e5f275b07edbcfc9161ce45"
+    },
+    "verifying-your-download": {
+      "specHash": "afbb72c22a9ae7c900407c69f27193059ae8134809d369b1378b8b6aadf20d35"
+    },
+    "cli-reference": {
+      "specHash": "b20c9dc8ab2ca7c999c174aa42a7e06441c40cd5a3b71c1b911e36cf70e980e7"
+    },
+    "npm-packages": {
+      "specHash": "2cc30a39b8b15c137db8e6cd564cb1f8a7f78b7d226cc2232a2e12f4b36ee103"
+    },
+    "writing-scripts-with-gezel-sdk": {
+      "specHash": "646ce02c548bf8bc7099f4eac6512668c1f83d39ad4e4d2d1777743840828ccc"
+    },
+    "building-connected-apps-with-gezel-app-sdk": {
+      "specHash": "bdda119c8be0184b450ba886314024d2a311890381ca461ffea9ea934c72b494"
+    },
+    "building-ai-apps-inside-gezel": {
+      "specHash": "60fab2af4e79fdca647d8b9e67de306f2b05cdec07f044444a1bd1811104da51"
+    },
+    "how-we-test-models": {
+      "specHash": "07fa5df8e5aa99beec4f892ad9e8bafa3fe4e81200da52d8abcf216047637e74"
+    },
+    "model-scorecard": {
+      "specHash": "01be0bc30cc9bf2cf63ba8dffa87f9f2246eea4fc5477b274bd1874327d098c5"
+    },
+    "whats-new-index": {
+      "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26244": {
+      "specHash": "480c3ae124b74dc94ebf2ab689d78e9d412c61f28b70e0391862ed82b3caa3c9"
+    },
+    "whats-new/1.26237": {
+      "specHash": "85dd2b8075a3655b7c41538132620b7bf076b5eb097c5d8540d7670071294468"
+    },
+    "whats-new/1.26234": {
+      "specHash": "45f39eab7cb5f56cc3c29244612986026de9bd0a62962d5394e554730a26386e"
+    },
+    "whats-new/1.26231": {
+      "specHash": "2c676fca0f9be82d6d9a341433fe16e4d2e4aee2e170caab3850465a09e2ed62"
+    },
+    "whats-new/1.26226": {
+      "specHash": "58ca809ed80dbaa781342e667f04c7f9c9b5189a99d2d28018c43a0c2365ae92"
+    },
+    "whats-new/1.26224": {
+      "specHash": "524fdb5f232933a50e3ef20a9493c0069c6dda5e9f2fc66a071cfc72a7df6532"
+    },
+    "index": {
+      "specHash": "b67ce0301d23ba414a0d30a80d8073ac2312d92aa7840eedc910854cd239ffc2"
+    }
+  }
+}

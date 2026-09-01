@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tools and toolsets — Gezel Handboek</title>
 <meta name="description" content="Every built-in tool group and what it lets a gezel do.">
+<link rel="canonical" href="https://gezel.com/docs/tools-and-toolsets/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/tools-and-toolsets/">
+<meta property="og:title" content="Tools and toolsets">
+<meta name="twitter:title" content="Tools and toolsets">
+<meta property="og:description" content="Every built-in tool group and what it lets a gezel do.">
+<meta name="twitter:description" content="Every built-in tool group and what it lets a gezel do.">
+<meta property="og:image" content="https://gezel.com/og/tools-and-toolsets.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tools and toolsets">
+<meta name="twitter:image" content="https://gezel.com/og/tools-and-toolsets.png">
+<meta name="twitter:image:alt" content="Tools and toolsets">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/handboek.css">
 <link rel="stylesheet" href="../../handboek.css">
 </head>
@@ -140,6 +155,9 @@
 <h3 id="project-artifacts">Project Artifacts</h3>
 <p>Project-scoped read-write outputs (reports, scratch files, scripts a gezel produces, and large outputs auto-saved by tools that exceed the inline cap).</p>
 <p>Tools: <code>list_artifacts</code>, <code>read_artifact</code>, <code>write_artifact</code>, <code>grep_artifact</code></p>
+<h3 id="data-tables">Data Tables</h3>
+<p>Read a project's mirrored data tables with SQL. <code>list_tables</code> shows what is there, <code>describe_table</code> explains a table's columns and units, and <code>query_table</code> runs one read-only query and returns the answer — never the underlying rows, which is what lets a table be far larger than the context window.</p>
+<p>Tools: <code>list_tables</code>, <code>describe_table</code>, <code>query_table</code></p>
 <h3 id="task-management">Task Management</h3>
 <p>Create, assign, advance, and report on tasks. The full task surface including notes, steps, and child instance spawning.</p>
 <p>Tools: <code>list_tasks</code>, <code>get_task</code>, <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>import_skill</code>, <code>create_task</code>, <code>start_plan</code>, <code>invoke_craftbook</code>, <code>update_task</code>, <code>set_outcomes</code>, <code>verify_outcome</code>, <code>add_verification_step</code>, <code>set_task_status</code>, <code>activate_task</code>, <code>list_task_children</code>, <code>add_task_step</code>, <code>advance_task_step</code>, <code>assign_task</code>, <code>read_task_notes</code>, <code>write_task_note</code>, <code>spawn_task_instances</code></p>
@@ -154,7 +172,10 @@
 <p>Tools: <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>invoke_craftbook</code></p>
 <h3 id="team-project-management">Team &amp; Project Management</h3>
 <p>Spin up other gezels, message them, browse the gilde of templates, and manage projects + project membership. The Meester surface.</p>
-<p>Tools: <code>list_gezels</code>, <code>create_gezel</code>, <code>update_gezel</code>, <code>ensure_gezel</code>, <code>message_gezel</code>, <code>list_projects</code>, <code>start_project</code>, <code>fetch_repo</code>, <code>fetch_diff</code>, <code>update_project</code>, <code>list_gilde</code>, <code>list_project_types</code>, <code>apply_project_type</code>, <code>start_project_from_type</code>, <code>export_ai_app</code>, <code>import_ai_app</code>, <code>list_project_gezels</code>, <code>add_gezel_to_project</code>, <code>remove_gezel_from_project</code>, <code>list_suggested_work</code>, <code>enable_suggested_work</code>, <code>disable_suggested_work</code></p>
+<p>Tools: <code>list_gezels</code>, <code>create_gezel</code>, <code>update_gezel</code>, <code>ensure_gezel</code>, <code>message_gezel</code>, <code>list_projects</code>, <code>start_project</code>, <code>fetch_repo</code>, <code>fetch_diff</code>, <code>update_project</code>, <code>list_gilde</code>, <code>list_project_types</code>, <code>apply_project_type</code>, <code>start_project_from_type</code>, <code>list_project_gezels</code>, <code>add_gezel_to_project</code>, <code>remove_gezel_from_project</code>, <code>list_suggested_work</code>, <code>enable_suggested_work</code>, <code>disable_suggested_work</code></p>
+<h3 id="ai-apps">AI Apps</h3>
+<p>Package a configured project into a shareable .gezapp bundle and install one back. Deliberately in no role default: this is a distribution chore the user drives from Settings or the <code>gezel app</code> CLI, not something a gezel reaches for mid-conversation. Install it on a gezel whose actual job is publishing app bundles.</p>
+<p>Tools: <code>export_ai_app</code>, <code>import_ai_app</code></p>
 <h3 id="audio">Audio</h3>
 <p>Speech-to-text (<code>transcribe_audio</code>) and text-to-speech (<code>synthesize_speech</code>). Heavy — only useful for gezels that do voice work.</p>
 <p>Tools: <code>transcribe_audio</code>, <code>synthesize_speech</code></p>
@@ -168,8 +189,8 @@
 <p>Run read-only git commands inside the project workspace, inspect GitHub pull requests, post review comments, open PRs, and check workflow status for linked project repositories.</p>
 <p>Tools: <code>run_git</code>, <code>github_pr_list</code>, <code>github_pr_view</code>, <code>github_pr_files</code>, <code>github_pr_file</code>, <code>github_pr_diff</code>, <code>github_pr_comments</code>, <code>github_pr_comment</code>, <code>github_pr_create</code>, <code>github_workflow_runs</code>, <code>github_check_status</code></p>
 <h3 id="web-access">Web Access</h3>
-<p>Search the web (when a keyed backend like Brave is configured) or Wikipedia, fetch URL contents, and find interactive elements on a browser-controlled page (after a Playwright navigate / click / type). <code>web_search</code> only registers when a real keyed backend is configured; <code>wikipedia_search</code> only registers for non-cloud models (cloud models already have Wikipedia in training).</p>
-<p>Tools: <code>web_search</code>, <code>wikipedia_search</code>, <code>fetch_url</code>, <code>browser_find_page_element</code></p>
+<p>Search the web (when a keyed backend like Brave is configured) or Wikipedia, fetch URL contents, and find interactive elements on a browser-controlled page (after a Playwright navigate / click / type). <code>web_search</code> only registers when a real keyed backend is configured; <code>wikipedia_search</code> / <code>wikipedia_read</code> only register for non-cloud models (cloud models already have Wikipedia in training). Wikipedia search results arrive with article lead text already included, so reading a result does not need a follow-up fetch.</p>
+<p>Tools: <code>web_search</code>, <code>wikipedia_search</code>, <code>wikipedia_read</code>, <code>fetch_url</code>, <code>browser_find_page_element</code></p>
 <h3 id="image-tools">Image Tools</h3>
 <p>Render charts/diagrams, read and describe existing images, and generate new images via the configured image model.</p>
 <p>Tools: <code>render_image</code>, <code>read_image_as_base64</code>, <code>generate_image</code>, <code>describe_image</code>, <code>read_image_metadata</code></p>
@@ -211,11 +232,13 @@
 <li class="hb-h3"><a href="#archive-tools">Archive Tools</a></li>
 <li class="hb-h3"><a href="#shared-document-library">Shared document library</a></li>
 <li class="hb-h3"><a href="#project-artifacts">Project Artifacts</a></li>
+<li class="hb-h3"><a href="#data-tables">Data Tables</a></li>
 <li class="hb-h3"><a href="#task-management">Task Management</a></li>
 <li class="hb-h3"><a href="#craftbook-authoring">Craftbook Authoring</a></li>
 <li class="hb-h3"><a href="#task-visibility">Task Visibility</a></li>
 <li class="hb-h3"><a href="#craftbook-launcher">Craftbook Launcher</a></li>
 <li class="hb-h3"><a href="#team-project-management">Team &amp; Project Management</a></li>
+<li class="hb-h3"><a href="#ai-apps">AI Apps</a></li>
 <li class="hb-h3"><a href="#audio">Audio</a></li>
 <li class="hb-h3"><a href="#code-execution">Code Execution</a></li>
 <li class="hb-h3"><a href="#browser-automation">Browser Automation</a></li>
@@ -235,5 +258,6 @@
 <footer class="hb-footer">
 <p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
+
 </body>
 </html>

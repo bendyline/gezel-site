@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1.26231 — 19 August 2026 — Gezel Handboek</title>
 <meta name="description" content="A live dashboard on your desktop wallpaper, disk space you can see and reclaim, backup and restore, your local models inside VS Code, and Qwen 3.8 27B tops the scorecard.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26231/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26231/">
+<meta property="og:title" content="1.26231 — 19 August 2026">
+<meta name="twitter:title" content="1.26231 — 19 August 2026">
+<meta property="og:description" content="A live dashboard on your desktop wallpaper, disk space you can see and reclaim, backup and restore, your local models inside VS Code, and Qwen 3.8 27B tops the scorecard.">
+<meta name="twitter:description" content="A live dashboard on your desktop wallpaper, disk space you can see and reclaim, backup and restore, your local models inside VS Code, and Qwen 3.8 27B tops the scorecard.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26231.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Your whole workshop, on your wallpaper">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26231.png">
+<meta name="twitter:image:alt" content="Your whole workshop, on your wallpaper">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -53,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
 <li><a href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
 <li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
 <li><a class="hb-current" aria-current="page" href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
@@ -101,8 +117,7 @@
 <ul><li><p><strong>Projects have icons.</strong> A small maker's mark by project type, inherited automatically and overridable per project, in the sidebar and everywhere a project is named.</p></li><li><p><strong>Messages gezel wrote to itself are labeled "System", not "You"</strong> — handoffs and dispatched work no longer look like something you typed.</p></li><li><p><strong>Search from the title bar opens instantly</strong> with a loading state, finds names before it finishes searching content, tells you when a lookup failed rather than showing an empty result, matches on a gezel's role as well as its name, and stops repeating the same memory snippet back at you.</p></li><li><p><strong>The History detail pane is readable.</strong> Labeled sections for context, details, changes and timing, with real dates and durations, instead of a block of raw data.</p></li><li><p><strong>Night Shift shows a tally</strong> of what the crew actually got through, both so far tonight and last night, in the moon menu.</p></li><li><p><strong>Task descriptions save as you type</strong>, like every other long-form editor in the app. No more losing a description to a missed Save button.</p></li><li><p><strong>File mentions in chat now cover workspace files, not only artifacts</strong> — gezel links what it names, and you can open it from the message.</p></li><li><p><strong>Live speed readings are exact</strong>, per model and per engine, rather than estimated.</p></li><li><p><strong>Changing a setting no longer kills a running model.</strong> Idle engines are released; work in progress is left alone. Only emergency stop and shutdown still stop everything, and if an engine does go away mid-answer the message now says whether gezel stopped it or it crashed.</p></li><li><p><strong>Models installed for the whole machine are shown as read-only</strong> rather than offering you a Delete that could not work.</p></li><li><p><strong>Preview panes follow your theme</strong>, including when it is set to follow the system.</p></li><li><p><strong>Voice output no longer hangs</strong> on a stalled load or stream; it gives up and says so.</p></li><li><p><strong>Folder moves keep a snapshot</strong>, listed in Settings with the details openable.</p></li><li><p><strong>A stale meester pointer now prefers an existing gezel who has the Meester role</strong>, instead of picking whoever came first.</p></li><li><p>Refreshed editor and catalog content packages (squisq 2.8.0, gilde 0.1.36).</p></li></ul>
 <h2 id="for-developers">For developers</h2>
 <ul><li><p><strong>Multi-turn file edits.</strong> MCP file-edit tools take <code>partial: true</code> to open a path as a draft: intermediate states are not validated, so a model can build a file larger than one turn's output — and <code>advance_task_step</code> / <code>verify_outcome</code> stay blocked until the file parses again.</p></li><li><p><strong>Task gates got much stricter.</strong> Launch parameters interpolate through every gate field, an unresolved <code>{{param}}</code> is now an infrastructure error rather than a silent miss, gate attempt budgets survive self-loop reactivation, and a tool failure that never recovered is surfaced in the thread instead of being inferred from a stalled step.</p></li><li><p><strong>Deterministic fan-out work moved out of prompts.</strong> <code>publishCorpusBatches</code> in the script standard library replaces asking a model to retype a batch manifest, and the fan-out input is checked against its source.</p></li><li><p><strong>Catalog schemas have one export source</strong> plus a freshness test, so a core schema change can no longer drift from committed gilde schemas without failing.</p></li><li><p><strong>Packaged POSIX launches reuse the installer's service tree</strong> when it matches the shipped bundle and is not writable by the calling account, instead of unpacking a byte-identical copy per account.</p></li><li><p><strong>New endpoints</strong>: <code>/api/ambient-dashboard</code>, <code>/api/storage/*</code>, <code>/api/vscode-setup</code>, <code>/api/opencode-setup</code>, <code>/api/pi-setup</code>, all with client methods.</p></li><li><p><strong>Linux <code>.deb</code> packages are verified to be zstd-compressed</strong> at release time, and release manifests are formatted by a script rather than by hand.</p></li></ul>
-<h2 id="anything-to-do">Anything to do?</h2>
-<p>No. Update when you are offered it.</p>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
 <p>Three things are worth a visit. <strong>Settings → About</strong> now tells you what gezel is using on disk, and it is worth a look if you have been downloading models. <strong>Settings → Ambient dashboard</strong> is the new wallpaper feature, and it is off until you turn it on. And if you use VS Code, OpenCode or pi, <strong>Settings → Connected Apps</strong> will put your own models in them in about one click.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
@@ -118,7 +133,7 @@
 <li class="hb-h2"><a href="#qwen-3-8-27b-is-measured-and-it-leads">Qwen 3.8 27B is measured, and it leads</a></li>
 <li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
 <li class="hb-h2"><a href="#for-developers">For developers</a></li>
-<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
 </ul>
 </nav>
 </aside>
@@ -126,5 +141,6 @@
 <footer class="hb-footer">
 <p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
+
 </body>
 </html>

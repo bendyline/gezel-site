@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1.26237 — 25 August 2026 — Gezel Handboek</title>
 <meta name="description" content="Change proposals you read before any file is edited, fixes drafted overnight, a Try again button for stuck tasks, and AI Apps you can share as a link.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26237/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26237/">
+<meta property="og:title" content="1.26237 — 25 August 2026">
+<meta name="twitter:title" content="1.26237 — 25 August 2026">
+<meta property="og:description" content="Change proposals you read before any file is edited, fixes drafted overnight, a Try again button for stuck tasks, and AI Apps you can share as a link.">
+<meta name="twitter:description" content="Change proposals you read before any file is edited, fixes drafted overnight, a Try again button for stuck tasks, and AI Apps you can share as a link.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26237.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Changes you read before they land">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26237.png">
+<meta name="twitter:image:alt" content="Changes you read before they land">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -53,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
 <li><a class="hb-current" aria-current="page" href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
 <li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
 <li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
@@ -103,9 +119,8 @@ gezel app serve my-app      share its pages as a mini-site</code></pre>
 <ul><li><p><strong>Eleven more local models have measured scores</strong> — several Gemma 4 and Qwen 3.5 builds, Mistral 7B, and others — so the <a href="../../model-scorecard/">scoreboard</a> covers more of what you might actually download.</p></li><li><p><strong>The fitness column reached the DwarfStar engine</strong>, which is where it matters most: those are the models where "it loads" and "you can work with it" are furthest apart. Each row now shows the measured reading speed alongside the badge, because on a large model the wait you feel is the prompt being read, not the reply being written.</p></li><li><p><strong>Models kept only for compatibility are marked as such</strong>, so they stop looking like a reasonable thing to download.</p></li><li><p><strong>Model sizes read more honestly.</strong> Bit-depth labels are approximate on purpose (<code>~4</code>, <code>~8</code>) and now fall back to what the model file says about itself when the catalog text names no depth at all, and the memory figure beside the download size accounts for what the context window costs on your device.</p></li><li><p><strong>Your laptop stops cooking itself.</strong> When background summarizing kept timing out, it retried within milliseconds, forever — one captured morning spent four hours waking a large model on a closed-lid MacBook, overheating it, and timing out the call the heat had caused. A streak of timeouts now backs off for a while, measured on time the machine was actually awake, so sleeping through the cooldown doesn't count as recovering from it.</p></li><li><p><strong>Questions from Claude are real question cards.</strong> If you run Claude as your provider, its clarifying questions used to arrive as a generic Allow/Deny box. They now render as the question they are, with the options laid out.</p></li><li><p><strong>Rate-limit messages say something useful.</strong> "Claude subscription rate limit (seven-day): allowed_warning. Resets 5:00:00 PM." is now stated in plain words with the reset given relative to now — a seven-day window resets on a future weekday, and a bare clock time was wrong by days. It also stops repeating on every reply.</p></li><li><p><strong>The Artificial Intelligence settings header shows which engine and model a new chat gets.</strong> Answering that used to mean opening the tab and reading two controls.</p></li><li><p><strong>Scripts have a shared library.</strong> The Scripts view's source picker now has one, for scripts every project can run.</p></li><li><p><strong>Git status says when it gave up.</strong> Repeated failures now read as "Skipped after repeated failures" rather than looking like nothing happened.</p></li><li><p><strong>Craftbooks that depend on an up-to-date index can now ensure one</strong> before they start, and say honestly in their report what could not be brought current.</p></li><li><p>Catalog content moved to <code>@bendyline/gilde</code> 0.1.41.</p></li></ul>
 <h2 id="for-developers">For developers</h2>
 <ul><li><p><strong>Change proposals have an HTTP surface</strong>: <code>/api/projects/:id/diffpacks</code> for the lifecycle, plus a zip export carrying the per-file diffs, notes, manifest, and an <code>APPLY.md</code>. The draft tree and sealed diffs are write-denied through the artifact store, so a model cannot forge a diff it never drafted.</p></li><li><p><strong><code>gezel app</code> gained an authoring track</strong> — <code>new</code>, <code>validate</code>, <code>pack</code>, and <code>schemas</code> run locally without the daemon. <code>gezel app serve</code>'s control surface is <code>/api/app-serve</code>, documented in the repo's <code>docs/app-serve.md</code>.</p></li><li><p><strong>Task retry is <code>POST /api/projects/:id/tasks/:num/retry</code></strong>, exposed as <code>retryTask</code> on the typed client. It reports whether a turn was actually dispatched and why not.</p></li><li><p><strong>Keyed locking moved into core</strong> and replaced ad-hoc mutex patterns across a dozen modules; long-running deadlines that can outlive a laptop nap now budget in awake time rather than wall clock.</p></li><li><p><strong>The script RPC channel handles backpressure.</strong> A large request over the inherited descriptor could short-write and raise <code>EAGAIN</code> while the parent drained the first chunk; writes now retry against a bounded synchronous pause instead of hanging until the runner's timeout.</p></li><li><p><strong>New craftbook gate checks</strong> for codebase-review reports, corpus coverage provenance, and workspace existence, plus stdlib scripts to drive them.</p></li><li><p>Two new repo guards: one on layering direction, one on the resolved default provider.</p></li></ul>
-<h2 id="anything-to-do">Anything to do?</h2>
-<p>No — update when you're offered it.</p>
-<p>Two places are worth a visit afterwards. If you have a project with a Boekwachter and a developer on the crew, look at <strong>Fix problems overnight</strong> in that project's settings and decide whether you want it; it's on by default. And if you run local models, the model tables have more measured numbers on them than they did three days ago.</p>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
+<p>Two places are worth a visit. If you have a project with a Boekwachter and a developer on the crew, look at <strong>Fix problems overnight</strong> in that project's settings and decide whether you want it; it's on by default. And if you run local models, the model tables have more measured numbers on them than they did three days ago.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>
@@ -120,7 +135,7 @@ gezel app serve my-app      share its pages as a mini-site</code></pre>
 <li class="hb-h2"><a href="#build-an-ai-app-then-share-it-as-a-link">Build an AI App, then share it as a link</a></li>
 <li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
 <li class="hb-h2"><a href="#for-developers">For developers</a></li>
-<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
 </ul>
 </nav>
 </aside>
@@ -128,5 +143,6 @@ gezel app serve my-app      share its pages as a mini-site</code></pre>
 <footer class="hb-footer">
 <p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
+
 </body>
 </html>

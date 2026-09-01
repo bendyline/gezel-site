@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pull Request Review — Gezel Handboek</title>
 <meta name="description" content="Staff-engineer-style PR review over a complete local PR corpus.">
+<link rel="canonical" href="https://gezel.com/docs/craftbook/pull-request-review/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/craftbook/pull-request-review/">
+<meta property="og:title" content="Pull Request Review">
+<meta name="twitter:title" content="Pull Request Review">
+<meta property="og:description" content="Staff-engineer-style PR review over a complete local PR corpus.">
+<meta name="twitter:description" content="Staff-engineer-style PR review over a complete local PR corpus.">
+<meta property="og:image" content="https://gezel.com/og/craftbook/pull-request-review.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pull Request Review">
+<meta name="twitter:image" content="https://gezel.com/og/craftbook/pull-request-review.png">
+<meta name="twitter:image:alt" content="Pull Request Review">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -72,7 +87,7 @@
 <h1>Pull Request Review</h1>
 <p>Staff-engineer-style PR review over a complete local PR corpus. Defaults to the open pull request for the project's checked-out branch when one exists, accepts an explicit PR number from any branch, reviews changed files in bounded batches with mechanical coverage accounting, verifies cross-file claims against the checkout, and produces a structured local verdict. Requires a GitHub-connected project.</p>
 <h2 id="how-it-runs">How it runs</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Map the pull request corpus</td><td>Reviewer</td><td>Read the launch-time PR overview and manifest, capture CI/check evidence, and publish the deterministic review batches the runtime fans out over.</td></tr><tr><td>2</td><td>Fan the batches out to the review crew</td><td>—</td><td>Spawn one child reviewer per published batch. The runtime performs the fanout with no model turn; the crew is the work.</td></tr><tr><td>3</td><td>Merge the batch ledgers</td><td>Reviewer</td><td>Wait for the crew, merge every batch coverage shard into the run-wide ledger, and let the corpus gate prove nothing was dropped.</td></tr><tr><td>4</td><td>Synthesize the review</td><td>Reviewer</td><td>Synthesize every batch's observations into a cited report, re-verifying cross-file claims and keeping CI status distinct from code-review judgment.</td></tr><tr><td>5</td><td>Deliver the verdict</td><td>Reviewer</td><td>The complete-coverage report passed its gates. Summarize the verdict and point the user to the local evidence files.</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Map the pull request corpus</td><td>Reviewer</td><td>Read the launch-time PR overview and manifest, capture CI/check evidence, and publish the deterministic review batches the runtime fans out over.</td></tr><tr><td>2</td><td>Fan the batches out to the review crew</td><td>Reviewer</td><td>Spawn one child reviewer per published batch. The runtime performs the fanout with no model turn; the crew is the work.</td></tr><tr><td>3</td><td>Merge the batch ledgers</td><td>Reviewer</td><td>Wait for the crew while the runtime deterministically rebuilds the run-wide ledger from exact per-batch coverage shards, then prove both corpus completeness and shard provenance.</td></tr><tr><td>4</td><td>Synthesize the review</td><td>Reviewer</td><td>Synthesize every batch's observations into a cited report, re-verifying cross-file claims and keeping CI status distinct from code-review judgment.</td></tr><tr><td>5</td><td>Deliver the verdict</td><td>Reviewer</td><td>The complete-coverage report passed its gates. Summarize the verdict and point the user to the local evidence files.</td></tr></tbody></table></div>
 <p>Say something like "review this pr" or "review the current pr" or "review this pull request" or "pr review" or "review the github pull request" in chat to start it.</p>
 <p>Needs toolsets: <code>github</code>.</p>
 </article>
@@ -83,5 +98,6 @@
 <footer class="hb-footer">
 <p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
+
 </body>
 </html>

@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1.26234 — 22 August 2026 — Gezel Handboek</title>
 <meta name="description" content="Reference libraries your crew can cite, gezels that look things up on their own, links between projects, and people grouped in your photos.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26234/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26234/">
+<meta property="og:title" content="1.26234 — 22 August 2026">
+<meta name="twitter:title" content="1.26234 — 22 August 2026">
+<meta property="og:description" content="Reference libraries your crew can cite, gezels that look things up on their own, links between projects, and people grouped in your photos.">
+<meta name="twitter:description" content="Reference libraries your crew can cite, gezels that look things up on their own, links between projects, and people grouped in your photos.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26234.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Reference libraries your crew can cite">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26234.png">
+<meta name="twitter:image:alt" content="Reference libraries your crew can cite">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../../assets/handboek.css">
 <link rel="stylesheet" href="../../../handboek.css">
 </head>
@@ -53,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
 <li><a href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
 <li><a class="hb-current" aria-current="page" href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
 <li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
@@ -102,8 +118,7 @@
 <ul><li><p><strong>Chat reads like people talking.</strong> Hand-offs between gezels now render as a short line — who passed what to whom, and about which task — instead of the paragraph of tool-calling instructions the model was actually sent.</p></li><li><p><strong>Thread previews are readable.</strong> The one-line summary under a thread no longer shows raw tool-call markup or hidden reasoning; it says what happened in words.</p></li><li><p><strong>Tool activity says what it touched</strong>, and file paths in it are clickable straight into References.</p></li><li><p><strong>Word and LibreOffice lock files are hidden.</strong> The stray <code>~$report.docx</code> files that appear while a document is open no longer clutter the file browser.</p></li><li><p><strong>File references resolve properly.</strong> A reference to a specific path no longer falls back to matching some other file with the same name at the root, and old mis-resolved links in existing threads are repaired.</p></li><li><p><strong><code>/connect</code> and <code>/disconnect</code> in the CLI</strong> hook VS Code, OpenCode, pi, and Codex up to your local models — the same thing Settings → Connected Apps does, from the terminal.</p></li><li><p><strong>Dates and times are consistent</strong> across cards, threads, and panels, and the local-engine setting says "This Mac" or "This PC" rather than a generic device label.</p></li><li><p><strong>Tasks can be updated in bulk</strong> — select several and set their status at once.</p></li><li><p><strong>Local models re-answer faster.</strong> The llama.cpp cache-reuse restriction that cost multi-slot setups their prompt cache is gone, and an MLX bug that made reasoning stay on for turns that had asked for it to be off — inflating both time and tokens — is fixed.</p></li><li><p><strong>Windows app updates are steadier.</strong> Staged runtime cleanup retries rather than failing when a virus scanner or indexer holds a file open, and installer-staged service trees are now verified and reused on Windows the way they already were elsewhere.</p></li><li><p><strong>The Handboek uses the warm light reading surface</strong> when your theme is light, in both document and video modes.</p></li><li><p>Refreshed catalog content package (gilde 0.1.39).</p></li></ul>
 <h2 id="for-developers">For developers</h2>
 <ul><li><p><strong><code>.gezk</code>, the knowledge catalog format</strong>, is frozen as v1 and implemented in a new <code>@bendyline/gezel-knowledge</code> package: a deterministic compiler, verified archive reading, Ed25519 manifest signing, a Markdown adapter, and a read-only two-stage <code>bit384+int8</code> retrieval handle. It depends only on core.</p></li><li><p><strong>New endpoints</strong>: <code>/api/knowledge/*</code> for install, enable, quarantine, browse and search; <code>/api/projects/:id/tools/find-similar-images</code>; a people surface for face grouping; and machine-broker knowledge asset endpoints under <code>/v1/remote/manage/knowledge/*</code>. All with client methods.</p></li><li><p><strong>AI Apps</strong> — a project type, crew, craftbooks, scripts, data, and an optional dashboard composed into one reusable experience — have a written guide: <a href="../../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a>. They package as <code>.gezapp</code> files, and a gezel can export or import one for you.</p></li><li><p><strong>Retrieval is auditable.</strong> Every injected context block records the query hash, policy, estimated tokens, result scores, provenance, and citations as a history event. Raw queries and retrieved text are deliberately not copied into telemetry.</p></li><li><p><strong><code>search_code</code> and <code>search_documents</code> are now compatibility aliases</strong> for the unified <code>search</code> tool. <code>grep_files</code> remains the right tool for exact strings and regular expressions.</p></li><li><p><strong>Craftbook steps can scope retrieval</strong>, including to <code>knowledge</code> alone, and address their task folder through the reserved <code>{{task.dir}}</code> token.</p></li><li><p><strong>Embedding instructions are model-aware.</strong> The e5 family gets its required <code>query:</code> and <code>passage:</code> prefixes; other families are unchanged. There is a new cross-lingual calibration benchmark with a first Dutch/English baseline.</p></li><li><p>New architecture notes: <a href="../../decisions/0008-per-task-artifact-folders.md">per-task artifact folders</a>, the <code>.gezk</code> format, knowledge catalogs, project linking, and project retrieval.</p></li></ul>
-<h2 id="anything-to-do">Anything to do?</h2>
-<p>No. Update when you are offered it.</p>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
 <p>Two settings are worth a visit. <strong>Settings → Project knowledge &amp; memory</strong> is where you decide how much your gezels look up on their own; Balanced is a good place to start, and Lean is the better answer on a small local model. <strong>Settings → Knowledge</strong> is empty until you install a catalog or build one, and it is the interesting half of this release.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
@@ -120,7 +135,7 @@
 <li class="hb-h2"><a href="#a-better-first-five-minutes">A better first five minutes</a></li>
 <li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
 <li class="hb-h2"><a href="#for-developers">For developers</a></li>
-<li class="hb-h2"><a href="#anything-to-do">Anything to do?</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
 </ul>
 </nav>
 </aside>
@@ -128,5 +143,6 @@
 <footer class="hb-footer">
 <p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
+
 </body>
 </html>
