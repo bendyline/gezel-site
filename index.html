@@ -209,7 +209,10 @@
       font-weight: 400;
       font-style: italic;
       font-size: clamp(1.15rem, 3vw, 1.5rem);
-      color: var(--muted);
+      /* The line people are meant to remember, so it never reads dimmer than
+         the paragraph it introduces. Serif italic and size carry the contrast
+         with the wordmark; brightness doesn't have to. */
+      color: var(--text);
       max-width: 640px;
       margin: 0;
     }
@@ -378,24 +381,31 @@
     .download p { color: var(--muted); margin: 0 0 20px; }
     /* The sprite itself is never painted — only its symbols, via <use>. */
     .icon-defs { display: none; }
+    /* Off-screen but still announced: for headings the layout does not show. */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
     /* Platform rail down the left, the build it resolves to on the right. */
     /* The rail is pinned to the card's left edge and the build column takes
        whatever is left, so switching platforms — which changes how many build
        chips render — never reflows the keys out from under the pointer. */
-    /* The heading shares the first two tracks with the tray and the button, so
-       the requirements panel runs the full height of the card beside them
-       rather than starting a heading's worth of space down. */
     .picker {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr) 250px;
-      grid-template-areas:
-        "head head specs"
-        "tray main specs";
-      align-items: center;
+      grid-template-areas: "tray main specs";
+      align-items: start;
       gap: 18px 28px;
       margin: 0 0 4px;
     }
-    .picker h2 { grid-area: head; }
     .tray { grid-area: tray; }
     .pick-main { grid-area: main; }
     .specs { grid-area: specs; }
@@ -581,7 +591,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
       min-width: 0;
     }
@@ -656,7 +666,8 @@
        Scoped under .download so these win over `.download p`, which is more
        specific than a bare class and would otherwise zero out the margin. */
     .download .release-meta {
-      margin: 26px 0 0;
+      margin: 2px 0 0;
+      max-width: 100%;
       font-size: 0.85rem;
       color: var(--muted);
       min-height: 1.4em;
@@ -671,7 +682,7 @@
     .release-meta .sep { opacity: 0.45; margin: 0 7px; }
     .release-meta .version { font-variant-numeric: tabular-nums; }
     .download .release-note {
-      margin: 14px 0 0;
+      margin: 0;
       font-size: 0.82rem;
       color: var(--muted);
       font-style: italic;
@@ -784,7 +795,6 @@
       .picker {
         grid-template-columns: auto minmax(0, 1fr);
         grid-template-areas:
-          "head head"
           "tray main"
           "specs specs";
       }
@@ -801,7 +811,7 @@
       .download-btn { width: 100%; }
       .picker {
         grid-template-columns: 1fr;
-        grid-template-areas: "head" "tray" "main" "specs";
+        grid-template-areas: "tray" "main" "specs";
         align-items: stretch;
         gap: 16px;
       }
@@ -891,7 +901,7 @@
 
     <section class="download" id="download">
       <div class="picker">
-        <h2>Download Gezel — totally free, open source</h2>
+        <h2 class="sr-only">Download Gezel — totally free, open source</h2>
         <div class="tray" role="group" aria-label="Platform selection">
           <button class="tray-key" data-platform="mac" aria-pressed="false">
             <svg class="tray-icon" aria-hidden="true" focusable="false"><use href="#i-apple"/></svg>
@@ -934,10 +944,17 @@
             </div>
             <p class="cli-note">Needs <a href="https://nodejs.org/">Node.js</a> 24 or newer. <a href="/docs/cli-reference/">CLI reference</a></p>
           </div>
+          <!-- Provenance sits under the button rather than in its own band across
+               the card, so the whole download decision stays in one column and
+               a few dozen vertical pixels stay above the fold. -->
+          <p class="release-meta" id="releaseMeta">
+            <a href="https://github.com/bendyline/gezel/releases">All releases</a>
+          </p>
+          <p class="release-note" id="releaseNote" hidden></p>
         </div>
 
         <aside class="specs" aria-labelledby="specsTitle">
-          <h3 id="specsTitle">What you need</h3>
+          <h3 id="specsTitle">What you need for local AI</h3>
 
           <div class="spec-set" data-specs="desktop">
             <dl class="spec-list">
@@ -968,10 +985,6 @@
           <p class="spec-note">Models download separately the first time you use them. <a href="/docs/local-models-and-tiers/">Models and tiers</a></p>
         </aside>
       </div>
-      <p class="release-meta" id="releaseMeta">
-        <a href="https://github.com/bendyline/gezel/releases">All releases</a>
-      </p>
-      <p class="release-note" id="releaseNote" hidden></p>
     </section>
 
     <div class="divider" aria-hidden="true">

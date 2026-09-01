@@ -75,6 +75,32 @@ baseline. Most adjustments are token overrides (`--hb-canvas`, `--hb-accent`,
 Every article also has a `watch.html` beside it — the same content as an
 auto-playing captioned slideshow, rendered by the squisq player.
 
+## Social preview cards (`og/`)
+
+`og/` holds one 1200×630 Open Graph card per documentation page, plus a
+`manifest.json`. Both are **generated** by the same `pnpm docs:site` run, and
+every page under `docs/` points at its card with `og:image`. Before this
+existed, all ~355 doc pages unfurled as bare text when shared; the root
+[`og-image.png`](og-image.png) remains the landing page's card and the fallback
+for anything without one of its own.
+
+Like `handboek.css` and `releases.json` it lives at the site root rather than in
+`docs/` — but here that placement is load-bearing rather than merely convenient.
+**The card set is its own cache.** `manifest.json` records the text each card
+was rendered from, and a card is re-rendered only when that text changes. A card
+costs about a second of headless Chromium, so a cold pass is minutes while an
+ordinary docs publish is seconds. Putting `og/` inside the wiped `docs/`
+directory would mean re-rendering all of them every single time.
+
+Cards for deleted articles are swept automatically. Skip the whole pass with
+`--no-og` upstream. Rendering needs the managed Chromium the desktop app
+downloads on first launch; on a machine that has never run it, the export says
+so and skips the cards rather than failing the publish.
+
+Headlines come from `docs/handboek/og-headlines.json` in the gezel repo — a
+committed lockfile, so a docs publish never needs a model provider to be
+reachable. Refresh it there with `pnpm docs:og-headlines`.
+
 ## Downloads (`releases.json`)
 
 `releases.json` at the repo root is **generated** too, by the same

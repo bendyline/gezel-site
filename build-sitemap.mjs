@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(fileURLToPath(new URL('.', import.meta.url)));
 const ORIGIN = 'https://gezel.com';
-const SKIP = new Set(['.git', '.github', '.gezel', 'node_modules', 'assets']);
+const SKIP = new Set(['.git', '.github', '.gezel', 'node_modules', 'assets', 'og']);
 
 /** Every directory containing an index.html, as a site-absolute URL path. */
 async function collect(dir = root, out = []) {
