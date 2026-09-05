@@ -1,62 +1,62 @@
 {
   "schema": 1,
-  "generatedAt": "2026-09-01T23:09:36.298Z",
+  "generatedAt": "2026-09-05T02:00:23.665Z",
   "repo": "bendyline/gezel",
   "releasesUrl": "https://github.com/bendyline/gezel/releases",
-  "tag": "v1.26244.63",
-  "version": "1.26244.63",
-  "published": "2026-09-01T22:43:32Z",
-  "notesUrl": "https://github.com/bendyline/gezel/releases/tag/v1.26244.63",
-  "notesPath": "docs/whats-new/1.26244/",
-  "checksumsUrl": "https://github.com/bendyline/gezel/releases/download/v1.26244.63/SHA256SUMS",
+  "tag": "v1.26247.65",
+  "version": "1.26247.65",
+  "published": "2026-09-05T01:56:44Z",
+  "notesUrl": "https://github.com/bendyline/gezel/releases/tag/v1.26247.65",
+  "notesPath": "docs/whats-new/1.26247/",
+  "checksumsUrl": "https://github.com/bendyline/gezel/releases/download/v1.26247.65/SHA256SUMS",
   "builds": [
     {
-      "name": "Gezel-1.26244.63-linux-arm64.deb",
+      "name": "Gezel-1.26247.65-linux-arm64.deb",
       "platform": "linux",
       "arch": "arm64",
       "format": "deb",
-      "size": 986280044,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26244.63/Gezel-1.26244.63-linux-arm64.deb"
+      "size": 988249584,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26247.65/Gezel-1.26247.65-linux-arm64.deb"
     },
     {
-      "name": "Gezel-1.26244.63-linux-aarch64.rpm",
+      "name": "Gezel-1.26247.65-linux-aarch64.rpm",
       "platform": "linux",
       "arch": "arm64",
       "format": "rpm",
-      "size": 810377077,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26244.63/Gezel-1.26244.63-linux-aarch64.rpm"
+      "size": 810856301,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26247.65/Gezel-1.26247.65-linux-aarch64.rpm"
     },
     {
-      "name": "Gezel-1.26244.63-linux-amd64.deb",
+      "name": "Gezel-1.26247.65-linux-amd64.deb",
       "platform": "linux",
       "arch": "x64",
       "format": "deb",
-      "size": 1400058288,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26244.63/Gezel-1.26244.63-linux-amd64.deb"
+      "size": 1397818398,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26247.65/Gezel-1.26247.65-linux-amd64.deb"
     },
     {
-      "name": "Gezel-1.26244.63-linux-x86_64.rpm",
+      "name": "Gezel-1.26247.65-linux-x86_64.rpm",
       "platform": "linux",
       "arch": "x64",
       "format": "rpm",
-      "size": 1197172637,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26244.63/Gezel-1.26244.63-linux-x86_64.rpm"
+      "size": 1198774189,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26247.65/Gezel-1.26247.65-linux-x86_64.rpm"
     },
     {
-      "name": "Gezel-1.26244.63-mac-arm64.pkg",
+      "name": "Gezel-1.26247.65-mac-arm64.pkg",
       "platform": "mac",
       "arch": "arm64",
       "format": "pkg",
-      "size": 438145332,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26244.63/Gezel-1.26244.63-mac-arm64.pkg"
+      "size": 440227647,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26247.65/Gezel-1.26247.65-mac-arm64.pkg"
     },
     {
-      "name": "Gezel-1.26244.63-windows-x64.exe",
+      "name": "Gezel-1.26247.65-windows-x64.exe",
       "platform": "windows",
       "arch": "x64",
       "format": "exe",
-      "size": 852529528,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26244.63/Gezel-1.26244.63-windows-x64.exe"
+      "size": 854388544,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26247.65/Gezel-1.26247.65-windows-x64.exe"
     }
   ]
 }

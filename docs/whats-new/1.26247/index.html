@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26247 — 4 September 2026 — Gezel Handboek</title>
+<meta name="description" content="Spreadsheets you can sort, filter and edit in place, conversations that make their own room, drafts that survive a restart, and a Village with real streets.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26247/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26247/">
+<meta property="og:title" content="1.26247 — 4 September 2026">
+<meta name="twitter:title" content="1.26247 — 4 September 2026">
+<meta property="og:description" content="Spreadsheets you can sort, filter and edit in place, conversations that make their own room, drafts that survive a restart, and a Village with real streets.">
+<meta name="twitter:description" content="Spreadsheets you can sort, filter and edit in place, conversations that make their own room, drafts that survive a restart, and a Village with real streets.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26247.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Spreadsheets stay spreadsheets">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26247.png">
+<meta name="twitter:image:alt" content="Spreadsheets stay spreadsheets">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26247/">1.26247 — 4 September 2026</a></li>
+<li><a href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
+<li><a href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
+<li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
+<li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26247 — 4 September 2026</h1>
+<p>Three days after <strong>1.26244</strong>, and a short release by the calendar — but two of these change something you do every day, and one of them changes a key you press.</p>
+<p>If you read only one thing: a spreadsheet in gezel is now a spreadsheet on screen, with sortable columns, filters and cells you can type into, instead of a table flattened into prose.</p>
+<h2 id="spreadsheets-stay-spreadsheets">Spreadsheets stay spreadsheets</h2>
+<p>Last release taught your crew to count your data. This one lets you look at it.</p>
+<p>Open an <code>.xlsx</code> or a <code>.csv</code> — from a project's files, or from your document library — and you get a real grid. Columns sort. Each one has a filter with the operators you'd expect (contains, starts with, greater than, is empty) and a picker listing the values actually in that column, so you don't have to remember how a region was spelled. It scrolls a hundred thousand rows without complaining, because the rows never enter the document: the file stays where it is and the document carries a reference to it.</p>
+<p>That last part fixes a specific old failure. A large table used to be pasted into the document as markdown, which is fine at twenty rows and hopeless at two thousand — the editor re-reads the whole document as you type, so a big table made writing sluggish and reading impossible. Anything past about a hundred rows now stays in its own file and appears as a grid.</p>
+<p>Workbooks are editable, not just readable. Type in a cell and the change is written back into the file behind the document, and only the sheet you touched is rewritten — charts, formatting, and everything else in the workbook survive byte-for-byte. Formula cells show in italic, edit as the formula rather than the result, and everything depending on them recalculates the moment you commit. Around 460 functions are covered, <code>XLOOKUP</code> and <code>LET</code> included; a workbook too big to recalculate inside a sensible budget drops back to editing values rather than locking up. You can paste a block copied straight out of Excel or Sheets and it lands as a single undo step, and the previous version of the file is kept before each save.</p>
+<p>CSV files are read-only for now. They open in the same grid and sort and filter the same way, but writing your edits back out to the <code>.csv</code> itself is still to come.</p>
+<p>Most of this comes from the editor gezel is built on, which also brought sharper contrast in its menus and a proper right-click menu of its own.</p>
+<h2 id="conversations-make-room-for-themselves">Conversations make room for themselves</h2>
+<p>A conversation with a local model has a ceiling. Every message, every file it read, and the standing instructions it carries all sit in the same window, and when that window fills, the thread stops.</p>
+<p>There are now two things where there used to be nothing useful. Beside the thread picker sits a small ring that fills as the thread does — click it and you get the real numbers, the model's capacity, and how full <strong>this thread</strong> is. And when the thread reaches about 70% full, gezel summarizes the older part of it by itself and carries on, leaving a marker in the conversation saying so. Open the marker and you can read exactly what was kept: the decisions made, what you asked for, what has already been tried and didn't work, and what's still outstanding. That last part is the point — a summary that loses it makes the model repeat work you already watched it abandon.</p>
+<p>You can also run that collapse yourself, from <strong>Compact now</strong> in the ring's popover, rather than sending a throwaway message and hoping the threshold trips. If it can't — the thread is mid-turn, or there is nothing old enough to summarize — it says so in a sentence, where the button is.</p>
+<p>The ring replaces a strip that used to run the width of the window telling you the model's capacity and gezel's policy, which were the same on the first turn and the fiftieth, and never once told you how full the thread was.</p>
+<h2 id="an-unsent-message-is-a-thing-you-own">An unsent message is a thing you own</h2>
+<p>A message you are still writing is now a real object with a place to live, not scratch in a box that empties when you look away.</p>
+<p>Drafts survive a restart. They keep their attachments. They appear in the thread picker — under <strong>Not sent yet</strong> if they aren't attached to a conversation yet, or behind a thread's own Drafts key if they are — so a brief you started yesterday is where you'd look for it rather than gone. The picker's <strong>+ New</strong> still starts a conversation; the new <strong>+ Draft</strong> starts only a message, because those are different intentions and running them together is what left empty threads lying around. While you type, a quiet dot in the toolbar is the whole of the save indicator: someone writing should not be told that writing is working.</p>
+<p>Two things about the composer changed alongside it, and you will notice the first one immediately:</p>
+<ul><li><p><strong>Enter now makes a new line. Shift+Enter sends.</strong> It used to be the other way around, which meant writing anything longer than a sentence involved dodging the key that makes a paragraph. The terminal is unchanged — a command is a line, and a line ends with Enter.</p></li><li><p><strong>The draft can take the window.</strong> The key just left of Send grows the composer from its three-line strip to about four-fifths of the chat column, and back. Nothing else moves and nothing is lost; it's a size, not a mode, so it never has to be a decision.</p></li></ul>
+<p>Sent drafts are cleared out after 90 days by default. Unsent ones are never deleted on their own.</p>
+<h2 id="the-village-grew-streets">The Village grew streets</h2>
+<p>The Village — the map that draws your codebase as a town — used to run every street as the same strip of ground. Now each one is built to the traffic it carries: the files fronting it, the connections travelling along it, and everything leaving the folders it bounds. That comes out as eight grades, from a dirt track with grass verges up to a broad avenue with a trolley line, rails and overhead wire. The road you see is a reading of how busy that part of the codebase actually is, and at street zoom there are carts, walkers and trolleys moving along it.</p>
+<p>Roads also meet each other now. Streets used to stop a few units short of the road they turned onto, which is the single most artificial-looking thing a map can do.</p>
+<p>And a file's <em>purpose</em> now decides what kind of place it gets, before anything else. Data files are fields, furrowed and under crop. Configuration is a signal tower — a squat municipal block with a glazed control cab on the roof. Stylesheets are parks, with lawns, paths, a flowerbed and a bandstand. Everything else is a building, as before. A big data fixture is a big field rather than the largest structure in town.</p>
+<h2 id="knowledge-catalogs-opened-up">Knowledge catalogs, opened up</h2>
+<p>The <code>.gezk</code> format that packages a body of knowledge for your crew is now an <strong>open format</strong>, specified outside gezel entirely, with a published specification, a conformance suite and a second reader written in Python. Anyone can build, host and read a catalog without this app, and a catalog is plain SQLite that any client can open. Gezel is the reference implementation rather than the only one.</p>
+<p>The visible half is <strong>Settings → Knowledge</strong>. It used to want a URL pasted into a box. It is now the same browser the model downloader uses: catalogs as cards, progress while one installs, cancel, and downloads that resume where they stopped instead of starting over. On a shared machine a catalog can be installed once for everyone rather than once per account, the way models already were.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>First run tells you what this is.</strong> The setup screen now carries the "What is gezel?" introduction beside it, rather than opening as a settings form and leaving the explanation somewhere you had to go looking for.</p></li><li><p><strong>Your documents are in the sidebar</strong>, with the ones you use most listed and any of them pinnable, plus a right-click route to the folder in Explorer or Finder.</p></li><li><p><strong>Indexing stopped looking like a job you should worry about.</strong> The background pass that reads your files used to appear in chat as a stream of engineering; it now settles into one quiet line saying what was read and when it finished.</p></li><li><p><strong>A long conversation keeps its bearings.</strong> A header stays at the top of the transcript naming the message the current stretch of work came from, so scrolling through a long turn doesn't leave you wondering what was asked.</p></li><li><p><strong>Craftbook steps carry only the tools they need.</strong> A <strong>craftbook</strong> — a saved recipe for a piece of work — can now say per step which sets of tools it has no business touching, which keeps a model from wandering into browser automation when it was asked to write a paragraph.</p></li><li><p><strong>Model downloads use Hugging Face's newer chunked transfer</strong> where it's offered, which resumes more reliably on a bad connection.</p></li><li><p><strong>A deliverable that must be a real file says so more firmly.</strong> Asked for a <code>.pptx</code>, a gezel is now told plainly that a markdown outline with the right name is not the thing, and to report itself blocked rather than substitute a format.</p></li><li><p><strong>Nanbeige models are supported</strong>, and memory planning now accounts for models that run their layer stack more than once — the estimate used to come out several times too small on those.</p></li><li><p>Catalog content moved to <code>@bendyline/gilde</code> 0.1.54, and the editor libraries to squisq 2.11.</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong><code>.gezk</code> 0.5 is an open format</strong>, specified in a repository of its own: the spec under CC BY 4.0, JSON Schemas generated from the definitions, a conformance fixture with test vectors, and a Python reference reader. Vectors are plain BLOB tables rather than a pre-1.0 extension's private layout, archives store their entries uncompressed so builds are byte-identical, and references are publisher-qualified. There is no compatibility with the previous generation — a reader refuses it with a typed reason. <code>@bendyline/gezk</code> is a new published package carrying the format alone, with no dependency on gezel; the reasoning is recorded in decision 0012.</p></li><li><p><strong>Two store lanes exist</strong>, for the Microsoft Store and the Mac App Store, alongside the direct download rather than instead of it. Neither is submitted yet. They follow one rule with wide consequences: a store build may not download or install executable code, so engine downloads, the Copilot SDK, Playwright and npm installs are all refused by a distribution profile that sits beside the security policy and cannot be argued out of its own restrictions by an inherited environment variable. Model weights and catalogs are data, which is what makes a packed-in starter model legal — a store build answers its first prompt, speaks and transcribes with nothing downloaded.</p></li><li><p><strong>Sessions record their parent.</strong> A thread opened by a delegation, a consultation, a task entry or a handoff now stamps which session opened it, and each message stamps which session sent it, so a session tree reconstructs identically from a live timeline or from disk.</p></li><li><p><strong>Eval runs record themselves</strong> and distill into a scene-by-scene walkthrough in the eval viewer — the first thing built on run recordings.</p></li><li><p><strong>A screenshot-grounded UX review of the whole app</strong> was produced, driven by two new permanent Playwright specs that boot a genuinely fresh home and then build a warm world through the UI itself. Most of the interface changes above answer it.</p></li></ul>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
+<p>Open a spreadsheet. Any <code>.xlsx</code> in a project or in your document library will do — it will look like a spreadsheet now, and you can sort it, filter it and type in it. And if you keep long conversations with a local model, look for the small ring beside the thread picker: it tells you how much room the thread has left, and gives you the button that makes more.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#spreadsheets-stay-spreadsheets">Spreadsheets stay spreadsheets</a></li>
+<li class="hb-h2"><a href="#conversations-make-room-for-themselves">Conversations make room for themselves</a></li>
+<li class="hb-h2"><a href="#an-unsent-message-is-a-thing-you-own">An unsent message is a thing you own</a></li>
+<li class="hb-h2"><a href="#the-village-grew-streets">The Village grew streets</a></li>
+<li class="hb-h2"><a href="#knowledge-catalogs-opened-up">Knowledge catalogs, opened up</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>
