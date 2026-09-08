@@ -937,6 +937,9 @@
     "project-type/caregiving-binder": {
       "specHash": "39b19758b9e4df851640a90495011a5d83e0721177f930240c634498efa901a7"
     },
+    "project-type/just-chat": {
+      "specHash": "6a40564091147f00f93af04fc4c5ac579711023da4910254f8d0a92edf69b31f"
+    },
     "project-type/checkers": {
       "specHash": "5f1bae5da651f3c21fc4d54aeba78c071d7c2edd50d0e92307887fec1a5ce95e"
     },
@@ -978,9 +981,6 @@
     },
     "project-type/job-hunt": {
       "specHash": "8374249eef58e620726556b961d6dd00caf00e84ea2c1877400f5f9c00c6fc72"
-    },
-    "project-type/just-chat": {
-      "specHash": "47bf4789192f054398977f01036825e52cd28c03c9740ac174b3afc64a7bb08d"
     },
     "project-type/language-trainer": {
       "specHash": "e1d6abc096573880b608355059e208f3f685dd1425271ed0cea5490b835daeed"
@@ -1044,6 +1044,9 @@
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26251": {
+      "specHash": "66f4a5bed3e690428931c8851e71fd7195a4d31af67c45858b384a14a7238d9e"
     },
     "whats-new/1.26247": {
       "specHash": "5d9ec3ced0feedb75a99332821bfc9eb07cb7317e30d312f9e975845f07b89a6"
