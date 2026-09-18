@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26261 — 18 September 2026 — Gezel Handboek</title>
+<meta name="description" content="Visible routes for requested files, sharper knowledge search, stronger command-line batch workflows, and app-hosted Gezel for developers.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26261/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26261/">
+<meta property="og:title" content="1.26261 — 18 September 2026">
+<meta name="twitter:title" content="1.26261 — 18 September 2026">
+<meta property="og:description" content="Visible routes for requested files, sharper knowledge search, stronger command-line batch workflows, and app-hosted Gezel for developers.">
+<meta name="twitter:description" content="Visible routes for requested files, sharper knowledge search, stronger command-line batch workflows, and app-hosted Gezel for developers.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26261.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="See where your request is going">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26261.png">
+<meta name="twitter:image:alt" content="See where your request is going">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26261/">1.26261 — 18 September 2026</a></li>
+<li><a href="../../whats-new/1.26251/">1.26251 — 8 September 2026</a></li>
+<li><a href="../../whats-new/1.26247/">1.26247 — 4 September 2026</a></li>
+<li><a href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
+<li><a href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
+<li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
+<li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26261 — 18 September 2026</h1>
+<p>Seven days after <strong>1.26254</strong>, and this release makes longer pieces of work easier to start and easier to inspect: you can see where a request is going before you send it, search is better at finding the source you named, and command-line batches can stay with a task until it finishes.</p>
+<p>If you read only one thing: ask your meester — the guildmaster who coordinates your crew — for a PowerPoint, Word document, PDF report, MP4 or GIF and the composer now shows the planned route before you press Send. The same route guides the model to the procedure that can make the real file.</p>
+<h2 id="you-can-see-where-a-request-is-going-before-you-send-it">You can see where a request is going before you send it</h2>
+<p>Asking for a file used to have an awkward failure mode: the meester or project voorman (foreman) could understand that you wanted a presentation, inspect their own immediate tools, and conclude that making one was impossible — even though the right craftbook was already on the shelf.</p>
+<p>For clear requests, the composer now shows the route while you are still typing. Ask for a PowerPoint, Word document, PDF report, or an animated slideshow as MP4 or GIF and a small label names the planned output. Ask a coordinator to implement or fix code and it shows that the work will go to a Developer. Ordinary conversation stays ordinary and shows no label.</p>
+<p>That preview is not decoration. The same plan is attached when you press Send, narrows the turn to the exact procedure where the output is unambiguous, and gives the coordinator one corrective chance if it claims the capability is unavailable instead of starting the work. You see the decision before the model acts, and the model sees the same decision you saw.</p>
+<h2 id="search-shows-what-the-model-actually-saw">Search shows what the model actually saw</h2>
+<p>Knowledge search used to compare scores that did not mean the same thing. A vaguely related semantic match could outrank the document whose title exactly matched the question, and the fast first pass over a large catalog could discard the right passage before the more accurate comparison ever saw it.</p>
+<p>The search now combines title matches, body matches and semantic matches by their rank instead of pretending their raw scores are interchangeable. The binary first pass for multilingual catalogs was recalibrated as well. In practical terms, asking about a named person or work is much more likely to put that article first instead of three neighbouring articles that mention it.</p>
+<p>The answer is easier to audit too. Expand <strong>Consulted sources</strong> under a reply and you can see the exact excerpt that was placed in the model's context, its estimated token cost, and a button to open the source. The total includes the labels and safety framing around those excerpts, and the text is still marked as untrusted evidence rather than as instructions.</p>
+<h2 id="the-command-line-can-stay-with-a-batch-until-it-finishes">The command line can stay with a batch until it finishes</h2>
+<p><code>gezel do</code> is now usable as part of a real shell workflow. A <strong>craftbook</strong> is a saved recipe for a piece of work; the command accepts its positional or named parameters, can wait for the task, emits one machine-readable result with <code>--json</code>, and returns distinct exit codes for completion, cancellation, a task that needs help, and a timeout. A timeout stops waiting; it does not cancel the work in the daemon.</p>
+<p>You can also follow or recover work directly: <code>gezel task wait</code>, <code>gezel task resume</code>, and <code>gezel task notes --warnings</code> cover the ordinary unattended loop. Repository-owned <code>.gezel/workflows/*.mjs</code> drivers can coordinate several project craftbooks, checkpoint their task references, bound concurrency, and resume without turning that orchestration into model-authored code.</p>
+<p>The supporting controls are there now too. Provider credentials can be written from standard input or an environment variable without printing their values; local model context and concurrency can be bounded for a batch; project indexing can be paused when a generated dataset would only create background work. A command-line craftbook launch trusts the exact script snapshot it started with, and <code>--strict-sandbox</code> is available when the operating system must enforce the network boundary.</p>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>Model memory waits distinguish a queue from a shortage.</strong> Work waiting behind another gezel-owned engine can remain queued until that work finishes; when an unrelated application is holding the missing memory, the request now fails in seconds with the amount needed and the amount available instead of waiting five minutes for a queue that cannot move.</p></li><li><p><strong>Child tasks tell the truth about their parent.</strong> A paused, completed or canceled parent now gives its children that effective state without rewriting their own records; the task view labels the relationship and prevents edits that could not take effect. Fan-out children also get useful titles such as their file batch or invoice client instead of a bare number.</p></li><li><p><strong>Office-document research steps stop rejecting the read they asked for.</strong> Opening a Word, PowerPoint, PDF or spreadsheet through the document reader now counts as acquiring the source, so a task no longer pauses after correctly reading a file through the only tool capable of opening it.</p></li><li><p><strong>Lists in replies stay lists.</strong> A short year or statistic inside a list no longer makes the whole block turn into one oversized statistic or flatten into a section heading.</p></li><li><p><strong>Local engines moved forward.</strong> llama.cpp is now v0.4.1, the native bundle is 0.1.43, and DwarfStar can use model-embedded multi-token prediction for catalog models that declare it, including Qwen 3.8 Flash Next and GLM 5.3. Memory-constrained machines also start DwarfStar with a more conservative context window.</p></li><li><p>Catalog content moved from <code>@bendyline/gilde</code> 0.1.61 to 0.1.67.</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong>A connected application can now bring Gezel with it.</strong> <code>@bendyline/gezel-app-sdk/host</code> first connects to the user's running Gezel and can otherwise start an isolated daemon for the application. Its projects and gezels live under the application's own home, while installed model weights are reused rather than downloaded twice. <code>ensureModel</code>, <code>ensureProject</code>, project-scoped chats and app-owned tools cover the complete embedded flow; model bundles can make first run work offline. The contract and examples are in <a href="../../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a>.</p></li><li><p><strong>Application tools cross the daemon boundary explicitly.</strong> A host registers a JSON-schema tool and handles the call in its own process; arguments are validated before they leave the daemon, disconnects have a bounded grace period, and a closed application cannot leave a tool hanging in the model's menu.</p></li><li><p><strong>The App SDK has a smaller stable surface.</strong> Node, browser and host entry points are separated; request-shaped calls take <code>AbortSignal</code>; product access uses the typed client behind an approved <code>product</code> scope; and stateful grants require a verification code visible in the requesting application.</p></li><li><p><strong>Knowledge catalogs gained a revised multilingual embedding profile.</strong> <code>multilingual-e5-small@2</code> changes the sign-bit prefilter while keeping the same full vector space, so older catalogs remain readable and readers can tell which fast-search encoding a catalog carries.</p></li><li><p><strong>Task and craftbook evaluation got stricter.</strong> Fixed-action reads can advance from durable evidence without another model turn, hand-off sends have bounded recovery, and pull-request-review batches retain their observations instead of grading only the final file.</p></li></ul>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
+<p>Ask your meester for a PowerPoint or PDF and watch the planned route appear beside the composer before you send it. After the reply, expand <strong>Consulted sources</strong> to see the exact excerpts that went into the answer and open the originals.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#you-can-see-where-a-request-is-going-before-you-send-it">You can see where a request is going before you send it</a></li>
+<li class="hb-h2"><a href="#search-shows-what-the-model-actually-saw">Search shows what the model actually saw</a></li>
+<li class="hb-h2"><a href="#the-command-line-can-stay-with-a-batch-until-it-finishes">The command line can stay with a batch until it finishes</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>

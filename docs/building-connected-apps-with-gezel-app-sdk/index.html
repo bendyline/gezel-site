@@ -115,6 +115,7 @@
 <p>This differs from <code>@bendyline/gezel-sdk</code>, whose scripts run <em>inside</em> Gezel's sandbox. A connected app owns its own interface and process. Gezel owns model discovery and downloads, consent, revocation, and the local inference service.</p>
 <p>If the experience should live inside a Gezel project as a custom crew, dashboard, craftbooks, scripts, and data, see <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a> instead.</p>
 <p>The <a href="../connected-apps/">Connected apps</a> article explains what the user sees. This article covers the developer side.</p>
+<p>This article teaches the SDK. For what is promised rather than how to use it — which exports are stable, what cancellation guarantees, and what a store build must do differently — see the <a href="../../app-sdk-surface.md">App SDK surface</a> contract.</p>
 <h2 id="install-and-connect">Install and connect</h2>
 <p>The Node entry requires Node.js 24 or newer:</p>
 <pre class="squisq-code-block"><code class="language-bash">npm install @bendyline/gezel-app-sdk</code></pre>
@@ -194,6 +195,40 @@ const projects = await client.listProjects();</code></pre>
 <div class="hb-table-scroll"><table><thead><tr><th>Method</th><th>Purpose</th></tr></thead><tbody><tr><td><code>app.models()</code></td><td>List the models and gezels exposed to this app</td></tr><tr><td><code>app.chat()</code></td><td>OpenAI-compatible chat completion, streaming or complete</td></tr><tr><td><code>app.embeddings()</code></td><td>OpenAI-compatible embeddings when the selected provider supports them</td></tr><tr><td><code>app.ensureModel()</code></td><td>Make sure a catalog model is installed and warm</td></tr><tr><td><code>app.streamEnsureEvents()</code></td><td>Follow model download progress and completion over SSE</td></tr><tr><td><code>app.revokeMyToken()</code></td><td>Let the app revoke its own connection</td></tr></tbody></table></div>
 <p><code>detectGezel()</code> is a useful preflight, but it does not authorize anything. <code>connect()</code> returns a ready <code>GezelApp</code>; <code>authorize()</code> returns the generic base URL, token, and trusted <code>fetch</code>; <code>connectLocal()</code> combines the full Node-native local flow with non-sensitive daemon diagnostics.</p>
 <p>Ordinary third-party apps should ask the user to start Gezel when discovery reports <code>daemon_not_running</code>. The optional start-if-missing path is only for native integrations that deliberately bundle the matching <code>gezeld</code> package.</p>
+<h2 id="host-gezel-inside-your-app">Host Gezel inside your app</h2>
+<p>The flow above needs a Gezel the person already runs. An application that must work either way can host one itself: <code>@bendyline/gezel-app-sdk/host</code> connects to their Gezel when it is running, and otherwise starts a daemon inside your own process. Application code is the same afterwards.</p>
+<pre class="squisq-code-block"><code class="language-ts">import { connectOrHost } from '@bendyline/gezel-app-sdk/host';
+
+const gezel = await connectOrHost({
+  appId: 'acme.travel',
+  appName: 'Acme Travel',
+  host: { nodePath: bundledNodePath },
+});
+
+await gezel.ensureModel({ model: 'gemma4-e2b-q4' });
+const project = await gezel.ensureProject({ package: shippedGezapp, folder: travelFolder });
+const chat = await project.openChat({ role: 'travel-guide' });</code></pre>
+<p><code>Gezel</code> is the central object — the connection, the models, the projects. Most work happens in the <code>GezelProject</code> it hands back, because chats and tools are both project-scoped, and an application that has the project never has to pass its id back in. <code>gezel.openProject(id)</code> reaches a project that already exists.</p>
+<p>A hosted daemon keeps its state under <code>~/.gezel/apps/&lt;appId&gt;/</code>, so the projects and gezels an application creates for itself never appear in the person's own workshop, and the two daemons never contend for one runtime directory. Models the person already installed are read from their home rather than downloaded again.</p>
+<p>Both <code>ensureModel</code> and <code>ensureProject</code> are idempotent and meant to run on every launch. <code>ensureModel</code> uses an installed model first, then a <code>.gezmodel</code> bundle the application ships, and only then the network — so a first run can work offline. <code>ensureProject</code> keeps the person's edits to seeded files and reuses the crew already on the roster.</p>
+<p>Hosting requires <code>@bendyline/gezel-service</code> beside the SDK; it is an optional peer dependency, so applications that only connect never download it. Under Electron, pass a real Node binary as <code>host.nodePath</code>: Gezel runs its tool server as a child process, and an Electron binary cannot stand in for Node.</p>
+<h2 id="tools-your-application-runs">Tools your application runs</h2>
+<p>An application can offer its own tools to the gezels in its project. The model sees them beside Gezel's built-in tools; when one is called, the handler runs in the application's process and what it returns becomes the tool's output.</p>
+<pre class="squisq-code-block"><code class="language-ts">await project.registerTools({
+  tools: [
+    {
+      name: 'add_travel_points',
+      description: 'Award travel points to the traveller.',
+      inputSchema: {
+        type: 'object',
+        properties: { points: { type: 'number' } },
+        required: ['points'],
+      },
+      handler: async ({ points }) =&gt; awardPoints(Number(points)),
+    },
+  ],
+});</code></pre>
+<p>The registration lives as long as the connection that made it. A brief disconnection is held open for a grace window and reconnects on its own; a closed application's tools are withdrawn, because a tool whose handler is gone would accept a call and never answer it. Arguments are checked against the declared schema before they leave the daemon, a handler that throws is reported to the model as an ordinary tool failure, and each call has a timeout the application sets. Tool calls appear in the transcript and the history log like any other tool. This needs the <code>product</code> scope, or a daemon the application hosts.</p>
 <h2 id="tls-browsers-and-errors">TLS, browsers, and errors</h2>
 <p>The local daemon uses a per-launch self-signed certificate. The Node SDK reads the public certificate from Gezel's runtime directory and constructs a pinned <code>fetch</code>, so you should not disable TLS verification globally or replace the transport with an unpinned client.</p>
 <p>A browser cannot read <code>~/.gezel/runtime/</code> and cannot perform this local trust setup itself. Use a desktop helper to complete discovery and consent, then pass the resolved address and scoped token to a renderer that imports <code>GezelApp</code> from <code>@bendyline/gezel-app-sdk/browser</code>. Pure websites should not attempt to bypass the browser's loopback TLS protections.</p>
@@ -210,6 +245,8 @@ const projects = await client.listProjects();</code></pre>
 <li class="hb-h2"><a href="#consent-and-scopes">Consent and scopes</a></li>
 <li class="hb-h2"><a href="#use-the-full-product-api">Use the full product API</a></li>
 <li class="hb-h2"><a href="#model-and-inference-methods">Model and inference methods</a></li>
+<li class="hb-h2"><a href="#host-gezel-inside-your-app">Host Gezel inside your app</a></li>
+<li class="hb-h2"><a href="#tools-your-application-runs">Tools your application runs</a></li>
 <li class="hb-h2"><a href="#tls-browsers-and-errors">TLS, browsers, and errors</a></li>
 </ul>
 </nav>
