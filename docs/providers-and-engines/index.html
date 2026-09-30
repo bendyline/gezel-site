@@ -124,7 +124,7 @@
 <h2 id="mixing">Mixing</h2>
 <p>Providers are per-gezel, not all-or-nothing. A common setup: a local model for everyday companions, a cloud model for the roles where judgment matters most (reviewer, developer). Set the install default in Settings and override an individual gezel from its detail page.</p>
 <h2 id="credentials">Credentials</h2>
-<p>The CLI providers store no credentials in gezel at all — auth stays with the CLI's own login. For the key-based providers, keys live in gezel's config file on your disk, are sent only to their own provider, and are never proxied through any gezel server — there isn't one.</p>
+<p>The CLI providers store no credentials in gezel at all — auth stays with the CLI's own login. For the key-based providers, keys live in your operating system's keychain (or, where there is none, in an encrypted file in gezel's folder), not in the settings file. They are sent only to their own provider and are never proxied through any gezel server — there isn't one.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

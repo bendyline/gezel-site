@@ -117,16 +117,31 @@
 npx gezel</code></pre>
 <p>The CLI is one of Gezel's public JavaScript packages. See <a href="../npm-packages/">Gezel on npm</a> for the complete package map and the SDKs to use when a shell command is not the right integration boundary.</p>
 <h2 id="everyday-commands">Everyday commands</h2>
-<pre class="squisq-code-block"><code>gezel start                 ensure the service is running
+<pre class="squisq-code-block"><code>gezel                       open the interactive terminal app for this folder's project
+gezel start                 ensure the service is running
 gezel start --port 8080 --foreground
                             run it attached, on a fixed port
-gezel status                is it up, and where
-gezel stop                  stop it
-gezel run "..."             one-shot: send a prompt, print the reply</code></pre>
+gezel start --web --open    serve the web interface on this computer and open
+                            it in your browser
+gezel status                is it up, and where (exits 1 if not running or unhealthy)
+gezel stop                  emergency stop: cancel AI work, unload engines,
+                            switch to Reactive — the service keeps running
+gezel stop --daemon         shut the service down
+gezel mode [mode]           show or set how active the AI may be
+                            (read-only, reactive, reactive+tasks, full-play)
+gezel run "..."             one-shot: send a prompt, print the reply
+gezel doctor                check the installation</code></pre>
 <h2 id="working-with-the-crew">Working with the crew</h2>
 <pre class="squisq-code-block"><code>gezel agent list            your gezellen
-gezel task list             tasks in flight
-gezel env skills list       importable skills</code></pre>
+gezel project list          your projects (gezel env is the same command)
+gezel task list             tasks across every project (--status to filter)
+gezel task show &lt;ref&gt;       one task, such as default/12
+gezel task pause &lt;ref&gt;      pause one task without stopping the others
+gezel task resume &lt;ref&gt;     retry a paused task and wait for its result
+gezel do &lt;craftbook&gt;        start a craftbook as a task in this folder's project
+                            (--wait to stay until it finishes)
+gezel skills list           SKILL.md skills found in this project's workspace
+gezel skills import &lt;path&gt;  turn one of those skills into a craftbook</code></pre>
 <h2 id="ai-apps">AI Apps</h2>
 <pre class="squisq-code-block"><code>gezel app new my-app        scaffold an app source folder
 gezel app validate my-app   check a source folder or .gezapp (--json for tooling)
@@ -135,6 +150,47 @@ gezel app add &lt;file&gt; --yes  review and install a package
 gezel app apply my-app      outfit the current folder as a project
 gezel app serve my-app      share its page as a mini-site</code></pre>
 <p>The full story — the source-folder format, both script forms, and the loop an AI agent can drive — is <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a>.</p>
+<h2 id="models-and-engines">Models and engines</h2>
+<pre class="squisq-code-block"><code>gezel model list            local chat models for this computer's engine
+gezel model pull &lt;id&gt;       download a chat model from the catalog
+gezel model context &lt;id&gt; [tokens]
+                            show or set a model's context window (auto clears it)
+gezel model concurrency [slots]
+                            show or set how many requests a local engine serves at once
+gezel model export &lt;id&gt; [file]
+                            save a model as a portable .gezmodel file
+gezel native install        download and verify the on-device engines
+gezel native status         engine release, platform, and backend
+gezel image models          local image-generation models (image pull / image rm)</code></pre>
+<h2 id="making-media">Making media</h2>
+<pre class="squisq-code-block"><code>gezel create-image "..."    generate an image with the configured image engine
+gezel create-video "..."    generate a video
+gezel create-audio "..."    read text aloud into an audio file</code></pre>
+<h2 id="knowledge-catalogs">Knowledge catalogs</h2>
+<pre class="squisq-code-block"><code>gezel knowledge init &lt;dir&gt;  scaffold a catalog folder
+gezel knowledge build &lt;dir&gt; compile it into a .gezk file
+gezel knowledge search &lt;file&gt; "..."
+                            search a catalog file offline
+gezel knowledge available   catalogs offered for download
+gezel knowledge install &lt;source&gt;
+                            install one by catalog id, file, or URL
+gezel knowledge list        what is installed</code></pre>
+<p>Building, checking, and searching a catalog file work without the service; installing and listing use the running gezel.</p>
+<h2 id="keys-and-security-settings">Keys and security settings</h2>
+<pre class="squisq-code-block"><code>gezel secret list           which provider keys are set (never their values)
+gezel secret set &lt;name&gt; --env VARIABLE
+                            store a key, read from an environment variable
+                            (or --stdin to pipe it in)
+gezel secret remove &lt;name&gt;  forget a key
+gezel security external-services [on|off]
+                            let gezels use web search and other outside services
+gezel env indexing [on|off] pause or resume background indexing for this project</code></pre>
+<h2 id="space-backups-and-restoring">Space, backups, and restoring</h2>
+<pre class="squisq-code-block"><code>gezel cleanup               see how much space gezel is using
+gezel cleanup --redownloadable
+                            reclaim everything gezel can download again
+gezel backup &lt;file&gt;         write your gezels, projects, and documents to a file
+gezel restore &lt;file&gt;        bring them back (--list to look first)</code></pre>
 <h2 id="this-documentation">This documentation</h2>
 <pre class="squisq-code-block"><code>gezel handboek export --out ./site</code></pre>
 <p>renders the Handboek — the same articles you're reading now — as a static website, for publishing or offline reading.</p>
@@ -150,6 +206,11 @@ gezel app serve my-app      share its page as a mini-site</code></pre>
 <li class="hb-h2"><a href="#everyday-commands">Everyday commands</a></li>
 <li class="hb-h2"><a href="#working-with-the-crew">Working with the crew</a></li>
 <li class="hb-h2"><a href="#ai-apps">AI Apps</a></li>
+<li class="hb-h2"><a href="#models-and-engines">Models and engines</a></li>
+<li class="hb-h2"><a href="#making-media">Making media</a></li>
+<li class="hb-h2"><a href="#knowledge-catalogs">Knowledge catalogs</a></li>
+<li class="hb-h2"><a href="#keys-and-security-settings">Keys and security settings</a></li>
+<li class="hb-h2"><a href="#space-backups-and-restoring">Space, backups, and restoring</a></li>
 <li class="hb-h2"><a href="#this-documentation">This documentation</a></li>
 </ul>
 </nav>

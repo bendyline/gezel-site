@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generalist mode — Gezel Handboek</title>
+<meta name="description" content="One gezel carries a task from first step to last in a single conversation.">
+<link rel="canonical" href="https://gezel.com/docs/generalist-mode/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/generalist-mode/">
+<meta property="og:title" content="Generalist mode">
+<meta name="twitter:title" content="Generalist mode">
+<meta property="og:description" content="One gezel carries a task from first step to last in a single conversation.">
+<meta name="twitter:description" content="One gezel carries a task from first step to last in a single conversation.">
+<meta property="og:image" content="https://gezel.com/og/generalist-mode.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Generalist mode">
+<meta name="twitter:image" content="https://gezel.com/og/generalist-mode.png">
+<meta name="twitter:image:alt" content="Generalist mode">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a aria-current="true" href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2 class="hb-current">Concepts</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../welcome/">What is gezel?</a></li>
+<li><a href="../the-crew/">Your crew: gezellen, the Meester, and the Voorman</a></li>
+<li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
+<li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
+<li><a href="../craftbooks-overview/">Craftbooks: procedures your crew can follow</a></li>
+<li><a href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
+<li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
+<li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
+<li><a href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
+<li><a href="../connected-apps/">Connected apps: let other tools use your gezels</a></li>
+<li><a class="hb-current" aria-current="page" href="../generalist-mode/">Generalist mode</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../craftbooks-overview/">Concepts</a>
+</nav>
+<article class="hb-article">
+<h1>Generalist mode</h1>
+<p>A task in gezel is a recipe — a craftbook — walked one step at a time, with a check at the end of each step. There are two ways to staff that walk.</p>
+<p><strong>Stepwise</strong> is the crew approach: each step names the trade it needs, a specialist for that trade picks it up in a fresh conversation, passes the step's check, and hands the next step to the next specialist. It is how small on-device models get the most out of a recipe, because each conversation stays short and focused.</p>
+<p><strong>Generalist mode</strong> puts one pair of hands on the whole task. A single gezel — the <a href="../gezel-roles/role-generalist.md">Generalist</a> — reads the outline of the task, works the active step, passes its check, and moves to the next, all in one continuous conversation. What it learned in step two is still in front of it in step five. The steps and their checks are the same ones a crew would walk; nothing is skipped and nothing is merged.</p>
+<h2 id="when-it-is-on">When it is on</h2>
+<p>Settings → Artificial Intelligence → <strong>Run in generalist mode</strong> has three keys:</p>
+<ul><li><p><strong>Automatic</strong> (the default): on for hosted frontier models — Claude, ChatGPT and Codex, GitHub Copilot — and off for models running on this device.</p></li><li><p><strong>On</strong>: every task runs in generalist mode, whatever the model. Useful for trying a capable local model on a whole task.</p></li><li><p><strong>Off</strong>: every task runs stepwise, even on a frontier model.</p></li></ul>
+<p>The choice is made once, when a task is created, so changing the setting never disturbs a task that is already under way.</p>
+<h2 id="what-stays-the-same">What stays the same</h2>
+<ul><li><p><strong>Every step, every check.</strong> The Generalist advances one step at a time and each step's check must pass before the next is revealed.</p></li><li><p><strong>Fan-out still fans out.</strong> When a step spawns one child task per item — one story per topic, one invoice per client — each child is its own conversation, so the work still happens in parallel. The Generalist collects the results when the children finish.</p></li><li><p><strong>Your choices win.</strong> If you assigned a task to a particular gezel, that gezel stays the owner; a step that is yours to approve stays yours.</p></li></ul>
+<h2 id="what-changes">What changes</h2>
+<ul><li><p><strong>One owner, one conversation.</strong> No hand-offs between specialists, no re-reading of notes to reconstruct what the previous step found.</p></li><li><p><strong>The whole outline in view.</strong> The gezel sees the goal and every step, marked done, active or pending, so it can shape today's step for tomorrow's.</p></li><li><p><strong>The full bench.</strong> The tools every step in the recipe needs are available from the start.</p></li></ul>
+<p>See also <a href="../tasks-and-supervision/">Tasks and supervision</a> for how steps, checks and pauses work.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#when-it-is-on">When it is on</a></li>
+<li class="hb-h2"><a href="#what-stays-the-same">What stays the same</a></li>
+<li class="hb-h2"><a href="#what-changes">What changes</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>

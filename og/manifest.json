@@ -31,6 +31,9 @@
     "connected-apps": {
       "specHash": "96178653a5ef5f06cd3822570fd44f28d4c9e0ec74fbb510536eeeed3b9867bb"
     },
+    "generalist-mode": {
+      "specHash": "c27f9a76e5852b8c54aaa8b8e550d5c90199d9a9b041d4a190d10f58e82b2daf"
+    },
     "roles-index": {
       "specHash": "f96969f876c4f27182845d706e0fa7f73cac88c16a414f740676063a1d5d93e2"
     },
@@ -66,6 +69,9 @@
     },
     "role/planner": {
       "specHash": "203671ea80ca8fc28f5a56db437816a875fcb54ba288b1d1bc4f288ad3080d72"
+    },
+    "role/generalist": {
+      "specHash": "a03a4dce57f9ab1e2544844db18772afd27d20ddd8deb2d8d72085d1055aba27"
     },
     "craftbooks-index": {
       "specHash": "9c89fc24a39345edb18fd20a2c5e88e1f1be8904682709de6e38f9e83cbda329"
@@ -1044,6 +1050,9 @@
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26273": {
+      "specHash": "aaa586c8b99595af205e2beca5b011143c684d1b747cacba7609a8dae295bada"
     },
     "whats-new/1.26261": {
       "specHash": "7cb4049e1688a95bf61a30df63dd9a55bb56d0a6d47f4bbea51d5c1ec49bbf47"

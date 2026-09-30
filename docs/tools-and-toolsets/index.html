@@ -167,6 +167,9 @@
 <h3 id="task-visibility">Task Visibility</h3>
 <p>Read-only task surface for delegation roles — list tasks, inspect a specific task, read its notes. The "ping projects to see status" subset, without any of the mutation tools (create, update, assign, status, advance) that belong to the assignee or voorman. Pair with <code>team-management</code> for a complete delegation surface.</p>
 <p>Tools: <code>list_tasks</code>, <code>get_task</code>, <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>read_task_notes</code></p>
+<h3 id="task-oversight">Task Oversight</h3>
+<p>Coordinator controls for running work: pause, resume or cancel a task, reassign it, and leave it a note. Deliberately excludes authoring, advancing and completing — those stay with the assignee and its step gates.</p>
+<p>Tools: <code>manage_task</code>, <code>assign_task</code>, <code>write_task_note</code></p>
 <h3 id="craftbook-launcher">Craftbook Launcher</h3>
 <p>Procedure-first task launch surface for coordinators: rank applicable craftbooks and invoke a selected recipe after its required setup is ready.</p>
 <p>Tools: <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>invoke_craftbook</code></p>
@@ -190,7 +193,7 @@
 <p>Tools: <code>run_git</code>, <code>github_pr_list</code>, <code>github_pr_view</code>, <code>github_pr_files</code>, <code>github_pr_file</code>, <code>github_pr_diff</code>, <code>github_pr_comments</code>, <code>github_pr_comment</code>, <code>github_pr_create</code>, <code>github_workflow_runs</code>, <code>github_check_status</code></p>
 <h3 id="web-access">Web Access</h3>
 <p>Search the web (when a keyed backend like Brave is configured) or Wikipedia, fetch URL contents, and find interactive elements on a browser-controlled page (after a Playwright navigate / click / type). <code>web_search</code> only registers when a real keyed backend is configured; <code>wikipedia_search</code> / <code>wikipedia_read</code> only register for non-cloud models (cloud models already have Wikipedia in training). Wikipedia search results arrive with article lead text already included, so reading a result does not need a follow-up fetch.</p>
-<p>Tools: <code>web_search</code>, <code>wikipedia_search</code>, <code>wikipedia_read</code>, <code>fetch_url</code>, <code>browser_find_page_element</code></p>
+<p>Tools: <code>web_search</code>, <code>wikipedia_search</code>, <code>wikimedia_image_search</code>, <code>wikipedia_read</code>, <code>fetch_url</code>, <code>browser_find_page_element</code></p>
 <h3 id="image-tools">Image Tools</h3>
 <p>Render charts/diagrams, read and describe existing images, and generate new images via the configured image model.</p>
 <p>Tools: <code>render_image</code>, <code>read_image_as_base64</code>, <code>generate_image</code>, <code>describe_image</code>, <code>read_image_metadata</code></p>
@@ -236,6 +239,7 @@
 <li class="hb-h3"><a href="#task-management">Task Management</a></li>
 <li class="hb-h3"><a href="#craftbook-authoring">Craftbook Authoring</a></li>
 <li class="hb-h3"><a href="#task-visibility">Task Visibility</a></li>
+<li class="hb-h3"><a href="#task-oversight">Task Oversight</a></li>
 <li class="hb-h3"><a href="#craftbook-launcher">Craftbook Launcher</a></li>
 <li class="hb-h3"><a href="#team-project-management">Team &amp; Project Management</a></li>
 <li class="hb-h3"><a href="#ai-apps">AI Apps</a></li>
