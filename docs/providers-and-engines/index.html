@@ -119,6 +119,9 @@
 <p>Two more cloud options:</p>
 <ul><li><p><strong>GitHub Copilot</strong> — sign in with your GitHub account from Settings; your Copilot plan's quota applies and gezel shows the real usage buckets.</p></li><li><p><strong>OpenAI</strong> and <strong>Anthropic</strong> API keys — paste a key; usage is billed by the provider per token.</p></li></ul>
 <p>Cloud models are the strongest option and need no hardware to speak of. The trade is that conversation content goes to that provider to be processed, under their terms.</p>
+<h3 id="codex-turn-recovery">Codex turn recovery</h3>
+<p>Gezel ends a Codex turn after ten minutes without a valid stream event when no tool is running. This catches silent model turns before the longer overall turn limit. Active tool calls keep their own limits and the overall turn limit; diagnostic heartbeats and stderr do not reset the inactivity timer. Both budgets count awake time, so a short machine sleep does not consume them.</p>
+<p>For task handoffs, a failed turn enters the existing bounded recovery: at most three sends, using the task's original procedure and completion gates. If recovery fails, the task pauses with a note containing the provider error. Retrying a paused task keeps its task identity and available session evidence.</p>
 <h2 id="local-engines">Local engines</h2>
 <p>Gezel bundles and manages native engines that run models directly on your machine — llama.cpp and friends, with Ollama supported too if you already use it. Local means private and free per use; the trade is that model quality depends on what your hardware can lift. The <a href="../local-models-and-tiers/">Models and tiers</a> article explains how gezel matches local models to roles, and the built-in fitness check ("de proeve") verifies a model actually behaves before your crew relies on it.</p>
 <h2 id="mixing">Mixing</h2>
@@ -133,6 +136,7 @@
 <h2>On this page</h2>
 <ul>
 <li class="hb-h2"><a href="#cloud-providers">Cloud providers</a></li>
+<li class="hb-h3"><a href="#codex-turn-recovery">Codex turn recovery</a></li>
 <li class="hb-h2"><a href="#local-engines">Local engines</a></li>
 <li class="hb-h2"><a href="#mixing">Mixing</a></li>
 <li class="hb-h2"><a href="#credentials">Credentials</a></li>

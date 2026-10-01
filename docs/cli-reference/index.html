@@ -175,7 +175,7 @@ gezel knowledge available   catalogs offered for download
 gezel knowledge install &lt;source&gt;
                             install one by catalog id, file, or URL
 gezel knowledge list        what is installed</code></pre>
-<p>Building, checking, and searching a catalog file work without the service; installing and listing use the running gezel.</p>
+<p>Building, checking, and searching a catalog file work without the service; installing and listing use the running gezel. Building a catalog and <code>search --semantic</code> also need the embedding runtime, which the desktop app includes. After an npm install, add it with <code>npm install -g @huggingface/transformers@^3.8.1</code> (without <code>-g</code> if gezel is installed in a project).</p>
 <h2 id="keys-and-security-settings">Keys and security settings</h2>
 <pre class="squisq-code-block"><code>gezel secret list           which provider keys are set (never their values)
 gezel secret set &lt;name&gt; --env VARIABLE
@@ -196,6 +196,8 @@ gezel restore &lt;file&gt;        bring them back (--list to look first)</code><
 <p>renders the Handboek — the same articles you're reading now — as a static website, for publishing or offline reading.</p>
 <p>Run <code>gezel --help</code> (or <code>--help</code> on any subcommand) for the full surface.</p>
 <p>To automate work <em>inside</em> a project, continue with <a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a>. To let another application use Gezel, see <a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a>.</p>
+<h2 id="watching-tasks">Watching tasks</h2>
+<p>A task watch is an observer. Its timeout ends the command without canceling or pausing native work; watching the same task again follows that work. A task's current paused status or an unanswered question blocks the watch. Historical service pause cards do not block an already resumed task and are not answered by the observer.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>
@@ -212,6 +214,7 @@ gezel restore &lt;file&gt;        bring them back (--list to look first)</code><
 <li class="hb-h2"><a href="#keys-and-security-settings">Keys and security settings</a></li>
 <li class="hb-h2"><a href="#space-backups-and-restoring">Space, backups, and restoring</a></li>
 <li class="hb-h2"><a href="#this-documentation">This documentation</a></li>
+<li class="hb-h2"><a href="#watching-tasks">Watching tasks</a></li>
 </ul>
 </nav>
 </aside>

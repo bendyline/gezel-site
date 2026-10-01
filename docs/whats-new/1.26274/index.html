@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26274 — 1 October 2026 — Gezel Handboek</title>
+<meta name="description" content="Craftbook tasks that stall far less, finished work handed back as a file you can open, whole replies read aloud, and fewer off-topic passages in chat.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26274/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26274/">
+<meta property="og:title" content="1.26274 — 1 October 2026">
+<meta name="twitter:title" content="1.26274 — 1 October 2026">
+<meta property="og:description" content="Craftbook tasks that stall far less, finished work handed back as a file you can open, whole replies read aloud, and fewer off-topic passages in chat.">
+<meta name="twitter:description" content="Craftbook tasks that stall far less, finished work handed back as a file you can open, whole replies read aloud, and fewer off-topic passages in chat.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26274.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Work that gets finished, and handed back to you">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26274.png">
+<meta name="twitter:image:alt" content="Work that gets finished, and handed back to you">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26274/">1.26274 — 1 October 2026</a></li>
+<li><a href="../../whats-new/1.26273/">1.26273 — 30 September 2026</a></li>
+<li><a href="../../whats-new/1.26261/">1.26261 — 18 September 2026</a></li>
+<li><a href="../../whats-new/1.26251/">1.26251 — 8 September 2026</a></li>
+<li><a href="../../whats-new/1.26247/">1.26247 — 4 September 2026</a></li>
+<li><a href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
+<li><a href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
+<li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
+<li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26274 — 1 October 2026</h1>
+<p>One day after <strong>1.26273</strong>. This one is about steadiness. Most of it fixes the ways a task could stall or stop for good partway through. When the work does finish, you get the file itself instead of a path buried in a list. Narration reads the whole reply and no longer holds up the rest of the app. Chats pick up far less unrelated reference material, and there is a round of safety fixes.</p>
+<p>If you read only one thing: craftbook tasks running on a model on your own computer get stuck much less often, and when one finishes, its closing message ends with a card for the file it made and an <strong>Open</strong> key.</p>
+<h2 id="tasks-that-used-to-stall-now-finish">Tasks that used to stall now finish</h2>
+<p>A <strong>craftbook</strong> is one of gezel's saved recipes for a piece of work, run as a task in steps by your <strong>gezels</strong>, the named AI craftspeople on your crew. Last release made those tasks easier to start. This one fixes many of the ways they could stall, each found in real runs:</p>
+<ul><li><p><strong>Polishing a finished file.</strong> On an on-device model (llama.cpp, MLX or Ollama), a step whose file already passed its check could keep editing it for 12 to 20 minutes in a single turn, risking breaking it. The gezel is now told the file is done and to move on. If it keeps going, the turn ends and the step's check takes over.</p></li><li><p><strong>A follow-up message that took away the step's tools.</strong> A message such as "save it to the drafts folder" could narrow a step's tools so far that it lost its only way to save its work. The gezel then paused the task, and it could not resume the task itself. A step now always keeps its saving tool and every tool its own instructions name.</p></li><li><p><strong>A save that was too long.</strong> When a local model's save ran past the most it may write in one reply, it was told to pause the task, which had the same dead end. It is now told to write a shorter version that keeps every required section.</p></li><li><p><strong>Several edits mistaken for a loop.</strong> Seven different heading fixes to one file were cut off at five as "not making progress", leaving slides unfixed. Different successful edits now count as progress; only failed edits are counted.</p></li><li><p><strong>Reviews rejected for made-up sources that were not sources.</strong> A reviewer who described the citation format, writing something like <code>&lt;path/URL&gt;</code> or "n/a", had its review rejected three times and the task paused. Placeholders like those are no longer read as citations.</p></li><li><p><strong>An old round of a looping recipe finishing the new one.</strong> In a recipe that goes review, revise, review, a chat left over from an earlier round could mark the current round done, against an unchanged file. Each round now belongs to its own session.</p></li><li><p><strong>DeepSeek V4 thinking through the whole turn.</strong> On the ds4 engine, it could spend about 18 minutes thinking and write nothing. Gezel now stops the thinking at its budget, keeps what it thought on screen, and retries that reply with thinking off.</p></li></ul>
+<h2 id="finished-work-comes-back-as-a-file-you-can-open">Finished work comes back as a file you can open</h2>
+<p>When a task made a deck or a document, its closing message used to list the deck as one unlinked path among the working files, sometimes under "…and 3 more", and the card in Updates previewed the outline rather than the result.</p>
+<p>Now the closing message starts with "Here's your PowerPoint deck" (or whatever it made) and ends with a card for that file: its type, its name, whether it is in the project folder or the artifacts drawer, and its size. <strong>Open</strong> opens it, <strong>Show in folder</strong> shows it where it is saved, and <strong>Save a copy…</strong> saves it wherever you like. The same card sits under the step tracker on the task's page and in the Task card in the chat rail, where it appears with a dashed border, marked "in progress", as soon as the file exists. The card only names a file that is really there, and never a working paper such as an outline.</p>
+<p>The Task card in the chat rail also follows the run as it goes, instead of staying as it was when you opened it. File names in its notes are links, and a reply that names a file the gezel wrote moments earlier now links to it too.</p>
+<h2 id="narration-reads-the-whole-reply-as-it-arrives">Narration reads the whole reply, as it arrives</h2>
+<p>Narration, the setting that reads gezels' replies aloud, used to stop after roughly the first 280 characters. It now reads the whole reply.</p>
+<p>With <strong>Settings → Audio → Include progress updates</strong> on, the voice starts at the first finished sentence and keeps pace while the reply is still being written. Without it, the reply is read once it is finished, but playback starts as soon as the first sentence is ready.</p>
+<p>While a gezel is speaking, a <strong>Stop narration</strong> key appears in the title bar. It stops the rest of that reply, and the next one is read as usual. Stopping a chat reply now stops its voice too.</p>
+<p>Two fixes you may have noticed without knowing why. Speech now runs on its own thread, so reading a reply aloud no longer holds up the rest of gezel for a moment on every sentence. And narration no longer saves a sound file into the project's artifacts drawer for every sentence it reads.</p>
+<h2 id="less-unrelated-reference-material-in-your-chats">Less unrelated reference material in your chats</h2>
+<p>Gezel adds passages from the Handboek and from any knowledge catalogs you installed to a conversation when they look relevant. Too often they did not need to be relevant: almost any message picked something up, so "What is 17 times 23?" came with an old release's notes.</p>
+<p>Each catalog now has a cut-off measured against labelled questions, and a passage matched only on a shared word is no longer added unless the relevance check approved it. In our tests, off-topic messages that picked up a passage went from 25 out of 25 to 2 out of 25, and on-topic answers were unchanged.</p>
+<p>The <strong>relevance check</strong> is a small model on your device, about 24 MB, that reads each passage before a gezel uses it. It is now on for new installs, with a checkbox in first-run setup to turn it off. If you already use gezel, your setting stays as it was. It is under <strong>Settings → Artificial Intelligence → Check that indexed context is on topic before using it</strong>.</p>
+<p>One related change to your security settings: a catalog download you start yourself in <strong>Settings → Knowledge</strong> now goes ahead even when they turn off app network access. Those settings govern what gezels do, and a gezel still cannot start a download. Automatic update checks still follow the setting.</p>
+<h2 id="safety-fixes">Safety fixes</h2>
+<p>Nothing you do changes for any of these.</p>
+<ul><li><p><strong>The artifacts drawer can no longer be deleted whole.</strong> Deleting or renaming a path written as <code>.</code> or <code>notes/..</code> removed the entire drawer: task inputs, prompt drafts, change proposals and data. That was possible from the app and from a gezel's tools. Both are now refused.</p></li><li><p><strong>Web fetches cannot be pointed at your own network.</strong> An address written in a disguised form, such as <code>[::ffff:127.0.0.1]</code>, could get past the guard that keeps fetches away from your computer, your local network and cloud metadata addresses. Those forms are now blocked.</p></li><li><p><strong>Websites cannot read your device's gezel id.</strong> A web page could read it from the local service. The listener for the Office add-in, whose certificate your browsers trust, now answers only the add-in itself.</p></li><li><p><strong>In Word, Excel and PowerPoint, only the gezel you picked can use the document.</strong> The document tools were offered to every gezel in the project, including background work. The pane names the gezel that can read the document, and warns you if that gezel's provider cannot reach it (GitHub Copilot, Claude CLI and Codex CLI).</p></li><li><p><strong>Uninstalling on Windows removes the Office certificate.</strong> The "Gezel Office Local CA" was left in your trusted certificates after an uninstall.</p></li><li><p><strong>Installing on Linux leaves other programs alone.</strong> The installer stopped every process running under the same user number as gezel's account, which could include a database in a Docker container, and then failed when they restarted.</p></li></ul>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>Memory refusals are plain.</strong> A model that does not fit now says "There is not enough memory to run this model. Please select another model or close some applications on this device." The arithmetic went to the log. Gemma 4's E-series models on MLX were estimated to need about 1.75 times the memory they use, so they are refused less often on smaller Macs, and DeepSeek V4 Flash q2 is no longer refused full memory on the NVIDIA DGX Spark.</p></li><li><p><strong>Your installed model is remembered.</strong> Where gezel's engine runs as a system service, the first-run check could keep an old model choice and offer to download the recommended model you already had.</p></li><li><p><strong>Pictures from tools stay out of the way of text-only models.</strong> A tool that returns images, such as slide previews, no longer fails the reply on a model that cannot see; the reply goes on without them and says so. On models that can see, the images now arrive, and are sent once rather than with every later request.</p></li><li><p><strong>The meester runs the recipe even when it gets the version wrong.</strong> The <strong>meester</strong>, the guildmaster gezel who coordinates your crew, sometimes asked for a craftbook version that does not exist, such as a "1.0" copied from your message. The task failed and the meester made the document by hand outside the recipe. The latest version now runs.</p></li><li><p><strong>Document tools find files by their plain path.</strong> A reviewer opening <code>powerpoint/task-13/deck.pptx</code> was refused with "Ambiguous MCP root". The tools now find the file, or name the folders they looked in.</p></li><li><p><strong>One foreman per project.</strong> Projects the meester starts no longer get a second, idle <strong>voorman</strong>, the gezel who leads a project's crew.</p></li><li><p><strong>Codex CLI replies that go silent end after 10 minutes</strong> instead of waiting out a much longer limit, and time your computer spends asleep no longer counts.</p></li><li><p><strong>New thread means a new thread.</strong> Sending quickly right after choosing <strong>New thread</strong> could land the message in the most recent old thread.</p></li><li><p><strong>The Home greeting stays folded</strong> after your first message, instead of opening again.</p></li><li><p><strong>The engine indicator shows the reply actually running,</strong> not the newest one still waiting its turn, and the queue indicator opens on the first click.</p></li><li><p><strong>The Office pane is steadier.</strong> Approving its connection code works after the computer has slept, <strong>Allow edits</strong> switched on while it is connecting takes effect, and errors read as a sentence instead of "Gezel answered 500." The Office and LibreOffice setup cards, the chat box and the new-task dialog likewise show a sentence instead of "Gezel API error 409".</p></li><li><p><strong>Settings lists look like lists.</strong> Pending apps in Connected Apps, Remote Servers, and a project's Connections tab are bordered rows with their buttons on the right, instead of bullet points.</p></li><li><p><strong>Markdown source fields have room.</strong> The source view of a task step, a craftbook step, a change proposal or a code review showed about one line; it is now several lines tall.</p></li><li><p><strong>Narrow windows keep their controls.</strong> Below about 760 pixels wide, the title bar keeps the queue, engine and stop-narration keys instead of hiding them. History and Craftbooks show the list first and then the item, with a <strong>Back</strong> key, when there is no room for both. A gezel's Model, Context, Sandbox and Access settings wrap together instead of splitting a label from its value.</p></li><li><p><strong>Gezel loads about a fifth less styling</strong> before its first screen.</p></li><li><p><strong>What's new is current.</strong> In 1.26273, the Handboek's What's new still opened on the previous release's notes. The build now checks for that.</p></li><li><p>Electron moved from 43.7.5 to 43.7.7.</p></li></ul>
+<h2 id="in-the-terminal">In the terminal</h2>
+<p>If you use the <code>gezel</code> command (<a href="../../cli-reference/">The gezel command line</a> covers it):</p>
+<ul><li><p><strong>An older Node.js gets a clear message.</strong> On Node.js older than 24, <code>gezel</code> and <code>gezeld</code> say "Gezel needs Node.js 24 or newer" and where to get it, instead of crashing.</p></li><li><p><strong>You are told when a command starts the background service.</strong> A command that has to start it prints "Started the Gezel background service (pid N); it keeps running after this command. Stop it with <code>gezel stop --daemon</code>." Before, about 350 MB kept running without a word.</p></li><li><p><strong><code>gezel native status</code> and <code>gezel native list</code> leave nothing running.</strong> They used to start a background service that stayed up for twenty minutes or more.</p></li><li><p><strong><code>gezel knowledge install</code> is no longer refused by your security settings</strong>, matching the app.</p></li><li><p><strong><code>gezel knowledge build</code> and <code>gezel knowledge search --semantic</code></strong> say how to install the embedding runtime when an npm install of gezel lacks it.</p></li><li><p><strong><code>gezel do &lt;craftbook&gt; --wait</code>, <code>gezel task wait</code> and <code>gezel task resume</code></strong> are no longer held up by an old "task paused" notice after the task resumed. Questions and permission prompts still stop them.</p></li><li><p><strong>A background service the command line starts now keeps a log</strong> in <code>~/.gezel/logs/</code>, rolled at 10 MB and kept for seven days. Before, its output went nowhere.</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong>Task outputs.</strong> <code>GET /api/projects/:id/tasks/:num/outputs</code> and <code>client.getTaskOutputs()</code> return a task's deliverable and its other files; the <code>taskOutputs</code> runtime capability says whether a host serves it. <code>listTaskNotes(..., { withFileReferences })</code> (<code>?refs=1</code>) returns notes with their file references resolved.</p></li><li><p><strong>Audio synthesis</strong> takes <code>persist: false</code> to skip writing the utterance to the artifacts drawer, and <code>artifactPath</code> in the response is now optional. The SSE stream always delivers at least one chunk.</p></li><li><p><strong><code>CreateProjectRequest.lead</code></strong> takes <code>'auto' | 'none'</code>; the meester's kickoff paths pass <code>'none'</code>.</p></li><li><p><strong>Search</strong> results carry <code>similarity</code>, and so does the retrieval trace. Per-catalog vector floors can be overridden with <code>GEZEL_KNOWLEDGE_VECTOR_FLOORS</code>, and the knowledge relevance bar with <code>GEZEL_RELEVANCE_KNOWLEDGE_KEEP</code>. Measure a new catalog or embedder with <code>pnpm --filter @bendyline/gezel-evals run knowledge-calibration</code>.</p></li><li><p><strong>Knowledge install routes</strong> no longer return 403 <code>network-blocked</code>. They still refuse session tokens.</p></li><li><p><strong><code>@bendyline/gezel-knowledge</code>'s compiler</strong> accepts <code>shardFill: 'semantic'</code>, which raised routed recall@8 from 82.6% to 85.7% at six shards in our measurements.</p></li><li><p><strong><code>@bendyline/gezel-client</code></strong> exports <code>apiErrorMessage</code>. The queue-status types now live in <code>@bendyline/gezel/queue-status</code> and are still re-exported from the client.</p></li><li><p><strong>The local-model turn loop</strong>, the model-profile behaviors and the prompt builder moved into <code>@bendyline/gezel/local-loop</code>. The service re-exports them from their old paths.</p></li><li><p><strong><code>gezeld</code></strong> answers <code>--help</code> and <code>--version</code> (which used to start a full daemon) and warns about unknown arguments. <code>GEZEL_DAEMON_LOG_FILE=1</code> makes a daemon write the rolling service log, which the client sets for daemons it starts detached. <code>GEZEL_WASM_BASELINE=1</code> starts a spawned daemon with <code>--liftoff-only --no-wasm-tier-up</code>, a workaround for V8 out-of-memory crashes.</p></li><li><p>Dependencies: Electron 43.7.7, <code>fast-uri</code> 3.1.8.</p></li></ul>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
+<p>Run a craftbook that stalled for you last week, and open what it hands back from the card at the end of the thread. If you like replies read aloud, turn on <strong>Settings → Audio → Include progress updates</strong> to hear them as they arrive. If you installed gezel before today, look at <strong>Settings → Artificial Intelligence → Check that indexed context is on topic before using it</strong>; it costs about 24 MB and keeps unrelated articles out of your conversations.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#tasks-that-used-to-stall-now-finish">Tasks that used to stall now finish</a></li>
+<li class="hb-h2"><a href="#finished-work-comes-back-as-a-file-you-can-open">Finished work comes back as a file you can open</a></li>
+<li class="hb-h2"><a href="#narration-reads-the-whole-reply-as-it-arrives">Narration reads the whole reply, as it arrives</a></li>
+<li class="hb-h2"><a href="#less-unrelated-reference-material-in-your-chats">Less unrelated reference material in your chats</a></li>
+<li class="hb-h2"><a href="#safety-fixes">Safety fixes</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#in-the-terminal">In the terminal</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>
