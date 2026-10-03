@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.26275 — 2 October 2026 — Gezel Handboek</title>
+<meta name="description" content="Quicker follow-ups from local models, reviews that really send work back, diagrams in Word, and read-only projects that stay read-only.">
+<link rel="canonical" href="https://gezel.com/docs/whats-new/1.26275/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/whats-new/1.26275/">
+<meta property="og:title" content="1.26275 — 2 October 2026">
+<meta name="twitter:title" content="1.26275 — 2 October 2026">
+<meta property="og:description" content="Quicker follow-ups from local models, reviews that really send work back, diagrams in Word, and read-only projects that stay read-only.">
+<meta name="twitter:description" content="Quicker follow-ups from local models, reviews that really send work back, diagrams in Word, and read-only projects that stay read-only.">
+<meta property="og:image" content="https://gezel.com/og/whats-new/1.26275.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Reviews that send work back now get it redone">
+<meta name="twitter:image" content="https://gezel.com/og/whats-new/1.26275.png">
+<meta name="twitter:image:alt" content="Reviews that send work back now get it redone">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a aria-current="true" href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">What's New</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../whats-new-index/">What's new</a></li>
+<li><a class="hb-current" aria-current="page" href="../../whats-new/1.26275/">1.26275 — 2 October 2026</a></li>
+<li><a href="../../whats-new/1.26274/">1.26274 — 1 October 2026</a></li>
+<li><a href="../../whats-new/1.26273/">1.26273 — 30 September 2026</a></li>
+<li><a href="../../whats-new/1.26261/">1.26261 — 18 September 2026</a></li>
+<li><a href="../../whats-new/1.26251/">1.26251 — 8 September 2026</a></li>
+<li><a href="../../whats-new/1.26247/">1.26247 — 4 September 2026</a></li>
+<li><a href="../../whats-new/1.26244/">1.26244 — 1 September 2026</a></li>
+<li><a href="../../whats-new/1.26237/">1.26237 — 25 August 2026</a></li>
+<li><a href="../../whats-new/1.26234/">1.26234 — 22 August 2026</a></li>
+<li><a href="../../whats-new/1.26231/">1.26231 — 19 August 2026</a></li>
+<li><a href="../../whats-new/1.26226/">1.26226 — 14 August 2026</a></li>
+<li><a href="../../whats-new/1.26224/">1.26224 — 12 August 2026</a></li>
+</ul>
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+</nav>
+<article class="hb-article">
+<h1>1.26275 — 2 October 2026</h1>
+<p>One day after <strong>1.26274</strong>. Your <strong>gezels</strong>, the named AI craftspeople on your crew, waste less time and do less you did not ask for. A local model no longer re-reads a whole conversation it had already read. A review that sends work back now gets that work redone. A project you set to read-only now stays read-only. There is also a round of fixes for ways work could be lost.</p>
+<p>If you read only one thing: a gezel could change files in a project where you had turned workspace edits off. That is fixed. Nothing you do changes.</p>
+<h2 id="local-models-reply-sooner-in-an-ongoing-chat">Local models reply sooner in an ongoing chat</h2>
+<p>Before a model on your computer can answer, it reads everything in front of it: its instructions, the list of tools it may use, and the conversation so far. Gezel keeps a copy of what it has already read, so the next message only has to read what is new. This release fixes three ways that copy was thrown away.</p>
+<ul><li><p><strong>The second message in a chat</strong> (models on a Mac, through MLX). The first chat to save the shared part of the prompt saved only that part, so its own next message started over. On Gemma 4 E4B, with the <strong>meester's</strong> 60 tools, that meant re-reading 7,313 of 8,604 tokens. The meester is the guildmaster gezel who greets you and assembles your crew. Now one read saves both the shared part and the chat's own place.</p></li><li><p><strong>Asking for something to be built partway through a chat</strong> (also MLX). A request to build or to run a specific <strong>craftbook</strong> narrowed the tool list. A craftbook is one of gezel's saved recipes for a piece of work. Narrowing rewrote the prompt from near its start, so the whole 6,420-token prompt was read again, and again on the next ordinary message. Now the full list stays in the prompt, and the engine limits which tools can actually be called. The one cost: a chat whose very first message asks for a build reads the full list once.</p></li><li><p><strong>After the engine unloads a model, or gezel restarts.</strong> The resumed conversation used to differ slightly from what the engine had saved: the date line and the reference material added to each message were missing. So the engine read the whole conversation again from the first message. Each message now keeps those additions and replays them exactly, which lets llama.cpp and Anthropic's prompt cache pick up where they left off. That holds up to the first turn in which a gezel used a tool. Saved threads grow by a few KB on turns that drew in reference material.</p></li></ul>
+<h2 id="reviews-that-send-work-back-now-get-it-redone">Reviews that send work back now get it redone</h2>
+<p>Some craftbooks end with a review step that can send the work back to be done again. When the work had been split into pieces that several gezels do at once, sending it back did nothing. The step marked itself done in the same instant, and the review ran again over the same unchanged pieces. Now a new round of the same pieces starts. Each one is marked "(pass 2)" and carries the review's verdict. The review's own limit still applies: after the third failed review the task pauses, and <strong>Try again</strong> gives it a fresh set of attempts.</p>
+<p>Other fixes to craftbook tasks, each found in real runs:</p>
+<ul><li><p><strong>A reply left over from an earlier round can no longer pause or advance the task.</strong> Last release stopped such a reply from finishing the task's current round on its own. It could still pause the task, or ask to move it on. In one run it paused the whole thing. Those requests are now refused. A gezel whose work was sent back also stops there, instead of being prompted for another reply.</p></li><li><p><strong>Gezels are no longer offered tools only the meester or a project lead may use.</strong> A Developer called a tool for importing skills 21 times in one run, and was refused every time. Workers no longer see those tools at all. Every gezel can now look things up in the Handboek, and a worker asking for "my tasks" gets its own project's list instead of a refusal.</p></li><li><p><strong>A file saved in the wrong place gets a clear answer.</strong> When a step's check could not find a file, it now says where it looked and where the file actually is. For example: "it was saved as <code>1/handover.md</code> instead. Save it at <code>handover.md</code> in the artifacts drawer."</p></li><li><p><strong>The Night Shift no longer asks about a task that never ran.</strong> The Night Shift is the work gezel does overnight, while you are away (<a href="../../night-shift/">Night Shift</a>). If you opened gezel a few times during the day, the meester's Night Shift oversight task counted each launch as a failed restart, paused itself, and filed a "Needs your input" card. Launches while a task is only waiting for the night no longer count. One already paused this way is switched back on when you update. <strong>Try again</strong> now also clears the restart count.</p></li><li><p><strong>Two changes to one task no longer undo each other.</strong> Renaming a task while it was being paused could quietly undo the pause.</p></li></ul>
+<h2 id="a-project-you-set-to-read-only-stays-read-only">A project you set to read-only stays read-only</h2>
+<p>Each project has a setting, <strong>Allow built-in tools and background work to modify the workspace</strong> in <strong>Project → Settings</strong>. With it off, gezels may not change the project's files. A gezel could get past it: a change that did not say who was making it was treated as yours, and raw file uploads did not record a writer at all. The same gap let a gezel edit your saved prompt drafts. Gezel now decides who is writing from the credentials the gezel's chat holds, not from what the request claims.</p>
+<p>Nothing you do changes for any of these.</p>
+<ul><li><p><strong>Git follows the same setting.</strong> A gezel can no longer throw away your uncommitted changes or abandon a merge. Cloning, pulling, committing, pushing and the rest obey the project's edit setting.</p></li><li><p><strong>A shortcut cannot carry a write outside its folder.</strong> A symbolic link (a file system shortcut) inside a project, the artifacts drawer or your shared Documents library could send a write or a delete somewhere outside it. That is now refused.</p></li><li><p><strong>No folder can be deleted whole by a path like <code>.</code>.</strong> Last release stopped a path written as <code>.</code> or <code>notes/..</code> from deleting the entire artifacts drawer. The same protection now covers the project's own folder and your shared Documents library.</p></li><li><p><strong>In Word, Excel, PowerPoint and LibreOffice, the document tools stay with the pane's own chat.</strong> Last release limited them to the gezel you picked in the pane. For a document not yet saved to a project, that gezel is the meester. So the meester's chat in the desktop app could also write into the open document. Now only the chat thread the pane is driving gets the tools. A thread that is also open in the desktop app loses them once you write to it there. See <a href="../../connected-apps/">Connected apps</a>.</p></li></ul>
+<h2 id="diagrams-in-word">Diagrams in Word</h2>
+<p>In the Word add-in, a gezel can now draw a diagram into your document. It writes the diagram as Mermaid, a short text format for flowcharts, sequences and timelines, and gezel draws it as a picture where the text goes. Lists can now be nested by indenting them, the way you would write them by hand.</p>
+<p>Every diagram is drawn before anything is inserted. If one cannot be drawn, the document is left untouched and the gezel is told what to fix. A Word too old to insert pictures, and LibreOffice Writer, keep the diagram as text.</p>
+<h2 id="fewer-ways-to-lose-work">Fewer ways to lose work</h2>
+<ul><li><p><strong>A message refused for lack of memory now stays put.</strong> When a model would not start because the computer was short of memory, your message showed briefly and then vanished on reload. There was no failure card and no <strong>Retry</strong>, which looked like a stuck app. The message is now saved with the reason and a <strong>Retry</strong> key.</p></li><li><p><strong>Change proposals hold up.</strong> A change proposal is a set of edits a gezel drafted for you to review before anything touches your files. A damaged proposals file used to be read as empty and then erased on the next change; gezel now stops and says the file needs repair. A proposal applied part way can be finished: <strong>Apply</strong> applies the remaining files, and each file already applied is marked <strong>Applied</strong>. Applying no longer overwrites a file created since the proposal was drafted, unless you choose to apply anyway.</p></li><li><p><strong>A new task can no longer overwrite an old one.</strong> If the file that numbers a project's tasks was missing or damaged, for instance after a restore, numbering started again from 1, and a new task could be written over an existing one. Numbering is now rebuilt from the tasks that exist, and a new task is never written over another. A task file gezel cannot read is now named in the log, with advice to repair or restore it, instead of quietly dropping out of the list.</p></li><li><p><strong>Restoring a backup does not overwrite what is new.</strong> Something created after you reviewed a restore is no longer replaced by it.</p></li><li><p><strong>Editing a file keeps its permissions.</strong> A script rewritten by a gezel stays runnable, and a private file stays private.</p></li></ul>
+<h2 id="smaller-things">Smaller things</h2>
+<ul><li><p><strong>Idle chats give their memory back.</strong> After 20 minutes without activity, a chat gives back the helper processes it holds. After a run of 27 tasks, 29 of them used to stay alive, about 1.5 GB. The first reply when you come back to that chat may take a moment longer.</p></li><li><p><strong>Gezel is lighter while it sits open.</strong> Opening a project's chat no longer reads every saved thread four times, which took about 110 ms each time with 300 threads. Gezel no longer redraws the whole window every 10 seconds when nothing changed, and the knowledge catalog page no longer redraws every 2 seconds for nothing. On Windows, the check for Claude CLI and Codex CLI no longer looks at up to 576 files every 10 seconds; a newly installed one can take up to 30 seconds to appear.</p></li><li><p><strong>Knowledge catalog updates finish sooner.</strong> The catalog was fully checked a second time right after it was installed, roughly doubling the end of every update and holding up searches meanwhile.</p></li><li><p><strong>If gezel freezes, the log says why.</strong> A pause of a second or more is logged with what was running at the time, so a bug report can point at the cause.</p></li><li><p><strong>Dead websites read as dead websites.</strong> A site that timed out, could not be reached or had a bad certificate came back to the gezel as a generic error. It now says which, and to try another source instead of the same address.</p></li><li><p><strong>Answers in a fixed format are no longer cut short.</strong> When a local model is asked for JSON, the guard that stops runaway answers no longer cuts it off. A healthy 6.8 KB answer from Gemma 4 31B had been stopped halfway.</p></li><li><p><strong>Small models trip over paths less often.</strong> A leading <code>workspace/</code> is dropped when there is no such folder, and listing a folder that does not exist says so and suggests close matches instead of "Empty directory".</p></li><li><p><strong>The meester's openers go in once.</strong> Tapping one of the meester's suggested openers twice put the same sentence into your message twice.</p></li><li><p><strong>The Home greeting folds away while the meester introduces itself</strong>, so the introduction is not pushed below the fold.</p></li><li><p><strong>Settings in a narrow window uses a dropdown.</strong> Below about 760 pixels wide, Settings picks its section from one dropdown beside the heading. The list it replaces hid every section past the fourth.</p></li><li><p><strong>A status sits beside its heading.</strong> The <strong>Ready</strong> pill for Audio's speech engines no longer drops onto the line below.</p></li><li><p><strong>Live updates survive a reload.</strong> Reloading the window could leave a project's live updates connected but silent.</p></li><li><p><strong>Schedules accept 7 for Sunday.</strong> A schedule such as <code>0 9 * * 7</code> in the new-task dialog was rejected; 7 now means Sunday, as 0 does.</p></li><li><p><strong>Lockdown says what it does.</strong> Super Lockdown used to promise that nothing leaves your machine, which was not true of a model or catalog download you start yourself. It now says your work stays on your machine and gezel goes online only when you start something. The app network setting's help text says the same.</p></li><li><p><strong>Templates no longer promise what depends on your model.</strong> The Caregiving binder, Household budget and Life binder project types, and the gezels that come with them, said nothing leaves your machine. That holds only with a model on your computer, so the claim is gone.</p></li><li><p>The gezel catalog (the <strong>gilde</strong>) moved from 0.1.78 to 0.1.80.</p></li></ul>
+<h2 id="in-the-terminal">In the terminal</h2>
+<p>If you use the <code>gezel</code> command (<a href="../../cli-reference/">The gezel command line</a> covers it):</p>
+<ul><li><p><strong><code>gezel knowledge init</code> in a folder that already holds Markdown catalogs it in place</strong> and prints the table of contents it found. Before, it created a <code>content/</code> folder that hid the existing files from the build.</p></li><li><p><strong>docfx projects can be built into knowledge catalogs.</strong> Microsoft Learn trees such as azure-docs, recognised by <code>docfx.json</code> or a <code>toc.yml</code> at the top, keep docfx's own outline and publishing rules.</p></li><li><p><strong><code>gezel knowledge build</code></strong> prints the folder it read the content from.</p></li></ul>
+<h2 id="for-developers">For developers</h2>
+<ul><li><p><strong>One-shot completions.</strong> <code>POST /api/projects/:id/completions</code> and <code>client.completeInProject()</code> make one bounded model call with no tools or transcript, on the project's engine queue. <code>gezel workflow</code> driver modules get it as <code>complete(request)</code>, which takes a <code>jsonSchema</code> (grammar-constrained on local engines), <code>thinking</code>, <code>maxTokens</code>, <code>timeoutMs</code> and a queue <code>label</code>, and returns <code>{ content, json?, jsonError?, elapsedMs }</code>. It waits out a busy engine, and a capacity refusal for up to 120 s. Errors are <code>engine_busy</code>, <code>capacity_denied</code>, <code>model_not_installed</code>, <code>completion_timeout</code>, <code>completion_cancelled</code>, <code>provider_unavailable</code> and <code>output_aborted</code>. Session tokens are refused.</p></li><li><p><strong>Performance diagnostics.</strong> Every response carries <code>Server-Timing</code>. <code>GET /api/system/perf</code> returns event-loop stalls, slow requests and renderer navigation timings, which the UI reports through <code>POST /api/system/perf/client</code>. With debug mode or <code>GEZEL_PERF_PROFILE=1</code>, each stall saves <code>logs/perf/stall-*.cpuprofile</code> (newest 20).</p></li><li><p><strong>App tools by surface.</strong> App SDK tool registrations take a <code>surfaceId</code>, and chat requests carry it in <code>x-gezel-app-surface</code>. A surface-scoped tool is offered only to a session whose latest human message came through that surface.</p></li><li><p><strong>Write attribution.</strong> A session token's writes are attributed to its own gezel and session whatever the body claims. A session token without a gezel gets 403 <code>session token has no mutation actor</code>.</p></li><li><p><strong>Web tool errors.</strong> <code>fetch_url</code>, web search and the Wikipedia and Wikimedia tools return <code>upstream_timeout</code> (504), <code>upstream_unreachable</code> or <code>upstream_tls_failed</code> (502) instead of <code>internal_error</code>. <code>@bendyline/gezel-client</code> keeps the whole cause chain on transport errors.</p></li><li><p><strong>OpenAI-compatible <code>reasoning_effort</code>.</strong> <code>none</code> or <code>minimal</code> turns thinking off on local models. Other values pass through and never turn thinking on.</p></li><li><p><strong>Tasks carry a <code>revision</code>.</strong> Concurrent writes retry, then answer 409 "Task  changed while it was being edited. Reload it and retry."</p></li><li><p><strong>Knowledge compiler.</strong> docfx outlines (<code>"toc": {"format": "docfx"}</code>), outlines deeper than 15 levels folded into their parent with a warning, and repeated warnings capped at 20 examples.</p></li><li><p><strong>Scripts.</strong> <code>run_installed_script</code> without a <code>scope</code> looks in project, then user, then standard scope. <code>storeRecords</code> in single-file mode no longer turns <code>root: "repairs.json"</code> into <code>repairs.json.json</code>, and every action returns <code>file</code>.</p></li><li><p>Dependencies: <code>@bendyline/gilde</code> 0.1.80; <code>mermaid</code> 11.16.1 joins the UI, loaded the first time a diagram is drawn.</p></li></ul>
+<h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
+<p>If you keep any project read-only, open <strong>Project → Settings</strong> and confirm <strong>Allow built-in tools and background work to modify the workspace</strong> is set the way you want; it now holds. If you write in Word with the gezel add-in, ask its gezel for a flowchart of something you are describing.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#local-models-reply-sooner-in-an-ongoing-chat">Local models reply sooner in an ongoing chat</a></li>
+<li class="hb-h2"><a href="#reviews-that-send-work-back-now-get-it-redone">Reviews that send work back now get it redone</a></li>
+<li class="hb-h2"><a href="#a-project-you-set-to-read-only-stays-read-only">A project you set to read-only stays read-only</a></li>
+<li class="hb-h2"><a href="#diagrams-in-word">Diagrams in Word</a></li>
+<li class="hb-h2"><a href="#fewer-ways-to-lose-work">Fewer ways to lose work</a></li>
+<li class="hb-h2"><a href="#smaller-things">Smaller things</a></li>
+<li class="hb-h2"><a href="#in-the-terminal">In the terminal</a></li>
+<li class="hb-h2"><a href="#for-developers">For developers</a></li>
+<li class="hb-h2"><a href="#things-to-see-and-do-after-update">Things to see and do after update</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>
