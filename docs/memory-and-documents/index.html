@@ -96,10 +96,13 @@
 <p><strong>Documents</strong> are shared knowledge — the things every gezel should know. Your company boilerplate, your house style guide, the family holiday schedule. The library has two levels:</p>
 <ul><li><p><strong>The shared library</strong> — available to every gezel in every project.</p></li><li><p><strong>Project documents</strong> — the About and Mission Objectives of each project, plus anything else scoped to just that work.</p></li></ul>
 <p>Gezels can read and (where you allow it) write documents themselves, so the library grows as your crew works.</p>
+<h2 id="reference-catalogs">Reference catalogs</h2>
+<p>You can also install <strong>knowledge catalogs</strong>: portable <code>.gezk</code> files containing reference documents and prepared search indexes. Your crew can search and cite them alongside project files and memories. The built-in Handboek uses this same format. Installing a catalog adds reference material; it does not train your chat model.</p>
+<p>For the technical details, see <a href="../how-knowledge-works/">How knowledge works in Gezel</a>. To make or install one, see <a href="../knowledge-command-line/">Working with knowledge catalogs</a>.</p>
 <h2 id="the-history-log">The history log</h2>
 <p>Gezel keeps an <strong>audit log</strong> of meaningful events: who created which gezel, when a project's mission changed, which tools ran. The History tab lets you filter and search it — and your gezellen can search it too, which means "did anyone change the mission this week?" is a question they can answer truthfully rather than guess at.</p>
 <h2 id="everything-is-a-file">Everything is a file</h2>
-<p>Memories are markdown files. Documents are files. The history log is a file. If you ever want to see exactly what gezel knows, open the gezel home folder and read it — nothing is hidden inside a database you can't inspect. The <a href="../where-files-live/">Where files live</a> article maps it all.</p>
+<p>Memories are Markdown files, your library keeps its original documents, and the history log is a file. Reference catalogs carry their documents and indexes in portable <code>.gezk</code> archives built from SQLite and other open formats. If you want to inspect what Gezel knows, the <a href="../where-files-live/">Where files live</a> and <a href="../how-knowledge-works/">How knowledge works</a> articles map the source files and search databases.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>
@@ -109,6 +112,7 @@
 <ul>
 <li class="hb-h2"><a href="#gezel-memory">Gezel memory</a></li>
 <li class="hb-h2"><a href="#the-document-library">The document library</a></li>
+<li class="hb-h2"><a href="#reference-catalogs">Reference catalogs</a></li>
 <li class="hb-h2"><a href="#the-history-log">The history log</a></li>
 <li class="hb-h2"><a href="#everything-is-a-file">Everything is a file</a></li>
 </ul>

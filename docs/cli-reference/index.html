@@ -71,6 +71,7 @@
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -78,6 +79,7 @@
 <ul>
 <li><a class="hb-current" aria-current="page" href="../cli-reference/">The gezel command line</a></li>
 <li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../knowledge-command-line/">Working with knowledge catalogs</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -116,6 +118,11 @@
 <pre class="squisq-code-block"><code class="language-bash">npm install @bendyline/gezel-cli
 npx gezel</code></pre>
 <p>The CLI is one of Gezel's public JavaScript packages. See <a href="../npm-packages/">Gezel on npm</a> for the complete package map and the SDKs to use when a shell command is not the right integration boundary.</p>
+<h2 id="local-use-and-external-connections">Local use and external connections</h2>
+<p>The npm package is sufficient for local CLI use, including first use. The CLI discovers your per-user daemon through its runtime files and pinned TLS certificate, then connects with your same-user owner credential. You do not need to install or open the desktop app or approve a connection to your own local daemon.</p>
+<p>Management commands can start your user daemon when it is absent; it keeps running until you use <code>gezel stop --daemon</code>. The interactive terminal app shuts down a daemon it started when you exit. <code>gezel run</code> adopts an already-running user daemon, or starts a service in-process for that one invocation and stops it afterward. An unhealthy running daemon remains an error.</p>
+<p>An explicit <code>--connect &lt;url&gt;</code> uses a separate CLI-scoped grant for that service. Without a valid saved grant or supplied <code>--token</code>, the terminal displays a six-character code and waits for you to approve Gezel CLI in the Gezel app. The resulting revocable credential is saved under <code>~/.gezel/cli/tokens/</code>. A valid saved grant or <code>--connect &lt;url&gt; --token &lt;token&gt;</code> lets you connect without that interaction.</p>
+<p>Rolling-upgrade compatibility may also select an older <code>legacy-full</code> machine service, which uses that approval path. Use <code>--standalone</code> to skip this compatibility choice; <code>--home &lt;path&gt;</code> or an explicit <code>GEZEL_HOME</code> also implies standalone operation. A modern machine service is an engine broker; your per-user daemon handles product data and connects to that broker for inference.</p>
 <h2 id="everyday-commands">Everyday commands</h2>
 <pre class="squisq-code-block"><code>gezel                       open the interactive terminal app for this folder's project
 gezel start                 ensure the service is running
@@ -131,6 +138,9 @@ gezel mode [mode]           show or set how active the AI may be
                             (read-only, reactive, reactive+tasks, full-play)
 gezel run "..."             one-shot: send a prompt, print the reply
 gezel doctor                check the installation</code></pre>
+<h2 id="which-project-a-command-uses">Which project a command uses</h2>
+<p><code>gezel</code>, <code>gezel run</code>, <code>gezel do</code>, and the other project commands work in the project for the folder you run them from, and create it the first time. Pass <code>--project &lt;folder&gt;</code> to use another folder without changing directory.</p>
+<p>Gezel never makes a project of your home folder, the temp folder, or the top of a drive. Run a command from one of those and it uses the Default project instead, with a note saying so. Naming one of those folders with <code>--project</code> stops the command, so it never quietly uses a different project than the one you asked for.</p>
 <h2 id="working-with-the-crew">Working with the crew</h2>
 <pre class="squisq-code-block"><code>gezel agent list            your gezellen
 gezel project list          your projects (gezel env is the same command)
@@ -167,6 +177,7 @@ gezel image models          local image-generation models (image pull / image rm
 gezel create-video "..."    generate a video
 gezel create-audio "..."    read text aloud into an audio file</code></pre>
 <h2 id="knowledge-catalogs">Knowledge catalogs</h2>
+<p>See <a href="../knowledge-command-line/">Working with knowledge catalogs</a> for the complete reference, including validation, signing, location search, removal, Parquet export, and a build–validate–install walkthrough. <a href="../how-knowledge-works/">How knowledge works in Gezel</a> explains the embeddings and storage behind these commands.</p>
 <pre class="squisq-code-block"><code>gezel knowledge init &lt;dir&gt;  scaffold a catalog folder
 gezel knowledge build &lt;dir&gt; compile it into a .gezk file
 gezel knowledge search &lt;file&gt; "..."
@@ -205,7 +216,9 @@ gezel restore &lt;file&gt;        bring them back (--list to look first)</code><
 <nav aria-label="On this page">
 <h2>On this page</h2>
 <ul>
+<li class="hb-h2"><a href="#local-use-and-external-connections">Local use and external connections</a></li>
 <li class="hb-h2"><a href="#everyday-commands">Everyday commands</a></li>
+<li class="hb-h2"><a href="#which-project-a-command-uses">Which project a command uses</a></li>
 <li class="hb-h2"><a href="#working-with-the-crew">Working with the crew</a></li>
 <li class="hb-h2"><a href="#ai-apps">AI Apps</a></li>
 <li class="hb-h2"><a href="#models-and-engines">Models and engines</a></li>

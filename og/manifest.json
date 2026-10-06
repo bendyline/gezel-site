@@ -73,6 +73,9 @@
     "role/generalist": {
       "specHash": "a03a4dce57f9ab1e2544844db18772afd27d20ddd8deb2d8d72085d1055aba27"
     },
+    "role/conversationalist": {
+      "specHash": "c34e6ba3c66e48a2496bf2d5b95518f6f9e81f086070aebf47550b4076e3a59c"
+    },
     "craftbooks-index": {
       "specHash": "9c89fc24a39345edb18fd20a2c5e88e1f1be8904682709de6e38f9e83cbda329"
     },
@@ -1027,11 +1030,17 @@
     "verifying-your-download": {
       "specHash": "afbb72c22a9ae7c900407c69f27193059ae8134809d369b1378b8b6aadf20d35"
     },
+    "how-knowledge-works": {
+      "specHash": "a6b44815b8544775a196de98f277588b2cd322def0bb973dcbd0492ef258420a"
+    },
     "cli-reference": {
       "specHash": "b20c9dc8ab2ca7c999c174aa42a7e06441c40cd5a3b71c1b911e36cf70e980e7"
     },
     "npm-packages": {
       "specHash": "2cc30a39b8b15c137db8e6cd564cb1f8a7f78b7d226cc2232a2e12f4b36ee103"
+    },
+    "knowledge-command-line": {
+      "specHash": "ed7fed9ad562509c078089fa6bc85040b9546969a5fe9d9ae7b6d35def5824da"
     },
     "writing-scripts-with-gezel-sdk": {
       "specHash": "646ce02c548bf8bc7099f4eac6512668c1f83d39ad4e4d2d1777743840828ccc"
@@ -1050,6 +1059,9 @@
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26279": {
+      "specHash": "a30eb8cfbdaba506a7320665eeb5839a64121be088ee380a94de7f974ca82942"
     },
     "whats-new/1.26275": {
       "specHash": "96e28508db09f7e8d4c011f9f85e66610419913ebbe7c969900fe24a95844b81"

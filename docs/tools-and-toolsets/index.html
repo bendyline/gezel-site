@@ -71,6 +71,7 @@
 <li><a class="hb-current" aria-current="page" href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -78,6 +79,7 @@
 <ul>
 <li><a href="../cli-reference/">The gezel command line</a></li>
 <li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../knowledge-command-line/">Working with knowledge catalogs</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -124,7 +126,7 @@
 <h2 id="the-built-in-groups">The built-in groups</h2>
 <h3 id="memory">Memory</h3>
 <p>Search indexed project knowledge through one unified surface, plus persistent notes a gezel can recall and write back. The generic search spans workspace content, artifacts, project/gezel memory, and shared documents.</p>
-<p>Tools: <code>search</code>, <code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></p>
+<p>Tools: <code>search</code>, <code>knowledge_nearby</code>, <code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></p>
 <h3 id="workspace-file-reading">Workspace File Reading</h3>
 <p>Read, list, search, and diff files in the project workspace, and retrieve a referenced Boekwachter issue's durable metadata. Mirrors Node's <code>fs</code> reads plus content/glob search. Diagnose-only — pair with <code>workspace-fs-write</code> to actually mutate.</p>
 <p>Tools: <code>list_dir</code>, <code>read_file</code>, <code>read_files</code>, <code>stat</code>, <code>validate</code>, <code>grep_files</code>, <code>find_files</code>, <code>diff_files</code>, <code>get_file_issue</code></p>
@@ -149,6 +151,9 @@
 <h3 id="archive-tools">Archive Tools</h3>
 <p>List and extract zip / tar archives in the workspace.</p>
 <p>Tools: <code>list_archive</code>, <code>extract_archive</code></p>
+<h3 id="reference-reading">Reference Reading</h3>
+<p>Read and search shared documents and knowledge sources without changing the library.</p>
+<p>Tools: <code>list_documents</code>, <code>read_document</code>, <code>search_documents</code></p>
 <h3 id="shared-document-library">Shared document library</h3>
 <p>Cross-project shared library — mission docs, guidelines, and any markdown the user wants every gezel to be able to find.</p>
 <p>Tools: <code>list_documents</code>, <code>read_document</code>, <code>write_document</code>, <code>delete_document</code>, <code>search_documents</code></p>
@@ -206,6 +211,9 @@
 <h3 id="handboek">Handboek</h3>
 <p>Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup. In every role's kit so a gezel answers 'how does gezel work?' from the real docs instead of guessing.</p>
 <p>Tools: <code>how_do_i</code></p>
+<h3 id="advisers">Advisers</h3>
+<p>Ask an existing gezel or a specialist for advice to bring back into the conversation.</p>
+<p>Tools: <code>list_gezels</code>, <code>ask_gezel</code>, <code>ask_specialist</code></p>
 <h3 id="user-interaction">User Interaction</h3>
 <p>Pose a structured question mid-turn — to the user (<code>ask_user_question</code>), to a specific gezel (<code>ask_gezel</code>), or to a role-shaped specialist (<code>ask_specialist</code>) — instead of guessing.</p>
 <p>Tools: <code>ask_user_question</code>, <code>ask_gezel</code>, <code>ask_specialist</code></p>
@@ -233,6 +241,7 @@
 <li class="hb-h3"><a href="#entity-intelligence">Entity Intelligence</a></li>
 <li class="hb-h3"><a href="#workspace-file-writing">Workspace File Writing</a></li>
 <li class="hb-h3"><a href="#archive-tools">Archive Tools</a></li>
+<li class="hb-h3"><a href="#reference-reading">Reference Reading</a></li>
 <li class="hb-h3"><a href="#shared-document-library">Shared document library</a></li>
 <li class="hb-h3"><a href="#project-artifacts">Project Artifacts</a></li>
 <li class="hb-h3"><a href="#data-tables">Data Tables</a></li>
@@ -252,6 +261,7 @@
 <li class="hb-h3"><a href="#video-tools">Video Tools</a></li>
 <li class="hb-h3"><a href="#audit-history">Audit &amp; History</a></li>
 <li class="hb-h3"><a href="#handboek">Handboek</a></li>
+<li class="hb-h3"><a href="#advisers">Advisers</a></li>
 <li class="hb-h3"><a href="#user-interaction">User Interaction</a></li>
 <li class="hb-h3"><a href="#role-delegation-downward">Role Delegation (downward)</a></li>
 <li class="hb-h3"><a href="#role-delegation-escalation">Role Delegation (escalation)</a></li>
