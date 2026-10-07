@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Upgrade a Dependency</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Upgrade a Dependency illustration" width="160" height="160" decoding="async">
 <p>Upgrade dependencies in reviewable stages with proof at every step: a green suite before any bump, smallest-risk-first ordering, call-site adaptations at their real locations, a real suite run between stages, and an honest revert for anything that cannot go green.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Survey the dependency state</td><td>Developer</td><td>Read the real dependency state and each candidate's locally-readable breaking-change surface, record the green baseline, and stage the work smallest-risk-first.</td></tr><tr><td>2</td><td>Execute the stages</td><td>Developer</td><td>Apply each stage at its real location, adapt the call sites it breaks, and run the suite between stages; revert and record any stage that cannot go green.</td></tr><tr><td>3</td><td>Verify and record the rollback</td><td>Developer</td><td>Re-run the whole suite on the final tree, spot-check the adaptations, and record a concrete rollback path.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

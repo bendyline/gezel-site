@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Root-Cause Investigation</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Root-Cause Investigation illustration" width="160" height="160" decoding="async">
 <p>Debug systematically: reproduce the failure and find the true root cause before changing any code, then fix and verify.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce and bound the failure</td><td>Developer</td><td>Establish a stable failing case, expected behavior, environment, and blast radius.</td></tr><tr><td>2</td><td>Prove the root cause</td><td>Researcher</td><td>Test competing hypotheses and identify the causal mechanism before modifying code.</td></tr><tr><td>3</td><td>Implement the smallest fix and verify it</td><td>Developer</td><td>Correct the proven mechanism and demonstrate both regression coverage and non-regression.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

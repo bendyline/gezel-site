@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Schema / Type Migration</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Schema / Type Migration illustration" width="160" height="160" decoding="async">
 <p>Migrate a schema or data shape with the expand/contract discipline: reads accept both shapes while the data moves, the old shape is dropped only after every record is transformed, and real suite runs between stages prove no record was ever stranded.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Plan the expand/contract migration</td><td>Planner</td><td>Document the current and target shapes from the real files and stage the work as expand, migrate, contract - with per-stage data safety and rollback.</td></tr><tr><td>2</td><td>Execute the stages</td><td>Developer</td><td>Apply expand, migrate, contract at the real sites with the suite run between stages; reads accept both shapes until the plan retires the dual-read.</td></tr><tr><td>3</td><td>Prove no record was stranded</td><td>Developer</td><td>Check every record is in the target shape with values intact, the old shape is gone where contract says, and the whole suite is green.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

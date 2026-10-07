@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Test Suite Backfill</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Test Suite Backfill illustration" width="160" height="160" decoding="async">
 <p>Add tests that actually bite to untested code: rank the untested behavior by breakage cost, write tests in the project's real layout that a wrong implementation would fail, and prove the suite green with real run receipts — under an enforced independent review.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Map the risk</td><td>Developer</td><td>Read the target modules and rank untested behavior by breakage cost; choose concrete targets. No test writing yet.</td></tr><tr><td>2</td><td>Write tests that can fail</td><td>Developer</td><td>Add the tests in the project's real layout and style, asserting actual behavior — never tautologies.</td></tr><tr><td>3</td><td>Verify the suite green</td><td>Developer</td><td>Run the whole suite and record the real result, with a per-test statement of the regression it guards.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

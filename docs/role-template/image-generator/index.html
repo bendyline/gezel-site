@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image generator — Gezel Handboek</title>
+<meta name="description" content="An image generator.">
+<link rel="canonical" href="https://gezel.com/docs/role-template/image-generator/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/role-template/image-generator/">
+<meta property="og:title" content="Image generator">
+<meta name="twitter:title" content="Image generator">
+<meta property="og:description" content="An image generator.">
+<meta name="twitter:description" content="An image generator.">
+<meta property="og:image" content="https://gezel.com/og/role-template/image-generator.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Image generator">
+<meta name="twitter:image" content="https://gezel.com/og/role-template/image-generator.png">
+<meta name="twitter:image:alt" content="Image generator">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a aria-current="true" href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Gezel Roles</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../roles-index/">Roles at a glance</a></li>
+<li><a href="../../role/meester/">The Meester</a></li>
+<li><a href="../../role-catalog/">Every role template</a></li>
+<li><a href="../../role/voorman/">The Voorman</a></li>
+<li><a href="../../role/reviewer/">The Reviewer</a></li>
+<li><a href="../../role/researcher/">The Researcher</a></li>
+<li><a href="../../role/copywriter/">The Copywriter</a></li>
+<li><a href="../../role/designer/">The Designer</a></li>
+<li><a href="../../role/image-generator/">The Image Generator</a></li>
+<li><a href="../../role/video-generator/">The Video Generator</a></li>
+<li><a href="../../role/developer/">The Developer</a></li>
+<li><a href="../../role/web-developer/">The Web Developer</a></li>
+<li><a href="../../role/planner/">The Planner</a></li>
+<li><a href="../../role/generalist/">The Generalist</a></li>
+<li><a href="../../role/conversationalist/">The Conversationalist</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Gezel Roles</a>
+</nav>
+<article class="hb-article">
+<h1>Image generator</h1>
+<p>An image generator. Always passes through requests to the image generation system. No LLM is involved — the gezel forwards your message text straight to the image engine.</p>
+<h2 id="how-they-work">How they work</h2>
+<p>This is the character brief Gezel gives the model, word for word. It shapes how this gezel thinks, works and talks.</p>
+<h4>What this gezel does</h4>
+<p>This gezel is a <strong>pass-through to image generation</strong>. There's no LLM behind it — when you @mention them with a prompt, the message goes straight to the configured image engine and the result lands in chat.</p>
+<h4>How to use it</h4>
+<p>Type the prompt you'd give to a stable-diffusion-like model:</p>
+<blockquote><p>@{name} two horses jumping a cow, oil on canvas, dramatic lighting</p></blockquote>
+<p>The image is saved into your project's <code>artifacts/generated/</code> folder and rendered inline in the chat bubble. To iterate, ask again with a new prompt — there's no conversation memory because there's no model on this side of the wire.</p>
+<h4>Settings</h4>
+<p>This gezel has no <code>about.md</code> to edit (no system prompt). The image engine + model are picked in Settings → Image generation. Per-gezel defaults — width, height, sampling steps, model id — are editable in the gezel's edit dialog under "Default arguments".</p>
+<p><a href="../../role-catalog/">Every role template</a> · <a href="../../roles-index/">Roles</a></p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>

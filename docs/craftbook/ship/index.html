@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Ship</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Ship illustration" width="160" height="160" decoding="async">
 <p>End-to-end release procedure: run tests, run a review pass, commit/push, open the PR, wait for CI to come back green, hand off for merge. Requires a GitHub-connected project on a feature branch.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Preflight</td><td>Developer</td><td>Confirm the working tree is shippable: the checked-out branch matches the requested branch, has an upstream, is clean, and contains the intended commits.</td></tr><tr><td>2</td><td>Run tests</td><td>Developer</td><td>Run the project's test command. Branches on failure to a triage step; on success advances to the review pass.</td></tr><tr><td>3</td><td>Self-review pass</td><td>Reviewer</td><td>Walk your own diff before opening the PR. Last chance to catch obvious mistakes.</td></tr><tr><td>4</td><td>Open PR</td><td>Developer</td><td>Open a pull request for the already-published branch.</td></tr><tr><td>5</td><td>Wait for CI</td><td>Developer</td><td>Poll workflow runs / check status until the gate is green or fails.</td></tr><tr><td>6</td><td>Summary</td><td>Developer</td><td>Stamp a final summary. PR opened, CI green, ready to merge.</td></tr><tr><td>7</td><td>Halted</td><td>Developer</td><td>Something blocked the ship — tests, CI, or push. Report DONE_WITH_CONCERNS.</td></tr></tbody></table></div>

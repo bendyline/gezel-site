@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Standup / Team Update Summary</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Standup / Team Update Summary illustration" width="160" height="160" decoding="async">
 <p>Condense a pile of raw team updates (standup messages, async check-ins, channel dumps) into one clean summary grouped by person or workstream, surfacing blockers and decisions. Scopes the grouping axis and summary shape FIRST (by-person vs by-project, what counts as a blocker, the yesterday/today/blockers frame), then a copywriter compresses every raw update into that frame without dropping anyone. The scope-first step prevents a 4B model from rambling and guarantees blockers get their own callout section instead of being buried. Use for daily standup summaries, async update rollups, team check-in digests, and turning Slack threads into a readable recap.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the summary</td><td>Planner</td><td>lock the grouping axis, frame, and blocker definition</td></tr><tr><td>2</td><td>Summarize</td><td>Copywriter</td><td>compress every update into the locked frame</td></tr><tr><td>3</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>4</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>

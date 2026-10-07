@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gezel — local-first AI agents for macOS, Windows &amp; Linux</title>
-  <meta name="description" content="Gezel is a free, open-source desktop app for assembling a team of AI agents that run on your own device — no cloud, no lock-in. macOS, Windows, and Linux.">
+  <title>Gezel — a free AI crew that works on your own computer</title>
+  <meta name="description" content="Free, open-source desktop app for Mac, Windows and Linux. Hand a crew of AI helpers a job tonight and review their work in the morning, on your own computer.">
   <link rel="canonical" href="https://gezel.com/">
   <meta name="theme-color" content="#eae5d6" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
@@ -15,19 +15,22 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Gezel">
   <meta property="og:url" content="https://gezel.com/">
-  <meta property="og:title" content="Gezel — local-first AI agents for macOS, Windows &amp; Linux">
-  <meta property="og:description" content="A free, open-source desktop app for assembling a team of AI agents that run on your own device — no cloud, no lock-in.">
-  <meta property="og:image" content="https://gezel.com/og-image.png">
+  <meta property="og:title" content="Gezel — hand off a job tonight, review it in the morning">
+  <meta property="og:description" content="A free, open-source desktop app. Hand a crew of AI helpers a job tonight and review their work in the morning, all on your own computer.">
+  <!-- The query string is a cache-buster: X, LinkedIn and Slack cache a card by
+       URL, so a redrawn og-image.png at the same address keeps showing the old
+       one for weeks. Bump it whenever the card is redrawn. -->
+  <meta property="og:image" content="https://gezel.com/og-image.png?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Gezel — your team of AI craftsmen. Local-first AI agents for macOS, Windows and Linux.">
+  <meta property="og:image:alt" content="Gezel — hand off a job tonight, review it in the morning. Free and open source for macOS, Windows and Linux.">
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gezel — local-first AI agents for macOS, Windows &amp; Linux">
-  <meta name="twitter:description" content="A free, open-source desktop app for assembling a team of AI agents that run on your own device — no cloud, no lock-in.">
-  <meta name="twitter:image" content="https://gezel.com/og-image.png">
-  <meta name="twitter:image:alt" content="Gezel — your team of AI craftsmen. Local-first AI agents for macOS, Windows and Linux.">
+  <meta name="twitter:title" content="Gezel — hand off a job tonight, review it in the morning">
+  <meta name="twitter:description" content="A free, open-source desktop app. Hand a crew of AI helpers a job tonight and review their work in the morning, all on your own computer.">
+  <meta name="twitter:image" content="https://gezel.com/og-image.png?v=2">
+  <meta name="twitter:image:alt" content="Gezel — hand off a job tonight, review it in the morning. Free and open source for macOS, Windows and Linux.">
 
   <script type="application/ld+json">
   {
@@ -37,8 +40,8 @@
         "@type": "SoftwareApplication",
         "name": "Gezel",
         "url": "https://gezel.com/",
-        "description": "A free, open-source desktop app for assembling a team of AI agents that run on your own device — no cloud, no lock-in.",
-        "applicationCategory": "DeveloperApplication",
+        "description": "A free, open-source desktop app. Hand a crew of AI helpers a job tonight and review their work in the morning, all on your own computer.",
+        "applicationCategory": "BusinessApplication",
         "operatingSystem": "macOS, Windows, Linux",
         "downloadUrl": "https://github.com/bendyline/gezel/releases",
         "softwareHelp": "https://gezel.com/docs/",
@@ -50,7 +53,7 @@
       {
         "@type": "VideoObject",
         "name": "Introduction to Gezel",
-        "description": "A tour of Gezel, a local-first desktop app for assembling a team of AI agents.",
+        "description": "A tour of Gezel, a free desktop app that gives you a crew of AI helpers working on your own computer.",
         "thumbnailUrl": "https://i.ytimg.com/vi/LXrqys9I8_I/maxresdefault.jpg",
         "uploadDate": "2026-08-03T17:58:15-07:00",
         "embedUrl": "https://www.youtube-nocookie.com/embed/LXrqys9I8_I",
@@ -216,6 +219,9 @@
       max-width: 640px;
       margin: 0;
     }
+    /* One sentence per line: left to wrap freely, the second sentence breaks
+       mid-phrase and strands "morning." on a line of its own. */
+    .tagline > span { display: block; }
     .lede {
       max-width: 640px;
       margin: 0;
@@ -223,7 +229,7 @@
       color: var(--text);
     }
     .lede strong { color: var(--sage); }
-    .gloss { color: var(--muted); font-size: 0.95rem; }
+    .gloss { color: var(--muted); font-size: 0.95rem; max-width: 640px; margin: 0.9rem 0 0; }
     /* Video: a thumbnail + play button standing in for the real embed. */
     .hero-media { transform: translateY(4px); }
     .video-frame {
@@ -501,6 +507,7 @@
       line-height: 1.45;
       color: var(--muted);
     }
+    .download .spec-note + .spec-note { margin-top: 8px; }
     .spec-note a {
       color: var(--muted);
       text-decoration: underline;
@@ -769,6 +776,70 @@
       flex: none;
       opacity: 0.82;
     }
+
+    /* "Ready-made for your crew": a strip of craftbook woodcuts, then the
+       catalog sections as plain link cards. */
+    .catalog { margin: 0 0 48px; }
+    .catalog-lede { text-align: center; color: var(--muted-strong); margin: -6px auto 22px; max-width: 560px; }
+    .craft-strip {
+      list-style: none;
+      margin: 0 0 22px;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+    .craft-strip a {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .craft-strip img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 6px;
+      background: #e8dec7;
+      filter: sepia(0.12) contrast(1.04);
+      box-shadow: inset 0 0 0 1px rgba(74, 52, 30, 0.14);
+      transition: transform 140ms ease;
+    }
+    .craft-strip a:hover img { transform: translateY(-2px); }
+    .catalog-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .catalog-links a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      height: 100%;
+      padding: 14px 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
+      border-radius: 10px;
+      color: var(--text);
+      transition: transform 140ms ease, border-color 140ms ease;
+    }
+    .catalog-links a:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); }
+    .catalog-links strong { font-family: var(--serif); color: var(--sage); font-size: 1.02rem; }
+    .catalog-links span { font-size: 0.86rem; line-height: 1.4; color: var(--muted-strong); }
+    @media (max-width: 900px) {
+      .craft-strip { grid-template-columns: repeat(3, 1fr); }
+      .catalog-links { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 460px) {
+      .catalog-links { grid-template-columns: 1fr; }
+    }
     footer {
       padding: 28px 0 40px;
       border-top: 1px solid var(--border);
@@ -778,6 +849,7 @@
     }
     footer p { margin: 0.3em 0; }
     footer a { color: var(--muted); }
+    footer .sep { opacity: 0.45; margin: 0 9px; }
     footer a:hover { color: var(--accent); }
     /* Step 4 -> 2 -> 1 rather than letting the row reflow to an orphaned 3+1. */
     @media (max-width: 900px) {
@@ -846,6 +918,7 @@
     <header class="masthead">
       <nav class="masthead-nav">
         <a href="/docs/">Docs</a>
+        <a href="/docs/model-scorecard/">Model scorecard</a>
         <a href="https://github.com/bendyline/gezel">
           <!-- GitHub's official mark (octicon mark-github-16). -->
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -853,7 +926,6 @@
           </svg>
           GitHub
         </a>
-        <a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
       </nav>
       <span class="status-badge">Early beta</span>
     </header>
@@ -861,18 +933,22 @@
     <section class="hero">
       <div class="hero-copy">
         <!-- Wordmark and tagline are one H1 so the page's main heading reads as
-             a real phrase ("gezel — Your team of AI craftsmen") rather than a
-             bare brand word. Styling keeps them looking exactly as before. -->
+             a real phrase rather than a bare brand word. The tagline is the
+             promise every other channel repeats (GitHub description, social
+             card, launch posts) — change them together. -->
         <h1>
           <em class="wordmark">gezel</em>
-          <span class="tagline">Your team of AI craftsmen</span>
+          <span class="tagline"><span>Hand off a job tonight.</span> <span>Review it in the morning.</span></span>
         </h1>
         <p class="lede">
-          <div>Gezel is a free desktop app for <strong>getting things done</strong>.</div>        
-          <p>Describe the job and a crew of AI specialists
-          takes it on — researching, drafting, building, reviewing — each working from a tested craftbook,
-          with over 200 to draw on. They work on your own machine, on local AI models. No cloud account,
-          no subscription, nothing leaving the building. It’s your team.</p>
+          Gezel is a free app that gives you a <strong>crew of AI helpers</strong>:
+          a researcher, a writer, a developer, and more. Tell them what you need
+          and they get to work on your own computer, overnight if you like. In the
+          morning, their reports and suggested changes are waiting for you.
+        </p>
+        <p class="gloss">
+          Works with free AI models that run on your computer, or with a Claude,
+          ChatGPT or Copilot plan you already have. There’s no Gezel account to create.
         </p>
       </div>
 
@@ -982,7 +1058,10 @@
             </dl>
           </div>
 
-          <p class="spec-note">Models download separately the first time you use them. <a href="/docs/local-models-and-tiers/">Models and tiers</a></p>
+          <p class="spec-note">Models download the first time you use them. <a href="/docs/local-models-and-tiers/">Models and tiers</a></p>
+          <!-- The hardware bar above is where a visitor without a gaming GPU or
+               a recent Mac leaves; this line is the answer that keeps them. -->
+          <p class="spec-note">Not enough memory for these? Gezel also works with a Claude, ChatGPT or Copilot plan. <a href="/docs/providers-and-engines/">Cloud options</a></p>
         </aside>
       </div>
     </section>
@@ -996,35 +1075,35 @@
     </div>
 
     <section class="uses">
-      <h2 class="section-title">What can gezel help you with</h2>
+      <h2 class="section-title">What your crew can take on</h2>
       <div class="use-grid">
-        <a class="use" href="/docs/role/web-developer/">
-          <img class="use-illustration" src="/assets/woodcuts/build-pages.webp" alt=""
-               width="480" height="480" loading="lazy" decoding="async">
-          <h3>Build pages</h3>
-          <p>Sites, dashboards, and games.</p>
-          <span class="use-cta">See the role <span class="arrow" aria-hidden="true">→</span></span>
-        </a>
         <a class="use" href="/docs/role/researcher/">
           <img class="use-illustration" src="/assets/woodcuts/research-docs.webp" alt=""
                width="480" height="480" loading="lazy" decoding="async">
-          <h3>Research docs</h3>
-          <p>Answers searched, cross-checked, and cited.</p>
-          <span class="use-cta">See the role <span class="arrow" aria-hidden="true">→</span></span>
+          <h3>Research a question</h3>
+          <p>Sources found, cross-checked, and written up with citations.</p>
+          <span class="use-cta">Meet the researcher <span class="arrow" aria-hidden="true">→</span></span>
         </a>
-        <a class="use" href="/docs/role/reviewer/">
+        <a class="use" href="/docs/role/web-developer/">
+          <img class="use-illustration" src="/assets/woodcuts/build-pages.webp" alt=""
+               width="480" height="480" loading="lazy" decoding="async">
+          <h3>Build a site or app</h3>
+          <p>Pages, dashboards, and small games.</p>
+          <span class="use-cta">Meet the web developer <span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/night-shift/">
           <img class="use-illustration" src="/assets/woodcuts/review-code.webp" alt=""
                width="480" height="480" loading="lazy" decoding="async">
-          <h3>Review code</h3>
-          <p>A skeptic's read of the work before it ships.</p>
-          <span class="use-cta">See the role <span class="arrow" aria-hidden="true">→</span></span>
+          <h3>Look after your code</h3>
+          <p>Overnight reviews, with fixes you approve before anything changes.</p>
+          <span class="use-cta">See the night shift <span class="arrow" aria-hidden="true">→</span></span>
         </a>
         <a class="use" href="/docs/project-types-index/">
           <img class="use-illustration" src="/assets/woodcuts/personal-growth.webp" alt=""
                width="480" height="480" loading="lazy" decoding="async">
-          <h3>Personal growth</h3>
-          <p>Tutors and coaches that track your progress.</p>
-          <span class="use-cta">See project types <span class="arrow" aria-hidden="true">→</span></span>
+          <h3>Learn something new</h3>
+          <p>Tutors and coaches that remember where you left off.</p>
+          <span class="use-cta">See what else they do <span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </div>
     </section>
@@ -1037,20 +1116,20 @@
       </svg>
     </div>
 
-    <section class="how" id="get-started">
-      <h2 class="section-title">Get started with gezel</h2>
+    <section class="how" id="how-it-works">
+      <h2 class="section-title">How it works</h2>
       <div class="steps">
         <div class="step">
-          <h3>Install the Gezel app</h3>
-          <p>Download Gezel for your device. It measures the memory your machine can spare, then recommends the local AI models that will run well on it — no cloud account required.</p>
+          <h3>Tell the Meester what you need</h3>
+          <p>Your first helper is the Meester, who runs the workshop. Describe the job in your own words, and they bring in the right helpers for it.</p>
         </div>
         <div class="step">
-          <h3>Speak with the meester</h3>
-          <p>Your first conversation is with the Meester — your concierge for getting things done. Describe the work and they set up the project and add the gezellen needed to complete your tasks.</p>
+          <h3>Your crew gets to work</h3>
+          <p>Each helper follows a tested, step-by-step plan for the job. Watch along and step in whenever you like, or leave them to it overnight.</p>
         </div>
         <div class="step">
-          <h3>Track as your crew builds</h3>
-          <p>Your crew will pass tasks between each other, keep notes, and pick up where the last one left off. Watch them work via built-in task trackers, and step in whenever you like.</p>
+          <h3>Review what’s waiting</h3>
+          <p>Come back to finished reports and suggested changes. Your own files only change when you say so.</p>
         </div>
       </div>
     </section>
@@ -1065,31 +1144,62 @@
       </svg>
     </div>
 
-    <section class="crafts" id="how-it-works">
-      <h2 class="section-title">How it works</h2>
+    <!-- The catalog is most of what there is to read about gezel, and every
+         page of it is indexable: link into it from the front door. Counts are
+         rounded down from the pinned gilde catalog so they stay true as it grows. -->
+    <section class="catalog" id="catalog">
+      <h2 class="section-title">Ready-made for your crew</h2>
+      <p class="catalog-lede">Gezel comes with hundreds of tested plans, characters and models, all free. Have a look before you download.</p>
+      <ul class="craft-strip">
+        <li><a href="/docs/craftbook/pitch-deck/"><img src="/docs/craftbook/pitch-deck/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Investor pitch deck</span></a></li>
+        <li><a href="/docs/craftbook/research-report/"><img src="/docs/craftbook/research-report/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Cited research report</span></a></li>
+        <li><a href="/docs/craftbook/landing-page/"><img src="/docs/craftbook/landing-page/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Landing page</span></a></li>
+        <li><a href="/docs/craftbook/html-arcade-game/"><img src="/docs/craftbook/html-arcade-game/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Arcade game</span></a></li>
+        <li><a href="/docs/craftbook/photo-cull/"><img src="/docs/craftbook/photo-cull/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Photo cull</span></a></li>
+        <li><a href="/docs/craftbook/family-story-chapter/"><img src="/docs/craftbook/family-story-chapter/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Family story chapter</span></a></li>
+      </ul>
+      <ul class="catalog-links">
+        <li><a href="/docs/craftbooks-index/"><strong>280+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
+        <li><a href="/docs/model-catalog/"><strong>80 AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
+        <li><a href="/docs/role-catalog/"><strong>36 characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
+        <li><a href="/docs/project-types-index/"><strong>23 project types</strong><span>Ready-made setups, and 20 of them you can try in your browser.</span></a></li>
+        <li><a href="/docs/toolset-catalog/"><strong>17 connectors</strong><span>Bring in mail, calendars, issues and posts as files your crew can read.</span></a></li>
+      </ul>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 14l1.5 1.5"/>
+        <path d="M18.347 15.575l2.08 2.079a1.96 1.96 0 0 1 -2.773 2.772l-2.08 -2.079a1.96 1.96 0 0 1 2.773 -2.772"/>
+        <path d="M3 6l3 -3l7.414 7.414a2 2 0 0 1 .586 1.414v2.172h-2.172a2 2 0 0 1 -1.414 -.586l-7.414 -7.414"/>
+      </svg>
+    </div>
+
+    <!-- One card per question a first-time visitor is actually asking: will it
+         work on my computer, is it safe, and is it mine. -->
+    <section class="crafts" id="why-gezel">
+      <h2 class="section-title">Why gezel</h2>
       <div class="cards">
         <div class="card">
-          <h3>Role-based gezel crews</h3>
-          <p>Every gezel has <a href="/docs/roles-index/">a role</a> - for example, developer, writer, researcher - and a focused prompt and set of tools. This helps ensure AI models - especially local ones - remain focused so they can do their best.</p>
+          <h3>Made for the AI on your computer</h3>
+          <p>Each helper has one job, a few tools, and one of more than 250 <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
         </div>
         <div class="card">
-          <h3>Craftbooks</h3>
-          <p>Craftbooks are precise, step-by-step guides that help your crew complete tasks efficiently and consistently. Gezel includes <a href="https://gezelgilde.com/craftbooks/">over 200+ tested craftbooks</a> - so you don't need to build them yourself.</p>
+          <h3>You stay in charge</h3>
+          <p>Helpers don’t get your passwords, open access to the web, or a view of anything else on your computer unless you allow it. <a href="/docs/security-model/">How Gezel keeps AI in bounds</a></p>
         </div>
         <div class="card">
-          <h3>A safe space for AI work</h3>
-          <p>Gezel <a href="/docs/security-model/">carefully manages what AI can do</a>.</p>
-          <p>We don't give local models your credentials, an open web connection, or visibility into anything on your device, unless you let them.</p>
-          <p>Gezel is designed to be privacy-conscious and compliant - even for strict business environments.</p>
-        </div>
+          <h3>Yours to keep</h3>
+          <p>Everything your crew makes is saved as <a href="/docs/where-files-live/">ordinary files</a> on your own disk. Gezel is free and <a href="https://github.com/bendyline/gezel">open source</a>, and none of our servers sits between you and your work.</p>
         </div>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Bendyline. Released under the MIT license.</p>
-      <p><a href="https://github.com/bendyline/gezel">github.com/bendyline/gezel</a></p>
-      <p><a href="https://github.com/bendyline/gezel/issues">Report an issue</a></p>
+      <p>© 2026 Bendyline · Free and open source under the MIT license</p>
+      <p>
+        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
+      </p>
     </footer>
   </div>
 

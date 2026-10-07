@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Subtitle &amp; Caption Generator</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Subtitle &amp; Caption Generator illustration" width="160" height="160" decoding="async">
 <p>Generate time-synced subtitles/captions for a video in a standard caption format (SRT or WebVTT), so the video is accessible and watchable without sound. Scopes the caption format and timing/reading-speed rules FIRST, transcribes the audio with precise word timings, then formats those into properly cued, line-length-limited caption cues. The transcribe-then-format split is deliberate: getting accurate text and timings is a different skill from chunking them into readable, on-screen-friendly cues that respect reading speed and never overlap.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the captions</td><td>Planner</td><td>format (SRT/VTT), timing rules, line limits, language</td></tr><tr><td>2</td><td>Transcribe with timings</td><td>Developer</td><td>STT the audio into word/segment timestamps</td></tr><tr><td>3</td><td>Format the caption file</td><td>Developer</td><td>chunk timed text into valid SRT/VTT cues</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>

@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Execute an Ops Runbook</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Execute an Ops Runbook illustration" width="160" height="160" decoding="async">
 <p>Execute a written operational procedure step by step with verification and a stop-on-anomaly rule. Inventories the runbook and its preconditions FIRST, then executes each step in order — act, verify the step's own check, record verbatim evidence in a run log — halting immediately when observed state does not match what the procedure expects, then writes an outcome report (clean completion, or a halt report naming the failing step, expected vs. observed, and the steps deliberately not executed). Recording verbatim evidence and refusing to run past an anomaly is the wisdom that separates a trustworthy operator from one who papers over broken state.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Inventory the runbook</td><td>Researcher</td><td>read the procedure end-to-end, list steps and checks, confirm preconditions</td></tr><tr><td>2</td><td>Execute and record</td><td>Researcher</td><td>per step: act, verify, record verbatim evidence; STOP at the first anomaly</td></tr><tr><td>3</td><td>Report the outcome</td><td>Researcher</td><td>COMPLETED summary or HALTED report with expected vs. observed</td></tr></tbody></table></div>

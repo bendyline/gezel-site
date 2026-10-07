@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Fix a Flaky Test</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Fix a Flaky Test illustration" width="160" height="160" decoding="async">
 <p>Hunt down an intermittently failing test and make it deterministic: reproduce the flake with real recorded runs, isolate the nondeterminism mechanism, remove it at the real site — never by deleting, skipping, or retrying the test — and prove stability with three consecutive green runs.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce the flake with recorded runs</td><td>Developer</td><td>Run the suite repeatedly until the intermittent failure is a recorded fact, and characterize when it appears.</td></tr><tr><td>2</td><td>Isolate the mechanism</td><td>Researcher</td><td>Pin the nondeterminism with a targeted experiment and name the defect site. No fixes yet.</td></tr><tr><td>3</td><td>Remove the nondeterminism</td><td>Developer</td><td>Make the outcome deterministic at the real site — isolation, cleanup, awaits, seeding — never masking.</td></tr><tr><td>4</td><td>Prove stability</td><td>Developer</td><td>Three consecutive green suite runs, read from real receipts — one green run means nothing for a flake.</td></tr><tr><td>5</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>6</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>8</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

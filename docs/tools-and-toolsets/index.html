@@ -69,6 +69,7 @@
 <li><a href="../where-files-live/">Where files live</a></li>
 <li><a href="../providers-and-engines/">Providers and engines</a></li>
 <li><a class="hb-current" aria-current="page" href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
 <li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
@@ -95,6 +96,7 @@
 <ul>
 <li><a href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../model-catalog/">Every model</a></li>
 </ul>
 </li>
 </ul>
@@ -114,13 +116,13 @@
 <article class="hb-article">
 <h1>Tools and toolsets</h1>
 <p>Tools are a gezel's hands: without them, an AI model can only talk. Gezel's tools are bundled into named <strong>groups</strong>, and each role carries the groups that fit its trade — a reviewer gets file reading, a developer gets file writing and code execution, a coordinator gets team management. You can add or remove groups per gezel, and third-party toolsets from the gilde catalog extend the set further.</p>
-<p>The public <a href="https://gezelgilde.com/toolsets/">Gezel Gilde toolset catalog</a> collects first-party toolsets, connector types, and ready-made project types in one place.</p>
+<p><a href="https://gezel.com/docs/toolset-catalog/">Add-on toolsets and connectors</a> on gezel.com lists what you can add beyond the built-in groups, and <a href="https://gezel.com/docs/project-types-index/">every project type</a> shows the ready-made project setups.</p>
 <p>Calls through Gezel's built-in tool groups are mediated by its policy, consent, and audit layers. Provider-native tools, approved package commands, and third-party MCP servers have different boundaries; the <a href="../security-model/">security model</a> explains those exceptions.</p>
 <h2 id="custom-mcp-toolsets">Custom MCP toolsets</h2>
 <p>In any Toolsets panel, choose <strong>Add toolset → Custom MCP</strong> to import a local JSON file or paste its contents. Gezel understands both common configuration envelopes:</p>
 <ul><li><p>VS Code workspace format: a top-level <code>servers</code> object.</p></li><li><p>Claude/Cursor format: a top-level <code>mcpServers</code> object.</p></li></ul>
 <p>Both local <code>stdio</code> servers and remote Streamable HTTP/SSE servers are supported. Imported environment values and HTTP headers go into Gezel's secret store rather than the ordinary installed-toolsets JSON. Provider-native MCP integrations that only accept local processes (currently Copilot and Claude CLI) load the <code>stdio</code> entries and skip hosted entries.</p>
-<p>For third-party options, the <a href="https://gezelgilde.com/community/">Gilde community directory</a> is searchable by category. Review a community server before adding it to a crew; these entries are outside Gezel's first-party toolsets.</p>
+<p>For third-party options, the toolset browser also lists thousands of community MCP servers, marked <strong>Community</strong>. Review a community server before adding it to a crew; these entries are outside Gezel's first-party toolsets.</p>
 <p>A project can also declare its approved MCP toolsets as files in its working folder. Gezel discovers <code>.gezel/mcp.json</code>, <code>.vscode/mcp.json</code>, and the common root <code>.mcp.json</code> automatically. When names overlap, the Gezel-specific file wins, then VS Code, then the root file. Changing one of these files rebuilds that project's MCP bridges, so the new set applies on the next turn.</p>
 <p>Project-file discovery is project consent, not a way around the install-wide security posture: unconfined third-party MCP servers remain available only when non-builtin toolsets are enabled by <strong>Settings → Security &amp; Compliance</strong>. VS Code <code>${input:…}</code> prompt variables are not imported because they need an interactive value; use an environment variable or literal value instead.</p>
 <h2 id="the-built-in-groups">The built-in groups</h2>

@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Targeted Performance Fix</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Targeted Performance Fix illustration" width="160" height="160" decoding="async">
 <p>Make a measured, targeted performance improvement: baseline numbers recorded with their method before anything changes, one bottleneck fixed in reversible stages with the suite green, the same measurement re-run to prove the gain, and an enforced independent review.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Measure the baseline</td><td>Developer</td><td>Record the current numbers with a repeatable method, confirm the suite green, and pick the one bottleneck to attack.</td></tr><tr><td>2</td><td>Plan the fix</td><td>Developer</td><td>Set a numeric target for the one bottleneck and break the fix into reversible stages. No source edits.</td></tr><tr><td>3</td><td>Fix the bottleneck</td><td>Developer</td><td>Execute the planned stages at the real sites, keeping the suite green and the measurement honest.</td></tr><tr><td>4</td><td>Re-measure and verify</td><td>Developer</td><td>Re-measure with exactly the baseline's method, quote both numbers side by side, and record the suite green.</td></tr><tr><td>5</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>6</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>8</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

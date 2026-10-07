@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Monitoring Alert Rules</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Monitoring Alert Rules illustration" width="160" height="160" decoding="async">
 <p>Author a set of monitoring/alerting rules as a deployable config (Prometheus alerting rules, Grafana/Alertmanager YAML, or a CloudWatch-style spec): the right signals, thresholds, severities, for-durations, and routing labels. Scopes the SLOs and alert philosophy FIRST (what to alert on, symptom-vs-cause, thresholds and burn windows, severity ladder, noise budget), then a developer writes the rules config to that spec, then a reviewer validates for completeness, dedupe, and anti-flapping. Scoping thresholds and severities before writing YAML is what produces actionable, low-noise alerts instead of a wall of CPU-over-80% pages. Use for alerting rules, Prometheus alerts, SLO monitoring, on-call paging rules, and reducing alert fatigue.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the alerts</td><td>Planner</td><td>lock signals, thresholds, severities, and routing</td></tr><tr><td>2</td><td>Build the rules</td><td>Developer</td><td>write the alerting-rules config to the locked spec</td></tr><tr><td>3</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>4</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>

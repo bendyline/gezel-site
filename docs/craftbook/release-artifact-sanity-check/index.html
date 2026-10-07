@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Release Artifact Sanity Check</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Release Artifact Sanity Check illustration" width="160" height="160" decoding="async">
 <p>Sanity-check a folder of release artifacts without executing them: inventory every package, verify hashes and signatures against trusted evidence, safely inspect every file inside archives and application bundles, scan for suspicious or secret-bearing content, and produce an evidence-backed ship or no-ship report. Use this for release artifact verification, installer signing checks, package integrity audits, supply-chain inspection, or a pre-publish binary review.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Inventory the release set</td><td>Developer</td><td>identify every release record, artifact, checksum, signature, and package boundary</td></tr><tr><td>2</td><td>Verify integrity and signing</td><td>Reviewer</td><td>hash every artifact and validate signatures against a trusted identity</td></tr><tr><td>3</td><td>Inspect every package member</td><td>Developer</td><td>safely unpack app packages and scan every contained file</td></tr><tr><td>4</td><td>Write the artifact sanity report</td><td>Reviewer</td><td>state a ship decision with complete evidence and blockers</td></tr><tr><td>5</td><td>Evaluate</td><td>Reviewer</td><td>grade coverage and evidence; pass only when every acceptance criterion is met</td></tr><tr><td>6</td><td>Finish</td><td>Reviewer</td><td>stamp the decision and hand off the evidence-backed report</td></tr></tbody></table></div>

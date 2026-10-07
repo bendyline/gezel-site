@@ -69,6 +69,7 @@
 <li><a href="../where-files-live/">Where files live</a></li>
 <li><a href="../providers-and-engines/">Providers and engines</a></li>
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
 <li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
@@ -95,6 +96,7 @@
 <ul>
 <li><a href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../model-catalog/">Every model</a></li>
 </ul>
 </li>
 </ul>
@@ -186,7 +188,7 @@ gezel knowledge available   catalogs offered for download
 gezel knowledge install &lt;source&gt;
                             install one by catalog id, file, or URL
 gezel knowledge list        what is installed</code></pre>
-<p>Building, checking, and searching a catalog file work without the service; installing and listing use the running gezel. Building a catalog and <code>search --semantic</code> also need the embedding runtime, which the desktop app includes. After an npm install, add it with <code>npm install -g @huggingface/transformers@^3.8.1</code> (without <code>-g</code> if gezel is installed in a project).</p>
+<p>Building, checking, and searching a catalog file work without the service; installing and listing use the running gezel. Building a catalog and <code>search --semantic</code> also need the embedding runtime, which the desktop app includes. After an npm install, add it with <code>npm install -g @huggingface/transformers@^4.3.1</code> (without <code>-g</code> if gezel is installed in a project).</p>
 <h2 id="keys-and-security-settings">Keys and security settings</h2>
 <pre class="squisq-code-block"><code>gezel secret list           which provider keys are set (never their values)
 gezel secret set &lt;name&gt; --env VARIABLE

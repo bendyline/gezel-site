@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Reproduce-Then-Fix a Bug</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Reproduce-Then-Fix a Bug illustration" width="160" height="160" decoding="async">
 <p>Fix a bug the disciplined way, with proof at every step: a failing test that reproduces it (verified red by a real test run), the smallest change at the real defect site, a green suite afterwards, and an enforced independent review of the fix.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce with a failing test</td><td>Developer</td><td>Establish the failure on the real code, as a running test that fails for the right reason.</td></tr><tr><td>2</td><td>Locate the defect</td><td>Researcher</td><td>Name the defect site and the causal chain from it to the symptom. No source edits.</td></tr><tr><td>3</td><td>Make the smallest fix</td><td>Developer</td><td>Change the real defect site, minimally, keeping the new test as a regression guard.</td></tr><tr><td>4</td><td>Validate red-to-green</td><td>Developer</td><td>Re-run the original reproduction and the whole suite; record the real results.</td></tr><tr><td>5</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>6</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>8</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

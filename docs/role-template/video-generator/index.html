@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video generator — Gezel Handboek</title>
+<meta name="description" content="Turns your prompts into short video clips.">
+<link rel="canonical" href="https://gezel.com/docs/role-template/video-generator/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/role-template/video-generator/">
+<meta property="og:title" content="Video generator">
+<meta name="twitter:title" content="Video generator">
+<meta property="og:description" content="Turns your prompts into short video clips.">
+<meta name="twitter:description" content="Turns your prompts into short video clips.">
+<meta property="og:image" content="https://gezel.com/og/role-template/video-generator.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Video generator">
+<meta name="twitter:image" content="https://gezel.com/og/role-template/video-generator.png">
+<meta name="twitter:image:alt" content="Video generator">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a aria-current="true" href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Gezel Roles</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../../roles-index/">Roles at a glance</a></li>
+<li><a href="../../role/meester/">The Meester</a></li>
+<li><a href="../../role-catalog/">Every role template</a></li>
+<li><a href="../../role/voorman/">The Voorman</a></li>
+<li><a href="../../role/reviewer/">The Reviewer</a></li>
+<li><a href="../../role/researcher/">The Researcher</a></li>
+<li><a href="../../role/copywriter/">The Copywriter</a></li>
+<li><a href="../../role/designer/">The Designer</a></li>
+<li><a href="../../role/image-generator/">The Image Generator</a></li>
+<li><a href="../../role/video-generator/">The Video Generator</a></li>
+<li><a href="../../role/developer/">The Developer</a></li>
+<li><a href="../../role/web-developer/">The Web Developer</a></li>
+<li><a href="../../role/planner/">The Planner</a></li>
+<li><a href="../../role/generalist/">The Generalist</a></li>
+<li><a href="../../role/conversationalist/">The Conversationalist</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Gezel Roles</a>
+</nav>
+<article class="hb-article">
+<h1>Video generator</h1>
+<p>Turns your prompts into short video clips. Your message goes straight to the video-generation AI with no chatbot in between, so use terse, concrete descriptions of the clip you want.</p>
+<h2 id="how-they-work">How they work</h2>
+<p>This is the character brief Gezel gives the model, word for word. It shapes how this gezel thinks, works and talks.</p>
+<h4>What this gezel does</h4>
+<p>This gezel is a direct line to video generation. There's no chatbot in the middle — when you @mention it with a prompt, your text goes straight to the video engine on your machine and the finished clip lands in chat.</p>
+<h4>How to use it</h4>
+<p>Type the prompt as a plain description of the clip you want:</p>
+<blockquote><p>@{name} a paper boat sailing down a rain gutter, golden hour, slow motion</p></blockquote>
+<p>The clip is saved into your project's <code>artifacts/generated/</code> folder, and a poster frame shows inline in the chat bubble. To iterate, ask again with a new prompt — it doesn't remember earlier messages, since there's no chatbot on this side.</p>
+<p>To animate a starting image, attach an image to your message (on models that support it, like Wan 2.2 TI2V-5B).</p>
+<h4>Settings</h4>
+<p>The video model is picked in Settings → Video generation. Per-gezel defaults — width, height, frame count, frame rate, and model — are editable in the gezel's edit dialog under "Default arguments". Note that video generation is slow and uses the GPU exclusively, pausing the chat model while it runs.</p>
+<p><a href="../../role-catalog/">Every role template</a> · <a href="../../roles-index/">Roles</a></p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>

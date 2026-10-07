@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Receipts to Expense Ledger</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Receipts to Expense Ledger illustration" width="160" height="160" decoding="async">
 <p>Turn a folder of receipt photos/PDFs into a clean expense ledger: OCR each receipt, extract vendor, date, line items, tax, and total, assign an expense category, and reconcile that each extracted total matches its line items. Locks the per-receipt field schema, the category set, and the math/reconciliation rules FIRST, then OCRs and extracts each receipt into rows, then verifies every receipt was processed, totals reconcile, currencies/dates are normalized, and low-confidence reads are flagged for review. Defining the schema and the total-equals-line-items check before extraction is what keeps an expense ledger trustworthy for reimbursement or tax.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the ledger</td><td>Planner</td><td>per-receipt schema, categories, reconciliation rules</td></tr><tr><td>2</td><td>OCR and extract</td><td>Developer</td><td>read each receipt, extract fields, categorize, reconcile</td></tr><tr><td>3</td><td>Verify the ledger</td><td>Reviewer</td><td>coverage, reconciliation, normalization, review flags</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>

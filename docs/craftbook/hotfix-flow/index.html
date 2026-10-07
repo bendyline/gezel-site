@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Hotfix Flow</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Hotfix Flow illustration" width="160" height="160" decoding="async">
 <p>Stop a live failure with the smallest change that fixes it at the real site: reproduce with the least machinery that demonstrates the failure, patch minimally with the proper repair recorded as follow-up, validate with a rollback path, and pass an enforced review of the blast radius.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reproduce with the least machinery</td><td>Developer</td><td>Establish the failure cheaply and concretely: a command, a probe, or a focused test — whatever demonstrates it fastest.</td></tr><tr><td>2</td><td>Smallest change that stops the bleeding</td><td>Developer</td><td>Fix the cause at the real defect site with the minimum blast radius; defer the proper repair into Follow-up.</td></tr><tr><td>3</td><td>Re-run the reproduction and record rollback</td><td>Developer</td><td>Prove the failure is gone, be explicit about what was and was not verified, and write the escape route.</td></tr><tr><td>4</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>5</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>6</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>7</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Behavior-Preserving Refactor</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Behavior-Preserving Refactor illustration" width="160" height="160" decoding="async">
 <p>Restructure code without changing what it does, with proof at every stage: a green suite recorded before anything moves (characterization tests pinned first when coverage is thin), small reversible stages that keep the tests green, a re-measured structure target, and an enforced independent review.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Capture the baseline</td><td>Developer</td><td>Record the current truth before changing anything: suite green, structural measurements, and the guardrail — with characterization tests added first where coverage is thin.</td></tr><tr><td>2</td><td>Plan reversible stages</td><td>Developer</td><td>Design the target structure and an ordered sequence of small stages, each individually reversible and each leaving the tree working. No source edits.</td></tr><tr><td>3</td><td>Restructure stage by stage</td><td>Developer</td><td>Execute the planned stages at the real sites, keeping the suite green between stages.</td></tr><tr><td>4</td><td>Re-measure and verify</td><td>Developer</td><td>Re-measure with the same method as the baseline, quote both figures, and record the suite green.</td></tr><tr><td>5</td><td>Evaluate the deliverable</td><td>Reviewer</td><td>Independently grade the observable deliverable and route it to finish, repair, or user escalation.</td></tr><tr><td>6</td><td>Repair the deliverable</td><td>Developer</td><td>Fix only the concrete gaps from the latest independent review.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All deterministic and reviewer criteria passed.</td></tr><tr><td>8</td><td>Escalate unresolved concerns</td><td>Developer</td><td>The bounded repair loop ended without a defensible pass.</td></tr></tbody></table></div>

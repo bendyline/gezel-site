@@ -40,6 +40,9 @@
     "role/meester": {
       "specHash": "5864018b713780dc9c88f0da36861c6789b0a187e5b59c6592f5953cc26513d3"
     },
+    "role-catalog": {
+      "specHash": "afd5e765831dea39164df3ae4f0d7d011d884c38211ebcd45d7ff94c093e1355"
+    },
     "role/voorman": {
       "specHash": "30e965f69c1848d3dbfdae57b582a07981a13da9888d51c8797c92919992bf0b"
     },
@@ -1024,6 +1027,9 @@
     "tools-and-toolsets": {
       "specHash": "fdea46e7ae381319c85632adf5588a8b507ce32d767a08eb6da6f4ae0d2ddbee"
     },
+    "toolset-catalog": {
+      "specHash": "f5a339d515df0d4619c8c1f9a690a47ea793ef42021963ad5be4d283523a82f4"
+    },
     "security-model": {
       "specHash": "84b6a9a21490423de04147117cb5f5b9b276dd865e5f275b07edbcfc9161ce45"
     },
@@ -1056,6 +1062,9 @@
     },
     "model-scorecard": {
       "specHash": "01be0bc30cc9bf2cf63ba8dffa87f9f2246eea4fc5477b274bd1874327d098c5"
+    },
+    "model-catalog": {
+      "specHash": "11b30f83fc18ad529a6ba3551ca1a7b9ef4f7302472b49a631128a6f874f631d"
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
@@ -1098,6 +1107,303 @@
     },
     "whats-new/1.26224": {
       "specHash": "524fdb5f232933a50e3ef20a9493c0069c6dda5e9f2fc66a071cfc72a7df6532"
+    },
+    "model/qwen3.8-27b-q4": {
+      "specHash": "f252ffad78f5f3e8256d5dd73ca558d9a4d7dfd19c1fe9b17195dac5d734a489"
+    },
+    "model/qwen3.8-27b-q3": {
+      "specHash": "ef183c8d63243e620f9d980bca642fcc687d0dda533f6b43f37f193b73f2f6e3"
+    },
+    "model/qwen3.8-27b-q2": {
+      "specHash": "f87dc29cbe445be08dfe9a2e14eb569c9d7e78f3fa6d261ac4556ae68b20d4c7"
+    },
+    "model/qwen3.6-27b-q4": {
+      "specHash": "4dedceaacbdfdde8e8e8cf2dbeed1237d4ed13280ef8b2da827102ee806aa30b"
+    },
+    "model/qwen3.6-27b-q8": {
+      "specHash": "a4bf01de571e1eae60cec154eae7dbf33c60ac5956663102c2db697cdc025775"
+    },
+    "model/qwen3.6-35b-a3b-q4": {
+      "specHash": "0eb05b66aa1881075e12138e7a5b1969c5928c6da65feaa0b11d15c3d115a6ff"
+    },
+    "model/qwen3.6-35b-a3b-q8": {
+      "specHash": "6fc0b9b1e89fff25e2f930d5b792afd0c2f743fa8c872d8b659c4431b3c2d93d"
+    },
+    "model/qwen3.8-27b-iq1-s": {
+      "specHash": "6883e3d02922210008b8882112a519eeb5d69c50df17535b24ce64fdac5756fe"
+    },
+    "model/qwen3.8-27b-q6": {
+      "specHash": "8efb70a3dfa3ee58bfa088471fe7d5c25c40f31d932112025bd432a9f66c24e5"
+    },
+    "model/qwen3.8-27b-q8": {
+      "specHash": "0c44e53f28a2002e314c03456a9800dafcc8c9d78d129e8ae2e44fe62e2ad6d5"
+    },
+    "model/gemma4-12b-q4": {
+      "specHash": "001e491a5814a1698ef55da29f1b3b5b58148e47c42f54f729f6418fcb3e0efd"
+    },
+    "model/gemma4-12b-q8": {
+      "specHash": "ad0cc00c010229bab8e0b1eab2bfa725e900ff7f756b271f4b75b01f3e55ce47"
+    },
+    "model/gemma4-26b-q4": {
+      "specHash": "213461e830d27e5083f92b204aaecd2b19268c688b4977c5264f4c027405ee4f"
+    },
+    "model/gemma4-31b-q4": {
+      "specHash": "638e1cc5434de9d2efa2499076de070c950a1b064a9530eca88ba6a16db3b647"
+    },
+    "model/gemma4-e2b-q4": {
+      "specHash": "709e2ab09cd3cbf6ab518a93c110383c2973ec1268dc615e738f9052c89aa667"
+    },
+    "model/gemma4-e4b-q4": {
+      "specHash": "7bc578f98e48a0d4a883c832e540359580fe5fe9603496c2f604a0597184bad7"
+    },
+    "model/btl4-35b-q4": {
+      "specHash": "c4fc33d131d81146f55171a9d3947bb676a239fccc2df99e5b0a99eaee6d95ea"
+    },
+    "model/btl4-compact-iq2": {
+      "specHash": "bf979d3828d248bcd32d1fb10cfbfcdc6c332b18eff7f330de6b7e58f459afe2"
+    },
+    "model/deepseek-r1-8b-q4": {
+      "specHash": "7364d8988f11fbb0271a023b261eb9df5238b29b6d28de6ae007015142d6bf88"
+    },
+    "model/deepseek-v4-flash-284b-q4": {
+      "specHash": "bcd4a574a109af6ff5aded73764ab27400b0e3a3d622bba6a1cb65b7d45bf3c5"
+    },
+    "model/deepseek-v4-flash-284b-q2": {
+      "specHash": "13ab1eb0c6f0eec97add0b6ae58d8fbe7df02af7a0bdc10ea344e116d3a1fea1"
+    },
+    "model/deepseek-v4-flash-284b-q2q4": {
+      "specHash": "ba8be3259b80989e6c3c26bd47a1dbd8983421c42890d48dccb461edc4fc97d4"
+    },
+    "model/deepseek-v4-flash-284b-mxfp4": {
+      "specHash": "d80c7f11d6d928d2d8fdedcd8baa3d33ce05214789648acbf0bd52aa83d89b0e"
+    },
+    "model/glm-5.2-754b-q2": {
+      "specHash": "1e924cfae598d963fc2df8ffa6dd16da444c732ed51133901451f09786639b69"
+    },
+    "model/glm-5.3-flash-320b-q2": {
+      "specHash": "7ac058f79f02a1229e4e54c178ca3bb220eb7415900761b283f64ac0b360c063"
+    },
+    "model/gpt-oss-120b-q4": {
+      "specHash": "ff596d3e3d9da8c2cd9edcb33f973f5a99dbc32f9c15f25beb40131fcde52d7b"
+    },
+    "model/gpt-oss-20b-q4": {
+      "specHash": "fe92a9315a7b61490bbb2f71c9ae0619ad405dc49a5fa3916b20d272398c4b1e"
+    },
+    "model/granite4.2-30b-q4": {
+      "specHash": "a889c5a06821b38d899f4c75c3c1d3a19223370cc846e9dde9151f325dc081d6"
+    },
+    "model/granite4.2-3b-q4": {
+      "specHash": "e9734d1fca4211c0293135b12f8936434b20f8a550e983e754da3a9a8ebc3dc0"
+    },
+    "model/granite4.2-8b-q4": {
+      "specHash": "3a89d354d8785b327bebdf64418df8a453e249694b90ddcc77b502d3025e943d"
+    },
+    "model/laguna-s-2.1-118b-q4": {
+      "specHash": "b40f7bffc78a50658f07e38597aeaeb999f8b4d2e1215ae9b2993cd9ec7f5a77"
+    },
+    "model/laguna-s-2.1-118b-q6": {
+      "specHash": "ee2593d5fc474843ad004bda0f5ce91bcdd9a63acad45a566910f421129c98a9"
+    },
+    "model/laguna-s-2.1-118b-q8": {
+      "specHash": "ea772f89a1932f2fd3629fec276e2b84f53158558b122e81bf215ea024b5a0a9"
+    },
+    "model/lfm2.5-2.6b-q4": {
+      "specHash": "01af1d77312c8691d04247feb4d72d30fed1005a82fedf5a5d7dd046be52b840"
+    },
+    "model/llama3.2-3b-q4": {
+      "specHash": "2c1867a976b3e636f33a61b18d0255f3a4167e2f4b88a46e7b1f62ba9cbe3f08"
+    },
+    "model/minicpm5-1b-q4": {
+      "specHash": "91108c21e376ae366523aad7002a3bdd827251952adcd04fd2ea87881ac4fc50"
+    },
+    "model/minicpm5-2b-q4": {
+      "specHash": "098ca0f88835e1d73c0976efb9a97a9975321ec4877703fa425abdf83a9d7d8a"
+    },
+    "model/mistral-7b-q4": {
+      "specHash": "3a202c3dc374f110749b103aa4d35e6be5627bd2e1e63b8b9235809cb6f8bb53"
+    },
+    "model/mistral-medium-3.5-128b-q4": {
+      "specHash": "d52531392d7f1998f9287628728e8bc64ccfa19adb4cfff07d0adacf430d0925"
+    },
+    "model/muse-glimmer-30b-q4": {
+      "specHash": "20ca9b47c551a1a56aec9a3b6678e9afbf3ef8bd7628d25cacb44d9a3c89a127"
+    },
+    "model/nanbeige4.2-3b-q4": {
+      "specHash": "c3b7a5712fc293c05fbd5612e013adb3c6c57e809c633206f48da7ba5e558061"
+    },
+    "model/nemotron3.5-lightning-30b-q4": {
+      "specHash": "01dd524fd03fc49c1c8a6e9dc7191812e2d9c1ece7327ec72158043001c5add2"
+    },
+    "model/nemotron3.5-lightning-30b-q8": {
+      "specHash": "4021be9da82f801d6cbf0a9ef5fe2a51f59e5aa8df38ae153b1a8f8afaf28473"
+    },
+    "model/nemotron3-nano-30b-q4": {
+      "specHash": "5f6cfe193de0f2cb2170a31745544cc7161909bf211cbcec37292b1f25a2dd95"
+    },
+    "model/nemotron3-super-120b-q4": {
+      "specHash": "60e54621ac769ac5a5c26531de047677916c063eae709879c404244339444e51"
+    },
+    "model/ornith-35b-q4": {
+      "specHash": "828ae024348067f2cdb1a562923431235194416160f191d0613e609fe4c1c207"
+    },
+    "model/ornith-35b-q8": {
+      "specHash": "115d9222dcbac869b8d210f02c13876345b722ebc733fe635f2e5483b32c24d0"
+    },
+    "model/ornith-9b-q4": {
+      "specHash": "0d6bea60ddb9ee29613d305b575396ebf69ffe1181b4e975167ea8a93149a61f"
+    },
+    "model/ornith1.5-35b-a3b-q4": {
+      "specHash": "dd245a8870a3d2e33caba6d38711b2803e30f0c4924929b7e3775cb95f8ae075"
+    },
+    "model/ornith1.5-35b-a3b-q8": {
+      "specHash": "557a82d9e6e5a00b8e14b33292afa56a8ed91efe036dcec56470ea435f5a1a0f"
+    },
+    "model/ornith1.5-9b-q4": {
+      "specHash": "1f102a6c860a814e24c61ea9921e89f38ec7738f779016c3c24cf941f6d42fe6"
+    },
+    "model/ornith1.5-9b-q8": {
+      "specHash": "ab69ae9717fff12c98b04ec6194ff413a973f86ff3db8df06f6bd88cdd1c75ee"
+    },
+    "model/qwen3.5-0.8b-q4": {
+      "specHash": "0be6a5fb4c4a42a5b829e13d66bd96a0f9ea79ab494fe3b80949f68f3db3a585"
+    },
+    "model/qwen3.5-122b-a10b-q4": {
+      "specHash": "7141a1747af5734242e917db5a78f44947cb2ebaae3d8f8121696fdd40043eaa"
+    },
+    "model/qwen3.5-27b-q4": {
+      "specHash": "36c6c5e7429263f1ae6c2949731bf89d3d2169d858f1bab2303294ff8099f91e"
+    },
+    "model/qwen3.5-2b-q4": {
+      "specHash": "a3ae3a63a371f868b4d76d314262ca880168b9f2b95c18b683a3ba37ed8a0287"
+    },
+    "model/qwen3.5-4b-q4": {
+      "specHash": "36ffa6c3d4f1aacc8b94fba6452f297ff45a07805bd43130512d7ee7a28e073e"
+    },
+    "model/qwen3.5-9b-q4": {
+      "specHash": "436a26236001a2ac01a0a410119366549637507f79db3686c934c6c11627ff55"
+    },
+    "model/qwen3.8-flash-next-iq4": {
+      "specHash": "a8fcd24166a6c0e16e6f92c8efd0ded17a88919e59dd5d6af0bb7237fd23a6c5"
+    },
+    "model/qwen3.8-flash-next-q2": {
+      "specHash": "74921eb2529689c5e4cf463ce0ef1041a880b4c02de72b5f0ee384f0db70f80a"
+    },
+    "model/qwen3.8-flash-next-iq3": {
+      "specHash": "feaec80f64e127c118571dd522a643a594211677857b71ea81ee6f192a180410"
+    },
+    "model/talkie-1930-13b-q4": {
+      "specHash": "840a65e325c9a912d305bf3c434b540311f4845d4ed72c5dac735bf641dfdc89"
+    },
+    "model/ternary-bonsai-27b-q2": {
+      "specHash": "2a485c1d375cff4c388a8b8e460e0523d3c40bb376019fa04d0e18061b22aade"
+    },
+    "role-template/aanjager": {
+      "specHash": "b5f0826bab2e68e1746259d6a0a557e2627da9e6d25827e40eda319ba0e3006a"
+    },
+    "role-template/archivaris": {
+      "specHash": "c8be6ca0dcf69a0e82e640ac30333173bb776e9a5931b6710af7e58d13b81e72"
+    },
+    "role-template/boekwachter": {
+      "specHash": "01c593008f33d25d1753b45d81044f40ba50075f452a456b01e980fa99bd0a44"
+    },
+    "role-template/builder": {
+      "specHash": "5071c5fca5131e63e187f3e93906d1003a47c5524bf3f449e9038ce85cbffad3"
+    },
+    "role-template/ceremoniemeester": {
+      "specHash": "96ab6e90c2f57d9d85f8059f416da1673a1aaaa122206dc816fc8e493fdf66be"
+    },
+    "role-template/coach": {
+      "specHash": "e7d119e1a995b65324f543da6130b95ddf792700693ceba2a25af7f45f3b8424"
+    },
+    "role-template/conversationalist": {
+      "specHash": "ed2856086c4cc815104230e21998c48fa74a3580a5e27d9e5e06e3fab7c6d978"
+    },
+    "role-template/copywriter": {
+      "specHash": "0eaadb3dfb811c33c71742d61445977e0f1da4b7aec1cf4aee3111f4ae0403e1"
+    },
+    "role-template/checkers-player": {
+      "specHash": "e206ea51becd1b2351d3a8ea315c15d2bc06710569cb2c0bf5e0fe7a20a3f2a3"
+    },
+    "role-template/designer": {
+      "specHash": "9088280ca3acfd57b49b26636e86f07eda736deefb93a9365b1b823daa6cb9e6"
+    },
+    "role-template/developer": {
+      "specHash": "877aa4fab3514020465dfeb02b8dae1be3d06c2250364be3b1a6f240cce69b73"
+    },
+    "role-template/generalist": {
+      "specHash": "d156416edc31518dee2a2e7d4a9d1e60b3d764a24b4d68b4e66c9d0c66873304"
+    },
+    "role-template/go-player": {
+      "specHash": "58dfbf93df4b1fc01458b5db13360c7307da98c9d2b82f0450a6567da2f25f6b"
+    },
+    "role-template/huismeester": {
+      "specHash": "77c3493799b531d8a54eabcf52041be92b7876992d2af3c6729a9d6fed22389e"
+    },
+    "role-template/image-generator": {
+      "specHash": "83e59b3c2f704c2149815599093000a1c9014d43badd3a92a2a23accd8d19420"
+    },
+    "role-template/kantoormeester": {
+      "specHash": "21568f1b6d41f8e1311d0cc9bb18893ba2ee6e596ed2f132f3574082884bdbdb"
+    },
+    "role-template/keurmeester": {
+      "specHash": "b6442c2097aa4620d7c2bcd60634ba8583b3f901a6ca4bf3c4af99a0dcda0236"
+    },
+    "role-template/language-trainer": {
+      "specHash": "e9e7a7a2ba6841cd518fda57cc8405d06b1b62f3a65e960efc8607dbaecac89c"
+    },
+    "role-template/career-coach": {
+      "specHash": "5ba7b18a8dfe1b51763c59d7b0810e0186e05eb9b012c734e7ff0374e58b1d6c"
+    },
+    "role-template/maaltijdplanner": {
+      "specHash": "f3930746820e569ef3133a71727d2ce33bc3656b98404f636d2b4b899f5af8cd"
+    },
+    "role-template/meester": {
+      "specHash": "13e4a172410121e8ddc4ed73c99087ca88948b2088f7c73a122e94eacebef979"
+    },
+    "role-template/mock-interviewer": {
+      "specHash": "9c56e049457775d08364c05bb6d58125f8096a5734f0734b7d5105d59b82cc4b"
+    },
+    "role-template/omroeper": {
+      "specHash": "85601d2b6f5cfaa2a03158a110f2f83daf40f6ab2c820015ab06006ff0c5e866"
+    },
+    "role-template/penningmeester": {
+      "specHash": "b19202bdf64e762f27843af8f8b5b11aac5a4bc0273a1e80080751a86a9f1b3d"
+    },
+    "role-template/planner": {
+      "specHash": "de842f28ae6a0d6032602cf7954c5aadb484172b99202d1c666cc3c408900f8d"
+    },
+    "role-template/reisleider": {
+      "specHash": "7c71b1e74c507691584c11b66959323c0b03daec90668ff7dce898ea93847a01"
+    },
+    "role-template/researcher": {
+      "specHash": "847f20ff849c7e4f8725e08e9f83a51f722c7778c41e15e9c984f44d5708631e"
+    },
+    "role-template/reviewer": {
+      "specHash": "bb8817f48f33a6e7596656525aa8aa9433a1d6100aef7d2ede30e3d662b52315"
+    },
+    "role-template/chess-player": {
+      "specHash": "b68d7f76dc3281942ea12e745b5053425469c4ac080e9de03d5468f308f9f79d"
+    },
+    "role-template/schrijfmaat": {
+      "specHash": "70d3d8a900810a9d0f58f62ca5e3cff6efee29d3f4fd300ec5f5fa6cd6bb9c9a"
+    },
+    "role-template/study-buddy": {
+      "specHash": "5ff7bf369062e2b6ad443515b64f7369a1ed6f4b496b74155a18f443bcf72275"
+    },
+    "role-template/veiligheidsmeester": {
+      "specHash": "08f838b72ad346cd20b4ec49a7f37b4886b48416198273f2868f12c7774e80c7"
+    },
+    "role-template/vertaler": {
+      "specHash": "5a48a0865210d53b91fc9b1472b212c9802d92b72aaec8370806b686ae17edb3"
+    },
+    "role-template/video-generator": {
+      "specHash": "785002250f35b7684736d1671f548d7b57e0f51f22aecda7a77c39f77182c6aa"
+    },
+    "role-template/voorman": {
+      "specHash": "ce8295cd302d77893362ac8e9a44535167ea28654efdb08c4a3a1e855e0c2602"
+    },
+    "role-template/zorgcoordinator": {
+      "specHash": "d182e61b403ce6e8d2cdac22aac90fe73f33bc7eaecdf71a18959309d592a0dd"
     },
     "index": {
       "specHash": "b67ce0301d23ba414a0d30a80d8073ac2312d92aa7840eedc910854cd239ffc2"

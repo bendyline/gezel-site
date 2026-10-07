@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Code Review</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Code Review illustration" width="160" height="160" decoding="async">
 <p>Snapshot-driven code review. Consumes a staged change-set snapshot (reviews//manifest.json + changes.diff in the project artifacts drawer) and emits a gated markdown report artifact with severity-ranked, file-cited findings and an approve/request-changes verdict. Shared by commit reviews (uncommitted work vs the last save) and branch reviews (this branch vs the default branch); the Gezel Review panel stages the snapshot and launches this book automatically.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the change set</td><td>Reviewer</td><td>Read the staged snapshot (manifest + diff) and write a scope note naming the review kind, the changed files, and the themes to check.</td></tr><tr><td>2</td><td>Review and write the report</td><td>Reviewer</td><td>Walk the diff hunk by hunk and write the complete review report artifact. Writing the report IS the advance — the completion gate checks structure, citations, and verdict consistency.</td></tr><tr><td>3</td><td>Deliver the verdict</td><td>Reviewer</td><td>The report passed its gate. Stamp the verdict to task notes and point the user at the report.</td></tr></tbody></table></div>

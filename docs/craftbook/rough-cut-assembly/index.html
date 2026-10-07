@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 288 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 287 craftbooks</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -85,6 +85,7 @@
 </nav>
 <article class="hb-article">
 <h1>Rough Cut Assembly</h1>
+<img class="hb-craftbook-art" src="logo.webp" alt="Rough Cut Assembly illustration" width="160" height="160" decoding="async">
 <p>Execute the cut list and prove it ran: every clip verified against the media index before anything renders, the assembly driven through the project's media pipeline with a run log, and the result checked against the expected duration — an assembly you can trust unwatched. Locks the pre-flight checks FIRST (clips exist, in and out points sit inside their durations, failure handling decided), then runs the assembly, then verifies and reports. Use for rough cuts, assembling a cutlist, executing an edit pass, render runs, and 'put the cut together'.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Pre-flight the cut list</td><td>Meester</td><td>cutlist validated against the media index, run plan locked</td></tr><tr><td>2</td><td>Run the assembly</td><td>Developer</td><td>the cutlist executed through the media pipeline, log on disk</td></tr><tr><td>3</td><td>Verify and report</td><td>Reviewer</td><td>expected versus actual, segment count, the honest run report</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>

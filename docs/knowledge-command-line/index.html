@@ -69,6 +69,7 @@
 <li><a href="../where-files-live/">Where files live</a></li>
 <li><a href="../providers-and-engines/">Providers and engines</a></li>
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
 <li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
@@ -95,6 +96,7 @@
 <ul>
 <li><a href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../model-catalog/">Every model</a></li>
 </ul>
 </li>
 </ul>
@@ -119,7 +121,7 @@
 <pre class="squisq-code-block"><code class="language-bash">npm install -g @bendyline/gezel-cli
 gezel knowledge --help</code></pre>
 <p>Building a catalog and adding <code>--semantic</code> to file search need the optional embedding runtime. The desktop app includes it. For a global npm CLI installation, add it in the same installation context:</p>
-<pre class="squisq-code-block"><code class="language-bash">npm install -g @huggingface/transformers@^3.8.1</code></pre>
+<pre class="squisq-code-block"><code class="language-bash">npm install -g @huggingface/transformers@^4.3.1</code></pre>
 <p>For a project-local CLI installation, install both packages in that project and run commands with <code>npx gezel</code>. Plain keyword search, inspection, validation, and location discovery do not need the embedding model. Building and semantic search can download the profile's pinned model on first use; later runs can work offline from its cache. By default, the CLI cache is <code>&lt;GEZEL_HOME&gt;/engines/hf-cache</code>, or <code>~/.gezel/engines/hf-cache</code>; <code>GEZEL_HF_CACHE_DIR</code> overrides it.</p>
 <p>There are two command groups:</p>
 <div class="hb-table-scroll"><table><thead><tr><th>Commands</th><th>Connection</th></tr></thead><tbody><tr><td><code>init</code>, <code>build</code>, <code>inspect</code>, <code>validate</code>, <code>search</code>, <code>nearby</code>, <code>export-parquet</code></td><td>Work on files without the Gezel daemon</td></tr><tr><td><code>available</code>, <code>install</code>, <code>list</code>, <code>find</code>, <code>remove</code></td><td>Connect to your user daemon and can start it when absent</td></tr></tbody></table></div>
@@ -166,7 +168,15 @@ gezel knowledge find "How do I claim travel costs?"</code></pre>
 <pre class="squisq-code-block"><code class="language-bash">gezel knowledge init ./existing-docs
 gezel knowledge build ./existing-docs --out ./existing-docs.gezk</code></pre>
 <p><code>init</code> creates <code>catalog.json</code> without inserting a sample <code>content/</code> folder when it detects an existing Markdown tree. It refuses to overwrite an existing <code>catalog.json</code>.</p>
-<p>For a text-only catalog, run <code>gezel knowledge build ./existing-docs --skip-images</code>. Images are bundled for display; they are not embedded by the text embedding model. <code>--skip-images</code> keeps image alt text without resolving or reading the image files, avoiding the catalog's 256 MiB total asset limit. For a larger illustrated collection, split it into multiple catalogs.</p>
+<p>For a text-only catalog, run <code>gezel knowledge build ./existing-docs --skip-images</code>. With the BGE and E5 profiles, images are bundled for display only; the text embedding model does not read them. <code>--skip-images</code> keeps the alt text of images, video and audio without resolving or reading the files, avoiding the catalog's asset limits (8 MiB per image and 256 MiB of images in total; 512 MiB per video or audio file and 8 GiB in total). For a larger illustrated collection, split it into multiple catalogs.</p>
+<p>With the <code>embeddinggemma-2-512@1</code> profile, the build also makes photos, video and recordings searchable by what is in them. Reference them like images — <code>![A brass bell ringing](sounds/bell.mp3)</code> or <code>![Planing a board](clips/plane.mp4)</code> — and each photo becomes one searchable entry, each 30-second window of a clip or recording another. The alt text, the paragraph around the reference, the file name and the document title become that entry's text, so keyword search finds it too. Video and audio need <code>ffmpeg</code> (<code>GEZEL_FFMPEG</code>, <code>SQUISQ_FFMPEG</code>, or on <code>PATH</code>); without it the files are still bundled but get no entries, and the build says so. Shipped media usually carries its own terms, so record them per file in <code>catalog.json</code>:</p>
+<pre class="squisq-code-block"><code class="language-json">{
+  "profile": "embeddinggemma-2-512@1",
+  "assets": {
+    "sounds/bell.mp3": { "license": "CC0-1.0", "author": "Field recordist", "source": "https://example.org/bell" }
+  }
+}</code></pre>
+<p>Readers show that credit beside the entry. Keys are paths relative to the content root (or the archive path, <code>assets/…</code>).</p>
 <p>The build warns and skips images with mismatched or unrecognized file data, images over the per-file size limit, and unsafe SVGs. References to a skipped image become their alt text (or link label), preserving the surrounding document. Valid images are still included, and source files are unchanged.</p>
 <p>The build locates content in this order: the explicit <code>content</code> setting; a <code>content/</code> subfolder; an applicable MkDocs <code>docs_dir</code>; otherwise the catalog folder itself. It detects common table-of-contents formats, or uses folders as topics. Supported outlines include GitBook <code>SUMMARY.md</code>, MkDocs <code>nav</code>, Jupyter Book <code>_toc.yml</code>, DocFX <code>toc.yml</code>, and Hugo <code>_index.md</code> conventions.</p>
 <p>You can make the selection explicit in <code>catalog.json</code>:</p>
@@ -176,7 +186,7 @@ gezel knowledge build ./existing-docs --out ./existing-docs.gezk</code></pre>
   "toc": { "format": "gitbook", "path": "SUMMARY.md" }
 }</code></pre>
 <p>These are additional fields in the complete configuration, not a replacement for its required identity fields. <code>content</code> is relative to the catalog folder; <code>ignore</code> names Markdown files relative to the content root. An explicit TOC <code>path</code> is resolved from the content root. Without a TOC file, use <code>"toc": { "format": "folders" }</code> to request folder-based organization.</p>
-<p>Choose an embedding profile appropriate to the documents: <code>bge-small-en-v1.5@1</code> for the default English build, or <code>multilingual-e5-small@2</code> for multilingual retrieval. The earlier <code>multilingual-e5-small@1</code> remains supported for existing catalogs. A profile is a complete vector-space contract; changing it requires rebuilding the catalog.</p>
+<p>Choose an embedding profile appropriate to the documents: <code>bge-small-en-v1.5@1</code> for the default English build, <code>multilingual-e5-small@2</code> for multilingual retrieval, or <code>embeddinggemma-2-512@1</code> when photos, video or audio should be searchable (its catalogs use format 0.8, which older Gezel releases refuse to open rather than misread). The earlier <code>multilingual-e5-small@1</code> remains supported for existing catalogs. A profile is a complete vector-space contract; changing it requires rebuilding the catalog.</p>
 <h2 id="file-command-reference">File command reference</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>Command</th><th>Arguments and options</th><th>Result</th></tr></thead><tbody><tr><td><code>gezel knowledge init &lt;dir&gt;</code></td><td>A new folder or an existing Markdown tree</td><td>Create the catalog configuration and, for a new tree, sample content</td></tr><tr><td><code>gezel knowledge build &lt;dir&gt;</code></td><td><code>--out &lt;file&gt;</code>, <code>--sign-key &lt;pemfile&gt;</code>, <code>--skip-images</code></td><td>Compile Markdown, assets, and indexes into a <code>.gezk</code> archive</td></tr><tr><td><code>gezel knowledge inspect &lt;path&gt;</code></td><td>Archive or extracted catalog directory</td><td>Show manifest identity, license, counts, profiles, signature metadata, and sizes</td></tr><tr><td><code>gezel knowledge validate &lt;path&gt;</code></td><td><code>--deep</code></td><td>Verify declared files, hashes, schema, and counts; deep mode adds database/vector checks</td></tr><tr><td><code>gezel knowledge search &lt;path&gt; &lt;query&gt;</code></td><td><code>--semantic</code>, <code>--limit &lt;n&gt;</code>, optional radius options</td><td>Search that file or extracted catalog; default limit 10, clamped to 1–50</td></tr><tr><td><code>gezel knowledge nearby &lt;path&gt;</code></td><td>Required radius options; <code>--limit &lt;n&gt;</code>, <code>--json</code></td><td>List subject articles near a point; default page size 50, maximum 500</td></tr><tr><td><code>gezel knowledge export-parquet &lt;path&gt;</code></td><td><code>--out &lt;dir&gt;</code>, <code>--duckdb &lt;binary&gt;</code></td><td>Export catalog tables and stored embeddings using DuckDB</td></tr></tbody></table></div>
 <p><code>inspect</code> reads the manifest; it is not a full validation or signature-trust check. <code>validate --deep</code> checks SQLite <code>quick_check</code>, chunk/vector row alignment, self-neighbor search, and the catalog's declared keyword smoke queries. These structural checks do not require downloading an embedding model or prove publisher identity.</p>

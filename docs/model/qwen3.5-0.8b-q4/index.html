@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qwen 3.5 (0.8B, Q4) — Gezel Handboek</title>
+<meta name="description" content="Alibaba's Qwen 3.5 at 0.8B parameters, the smallest of the family, with native tool calling and a 256K context window.">
+<link rel="canonical" href="https://gezel.com/docs/model/qwen3.5-0.8b-q4/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/model/qwen3.5-0.8b-q4/">
+<meta property="og:title" content="Qwen 3.5 (0.8B, Q4)">
+<meta name="twitter:title" content="Qwen 3.5 (0.8B, Q4)">
+<meta property="og:description" content="Alibaba's Qwen 3.5 at 0.8B parameters, the smallest of the family, with native tool calling and a 256K context window.">
+<meta name="twitter:description" content="Alibaba's Qwen 3.5 at 0.8B parameters, the smallest of the family, with native tool calling and a 256K context window.">
+<meta property="og:image" content="https://gezel.com/og/model/qwen3.5-0.8b-q4.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Qwen 3.5 (0.8B, Q4)">
+<meta name="twitter:image" content="https://gezel.com/og/model/qwen3.5-0.8b-q4.png">
+<meta name="twitter:image:alt" content="Qwen 3.5 (0.8B, Q4)">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a aria-current="true" href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul class="hb-sidebar-entries">
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">How Gezel works</h3>
+<ul>
+<li><a href="../../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../../where-files-live/">Where files live</a></li>
+<li><a href="../../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../../toolset-catalog/">Add-on toolsets and connectors</a></li>
+<li><a href="../../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../../how-knowledge-works/">How knowledge works in Gezel</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">The Gezel Command Line</h3>
+<ul>
+<li><a href="../../cli-reference/">The gezel command line</a></li>
+<li><a href="../../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../../knowledge-command-line/">Working with knowledge catalogs</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Developer</h3>
+<ul>
+<li><a href="../../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a href="../../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Models and Testing</h3>
+<ul>
+<li><a href="../../how-we-test-models/">How we test models</a></li>
+<li><a href="../../model-scorecard/">Model scorecard</a></li>
+<li><a href="../../model-catalog/">Every model</a></li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Qwen 3.5 (0.8B, Q4)</h1>
+<p>Alibaba's Qwen 3.5 at 0.8B parameters, the smallest of the family, with native tool calling and a 256K context window. Sized for phones and e-readers with 3-4 GB of memory.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>At a glance</th><th></th></tr></thead><tbody><tr><td>Made by</td><td>Alibaba</td></tr><tr><td>Download size</td><td>0.5 GB</td></tr><tr><td>Parameters</td><td>0.8B</td></tr><tr><td>Quantization</td><td>Q4_K_M</td></tr><tr><td>Context window</td><td>256K tokens</td></tr><tr><td>Uses tools</td><td>Yes</td></tr><tr><td>Best for</td><td>Everyday work</td></tr><tr><td>Runs on</td><td>llama.cpp, MLX, Ollama</td></tr><tr><td>License</td><td>Apache-2.0</td></tr><tr><td>Added to the catalog</td><td>2026-09-27</td></tr></tbody></table></div>
+<p>Gezel downloads this model the first time a gezel needs it, checks the file against its published hash, and applies tuned settings for it.</p>
+<p><a href="https://ollama.com/library/qwen3.5">The model’s own page</a> · <a href="../../model-catalog/">Every model</a> · <a href="../../model-scorecard/">Model scorecard</a></p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>
