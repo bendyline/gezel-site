@@ -89,6 +89,7 @@
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a class="hb-current" aria-current="page" href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+<li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -119,6 +120,7 @@
 <p>This differs from <code>@bendyline/gezel-sdk</code>, whose scripts run <em>inside</em> Gezel's sandbox. A connected app owns its own interface and process. Gezel owns model discovery and downloads, consent, revocation, and the local inference service.</p>
 <p>If the experience should live inside a Gezel project as a custom crew, dashboard, craftbooks, scripts, and data, see <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a> instead.</p>
 <p>The <a href="../connected-apps/">Connected apps</a> article explains what the user sees. This article covers the developer side.</p>
+<p>For a worked editor integration, see <a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a>, including private inference hosting, streamed drafts, reference knowledge, and opportunities to simplify the SDK boundary.</p>
 <p>This article teaches the SDK. For what is promised rather than how to use it — which exports are stable, what cancellation guarantees, and what a store build must do differently — see the <a href="https://github.com/bendyline/gezel/blob/main/docs/app-sdk-surface.md">App SDK surface</a> contract.</p>
 <h2 id="install-and-connect">Install and connect</h2>
 <p>The Node entry requires Node.js 24 or newer:</p>
@@ -223,7 +225,7 @@ const chat = await project.openChat({ role: 'travel-guide' });</code></pre>
   tools: [
     {
       name: 'add_travel_points',
-      description: 'Award travel points to the traveller.',
+      description: 'Award travel points to the traveler.',
       inputSchema: {
         type: 'object',
         properties: { points: { type: 'number' } },

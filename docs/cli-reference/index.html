@@ -89,6 +89,7 @@
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+<li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -164,7 +165,10 @@ gezel app serve my-app      share its page as a mini-site</code></pre>
 <p>The full story — the source-folder format, both script forms, and the loop an AI agent can drive — is <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a>.</p>
 <h2 id="models-and-engines">Models and engines</h2>
 <pre class="squisq-code-block"><code>gezel model list            local chat models for this computer's engine
+gezel model list --available
+                            catalog models that fit this computer, with sizes
 gezel model pull &lt;id&gt;       download a chat model from the catalog
+gezel model use &lt;id&gt;        make chats use a downloaded model
 gezel model context &lt;id&gt; [tokens]
                             show or set a model's context window (auto clears it)
 gezel model concurrency [slots]

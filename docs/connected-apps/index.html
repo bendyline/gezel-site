@@ -44,12 +44,15 @@
 <ul class="hb-sidebar-entries">
 <li><a href="../welcome/">What is gezel?</a></li>
 <li><a href="../the-crew/">Your crew: gezellen, the Meester, and the Voorman</a></li>
+<li><a href="../character-and-growth/">Social mode: character, growth, and what's waiting</a></li>
 <li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
 <li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
 <li><a href="../craftbooks-overview/">Craftbooks: procedures your crew can follow</a></li>
 <li><a href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
 <li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
+<li><a href="../adding-folders/">Adding folders: give your crew something to look after</a></li>
 <li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
+<li><a href="../notifications/">Notifications: only when something happened</a></li>
 <li><a href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
 <li><a class="hb-current" aria-current="page" href="../connected-apps/">Connected apps: let other tools use your gezels</a></li>
 <li><a href="../generalist-mode/">Generalist mode</a></li>
@@ -138,7 +141,7 @@
 <p>Office only opens add-ins over a secure connection that your computer trusts. So during setup Gezel creates its own security certificate for this computer and asks your system to trust it. That certificate:</p>
 <ul><li><p>works only for this computer's own address (<code>localhost</code>), so it cannot vouch for any website;</p></li><li><p>is trusted for your account only, not every account on the machine;</p></li><li><p>is removed when you remove the setup.</p></li></ul>
 <p>Your system asks you to confirm once. On a Mac that means your password, and macOS may also ask whether Gezel may access data from other apps; allow it so Gezel can add itself to Office.</p>
-<p>After setup, restart any Office app that was open and choose <strong>Gezel</strong> on the Home tab. On a Mac, the first time, choose <strong>Add-ins</strong> on the Home tab and then <strong>Gezel</strong>: Office shows the button only after an add-in has been opened once from that menu. The pane connects to Gezel on its own, with no connection code to type, because Gezel set it up for your account.</p>
+<p>After setup, restart any Office app that was open. The first time, choose <strong>Add-ins</strong> on the Home tab and then <strong>Gezel</strong> (on Windows it is listed under <strong>Developer Add-ins</strong>): Office shows Gezel's button on the Home tab only after the add-in has been opened once from that menu. From then on, choose <strong>Gezel</strong> on the Home tab. The pane connects to Gezel on its own, with no connection code to type, because Gezel set it up for your account.</p>
 <p>The pane works in the project that owns the document's folder. If there isn't one yet, Gezel creates one for that folder. It picks the folder sensibly: your Documents folder for a loose document there, a folder like <code>engineeringdocs</code> when the document sits in one of several work folders inside it, or the Default project for a document saved directly in your home folder. Projects created this way are <strong>read-only</strong>: gezels cannot change files in the folder, only the document you have open, through the pane. You can allow file changes later in the project's settings.</p>
 <p>The <strong>Allow edits</strong> switch in the pane controls whether gezels may change the open document at all. Turn it off and they can still read it.</p>
 <p>Only the gezel you pick in the pane can use the document, and only while the pane is open; the rest of the project's gezels never see it. A gezel that runs on GitHub Copilot, Claude CLI, or Codex CLI can chat with you but cannot read or change the document, and the pane says so when you pick one.</p>

@@ -7,6 +7,9 @@
     "the-crew": {
       "specHash": "ff3565523c1223270956ee8741c4ea1af33159f34295e59d73248641647209c1"
     },
+    "character-and-growth": {
+      "specHash": "de06bd8162a9a11af9b818b13eda6ae888dcc23bc6970ff9a4bb84c91c142c33"
+    },
     "projects-and-threads": {
       "specHash": "7db884aecb9b5ed4c7dc617303f7ac445dc30ec218192bc92a08439e9de5c148"
     },
@@ -22,8 +25,14 @@
     "tasks-and-supervision": {
       "specHash": "5c379885891519c80819e98c2095174c298875c142a693e75609a738fcfd5653"
     },
+    "adding-folders": {
+      "specHash": "0e154cc961d8b774d64c16f518670a635f3fc966a978ee3df7d673b8bf501a5c"
+    },
     "night-shift": {
       "specHash": "8d863a6456debfd071ee439b128a606032240b8a7413ff8a93744f71087cf3eb"
+    },
+    "notifications": {
+      "specHash": "2b137dfb4d637e4f16b5a18f2141507319abde30c5c8c79755cda3bb8ae45dbe"
     },
     "privacy-local-first": {
       "specHash": "eae5f22b514a03db16dae594fba71bd121caf7ef259bb2b5de18c936b3d9c45b"
@@ -78,6 +87,9 @@
     },
     "role/conversationalist": {
       "specHash": "c34e6ba3c66e48a2496bf2d5b95518f6f9e81f086070aebf47550b4076e3a59c"
+    },
+    "role/curator": {
+      "specHash": "a1d8199e9d5f52d8277cd9635496ef78acc6d3394e7cfe20ab1d542ef8241033"
     },
     "craftbooks-index": {
       "specHash": "9c89fc24a39345edb18fd20a2c5e88e1f1be8904682709de6e38f9e83cbda329"
@@ -376,6 +388,9 @@
     "craftbook/executive-level-review": {
       "specHash": "fc4044d93b847e0346edfec6e365c844c4289f4274b17ca505ce2460bd4c766e"
     },
+    "craftbook/explain-code-folder": {
+      "specHash": "23d46eedc35e9abf814f62699799305ca51f26350d1cecda3f0884332642705a"
+    },
     "craftbook/fact-check": {
       "specHash": "dc727dae217cc61e1da99d1f6598ff6c6329202a31aedd963107854820efdd6c"
     },
@@ -529,6 +544,9 @@
     "craftbook/logo-set": {
       "specHash": "5597bf0e432355c88c8498fa6d63909a02c8979739a8667c8ca646cf3913445d"
     },
+    "craftbook/spreadsheet-findings": {
+      "specHash": "c9937e726799341c3d307fbfcc58342c368d8f30dbe35973f611a287e10b1816"
+    },
     "craftbook/market-scan": {
       "specHash": "fa5b082a8d64d75c8067704409ad8c9c977deeb124d3fb7c6331af4c083fd229"
     },
@@ -603,6 +621,9 @@
     },
     "craftbook/nightly-fix-sweep": {
       "specHash": "c6e284f151d68117694af650febde6ff859106e331ad6bbe0272d6a735f36b54"
+    },
+    "craftbook/photo-library-nightly": {
+      "specHash": "b362463f3abaf8a24697f42b47f06e3fbf85793e6862e43253444daaa151c6ab"
     },
     "craftbook/notification-router": {
       "specHash": "6b290f405a2642fa143e76d6741e5a9e7509ecd19f31d880063e46991ad69119"
@@ -754,6 +775,9 @@
     "craftbook/web-component": {
       "specHash": "dfe128201e3f8f67b8f5492b80ab0bb9697b1b5bbe910b6a439c822c33af7577"
     },
+    "craftbook/review-code-folder": {
+      "specHash": "aa22994db397c0ed4b4bdf27ec7ce2e949789678d5554695fe9cb4aa39c9ca75"
+    },
     "craftbook/reviewer-loop": {
       "specHash": "e20e96387939b1b7ce220b66b66d90fd36ab715ae2a2eb210a1dcfbb619f7227"
     },
@@ -867,6 +891,9 @@
     },
     "craftbook/thumbnail-generator": {
       "specHash": "d9dd2109f94247a6021d34e09f8f56059a90cf90b672faeb7d1350bc6d0823b7"
+    },
+    "craftbook/tidy-spreadsheet": {
+      "specHash": "21f57eeb9c5354dee4ca00096580de360ee3325e1cd1d14fd184b2975e21b2c8"
     },
     "craftbook/tileset-batch": {
       "specHash": "e3812b79b623d2216734841611f11d8e280ac31dd22ff1a2e3956ab56990a269"
@@ -1015,6 +1042,9 @@
     "project-type/trip-planner": {
       "specHash": "a612b92e1131a7b3895222f6d8aadf0687ae019fb103a624e36a9ab97008c29b"
     },
+    "project-type/word-clues": {
+      "specHash": "ea673ea41184a2e96a74c0558a39a86b1ef98aa97083fb87ca2da6830ccde29d"
+    },
     "architecture": {
       "specHash": "074973ef1786420d4f8c891537f33388c60c500d61443007488edc9be010a69a"
     },
@@ -1057,6 +1087,9 @@
     "building-ai-apps-inside-gezel": {
       "specHash": "60fab2af4e79fdca647d8b9e67de306f2b05cdec07f044444a1bd1811104da51"
     },
+    "docblocks-text-ai-with-gezel": {
+      "specHash": "e3c30a4ed8e7c67c59684b47e86d7c6ad6166ecf174a935601b110724427578d"
+    },
     "how-we-test-models": {
       "specHash": "07fa5df8e5aa99beec4f892ad9e8bafa3fe4e81200da52d8abcf216047637e74"
     },
@@ -1068,6 +1101,9 @@
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26287": {
+      "specHash": "d7307a80f82df756c86244f1f116d5bccb759c95a66979db662fcf6d7a7cbffb"
     },
     "whats-new/1.26279": {
       "specHash": "a30eb8cfbdaba506a7320665eeb5839a64121be088ee380a94de7f974ca82942"
@@ -1210,8 +1246,14 @@
     "model/lfm2.5-2.6b-q4": {
       "specHash": "01af1d77312c8691d04247feb4d72d30fed1005a82fedf5a5d7dd046be52b840"
     },
+    "model/lfm2.5-24b-a2b-q4": {
+      "specHash": "0a0552c348faf2ccf95f98e8995404b269471664759ddb1f1620a50e96ce0cf8"
+    },
     "model/llama3.2-3b-q4": {
       "specHash": "2c1867a976b3e636f33a61b18d0255f3a4167e2f4b88a46e7b1f62ba9cbe3f08"
+    },
+    "model/minicpm-v4.7-35b-a3b-q4": {
+      "specHash": "23dab77da6b053d4c715eafa2c483bc681ccbc73c0968185f2d0bdeb70a24ec2"
     },
     "model/minicpm5-1b-q4": {
       "specHash": "91108c21e376ae366523aad7002a3bdd827251952adcd04fd2ea87881ac4fc50"
@@ -1297,6 +1339,9 @@
     "model/ternary-bonsai-27b-q2": {
       "specHash": "2a485c1d375cff4c388a8b8e460e0523d3c40bb376019fa04d0e18061b22aade"
     },
+    "model/underdog-saluki-27b-iq2-mix": {
+      "specHash": "488f4ec884a66f090131e6588d063f525868c13179bdf475774e7186a291fbea"
+    },
     "role-template/aanjager": {
       "specHash": "b5f0826bab2e68e1746259d6a0a557e2627da9e6d25827e40eda319ba0e3006a"
     },
@@ -1320,6 +1365,9 @@
     },
     "role-template/copywriter": {
       "specHash": "0eaadb3dfb811c33c71742d61445977e0f1da4b7aec1cf4aee3111f4ae0403e1"
+    },
+    "role-template/curator": {
+      "specHash": "1e3ad59c0b1e2d5ead04f213ae76df803aae24995cdb0ef91ab6b5218094284b"
     },
     "role-template/checkers-player": {
       "specHash": "e206ea51becd1b2351d3a8ea315c15d2bc06710569cb2c0bf5e0fe7a20a3f2a3"
@@ -1372,6 +1420,9 @@
     "role-template/planner": {
       "specHash": "de842f28ae6a0d6032602cf7954c5aadb484172b99202d1c666cc3c408900f8d"
     },
+    "role-template/puzzelaar": {
+      "specHash": "bda64885ebf1b733d2adff3518995d52644efbe4e666161cc66873beaf94b743"
+    },
     "role-template/reisleider": {
       "specHash": "7c71b1e74c507691584c11b66959323c0b03daec90668ff7dce898ea93847a01"
     },
@@ -1401,6 +1452,9 @@
     },
     "role-template/voorman": {
       "specHash": "ce8295cd302d77893362ac8e9a44535167ea28654efdb08c4a3a1e855e0c2602"
+    },
+    "role-template/woordsmid": {
+      "specHash": "f4d473e1a082290b2f3320f3b5c2e6160ddb72768e1f8aae83b5d089b71355ab"
     },
     "role-template/zorgcoordinator": {
       "specHash": "d182e61b403ce6e8d2cdac22aac90fe73f33bc7eaecdf71a18959309d592a0dd"

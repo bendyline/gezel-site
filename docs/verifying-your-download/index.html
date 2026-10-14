@@ -89,6 +89,7 @@
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+<li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -143,7 +144,7 @@ if ($actual -eq $expected) { 'OK' } else { 'MISMATCH — do not run this file' }
 <p>The interesting fields are <code>sourceRepositoryURI</code> (should be <code>https://github.com/bendyline/gezel</code>), <code>buildSignerURI</code> (the release workflow), and <code>sourceRepositoryDigest</code> (the commit the release was built from).</p>
 <h2 id="what-this-does-and-does-not-tell-you">What this does and does not tell you</h2>
 <p>A passing check tells you the file is byte-for-byte the artifact our release pipeline produced from a named commit in a public repository. Nobody modified it in transit, and it was not built on someone's laptop.</p>
-<p>It does not tell you the software is free of bugs, and it does not replace reading what Gezel actually does with your data — <a href="../security-model/">the security model</a> covers that. It also cannot help if you downloaded from somewhere other than our releases page: a checksum file that travelled with a bad installer proves only that the two agree with each other. Get <code>SHA256SUMS</code> from <a href="https://github.com/bendyline/gezel/releases">the release you are installing</a>, not from a mirror.</p>
+<p>It does not tell you the software is free of bugs, and it does not replace reading what Gezel actually does with your data — <a href="../security-model/">the security model</a> covers that. It also cannot help if you downloaded from somewhere other than our releases page: a checksum file that traveled with a bad installer proves only that the two agree with each other. Get <code>SHA256SUMS</code> from <a href="https://github.com/bendyline/gezel/releases">the release you are installing</a>, not from a mirror.</p>
 <h2 id="a-note-on-linux-packages">A note on Linux packages</h2>
 <p>Our <code>.deb</code> and <code>.rpm</code> files are not GPG-signed. That is a deliberate choice rather than an oversight, and it reflects how the ecosystem actually works: <code>dpkg</code> does not verify signatures on standalone <code>.deb</code> files at all — in the Debian world that trust comes from a signed repository, not the package — and the other major applications distributed this way take the same approach.</p>
 <p>The consequence is that the two checks on this page are the real verification story for Linux, which is why they are documented rather than buried. If we later publish an apt or yum repository, signing arrives with it.</p>

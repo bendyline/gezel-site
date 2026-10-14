@@ -89,6 +89,7 @@
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+<li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -340,16 +341,16 @@
 </div>
 <h2 id="reading-the-table">Reading the table</h2>
 <p><strong>Tasks passed</strong> counts every attempt across every job in the set. A model with <code>24/33 (73%)</code> finished 24 of 33 attempts correctly. If any job in the set ran fewer than three times you'll see a raw count instead of a percentage — too small a sample to quote as a rate. A model whose results were incomplete is left out of the table entirely rather than shown with a gap.</p>
-<p><strong>Quality</strong> is an AI reviewer's opinion of the finished work, and the count beside it is how many pieces that opinion covers. It only grades work that was actually produced, so a model that fails often is judged on its successes alone — <code>6.5/10 (18 pieces)</code> is a weaker claim than <code>6.5/10 (26 pieces)</code>. Treat it as colour next to the pass rate, never as a substitute for it.</p>
+<p><strong>Quality</strong> is an AI reviewer's opinion of the finished work, and the count beside it is how many pieces that opinion covers. It only grades work that was actually produced, so a model that fails often is judged on its successes alone — <code>6.5/10 (18 pieces)</code> is a weaker claim than <code>6.5/10 (26 pieces)</code>. Treat it as color next to the pass rate, never as a substitute for it.</p>
 <p><strong>Performance</strong> shows two measured speeds on the machine named above: output speed is how fast the model writes its answer, and prefill speed is how fast it takes in your prompt and documents. Both matter for how a gezel <em>feels</em> — prefill governs the pause before it starts, while output governs how fast text appears. A dash means that round did not record a throughput probe.</p>
 <p><strong>Context</strong> is the working memory the model was given for these runs — how much it can hold at once. <strong>Memory used</strong> is the most memory the model and its engine held on the test machine. What that number covers depends on the machine, so each round says which one it measured:</p>
 <ul><li><p><strong>On a Mac</strong> the graphics chip shares the computer's memory and our measurement sees all of it, so <strong>Memory used</strong> is the model's whole footprint.</p></li><li><p><strong>On a PC with a separate graphics card</strong> the column is called <strong>System memory</strong>. It counts the computer's own memory only, not what the model keeps on the graphics card.</p></li><li><p><strong>On machines like the DGX Spark</strong>, where the graphics chip shares memory in a way our measurement can't see, the column is left out. The number would read far below what the model really uses.</p></li></ul>
-<p>Treat these as a rough guide from one machine, not a promise about yours. The Models catalogue in the app is the better check for whether a model fits your computer. When the engine reported its KV-cache precision, it appears beside the model name — for example, <code>(kv: q8_0)</code>.</p>
+<p>Treat these as a rough guide from one machine, not a promise about yours. The Models catalog in the app is the better check for whether a model fits your computer. When the engine reported its KV-cache precision, it appears beside the model name — for example, <code>(kv: q8_0)</code>.</p>
 <p>Each <strong>test round</strong> keeps all of its tables together under one provenance stamp. Earlier rounds stay separate from the latest because a change to gezel or to the task set can move a score without any model changing.</p>
 <p><strong>Size</strong> is the model's parameter count where we know it. Bigger is often but not always better: on office work in particular, some smaller models beat larger ones, and a model family's habits matter more than its size.</p>
 <h2 id="choosing-from-this">Choosing from this</h2>
 <p>A high score on the office set is the better guide for everyday document, planning, and analysis work. A high score on the general set matters more if you want a gezel writing or fixing code, and the engineering set, where a round has it, is the stricter test of that.</p>
-<p>If a model you're considering isn't listed, it hasn't been measured here yet — which is not a verdict on it either way. The Models catalogue in the app will still tell you whether it fits this machine.</p>
+<p>If a model you're considering isn't listed, it hasn't been measured here yet — which is not a verdict on it either way. The Models catalog in the app will still tell you whether it fits this machine.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

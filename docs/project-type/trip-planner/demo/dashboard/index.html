@@ -32,8 +32,11 @@
       .cols { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.6rem; }
       .panel { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.85rem 1rem; font-size: 0.9rem; }
       .panel h2 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.5rem; }
-      .day { display: grid; grid-template-columns: 6rem 1fr; gap: 0.6rem; padding: 0.3rem 0; }
+      .day { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.6rem; padding: 0.4rem 0; }
       .day .date { color: var(--muted); }
+      .day .date small { display: block; font-size: 0.8rem; }
+      .day .plan p { margin: 0; }
+      .day .plan p + p { color: var(--muted); }
       .pack { list-style: none; margin: 0; padding: 0; }
       .pack li { display: flex; gap: 0.5rem; align-items: center; min-height: 44px; margin: 0; cursor: pointer; }
       .pack li.packed { color: var(--muted); text-decoration: line-through; cursor: default; }
@@ -191,10 +194,10 @@
         // ── demo trip (used only when the page opens as a raw file) ──
         var demoStart = new Date(Date.now() + 18 * 86400000);
         var demoDate = function (offset) { return new Date(demoStart.getTime() + offset * 86400000).toISOString().slice(0, 10); };
-        var demoTrip = { destination: 'Lisbon', startDate: demoDate(0), days: {} };
-        demoTrip.days[demoDate(0)] = 'Arrive, settle in, and walk the Alfama lanes';
-        demoTrip.days[demoDate(1)] = 'Markets, tile museum, and a sunset miradouro';
-        demoTrip.days[demoDate(2)] = 'Day train to Sintra';
+        var demoTrip = { destination: 'Lisbon', startDate: demoDate(0), travellers: '4', days: {} };
+        demoTrip.days[demoDate(0)] = 'Arrive, settle in, and walk the Alfama lanes.\nFado in the evening if you still have energy.';
+        demoTrip.days[demoDate(1)] = 'Markets, the tile museum, and a sunset miradouro.\nA slow lunch wherever looks good.';
+        demoTrip.days[demoDate(2)] = 'Day train to Sintra.\nBack in time for dinner, or stay for the sunset at Cabo da Roca.';
         var demoPacking = { records: [
           { id: 'pack-1', status: 'packed', fields: { name: 'Passport and wallet' } },
           { id: 'pack-2', status: 'unpacked', fields: { name: 'Walking shoes' } },
@@ -245,20 +248,77 @@
           return String(err && err.message ? err.message : err);
         }
 
+        function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+
+        // A plan written as "Anchor: … Options: … Slack: …" reads as plain
+        // lines without the labels; a plan with line breaks keeps them.
+        var PLAN_LABEL = /(?:^|\s)(?:anchor|options?|alternatives?|slack|free time)\s*:\s*/i;
+        var PLAN_LABELS = /(?:^|\s)(?:anchor|options?|alternatives?|slack|free time)\s*:\s*/gi;
+        function planLines(plan) {
+          var text = String(plan || '');
+          var lines = text.split(/\n+/);
+          if (lines.length === 1 && PLAN_LABEL.test(text)) lines = text.split(PLAN_LABELS);
+          return lines
+            .map(function (l) { return l.replace(PLAN_LABELS, ' ').replace(/^[\s*•-]+/, '').trim(); })
+            .filter(Boolean);
+        }
+
+        function isoDay(key) { return /^\d{4}-\d{2}-\d{2}$/.test(key); }
+        function dayNumber(key) { var m = /^day\s*(\d+)$/i.exec(key); return m ? Number(m[1]) : null; }
+        function longDate(iso) {
+          var when = new Date(iso + 'T12:00:00Z');
+          if (!isFinite(when.getTime())) return iso;
+          return when.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+        }
+        function sortDays(keys) {
+          return keys.slice().sort(function (a, b) {
+            var na = dayNumber(a), nb = dayNumber(b);
+            if (na !== null && nb !== null) return na - nb;
+            return a < b ? -1 : a > b ? 1 : 0;
+          });
+        }
+        // "2026-12-03" reads as a date; "Day 3" stays "Day 3", with its
+        // date beneath once the departure date is known.
+        function dayLabel(key, startDate) {
+          if (isoDay(key)) return esc(longDate(key));
+          var n = dayNumber(key);
+          if (n === null) return esc(key);
+          var label = 'Day ' + n;
+          if (isoDay(String(startDate || '').slice(0, 10))) {
+            var when = new Date(String(startDate).slice(0, 10) + 'T12:00:00Z');
+            when.setUTCDate(when.getUTCDate() + n - 1);
+            return label + '<small>' + esc(longDate(when.toISOString().slice(0, 10))) + '</small>';
+          }
+          return label;
+        }
+        function travellersText(travellers) {
+          var text = String(travellers || '').trim();
+          if (!text) return '';
+          if (/^\d+$/.test(text)) return plural(Number(text), 'traveller', 'travellers');
+          return text.charAt(0).toUpperCase() + text.slice(1);
+        }
+
         function render(trip, packing, journal) {
           if (trip.destination) document.getElementById('title').textContent = 'Trip: ' + trip.destination;
           var days = trip.days || {};
-          var dates = Object.keys(days).sort();
-          var lead = '';
-          if (trip.startDate) {
-            var d = Math.ceil((Date.parse(trip.startDate) - Date.now()) / 86400000);
-            if (isFinite(d)) lead = d > 0 ? d + ' day(s) until departure · ' : d === 0 ? 'Departure day! · ' : 'On the road · ';
+          var dates = sortDays(Object.keys(days));
+          var parts = [];
+          var who = travellersText(trip.travellers);
+          if (who) parts.push(who);
+          var start = String(trip.startDate || '').trim();
+          if (isoDay(start.slice(0, 10))) {
+            var d = Math.ceil((Date.parse(start) - Date.now()) / 86400000);
+            if (isFinite(d)) parts.push(d > 0 ? plural(d, 'day', 'days') + ' until departure' : d === 0 ? 'Departure day!' : 'On the road');
+          } else if (start && start !== 'soon') {
+            parts.push('Leaving ' + start);
           }
-          document.getElementById('sub').textContent = lead + dates.length + ' day(s) planned';
+          parts.push(dates.length ? plural(dates.length, 'day', 'days') + ' planned' : 'No days planned yet');
+          document.getElementById('sub').textContent = parts.join(' · ');
 
           if (dates.length) {
             document.getElementById('days').innerHTML = dates.map(function (d) {
-              return '<div class="day"><span class="date">' + esc(d.slice(5)) + '</span><span>' + esc(days[d]) + '</span></div>';
+              var lines = planLines(days[d]).map(function (l) { return '<p>' + esc(l) + '</p>'; }).join('');
+              return '<div class="day"><span class="date">' + dayLabel(d, trip.startDate) + '</span><div class="plan">' + lines + '</div></div>';
             }).join('');
           }
 

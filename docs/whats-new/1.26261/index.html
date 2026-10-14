@@ -68,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26287/">1.26287 — 14 October 2026</a></li>
 <li><a href="../../whats-new/1.26279/">1.26279 — 6 October 2026</a></li>
 <li><a href="../../whats-new/1.26275/">1.26275 — 2 October 2026</a></li>
 <li><a href="../../whats-new/1.26274/">1.26274 — 1 October 2026</a></li>
@@ -100,7 +101,7 @@
 <p>That preview is not decoration. The same plan is attached when you press Send, narrows the turn to the exact procedure where the output is unambiguous, and gives the coordinator one corrective chance if it claims the capability is unavailable instead of starting the work. You see the decision before the model acts, and the model sees the same decision you saw.</p>
 <h2 id="search-shows-what-the-model-actually-saw">Search shows what the model actually saw</h2>
 <p>Knowledge search used to compare scores that did not mean the same thing. A vaguely related semantic match could outrank the document whose title exactly matched the question, and the fast first pass over a large catalog could discard the right passage before the more accurate comparison ever saw it.</p>
-<p>The search now combines title matches, body matches and semantic matches by their rank instead of pretending their raw scores are interchangeable. The binary first pass for multilingual catalogs was recalibrated as well. In practical terms, asking about a named person or work is much more likely to put that article first instead of three neighbouring articles that mention it.</p>
+<p>The search now combines title matches, body matches and semantic matches by their rank instead of pretending their raw scores are interchangeable. The binary first pass for multilingual catalogs was recalibrated as well. In practical terms, asking about a named person or work is much more likely to put that article first instead of three neighboring articles that mention it.</p>
 <p>The answer is easier to audit too. Expand <strong>Consulted sources</strong> under a reply and you can see the exact excerpt that was placed in the model's context, its estimated token cost, and a button to open the source. The total includes the labels and safety framing around those excerpts, and the text is still marked as untrusted evidence rather than as instructions.</p>
 <h2 id="the-command-line-can-stay-with-a-batch-until-it-finishes">The command line can stay with a batch until it finishes</h2>
 <p><code>gezel do</code> is now usable as part of a real shell workflow. A <strong>craftbook</strong> is a saved recipe for a piece of work; the command accepts its positional or named parameters, can wait for the task, emits one machine-readable result with <code>--json</code>, and returns distinct exit codes for completion, cancellation, a task that needs help, and a timeout. A timeout stops waiting; it does not cancel the work in the daemon.</p>

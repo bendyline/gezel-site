@@ -89,6 +89,7 @@
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+<li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -130,6 +131,8 @@
     {project}/
       project.json    name, working folder, crew settings
       documents/      About + Mission Objectives
+      index/          the project's search index: summaries, descriptions,
+                      reviews (rebuildable; kept here, not in your folder)
       artifacts/      everything the crew produces
         shadow/       machine-made markdown twins of workspace documents,
                       pictures, and recordings (rebuilt automatically —
@@ -147,13 +150,23 @@
     vscode/, codex/…  the other Connected Apps setups
   history.jsonl       the audit log
   logs/               service logs (rolling)</code></pre>
+<h2 id="folders-you-add">Folders you add</h2>
+<p>A folder you add to gezel — Pictures, Documents, a code repository — stays where it is. Gezel reads it in place and writes nothing into it: the search index, photo descriptions and summaries for that folder live under <code>projects/{project}/</code> in the gezel home. A file in your folder changes only when you apply a change you approved. Earlier versions kept the index in a hidden <code>.gezel</code> folder inside yours; gezel moves it out the first time it starts.</p>
 <h2 id="what-you-can-safely-do">What you can safely do</h2>
 <ul><li><p><strong>Read anything.</strong> It's your data; nothing breaks by looking.</p></li><li><p><strong>Back up or sync the whole folder.</strong> Copying the folder copies your entire workshop.</p></li><li><p><strong>Edit with care.</strong> Character files (<code>about.md</code>) and documents are meant to be edited — from the app or any text editor. For structured files (<code>config.json</code>, thread files), prefer the app so nothing gets malformed.</p></li></ul>
 <p>A few subfolders are machinery rather than your data — <code>runtime/</code>, <code>service/</code>, <code>bin/</code>, <code>index/</code>, <code>logs/</code> hold the service's own working state and rebuildable caches. Leave those to gezel; deleting them is at worst an inconvenience, never data loss. The <code>ambient/</code> folder is regenerated too — point your wallpaper or lock-screen slideshow at it freely, but don't store your own images there.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>
-
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#folders-you-add">Folders you add</a></li>
+<li class="hb-h2"><a href="#what-you-can-safely-do">What you can safely do</a></li>
+</ul>
+</nav>
+</aside>
 </div>
 <footer class="hb-footer">
 <p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>

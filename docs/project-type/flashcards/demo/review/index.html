@@ -148,6 +148,27 @@
         font: inherit;
       }
       .demo-reset:hover { border-color: var(--ink); }
+      .forge {
+        margin-top: 1.5rem;
+        background: var(--card);
+        border: 1px solid var(--track);
+        border-radius: 10px;
+        padding: 0.85rem 1rem;
+      }
+      .forge h2 { font-size: 0.95rem; margin: 0 0 0.35rem; }
+      .forge p { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.85rem; }
+      .forge textarea {
+        width: 100%;
+        min-height: 7rem;
+        resize: vertical;
+        font: inherit;
+        color: var(--ink);
+        background: var(--bg);
+        border: 1px solid var(--track);
+        border-radius: 6px;
+        padding: 0.5rem;
+      }
+      .forge .actions { justify-content: flex-start; }
     </style>
   </head>
   <body>
@@ -165,6 +186,13 @@
       <div class="dots" id="dots"></div>
       <div id="stage"></div>
       <p class="hint" id="hint"></p>
+      <section class="forge" aria-labelledby="forge-title">
+        <h2 id="forge-title">Make cards from notes</h2>
+        <p>Paste a page of notes. Your study mate turns the key facts into cards.</p>
+        <textarea id="forge-notes" maxlength="3000" aria-label="Notes to turn into cards"></textarea>
+        <div class="actions"><button type="button" id="forge-go">Make cards</button></div>
+        <p id="forge-status" role="status"></p>
+      </section>
     </main>
     <script>
 /* gezel-page-demo-stub v1 */
@@ -281,6 +309,22 @@
               // The demo deck stays due so the session can be replayed;
               // Reset demo restores everything else.
               return { summary: card.id + ' marked ' + input.verdict + '.' };
+            },
+            forge_from_notes: function (input) {
+              var notes = String((input && input.notes) || '').trim();
+              if (notes.length < 20) throw new Error('Paste a few sentences of notes to make cards from.');
+              var n = demoDeck.cards.length;
+              notes
+                .split(/[.\n]+/)
+                .map(function (line) { return line.trim(); })
+                .filter(function (line) { return line.length > 12; })
+                .slice(0, 3)
+                .forEach(function (line, i) {
+                  var id = 'card-' + (n + i + 1);
+                  demoDeck.cards.push({ id: id, front: 'Complete: ' + line.split(' ').slice(0, 4).join(' ') + '…', back: line });
+                  demoDeck.dueCardIds.push(id);
+                });
+              return { status: 'forging', summary: 'Notes staged.' };
             },
             finish_session: function (input) {
               var reviewed = (input && input.reviewed) || 0;
@@ -468,6 +512,34 @@
             })
             .catch(function () {});
         }
+
+        var forgeButton = document.getElementById('forge-go');
+        var forgeStatus = document.getElementById('forge-status');
+        forgeButton.onclick = function () {
+          var notes = document.getElementById('forge-notes').value.trim();
+          if (notes.length < 20) {
+            forgeStatus.textContent = 'Paste a few sentences of notes first.';
+            return;
+          }
+          forgeButton.disabled = true;
+          forgeStatus.textContent = '';
+          gezel.tools
+            .invoke('forge_from_notes', { notes: notes })
+            .then(function () {
+              document.getElementById('forge-notes').value = '';
+              forgeStatus.textContent = demoMode
+                ? 'Added sample cards from your notes.'
+                : 'Your study mate is writing cards from your notes. They appear in the deck when ready.';
+              return loadDeck();
+            })
+            .catch(function (err) {
+              forgeStatus.textContent =
+                err && err.code === 'unavailable'
+                  ? 'Making cards happens in the app’s Output pane.'
+                  : (err && err.message) || 'That did not work. Try again.';
+            })
+            .then(function () { forgeButton.disabled = false; });
+        };
 
         loadDeck();
         gezel.data.watch('deck.json', function () { loadDeck(); });
