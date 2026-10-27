@@ -1,0 +1,22 @@
+{
+  "verifiedAt": "2026-10-22T13:20:29.016Z",
+  "schemaV1Validated": true,
+  "companionValidated": true,
+  "roundTripShardsValidated": true,
+  "headlineModelsPerSuite": 4,
+  "partialOrnithNotInHeadline": true,
+  "partialPercentagesSuppressed": true,
+  "rawTrialsReconciled": 601,
+  "canonicalTrialsReconciled": 600,
+  "quarantinedTrialCount": 1,
+  "inlineReviewsPreserved": 601,
+  "scoredArtifacts": 248,
+  "rubricGroups": 18,
+  "preflightProbes": 9,
+  "allProbeConfidenceWarningsRetained": true,
+  "originalInputFilesUnchanged": 3028,
+  "rawResultScoreFactsMetricsFilesUnchanged": 2404,
+  "machineHomePathsIncluded": false,
+  "manifestSha256": "0d5e9fffc7b9b56fbc38315940c311da221ecbd2c8e0d75b62fd0b2f9ce844a1",
+  "verificationScope": "Original export validation and preservation checks."
+}

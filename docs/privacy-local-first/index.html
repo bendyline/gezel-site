@@ -43,7 +43,7 @@
 <h2 class="hb-current">Concepts</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../welcome/">What is gezel?</a></li>
-<li><a href="../the-crew/">Your crew: gezellen, the Meester, and the Voorman</a></li>
+<li><a href="../the-crew/">Your crew: gezellen, the Meester, and the crew lead</a></li>
 <li><a href="../character-and-growth/">Social mode: character, growth, and what's waiting</a></li>
 <li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
 <li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
@@ -51,10 +51,12 @@
 <li><a href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
 <li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
 <li><a href="../adding-folders/">Adding folders: give your crew something to look after</a></li>
+<li><a href="../project-views/">Views: see what's in a folder</a></li>
 <li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
 <li><a href="../notifications/">Notifications: only when something happened</a></li>
+<li><a href="../cameras-and-lookouts/">Cameras and lookouts: keep an eye on a room</a></li>
 <li><a class="hb-current" aria-current="page" href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
-<li><a href="../connected-apps/">Connected apps: let other tools use your gezels</a></li>
+<li><a href="../connected-apps/">Integrations: let other tools use your gezels</a></li>
 <li><a href="../generalist-mode/">Generalist mode</a></li>
 </ul>
 
@@ -101,7 +103,8 @@
 <ul><li><p><strong>Downloads you start.</strong> Models you choose to install (usually from Hugging Face), the on-device engines that run them (from gezel's own releases on GitHub, checked against pinned fingerprints), and knowledge catalogs you add.</p></li><li><p><strong>Tools it sets up.</strong> On first start gezel installs its browser-automation tools, fetching Playwright from npm and a Chromium browser through Playwright's own installer. Other tools you or a gezel install also come from npm.</p></li><li><p><strong>Updates.</strong> The desktop app checks gezel's GitHub releases for new versions; you can turn automatic checks off. Live catalog updates, if you switch them on, check npm about once a day.</p></li><li><p><strong>Web search, when you allow it.</strong> Gezels can search and fetch web pages only once outside services are turned on in <strong>Settings → Security</strong>. What a gezel searches for then goes to that search service: Wikipedia by default, or Brave if you add a Brave Search key.</p></li></ul>
 <p>Apart from web searches, none of these carry your conversations or files. The strictest level in <strong>Settings → Security</strong> also turns off update checks.</p>
 <h2 id="credentials">Credentials</h2>
-<p>Keys you give gezel for a provider are kept in your operating system's keychain — Keychain on macOS, Credential Manager on Windows, the Secret Service on Linux — and sent only to that provider. Where no keychain is available, such as on a headless server, gezel keeps them in an encrypted file inside its own folder, protected by your account's file permissions; in that case, keep the folder out of cloud sync. The background service on your machine answers only on this computer and asks for a pass that changes every time it starts, so other devices on your network can't reach your crew. That pass can't keep out programs already running under your account on this computer, or anyone with administrator rights: like you, they can open the files where it's kept. So be as careful about what you install as you would be anyway. <a href="../security-model/">The security model</a> has the details.</p>
+<p>Keys you give gezel for a provider are kept in your operating system's keychain — Keychain on macOS, Credential Manager on Windows, the Secret Service on Linux — and sent only to that provider.</p>
+<p>GitHub is the one service where gezel can use a sign-in you didn't give it directly. For GitHub work (cloning and syncing a linked repository, pull requests, GitHub connectors), gezel uses the GitHub token you saved in Settings. Without one, it uses a sign-in you already have: <code>GH_TOKEN</code> or <code>GITHUB_TOKEN</code> in its environment, or the GitHub CLI's (<code>gh auth token</code>). Engine downloads from GitHub are anonymous. They use a token only when you set <code>GEZEL_GITHUB_TOKEN</code> or <code>GITHUB_TOKEN</code>, to avoid GitHub's hourly limit, and never ask the GitHub CLI. Gezel asks the GitHub CLI only when that work comes up, never for a project with no GitHub link. The token goes only to GitHub, or to your linked repository's own GitHub server, and never to another git host. Gezel doesn't save it to disk or show it to a gezel. To stop this, sign out of the GitHub CLI, or save a token of your own in Settings for GitHub work. Where no keychain is available, such as on a headless server, gezel keeps them in an encrypted file inside its own folder, protected by your account's file permissions; in that case, keep the folder out of cloud sync. The background service on your machine answers only on this computer and asks for a pass that changes every time it starts, so other devices on your network can't reach your crew. That pass can't keep out programs already running under your account on this computer, or anyone with administrator rights: like you, they can open the files where it's kept. So be as careful about what you install as you would be anyway. <a href="../security-model/">The security model</a> has the details.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

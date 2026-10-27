@@ -21,10 +21,28 @@
   --hb-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --hb-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.06);
   --hb-measure: 42rem;
+  --hb-ground-indigo: #4f5d7e;
+  --hb-ground-slate: #6f8aa0;
+  --hb-ground-teal: #5f8a86;
+  --hb-ground-sage: #8a9a76;
+  --hb-ground-forest: #4f6249;
+  --hb-ground-ochre: #c49a45;
+  --hb-ground-terracotta: #b0724c;
+  --hb-ground-rose: #c08a86;
+  --hb-ground-plum: #7d6378;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --hb-ground-indigo: #3e4961;
+    --hb-ground-slate: #576b7b;
+    --hb-ground-teal: #4b6b67;
+    --hb-ground-sage: #6b775b;
+    --hb-ground-forest: #3e4c39;
+    --hb-ground-ochre: #977736;
+    --hb-ground-terracotta: #88593b;
+    --hb-ground-rose: #946b67;
+    --hb-ground-plum: #614d5d;
     --hb-canvas: #141517;
     --hb-panel: #1c1d20;
     --hb-reading: #1a1b1e;
@@ -357,15 +375,26 @@ body.hb {
 }
 .hb-demo-open { font-size: 0.9rem; }
 
-/* Craftbook woodcuts: one under each craftbook's title, and a gallery shelf. */
+/* Craftbook marks: one under each craftbook's title, and a gallery shelf.
+   Marks are transparent cut-outs, so the image's own background is the
+   colored paper the app paints behind them, picked by data-ground. Cream
+   stays as the fallback for a mark that names no ground. */
+[data-ground="indigo"] { --hb-mark-ground: var(--hb-ground-indigo); }
+[data-ground="slate"] { --hb-mark-ground: var(--hb-ground-slate); }
+[data-ground="teal"] { --hb-mark-ground: var(--hb-ground-teal); }
+[data-ground="sage"] { --hb-mark-ground: var(--hb-ground-sage); }
+[data-ground="forest"] { --hb-mark-ground: var(--hb-ground-forest); }
+[data-ground="ochre"] { --hb-mark-ground: var(--hb-ground-ochre); }
+[data-ground="terracotta"] { --hb-mark-ground: var(--hb-ground-terracotta); }
+[data-ground="rose"] { --hb-mark-ground: var(--hb-ground-rose); }
+[data-ground="plum"] { --hb-mark-ground: var(--hb-ground-plum); }
 .hb-craftbook-art {
   display: block;
   width: 160px;
   height: 160px;
   margin: 0 0 1.25rem;
   border-radius: var(--hb-radius-md);
-  background: #e8dec7;
-  box-shadow: inset 0 0 0 1px rgba(74, 52, 30, 0.14);
+  background: var(--hb-mark-ground, #e8dec7);
 }
 .hb-article .hb-gallery {
   list-style: none;
@@ -394,7 +423,7 @@ body.hb {
   width: 96px;
   height: 96px;
   border-radius: var(--hb-radius-md);
-  background: #e8dec7;
+  background: var(--hb-mark-ground, #e8dec7);
 }
 .hb-gallery-title { font-family: var(--hb-font-display); font-weight: 700; color: var(--hb-sage); }
 .hb-gallery-summary { font-size: 0.85rem; line-height: 1.4; color: var(--hb-ink-muted); }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Library</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:#1a1a2e;color:#e0e0e0;font-family:system-ui,-apple-system,sans-serif}
+#squisq-root{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+<div id="squisq-root"></div>
+<script type="application/json" id="squisq-doc" data-squisq-doc="1">{"articleId":"project-type/media-library","duration":7,"blocks":[{"id":"media-library","startTime":0,"duration":7,"audioSegment":0,"template":"sectionHeader","sourceHeading":{"type":"heading","depth":1,"children":[{"type":"text","value":"Media Library","position":{"start":{"line":1,"column":3,"offset":2},"end":{"line":1,"column":16,"offset":15}}}],"position":{"start":{"line":1,"column":1,"offset":0},"end":{"line":1,"column":16,"offset":15}}},"title":"Media Library","contents":[{"type":"paragraph","children":[{"type":"text","value":"Browse a folder of images, videos, and audio in a live gallery. Preview and play your media without importing or moving the originals.","position":{"start":{"line":3,"column":1,"offset":17},"end":{"line":3,"column":135,"offset":151}}}],"position":{"start":{"line":3,"column":1,"offset":17},"end":{"line":3,"column":135,"offset":151}}}]}],"audio":{"segments":[]},"captions":{"phrases":[{"text":"Browse a folder of images, videos, and audio in a live gallery.","startTime":0,"endTime":3.5,"audioSegment":0},{"text":"Preview and play your media without importing or moving the originals.","startTime":3.5,"endTime":7,"audioSegment":0}],"version":1},"startBlock":{"title":"Media Library","subtitle":"Browse a folder of images, videos, and audio in a live gallery. Preview and play your media without importing or moving the originals.","ambientMotion":"zoomIn"}}</script>
+<script src="../../assets/squisq-player.js"></script>
+<script>
+(function(){
+  var doc = JSON.parse(document.getElementById("squisq-doc").textContent);
+  var images = JSON.parse("{}");
+  var audio = null;
+  SquisqPlayer.mount(document.getElementById("squisq-root"), doc, {
+    mode: "slideshow",
+    images: images,
+    audio: audio,
+    autoPlay: true,
+    captionStyle: "social",
+    showCodeCopyButton: false,
+    basePath: "."
+  });
+})();
+</script>
+</body>
+</html>

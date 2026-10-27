@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
+<script type="application/json" id="gezel-demo-config">{"imports":[{"id":"library","source":"workspace","path":".","accept":[".jpg",".jpeg",".png",".gif",".webp",".avif",".bmp",".svg",".ico",".heic",".heif",".tif",".tiff",".dng",".raw",".cr2",".cr3",".nef",".arw",".orf",".raf",".mp4",".webm",".mov",".m4v",".ogv",".avi",".mkv",".mpg",".mpeg",".mts",".m2ts",".mp3",".wav",".ogg",".oga",".m4a",".aac",".flac",".opus",".aif",".aiff",".wma"],"maxFileBytes":268435456}]}</script>
+<script src="../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="gezel-demo" content="standalone" />
+  <title>Media Library</title>
+  <link rel="stylesheet" href="gallery.css" />
+    <script src="media-files.js" defer></script>
+  <script src="gallery.js" defer></script>
+</head>
+<body>
+  <main>
+    <aside data-gezel-demo-banner hidden><span>Sample library. Illustrations, a short clip, and three notes — all local to this page.</span><button id="reset-demo" type="button">Reset demo</button></aside>
+    <header><div><p class="eyebrow">Your collection, in place</p><h1>Media Library</h1><p class="intro">A window into your photos, films, and recordings.</p></div><button id="refresh" type="button">Refresh</button></header>
+    <div id="add-files"></div>
+    <dl class="counts" aria-label="Library summary"><div><dt>Images</dt><dd id="image-count">—</dd></div><div><dt>Videos</dt><dd id="video-count">—</dd></div><div><dt>Audio</dt><dd id="audio-count">—</dd></div></dl>
+    <section aria-labelledby="library-heading">
+      <div class="library-heading"><h2 id="library-heading">Browse your library</h2><span id="updated"></span></div>
+      <div class="filters">
+        <label>Find media<input id="search" type="search" placeholder="Search names and folders…" /></label>
+        <label>Media type<select id="kind"><option value="">All media</option><option value="image">Images</option><option value="video">Videos</option><option value="audio">Audio</option></select></label>
+        <label>Folder<select id="folder"><option value="">All folders</option></select></label>
+        <label>Sort by<select id="sort"><option value="newest">Recently modified</option><option value="oldest">Oldest modified</option><option value="name">Name</option><option value="size">Largest first</option></select></label>
+      </div>
+      <div class="toolbar"><p id="status" role="status" aria-live="polite">Looking for media…</p><div class="view-choices" role="group" aria-label="Gallery layout"><button id="view-grid" type="button" aria-pressed="true">Grid</button><button id="view-list" type="button" aria-pressed="false">List</button></div></div>
+      <p id="error" role="alert" hidden></p><p id="notice" class="notice" hidden></p>
+      <ul id="gallery" data-view="grid" aria-label="Media files"></ul>
+      <button id="show-more" type="button" hidden>Show more</button>
+      <div id="empty" class="empty" hidden><h2>Your library starts here</h2><p>Choose a media folder when creating this project, or set its folder in project settings. Images, videos, and audio in that folder and its subfolders appear automatically.</p></div>
+      <p id="no-matches" class="empty" hidden>No media matches these filters. Try another name, folder, or media type.</p>
+    </section>
+    <footer><span id="file-count"></span> · Originals stay in your folder. Add files copies selected files into this folder. Playback depends on the formats supported by your device.</footer>
+  </main>
+  <dialog id="preview" aria-labelledby="preview-title">
+    <div class="preview-heading"><div><h2 id="preview-title"></h2><p id="preview-path" class="muted"></p></div><button id="close-preview" type="button" autofocus>Close</button></div>
+    <div id="preview-media"></div><p id="preview-detail" class="muted"></p><p id="preview-error" role="status" hidden></p>
+    <div class="preview-actions"><div class="navigation"><button id="previous" type="button">Previous</button><span id="position"></span><button id="next" type="button">Next</button></div><button id="open-file" type="button">Open in Gezel</button></div>
+  </dialog>
+</body>
+</html>

@@ -52,21 +52,29 @@
       },
       {
         "@type": "VideoObject",
-        "name": "Introduction to Gezel",
-        "description": "A tour of Gezel, a free desktop app that gives you a crew of AI helpers working on your own computer.",
-        "thumbnailUrl": "https://i.ytimg.com/vi/LXrqys9I8_I/maxresdefault.jpg",
-        "uploadDate": "2026-08-03T17:58:15-07:00",
-        "embedUrl": "https://www.youtube-nocookie.com/embed/LXrqys9I8_I",
-        "url": "https://www.youtube.com/watch?v=LXrqys9I8_I"
+        "name": "Gezel Overview",
+        "description": "A two-minute tour of Gezel, a free desktop app that gives you a crew of AI helpers working on your own computer: a trip planned on a local model, tested plans, the night shift, and the controls that keep you in charge.",
+        "thumbnailUrl": "https://i.ytimg.com/vi/bw1XFC6JcFA/maxresdefault.jpg",
+        "uploadDate": "2026-10-27",
+        "duration": "PT2M1S",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/bw1XFC6JcFA",
+        "url": "https://www.youtube.com/watch?v=bw1XFC6JcFA"
       }
     ]
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- The brand faces are served from this site, so the page makes no
+       third-party request at all until someone presses play. Both are SIL OFL;
+       licenses sit beside the files. The two faces above the fold load first. -->
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face { font-family: 'Hanken Grotesk'; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/hanken-grotesk-variable.woff2) format('woff2'); }
+    @font-face { font-family: 'Hanken Grotesk'; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/hanken-grotesk-400i.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 400; font-display: swap; src: url(/assets/fonts/pt-serif-400.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/pt-serif-400i.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 700; font-display: swap; src: url(/assets/fonts/pt-serif-700.woff2) format('woff2'); }
     :root {
       --bg: #eae5d6;
       --panel: #f3eddf;
@@ -85,9 +93,39 @@
       --shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 18px rgba(0,0,0,0.06);
       --serif: 'PT Serif', Georgia, serif;
       --sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+      /* Craftbook marks are transparent cut-outs; the colored paper behind
+         each one comes from its category, exactly as the app paints it.
+         Copied from the app's foundation palette (`--gezel-ground-*`), so
+         retune them there first. */
+      --ground-indigo: #4f5d7e;
+      --ground-slate: #6f8aa0;
+      --ground-teal: #5f8a86;
+      --ground-sage: #8a9a76;
+      --ground-forest: #4f6249;
+      --ground-terracotta: #b0724c;
+      --ground-rose: #c08a86;
+      --ground-plum: #7d6378;
+      /* The one full-width band ("Why Gezel"): the forest ground, with cream
+         text that keeps AA contrast at body size. */
+      --band-bg: #4f6249;
+      --band-title: #f6f1e4;
+      --band-text: rgba(246, 241, 228, 0.88);
+      --band-line: rgba(246, 241, 228, 0.45);
     }
     @media (prefers-color-scheme: dark) {
       :root {
+        --band-bg: #253022;
+        --band-title: #ece6d6;
+        --band-text: rgba(236, 230, 214, 0.84);
+        --band-line: rgba(236, 230, 214, 0.4);
+        --ground-indigo: #3e4961;
+        --ground-slate: #576b7b;
+        --ground-teal: #4b6b67;
+        --ground-sage: #6b775b;
+        --ground-forest: #3e4c39;
+        --ground-terracotta: #88593b;
+        --ground-rose: #946b67;
+        --ground-plum: #614d5d;
         --bg: #141517;
         --panel: #1c1d20;
         --surface: #1f2124;
@@ -126,7 +164,7 @@
       box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
     }
     .wrap {
-      max-width: 980px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -159,32 +197,11 @@
       color: var(--sage);
       letter-spacing: -0.01em;
     }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .status-badge::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
     .hero {
       display: grid;
-      grid-template-columns: 1.05fr 1fr;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
       align-items: center;
-      gap: 40px;
+      gap: 48px;
       padding: 24px 0 40px;
     }
     .hero-banner {
@@ -230,12 +247,41 @@
     }
     .lede strong { color: var(--sage); }
     .gloss { color: var(--muted); font-size: 0.95rem; max-width: 640px; margin: 0.9rem 0 0; }
+    /* The proof line: four checkable facts between hairlines, under the hero. */
+    .proof {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 0 40px;
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted-strong);
+    }
+    .proof li { white-space: nowrap; }
+    .proof li + li::before { content: "·"; margin: 0 16px; color: var(--muted); }
+    .proof a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+    }
+    .proof a:hover { color: var(--accent); text-decoration-color: currentColor; }
+    /* Two by two on a phone, where a wrapped row would start a line with a dot. */
+    @media (max-width: 620px) {
+      .proof { display: grid; grid-template-columns: repeat(2, auto); justify-content: center; gap: 8px 22px; text-align: center; font-size: 0.9rem; }
+      .proof li { white-space: normal; text-wrap: balance; }
+      .proof li + li::before { content: none; }
+    }
     /* Video: a thumbnail + play button standing in for the real embed. */
     .hero-media { transform: translateY(4px); }
     .video-frame {
       background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
+      box-shadow: var(--shadow);
       border-radius: 10px;
       padding: 8px;
     }
@@ -260,31 +306,30 @@
       object-fit: cover;
       transition: transform 240ms ease, opacity 240ms ease;
     }
-    /* Anchored bottom-left rather than centred: YouTube thumbnails are usually
-       centred title cards, and a disc in the middle sits right on the words.
-       The scrim keeps the disc legible over a bright thumbnail too. */
+    /* Centred, where people expect it: the poster is a collage of app
+       screenshots, not a YouTube title card with words in the middle. A soft
+       pool of shade keeps the disc legible on the light poster. */
     .video-play {
       position: absolute;
       inset: 0;
       display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 14px;
-      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.14) 34%, transparent 64%);
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, rgba(40, 28, 14, 0.2) 0%, rgba(40, 28, 14, 0.06) 22%, transparent 42%);
     }
     .video-disc {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 52px;
-      height: 52px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: var(--accent);
       color: #fff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 22px rgba(40, 28, 14, 0.4);
       transition: transform 180ms ease, background 180ms ease;
     }
-    .video-disc svg { width: 24px; height: 24px; margin-left: 3px; }
+    .video-disc svg { width: 28px; height: 28px; margin-left: 4px; }
     .video:hover .video-thumb { transform: scale(1.03); opacity: 0.92; }
     .video:hover .video-disc { transform: scale(1.09); background: var(--accent-hover); }
     .video iframe { display: block; width: 100%; height: 100%; border: 0; }
@@ -303,12 +348,19 @@
     }
     .video-caption a:hover { color: var(--accent); }
     /* "What can you do" tiles — four across on a wide screen, then 2, then 1. */
-    .uses { margin: 0 0 40px; }
+    /* Sections are separated by space rather than rules: generous gaps and
+       confident titles carry the structure, so one divider is left, where the
+       page turns from people using Gezel to people building with it. */
+    .uses, .how, .catalog { margin: 0 0 var(--section-gap); }
+    :root { --section-gap: 104px; }
+    @media (max-width: 720px) { :root { --section-gap: 72px; } }
     .section-title {
       font-family: var(--serif);
       font-weight: 700;
-      font-size: 1.35rem;
-      margin: 0 0 18px;
+      font-size: clamp(1.6rem, 1.1rem + 1.4vw, 2.15rem);
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+      margin: 0 0 28px;
       text-align: center;
     }
     .use-grid {
@@ -321,7 +373,7 @@
       flex-direction: column;
       background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
+      box-shadow: var(--shadow);
       border-radius: 10px;
       padding: 14px 14px 20px;
       color: var(--text);
@@ -334,13 +386,16 @@
       height: auto;
       aspect-ratio: 1;
       margin: 0 0 16px;
-      padding: 6px;
       border-radius: 6px;
-      background: #e8dec7;
-      object-fit: contain;
-      filter: sepia(0.12) contrast(1.04);
-      box-shadow: inset 0 0 0 1px rgba(74, 52, 30, 0.14);
     }
+    [data-ground="indigo"] { background-color: var(--ground-indigo); }
+    [data-ground="slate"] { background-color: var(--ground-slate); }
+    [data-ground="teal"] { background-color: var(--ground-teal); }
+    [data-ground="sage"] { background-color: var(--ground-sage); }
+    [data-ground="forest"] { background-color: var(--ground-forest); }
+    [data-ground="terracotta"] { background-color: var(--ground-terracotta); }
+    [data-ground="rose"] { background-color: var(--ground-rose); }
+    [data-ground="plum"] { background-color: var(--ground-plum); }
     .use h3 {
       font-family: var(--serif);
       font-weight: 700;
@@ -356,26 +411,29 @@
     }
     /* These tiles are links, so each one says where it goes. `margin-top: auto`
        pins the line to the foot of the tile, which lines the four up across the
-       row however long the blurbs above them run. */
+       row however long the blurbs above them run. Plain block flow, not flex,
+       so a label that wraps keeps its arrow beside the last word (the markup
+       joins them with a no-break space) instead of flinging it to the edge.
+       The arrow stays plain inline text and nudges with `left`, because
+       Chrome will break a line before an inline-block even after a no-break
+       space, which strands the arrow on a line of its own. */
     .use-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: block;
       margin: auto 7px 0;
       padding-top: 14px;
       color: var(--sage);
       font-size: 0.85rem;
       font-weight: 600;
     }
-    .use-cta .arrow { transition: transform 140ms ease; }
-    a.use:hover .use-cta .arrow { transform: translateX(3px); }
+    .use-cta .arrow { position: relative; left: 0; margin-left: 2px; transition: left 140ms ease; }
+    a.use:hover .use-cta .arrow { left: 3px; }
     .download {
       background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
+      box-shadow: var(--shadow);
       border-radius: 10px;
       padding: 28px;
-      margin: 0 auto 48px;
+      margin: 0 auto var(--section-gap);
       text-align: center;
     }
     .download h2 {
@@ -412,7 +470,7 @@
       gap: 18px 28px;
       margin: 0 0 4px;
     }
-    .tray { grid-area: tray; }
+    .tray { grid-area: tray; align-self: center; }
     .pick-main { grid-area: main; }
     .specs { grid-area: specs; }
     .tray {
@@ -594,16 +652,20 @@
       text-decoration-color: var(--border);
     }
     .cli-note a:hover { color: var(--accent); }
+    /* Centred in the row: the platform keys and the hardware notes either side
+       both run taller than the button, and a top-aligned button left a hollow
+       under it. */
     .pick-main {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      align-self: center;
       gap: 12px;
       min-width: 0;
     }
     /* Build picker: one chip per (arch, format) the selected platform ships.
-       Hidden when a platform has only one build, so Windows stays a single key. */
+       Hidden when a platform has only one build, as macOS has. */
     .variants {
       display: flex;
       flex-wrap: wrap;
@@ -695,42 +757,62 @@
       font-style: italic;
     }
     .release-note[hidden] { display: none; }
-    .cards {
+    /* "Why Gezel": the page's one full-width band, plain text on the forest
+       ground instead of yet another row of cards. The fill reaches the viewport
+       edges as a border-image outset: ink overflow, which never scrolls, unlike
+       100vw on systems with classic scrollbars, and one continuous paint, unlike
+       a background plus a spread shadow, which left a hairline seam. */
+    .band {
+      border-image: linear-gradient(var(--band-bg) 0 0) fill 0 / / 0 100vmax;
+      color: var(--band-text);
+      padding: 84px 0 88px;
+      margin: 0 0 var(--section-gap);
+    }
+    .band .section-title { color: var(--band-title); margin-bottom: 44px; }
+    .band-cols {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin: 0 0 48px;
+      gap: 52px;
     }
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
-      border-radius: 10px;
-      padding: 24px;
-    }
-    .card h3 {
+    .band h3 {
       font-family: var(--serif);
       font-weight: 700;
-      font-size: 1.2rem;
-      margin: 0 0 0.5em;
-      color: var(--sage);
+      font-size: 1.3rem;
+      line-height: 1.25;
+      margin: 0 0 0.55em;
+      color: var(--band-title);
     }
-    .card p { margin: 0; color: var(--muted); font-size: 0.96rem; }
-    /* Numbered walkthrough — deliberately unpanelled so it doesn't read as
-       another row of the .card tiles sitting right below it. */
-    .how { margin: 0 0 48px; }
+    .band p { margin: 0; font-size: 1rem; line-height: 1.65; color: var(--band-text); }
+    .band a {
+      color: var(--band-title);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--band-line);
+    }
+    .band a:hover { color: var(--band-title); text-decoration-color: currentColor; }
+    /* The walkthrough, each step shown with the moment it describes from a
+       real run: the request, the work underway, the finished board. */
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 32px;
       counter-reset: step;
     }
-    .step {
+    .step { counter-increment: step; }
+    .step-shot {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 8 / 5;
+      margin: 0 0 22px;
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .step-body {
       position: relative;
       padding-left: 54px;
-      counter-increment: step;
     }
-    .step::before {
+    .step-body::before {
       content: counter(step);
       position: absolute;
       left: 0;
@@ -743,7 +825,7 @@
       border-radius: 50%;
       background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
+      box-shadow: var(--shadow);
       font-family: var(--serif);
       font-weight: 700;
       font-size: 1.15rem;
@@ -761,7 +843,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 0 0 40px;
+      margin: calc(var(--section-gap) * -0.4) 0 calc(var(--section-gap) * 0.65);
       color: color-mix(in srgb, var(--accent) 72%, var(--muted));
     }
     .divider::before, .divider::after {
@@ -777,10 +859,33 @@
       opacity: 0.82;
     }
 
-    /* "Ready-made for your crew": a strip of craftbook woodcuts, then the
+    /* "Ready-made for your crew": a strip of craftbook marks, then the
        catalog sections as plain link cards. */
-    .catalog { margin: 0 0 48px; }
-    .catalog-lede { text-align: center; color: var(--muted-strong); margin: -6px auto 22px; max-width: 560px; }
+    .section-lede { text-align: center; color: var(--muted-strong); font-size: 1.05rem; margin: -12px auto 34px; max-width: 600px; }
+    /* The page ends where it began, on the download: a quiet full-width band
+       whose button mirrors whatever the main one resolved. */
+    .closing {
+      border-image: linear-gradient(var(--panel) 0 0) fill 0 / / 0 100vmax;
+      text-align: center;
+      padding: 88px 0 96px;
+    }
+    .closing-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem);
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+    .closing-sub { margin: 0 0 30px; color: var(--muted-strong); font-size: 1.05rem; }
+    .closing-alt { margin: 16px 0 0; font-size: 0.9rem; }
+    .closing-alt a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: var(--border);
+    }
+    .closing-alt a:hover { color: var(--accent); }
+    .closing + footer { border-top: none; }
     .craft-strip {
       list-style: none;
       margin: 0 0 22px;
@@ -803,9 +908,6 @@
       height: auto;
       aspect-ratio: 1;
       border-radius: 6px;
-      background: #e8dec7;
-      filter: sepia(0.12) contrast(1.04);
-      box-shadow: inset 0 0 0 1px rgba(74, 52, 30, 0.14);
       transition: transform 140ms ease;
     }
     .craft-strip a:hover img { transform: translateY(-2px); }
@@ -825,7 +927,7 @@
       padding: 14px 16px;
       background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow), inset 0 0 0 2px var(--surface);
+      box-shadow: var(--shadow);
       border-radius: 10px;
       color: var(--text);
       transition: transform 140ms ease, border-color 140ms ease;
@@ -858,6 +960,14 @@
     @media (max-width: 460px) {
       .use-grid { grid-template-columns: 1fr; }
     }
+    /* The developer rows have three tiles, so they step 3 -> 1 instead: a 2+1
+       reflow would orphan the last pillar. Their marks sit in a wide band of
+       their ground, because a square that wide would tower over the text. */
+    .use-grid.use-grid-three { grid-template-columns: repeat(3, 1fr); }
+    .use-grid-three .use-illustration { aspect-ratio: 16 / 10; object-fit: contain; }
+    @media (max-width: 720px) {
+      .use-grid.use-grid-three { grid-template-columns: 1fr; }
+    }
     /* Stack the hero before the two columns get too narrow to read. */
     @media (max-width: 860px) {
       .hero { grid-template-columns: 1fr; gap: 28px; }
@@ -877,9 +987,10 @@
       }
     }
     @media (max-width: 720px) {
-      .cards { grid-template-columns: 1fr; }
+      .band-cols { grid-template-columns: 1fr; gap: 32px; }
+      .band { padding: 60px 0 64px; }
+      .closing { padding: 64px 0 72px; }
       .steps { grid-template-columns: 1fr; gap: 22px; }
-      .masthead { flex-direction: column; align-items: flex-start; }
       .download-btn { width: 100%; }
       .picker {
         grid-template-columns: 1fr;
@@ -927,7 +1038,6 @@
           GitHub
         </a>
       </nav>
-      <span class="status-badge">Early beta</span>
     </header>
 
     <section class="hero">
@@ -958,8 +1068,8 @@
       <div class="hero-media">
         <div class="video-frame">
           <button type="button" class="video" id="videoPlay"
-                  aria-label="Play video: Introduction to Gezel">
-            <img class="video-thumb" src="assets/gezhome.png"
+                  aria-label="Play video: Gezel Overview">
+            <img class="video-thumb" src="assets/video-poster.webp"
                  alt="" width="1280" height="720" decoding="async">
             <span class="video-play">
               <span class="video-disc">
@@ -969,11 +1079,20 @@
           </button>
         </div>
         <p class="video-caption">
-          <strong>Introduction to Gezel</strong>
-          <a href="https://www.youtube.com/watch?v=LXrqys9I8_I">Watch on YouTube</a>
+          <strong>Gezel Overview</strong>
+          <a href="https://www.youtube.com/watch?v=bw1XFC6JcFA">Watch on YouTube</a>
         </p>
       </div>
     </section>
+
+    <!-- Facts, not adjectives: each one is checkable on the page it links to
+         or in the docs. The plan count follows docs/catalog-counts.json. -->
+    <ul class="proof" aria-label="Gezel at a glance">
+      <li>No account needed</li>
+      <li>Open source, MIT license</li>
+      <li><data data-count="craftbooks" data-floor="10" value="292">290</data>+ tested plans</li>
+      <li><a href="/docs/model-scorecard/">Models tested on real jobs</a></li>
+    </ul>
 
     <section class="download" id="download">
       <div class="picker">
@@ -1045,6 +1164,22 @@
             </dl>
           </div>
 
+          <!-- Shown whenever the ARM64 Windows build is the one on offer. The
+               wording follows the 1.26300 release notes, the first build for
+               Windows on ARM. -->
+          <div class="spec-set" data-specs="windows-arm" hidden>
+            <dl class="spec-list">
+              <dt>Fastest</dt>
+              <dd>A laptop with NVIDIA’s RTX Spark (N1X) chip.
+                <span class="spec-gets">On-device models run on its graphics processor.</span>
+              </dd>
+              <dt>Other ARM laptops</dt>
+              <dd>Snapdragon X and other ARM processors.
+                <span class="spec-gets">On-device models run on the main processor for now. Searching your documents and memories works on all of them.</span>
+              </dd>
+            </dl>
+          </div>
+
           <div class="spec-set" data-specs="mac" hidden>
             <dl class="spec-list">
               <dt>Minimum</dt>
@@ -1066,133 +1201,208 @@
       </div>
     </section>
 
+
+    <section class="uses">
+      <h2 class="section-title">What your crew can take on</h2>
+      <!-- Each tile shows the craftbook that does the job and links to its
+           step-by-step page. The marks are the app's own, copied from the
+           pinned gilde release into assets/marks/ so a docs regeneration can't
+           change them; data-ground paints the category color behind each one.
+           The order runs from everyday to technical, which also keeps the two
+           indigo grounds apart. None repeats a mark from the strip below. -->
+      <div class="use-grid">
+        <a class="use" href="/docs/craftbook/fact-check/">
+          <img class="use-illustration" src="/assets/marks/fact-check.webp" alt="" data-ground="indigo"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Research a question</h3>
+          <p>A written answer with a source for every claim, and guesses labeled as guesses.</p>
+          <span class="use-cta">The fact-check plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/craftbook/topic-explainer/">
+          <img class="use-illustration" src="/assets/marks/topic-explainer.webp" alt="" data-ground="rose"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Learn something new</h3>
+          <p>Any topic explained at your level, from the basics up to the full picture.</p>
+          <span class="use-cta">The explainer plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/craftbook/spa-dashboard/">
+          <img class="use-illustration" src="/assets/marks/spa-dashboard.webp" alt="" data-ground="indigo"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Build a site or app</h3>
+          <p>Describe it in a sentence. Your crew plans, designs, builds, and checks it.</p>
+          <span class="use-cta">The dashboard plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/craftbook/nightly-fix-sweep/">
+          <img class="use-illustration" src="/assets/marks/nightly-fix-sweep.webp" alt="" data-ground="sage"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Look after your code</h3>
+          <p>Problems found overnight, fixes drafted by morning, and nothing changes until you approve.</p>
+          <span class="use-cta">The nightly fix plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+
+
+    <section class="how" id="how-it-works">
+      <h2 class="section-title">How it works</h2>
+      <!-- Each picture is from one real run on a local model: a fresh install's
+           Meester, the Lisbon request underway, and the board it produced. -->
+      <div class="steps">
+        <div class="step">
+          <img class="step-shot" src="/assets/how/how-ask.webp"
+               alt="Zara, the Meester, greeting a new install with a few jobs to start from"
+               width="960" height="600" loading="lazy" decoding="async">
+          <div class="step-body">
+            <h3>Tell the Meester what you need</h3>
+            <p>Your first helper is the Meester, who runs the workshop. Describe the job in your own words, and they bring in the right helpers for it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <img class="step-shot" src="/assets/how/how-work.webp"
+               alt="A trip request moving from Got it to Making it, with Obiora the trip planner on the crew"
+               width="960" height="600" loading="lazy" decoding="async">
+          <div class="step-body">
+            <h3>Your crew gets to work</h3>
+            <p>Each helper follows a tested, step-by-step plan for the job. Watch along and step in whenever you like, or leave them to it overnight.</p>
+          </div>
+        </div>
+        <div class="step">
+          <img class="step-shot" src="/assets/how/how-ready.webp"
+               alt="The finished Lisbon trip board, with Obiora’s note that it is ready to look at"
+               width="960" height="600" loading="lazy" decoding="async">
+          <div class="step-body">
+            <h3>Review what’s waiting</h3>
+            <p>Come back to finished reports and suggested changes. Your own files only change when you say so.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The catalog is most of what there is to read about Gezel, and every
+         page of it is indexable: link into it from the front door. The counts
+         are replaced from docs/catalog-counts.json, which the docs export
+         writes; the numbers in the markup are only the fallback. -->
+    <section class="catalog" id="catalog">
+      <h2 class="section-title">Ready-made for your crew</h2>
+      <p class="section-lede">Gezel comes with hundreds of tested plans, characters and models, all free. Have a look before you download.</p>
+      <ul class="craft-strip">
+        <li><a href="/docs/craftbook/research-report/"><img src="/assets/marks/research-report.webp" alt="" data-ground="indigo" width="160" height="160" loading="lazy" decoding="async"><span>Cited research report</span></a></li>
+        <li><a href="/docs/craftbook/pitch-deck/"><img src="/assets/marks/pitch-deck.webp" alt="" data-ground="terracotta" width="160" height="160" loading="lazy" decoding="async"><span>Investor pitch deck</span></a></li>
+        <li><a href="/docs/craftbook/landing-page/"><img src="/assets/marks/landing-page.webp" alt="" data-ground="indigo" width="160" height="160" loading="lazy" decoding="async"><span>Landing page</span></a></li>
+        <li><a href="/docs/craftbook/photo-cull/"><img src="/assets/marks/photo-cull.webp" alt="" data-ground="plum" width="160" height="160" loading="lazy" decoding="async"><span>Photo cull</span></a></li>
+        <li><a href="/docs/craftbook/html-arcade-game/"><img src="/assets/marks/html-arcade-game.webp" alt="" data-ground="indigo" width="160" height="160" loading="lazy" decoding="async"><span>Arcade game</span></a></li>
+        <li><a href="/docs/craftbook/family-story-chapter/"><img src="/assets/marks/family-story-chapter.webp" alt="" data-ground="rose" width="160" height="160" loading="lazy" decoding="async"><span>Family story chapter</span></a></li>
+      </ul>
+      <ul class="catalog-links">
+        <li><a href="/docs/craftbooks-index/"><strong><data data-count="craftbooks" data-floor="10" value="292">290</data>+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
+        <li><a href="/docs/model-catalog/"><strong><data data-count="models" value="89">89</data> AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
+        <li><a href="/docs/role-catalog/"><strong><data data-count="characters" value="40">40</data> characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
+        <li><a href="/docs/project-types-index/"><strong><data data-count="projectTypes" value="26">26</data> project types</strong><span>Ready-made setups, and <data data-count="projectTypeDemos" value="23">23</data> of them you can try in your browser.</span></a></li>
+        <li><a href="/docs/toolset-catalog/"><strong><data data-count="connectors" value="24">24</data> connectors</strong><span>Bring in mail, calendars, issues and posts as files your crew can read.</span></a></li>
+      </ul>
+    </section>
+
+    <!-- One column per question a first-time visitor is actually asking: will
+         it work on my computer, is it safe, and is it mine. -->
+    <section class="band" id="why-gezel">
+      <h2 class="section-title">Why Gezel</h2>
+      <div class="band-cols">
+        <div>
+          <h3>Made for the AI on your computer</h3>
+          <p>Each helper has one job, a few tools, and one of <data data-count="craftbooks" data-floor="10" value="292">290</data>+ <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
+        </div>
+        <div>
+          <h3>You stay in charge</h3>
+          <p>Helpers don’t get your passwords, open access to the web, or a view of anything else on your computer unless you allow it. <a href="/docs/security-model/">How Gezel keeps AI in bounds</a></p>
+        </div>
+        <div>
+          <h3>Yours to keep</h3>
+          <p>Everything your crew makes is saved as <a href="/docs/where-files-live/">ordinary files</a> on your own disk. Gezel is free and <a href="https://github.com/bendyline/gezel">open source</a>, and none of our servers sits between you and your work.</p>
+        </div>
+      </div>
+    </section>
+
     <div class="divider" aria-hidden="true">
-      <!-- Hammer and chisel outlines adapted from Tabler Icons (MIT); see NOTICE.md. -->
+      <!-- Hammer outline adapted from Tabler Icons (MIT); see NOTICE.md. -->
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
         <path d="M11.414 10l-7.383 7.418a2.091 2.091 0 0 0 0 2.967a2.11 2.11 0 0 0 2.976 0l7.407 -7.385"/>
         <path d="M18.121 15.293l2.586 -2.586a1 1 0 0 0 0 -1.414l-7.586 -7.586a1 1 0 0 0 -1.414 0l-2.586 2.586a1 1 0 0 0 0 1.414l7.586 7.586a1 1 0 0 0 1.414 0"/>
       </svg>
     </div>
 
-    <section class="uses">
-      <h2 class="section-title">What your crew can take on</h2>
-      <div class="use-grid">
-        <a class="use" href="/docs/role/researcher/">
-          <img class="use-illustration" src="/assets/woodcuts/research-docs.webp" alt=""
-               width="480" height="480" loading="lazy" decoding="async">
-          <h3>Research a question</h3>
-          <p>Sources found, cross-checked, and written up with citations.</p>
-          <span class="use-cta">Meet the researcher <span class="arrow" aria-hidden="true">→</span></span>
+    <!-- Two rows for people who already work in other tools, after the story
+         for everyone else is told. Their marks are not catalog items: they were
+         drawn for this page with gilde's workshop-mark-cutout-v3 sheet prompt
+         and cut out the same way (see the README), so they sit with the
+         craftbook marks above. Each card links to its part of the
+         Integrations article. -->
+    <section class="uses" id="integrations">
+      <h2 class="section-title">Bring Gezel to your apps</h2>
+      <p class="section-lede">Your crew and your local models can work inside the tools you already use. Set each one up, or remove it, in Settings → Integrations.</p>
+      <div class="use-grid use-grid-three">
+        <a class="use" href="/docs/connected-apps/#codex-and-other-agent-harnesses">
+          <img class="use-illustration" src="/assets/marks/integrations-coding-tools.webp" alt="" data-ground="teal"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Plug into your coding tools</h3>
+          <p>Use your crew and local models in VS Code, OpenCode, and pi. Each keeps its own tools and approvals.</p>
+          <span class="use-cta">Coding tools and editors&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
         </a>
-        <a class="use" href="/docs/role/web-developer/">
-          <img class="use-illustration" src="/assets/woodcuts/build-pages.webp" alt=""
-               width="480" height="480" loading="lazy" decoding="async">
-          <h3>Build a site or app</h3>
-          <p>Pages, dashboards, and small games.</p>
-          <span class="use-cta">Meet the web developer <span class="arrow" aria-hidden="true">→</span></span>
+        <a class="use" href="/docs/connected-apps/#gezel-s-tools-in-other-ai-apps">
+          <img class="use-illustration" src="/assets/marks/integrations-ai-tools.webp" alt="" data-ground="plum"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Give other AI apps new tools</h3>
+          <p>Claude Code, Codex, and Cursor can search your folders and documents, make images, and turn their writing into Word, PowerPoint, or PDF files.</p>
+          <span class="use-cta">Gezel’s tools in other AI apps&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
         </a>
-        <a class="use" href="/docs/night-shift/">
-          <img class="use-illustration" src="/assets/woodcuts/review-code.webp" alt=""
-               width="480" height="480" loading="lazy" decoding="async">
-          <h3>Look after your code</h3>
-          <p>Overnight reviews, with fixes you approve before anything changes.</p>
-          <span class="use-cta">See the night shift <span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="use" href="/docs/project-types-index/">
-          <img class="use-illustration" src="/assets/woodcuts/personal-growth.webp" alt=""
-               width="480" height="480" loading="lazy" decoding="async">
-          <h3>Learn something new</h3>
-          <p>Tutors and coaches that remember where you left off.</p>
-          <span class="use-cta">See what else they do <span class="arrow" aria-hidden="true">→</span></span>
+        <a class="use" href="/docs/connected-apps/#word-excel-and-powerpoint">
+          <img class="use-illustration" src="/assets/marks/integrations-office.webp" alt="" data-ground="rose"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Work inside your office apps</h3>
+          <p>Chat with your crew beside a Word, Excel, or PowerPoint document, and let it edit when you allow. LibreOffice works too.</p>
+          <span class="use-cta">Office and LibreOffice&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 14l1.5 1.5"/>
-        <path d="M18.347 15.575l2.08 2.079a1.96 1.96 0 0 1 -2.773 2.772l-2.08 -2.079a1.96 1.96 0 0 1 2.773 -2.772"/>
-        <path d="M3 6l3 -3l7.414 7.414a2 2 0 0 1 .586 1.414v2.172h-2.172a2 2 0 0 1 -1.414 -.586l-7.414 -7.414"/>
-      </svg>
-    </div>
 
-    <section class="how" id="how-it-works">
-      <h2 class="section-title">How it works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>Tell the Meester what you need</h3>
-          <p>Your first helper is the Meester, who runs the workshop. Describe the job in your own words, and they bring in the right helpers for it.</p>
-        </div>
-        <div class="step">
-          <h3>Your crew gets to work</h3>
-          <p>Each helper follows a tested, step-by-step plan for the job. Watch along and step in whenever you like, or leave them to it overnight.</p>
-        </div>
-        <div class="step">
-          <h3>Review what’s waiting</h3>
-          <p>Come back to finished reports and suggested changes. Your own files only change when you say so.</p>
-        </div>
+    <section class="uses" id="platform">
+      <h2 class="section-title">Use Gezel as a platform</h2>
+      <p class="section-lede">The engine behind the app is yours to build on, from the command line and with open-source packages on npm.</p>
+      <div class="use-grid use-grid-three">
+        <a class="use" href="/docs/cli-reference/">
+          <img class="use-illustration" src="/assets/marks/platform-cli.webp" alt="" data-ground="forest"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Build workflows with the CLI</h3>
+          <p>Start craftbooks, send one-shot prompts, and wait for the results from a terminal or a script.</p>
+          <span class="use-cta">The gezel command line&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/building-connected-apps-with-gezel-app-sdk/">
+          <img class="use-illustration" src="/assets/marks/platform-app-sdk.webp" alt="" data-ground="slate"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Add local AI to your app</h3>
+          <p>OpenAI-style chat on local models for Node.js and Electron. Use the person’s Gezel, or host one inside your app.</p>
+          <span class="use-cta">Building connected apps&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/building-ai-apps-inside-gezel/">
+          <img class="use-illustration" src="/assets/marks/platform-ai-apps.webp" alt="" data-ground="terracotta"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Build apps that live in Gezel</h3>
+          <p>Package a page, scripts, a crew, and craftbooks into one app that installs into a project.</p>
+          <span class="use-cta">Building AI Apps&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 3l4 4l-14 14l-4 -4l14 -14"/>
-        <path d="M16 7l-1.5 -1.5"/>
-        <path d="M13 10l-1.5 -1.5"/>
-        <path d="M10 13l-1.5 -1.5"/>
-        <path d="M7 16l-1.5 -1.5"/>
-      </svg>
-    </div>
-
-    <!-- The catalog is most of what there is to read about gezel, and every
-         page of it is indexable: link into it from the front door. Counts are
-         rounded down from the pinned gilde catalog so they stay true as it grows. -->
-    <section class="catalog" id="catalog">
-      <h2 class="section-title">Ready-made for your crew</h2>
-      <p class="catalog-lede">Gezel comes with hundreds of tested plans, characters and models, all free. Have a look before you download.</p>
-      <ul class="craft-strip">
-        <li><a href="/docs/craftbook/pitch-deck/"><img src="/docs/craftbook/pitch-deck/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Investor pitch deck</span></a></li>
-        <li><a href="/docs/craftbook/research-report/"><img src="/docs/craftbook/research-report/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Cited research report</span></a></li>
-        <li><a href="/docs/craftbook/landing-page/"><img src="/docs/craftbook/landing-page/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Landing page</span></a></li>
-        <li><a href="/docs/craftbook/html-arcade-game/"><img src="/docs/craftbook/html-arcade-game/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Arcade game</span></a></li>
-        <li><a href="/docs/craftbook/photo-cull/"><img src="/docs/craftbook/photo-cull/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Photo cull</span></a></li>
-        <li><a href="/docs/craftbook/family-story-chapter/"><img src="/docs/craftbook/family-story-chapter/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async"><span>Family story chapter</span></a></li>
-      </ul>
-      <ul class="catalog-links">
-        <li><a href="/docs/craftbooks-index/"><strong>290+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
-        <li><a href="/docs/model-catalog/"><strong>84 AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
-        <li><a href="/docs/role-catalog/"><strong>39 characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
-        <li><a href="/docs/project-types-index/"><strong>24 project types</strong><span>Ready-made setups, and 21 of them you can try in your browser.</span></a></li>
-        <li><a href="/docs/toolset-catalog/"><strong>17 connectors</strong><span>Bring in mail, calendars, issues and posts as files your crew can read.</span></a></li>
-      </ul>
-    </section>
-
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 14l1.5 1.5"/>
-        <path d="M18.347 15.575l2.08 2.079a1.96 1.96 0 0 1 -2.773 2.772l-2.08 -2.079a1.96 1.96 0 0 1 2.773 -2.772"/>
-        <path d="M3 6l3 -3l7.414 7.414a2 2 0 0 1 .586 1.414v2.172h-2.172a2 2 0 0 1 -1.414 -.586l-7.414 -7.414"/>
-      </svg>
-    </div>
-
-    <!-- One card per question a first-time visitor is actually asking: will it
-         work on my computer, is it safe, and is it mine. -->
-    <section class="crafts" id="why-gezel">
-      <h2 class="section-title">Why gezel</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Made for the AI on your computer</h3>
-          <p>Each helper has one job, a few tools, and one of more than 250 <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
-        </div>
-        <div class="card">
-          <h3>You stay in charge</h3>
-          <p>Helpers don’t get your passwords, open access to the web, or a view of anything else on your computer unless you allow it. <a href="/docs/security-model/">How Gezel keeps AI in bounds</a></p>
-        </div>
-        <div class="card">
-          <h3>Yours to keep</h3>
-          <p>Everything your crew makes is saved as <a href="/docs/where-files-live/">ordinary files</a> on your own disk. Gezel is free and <a href="https://github.com/bendyline/gezel">open source</a>, and none of our servers sits between you and your work.</p>
-        </div>
-      </div>
+    <section class="closing" id="get-gezel">
+      <h2 class="closing-title">Hand off your first job tonight.</h2>
+      <p class="closing-sub">Free for macOS, Windows and Linux. There’s no account to create.</p>
+      <!-- Filled in from the main download button once it resolves a build;
+           until then, and without the listing, it opens the releases page. -->
+      <a class="download-btn" id="endDownloadBtn" href="https://github.com/bendyline/gezel/releases">
+        <span class="btn-main" id="endBtnMain">Download Gezel</span>
+        <span class="btn-sub" id="endBtnSub">Free and open source</span>
+      </a>
+      <p class="closing-alt"><a href="#download">Other platforms, the command line, and what you need</a></p>
     </section>
 
     <footer>
@@ -1207,8 +1417,8 @@
     // Swap the video facade for the real player on demand. nocookie + no
     // autoplay-on-load means YouTube sees nothing until this runs.
     (function () {
-      var VIDEO_ID = "LXrqys9I8_I";
-      var TITLE = "Introduction to Gezel";
+      var VIDEO_ID = "bw1XFC6JcFA";
+      var TITLE = "Gezel Overview";
       var play = document.getElementById("videoPlay");
       if (!play) return;
 
@@ -1263,6 +1473,9 @@
       var btn = document.getElementById("downloadBtn");
       var btnMain = document.getElementById("btnMain");
       var btnSub = document.getElementById("btnSub");
+      var endBtn = document.getElementById("endDownloadBtn");
+      var endMain = document.getElementById("endBtnMain");
+      var endSub = document.getElementById("endBtnSub");
       var variantsEl = document.getElementById("variants");
       var cliEl = document.getElementById("cli");
       var specSets = Array.prototype.slice.call(document.querySelectorAll("[data-specs]"));
@@ -1381,10 +1594,13 @@
         render();
       }
 
-      // Windows and Linux share one answer; macOS gets its own. Both sets ship
-      // in the HTML so the panel is still right with scripting off.
-      function showSpecs(p) {
-        var want = p === "mac" ? "mac" : "desktop";
+      // Windows and Linux share one answer; macOS gets its own, and so does the
+      // ARM64 Windows build, which has no graphics-card bar to clear. Every
+      // set ships in the HTML so the panel is still right with scripting off.
+      function showSpecs(p, buildArch) {
+        var want = p === "mac" ? "mac"
+          : p === "windows" && buildArch === "arm64" ? "windows-arm"
+          : "desktop";
         specSets.forEach(function (el) { el.hidden = el.dataset.specs !== want; });
       }
 
@@ -1435,10 +1651,32 @@
         metaEl.innerHTML = bits.join('<span class="sep">·</span>');
       }
 
+      // The closing call to action offers exactly what the main button does,
+      // so it copies the main button instead of resolving a build of its own.
+      // The command line has no single file to offer, so it points back up.
+      function mirrorEnd() {
+        if (!endBtn) return;
+        if (platform === "cli") {
+          endBtn.href = "#download";
+          endMain.textContent = "Install the command line";
+          endSub.textContent = "npm install @bendyline/gezel-cli";
+          return;
+        }
+        endBtn.href = btn.href;
+        endMain.textContent = btnMain.textContent;
+        endSub.textContent = btnSub.textContent;
+      }
+
       function render() {
+        renderPicker();
+        mirrorEnd();
+      }
+
+      function renderPicker() {
         // The CLI drives the same local models as the app, so it answers the
         // hardware question for the machine you are actually on.
-        showSpecs(platform === "cli" ? detected : platform);
+        var specsFor = platform === "cli" ? detected : platform;
+        showSpecs(specsFor, preferredArch(specsFor));
         showCli(platform === "cli");
         if (platform === "cli") return;
 
@@ -1464,6 +1702,7 @@
         }
 
         var build = chosen && chosen.platform === platform ? chosen : list[0];
+        showSpecs(platform, build.arch);
         btn.classList.remove("is-pending");
         btn.href = build.url;
         btnMain.textContent = "Download for " + label;
@@ -1475,9 +1714,15 @@
         // architecture — guessing here would tell most Safari-on-Apple-Silicon
         // visitors their Mac is unsupported.
         var native = list.some(function (b) { return b.arch === arch; });
+        var hasArmWindows = platform === "windows" && list.some(function (b) { return b.arch === "arm64"; });
         if (archConfirmed && platform === detected && !native && !chosen) {
           noteEl.hidden = false;
           noteEl.textContent = "Only " + archLabel(build) + " builds are available for " + label + " right now.";
+        } else if (hasArmWindows && !(archConfirmed && platform === detected) && !chosen) {
+          // Firefox and Safari keep the processor to themselves, and Windows on
+          // ARM runs the x64 build only under emulation, so say which to pick.
+          noteEl.hidden = false;
+          noteEl.textContent = "On a laptop with an ARM processor, such as Snapdragon X or RTX Spark, choose ARM64.";
         } else {
           noteEl.hidden = true;
         }
@@ -1487,11 +1732,13 @@
       // desktop build. The button still works, it just sends people to the
       // releases page instead of straight at a file.
       function fail() {
-        if (platform === "cli") return;
-        btn.classList.remove("is-pending");
-        btn.href = RELEASES;
-        btnMain.textContent = "Download Gezel";
-        btnSub.textContent = "See all builds on GitHub";
+        if (platform !== "cli") {
+          btn.classList.remove("is-pending");
+          btn.href = RELEASES;
+          btnMain.textContent = "Download Gezel";
+          btnSub.textContent = "See all builds on GitHub";
+        }
+        mirrorEnd();
       }
 
       keys.forEach(function (k) {
@@ -1588,6 +1835,29 @@
           render();
         })
         .catch(fail);
+    })();
+
+    // Catalog counts come from the docs export (`pnpm docs:site` writes
+    // docs/catalog-counts.json), so the page moves with the catalog instead
+    // of drifting behind it. The numbers in the markup are the fallback.
+    (function () {
+      var els = document.querySelectorAll("data[data-count]");
+      if (!els.length) return;
+      fetch("docs/catalog-counts.json")
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function (counts) {
+          Array.prototype.forEach.call(els, function (el) {
+            var n = counts[el.dataset.count];
+            if (typeof n !== "number" || !(n > 0)) return;
+            var floor = Number(el.dataset.floor) || 1;
+            el.value = String(n);
+            el.textContent = String(Math.floor(n / floor) * floor);
+          });
+        })
+        .catch(function () {});
     })();
   </script>
 </body>

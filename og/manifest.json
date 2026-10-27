@@ -5,7 +5,7 @@
       "specHash": "e5c680641e026059d10e1cbb0bdc871ddc4f060e8586da75b62e7b233ce00858"
     },
     "the-crew": {
-      "specHash": "ff3565523c1223270956ee8741c4ea1af33159f34295e59d73248641647209c1"
+      "specHash": "5f4e65f25a85701b2f2453543ab936f8e23a30315b554f22ced95b0852148812"
     },
     "character-and-growth": {
       "specHash": "de06bd8162a9a11af9b818b13eda6ae888dcc23bc6970ff9a4bb84c91c142c33"
@@ -28,17 +28,23 @@
     "adding-folders": {
       "specHash": "0e154cc961d8b774d64c16f518670a635f3fc966a978ee3df7d673b8bf501a5c"
     },
+    "project-views": {
+      "specHash": "4719f816a6c38f018a7b2567aca2cade6e2934f902971d0e33895a9658c6df32"
+    },
     "night-shift": {
       "specHash": "8d863a6456debfd071ee439b128a606032240b8a7413ff8a93744f71087cf3eb"
     },
     "notifications": {
       "specHash": "2b137dfb4d637e4f16b5a18f2141507319abde30c5c8c79755cda3bb8ae45dbe"
     },
+    "cameras-and-lookouts": {
+      "specHash": "a813a9c21ac5b33e6cc305367f8e4f99322dcfc911f1e440b39ed4e19b18f2d3"
+    },
     "privacy-local-first": {
       "specHash": "eae5f22b514a03db16dae594fba71bd121caf7ef259bb2b5de18c936b3d9c45b"
     },
     "connected-apps": {
-      "specHash": "96178653a5ef5f06cd3822570fd44f28d4c9e0ec74fbb510536eeeed3b9867bb"
+      "specHash": "e3f63fb95f7efaf3cc00caff3ff845bf7d4a03d76204fb1810dad39587d43a1d"
     },
     "generalist-mode": {
       "specHash": "c27f9a76e5852b8c54aaa8b8e550d5c90199d9a9b041d4a190d10f58e82b2daf"
@@ -53,7 +59,7 @@
       "specHash": "afd5e765831dea39164df3ae4f0d7d011d884c38211ebcd45d7ff94c093e1355"
     },
     "role/voorman": {
-      "specHash": "30e965f69c1848d3dbfdae57b582a07981a13da9888d51c8797c92919992bf0b"
+      "specHash": "8572453bcf1fdfe89a323a9440211ac555b03d1d7b04b0881d1297a75b68ef41"
     },
     "role/reviewer": {
       "specHash": "1c62fce60c2e309b5692687311029674bc6786482f40fd48e20de9cbf3e6a922"
@@ -985,6 +991,9 @@
     "project-type/chess": {
       "specHash": "db9372254d0dcc0813250b394cca0d1032a8a4b50a9615ea164407922455e556"
     },
+    "project-type/data-analysis": {
+      "specHash": "00cf764c5bcdb76770e60331c3434f210fd38ca1bc8028d57f5512a16628f182"
+    },
     "project-type/design-scheme": {
       "specHash": "70927bd4ba4e5fd183fd5cf5c74cdaebc625f8b9d6b38a5078e61614d6ed9ac8"
     },
@@ -1029,6 +1038,9 @@
     },
     "project-type/meal-planner": {
       "specHash": "acc8cdf38a0c4e18640040c6f311b8e20ddb3cfd4aa2ed81db30399f9a8ee74d"
+    },
+    "project-type/media-library": {
+      "specHash": "fe17996cb500356c7459d926fa795af6a04460f4040e37a0bfbb36702eedf933"
     },
     "project-type/novel-writing-room": {
       "specHash": "718e103eb991fce1b3b585f6da7ad55badb8ed20885c435784e64362b6ccd42f"
@@ -1093,6 +1105,12 @@
     "how-we-test-models": {
       "specHash": "07fa5df8e5aa99beec4f892ad9e8bafa3fe4e81200da52d8abcf216047637e74"
     },
+    "gezel-page-apis": {
+      "specHash": "984fe1f9e8eea66bd513e6a8069eb8c8ac97d2587e8dbb97608132a156b25408"
+    },
+    "gezel-app-page-style-guide": {
+      "specHash": "b199ad993b3dd353f40e40998dac827eff37c8a36abf6d989566cc625af64783"
+    },
     "model-scorecard": {
       "specHash": "01be0bc30cc9bf2cf63ba8dffa87f9f2246eea4fc5477b274bd1874327d098c5"
     },
@@ -1101,6 +1119,9 @@
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26300": {
+      "specHash": "3cd846c0332609cdb4bab2ff4f785c8c018abd37531966b207552b71e3d34141"
     },
     "whats-new/1.26287": {
       "specHash": "d7307a80f82df756c86244f1f116d5bccb759c95a66979db662fcf6d7a7cbffb"
@@ -1213,6 +1234,9 @@
     "model/deepseek-v4-flash-284b-mxfp4": {
       "specHash": "d80c7f11d6d928d2d8fdedcd8baa3d33ce05214789648acbf0bd52aa83d89b0e"
     },
+    "model/deepseek-v4.1-flash-552b-q2": {
+      "specHash": "7e12ae36a7afb3b41341ba3c09c974b9710aa5afac69122585904d8bced7c857"
+    },
     "model/glm-5.2-754b-q2": {
       "specHash": "1e924cfae598d963fc2df8ffa6dd16da444c732ed51133901451f09786639b69"
     },
@@ -1273,11 +1297,20 @@
     "model/nanbeige4.2-3b-q4": {
       "specHash": "c3b7a5712fc293c05fbd5612e013adb3c6c57e809c633206f48da7ba5e558061"
     },
+    "model/nemotron3.5-bolt-74b-iq2": {
+      "specHash": "1886f35a570189227a09a5e56a99e3ce7522c2e69bdc5a01d2f6a0ef81ae9de8"
+    },
+    "model/nemotron3.5-bolt-e4b-q4": {
+      "specHash": "7cd6e83f3e0196b8eb252d70fd2a88aae3bbfbc360a7b34568e9b9ec619ee278"
+    },
     "model/nemotron3.5-lightning-30b-q4": {
       "specHash": "01dd524fd03fc49c1c8a6e9dc7191812e2d9c1ece7327ec72158043001c5add2"
     },
     "model/nemotron3.5-lightning-30b-q8": {
       "specHash": "4021be9da82f801d6cbf0a9ef5fe2a51f59e5aa8df38ae153b1a8f8afaf28473"
+    },
+    "model/nemotron3.5-super-vl-120b-nvfp4": {
+      "specHash": "e0c4e1773840c1fbc893bfd8077d718df3529da04504d63ddae97eb6bff3079f"
     },
     "model/nemotron3-nano-30b-q4": {
       "specHash": "5f6cfe193de0f2cb2170a31745544cc7161909bf211cbcec37292b1f25a2dd95"
@@ -1342,20 +1375,29 @@
     "model/underdog-saluki-27b-iq2-mix": {
       "specHash": "488f4ec884a66f090131e6588d063f525868c13179bdf475774e7186a291fbea"
     },
-    "role-template/aanjager": {
-      "specHash": "b5f0826bab2e68e1746259d6a0a557e2627da9e6d25827e40eda319ba0e3006a"
-    },
     "role-template/archivaris": {
-      "specHash": "c8be6ca0dcf69a0e82e640ac30333173bb776e9a5931b6710af7e58d13b81e72"
-    },
-    "role-template/boekwachter": {
-      "specHash": "01c593008f33d25d1753b45d81044f40ba50075f452a456b01e980fa99bd0a44"
+      "specHash": "a0330a8cc8a4f8f750e7a766e165d8b5f58fc815f41faa31f29f93b267ba7c51"
     },
     "role-template/builder": {
       "specHash": "5071c5fca5131e63e187f3e93906d1003a47c5524bf3f449e9038ce85cbffad3"
     },
-    "role-template/ceremoniemeester": {
-      "specHash": "96ab6e90c2f57d9d85f8059f416da1673a1aaaa122206dc816fc8e493fdf66be"
+    "role-template/zorgcoordinator": {
+      "specHash": "0ce685ca9c251bd2e91c70f6992435efd6f7e8368df510c3dbcf5f9503a58c75"
+    },
+    "role-template/career-coach": {
+      "specHash": "47052d896723b7192fc254cde233c1def98f0f106cc91896aa1b21a56b3dd95b"
+    },
+    "role-template/checkers-player": {
+      "specHash": "2bd65f4b1cbb87e4ee0eb6c64254aa91a7c7f78c13f2339d74f42440c00e54c4"
+    },
+    "role-template/chess-player": {
+      "specHash": "ca37c9585c3b0ef1bd255d9c684eb66edb57bee80e6ae964ff7d6cc3c2df9a9e"
+    },
+    "role-template/veiligheidsmeester": {
+      "specHash": "89ea8c601f195abd6ee0c0c18b05d16957393ce9e258c9381ef29c61f3435009"
+    },
+    "role-template/woordsmid": {
+      "specHash": "bb9f1862648a21918023ebbe433b6e47345e1bc00b815cba88dd65e87cba5a81"
     },
     "role-template/coach": {
       "specHash": "e7d119e1a995b65324f543da6130b95ddf792700693ceba2a25af7f45f3b8424"
@@ -1366,11 +1408,11 @@
     "role-template/copywriter": {
       "specHash": "0eaadb3dfb811c33c71742d61445977e0f1da4b7aec1cf4aee3111f4ae0403e1"
     },
+    "role-template/voorman": {
+      "specHash": "7cf4bec03c9fd5ac5efe8f415bcb4c5d6211ea7e186c5338b35e0746aeebc420"
+    },
     "role-template/curator": {
       "specHash": "1e3ad59c0b1e2d5ead04f213ae76df803aae24995cdb0ef91ab6b5218094284b"
-    },
-    "role-template/checkers-player": {
-      "specHash": "e206ea51becd1b2351d3a8ea315c15d2bc06710569cb2c0bf5e0fe7a20a3f2a3"
     },
     "role-template/designer": {
       "specHash": "9088280ca3acfd57b49b26636e86f07eda736deefb93a9365b1b823daa6cb9e6"
@@ -1378,53 +1420,56 @@
     "role-template/developer": {
       "specHash": "877aa4fab3514020465dfeb02b8dae1be3d06c2250364be3b1a6f240cce69b73"
     },
+    "role-template/ceremoniemeester": {
+      "specHash": "f76ffaaee425c9998fd257beffbb0b18fd00b0cd2b6458ae32caea1cd2149609"
+    },
+    "role-template/aanjager": {
+      "specHash": "374566780527763f6a2af8137b72decdd2f0e80eaca24862b6ac294f0852b920"
+    },
     "role-template/generalist": {
       "specHash": "d156416edc31518dee2a2e7d4a9d1e60b3d764a24b4d68b4e66c9d0c66873304"
     },
     "role-template/go-player": {
-      "specHash": "58dfbf93df4b1fc01458b5db13360c7307da98c9d2b82f0450a6567da2f25f6b"
+      "specHash": "1b685db0b40f44114d18dc6952d5c154a5b1347d5b28c551065aadc21108c777"
     },
     "role-template/huismeester": {
-      "specHash": "77c3493799b531d8a54eabcf52041be92b7876992d2af3c6729a9d6fed22389e"
+      "specHash": "a50ace4a2e6438938ebb4982a35dbcd1cc7142ba388d6f9eb6d14fc6219b23cd"
+    },
+    "role-template/penningmeester": {
+      "specHash": "3eb9ba508fde29a8bca50ea1af841b100ce012b45efc5b7191807389d2ff7434"
+    },
+    "role-template/illustrator": {
+      "specHash": "8c70e2fbbfb0ffa819d01e7e88a69c4cd6cd99fb3bcbeb1db34f0c81fdeb9d3c"
     },
     "role-template/image-generator": {
       "specHash": "83e59b3c2f704c2149815599093000a1c9014d43badd3a92a2a23accd8d19420"
     },
-    "role-template/kantoormeester": {
-      "specHash": "21568f1b6d41f8e1311d0cc9bb18893ba2ee6e596ed2f132f3574082884bdbdb"
-    },
     "role-template/keurmeester": {
-      "specHash": "b6442c2097aa4620d7c2bcd60634ba8583b3f901a6ca4bf3c4af99a0dcda0236"
+      "specHash": "08074ccc43944cc253b1fcf4ebed0a39ed1f2156ff55f974891e5ee7c2245502"
     },
     "role-template/language-trainer": {
       "specHash": "e9e7a7a2ba6841cd518fda57cc8405d06b1b62f3a65e960efc8607dbaecac89c"
     },
-    "role-template/career-coach": {
-      "specHash": "5ba7b18a8dfe1b51763c59d7b0810e0186e05eb9b012c734e7ff0374e58b1d6c"
+    "role-template/boekwachter": {
+      "specHash": "2fb44570d57454c66690a3c1e37c981a2d191f058ca81e44a1456b6b076c8471"
     },
     "role-template/maaltijdplanner": {
-      "specHash": "f3930746820e569ef3133a71727d2ce33bc3656b98404f636d2b4b899f5af8cd"
+      "specHash": "0f17b716db053b21263e2182f83d88645500b50655f791e45b420e99565833f1"
     },
     "role-template/meester": {
       "specHash": "13e4a172410121e8ddc4ed73c99087ca88948b2088f7c73a122e94eacebef979"
     },
     "role-template/mock-interviewer": {
-      "specHash": "9c56e049457775d08364c05bb6d58125f8096a5734f0734b7d5105d59b82cc4b"
+      "specHash": "bda63c6564ec720fd817991c4e7287f2a7174a0d589b092d42440a581c6563ca"
     },
-    "role-template/omroeper": {
-      "specHash": "85601d2b6f5cfaa2a03158a110f2f83daf40f6ab2c820015ab06006ff0c5e866"
-    },
-    "role-template/penningmeester": {
-      "specHash": "b19202bdf64e762f27843af8f8b5b11aac5a4bc0273a1e80080751a86a9f1b3d"
+    "role-template/kantoormeester": {
+      "specHash": "1ab5ae2e0de07c17de73e336e922f24c6596ae1f45083eb83e7e5c570d39e035"
     },
     "role-template/planner": {
       "specHash": "de842f28ae6a0d6032602cf7954c5aadb484172b99202d1c666cc3c408900f8d"
     },
     "role-template/puzzelaar": {
-      "specHash": "bda64885ebf1b733d2adff3518995d52644efbe4e666161cc66873beaf94b743"
-    },
-    "role-template/reisleider": {
-      "specHash": "7c71b1e74c507691584c11b66959323c0b03daec90668ff7dce898ea93847a01"
+      "specHash": "8b34c1ac4384ad3d0288d66d702f28543c4bc35a2ff7e389d3d9add205e329e0"
     },
     "role-template/researcher": {
       "specHash": "847f20ff849c7e4f8725e08e9f83a51f722c7778c41e15e9c984f44d5708631e"
@@ -1432,32 +1477,23 @@
     "role-template/reviewer": {
       "specHash": "bb8817f48f33a6e7596656525aa8aa9433a1d6100aef7d2ede30e3d662b52315"
     },
-    "role-template/chess-player": {
-      "specHash": "b68d7f76dc3281942ea12e745b5053425469c4ac080e9de03d5468f308f9f79d"
-    },
-    "role-template/schrijfmaat": {
-      "specHash": "70d3d8a900810a9d0f58f62ca5e3cff6efee29d3f4fd300ec5f5fa6cd6bb9c9a"
+    "role-template/omroeper": {
+      "specHash": "ccf2c4c05c874341b70147ed9fcbddad92d8d58b51949eace81498fe5dc0ad1a"
     },
     "role-template/study-buddy": {
-      "specHash": "5ff7bf369062e2b6ad443515b64f7369a1ed6f4b496b74155a18f443bcf72275"
-    },
-    "role-template/veiligheidsmeester": {
-      "specHash": "08f838b72ad346cd20b4ec49a7f37b4886b48416198273f2868f12c7774e80c7"
+      "specHash": "0973bf5d6154391429f0dc041350b5ad92bab2269639a18ee8172281f366c5a2"
     },
     "role-template/vertaler": {
-      "specHash": "5a48a0865210d53b91fc9b1472b212c9802d92b72aaec8370806b686ae17edb3"
+      "specHash": "25dcb1e438e166f964a3ea83f8c9e5a2a8b3cce1f5ad2fa135b3771bf6aec375"
+    },
+    "role-template/reisleider": {
+      "specHash": "544396a22fb8ed0fd9907d3455ea48910c11a1b3b32b7a559e5f9a20a2206bce"
     },
     "role-template/video-generator": {
       "specHash": "785002250f35b7684736d1671f548d7b57e0f51f22aecda7a77c39f77182c6aa"
     },
-    "role-template/voorman": {
-      "specHash": "ce8295cd302d77893362ac8e9a44535167ea28654efdb08c4a3a1e855e0c2602"
-    },
-    "role-template/woordsmid": {
-      "specHash": "f4d473e1a082290b2f3320f3b5c2e6160ddb72768e1f8aae83b5d089b71355ab"
-    },
-    "role-template/zorgcoordinator": {
-      "specHash": "d182e61b403ce6e8d2cdac22aac90fe73f33bc7eaecdf71a18959309d592a0dd"
+    "role-template/schrijfmaat": {
+      "specHash": "a356612f108e3cddc086757b407d36406e283c24946ee22d377b65dde8417007"
     },
     "index": {
       "specHash": "b67ce0301d23ba414a0d30a80d8073ac2312d92aa7840eedc910854cd239ffc2"

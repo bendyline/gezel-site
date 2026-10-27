@@ -19,29 +19,42 @@
  *
  * The guidelines call for PT Serif (headings) and Hanken Grotesk (all
  * other text), self-hosted — no CDN, no runtime fetch. The baseline names
- * both families first in its font stacks and falls back to system faces,
- * so dropping the WOFF2 files into fonts/ and uncommenting these blocks is
- * all it takes to pick them up site-wide.
- *
+ * both families first in its font stacks, so these faces apply site-wide.
+ * They are the same files the landing page uses, in assets/fonts/ (paths
+ * here resolve against this stylesheet, at the site root).
+ * ------------------------------------------------------------------- */
 @font-face {
   font-family: 'Hanken Grotesk';
-  src: url('fonts/HankenGrotesk-Variable.woff2') format('woff2-variations');
-  font-weight: 400 700;
+  src: url('assets/fonts/hanken-grotesk-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('assets/fonts/hanken-grotesk-400i.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'PT Serif';
-  src: url('fonts/PTSerif-Regular.woff2') format('woff2');
+  src: url('assets/fonts/pt-serif-400.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: 'PT Serif';
-  src: url('fonts/PTSerif-Bold.woff2') format('woff2');
+  src: url('assets/fonts/pt-serif-400i.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PT Serif';
+  src: url('assets/fonts/pt-serif-700.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
 }
- * ------------------------------------------------------------------- */
 
 /* ---------------------------------------------------------------------
  * Token overrides

@@ -2,14 +2,12 @@
 
 ## Tabler Icons
 
-The landing page includes adapted copies of the following icons from
+The landing page includes an adapted copy of the following icon from
 [Tabler Icons](https://github.com/tabler/tabler-icons):
 
 - [`hammer`](https://github.com/tabler/tabler-icons/blob/main/icons/outline/hammer.svg)
-- [`chisel`](https://github.com/tabler/tabler-icons/blob/main/icons/outline/chisel.svg)
-- [`ruler-2`](https://github.com/tabler/tabler-icons/blob/main/icons/outline/ruler-2.svg)
 
-The icons are embedded as inline SVG in `index.html` and have been adjusted for
+The icon is embedded as inline SVG in `index.html` and has been adjusted for
 stroke weight and presentation. Tabler Icons is distributed under the MIT
 License reproduced below.
 
@@ -46,3 +44,16 @@ The download section includes adapted copies of the following icons from
 They are embedded as an inline SVG sprite in `index.html`. Font Awesome Free
 icons are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 Copyright 2024 Fonticons, Inc.
+
+## PT Serif and Hanken Grotesk
+
+The site serves its own copies of two typefaces from `assets/fonts/`, used by
+the landing page and the Handboek under `docs/`:
+
+- **PT Serif** (regular, italic, bold), copyright 2010 ParaType Ltd.
+- **Hanken Grotesk** (variable weight, and italic), copyright 2021 The Hanken
+  Grotesk Project Authors.
+
+Both are licensed under the [SIL Open Font License 1.1](https://openfontlicense.org/).
+The full license texts are in `assets/fonts/LICENSE-pt-serif.txt` and
+`assets/fonts/LICENSE-hanken-grotesk.txt`.

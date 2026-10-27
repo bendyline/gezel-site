@@ -69,11 +69,28 @@ Each generated page links two stylesheets, in order:
 
 Restyle the Handboek by editing the root `handboek.css`, not the generated
 baseline. Most adjustments are token overrides (`--hb-canvas`, `--hb-accent`,
-`--hb-measure`); the file documents the hooks and carries commented
-`@font-face` blocks for self-hosting PT Serif and Hanken Grotesk.
+`--hb-measure`); the file documents the hooks and loads the brand fonts.
 
 Every article also has a `watch.html` beside it — the same content as an
 auto-playing captioned slideshow, rendered by the squisq player.
+
+### Catalog counts
+
+The export also writes `docs/catalog-counts.json`: how many craftbooks,
+models, characters, project types (and browser demos) and connectors the docs
+publish. The landing page reads it to fill in the numbers in "Ready-made for
+your crew" and "Why Gezel", so they follow the catalog instead of being edited
+by hand. The numbers written into `index.html` are the fallback if the file is
+missing; refresh them when you notice they lag.
+
+## Fonts (`assets/fonts/`)
+
+PT Serif and Hanken Grotesk are served from this site, for both the landing
+page and the Handboek, so neither makes a request to a font CDN. They are the
+same files the Gezel app ships (`packages/ui/src/assets/fonts/` in gezel),
+under the SIL Open Font License; the license texts sit beside them and
+[`NOTICE.md`](NOTICE.md) lists them. Hanken Grotesk is one variable file
+covering every weight.
 
 ## Social preview cards (`og/`)
 
@@ -138,6 +155,43 @@ regenerating the Handboek cannot wipe it — a docs publish on a day GitHub is
 unreachable keeps the previous listing rather than leaving the page with no
 downloads. If the file is missing entirely, the button still works; it just
 links the releases page instead of an installer.
+
+## Landing-page artwork (`assets/marks/`)
+
+The tiles on [index.html](index.html) use the same cut-paper marks as the app:
+a transparent subject, with the colored paper behind it painted by CSS from
+the image's `data-ground` attribute. The colors are copied from the app's
+`--gezel-ground-*` tokens in gezel's `packages/ui/src/styles/foundation.css`,
+so retune them there first.
+
+Most files are named after a craftbook and copied byte for byte from the
+pinned `@bendyline/gilde` release (0.3.1). They live here, not under `docs/`,
+so regenerating the Handboek cannot change the landing page. Use the
+craftbook's own ground (`catalogGroundFor` in gezel core) when adding one.
+
+The `integrations-*.webp` and `platform-*.webp` marks are not catalog items.
+They were drawn for the "Bring Gezel to your apps" and "Use Gezel as a
+platform" rows with gilde's `workshop-mark-cutout-v3` sheet prompt
+(`docs/catalog-artwork.md` in gilde), through the Codex CLI's image tool, and
+cut out with the steps that document gives. Check a new subject against every
+gilde `art.json` first: jigsaw pieces, a plug and socket, a toy brick, a
+typewriter, a rubber stamp and binders were all taken.
+
+| File | Subject | Ground |
+| --- | --- | --- |
+| `integrations-coding-tools.webp` | two meshing gears, one cream and one dull brass | teal |
+| `integrations-ai-tools.webp` | a cream canvas tool belt with a pencil, a brass wrench and a folding ruler in its pockets | plum |
+| `integrations-office.webp` | a cream desk stapler, slightly open | rose |
+| `platform-cli.webp` | a short row of five cream dominoes toppling one into the next | forest |
+| `platform-app-sdk.webp` | a compact cream motor block with a large brass flywheel and a charcoal drive belt | slate |
+| `platform-ai-apps.webp` | a dovetail joint, one board cream and one sage | terracotta |
+
+The video poster (`assets/video-poster.webp`) and the three "How it works"
+pictures (`assets/how/`) are collages of real screenshots from one run on a
+local model, made for the "Gezel Overview" video: a fresh install's Meester,
+the Lisbon trip request underway, and the trip board it produced. The step
+pictures are transparent around their frames, so the page's `--surface` color
+shows behind them in light and dark mode.
 
 ## Notes
 

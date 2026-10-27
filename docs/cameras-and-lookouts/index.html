@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cameras and lookouts: keep an eye on a room — Gezel Handboek</title>
+<meta name="description" content="Connect a webcam to a project, let gezel notice what happens in view, and tell it what to do when it sees something.">
+<link rel="canonical" href="https://gezel.com/docs/cameras-and-lookouts/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/cameras-and-lookouts/">
+<meta property="og:title" content="Cameras and lookouts: keep an eye on a room">
+<meta name="twitter:title" content="Cameras and lookouts: keep an eye on a room">
+<meta property="og:description" content="Connect a webcam to a project, let gezel notice what happens in view, and tell it what to do when it sees something.">
+<meta name="twitter:description" content="Connect a webcam to a project, let gezel notice what happens in view, and tell it what to do when it sees something.">
+<meta property="og:image" content="https://gezel.com/og/cameras-and-lookouts.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cameras and lookouts: keep an eye on a room">
+<meta name="twitter:image" content="https://gezel.com/og/cameras-and-lookouts.png">
+<meta name="twitter:image:alt" content="Cameras and lookouts: keep an eye on a room">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a aria-current="true" href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Gezel Roles</a>
+<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../project-types-index/">Project Types</a>
+<a href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2 class="hb-current">Concepts</h2>
+<ul class="hb-sidebar-entries">
+<li><a href="../welcome/">What is gezel?</a></li>
+<li><a href="../the-crew/">Your crew: gezellen, the Meester, and the crew lead</a></li>
+<li><a href="../character-and-growth/">Social mode: character, growth, and what's waiting</a></li>
+<li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
+<li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
+<li><a href="../craftbooks-overview/">Craftbooks: procedures your crew can follow</a></li>
+<li><a href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
+<li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
+<li><a href="../adding-folders/">Adding folders: give your crew something to look after</a></li>
+<li><a href="../project-views/">Views: see what's in a folder</a></li>
+<li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
+<li><a href="../notifications/">Notifications: only when something happened</a></li>
+<li><a class="hb-current" aria-current="page" href="../cameras-and-lookouts/">Cameras and lookouts: keep an eye on a room</a></li>
+<li><a href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
+<li><a href="../connected-apps/">Integrations: let other tools use your gezels</a></li>
+<li><a href="../generalist-mode/">Generalist mode</a></li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../architecture/">Technical</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../craftbooks-overview/">Concepts</a>
+</nav>
+<article class="hb-article">
+<h1>Cameras and lookouts</h1>
+<p>A project can watch a room through a webcam or a computer's built-in camera. Gezel notices when something moves, can ask an on-device vision model what it sees, and keeps the moments worth keeping. A <strong>lookout</strong> tells it what to watch for and what to do: <em>when the mud room camera sees the cat squatting on the floor, play the alarm and tell me.</em></p>
+<p>The pictures never leave your computer unless you say so.</p>
+<h2 id="add-a-camera">Add a camera</h2>
+<ol><li><p>Open the project, then <strong>About → Connections → Add connection</strong>, and choose <strong>Webcam</strong>.</p></li><li><p>Pick the camera and press <strong>Take a test picture</strong> to check the view.</p></li><li><p>Choose <strong>what to keep</strong>:</p><ul><li><p><strong>Moments</strong>: only what the camera found worth noting (the default),</p></li><li><p><strong>While moving</strong>: a picture every few seconds while something moves,</p></li><li><p><strong>On a schedule</strong>: a picture every few seconds, from once a second to once a minute,</p></li><li><p><strong>Nothing</strong>: just the live view.</p></li></ul></li><li><p>Leave <strong>Recognize what's happening</strong> on if you want the vision model to look at what moves. Lookouts that ask a question need it.</p></li></ol>
+<p>Gezel reads cameras through <strong>ffmpeg</strong>. If it's missing, the setup shows how to install it.</p>
+<p>While any camera is watching, the titlebar says so, and the camera's light is on. Click the indicator to pause a camera from anywhere. The emergency stop pauses every camera until you resume each one.</p>
+<h2 id="what-it-keeps">What it keeps</h2>
+<p>Every time something happens in view (a person walks through, the cat comes in and sits down), gezel treats it as one <strong>moment</strong>. A moment is saved as a short note in the project with up to three pictures and what the vision model saw, so you and your gezellen can find it later: "when was the cat last in the mud room?"</p>
+<p>Saved pictures from <strong>While moving</strong> and <strong>On a schedule</strong> stay in a private folder on this computer, never in a synced folder. They're kept for as many days as you choose, up to a size limit, and the oldest go first. Moments are kept for 90 days.</p>
+<h2 id="lookouts">Lookouts</h2>
+<p>Under <strong>Lookouts</strong>, press <strong>Add a lookout</strong> and finish the sentence:</p>
+<ul><li><p><strong>When</strong> the camera <strong>sees</strong> anything moving, a person, a pet, or something specific. For something specific, write a yes-or-no question like <em>Is a cat squatting or pooping on the floor?</em> Tick <strong>Only when it is clearly happening</strong> to wait for a second picture before acting.</p></li><li><p><strong>Then</strong> tell you, play a sound, say something out loud, send it to your phone, email you, ask a gezel to follow up, or run a craftbook.</p></li></ul>
+<p>Each lookout acts at most once per moment, rests after it acts (10 minutes by default), and stops for the day at its limit. You can limit it to certain hours, snooze it for an hour, or press <strong>Test</strong> to hear and see exactly what it does.</p>
+<p>The <strong>Recently</strong> list shows every time a lookout acted, the picture it acted on, and what happened to each action. If something was held, it says why, in plain words. Press <strong>Not this</strong> on a false alarm.</p>
+<h3 id="what-needs-what">What needs what</h3>
+<ul><li><p><strong>Sounds, spoken alerts and notifications</strong> work at every security level.</p></li><li><p><strong>Phone alerts</strong> use the phone channel from Settings.</p></li><li><p><strong>Email</strong> needs a mail account connected to the project and the <strong>Free</strong> security level. A lookout only ever emails the addresses you typed on it.</p></li><li><p><strong>Asking a gezel</strong> and <strong>running a craftbook</strong> need Gezel to be set to run tasks. A gezel on a cloud model can't see the pictures unless you turn on <strong>Let cloud AI see these pictures</strong> for that camera; otherwise the action is held and the list says so.</p></li></ul>
+<p>A gezel can <strong>propose</strong> a lookout, but it stays off until you approve it. Gezellen can never turn on, change, or widen a lookout themselves.</p>
+<h2 id="privacy">Privacy</h2>
+<ul><li><p>Pictures, motion detection and the vision model all run on this computer.</p></li><li><p>Only gezellen on an on-device model see a camera's pictures. Others get a description made here, unless you allow cloud AI for that camera.</p></li><li><p>What the vision model writes is treated as untrusted: a sign held up to the camera can't send an email or start work, because lookouts act only on yes-or-no answers and your own instructions.</p></li><li><p>Removing a camera deletes the pictures it saved. The moments it recorded stay in the project until you delete them.</p></li></ul>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#add-a-camera">Add a camera</a></li>
+<li class="hb-h2"><a href="#what-it-keeps">What it keeps</a></li>
+<li class="hb-h2"><a href="#lookouts">Lookouts</a></li>
+<li class="hb-h3"><a href="#what-needs-what">What needs what</a></li>
+<li class="hb-h2"><a href="#privacy">Privacy</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>

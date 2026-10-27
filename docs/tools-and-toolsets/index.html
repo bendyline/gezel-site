@@ -90,6 +90,8 @@
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
+<li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
+<li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -131,7 +133,7 @@
 <p>Search indexed project knowledge through one unified surface, plus persistent notes a gezel can recall and write back. The generic search spans workspace content, artifacts, project/gezel memory, and shared documents.</p>
 <p>Tools: <code>search</code>, <code>knowledge_nearby</code>, <code>search_memory</code>, <code>save_memory</code>, <code>list_memories</code></p>
 <h3 id="workspace-file-reading">Workspace File Reading</h3>
-<p>Read, list, search, and diff files in the project workspace, and retrieve a referenced Boekwachter issue's durable metadata. Mirrors Node's <code>fs</code> reads plus content/glob search. Diagnose-only — pair with <code>workspace-fs-write</code> to actually mutate.</p>
+<p>Read, list, search, and diff files in the project workspace, and retrieve a referenced tracked issue's durable metadata. Mirrors Node's <code>fs</code> reads plus content/glob search. Diagnose-only — pair with <code>workspace-fs-write</code> to actually mutate.</p>
 <p>Tools: <code>list_dir</code>, <code>read_file</code>, <code>read_files</code>, <code>stat</code>, <code>validate</code>, <code>grep_files</code>, <code>find_files</code>, <code>diff_files</code>, <code>get_file_issue</code></p>
 <h3 id="code-intelligence">Code Intelligence</h3>
 <p>Navigate and understand the codebase via the workspace index instead of reading whole files: outline a file's symbols, jump to a definition, read just one symbol's source, find usages, and map the repo. Every result carries line ranges so the model reads only the span it needs — a big context saver for small/medium local models.</p>
@@ -149,7 +151,7 @@
 <p>Cross-file entities the index resolved from structured metadata — email senders, document parties — and where each appears. Ask "every email from X" or "every contract naming Y" and get a dated, cross-file view.</p>
 <p>Tools: <code>find_entity</code>, <code>list_entity_mentions</code></p>
 <h3 id="workspace-file-writing">Workspace File Writing</h3>
-<p>Create, write, surgically edit, rename, and delete files in the project workspace. Always paired with <code>workspace-fs-read</code> for the roles that build (developer, designer, reviewer); split out so coordinator roles (voorman) can investigate without being tempted to do the building themselves.</p>
+<p>Create, write, surgically edit, rename, and delete files in the project workspace. Always paired with <code>workspace-fs-read</code> for the roles that build (developer, designer, reviewer); split out so coordinator roles (crew lead) can investigate without being tempted to do the building themselves.</p>
 <p>Tools: <code>write_file</code>, <code>append_to_file</code>, <code>replace_in_file</code>, <code>replace_lines</code>, <code>apply_patch</code>, <code>insert_at_marker</code>, <code>copy_artifact_to_workspace</code>, <code>make_dir</code>, <code>delete_path</code>, <code>rename</code>, <code>copy_path</code></p>
 <h3 id="archive-tools">Archive Tools</h3>
 <p>List and extract zip / tar archives in the workspace.</p>
@@ -163,6 +165,9 @@
 <h3 id="project-artifacts">Project Artifacts</h3>
 <p>Project-scoped read-write outputs (reports, scratch files, scripts a gezel produces, and large outputs auto-saved by tools that exceed the inline cap).</p>
 <p>Tools: <code>list_artifacts</code>, <code>read_artifact</code>, <code>read_artifacts</code>, <code>write_artifact</code>, <code>grep_artifact</code></p>
+<h3 id="cameras-and-lookouts">Cameras and Lookouts</h3>
+<p>See what a project camera sees right now, list the person's lookouts, and propose a new lookout for them to approve. What a camera recorded earlier is in its event records, read as files.</p>
+<p>Tools: <code>look_at_camera</code>, <code>list_lookouts</code>, <code>propose_lookout</code></p>
 <h3 id="data-tables">Data Tables</h3>
 <p>Read a project's mirrored data tables with SQL. <code>list_tables</code> shows what is there, <code>describe_table</code> explains a table's columns and units, and <code>query_table</code> runs one read-only query and returns the answer — never the underlying rows, which is what lets a table be far larger than the context window.</p>
 <p>Tools: <code>list_tables</code>, <code>describe_table</code>, <code>query_table</code></p>
@@ -173,7 +178,7 @@
 <p>Read and write a whole craftbook, add/remove/reorder steps, set the entry step, and attach focused deliverable gates. <code>craftbook_write</code> is the atomic create/replace path; the large surgical update schema is loaded only inside an explicit craftbook-editing session. The unified surface targets either a task's embedded craftbook or a standalone local template.</p>
 <p>Tools: <code>craftbook_read</code>, <code>craftbook_write</code>, <code>craftbook_add_step</code>, <code>set_step_deliverable</code>, <code>craftbook_remove_step</code>, <code>craftbook_reorder_steps</code>, <code>craftbook_set_entry</code>, <code>craftbook_update</code>, <code>export_task_craftbook</code></p>
 <h3 id="task-visibility">Task Visibility</h3>
-<p>Read-only task surface for delegation roles — list tasks, inspect a specific task, read its notes. The "ping projects to see status" subset, without any of the mutation tools (create, update, assign, status, advance) that belong to the assignee or voorman. Pair with <code>team-management</code> for a complete delegation surface.</p>
+<p>Read-only task surface for delegation roles — list tasks, inspect a specific task, read its notes. The "ping projects to see status" subset, without any of the mutation tools (create, update, assign, status, advance) that belong to the assignee or crew lead. Pair with <code>team-management</code> for a complete delegation surface.</p>
 <p>Tools: <code>list_tasks</code>, <code>get_task</code>, <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>read_task_notes</code></p>
 <h3 id="task-oversight">Task Oversight</h3>
 <p>Coordinator controls for running work: pause, resume or cancel a task, reassign it, and leave it a note. Deliberately excludes authoring, advancing and completing — those stay with the assignee and its step gates.</p>
@@ -181,6 +186,9 @@
 <h3 id="craftbook-launcher">Craftbook Launcher</h3>
 <p>Procedure-first task launch surface for coordinators: rank applicable craftbooks and invoke a selected recipe after its required setup is ready.</p>
 <p>Tools: <code>list_craftbooks</code>, <code>suggest_craftbook</code>, <code>invoke_craftbook</code></p>
+<h3 id="work-routing">Work Routing</h3>
+<p>One ranked list of every way to handle a request — a craftbook, a typed or new project, a task here, recurring work, or a verdict to answer or ask — and one call that starts the option chosen. Replaces the craftbook launcher and the project macros for a coordinator; gated by the <code>tools.work-routing</code> behavior, so no role kit lists it.</p>
+<p>Tools: <code>suggest_work</code>, <code>start_work</code></p>
 <h3 id="team-project-management">Team &amp; Project Management</h3>
 <p>Spin up other gezels, message them, browse the gilde of templates, and manage projects + project membership. The Meester surface.</p>
 <p>Tools: <code>list_gezels</code>, <code>create_gezel</code>, <code>update_gezel</code>, <code>ensure_gezel</code>, <code>message_gezel</code>, <code>list_projects</code>, <code>start_project</code>, <code>fetch_repo</code>, <code>fetch_diff</code>, <code>update_project</code>, <code>list_gilde</code>, <code>list_project_types</code>, <code>apply_project_type</code>, <code>start_project_from_type</code>, <code>list_project_gezels</code>, <code>add_gezel_to_project</code>, <code>remove_gezel_from_project</code>, <code>list_suggested_work</code>, <code>enable_suggested_work</code>, <code>disable_suggested_work</code></p>
@@ -221,10 +229,10 @@
 <p>Pose a structured question mid-turn — to the user (<code>ask_user_question</code>), to a specific gezel (<code>ask_gezel</code>), or to a role-shaped specialist (<code>ask_specialist</code>) — instead of guessing.</p>
 <p>Tools: <code>ask_user_question</code>, <code>ask_gezel</code>, <code>ask_specialist</code></p>
 <h3 id="role-delegation-downward">Role Delegation (downward)</h3>
-<p>Hand work to a teammate by ROLE instead of by name: <code>delegate_&lt;role&gt;</code> (async hand-off) and <code>consult_&lt;role&gt;</code> (sync question) for each doer role — developer, designer, reviewer, planner, researcher, builder, writer, image-generator. The target lives in the tool identity (no free-text <code>gezel</code>/<code>role</code> argument), which small/medium local models route far more reliably. Each resolves to the project gezel of that role, creating one on demand. Orchestrator (meester/voorman) surface; gated by the <code>tools.gezels-as-roles</code> behavior.</p>
+<p>Hand work to a teammate by ROLE instead of by name: <code>delegate_&lt;role&gt;</code> (async hand-off) and <code>consult_&lt;role&gt;</code> (sync question) for each doer role — developer, designer, reviewer, planner, researcher, builder, writer, image-generator. The target lives in the tool identity (no free-text <code>gezel</code>/<code>role</code> argument), which small/medium local models route far more reliably. Each resolves to the project gezel of that role, creating one on demand. Orchestrator (Meester/crew lead) surface; gated by the <code>tools.gezels-as-roles</code> behavior.</p>
 <p>Tools: <code>delegate_developer</code>, <code>consult_developer</code>, <code>delegate_designer</code>, <code>consult_designer</code>, <code>delegate_reviewer</code>, <code>consult_reviewer</code>, <code>delegate_planner</code>, <code>consult_planner</code>, <code>delegate_researcher</code>, <code>consult_researcher</code>, <code>delegate_builder</code>, <code>consult_builder</code>, <code>delegate_writer</code>, <code>consult_writer</code>, <code>delegate_image_generator</code>, <code>consult_image_generator</code></p>
 <h3 id="role-delegation-escalation">Role Delegation (escalation)</h3>
-<p>Reach a coordination role by ROLE: <code>delegate_voorman</code> / <code>consult_voorman</code> and <code>delegate_meester</code> / <code>consult_meester</code>. The escalation counterpart to <code>role-delegation</code> — lets a specialist hand work or questions UP to their voorman or the meester. Gated by the <code>tools.gezels-as-roles</code> behavior.</p>
+<p>Reach a coordination role by ROLE: <code>delegate_voorman</code> / <code>consult_voorman</code> (the crew lead) and <code>delegate_meester</code> / <code>consult_meester</code>. The escalation counterpart to <code>role-delegation</code> — lets a specialist hand work or questions UP to their crew lead or the Meester. Gated by the <code>tools.gezels-as-roles</code> behavior.</p>
 <p>Tools: <code>delegate_voorman</code>, <code>consult_voorman</code>, <code>delegate_meester</code>, <code>consult_meester</code></p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
@@ -247,12 +255,14 @@
 <li class="hb-h3"><a href="#reference-reading">Reference Reading</a></li>
 <li class="hb-h3"><a href="#shared-document-library">Shared document library</a></li>
 <li class="hb-h3"><a href="#project-artifacts">Project Artifacts</a></li>
+<li class="hb-h3"><a href="#cameras-and-lookouts">Cameras and Lookouts</a></li>
 <li class="hb-h3"><a href="#data-tables">Data Tables</a></li>
 <li class="hb-h3"><a href="#task-management">Task Management</a></li>
 <li class="hb-h3"><a href="#craftbook-authoring">Craftbook Authoring</a></li>
 <li class="hb-h3"><a href="#task-visibility">Task Visibility</a></li>
 <li class="hb-h3"><a href="#task-oversight">Task Oversight</a></li>
 <li class="hb-h3"><a href="#craftbook-launcher">Craftbook Launcher</a></li>
+<li class="hb-h3"><a href="#work-routing">Work Routing</a></li>
 <li class="hb-h3"><a href="#team-project-management">Team &amp; Project Management</a></li>
 <li class="hb-h3"><a href="#ai-apps">AI Apps</a></li>
 <li class="hb-h3"><a href="#audio">Audio</a></li>

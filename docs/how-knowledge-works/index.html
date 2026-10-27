@@ -90,6 +90,8 @@
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
+<li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
+<li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -133,7 +135,7 @@
 <p>The shared library's database stays outside your documents folder, even when that folder is writable. Derived document conversions live under the project's <code>artifacts/shadow/</code>. This keeps mutable SQLite and generated search machinery out of a library that may be synchronized by a cloud storage client. See <a href="../where-files-live/">Where files live</a> for the wider layout.</p>
 <h2 id="from-a-file-to-a-searchable-passage">From a file to a searchable passage</h2>
 <p>The content index has a deterministic structural pass and a separate enrichment pass. The structural pass discovers files, classifies them, checks modification time and size, then uses content hashes to avoid repeating work on unchanged content. It extracts supported code symbols and dependencies, Markdown headings, document text, and other searchable metadata without needing a language model.</p>
-<p>Office documents and other convertible formats get a Markdown representation for search while the original file remains the visible document. Image descriptions and audio transcripts can provide additional text when the corresponding enrichment features are available. The Boekwachter, the crew member responsible for keeping material organized, uses this indexing and enrichment stack.</p>
+<p>Office documents and other convertible formats get a Markdown representation for search while the original file remains the visible document. Image descriptions and audio transcripts can provide additional text when the corresponding enrichment features are available. The Librarian, the crew member responsible for keeping material organized, uses this indexing and enrichment stack.</p>
 <p>Enrichment can add summaries and text embeddings. Those operations have different costs: an embedding runs a local feature-extraction model, while an AI-written summary or description uses the configured inference path. A file can therefore be found by name or keyword before its semantic enrichment has completed. Disabling or losing the embedding runtime does not erase the original content.</p>
 <p>Long documents are split into passages, or <strong>chunks</strong>, so that a search returns the relevant section instead of one vector for an entire book. Chunks retain source locations and heading context. The workspace Markdown chunker uses character bounds; portable catalogs use their declared chunking profile and tokenizer. These are separate contracts and should not be treated as interchangeable.</p>
 <h2 id="embeddings-and-vector-spaces">Embeddings and vector spaces</h2>
