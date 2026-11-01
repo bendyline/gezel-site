@@ -862,6 +862,9 @@
     /* "Ready-made for your crew": a strip of craftbook marks, then the
        catalog sections as plain link cards. */
     .section-lede { text-align: center; color: var(--muted-strong); font-size: 1.05rem; margin: -12px auto 34px; max-width: 600px; }
+    /* A quiet pointer under a row, to the page that carries the rest. */
+    .section-more { text-align: center; color: var(--muted-strong); font-size: 0.98rem; margin: 28px 0 0; }
+    .section-more a { font-weight: 600; }
     /* The page ends where it began, on the download: a quiet full-width band
        whose button mirrors whatever the main one resolved. */
     .closing {
@@ -960,8 +963,8 @@
     @media (max-width: 460px) {
       .use-grid { grid-template-columns: 1fr; }
     }
-    /* The developer rows have three tiles, so they step 3 -> 1 instead: a 2+1
-       reflow would orphan the last pillar. Their marks sit in a wide band of
+    /* The integrations row has three tiles, so it steps 3 -> 1 instead: a 2+1
+       reflow would orphan the last pillar. Its marks sit in a wide band of
        their ground, because a square that wide would tower over the text. */
     .use-grid.use-grid-three { grid-template-columns: repeat(3, 1fr); }
     .use-grid-three .use-illustration { aspect-ratio: 16 / 10; object-fit: contain; }
@@ -1028,6 +1031,7 @@
   <div class="wrap">
     <header class="masthead">
       <nav class="masthead-nav">
+        <a href="/platform/">Platform</a>
         <a href="/docs/">Docs</a>
         <a href="/docs/model-scorecard/">Model scorecard</a>
         <a href="https://github.com/bendyline/gezel">
@@ -1090,7 +1094,7 @@
     <ul class="proof" aria-label="Gezel at a glance">
       <li>No account needed</li>
       <li>Open source, MIT license</li>
-      <li><data data-count="craftbooks" data-floor="10" value="292">290</data>+ tested plans</li>
+      <li><data data-count="craftbooks" data-floor="10" value="294">290</data>+ tested plans</li>
       <li><a href="/docs/model-scorecard/">Models tested on real jobs</a></li>
     </ul>
 
@@ -1294,9 +1298,9 @@
         <li><a href="/docs/craftbook/family-story-chapter/"><img src="/assets/marks/family-story-chapter.webp" alt="" data-ground="rose" width="160" height="160" loading="lazy" decoding="async"><span>Family story chapter</span></a></li>
       </ul>
       <ul class="catalog-links">
-        <li><a href="/docs/craftbooks-index/"><strong><data data-count="craftbooks" data-floor="10" value="292">290</data>+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
-        <li><a href="/docs/model-catalog/"><strong><data data-count="models" value="89">89</data> AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
-        <li><a href="/docs/role-catalog/"><strong><data data-count="characters" value="40">40</data> characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
+        <li><a href="/docs/craftbooks-index/"><strong><data data-count="craftbooks" data-floor="10" value="294">290</data>+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
+        <li><a href="/docs/model-catalog/"><strong><data data-count="models" value="90">90</data> AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
+        <li><a href="/docs/role-catalog/"><strong><data data-count="characters" value="41">41</data> characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
         <li><a href="/docs/project-types-index/"><strong><data data-count="projectTypes" value="26">26</data> project types</strong><span>Ready-made setups, and <data data-count="projectTypeDemos" value="23">23</data> of them you can try in your browser.</span></a></li>
         <li><a href="/docs/toolset-catalog/"><strong><data data-count="connectors" value="24">24</data> connectors</strong><span>Bring in mail, calendars, issues and posts as files your crew can read.</span></a></li>
       </ul>
@@ -1309,7 +1313,7 @@
       <div class="band-cols">
         <div>
           <h3>Made for the AI on your computer</h3>
-          <p>Each helper has one job, a few tools, and one of <data data-count="craftbooks" data-floor="10" value="292">290</data>+ <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
+          <p>Each helper has one job, a few tools, and one of <data data-count="craftbooks" data-floor="10" value="294">290</data>+ <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
         </div>
         <div>
           <h3>You stay in charge</h3>
@@ -1330,12 +1334,13 @@
       </svg>
     </div>
 
-    <!-- Two rows for people who already work in other tools, after the story
-         for everyone else is told. Their marks are not catalog items: they were
+    <!-- One row for people who already work in other tools, after the story
+         for everyone else is told. Its marks are not catalog items: they were
          drawn for this page with gilde's workshop-mark-cutout-v3 sheet prompt
          and cut out the same way (see the README), so they sit with the
          craftbook marks above. Each card links to its part of the
-         Integrations article. -->
+         Integrations article. The developer story that used to follow it
+         ("Use Gezel as a platform") is its own page now, /platform/. -->
     <section class="uses" id="integrations">
       <h2 class="section-title">Bring Gezel to your apps</h2>
       <p class="section-lede">Your crew and your local models can work inside the tools you already use. Set each one up, or remove it, in Settings → Integrations.</p>
@@ -1362,35 +1367,7 @@
           <span class="use-cta">Office and LibreOffice&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </div>
-    </section>
-
-
-    <section class="uses" id="platform">
-      <h2 class="section-title">Use Gezel as a platform</h2>
-      <p class="section-lede">The engine behind the app is yours to build on, from the command line and with open-source packages on npm.</p>
-      <div class="use-grid use-grid-three">
-        <a class="use" href="/docs/cli-reference/">
-          <img class="use-illustration" src="/assets/marks/platform-cli.webp" alt="" data-ground="forest"
-               width="512" height="512" loading="lazy" decoding="async">
-          <h3>Build workflows with the CLI</h3>
-          <p>Start craftbooks, send one-shot prompts, and wait for the results from a terminal or a script.</p>
-          <span class="use-cta">The gezel command line&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="use" href="/docs/building-connected-apps-with-gezel-app-sdk/">
-          <img class="use-illustration" src="/assets/marks/platform-app-sdk.webp" alt="" data-ground="slate"
-               width="512" height="512" loading="lazy" decoding="async">
-          <h3>Add local AI to your app</h3>
-          <p>OpenAI-style chat on local models for Node.js and Electron. Use the person’s Gezel, or host one inside your app.</p>
-          <span class="use-cta">Building connected apps&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="use" href="/docs/building-ai-apps-inside-gezel/">
-          <img class="use-illustration" src="/assets/marks/platform-ai-apps.webp" alt="" data-ground="terracotta"
-               width="512" height="512" loading="lazy" decoding="async">
-          <h3>Build apps that live in Gezel</h3>
-          <p>Package a page, scripts, a crew, and craftbooks into one app that installs into a project.</p>
-          <span class="use-cta">Building AI Apps&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-      </div>
+      <p class="section-more">Building something of your own? <a href="/platform/">The command line, app SDK and AI Apps&nbsp;<span aria-hidden="true">→</span></a></p>
     </section>
 
     <section class="closing" id="get-gezel">
@@ -1408,7 +1385,7 @@
     <footer>
       <p>© 2026 Bendyline · Free and open source under the MIT license</p>
       <p>
-        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
+        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
       </p>
     </footer>
   </div>

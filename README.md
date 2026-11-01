@@ -38,6 +38,20 @@ resolve the way GitHub Pages resolves them. Override the port with `PORT=9000`
 or a positional argument. Any other static server works too — e.g.
 `python3 -m http.server 8000`.
 
+## Platform page (`platform/`)
+
+[`platform/index.html`](platform/index.html) is the developer page at
+`/platform/`: the gezel command line, `gezel-app-sdk`, and AI Apps, each with a
+sample and the details behind it. It took over the landing page's old "Use
+Gezel as a platform" row, and the masthead links it beside Docs.
+
+It is hand-written, not generated, and self-contained like `index.html`. Its
+tokens, fonts, masthead, card, band and footer rules are copied from
+`index.html`, so retune them in both. Its claims follow the Handboek's
+developer articles (`cli-reference`, `building-connected-apps-with-gezel-app-sdk`,
+`building-ai-apps-inside-gezel`, `npm-packages`, `security-model`). Check it
+when those change, and check the samples against `gezel --help`.
+
 ## Documentation (`docs/`)
 
 `docs/` is **generated** — it is the Gezel Handboek rendered to static HTML, not
@@ -73,6 +87,28 @@ baseline. Most adjustments are token overrides (`--hb-canvas`, `--hb-accent`,
 
 Every article also has a `watch.html` beside it — the same content as an
 auto-playing captioned slideshow, rendered by the squisq player.
+
+### All scorecard results (`docs/assets/scorecards/all-results.csv`)
+
+Every model scorecard result as one CSV, a row per round × task set × model,
+led by `run_id` with each round's rows together: pass rate, judge score,
+decode and prefill speed, and the device and build behind each. It is plain
+ASCII so Excel opens it without mangling separators. Like the rest of `docs/`
+it is generated: gezel commits it at
+`docs/handboek/assets/scorecards/all-results.csv` and refreshes it whenever
+results are added (`pnpm scorecard:barrel` runs `pnpm scorecard:csv`; CI fails
+if it falls behind).
+
+The [model scorecard](docs/model-scorecard/index.html) page shows it under the
+scorecard's pickers as "Every result in one table". The squisq player draws
+the table once and `assets/data-table.js` takes it over: grouped by round,
+sortable by any column, filterable per column, and narrowed by the pickers.
+
+Close the CSV in Excel before regenerating the docs: Excel locks open files,
+and the export cannot clear `docs/` around a locked one. If an export stops
+partway, rerun it with `--force` (`node scripts/export-handboek-site.mjs
+--force` in gezel), since the half-cleared folder has lost the marker that
+lets the export wipe it.
 
 ### Catalog counts
 
@@ -170,8 +206,9 @@ so regenerating the Handboek cannot change the landing page. Use the
 craftbook's own ground (`catalogGroundFor` in gezel core) when adding one.
 
 The `integrations-*.webp` and `platform-*.webp` marks are not catalog items.
-They were drawn for the "Bring Gezel to your apps" and "Use Gezel as a
-platform" rows with gilde's `workshop-mark-cutout-v3` sheet prompt
+They were drawn for the landing page's "Bring Gezel to your apps" and "Use
+Gezel as a platform" rows (the platform marks now live on
+[`platform/index.html`](platform/index.html)) with gilde's `workshop-mark-cutout-v3` sheet prompt
 (`docs/catalog-artwork.md` in gilde), through the Codex CLI's image tool, and
 cut out with the steps that document gives. Check a new subject against every
 gilde `art.json` first: jigsaw pieces, a plug and socket, a toy brick, a
@@ -185,6 +222,21 @@ typewriter, a rubber stamp and binders were all taken.
 | `platform-cli.webp` | a short row of five cream dominoes toppling one into the next | forest |
 | `platform-app-sdk.webp` | a compact cream motor block with a large brass flywheel and a charcoal drive belt | slate |
 | `platform-ai-apps.webp` | a dovetail joint, one board cream and one sage | terracotta |
+| `platform-scripts.webp` | a small picket garden gate standing slightly ajar, with a brass latch | indigo |
+| `platform-knowledge.webp` | a brass hurricane lantern with a clear glass chimney and a small warm flame | teal |
+| `platform-mcp.webp` | a wooden pegboard panel with a hammer, an open-end wrench and a screwdriver hanging on brass pegs | plum |
+| `platform-endpoints.webp` | a classic candlestick telephone with its earpiece resting on the hook | rose |
+| `platform-client.webp` | a wooden ship's steering wheel with a brass hub | slate |
+| `platform-service.webp` | a woven straw beehive skep with a small arched entrance and two tiny bees beside it | forest |
+
+The last six are the "More building blocks" cards on the platform page. They
+came from one eight-subject sheet (the other two, a speaking tube and a ship in
+a bottle, were not used: the tube read as a megaphone, which gilde already has).
+Image 1 was `wikipedia-astronomy`'s mark and Image 2 `data-dictionary`'s on its
+slate ground, as the prompt expects. Gilde has no committed cutout script, so
+its four documented steps were applied with a one-off script: the alpha remap,
+splitting into cells, an 88% fill, and the baked shadow, encoded at WebP q82 /
+m6 / alpha 90.
 
 The video poster (`assets/video-poster.webp`) and the three "How it works"
 pictures (`assets/how/`) are collages of real screenshots from one run on a

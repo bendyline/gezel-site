@@ -457,6 +457,9 @@
     "craftbook/html-puzzle-game": {
       "specHash": "b16f0f01b41e0e81276f70ed66fb589c06511af87f75f9d244a7caf33560549f"
     },
+    "craftbook/changelog-writeup": {
+      "specHash": "0fecb1e6d692b3830232b767361465218472f2d0771afa64c6c663a047e40cf9"
+    },
     "craftbook/idea-office-hours": {
       "specHash": "324c249df141dc08d05f0d2deecfe842d45423566bee799eecca6b68e3b8b5a5"
     },
@@ -501,6 +504,9 @@
     },
     "craftbook/interactive-quiz": {
       "specHash": "948409291f43c374f95cd877bd5852d78533dc78af21f84942ffe6e16a7005fd"
+    },
+    "craftbook/investigate": {
+      "specHash": "f9f9b8f5f4cc5e9d85c6c7ab16ecdf79d1fd21f5a928db8d49451d87ff9de4fa"
     },
     "craftbook/pitch-deck": {
       "specHash": "025c2f8b5475fdda3489263a03a4cb78bc79f46f1474e4f8641b558267d74809"
@@ -1441,6 +1447,9 @@
     "role-template/illustrator": {
       "specHash": "8c70e2fbbfb0ffa819d01e7e88a69c4cd6cd99fb3bcbeb1db34f0c81fdeb9d3c"
     },
+    "role-template/image-editor": {
+      "specHash": "02e06428a802f0c8ba0a63f591338cd51831263d5adab05179b9c04f34315ad3"
+    },
     "role-template/image-generator": {
       "specHash": "83e59b3c2f704c2149815599093000a1c9014d43badd3a92a2a23accd8d19420"
     },
@@ -1494,6 +1503,102 @@
     },
     "role-template/schrijfmaat": {
       "specHash": "a356612f108e3cddc086757b407d36406e283c24946ee22d377b65dde8417007"
+    },
+    "model-scorecard/2026-10-30-spark-native-0-1-54-final-six": {
+      "specHash": "f8e38334f7e628d8dcf88d4e142da7bb0e5e48b42b7df96ec6e52624e0b25a56"
+    },
+    "model-scorecard/2026-10-30-r9700-docblocks-activation": {
+      "specHash": "7e54066ac8dbbc21d4c27fc4578bc7db3a9ac45c54a3b1cb1a17de1f72e30af2"
+    },
+    "model-scorecard/2026-10-29-spark-native-0-1-54-continuation": {
+      "specHash": "d19327ee247033e6e59c26e54be08a92d0847de40193765ca703e5fc864f55eb"
+    },
+    "model-scorecard/2026-10-28-dgx-spark-class": {
+      "specHash": "6bbb66ac9b3a0651514ec127bd42a134c0c92683079c05f11ba380febce912d7"
+    },
+    "model-scorecard/2026-10-27-windows-gemma4-12b-native-0-1-54": {
+      "specHash": "fc45e63b6757ee4a16fc919d9ba4a58407abe31bca3dfb0033533db265eb108d"
+    },
+    "model-scorecard/2026-10-28-r9700-native-0-1-54": {
+      "specHash": "7227e174294d49f9eb26358139916981d362e056facefb14382458f96f7b3af9"
+    },
+    "model-scorecard/2026-10-28-spark-native-0-1-54-original": {
+      "specHash": "2afc1b69df05420c34613f8d9019112f8339a8ca5bff045742b3ae2632f6990d"
+    },
+    "model-scorecard/2026-10-25-m5max-bolt-five": {
+      "specHash": "c386d5e80993cfa01108ba8a013e620d1a23fd4cd4a6156b4ba4272b1726a58e"
+    },
+    "model-scorecard/2026-10-21-m5max-ornith-observed-subset": {
+      "specHash": "c387df2514a4391ee50eaca37bd2fc4fc3509a3013c9d3d89faa76d5e9d7ca64"
+    },
+    "model-scorecard/2026-10-20-rtx5070ti-core-continuation-64k": {
+      "specHash": "c1d7c36a0cbc182a8b6d93369d8dbcac3521a518d0b41d78ff29c00b13dd9283"
+    },
+    "model-scorecard/2026-10-20-rtx5070ti-nanbeige-core-32k": {
+      "specHash": "9867a1652ab69b2510358e0fae25970fe095881f453c379f92788dc9ec8332f4"
+    },
+    "model-scorecard/2026-10-20-rtx5070ti-core-original-64k": {
+      "specHash": "93c75f0fb1744e6d987365734f5ac28c2c925de2759dba561cd09972c2bc52a2"
+    },
+    "model-scorecard/2026-10-16-m5max-local-seven-completed-arms": {
+      "specHash": "c4d720fdfde7ac3a0f09ff4ba8fe7333345aaa9b7e853cfdece6d1cf6c12eb27"
+    },
+    "model-scorecard/2026-10-12-dgx-spark-class": {
+      "specHash": "926fe879d77014d52c3bad991c4e8d3405046355045852e688510fbce3e819c6"
+    },
+    "model-scorecard/2026-10-12-m5max-cli-integration": {
+      "specHash": "c9012f522c90bd0251862ee7abd64f81b009e5236241cbf5d94b50deaf10183e"
+    },
+    "model-scorecard/2026-10-11-m5max-six-providers": {
+      "specHash": "7f0a99f0d2e34a6ded79b39939eead4d9f4738d3f9b9cf8108b1b42524248e95"
+    },
+    "model-scorecard/2026-09-18-dgx-spark-class": {
+      "specHash": "2a777007b7b14391c19e740faefbd4f0a528a2279dc1561bc9a02f22baff96f0"
+    },
+    "model-scorecard/2026-09-07-dgx-spark-class": {
+      "specHash": "53cc134ea8390968e4d9ddf23681320006ee8d4373cb7c3b5ff77a2085b6a593"
+    },
+    "model-scorecard/2026-09-04-win32-amd-ryzen-9-7950x3d-16-core-proces": {
+      "specHash": "408ad450ce447057c1716ce9173e478906fcced311e279fb05e265b22166dfe8"
+    },
+    "model-scorecard/2026-09-03-mac-apple-m2": {
+      "specHash": "bd0c162ef70b8b324af778490209409db19323923ed108909c503fbf7468b9d1"
+    },
+    "model-scorecard/2026-09-02-ryzen-ai-hx-370-core-productivity": {
+      "specHash": "69c6b4a60210fefe224c8496b4b72617b370855f2e9d56d4f190259bdd8b9793"
+    },
+    "model-scorecard/2026-08-31-dwarfstar-vs-dense": {
+      "specHash": "5794f5bc01872ffc17ae18dbd0d68c24f39f21647617d4b6487a16d70f32d090"
+    },
+    "model-scorecard/2026-08-30-dgx-spark-class": {
+      "specHash": "d155da9e3f1e0fd8b8bec12a02b12b8a6448caf3d2a52ed0878eda7e748e7e45"
+    },
+    "model-scorecard/2026-08-27-win32-amd-ryzen-9-7950x3d-16-core-proces": {
+      "specHash": "8ddccfc0fcef2768a1868e9fd62b80bf1843e6b2a79938a7f5de180598cf2629"
+    },
+    "model-scorecard/2026-08-25-mac-apple-m4-max": {
+      "specHash": "d889888fc0a527e4494a1d87ddf5eaa65f6f7386c85626cc333900110dc6e224"
+    },
+    "model-scorecard/2026-08-22-mac-apple-m4-max": {
+      "specHash": "b52b7d541da37b886a95359950a6a146407eedca3c1e17f0c5d73d0d6f21100b"
+    },
+    "model-scorecard/2026-08-20-mac-apple-m4-max": {
+      "specHash": "ace9405056767904b9090f4594fbf646a70787fd99db3e56d754f5c436dae073"
+    },
+    "model-scorecard/2026-08-19-gb10-spark": {
+      "specHash": "205ce76b933983dadc35d98da07bdde822a53915e687e8a0514a984a47b00aff"
+    },
+    "model-scorecard/2026-08-14-m4max-llamacpp": {
+      "specHash": "bcfe5957d7f294bef24d0f3f836efae4bc62a26713e383d8da6745ce18d7511c"
+    },
+    "model-scorecard/2026-08-13-m4max-llamacpp": {
+      "specHash": "d3fbb4f066dfff5dd7c716c9d4e4b5074e779b3bcca3db5c6170d8af5cd18984"
+    },
+    "model-scorecard/2026-08-11-m4max-llamacpp": {
+      "specHash": "b0215a9c2285b58207d9e10345e829c60c61654b0a68d05734fe0ad129d8cddf"
+    },
+    "model-scorecard/2026-08-09-m4max-llamacpp": {
+      "specHash": "b7072cc4078cfff93265502e97a833a2961fed6a07963f4d67932d6d22b37d88"
     },
     "index": {
       "specHash": "b67ce0301d23ba414a0d30a80d8073ac2312d92aa7840eedc910854cd239ffc2"

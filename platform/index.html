@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build on Gezel — the command line, app SDK and AI Apps</title>
+  <meta name="description" content="The engine behind Gezel is yours to build on: run craftbooks from the gezel command line, add OpenAI-style local AI to your app with gezel-app-sdk, and package AI Apps that install into Gezel. Free and open source.">
+  <link rel="canonical" href="https://gezel.com/platform/">
+  <meta name="theme-color" content="#eae5d6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="/favicon.svg?v=outline" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=workbench" sizes="180x180">
+
+  <!-- No card of its own yet: the landing page's card stands in, as it does
+       for anything else without one. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gezel">
+  <meta property="og:url" content="https://gezel.com/platform/">
+  <meta property="og:title" content="Build on Gezel — the command line, app SDK and AI Apps">
+  <meta property="og:description" content="The engine behind Gezel is yours to build on, from the command line and with open-source packages on npm.">
+  <meta property="og:image" content="https://gezel.com/og-image.png?v=2">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Gezel — hand off a job tonight, review it in the morning. Free and open source for macOS, Windows and Linux.">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Build on Gezel — the command line, app SDK and AI Apps">
+  <meta name="twitter:description" content="The engine behind Gezel is yours to build on, from the command line and with open-source packages on npm.">
+  <meta name="twitter:image" content="https://gezel.com/og-image.png?v=2">
+  <meta name="twitter:image:alt" content="Gezel — hand off a job tonight, review it in the morning. Free and open source for macOS, Windows and Linux.">
+
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Self-contained like the landing page. The tokens, fonts, masthead, card,
+       band, closing and footer rules are copied from /index.html, so retune
+       them there and here together. -->
+  <style>
+    @font-face { font-family: 'Hanken Grotesk'; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/hanken-grotesk-variable.woff2) format('woff2'); }
+    @font-face { font-family: 'Hanken Grotesk'; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/hanken-grotesk-400i.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 400; font-display: swap; src: url(/assets/fonts/pt-serif-400.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/pt-serif-400i.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 700; font-display: swap; src: url(/assets/fonts/pt-serif-700.woff2) format('woff2'); }
+    :root {
+      --bg: #eae5d6;
+      --panel: #f3eddf;
+      --surface: #ddd3bd;
+      --text: #1c1c1c;
+      --muted: #666;
+      --muted-strong: #4d4d4d;
+      --accent: #b0724c;
+      --accent-hover: #996142;
+      --accent-soft: rgba(176, 114, 76, 0.16);
+      --accent-line: rgba(176, 114, 76, 0.45);
+      --sage: #667f62;
+      --border: rgba(127,127,127,0.25);
+      --shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 18px rgba(0,0,0,0.06);
+      --serif: 'PT Serif', Georgia, serif;
+      --sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --ground-indigo: #4f5d7e;
+      --ground-slate: #6f8aa0;
+      --ground-teal: #5f8a86;
+      --ground-forest: #4f6249;
+      --ground-terracotta: #b0724c;
+      --ground-rose: #c08a86;
+      --ground-plum: #7d6378;
+      --band-bg: #4f6249;
+      --band-title: #f6f1e4;
+      --band-text: rgba(246, 241, 228, 0.88);
+      --band-line: rgba(246, 241, 228, 0.45);
+      /* Code samples sit on a dark slab in both themes, so a block of code
+         reads as code at a glance rather than as another parchment card. */
+      --code-bg: #26282b;
+      --code-line: rgba(236, 230, 214, 0.1);
+      --code-text: #ece6d6;
+      --code-muted: rgba(236, 230, 214, 0.52);
+      --code-string: #b9c8a4;
+      --code-keyword: #e3a77f;
+      --section-gap: 104px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --band-bg: #253022;
+        --band-title: #ece6d6;
+        --band-text: rgba(236, 230, 214, 0.84);
+        --band-line: rgba(236, 230, 214, 0.4);
+        --ground-indigo: #3e4961;
+        --ground-slate: #576b7b;
+        --ground-teal: #4b6b67;
+        --ground-forest: #3e4c39;
+        --ground-terracotta: #88593b;
+        --ground-rose: #946b67;
+        --ground-plum: #614d5d;
+        --bg: #141517;
+        --panel: #1c1d20;
+        --surface: #1f2124;
+        --text: #f0f0f0;
+        --muted: #999;
+        --muted-strong: #b8b8b8;
+        --accent: #c0875d;
+        --accent-hover: #d5a07a;
+        --accent-soft: rgba(192, 135, 93, 0.18);
+        --accent-line: rgba(192, 135, 93, 0.45);
+        --border: rgba(127,127,127,0.25);
+        --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 6px 18px rgba(0,0,0,0.36);
+        --code-bg: #0f1012;
+      }
+    }
+    @media (max-width: 720px) { :root { --section-gap: 72px; } }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    [id] { scroll-margin-top: 24px; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--bg);
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(127,127,127,0.035) 0px,
+        rgba(127,127,127,0.035) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+    :focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+    }
+    :not(pre) > code {
+      font-family: var(--mono);
+      font-size: 0.86em;
+      padding: 0.08em 0.36em;
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--text);
+      /* Commands must not split: "--wait" broken after its first hyphen reads
+         as a different flag. The longest one fits a phone column whole. */
+      white-space: nowrap;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .icon-defs { display: none; }
+
+    /* Masthead: the landing page's nav, with the wordmark as the way home. */
+    header.masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 28px 0 8px;
+    }
+    .logotype {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.7rem;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      border-radius: 4px;
+    }
+    .logotype:hover { color: var(--accent); }
+    .masthead-nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+    }
+    .masthead-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .masthead-nav a[aria-current="page"] {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--accent-line);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+    }
+    .masthead-nav svg { width: 17px; height: 17px; flex: none; }
+
+    /* Hero: the promise on the left, the shape of the platform on the right. */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 56px;
+      padding: 40px 0 48px;
+    }
+    .hero h1 { margin: 0 0 1rem; }
+    .hero h1 .title {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.3em;
+    }
+    .tagline {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(1.15rem, 3vw, 1.5rem);
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .lede { margin: 0; font-size: 1.06rem; color: var(--text); }
+    .lede strong { color: var(--sage); }
+    .gloss { color: var(--muted); font-size: 0.95rem; margin: 0.9rem 0 0; }
+    /* Stacked: beside the docs link the command box was too narrow to show
+       the whole install line, and a cut-off command is no use to copy by eye. */
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 1.6rem 0 0;
+    }
+    .hero-actions .cmd { width: 100%; max-width: 440px; margin: 0; }
+    .text-link { font-weight: 600; white-space: nowrap; }
+
+    /* Copyable command, as in the landing page's download card. */
+    .cmd {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+      overflow: hidden;
+      text-align: left;
+    }
+    .cmd code {
+      flex: 1;
+      min-width: 0;
+      padding: 11px 12px;
+      font-family: var(--mono);
+      font-size: 0.86rem;
+      color: var(--text);
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .copy {
+      appearance: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: none;
+      border: none;
+      border-left: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      padding: 0 13px;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 120ms ease, color 120ms ease;
+    }
+    .copy:hover { background: var(--accent-soft); color: var(--text); }
+    .copy.is-copied { color: var(--sage); }
+    .copy-icon { width: 13px; height: 13px; flex: none; fill: currentColor; }
+    .copy-slot { display: grid; justify-items: start; white-space: nowrap; }
+    .copy-slot::after { content: "Copied"; grid-area: 1 / 1; visibility: hidden; }
+    .copy-label { grid-area: 1 / 1; }
+
+    /* The stack: every way in reaches one service, which reaches every model.
+       Real text rather than a picture, so it reads aloud and reflows. */
+    .stack {
+      margin: 0;
+      padding: 22px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+    }
+    .stack-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .stack-row.stack-engines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stack-chip {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      padding: 10px 8px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      background: var(--surface);
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .stack-chip small { font-size: 0.76rem; font-weight: 500; color: var(--muted-strong); text-wrap: balance; }
+    /* Multi-word engine names break between names, never inside one. */
+    .stack-chip small > span { white-space: nowrap; }
+    .stack-chip.is-yours { background: var(--accent-soft); border-color: var(--accent-line); }
+    .stack-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+    }
+    .stack-link::before, .stack-link::after {
+      content: "";
+      width: 1px;
+      height: 10px;
+      background: var(--accent-line);
+    }
+    .stack-core {
+      padding: 16px 16px 18px;
+      border-radius: 8px;
+      background: var(--band-bg);
+      color: var(--band-text);
+      text-align: center;
+    }
+    .stack-core strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 1.12rem;
+      color: var(--band-title);
+    }
+    .stack-core > span { display: block; font-size: 0.86rem; }
+    .stack-parts {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+    .stack-parts li {
+      padding: 2px 10px;
+      border: 1px solid var(--band-line);
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--band-title);
+    }
+    .stack figcaption {
+      margin: 14px 0 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    /* Proof line, as on the landing page. */
+    .proof {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 0 var(--section-gap);
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted-strong);
+    }
+    .proof li { white-space: nowrap; }
+    .proof li + li::before { content: "·"; margin: 0 16px; color: var(--muted); }
+    .proof a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+    }
+    .proof a:hover { color: var(--accent); text-decoration-color: currentColor; }
+    @media (max-width: 620px) {
+      .proof { display: grid; grid-template-columns: repeat(2, auto); justify-content: center; gap: 8px 22px; text-align: center; font-size: 0.9rem; }
+      .proof li { white-space: normal; text-wrap: balance; }
+      .proof li + li::before { content: none; }
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 1.1rem + 1.4vw, 2.15rem);
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+      margin: 0 0 28px;
+      text-align: center;
+    }
+    .section-lede { text-align: center; color: var(--muted-strong); font-size: 1.05rem; margin: -12px auto 34px; max-width: 620px; }
+
+    /* "Three ways to build": the landing page's platform cards, now pointing
+       at their sections below rather than straight into the docs. */
+    .uses { margin: 0 0 var(--section-gap); }
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .use {
+      display: flex;
+      flex-direction: column;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+      padding: 14px 14px 20px;
+      color: var(--text);
+      transition: transform 140ms ease, border-color 140ms ease;
+    }
+    a.use:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); }
+    .use-illustration {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: contain;
+      margin: 0 0 16px;
+      border-radius: 6px;
+    }
+    [data-ground="indigo"] { background-color: var(--ground-indigo); }
+    [data-ground="slate"] { background-color: var(--ground-slate); }
+    [data-ground="teal"] { background-color: var(--ground-teal); }
+    [data-ground="forest"] { background-color: var(--ground-forest); }
+    [data-ground="terracotta"] { background-color: var(--ground-terracotta); }
+    [data-ground="rose"] { background-color: var(--ground-rose); }
+    [data-ground="plum"] { background-color: var(--ground-plum); }
+    .use h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.02rem;
+      margin: 0 7px 0.3em;
+      color: var(--sage);
+    }
+    .use p {
+      margin: 0 7px;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--muted-strong);
+    }
+    .use-cta {
+      display: block;
+      margin: auto 7px 0;
+      padding-top: 14px;
+      color: var(--sage);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .use-cta .arrow { position: relative; top: 0; margin-left: 2px; transition: top 140ms ease; }
+    a.use:hover .use-cta .arrow { top: 2px; }
+
+    /* One section per pillar: what it is and a real sample side by side,
+       then six things it does in a grid underneath. */
+    .pillar { margin: 0 0 var(--section-gap); }
+    .pillar-top {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      align-items: start;
+      gap: 48px;
+      margin: 0 0 44px;
+    }
+    .pillar-mark {
+      display: block;
+      width: 76px;
+      height: 76px;
+      margin: 0 0 18px;
+      border-radius: 6px;
+    }
+    .kicker {
+      margin: 0 0 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+    .pillar h2 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 1.1rem + 1.4vw, 2.15rem);
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+      margin: 0 0 14px;
+    }
+    .pillar-lede { margin: 0 0 18px; font-size: 1.04rem; }
+    .pillar-pkg { margin: 0 0 18px; font-size: 0.9rem; color: var(--muted); }
+    .pillar-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 22px;
+      margin: 0;
+      padding: 0;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+    .code-card {
+      min-width: 0;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .code-bar {
+      padding: 9px 16px;
+      border-bottom: 1px solid var(--code-line);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--code-muted);
+    }
+    .code-card pre {
+      margin: 0;
+      padding: 16px 18px 18px;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: var(--code-text);
+      tab-size: 2;
+    }
+    .tok-c { color: var(--code-muted); }
+    .tok-s { color: var(--code-string); }
+    .tok-k { color: var(--code-keyword); }
+    .tok-p { color: var(--code-muted); user-select: none; }
+    .features {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px 36px;
+      margin: 0;
+      padding: 0;
+    }
+    .features li { padding-top: 16px; border-top: 1px solid var(--border); }
+    .features h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.3;
+      margin: 0 0 0.4em;
+      color: var(--sage);
+    }
+    .features p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--muted-strong); }
+
+    /* "More building blocks": link cards like the catalog links, each with
+       its own cut-paper mark beside the name. */
+    .blocks-section { margin: 0 0 var(--section-gap); }
+    .blocks {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+    }
+    .blocks a {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      height: 100%;
+      padding: 16px 18px 18px 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+      color: var(--text);
+      transition: transform 140ms ease, border-color 140ms ease;
+    }
+    .blocks a:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); }
+    .block-mark { flex: none; width: 64px; height: 64px; border-radius: 6px; }
+    .block-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .blocks strong { font-family: var(--serif); font-size: 1.04rem; color: var(--sage); }
+    .blocks .pkg { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); overflow-wrap: anywhere; }
+    .blocks .desc { margin-top: 4px; font-size: 0.9rem; line-height: 1.45; color: var(--muted-strong); }
+    .section-more { margin: 26px 0 0; text-align: center; font-weight: 600; }
+
+    /* The guardrails band, in the landing page's "Why Gezel" style. */
+    .band {
+      border-image: linear-gradient(var(--band-bg) 0 0) fill 0 / / 0 100vmax;
+      color: var(--band-text);
+      padding: 84px 0 88px;
+      margin: 0 0 var(--section-gap);
+    }
+    .band .section-title { color: var(--band-title); margin-bottom: 44px; }
+    .band-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 52px;
+    }
+    .band h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      margin: 0 0 0.55em;
+      color: var(--band-title);
+    }
+    .band p { margin: 0; font-size: 1rem; line-height: 1.65; color: var(--band-text); }
+    .band a {
+      color: var(--band-title);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--band-line);
+    }
+    .band a:hover { color: var(--band-title); text-decoration-color: currentColor; }
+
+    .closing {
+      border-image: linear-gradient(var(--panel) 0 0) fill 0 / / 0 100vmax;
+      text-align: center;
+      padding: 88px 0 96px;
+    }
+    .closing-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem);
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+    .closing-sub { margin: 0 0 30px; color: var(--muted-strong); font-size: 1.05rem; }
+    .closing .cmd { max-width: 440px; margin: 0 auto; }
+    .closing-alt { margin: 18px 0 0; font-size: 0.9rem; color: var(--muted); }
+    .closing-alt a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: var(--border);
+    }
+    .closing-alt a:hover { color: var(--accent); }
+    .closing-alt .sep { opacity: 0.45; margin: 0 9px; }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    footer p { margin: 0.3em 0; }
+    footer a { color: var(--muted); }
+    footer .sep { opacity: 0.45; margin: 0 9px; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .pillar-top { grid-template-columns: 1fr; gap: 28px; }
+      .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .blocks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    /* minmax(0, …), not a bare 1fr: the install line never wraps, so its
+       min-content width would otherwise widen the column past a phone. */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: minmax(0, 1fr); gap: 36px; padding-top: 24px; }
+    }
+    /* Three cards step 3 -> 1, as on the landing page: 2+1 orphans the last. */
+    @media (max-width: 720px) {
+      .use-grid { grid-template-columns: 1fr; }
+      .band-cols { grid-template-columns: 1fr; gap: 32px; }
+      .band { padding: 60px 0 64px; }
+      .closing { padding: 64px 0 72px; }
+    }
+    @media (max-width: 620px) {
+      .features, .blocks { grid-template-columns: 1fr; }
+      .features { gap: 22px; }
+    }
+    @media (max-width: 420px) {
+      /* The copy button drops to its icon (the label stays for screen
+         readers), which leaves room for the whole install line on a phone. */
+      .cmd code { padding: 11px 10px; font-size: 0.8rem; }
+      .copy { padding: 0 12px; }
+      .copy-slot {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+      }
+      .stack { padding: 14px; }
+      .stack-row { gap: 6px; }
+      .stack-chip { padding: 8px 4px; font-size: 0.84rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Copy-button glyphs from Font Awesome Free 6.7.2 (icons: CC BY 4.0,
+       https://fontawesome.com/license/free), as on the landing page. -->
+  <svg class="icon-defs" aria-hidden="true" focusable="false">
+    <symbol id="i-copy" viewBox="0 0 448 512"><path d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></symbol>
+  </svg>
+  <div class="wrap">
+    <header class="masthead">
+      <a class="logotype" href="/" aria-label="Gezel home">gezel</a>
+      <nav class="masthead-nav">
+        <a href="/platform/" aria-current="page">Platform</a>
+        <a href="/docs/">Docs</a>
+        <a href="/docs/model-scorecard/">Model scorecard</a>
+        <a href="https://github.com/bendyline/gezel">
+          <!-- GitHub's official mark (octicon mark-github-16). -->
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+          </svg>
+          GitHub
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>
+            <span class="title">Build on Gezel</span>
+            <span class="tagline">The engine behind the app is yours to build on.</span>
+          </h1>
+          <p class="lede">
+            The desktop app is one way into a local service that runs the crew,
+            the craftbooks, the tools and the models. The same service answers a
+            <strong>command line</strong>, an <strong>SDK for your own apps</strong>,
+            and <strong>AI Apps</strong> that install right into Gezel.
+          </p>
+          <p class="gloss">
+            Open source under the MIT license and published on npm. It all runs on
+            the person’s own computer, with no Gezel account or server in between.
+          </p>
+          <div class="hero-actions">
+            <div class="cmd">
+              <code>npm install -g @bendyline/gezel-cli</code>
+              <button class="copy" type="button" data-copy="npm install -g @bendyline/gezel-cli">
+                <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                <span class="copy-slot"><span class="copy-label">Copy</span></span>
+              </button>
+            </div>
+            <a class="text-link" href="/docs/npm-packages/">Developer docs&nbsp;<span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- Follows "How gezel runs" in the Handboek: the app, the CLI and
+             connected apps all use the service's one HTTP boundary, and the
+             service reaches every provider through one pluggable layer. -->
+        <figure class="stack" aria-labelledby="stackCaption">
+          <div class="stack-row">
+            <span class="stack-chip">Desktop app <small>the workshop window</small></span>
+            <span class="stack-chip">gezel CLI <small>terminals and scripts</small></span>
+            <span class="stack-chip is-yours">Your app <small>through gezel-app-sdk</small></span>
+          </div>
+          <div class="stack-link">one local, authenticated API</div>
+          <div class="stack-core">
+            <strong>gezeld</strong>
+            <span>the Gezel service, on your computer</span>
+            <ul class="stack-parts" aria-label="What the service runs">
+              <li>Projects</li>
+              <li>Crew</li>
+              <li>Craftbooks</li>
+              <li>Scripts and tools</li>
+              <li>Knowledge</li>
+              <li>AI Apps</li>
+            </ul>
+          </div>
+          <div class="stack-link">one provider layer</div>
+          <div class="stack-row stack-engines">
+            <span class="stack-chip">On this computer <small><span>llama.cpp</span> · <span>MLX</span> · <span>DwarfStar</span> · <span>Device app models</span></small></span>
+            <span class="stack-chip">In the cloud <small>Claude · Codex · OpenAI · Copilot</small></span>
+          </div>
+          <figcaption id="stackCaption">Every way in reaches the same service, and the service reaches every model.</figcaption>
+        </figure>
+      </section>
+
+      <ul class="proof" aria-label="The Gezel platform at a glance">
+        <li>Open source, MIT license</li>
+        <li><a href="/docs/npm-packages/">Packages on npm</a></li>
+        <li>OpenAI-style model APIs</li>
+        <li>No Gezel server in between</li>
+      </ul>
+
+      <!-- Moved from the landing page's "Use Gezel as a platform" row. Same
+           marks and blurbs; the links now drop to the sections below, which
+           link on into the Handboek. -->
+      <section class="uses" id="ways-to-build">
+        <h2 class="section-title">Three ways to build</h2>
+        <p class="section-lede">Start from a terminal, from your own app, or from inside Gezel. All three reach the same crew and the same models.</p>
+        <div class="use-grid">
+          <a class="use" href="#cli">
+            <img class="use-illustration" src="/assets/marks/platform-cli.webp" alt="" data-ground="forest"
+                 width="512" height="512" decoding="async">
+            <h3>Build workflows with the CLI</h3>
+            <p>Start craftbooks, send one-shot prompts, and wait for the results from a terminal or a script.</p>
+            <span class="use-cta">The gezel command line&nbsp;<span class="arrow" aria-hidden="true">↓</span></span>
+          </a>
+          <a class="use" href="#app-sdk">
+            <img class="use-illustration" src="/assets/marks/platform-app-sdk.webp" alt="" data-ground="slate"
+                 width="512" height="512" decoding="async">
+            <h3>Add local AI to your app</h3>
+            <p>OpenAI-style chat on local models for Node.js and Electron. Use the person’s Gezel, or host one inside your app.</p>
+            <span class="use-cta">Connected apps&nbsp;<span class="arrow" aria-hidden="true">↓</span></span>
+          </a>
+          <a class="use" href="#ai-apps">
+            <img class="use-illustration" src="/assets/marks/platform-ai-apps.webp" alt="" data-ground="terracotta"
+                 width="512" height="512" decoding="async">
+            <h3>Build apps that live in Gezel</h3>
+            <p>Package a page, scripts, a crew, and craftbooks into one app that installs into a project.</p>
+            <span class="use-cta">AI Apps&nbsp;<span class="arrow" aria-hidden="true">↓</span></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Each pillar's claims follow its Handboek article: cli-reference,
+           building-connected-apps-with-gezel-app-sdk and
+           building-ai-apps-inside-gezel. Check them when those change. -->
+      <section class="pillar" id="cli">
+        <div class="pillar-top">
+          <div>
+            <img class="pillar-mark" src="/assets/marks/platform-cli.webp" alt="" data-ground="forest"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <p class="kicker">The command line</p>
+            <h2>Build workflows with the CLI</h2>
+            <p class="pillar-lede">
+              The <code>gezel</code> command drives the same service the desktop
+              app uses. Start craftbooks, send one-shot prompts and wait for the
+              results from a terminal, a script or a server.
+            </p>
+            <p class="pillar-pkg">Install <code>@bendyline/gezel-cli</code> with Node.js 24 or newer. You don’t need to install or open the desktop app.</p>
+            <ul class="pillar-links">
+              <li><a href="/docs/cli-reference/">CLI reference&nbsp;<span aria-hidden="true">→</span></a></li>
+              <li><a href="/docs/knowledge-command-line/">Knowledge catalogs&nbsp;<span aria-hidden="true">→</span></a></li>
+            </ul>
+          </div>
+          <div class="code-card">
+            <div class="code-bar">Terminal</div>
+<pre><code><span class="tok-c"># Install once</span>
+<span class="tok-p">$ </span>npm install -g @bendyline/gezel-cli
+
+<span class="tok-c"># Start a craftbook in this folder’s project and wait</span>
+<span class="tok-p">$ </span>gezel do summarize-long <span class="tok-s">"Summarize notes.txt for the board"</span> --wait
+
+<span class="tok-c"># Set any parameter by name</span>
+<span class="tok-p">$ </span>gezel do powerpoint-deck <span class="tok-s">"A deck about Delft"</span> audience=investors
+
+<span class="tok-c"># One-shot prompt, reply on stdout</span>
+<span class="tok-p">$ </span>gezel run <span class="tok-s">"Draft a friendly reminder about Friday’s deadline"</span></code></pre>
+          </div>
+        </div>
+        <ul class="features">
+          <li>
+            <h3>Run any craftbook as a task</h3>
+            <p><code>gezel do</code> starts any of <data data-count="craftbooks" data-floor="10" value="294">290</data>+ tested plans in the folder’s project. Plain words become the request and <code>key=value</code> sets parameters. Add <code>--wait --json</code> for one result and an exit code a script can branch on.</p>
+          </li>
+          <li>
+            <h3>One-shot prompts</h3>
+            <p><code>gezel run</code> sends a prompt and prints the reply. It uses the service that’s already running, or starts one for that single call and shuts it down afterwards.</p>
+          </li>
+          <li>
+            <h3>No desktop app required</h3>
+            <p>The npm package works on its own, including on first use and on a server. It finds or starts your own background service, and <code>gezel start --web</code> opens the full interface in a browser.</p>
+          </li>
+          <li>
+            <h3>Watch and steer the crew</h3>
+            <p>List, inspect, pause and resume tasks across every project. <code>gezel mode</code> sets how active AI may be, from read-only to full play, and <code>gezel stop --keep-running</code> is the emergency brake.</p>
+          </li>
+          <li>
+            <h3>Models, engines and media</h3>
+            <p>See which catalog models fit this computer, pull one and make it the default, or export it as a portable <code>.gezmodel</code> file. Make images, video and narration from the terminal too.</p>
+          </li>
+          <li>
+            <h3>Build knowledge catalogs</h3>
+            <p>Compile a folder of Markdown into a portable <code>.gezk</code> catalog with keyword and semantic search. Search it offline, then install it so your crew can cite it.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="pillar" id="app-sdk">
+        <div class="pillar-top">
+          <div>
+            <img class="pillar-mark" src="/assets/marks/platform-app-sdk.webp" alt="" data-ground="slate"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <p class="kicker">Connected apps</p>
+            <h2>Add local AI to your app</h2>
+            <p class="pillar-lede">
+              Give a Node.js or Electron app OpenAI-style chat and embeddings on
+              local models. Gezel takes care of model downloads, consent and the
+              inference service, and your app keeps its own interface.
+            </p>
+            <p class="pillar-pkg">Install <code>@bendyline/gezel-app-sdk</code> in your app. The Node entry needs Node.js 24 or newer.</p>
+            <ul class="pillar-links">
+              <li><a href="/docs/building-connected-apps-with-gezel-app-sdk/">Building connected apps&nbsp;<span aria-hidden="true">→</span></a></li>
+              <li><a href="/docs/docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel&nbsp;<span aria-hidden="true">→</span></a></li>
+            </ul>
+          </div>
+          <div class="code-card">
+            <div class="code-bar">TypeScript</div>
+<pre><code><span class="tok-k">import</span> { connect } <span class="tok-k">from</span> <span class="tok-s">'@bendyline/gezel-app-sdk'</span>;
+
+<span class="tok-c">// The person approves this app once, in Gezel.</span>
+<span class="tok-k">const</span> app = <span class="tok-k">await</span> connect({
+  appId: <span class="tok-s">'acme.notes'</span>,
+  appName: <span class="tok-s">'Acme Notes'</span>,
+  scopes: [<span class="tok-s">'openai'</span>],
+  tokenStorage, <span class="tok-c">// keep the token in the OS keychain</span>
+});
+
+<span class="tok-k">const</span> models = <span class="tok-k">await</span> app.models();
+<span class="tok-k">const</span> stream = <span class="tok-k">await</span> app.chat({
+  model: models.data[0].id,
+  messages: [
+    { role: <span class="tok-s">'user'</span>, content: <span class="tok-s">'Give this note a short title.'</span> },
+  ],
+  stream: <span class="tok-k">true</span>,
+});
+
+<span class="tok-k">for await</span> (<span class="tok-k">const</span> chunk <span class="tok-k">of</span> stream) {
+  process.stdout.write(chunk.choices[0]?.delta?.content ?? <span class="tok-s">''</span>);
+}</code></pre>
+          </div>
+        </div>
+        <ul class="features">
+          <li>
+            <h3>OpenAI-style APIs</h3>
+            <p>List models, chat with or without streaming, create embeddings, and make sure a model is installed and warm. The list can include the person’s helpers, each with its own character and tuned model.</p>
+          </li>
+          <li>
+            <h3>Consent built in</h3>
+            <p>Ask for the narrowest scope and the person approves it in Gezel. Access to projects, knowledge or images also shows a code in your app to type into Gezel. Any connection can be revoked in Settings → Integrations.</p>
+          </li>
+          <li>
+            <h3>With or without Gezel installed</h3>
+            <p><code>connectOrHost</code> uses the person’s Gezel when it’s running and starts a private one inside your app when it isn’t. Models they already have are reused, and a bundled <code>.gezmodel</code> lets a first run work offline.</p>
+          </li>
+          <li>
+            <h3>Your tools, offered to the crew</h3>
+            <p>Register tools whose handlers run in your app. Helpers see them beside Gezel’s own, arguments are checked against your schema first, and every call shows up in the transcript and History.</p>
+          </li>
+          <li>
+            <h3>The full product API</h3>
+            <p>Pair the SDK with <code>@bendyline/gezel-client</code> to work with projects, tasks, chats and scripts through a typed client, while the SDK keeps discovery, pinned TLS and the scoped token.</p>
+          </li>
+          <li>
+            <h3>Just the models, if that’s all you need</h3>
+            <p><code>@bendyline/gezel-inference</code> runs on-device engines such as llama.cpp and MLX in your own process, with no projects, chats or tools attached. DocBlocks uses it for writing and review.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="pillar" id="ai-apps">
+        <div class="pillar-top">
+          <div>
+            <img class="pillar-mark" src="/assets/marks/platform-ai-apps.webp" alt="" data-ground="terracotta"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <p class="kicker">AI Apps</p>
+            <h2>Build apps that live in Gezel</h2>
+            <p class="pillar-lede">
+              Package a page, scripts, a crew and craftbooks into one app that
+              installs into a project. A language trainer, a research room or a
+              board game can each feel like its own application, with the whole
+              workshop underneath.
+            </p>
+            <p class="pillar-pkg">Build it with the <code>gezel app</code> commands, by hand, or with an AI agent.</p>
+            <ul class="pillar-links">
+              <li><a href="/docs/building-ai-apps-inside-gezel/">Building AI Apps&nbsp;<span aria-hidden="true">→</span></a></li>
+              <li><a href="/docs/gezel-page-apis/">Page APIs&nbsp;<span aria-hidden="true">→</span></a></li>
+              <li><a href="/docs/project-types-index/">Try <data data-count="projectTypeDemos" value="23">23</data> apps in your browser&nbsp;<span aria-hidden="true">→</span></a></li>
+            </ul>
+          </div>
+          <div class="code-card">
+            <div class="code-bar">Terminal</div>
+<pre><code><span class="tok-c"># Scaffold a source folder that already validates</span>
+<span class="tok-p">$ </span>gezel app new my-app --with-page
+<span class="tok-p">$ </span>cd my-app
+
+<span class="tok-c"># Every finding at once, then a package</span>
+<span class="tok-p">$ </span>gezel app validate .
+<span class="tok-p">$ </span>gezel app pack .             <span class="tok-c"># → my-app-1.0.0.gezapp</span>
+
+<span class="tok-c"># Review and install it, then make a folder its project</span>
+<span class="tok-p">$ </span>gezel app add my-app-1.0.0.gezapp
+<span class="tok-p">$ </span>cd ~/reading-circle &amp;&amp; gezel app apply my-app</code></pre>
+          </div>
+        </div>
+        <ul class="features">
+          <li>
+            <h3>One package, every part</h3>
+            <p>A project type ties it together: setup questions, the crew, craftbooks, scripts, seed data, schedules and an Output page. Use only the parts your app needs. A page and a folder are already an app.</p>
+          </li>
+          <li>
+            <h3>An interface in plain HTML</h3>
+            <p>The Output page is ordinary HTML, CSS and JavaScript. Gezel provides <code>window.gezel</code> to read the files it declares, watch them change, query indexed tables and call declared tools, and the page follows Gezel’s theme.</p>
+          </li>
+          <li>
+            <h3>Scripts with declared powers</h3>
+            <p>Actions and checks are TypeScript built on <code>@bendyline/gezel-sdk</code>. Each script lists the capabilities it needs and runs in Gezel’s sandbox. Pages have no raw write API, so every change goes through a declared tool.</p>
+          </li>
+          <li>
+            <h3>A crew and repeatable work</h3>
+            <p>Give the app helpers with a working character each, and craftbooks that turn a job into checked steps. Or reuse any of the <data data-count="characters" value="41">41</data> characters and <data data-count="craftbooks" data-floor="10" value="294">290</data>+ craftbooks in the catalog.</p>
+          </li>
+          <li>
+            <h3>Validate, pack and share</h3>
+            <p><code>add</code> shows the publisher, contents and dependencies before anything installs, and never runs what’s inside. Share a <code>.gezapp</code> privately, serve its page as a mini-site, or contribute it to the public collection.</p>
+          </li>
+          <li>
+            <h3>Made for AI agents to build</h3>
+            <p>Live JSON Schemas, <code>validate --json</code> with stable rule ids, and three example apps of graded size let an AI agent build an app with the same loop a person uses.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blocks-section" id="building-blocks">
+        <h2 class="section-title">More building blocks</h2>
+        <p class="section-lede">Every package is open source and semver-versioned, and needs Node.js 24 or newer. Install the one at the top of your use case; npm brings in the rest.</p>
+        <!-- These six marks were drawn for this section (see the README). The
+             grounds are spread so no two neighbours share one, across the row
+             or down the column. -->
+        <ul class="blocks">
+          <li><a href="/docs/writing-scripts-with-gezel-sdk/">
+            <img class="block-mark" src="/assets/marks/platform-scripts.webp" alt="" data-ground="indigo"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <span class="block-text">
+              <strong>Scripts</strong>
+              <span class="pkg">@bendyline/gezel-sdk</span>
+              <span class="desc">Typed automations that run inside a project: tools for your crew, hooks on a craftbook step, or gates that hold a step until the work is right.</span>
+            </span>
+          </a></li>
+          <li><a href="/docs/how-knowledge-works/">
+            <img class="block-mark" src="/assets/marks/platform-knowledge.webp" alt="" data-ground="teal"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <span class="block-text">
+              <strong>Knowledge catalogs</strong>
+              <span class="pkg">@bendyline/gezel-knowledge</span>
+              <span class="desc">Compile, verify and search <code>.gezk</code> catalogs from your own code, with full-text and vector search built in.</span>
+            </span>
+          </a></li>
+          <li><a href="/docs/connected-apps/#gezel-s-tools-in-other-ai-apps">
+            <img class="block-mark" src="/assets/marks/platform-mcp.webp" alt="" data-ground="plum"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <span class="block-text">
+              <strong>Gezel’s tools over MCP</strong>
+              <span class="pkg">@bendyline/gezel-mcp</span>
+              <span class="desc">A stdio MCP server that gives any MCP host Gezel’s workspace, memory, document, task and media tools.</span>
+            </span>
+          </a></li>
+          <li><a href="/docs/connected-apps/#how-an-app-connects">
+            <img class="block-mark" src="/assets/marks/platform-endpoints.webp" alt="" data-ground="rose"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <span class="block-text">
+              <strong>OpenAI and Ollama endpoints</strong>
+              <span class="pkg">Settings → Integrations</span>
+              <span class="desc">Point any tool that speaks OpenAI-style APIs at Gezel’s local address. Turn on Ollama emulation for tools that only look on Ollama’s port.</span>
+            </span>
+          </a></li>
+          <li><a href="/docs/npm-packages/#every-published-package">
+            <img class="block-mark" src="/assets/marks/platform-client.webp" alt="" data-ground="slate"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <span class="block-text">
+              <strong>The typed client</strong>
+              <span class="pkg">@bendyline/gezel-client</span>
+              <span class="desc">The complete service API from TypeScript: projects, crew, chats, tasks, scripts, models, memories and usage.</span>
+            </span>
+          </a></li>
+          <li><a href="/docs/npm-packages/#every-published-package">
+            <img class="block-mark" src="/assets/marks/platform-service.webp" alt="" data-ground="forest"
+                 width="512" height="512" loading="lazy" decoding="async">
+            <span class="block-text">
+              <strong>The service itself</strong>
+              <span class="pkg">@bendyline/gezel-service</span>
+              <span class="desc">Run <code>gezeld</code> headless or embed it in your own product: state, provider routing, chat sessions, tools, tasks and the HTTP API.</span>
+            </span>
+          </a></li>
+        </ul>
+        <p class="section-more"><a href="/docs/npm-packages/">The full package map&nbsp;<span aria-hidden="true">→</span></a></p>
+      </section>
+
+      <!-- The claims here are the security model's, kept as modest as it is:
+           "where one is available" is load-bearing. -->
+      <section class="band" id="guardrails">
+        <h2 class="section-title">Built on the same guardrails</h2>
+        <div class="band-cols">
+          <div>
+            <h3>Stays on the computer</h3>
+            <p>The service listens only on the person’s own machine, over an encrypted local connection whose credential changes every time it starts. API keys go straight to their provider. There’s no Gezel server to pass them through. <a href="/docs/security-model/">The security model</a></p>
+          </div>
+          <div>
+            <h3>Consent people can see</h3>
+            <p>Each app asks for the narrowest scope it needs, and the person approves it in Gezel. Wider access also shows a code in your app for them to type in. Every connection can be revoked in Settings → Integrations. <a href="/docs/connected-apps/">Integrations</a></p>
+          </div>
+          <div>
+            <h3>Code that stays in bounds</h3>
+            <p>Scripts declare the capabilities they use and run in a sandbox, behind an operating-system wall where one is available. App pages change files only through declared tools, so every change stays auditable. <a href="/docs/writing-scripts-with-gezel-sdk/">The script SDK</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="closing" id="get-started">
+      <h2 class="closing-title">Start building tonight.</h2>
+      <p class="closing-sub">Free and open source, for macOS, Windows and Linux.</p>
+      <div class="cmd">
+        <code>npm install -g @bendyline/gezel-cli</code>
+        <button class="copy" type="button" data-copy="npm install -g @bendyline/gezel-cli">
+          <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+          <span class="copy-slot"><span class="copy-label">Copy</span></span>
+        </button>
+      </div>
+      <p class="closing-alt">
+        <a href="/docs/npm-packages/">Developer docs</a><span class="sep" aria-hidden="true">·</span><a href="/#download">Download the desktop app</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>© 2026 Bendyline · Free and open source under the MIT license</p>
+      <p>
+        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Copy-to-clipboard, as on the landing page, with the pre-clipboard-API
+    // path kept because navigator.clipboard is unavailable over plain http —
+    // which includes anyone previewing this site from a local server.
+    (function () {
+      Array.prototype.forEach.call(document.querySelectorAll(".copy"), function (b) {
+        var label = b.querySelector(".copy-label");
+        var icon = b.querySelector(".copy-icon use");
+        var revert;
+
+        function flash(text) {
+          clearTimeout(revert);
+          label.textContent = text;
+          b.classList.add("is-copied");
+          icon.setAttribute("href", "#i-check");
+          revert = setTimeout(function () {
+            label.textContent = "Copy";
+            b.classList.remove("is-copied");
+            icon.setAttribute("href", "#i-copy");
+          }, 1600);
+        }
+
+        function legacyCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        // Last resort when both copy paths are refused: select the command in
+        // place, so "Press Ctrl+C" is advice the visitor can actually act on.
+        function selectCommand() {
+          var code = b.parentNode.querySelector("code");
+          var sel = window.getSelection();
+          if (!code || !sel) return;
+          var range = document.createRange();
+          range.selectNodeContents(code);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+
+        function fallback(text) {
+          if (legacyCopy(text)) return flash("Copied");
+          selectCommand();
+          flash("Press Ctrl+C");
+        }
+
+        b.addEventListener("click", function () {
+          var text = b.dataset.copy;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () { flash("Copied"); }, function () {
+              fallback(text);
+            });
+          } else {
+            fallback(text);
+          }
+        });
+      });
+    })();
+
+    // Catalog counts follow docs/catalog-counts.json, as on the landing page.
+    // Site-absolute here, since this page sits one folder down.
+    (function () {
+      var els = document.querySelectorAll("data[data-count]");
+      if (!els.length) return;
+      fetch("/docs/catalog-counts.json")
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function (counts) {
+          Array.prototype.forEach.call(els, function (el) {
+            var n = counts[el.dataset.count];
+            if (typeof n !== "number" || !(n > 0)) return;
+            var floor = Number(el.dataset.floor) || 1;
+            el.value = String(n);
+            el.textContent = String(Math.floor(n / floor) * floor);
+          });
+        })
+        .catch(function () {});
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-10-30 · Windows ARM64 · NVIDIA RTX Spark N1X — Gezel Handboek</title>
+<meta name="description" content="A focused rerun on NVIDIA RTX Spark N1X (6144-core GPU, 20-core CPU) · NVIDIA RTX Spark N1X (6144-core Blackwell RTX GPU) · 23 GB: 2 models across 1 task set.">
+<link rel="canonical" href="https://gezel.com/docs/model-scorecard/2026-10-30-spark-native-0-1-54-final-six/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/model-scorecard/2026-10-30-spark-native-0-1-54-final-six/">
+<meta property="og:title" content="2026-10-30 · Windows ARM64 · NVIDIA RTX Spark N1X">
+<meta name="twitter:title" content="2026-10-30 · Windows ARM64 · NVIDIA RTX Spark N1X">
+<meta property="og:description" content="A focused rerun on NVIDIA RTX Spark N1X (6144-core GPU, 20-core CPU) · NVIDIA RTX Spark N1X (6144-core Blackwell RTX GPU) · 23 GB: 2 models across 1 task set.">
+<meta name="twitter:description" content="A focused rerun on NVIDIA RTX Spark N1X (6144-core GPU, 20-core CPU) · NVIDIA RTX Spark N1X (6144-core Blackwell RTX GPU) · 23 GB: 2 models across 1 task set.">
+<meta property="og:image" content="https://gezel.com/og/model-scorecard/2026-10-30-spark-native-0-1-54-final-six.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="2026-10-30 · Windows ARM64 · NVIDIA RTX Spark N1X">
+<meta name="twitter:image" content="https://gezel.com/og/model-scorecard/2026-10-30-spark-native-0-1-54-final-six.png">
+<meta name="twitter:image:alt" content="2026-10-30 · Windows ARM64 · NVIDIA RTX Spark N1X">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/handboek.css">
+<link rel="stylesheet" href="../../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../../craftbooks-overview/">Concepts</a>
+<a href="../../roles-index/">Gezel Roles</a>
+<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../project-types-index/">Project Types</a>
+<a aria-current="true" href="../../architecture/">Technical</a>
+<a href="../../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul class="hb-sidebar-entries">
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">How Gezel works</h3>
+<ul>
+<li><a href="../../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../../where-files-live/">Where files live</a></li>
+<li><a href="../../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../../toolset-catalog/">Add-on toolsets and connectors</a></li>
+<li><a href="../../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../../how-knowledge-works/">How knowledge works in Gezel</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">The Gezel Command Line</h3>
+<ul>
+<li><a href="../../cli-reference/">The gezel command line</a></li>
+<li><a href="../../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../../knowledge-command-line/">Working with knowledge catalogs</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Developer</h3>
+<ul>
+<li><a href="../../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a href="../../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+<li><a href="../../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
+<li><a href="../../gezel-page-apis/">Using the Gezel page APIs</a></li>
+<li><a href="../../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Models and Testing</h3>
+<ul>
+<li><a href="../../how-we-test-models/">How we test models</a></li>
+<li><a href="../../model-scorecard/">Model scorecard</a></li>
+<li><a href="../../model-catalog/">Every model</a></li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../../">Handboek</a> <span>/</span> <a href="../../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>2026-10-30 · Windows ARM64 · NVIDIA RTX Spark N1X</h1>
+<p>A focused rerun on NVIDIA RTX Spark N1X (6144-core GPU, 20-core CPU) · NVIDIA RTX Spark N1X (6144-core Blackwell RTX GPU) · 23 GB: 2 models across 1 task set. Every round is listed in the <a href="../../model-scorecard/">model scorecard</a>, with its results side by side in one table.</p>
+<div class="hb-scorecard-round hb-scorecard-round-page">
+<p class="hb-scorecard-stamp"><strong>NVIDIA RTX Spark N1X (6144-core GPU, 20-core CPU) · NVIDIA RTX Spark N1X (6144-core Blackwell RTX GPU) · 23 GB · llama-cpp · focused subset · 3 trials per task · 2026-10-30 · gezel 22fec99111a5 · catalog 0.3.1</strong></p>
+<p class="hb-scorecard-round-note">Final six previously unstarted complex-work attempts: one automatic pass and five raw failures. The passing Gemma parameter report contained incorrect totals. Gemma fanout never reached inference because model capacity remained reserved; the published table attributes that attempt to infrastructure, preserving the raw verdict in the download. Its model-token usage is unavailable. This segment uses the same verified script-isolation condition as the continuation, with no retries. Part of the 258-attempt Spark comparison across four task sets, three repetitions overall. Segments retain separate rounds and counts because neither execution condition has three repeats of every task. Native 0.1.54, llama.cpp CUDA, generalist auto. Task performance includes all attempts; artifact reviews retain separate rubrics. Source reviews can expose incorrect outputs accepted by automatic checks. The downloadable Spark report preserves all raw fixed scores, 119 artifact judgments, exact axes, exclusions, latency, tokens, RAM/GPU samples and review diagnostics.</p>
+<p class="hb-scorecard-memory-note">System memory counts this computer's own memory only. What the model keeps on the separate graphics card isn't included.</p>
+<div class="hb-scorecard-suite" data-hb-suite="complex-work">
+<h5 class="hb-scorecard-suite-title">Complex workflows</h5>
+<div class="hb-table-scroll"><table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th><th>System memory</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>0/3 (some tasks run once — count not rate)</td><td>250K</td><td>5.6 GB</td></tr></tbody></table></div>
+<h6>Task performance</h6>
+<p>Task measurements across all attempted trials, including failures. Measurement methods and limits are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Separate continuation condition · all attempts</td><td>3</td><td>62.89 (62.05–63.73; n=2)</td><td>1,142.62 (1,115.16–1,170.08; n=2)</td><td>13.1 (5.5–26.4; n=3)</td><td>9.95 (1.19–10.91; n=3)</td><td>13.08 (1.20–13.37; n=3)</td></tr>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Separate continuation condition · all attempts</td><td>3</td><td>22.86 (15.54–24.37; n=3)</td><td>518.50 (349.22–540.48; n=3)</td><td>16.0 (14.0–24.3; n=3)</td><td>5.60 (5.36–8.51; n=3)</td><td>35.19 (35.18–35.69; n=3)</td></tr>
+</tbody></table></div>
+<h6>Artifact reviews</h6>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: none recorded. Review identity and limitations are recorded with the evaluation.</p>
+<div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th><th scope="col">Not applicable</th></tr></thead><tbody>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Separate continuation condition · all attempts</td><td>0</td><td>0</td><td>3</td></tr>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Separate continuation condition · all attempts</td><td>0</td><td>0</td><td>3</td></tr>
+</tbody></table></div>
+<p class="hb-scorecard-withheld">Not published — some tasks could not be measured on this round: Gemma 4 (12B, Q4) (1 task(s) unmeasured)</p>
+<p class="hb-scorecard-taskcount">Tasks in this set: 3.</p>
+</div>
+</div>
+<h2 id="october-28-30-spark-comparison-and-review-data">October 28–30 Spark comparison and review data</h2>
+<p>This note also covers <a href="../2026-10-28-spark-native-0-1-54-original/">2026-10-28 · Windows ARM64 · NVIDIA RTX Spark N1X</a>, <a href="../2026-10-29-spark-native-0-1-54-continuation/">2026-10-29 · Windows ARM64 · NVIDIA RTX Spark N1X</a>.</p>
+<p>Qwen 3.8 27B Q4 and Gemma 4 12B Q4 completed <strong>258 planned attempts</strong> on
+Windows ARM64 with an NVIDIA RTX Spark N1X and native 0.1.54. The four task
+sets each have three repetitions per model and scenario across the complete
+campaign. The tables retain three separate segments: 169 original attempts,
+83 continuation attempts, and six final attempts. These segments show counts,
+not percentages; the original and later script-isolation conditions are not
+pooled.</p>
+<p>On the original condition, Qwen passed 65/84 eligible attempts and Gemma
+52/84. Gemma's median engine decode speed was 66.15 tokens/s versus Qwen's
+26.44. The two later segments used the same verified condition with the
+Windows script sandbox disabled while other script permissions remained.
+All raw outcomes and fixed scores are retained. Two raw infrastructure
+exclusions remain, including a model-authored unevaluable gate. The published
+table additionally sets aside the final Gemma fanout attempt because capacity
+admission blocked it before inference; the download preserves its original
+failure classification and explains the correction.</p>
+<p>All <strong>119 artifact judgments</strong>, covering 125 produced paths across 112
+trials, are included in the download. The table uses one primary review per
+trial, keeps different rubrics separate, and excludes six primary A/B reviews
+whose rubric did not fit the output. Two declared artifacts were missing;
+144 trials had no declared quality rubric. These were bounded source reviews,
+not complete interactive or visual checks. Some automatic passes contained
+incorrect results, including the final Gemma parameterized report.</p>
+<p>Task performance includes every attempt within its own segment: engine-log
+decode and prefill, duration, and separately reported system RSS and GPU memory.
+The companion adds first-action and first-artifact timings, tokens, GPU
+utilization, sample coverage, exact review axes and justifications, per-trial
+postmortems, and infrastructure/evaluator findings. Local-model token evidence
+is unavailable for the admission-blocked attempt, rather than reported as zero.</p>
+<p>Download the <a href="../../assets/scorecards/2026-10-30-spark-native-0-1-54/scorecard.json">scorecard data</a>,
+<a href="../../assets/scorecards/2026-10-30-spark-native-0-1-54/scorecard-details.json">full judging and performance data</a>,
+<a href="../../assets/scorecards/2026-10-30-spark-native-0-1-54/report.md">reviewed report</a>,
+and <a href="../../assets/scorecards/2026-10-30-spark-native-0-1-54/overall-trials.csv">all trials</a>.
+<a href="../../assets/scorecards/2026-10-30-spark-native-0-1-54/README.md">Download notes and validation</a>
+explain the preserved baselines, review selection and published attribution.</p>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+</main>
+
+</div>
+<footer class="hb-footer">
+<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>
