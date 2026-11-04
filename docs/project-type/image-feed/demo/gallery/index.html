@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Social Media Writer"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -46,14 +46,14 @@
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        font: 15px/1.5 var(--font-body, system-ui, sans-serif);
         background: var(--bg);
         color: var(--ink);
         padding: 1.5rem 1.25rem 2rem;
       }
       main { max-width: 1080px; margin: 0 auto; }
       h1 {
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.4rem;
         font-weight: 600;
         margin: 0 0 0.15rem;
@@ -71,6 +71,7 @@
         background: var(--card);
         color: var(--ink);
         cursor: pointer;
+        white-space: nowrap;
       }
       .key:hover { border-color: var(--muted); }
       .key[aria-pressed='true'] {
@@ -89,7 +90,10 @@
       }
       .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.75rem; }
       .shot {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
         width: 100%;
         padding: 0;
         text-align: left;
@@ -114,7 +118,7 @@
         padding: 0.75rem;
         background: color-mix(in srgb, var(--card) 78%, var(--accent));
         color: var(--ink);
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.02rem;
         text-align: center;
         overflow-wrap: anywhere;
@@ -174,7 +178,7 @@
       .drawer[hidden] { display: none; }
       .drawer .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
       .drawer h2 {
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.1rem;
         font-weight: 600;
         margin: 0 0 0.2rem;
@@ -239,9 +243,16 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script><style>.drawer{margin:0 0 0 auto;height:100dvh;max-height:100dvh;max-width:94vw;border:1px solid var(--track);color:var(--ink)}.drawer::backdrop{background:#0006}</style></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
         <span><strong>Demo mode</strong> — sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
@@ -264,7 +275,7 @@
       </div>
       <div class="grid" id="grid"></div>
     </main>
-    <aside class="drawer" id="drawer" hidden>
+    <dialog class="drawer" id="drawer" aria-labelledby="d-title">
       <div class="top">
         <div>
           <h2 id="d-title"></h2>
@@ -282,8 +293,8 @@
       <div class="body-text" id="d-body"></div>
       <h3>Variants</h3>
       <div id="d-variants"></div>
-    </aside>
-    
+    </dialog>
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
@@ -329,7 +340,15 @@
           };
           if (extra.scheduledFor) post.scheduledFor = extra.scheduledFor;
           if (extra.campaign) post.campaign = extra.campaign;
+          // Character counts match the sample text, as the posts-store script reports them.
+          Object.keys(post.variants).forEach(function (name) { post.variants[name].charCount = post.variants[name].body.length; });
           return post;
+        }
+        // The sample captions promise Thursday, so the scheduled post lands on the coming Thursday.
+        function demoNextThursday() {
+          var day = new Date(Date.now() + DAY);
+          while (day.getUTCDay() !== 4) day = new Date(day.getTime() + DAY);
+          return day.toISOString().slice(0, 10);
         }
         var demoPosts = [
           demoPost(0, 'glaze-tests-week-33', 'Glaze tests, week 33', 'idea', ['instagram'], {
@@ -361,7 +380,7 @@
           demoPost(7, 'saltpan-series-first-firing', 'Saltpan series — first firing', 'scheduled', ['instagram', 'bluesky'], {
             campaign: 'saltpan',
             cover: svgUri('#19323c', '#9bb8b3', 'circle'),
-            scheduledFor: new Date(Date.now() + 2 * DAY).toISOString().slice(0, 10),
+            scheduledFor: demoNextThursday(),
             body: 'Kiln-opening shots from the first saltpan firing, scheduled for Thursday morning.',
             variants: {
               instagram: { charCount: 141, body: 'Kiln opening, saltpan firing number one. Thursday morning, first light.' },
@@ -385,6 +404,34 @@
             if (demoPosts[i].id === id) return demoPosts[i];
           }
           return null;
+        }
+        function demoGet(id) {
+          var post = demoFind(id);
+          if (!post) throw new Error("No post '" + id + "' in the demo gallery.");
+          return { id: post.id, status: post.status, post: post, summary: post.title };
+        }
+        // Like the posts-store script: one stage at a time, archived from anywhere.
+        function demoMove(id, to, fields) {
+          var post = demoFind(id);
+          if (!post) throw new Error("No post '" + id + "' in the demo gallery.");
+          fields = fields && typeof fields === 'object' ? fields : {};
+          if (!to && typeof fields.status === 'string') to = fields.status;
+          if (!to && !Object.keys(fields).length) throw new Error("Nothing to change — pass 'status' and/or 'fields'.");
+          if (to && post.status !== to && legalNext(post.status).indexOf(to) < 0) {
+            var next = legalNext(post.status);
+            throw new Error(
+              "Cannot move '" + post.id + "' from " + post.status + ' to ' + to +
+              ' — posts move one stage at a time.' +
+              (next.length ? ' Legal next: ' + next.join(', ') + '.' : " '" + post.status + "' is final.")
+            );
+          }
+          ['scheduledFor', 'campaign', 'title'].forEach(function (key) {
+            if (!(key in fields)) return;
+            if (fields[key] == null) delete post[key];
+            else post[key] = String(fields[key]);
+          });
+          if (to) post.status = to;
+          return post;
         }
         function demoIndex() {
           return {
@@ -417,7 +464,7 @@
           demoData['posts/' + post.id + '/media/cover.svg'] = function () { return post.cover; };
         });
 
-        makeDemoGezel({
+        window.gezel || window.makeDemoGezel({
           page: {
             entry: 'gallery/index.html',
             typeName: 'Image Feed',
@@ -429,26 +476,34 @@
           },
           tools: {
             page_set_status: function (input) {
-              var post = demoFind(input && input.id);
-              if (!post) throw new Error("No post '" + (input && input.id) + "' in the demo gallery.");
-              var to = input.status;
-              if (post.status !== to && legalNext(post.status).indexOf(to) < 0) {
-                var next = legalNext(post.status);
-                throw new Error(
-                  "Cannot move '" + post.id + "' from " + post.status + ' to ' + to +
-                  ' — posts move one stage at a time.' +
-                  (next.length ? ' Legal next: ' + next.join(', ') + '.' : " '" + post.status + "' is final.")
-                );
-              }
-              post.status = to;
+              var post = demoMove(input && input.id, input && input.status, null);
               return { id: post.id, status: post.status, summary: 'Moved.' };
             },
-            page_get_post: function (input) {
-              var post = demoFind(input && input.id);
-              if (!post) throw new Error("No post '" + (input && input.id) + "' in the demo gallery.");
-              return { id: post.id, status: post.status, post: post, summary: post.title };
+            page_get_post: function (input) { return demoGet(input && input.id); },
+            // The model's own tools, for the sample conversation.
+            list_posts: function (input) {
+              var all = demoIndex().posts;
+              var posts = all.filter(function (post) {
+                return (!input.status || post.status === input.status) && (!input.platform || post.platforms.indexOf(input.platform) >= 0);
+              });
+              return { posts: posts, total: all.length, summary: all.length + ' post(s).' };
+            },
+            get_post: function (input) { return demoGet(input && input.id); },
+            update_post: function (input) {
+              var before = (demoFind(input && input.id) || {}).status;
+              var post = demoMove(input && input.id, input && input.status, input && input.fields);
+              return { id: post.id, status: post.status, summary: before !== post.status ? "Moved '" + post.id + "' from " + before + ' to ' + post.status + '.' : "Updated '" + post.id + "' (" + post.status + ').' };
+            },
+            write_file: function (input) {
+              var match = /^posts\/([^/]+)\/variants\/([a-z0-9-]+)\.md$/.exec(String((input && input.path) || ''));
+              var post = match && demoFind(match[1]);
+              if (!post) throw new Error("This preview only writes caption variants under a post's variants/ folder.");
+              var body = String(input.content || '').replace(/^---[\s\S]*?\n---\n?/, '').trim();
+              post.variants[match[2]] = { charCount: body.length, body: body };
+              return { path: input.path, bytes: body.length };
             },
           },
+          chat: window.demoChat,
           data: demoData,
         });
 
@@ -465,7 +520,7 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
         if (browserMode) document.getElementById('browser-note').hidden = false;
@@ -563,10 +618,10 @@
         }
 
         function loadGrid() {
-          return gezel.data
-            .read('posts/index.json')
-            .then(function (index) { renderGrid(index); })
-            .catch(function () { renderGrid({ posts: [] }); });
+          var revision=++appLoadRevision;
+          return gezel.data.read('posts/index.json')
+            .then(function(index){if(appDisposed||revision!==appLoadRevision)return;reportAppError(null);renderGrid(index);})
+            .catch(function(error){if(!appDisposed&&revision===appLoadRevision)reportAppError(error);});
         }
 
         function setDrawerError(message) {
@@ -576,7 +631,7 @@
         }
 
         function renderDrawer(post) {
-          el('drawer').hidden = false;
+          if(!el('drawer').open)el('drawer').showModal();
           el('d-title').textContent = post.title || post.id;
           var meta = [post.status, 'created ' + String(post.created || '').slice(0, 10)];
           if (post.scheduledFor) meta.push('scheduled for ' + String(post.scheduledFor).slice(0, 10));
@@ -655,7 +710,7 @@
                         });
                         post.variants[entry.name.replace(/\.md$/, '')] = variant;
                       })
-                      .catch(function () {});
+                      .catch(reportAppError);
                   }),
                 );
               })
@@ -685,13 +740,13 @@
                   .then(function (post) { if (openPostId === id) renderDrawer(post); })
                   .catch(function () {
                     if (openPostId !== id) return;
-                    el('drawer').hidden = false;
+                    if(!el('drawer').open)el('drawer').showModal();
                     el('d-title').textContent = id;
                     setDrawerError('Could not load this post right now.');
                   });
                 return;
               }
-              el('drawer').hidden = false;
+              if(!el('drawer').open)el('drawer').showModal();
               el('d-title').textContent = id;
               setDrawerError(err && err.message ? err.message : 'Could not load this post right now.');
             });
@@ -699,7 +754,7 @@
 
         function closeDrawer() {
           openPostId = null;
-          el('drawer').hidden = true;
+          el('drawer').close();
         }
 
         function movePost(id, status) {
@@ -738,11 +793,12 @@
           .then(function (entries) {
             if (entries && entries.length > 0) el('corpus-hint').hidden = false;
           })
-          .catch(function () {});
+          .catch(function () { /* Optional connector outputs do not exist in a new project. */ });
 
         loadGrid();
-        gezel.data.watch('posts/index.json', function () { loadGrid(); });
+        appSubscriptions.push(gezel.data.watch('posts/index.json', function () { loadGrid(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

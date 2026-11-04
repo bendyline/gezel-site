@@ -247,6 +247,37 @@
     }
     .lede strong { color: var(--sage); }
     .gloss { color: var(--muted); font-size: 0.95rem; max-width: 640px; margin: 0.9rem 0 0; }
+    /* The first thing to do on the page, in the first screen of it. It mirrors
+       the main download button below once that resolves a build, so the two
+       always offer the same file. */
+    .hero-cta { margin: 1.6rem 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .hero-fit, .hero-alt { margin: 0; font-size: 0.9rem; color: var(--muted); max-width: 520px; }
+    .hero-fit a, .hero-alt a { color: var(--muted-strong); text-decoration: underline; text-decoration-color: var(--accent-line); text-underline-offset: 3px; }
+    .hero-fit a:hover, .hero-alt a:hover { color: var(--accent); }
+    /* A phone cannot install a desktop app. Phones see a way to send the page
+       to their computer, the overview and the browser demos instead, and the
+       desktop-only buttons step aside. Set before first paint by the inline
+       script at the top of <body>, so neither version flashes. */
+    html:not(.is-phone) .phone-only { display: none !important; }
+    .is-phone .desktop-only { display: none !important; }
+    .share-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font: 700 1.15rem/1.15 var(--sans);
+      padding: 14px 28px; border-radius: 6px; border: none; cursor: pointer;
+      background: var(--accent); color: #fff; box-shadow: var(--shadow);
+    }
+    .share-btn:hover { background: var(--accent-hover); }
+    .phone-note { margin: 0 0 14px; font-size: 0.95rem; color: var(--muted-strong); }
+    .text-button {
+      background: none; border: none; padding: 0; cursor: pointer;
+      font: inherit; color: var(--accent);
+      text-decoration: underline; text-decoration-color: var(--accent-line); text-underline-offset: 3px;
+    }
+    .text-button:hover { color: var(--accent-hover); }
+    @media (max-width: 720px) {
+      .hero-cta { align-items: stretch; }
+      .share-btn { width: 100%; }
+    }
     /* The proof line: four checkable facts between hairlines, under the hero. */
     .proof {
       list-style: none;
@@ -888,6 +919,7 @@
       text-decoration-color: var(--border);
     }
     .closing-alt a:hover { color: var(--accent); }
+    .closing-alt .sep { opacity: 0.45; margin: 0 9px; }
     .closing + footer { border-top: none; }
     .craft-strip {
       list-style: none;
@@ -1025,15 +1057,27 @@
     <symbol id="i-windows" viewBox="0 0 448 512"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></symbol>
     <symbol id="i-linux" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></symbol>
     <symbol id="i-terminal" viewBox="0 0 576 512"><path d="M9.4 86.6C-3.1 74.1-3.1 53.9 9.4 41.4s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 9.4 86.6zM256 416l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></symbol>
+    <symbol id="i-box" viewBox="0 0 512 512"><path d="M256 24 470 140 256 256 42 140Z M30 166 240 280V494L30 380Z M482 166V380L272 494V280Z"/></symbol>
     <symbol id="i-copy" viewBox="0 0 448 512"><path d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"/></symbol>
     <symbol id="i-check" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></symbol>
   </svg>
+  <script>
+    // Phones and tablets get the phone version of the calls to action: an
+    // iPad reports itself as a Mac, so a Mac with a touch screen counts too.
+    (function () {
+      var ua = navigator.userAgent;
+      var touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+      if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua) || touchMac) {
+        document.documentElement.classList.add("is-phone");
+      }
+    })();
+  </script>
   <div class="wrap">
     <header class="masthead">
       <nav class="masthead-nav">
-        <a href="/platform/">Platform</a>
         <a href="/docs/">Docs</a>
         <a href="/docs/model-scorecard/">Model scorecard</a>
+        <a href="/platform/">For developers</a>
         <a href="https://github.com/bendyline/gezel">
           <!-- GitHub's official mark (octicon mark-github-16). -->
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -1064,6 +1108,23 @@
           Works with free AI models that run on your computer, or with a Claude,
           ChatGPT or Copilot plan you already have. There’s no Gezel account to create.
         </p>
+        <div class="hero-cta">
+          <a class="download-btn desktop-only" id="heroDownloadBtn" href="#download">
+            <span class="btn-main" id="heroBtnMain">Download Gezel</span>
+            <span class="btn-sub" id="heroBtnSub">Free for macOS, Windows and Linux</span>
+          </a>
+          <p class="hero-fit desktop-only" id="heroFit">
+            Local AI runs on an Apple-silicon Mac with 16&nbsp;GB of memory, or a PC with an
+            8&nbsp;GB graphics card. <a href="#download">What you need</a>
+          </p>
+          <!-- On a phone: nothing to install here, so keep the visit going. -->
+          <p class="phone-note phone-only">Gezel is a desktop app for Mac, Windows and Linux. Send yourself the link and download it at your computer.</p>
+          <button type="button" class="share-btn phone-only" data-share>Send this to my computer</button>
+          <p class="hero-alt">
+            <a href="/apps/">Try <data data-count="projectTypeDemos" value="43">43</data> Gezel apps in your browser first</a>
+            <span class="phone-only">· <a href="https://www.youtube.com/watch?v=bw1XFC6JcFA">Watch the overview</a></span>
+          </p>
+        </div>
       </div>
 
       <!-- Click-to-load facade. Nothing is requested from YouTube until someone
@@ -1094,7 +1155,7 @@
     <ul class="proof" aria-label="Gezel at a glance">
       <li>No account needed</li>
       <li>Open source, MIT license</li>
-      <li><data data-count="craftbooks" data-floor="10" value="294">290</data>+ tested plans</li>
+      <li><data data-count="craftbooks" data-floor="10" value="300">300</data>+ tested plans</li>
       <li><a href="/docs/model-scorecard/">Models tested on real jobs</a></li>
     </ul>
 
@@ -1118,8 +1179,13 @@
             <svg class="tray-icon" aria-hidden="true" focusable="false"><use href="#i-terminal"/></svg>
             <span>Command Line</span>
           </button>
+          <button class="tray-key" data-platform="docker" aria-pressed="false">
+            <svg class="tray-icon" aria-hidden="true" focusable="false"><use href="#i-box"/></svg>
+            <span>Docker</span>
+          </button>
         </div>
         <div class="pick-main">
+          <p class="phone-note phone-only">These are installers for your computer, not your phone. <button type="button" class="text-button" data-share>Send yourself the link</button></p>
           <a class="download-btn is-pending" id="downloadBtn" href="https://github.com/bendyline/gezel/releases">
             <span class="btn-main" id="btnMain">Download Gezel</span>
             <span class="btn-sub" id="btnSub">Looking up the latest build…</span>
@@ -1128,20 +1194,40 @@
           <div class="cli" id="cli" hidden>
             <p class="cli-lede">Install the CLI from npm, then start it:</p>
             <div class="cmd">
-              <code>npm install @bendyline/gezel-cli</code>
-              <button class="copy" type="button" data-copy="npm install @bendyline/gezel-cli">
+              <code>npm install -g @bendyline/gezel-cli</code>
+              <button class="copy" type="button" data-copy="npm install -g @bendyline/gezel-cli">
                 <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
                 <span class="copy-slot"><span class="copy-label">Copy</span></span>
               </button>
             </div>
             <div class="cmd">
-              <code>npx gezel</code>
-              <button class="copy" type="button" data-copy="npx gezel">
+              <code>gezel</code>
+              <button class="copy" type="button" data-copy="gezel">
                 <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
                 <span class="copy-slot"><span class="copy-label">Copy</span></span>
               </button>
             </div>
-            <p class="cli-note">Needs <a href="https://nodejs.org/">Node.js</a> 24 or newer. <a href="/docs/cli-reference/">CLI reference</a></p>
+            <p class="cli-note">Needs <a href="https://nodejs.org/">Node.js</a> 24 or newer. To try it without installing, name the package: <code>npx -p @bendyline/gezel-cli gezel</code>. <a href="/docs/cli-reference/">CLI reference</a></p>
+          </div>
+          <!-- Same shape as the command-line panel: Docker has no file to
+               download, only a command, every engine already inside. -->
+          <div class="cli" id="docker" hidden>
+            <p class="cli-lede">Run all of Gezel in one container, then open the link in its log:</p>
+            <div class="cmd">
+              <code>docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel</code>
+              <button class="copy" type="button" data-copy="docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel">
+                <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                <span class="copy-slot"><span class="copy-label">Copy</span></span>
+              </button>
+            </div>
+            <div class="cmd">
+              <code>docker logs gezel</code>
+              <button class="copy" type="button" data-copy="docker logs gezel">
+                <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                <span class="copy-slot"><span class="copy-label">Copy</span></span>
+              </button>
+            </div>
+            <p class="cli-note">For an NVIDIA card add <code>--gpus all</code> and use <code>:cuda</code>; for AMD or Intel, see the guide for <code>:vulkan</code>. It downloads only models, and a browser for tasks that visit websites. <a href="/docs/gezel-in-docker/">Gezel in Docker</a></p>
           </div>
           <!-- Provenance sits under the button rather than in its own band across
                the card, so the whole download decision stays in one column and
@@ -1298,10 +1384,10 @@
         <li><a href="/docs/craftbook/family-story-chapter/"><img src="/assets/marks/family-story-chapter.webp" alt="" data-ground="rose" width="160" height="160" loading="lazy" decoding="async"><span>Family story chapter</span></a></li>
       </ul>
       <ul class="catalog-links">
-        <li><a href="/docs/craftbooks-index/"><strong><data data-count="craftbooks" data-floor="10" value="294">290</data>+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
-        <li><a href="/docs/model-catalog/"><strong><data data-count="models" value="90">90</data> AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
-        <li><a href="/docs/role-catalog/"><strong><data data-count="characters" value="41">41</data> characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
-        <li><a href="/docs/project-types-index/"><strong><data data-count="projectTypes" value="26">26</data> project types</strong><span>Ready-made setups, and <data data-count="projectTypeDemos" value="23">23</data> of them you can try in your browser.</span></a></li>
+        <li><a href="/docs/craftbooks-index/"><strong><data data-count="craftbooks" data-floor="10" value="300">300</data>+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
+        <li><a href="/docs/model-catalog/"><strong><data data-count="models" value="91">91</data> AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
+        <li><a href="/docs/role-catalog/"><strong><data data-count="characters" value="52">52</data> characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
+        <li><a href="/docs/project-types-index/"><strong><data data-count="projectTypes" value="46">46</data> project types</strong><span>Ready-made setups, and <data data-count="projectTypeDemos" value="43">43</data> of them you can try in your browser.</span></a></li>
         <li><a href="/docs/toolset-catalog/"><strong><data data-count="connectors" value="24">24</data> connectors</strong><span>Bring in mail, calendars, issues and posts as files your crew can read.</span></a></li>
       </ul>
     </section>
@@ -1313,7 +1399,7 @@
       <div class="band-cols">
         <div>
           <h3>Made for the AI on your computer</h3>
-          <p>Each helper has one job, a few tools, and one of <data data-count="craftbooks" data-floor="10" value="294">290</data>+ <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
+          <p>Each helper has one job, a few tools, and one of <data data-count="craftbooks" data-floor="10" value="300">300</data>+ <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
         </div>
         <div>
           <h3>You stay in charge</h3>
@@ -1375,17 +1461,18 @@
       <p class="closing-sub">Free for macOS, Windows and Linux. There’s no account to create.</p>
       <!-- Filled in from the main download button once it resolves a build;
            until then, and without the listing, it opens the releases page. -->
-      <a class="download-btn" id="endDownloadBtn" href="https://github.com/bendyline/gezel/releases">
+      <a class="download-btn desktop-only" id="endDownloadBtn" href="https://github.com/bendyline/gezel/releases">
         <span class="btn-main" id="endBtnMain">Download Gezel</span>
         <span class="btn-sub" id="endBtnSub">Free and open source</span>
       </a>
-      <p class="closing-alt"><a href="#download">Other platforms, the command line, and what you need</a></p>
+      <button type="button" class="share-btn phone-only" data-share>Send this to my computer</button>
+      <p class="closing-alt"><a class="desktop-only" href="#download">Other platforms, the command line, and what you need</a><span class="sep desktop-only" aria-hidden="true">·</span><a href="/docs/whats-new-index/">What’s new in each release</a></p>
     </section>
 
     <footer>
       <p>© 2026 Bendyline · Free and open source under the MIT license</p>
       <p>
-        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
+        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
       </p>
     </footer>
   </div>
@@ -1453,8 +1540,12 @@
       var endBtn = document.getElementById("endDownloadBtn");
       var endMain = document.getElementById("endBtnMain");
       var endSub = document.getElementById("endBtnSub");
+      var heroBtn = document.getElementById("heroDownloadBtn");
+      var heroMain = document.getElementById("heroBtnMain");
+      var heroSub = document.getElementById("heroBtnSub");
       var variantsEl = document.getElementById("variants");
       var cliEl = document.getElementById("cli");
+      var dockerEl = document.getElementById("docker");
       var specSets = Array.prototype.slice.call(document.querySelectorAll("[data-specs]"));
       var metaEl = document.getElementById("releaseMeta");
       var noteEl = document.getElementById("releaseNote");
@@ -1583,8 +1674,16 @@
 
       // The CLI ships from npm, not from the release listing, so its key hides
       // everything the listing drives and shows the two commands instead.
-      function showCli(on) {
-        cliEl.hidden = !on;
+      // The command line and Docker are commands, not downloads: each has its
+      // own panel in place of the button.
+      function isCommandPanel(p) {
+        return p === "cli" || p === "docker";
+      }
+
+      function showCommandPanel(p) {
+        cliEl.hidden = p !== "cli";
+        if (dockerEl) dockerEl.hidden = p !== "docker";
+        var on = isCommandPanel(p);
         btn.hidden = on;
         if (on) {
           variantsEl.hidden = true;
@@ -1632,16 +1731,42 @@
       // so it copies the main button instead of resolving a build of its own.
       // The command line has no single file to offer, so it points back up.
       function mirrorEnd() {
+        mirrorHero();
         if (!endBtn) return;
         if (platform === "cli") {
           endBtn.href = "#download";
           endMain.textContent = "Install the command line";
-          endSub.textContent = "npm install @bendyline/gezel-cli";
+          endSub.textContent = "npm install -g @bendyline/gezel-cli";
+          return;
+        }
+        if (platform === "docker") {
+          endBtn.href = "#download";
+          endMain.textContent = "Run Gezel in Docker";
+          endSub.textContent = "docker run … ghcr.io/bendyline/gezel";
           return;
         }
         endBtn.href = btn.href;
         endMain.textContent = btnMain.textContent;
         endSub.textContent = btnSub.textContent;
+      }
+
+      // The hero button offers this machine's build, whatever the picker below
+      // is showing, so choosing "Linux" further down never changes the button
+      // at the top. Until a build resolves it scrolls to the picker.
+      function mirrorHero() {
+        if (!heroBtn) return;
+        var label = PLATFORM_LABEL[detected];
+        var list = release ? buildsFor(detected) : [];
+        if (!list.length) {
+          heroBtn.href = "#download";
+          heroMain.textContent = release ? "Download Gezel" : "Download for " + label;
+          heroSub.textContent = "Free for macOS, Windows and Linux";
+          return;
+        }
+        var build = list[0];
+        heroBtn.href = build.url;
+        heroMain.textContent = "Download for " + label;
+        heroSub.textContent = ["Free", release.version, formatSize(build.size)].join(" · ");
       }
 
       function render() {
@@ -1652,10 +1777,10 @@
       function renderPicker() {
         // The CLI drives the same local models as the app, so it answers the
         // hardware question for the machine you are actually on.
-        var specsFor = platform === "cli" ? detected : platform;
+        var specsFor = isCommandPanel(platform) ? detected : platform;
         showSpecs(specsFor, preferredArch(specsFor));
-        showCli(platform === "cli");
-        if (platform === "cli") return;
+        showCommandPanel(platform);
+        if (isCommandPanel(platform)) return;
 
         var label = PLATFORM_LABEL[platform];
         if (!release) {
@@ -1709,7 +1834,7 @@
       // desktop build. The button still works, it just sends people to the
       // releases page instead of straight at a file.
       function fail() {
-        if (platform !== "cli") {
+        if (!isCommandPanel(platform)) {
           btn.classList.remove("is-pending");
           btn.href = RELEASES;
           btnMain.textContent = "Download Gezel";
@@ -1812,6 +1937,36 @@
           render();
         })
         .catch(fail);
+    })();
+
+    // "Send this to my computer": the phone's share sheet where there is one
+    // (mail, messages, notes), else the link on the clipboard.
+    (function () {
+      var buttons = document.querySelectorAll("[data-share]");
+      if (!buttons.length) return;
+      var URL_TO_SEND = "https://gezel.com/";
+      Array.prototype.forEach.call(buttons, function (b) {
+        var label = b.textContent;
+        function say(text) {
+          b.textContent = text;
+          setTimeout(function () { b.textContent = label; }, 2000);
+        }
+        b.addEventListener("click", function () {
+          if (navigator.share) {
+            navigator.share({
+              title: "Gezel",
+              text: "Gezel, a free AI crew for my computer. Download it here:",
+              url: URL_TO_SEND
+            }).catch(function () {});
+            return;
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(URL_TO_SEND).then(function () { say("Link copied"); }, function () { say(URL_TO_SEND); });
+          } else {
+            say(URL_TO_SEND);
+          }
+        });
+      });
     })();
 
     // Catalog counts come from the docs export (`pnpm docs:site` writes

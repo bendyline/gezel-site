@@ -71,7 +71,9 @@
 <li><a href="../../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../../what-leaves-this-computer/">What leaves this computer</a></li>
 <li><a href="../../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../../governance/">Governance: who writes Gezel, and how</a></li>
 <li><a href="../../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
@@ -81,6 +83,8 @@
 <li><a href="../../cli-reference/">The gezel command line</a></li>
 <li><a href="../../npm-packages/">Gezel on npm: the package map</a></li>
 <li><a href="../../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../../gezel-in-docker/">Gezel in Docker</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -126,7 +130,7 @@
 <div class="hb-scorecard-suite" data-hb-suite="core">
 <h5 class="hb-scorecard-suite-title">General capability</h5>
 <h6>Task performance</h6>
-<p>Task measurements across all attempted trials, including failures. Measurement methods and limits are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
 <tr data-hb-model="nanbeige4.2-3b" data-hb-tier="tiny"><td>Nanbeige 4.2 (3B, Q4)</td><td>N1 · 10-20 16:55–10-20 17:59 UTC</td><td>3</td><td>44.32 (44.29–48.42; n=3)</td><td>1,481.48 (1,297.46–1,548.52; n=3)</td><td>25.0 (3.9–31.0; n=3)</td><td>11.46 (10.11–14.44; n=3)</td><td>8.02 (8.02–8.02; n=3)</td></tr>
 <tr data-hb-model="nanbeige4.2-3b" data-hb-tier="tiny"><td>Nanbeige 4.2 (3B, Q4)</td><td>N2 · 10-20 18:15–10-20 18:22 UTC</td><td>2</td><td>51.34 (43.85–58.83; n=2)</td><td>1,651.79 (1,108.81–2,194.77; n=2)</td><td>3.2 (2.6–3.9; n=2)</td><td>9.83 (9.13–10.53; n=2)</td><td>8.02 (8.02–8.02; n=2)</td></tr>

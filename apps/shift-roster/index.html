@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shift Roster — a Gezel app</title>
+<meta name="description" content="Build the shift roster and keep every shift covered. A shift scheduler drafts the week from who is available, checks coverage and hours against the rules you set, and leaves every week for you to approve.">
+<link rel="canonical" href="https://gezel.com/apps/shift-roster/">
+<meta name="theme-color" content="#eae5d6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg?v=outline" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=workbench" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/apps/shift-roster/">
+<meta property="og:title" content="Shift Roster — a Gezel app">
+<meta property="og:description" content="Build the shift roster and keep every shift covered. A shift scheduler drafts the week from who is available, checks coverage and hours against the rules you set, and leaves every week for you to approve.">
+<meta property="og:image" content="https://gezel.com/og-image.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+<a class="logotype" href="/" aria-label="Gezel home">gezel</a>
+<nav class="masthead-nav" aria-label="Site">
+<a href="/apps/" aria-current="page">Apps</a>
+<a href="/docs/">Docs</a>
+<a href="/docs/model-scorecard/">Model scorecard</a>
+<a href="/platform/">For developers</a>
+<a href="https://github.com/bendyline/gezel">GitHub</a>
+</nav>
+</header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/apps/">Apps</a><span aria-hidden="true"> / </span><span>Business &amp; Teams</span></nav>
+<section class="app-hero">
+<img class="mark" src="logo.webp" alt="" width="200" height="200" loading="lazy" decoding="async" data-ground="ochre">
+<div>
+<h1>Shift Roster</h1>
+<p class="lede">Build the shift roster and keep every shift covered. A shift scheduler drafts the week from who is available, checks coverage and hours against the rules you set, and leaves every week for you to approve.</p>
+<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/shift-roster/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+</div>
+</section>
+<section class="demo" aria-labelledby="try">
+<div class="demo-head"><h2 id="try">Try it</h2><a class="text-link" href="demo/roster/index.html" target="_blank" rel="noreferrer">Open in a full window<span aria-hidden="true"> ↗</span></a></div>
+<p class="demo-note">Shift Roster running in your browser on sample data. Use the page, or talk with the shift scheduler beside it: the conversation is scripted for this preview, and the changes stay in the page.</p>
+<div class="demo-frame"><iframe src="demo/roster/index.html" title="Shift Roster, running on sample data" sandbox="allow-scripts allow-forms allow-modals" referrerpolicy="no-referrer"></iframe></div>
+</section>
+<section class="inside" aria-labelledby="inside">
+<h2 id="inside">What’s inside</h2>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/shift-scheduler/"><strong>Shift Scheduler</strong></a> <span class="tag">Crew lead</span><span>A fair, careful builder of a small team's weekly roster: every shift covered from who is available, hours kept inside the limits the business sets, and every week left for a person to approve.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/weekly-schedule-draft/"><strong>Weekly Schedule Draft</strong></a><span>Draft a week's shift schedule from the roster: every open spot filled from who is available, hours kept inside the limits the business set, the spots nobody can take named plainly, and the whole week left for a person to approve.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Roster status</strong><span>This week and next: the open spots (soonest first, with who is free for each), conflicts, everyone's hours against their limits, the schedule by day, availability and the business's rules, all with ids.</span></li><li><strong>Add staff</strong><span>Save a person on the roster: name, the roles they work, and their own weekly hour limit if the business states one.</span></li><li><strong>Set availability</strong><span>Record when someone can't work: a weekday for every week, weekdays, weekends, every day, or one date, all day or for part of it.</span></li><li><strong>Add shift</strong><span>Add a shift: date, start, end, role and how many people it needs.</span></li><li><strong>Copy week</strong><span>Start a week from another one (default: the week before), keeping each person only where they still pass every rule and availability.</span></li><li><strong>Assign shift</strong><span>Put someone on a shift (staff) or take someone off (remove), by the shift's id.</span></li><li><strong>Set rules</strong><span>Record a scheduling rule the business states: most hours a week, fewest hours between shifts, longest shift, or another rule in their words.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>staff.json</code>, <code>shifts.json</code>, <code>availability.json</code>, <code>rules.json</code>.</p></section></div>
+</section>
+<section class="steps" aria-labelledby="start">
+<h2 id="start">Start one</h2>
+<ol>
+<li><a href="/#download">Download Gezel</a> for Mac, Windows or Linux. It’s free.</li>
+<li>Choose <strong>New project</strong>, then <strong>Business &amp; Teams</strong>, then <strong>Shift Roster</strong>.</li>
+<li>Answer its question: <em>What kind of business is this?</em></li>
+<li>Your shift scheduler takes it from there, on the model you choose.</li>
+</ol>
+</section>
+<section class="more" aria-labelledby="more"><h2 id="more">More apps to try</h2><ul class="app-grid app-grid-small"><li class="app-card" data-category="business">
+<a href="../campaign-room/">
+<img class="mark" src="../campaign-room/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Campaign Room</strong>
+<span class="app-card-text">Run one marketing campaign from plan to results.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Campaign Manager + 3</span><span>4 craftbooks</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="business">
+<a href="../client-delivery/">
+<img class="mark" src="../client-delivery/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Client Delivery</strong>
+<span class="app-card-text">Deliver client work on time, with every handoff tracked.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Planner + 1</span><span>4 craftbooks</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="business">
+<a href="../compliance-register/">
+<img class="mark" src="../compliance-register/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Compliance Register</strong>
+<span class="app-card-text">Keep a small business in good standing.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Compliance Officer + 1</span><span>1 craftbook</span></span>
+</span>
+</a>
+</li></ul></section>
+</main>
+<footer>
+<p>© 2026 Bendyline · Free and open source under the MIT license</p>
+<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+</footer>
+</div>
+</body>
+</html>

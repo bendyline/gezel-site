@@ -71,7 +71,9 @@
 <li><a href="../../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../../what-leaves-this-computer/">What leaves this computer</a></li>
 <li><a href="../../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../../governance/">Governance: who writes Gezel, and how</a></li>
 <li><a href="../../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
@@ -81,6 +83,8 @@
 <li><a href="../../cli-reference/">The gezel command line</a></li>
 <li><a href="../../npm-packages/">Gezel on npm: the package map</a></li>
 <li><a href="../../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../../gezel-in-docker/">Gezel in Docker</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -127,7 +131,7 @@
 <h5 class="hb-scorecard-suite-title">General capability</h5>
 <div class="hb-table-scroll"><table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th><th>System memory</th></tr></thead><tbody><tr data-hb-model="underdog-saluki-27b-iq2-mix" data-hb-tier="medium"><td>Underdog Saluki 1.0 (27B, IQ2 mix) (kv: f16)</td><td>27B</td><td>23/26 (some tasks run 2× — count not rate)</td><td>64K</td><td>13.3 GB</td></tr><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>21/26 (some tasks run 2× — count not rate)</td><td>64K</td><td>16.1 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q2) (kv: f16)</td><td>27B</td><td>21/26 (some tasks run 2× — count not rate)</td><td>64K</td><td>15.4 GB</td></tr><tr data-hb-model="gemma4-e4b" data-hb-tier="small"><td>Gemma 4 (E4B, Q4) (kv: f16)</td><td>8B</td><td>20/26 (some tasks run 2× — count not rate)</td><td>64K</td><td>6.2 GB</td></tr><tr data-hb-model="qwen3.5-9b" data-hb-tier="small"><td>Qwen 3.5 (9B, Q4) (kv: f16)</td><td>9B</td><td>20/26 (some tasks run 2× — count not rate)</td><td>64K</td><td>11.1 GB</td></tr><tr data-hb-model="ornith1.5-9b" data-hb-tier="small"><td>Ornith 1.5 (9B, Q4) (kv: f16)</td><td>9B</td><td>16/26 (some tasks run 2× — count not rate)</td><td>64K</td><td>9.7 GB</td></tr><tr data-hb-model="qwen3.5-4b" data-hb-tier="tiny"><td>Qwen 3.5 (4B, Q4) (kv: f16)</td><td>4B</td><td>15/26 (some tasks run 2× — count not rate)</td><td>64K</td><td>8.0 GB</td></tr></tbody></table></div>
 <h6>Task performance</h6>
-<p>Task measurements across all attempted trials, including failures. Measurement methods and limits are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
 <tr data-hb-model="underdog-saluki-27b-iq2-mix" data-hb-tier="medium"><td>Underdog Saluki 1.0 (27B, IQ2 mix)</td><td>B · 10-20 18:55–10-22 05:00 UTC</td><td>26</td><td>12.59 (2.89–13.48; n=26)</td><td>657.32 (140.59–698.64; n=26)</td><td>6.4 (1.7–46.5; n=26)</td><td>13.31 (9.50–18.85; n=26)</td><td>10.46 (10.38–10.47; n=26)</td></tr>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>B · 10-20 18:24–10-22 05:27 UTC</td><td>26</td><td>120.70 (11.11–155.67; n=26)</td><td>1,830.85 (396.53–2,024.00; n=26)</td><td>2.0 (0.6–53.5; n=26)</td><td>16.06 (10.42–18.57; n=26)</td><td>8.50 (8.41–8.50; n=26)</td></tr>

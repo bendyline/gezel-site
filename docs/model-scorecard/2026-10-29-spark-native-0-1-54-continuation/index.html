@@ -71,7 +71,9 @@
 <li><a href="../../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../../what-leaves-this-computer/">What leaves this computer</a></li>
 <li><a href="../../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../../governance/">Governance: who writes Gezel, and how</a></li>
 <li><a href="../../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
@@ -81,6 +83,8 @@
 <li><a href="../../cli-reference/">The gezel command line</a></li>
 <li><a href="../../npm-packages/">Gezel on npm: the package map</a></li>
 <li><a href="../../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../../gezel-in-docker/">Gezel in Docker</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -127,7 +131,7 @@
 <h5 class="hb-scorecard-suite-title">General capability</h5>
 <div class="hb-table-scroll"><table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th><th>System memory</th></tr></thead><tbody><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>10/11 (some tasks run once — count not rate)</td><td>256K</td><td>9.1 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>10/11 (some tasks run once — count not rate)</td><td>250K</td><td>6.5 GB</td></tr></tbody></table></div>
 <h6>Task performance</h6>
-<p>Task measurements across all attempted trials, including failures. Measurement methods and limits are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Separate continuation condition · all attempts</td><td>11</td><td>70.64 (45.36–77.83; n=11)</td><td>1,332.12 (876.10–1,416.84; n=11)</td><td>2.6 (1.0–26.1; n=11)</td><td>9.11 (4.83–11.75; n=11)</td><td>13.21 (13.03–20.17; n=11)</td></tr>
 <tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Separate continuation condition · all attempts</td><td>11</td><td>27.79 (14.36–34.01; n=11)</td><td>573.22 (317.14–637.31; n=11)</td><td>4.1 (1.4–38.6; n=11)</td><td>6.55 (3.32–11.36; n=11)</td><td>35.40 (35.23–35.65; n=11)</td></tr>
@@ -144,7 +148,7 @@
 <h5 class="hb-scorecard-suite-title">Office and knowledge work</h5>
 <div class="hb-table-scroll"><table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th><th>System memory</th></tr></thead><tbody><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>11/13 (some tasks run once — count not rate)</td><td>256K</td><td>9.8 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>11/13 (some tasks run once — count not rate)</td><td>250K</td><td>7.6 GB</td></tr></tbody></table></div>
 <h6>Task performance</h6>
-<p>Task measurements across all attempted trials, including failures. Measurement methods and limits are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Separate continuation condition · all attempts</td><td>13</td><td>69.04 (60.89–75.66; n=13)</td><td>1,313.93 (992.52–1,589.97; n=13)</td><td>5.2 (0.8–90.4; n=13)</td><td>9.75 (4.83–11.18; n=13)</td><td>13.35 (13.04–13.60; n=13)</td></tr>
 <tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Separate continuation condition · all attempts</td><td>13</td><td>30.46 (22.80–36.51; n=13)</td><td>615.99 (542.78–688.07; n=13)</td><td>6.8 (1.9–38.7; n=13)</td><td>7.57 (3.40–11.67; n=13)</td><td>35.54 (35.23–35.92; n=13)</td></tr>
@@ -161,7 +165,7 @@
 <h5 class="hb-scorecard-suite-title">Engineering work</h5>
 <div class="hb-table-scroll"><table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th><th>System memory</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>6/10 (some tasks run once — count not rate)</td><td>250K</td><td>8.1 GB</td></tr><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>4/10 (some tasks run once — count not rate)</td><td>256K</td><td>10.5 GB</td></tr></tbody></table></div>
 <h6>Task performance</h6>
-<p>Task measurements across all attempted trials, including failures. Measurement methods and limits are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
 <tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Separate continuation condition · all attempts</td><td>10</td><td>30.58 (25.46–40.91; n=10)</td><td>657.90 (578.55–685.24; n=10)</td><td>12.4 (2.0–38.1; n=10)</td><td>8.11 (3.91–10.42; n=10)</td><td>35.25 (35.11–35.28; n=10)</td></tr>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Separate continuation condition · all attempts</td><td>10</td><td>76.07 (69.09–80.21; n=10)</td><td>1,292.13 (1,140.10–1,490.38; n=10)</td><td>8.4 (1.6–30.5; n=10)</td><td>10.49 (8.68–11.38; n=10)</td><td>13.06 (12.91–13.07; n=10)</td></tr>
@@ -177,7 +181,7 @@
 <div class="hb-scorecard-suite" data-hb-suite="complex-work">
 <h5 class="hb-scorecard-suite-title">Complex workflows</h5>
 <h6>Task performance</h6>
-<p>Task measurements across all attempted trials, including failures. Measurement methods and limits are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Separate continuation condition · all attempts</td><td>8</td><td>66.32 (60.41–85.99; n=8)</td><td>1,233.25 (645.59–1,401.94; n=8)</td><td>12.6 (3.5–29.3; n=8)</td><td>10.40 (9.09–11.74; n=8)</td><td>13.08 (13.02–13.51; n=8)</td></tr>
 <tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Separate continuation condition · all attempts</td><td>7</td><td>27.33 (22.54–38.00; n=7)</td><td>639.87 (539.34–669.15; n=7)</td><td>16.0 (2.4–48.0; n=7)</td><td>8.70 (3.98–10.48; n=7)</td><td>35.27 (35.25–35.50; n=7)</td></tr>

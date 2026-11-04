@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Desk — a Gezel app</title>
+<meta name="description" content="Answer customer questions and keep every request moving. A support lead logs each question as a ticket, drafts replies from your own help articles, and notices the questions those articles do not answer yet.">
+<link rel="canonical" href="https://gezel.com/apps/support-desk/">
+<meta name="theme-color" content="#eae5d6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg?v=outline" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=workbench" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/apps/support-desk/">
+<meta property="og:title" content="Support Desk — a Gezel app">
+<meta property="og:description" content="Answer customer questions and keep every request moving. A support lead logs each question as a ticket, drafts replies from your own help articles, and notices the questions those articles do not answer yet.">
+<meta property="og:image" content="https://gezel.com/og-image.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+<a class="logotype" href="/" aria-label="Gezel home">gezel</a>
+<nav class="masthead-nav" aria-label="Site">
+<a href="/apps/" aria-current="page">Apps</a>
+<a href="/docs/">Docs</a>
+<a href="/docs/model-scorecard/">Model scorecard</a>
+<a href="/platform/">For developers</a>
+<a href="https://github.com/bendyline/gezel">GitHub</a>
+</nav>
+</header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/apps/">Apps</a><span aria-hidden="true"> / </span><span>Business &amp; Teams</span></nav>
+<section class="app-hero">
+<img class="mark" src="logo.webp" alt="" width="200" height="200" loading="lazy" decoding="async" data-ground="ochre">
+<div>
+<h1>Support Desk</h1>
+<p class="lede">Answer customer questions and keep every request moving. A support lead logs each question as a ticket, drafts replies from your own help articles, and notices the questions those articles do not answer yet.</p>
+<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/support-desk/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+</div>
+</section>
+<section class="demo" aria-labelledby="try">
+<div class="demo-head"><h2 id="try">Try it</h2><a class="text-link" href="demo/desk/index.html" target="_blank" rel="noreferrer">Open in a full window<span aria-hidden="true"> ↗</span></a></div>
+<p class="demo-note">Support Desk running in your browser on sample data. Use the page, or talk with the support lead beside it: the conversation is scripted for this preview, and the changes stay in the page.</p>
+<div class="demo-frame"><iframe src="demo/desk/index.html" title="Support Desk, running on sample data" sandbox="allow-scripts allow-forms allow-modals" referrerpolicy="no-referrer"></iframe></div>
+</section>
+<section class="inside" aria-labelledby="inside">
+<h2 id="inside">What’s inside</h2>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/support-lead/"><strong>Support Lead</strong></a> <span class="tag">Crew lead</span><span>A calm, organized lead for a small business's customer questions: every request logged as a ticket, answered from the business's own help articles, and the questions those articles miss turned into new ones.</span></li><li><a href="/docs/role-template/boekwachter/"><strong>Librarian</strong></a><span>The index-keeper.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/inbox-triage/"><strong>Inbox Triage &amp; Reply Drafts</strong></a><span>Triage a batch of incoming emails or messages into priority buckets and draft replies for the ones that need them.</span></li><li><a href="/docs/craftbook/faq-from-docs/"><strong>FAQ from Source Docs</strong></a><span>Build a grounded FAQ page by mining real source documents for the questions users actually ask, then writing tight, accurate answers traced back to the source: it first researches the corpus to extract candidate questions, dedupes and groups them, and ranks by likely frequency, then writes clear question-and-answer pairs where every answer is supported by the docs.</span></li><li><a href="/docs/craftbook/knowledge-base-article/"><strong>Knowledge Base Article</strong></a><span>Write a support knowledge-base article that lets a user solve their problem without contacting support: it first scopes the exact user problem, the search terms they would use, prerequisites, and the success outcome, then writes a task-oriented article with a clear title, a short overview, numbered steps with expected results, screenshots/placeholders where needed, and a troubleshooting section, then a review pass verifies accuracy and self-service completeness.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Desk status</strong><span>The support desk now: every ticket that needs a reply (urgent first, then oldest) with what the customer asked and whether a reply is drafted, what waits on the customer, the questions no help article answers yet, and the help articles in kb/.</span></li><li><strong>Add ticket</strong><span>Log a customer request as a ticket: subject, customer, channel, category, priority, their message in their words, and the day it came in (YYYY-MM-DD, default today).</span></li><li><strong>Suggest reply</strong><span>Save a suggested reply on a ticket, ready for the person to send, with the help article in kb/ it draws on.</span></li><li><strong>Set ticket status</strong><span>Move a ticket: open (being worked on), waiting (on the customer), resolved, or back to new.</span></li><li><strong>Save kb article</strong><span>Write a help article to kb/ (title and markdown body) and close the knowledge-base gap it answers (topic, as the status names it).</span></li><li><strong>List tickets</strong><span>Every ticket, resolved ones too, with its status, category, customer, age and message.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>tickets.json</code>.</p></section></div>
+</section>
+<section class="steps" aria-labelledby="start">
+<h2 id="start">Start one</h2>
+<ol>
+<li><a href="/#download">Download Gezel</a> for Mac, Windows or Linux. It’s free.</li>
+<li>Choose <strong>New project</strong>, then <strong>Business &amp; Teams</strong>, then <strong>Support Desk</strong>.</li>
+<li>Answer a few questions: <em>What kind of business is this?</em> <em>How should replies sound?</em></li>
+<li>Your support lead takes it from there, on the model you choose.</li>
+</ol>
+</section>
+<section class="more" aria-labelledby="more"><h2 id="more">More apps to try</h2><ul class="app-grid app-grid-small"><li class="app-card" data-category="business">
+<a href="../campaign-room/">
+<img class="mark" src="../campaign-room/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Campaign Room</strong>
+<span class="app-card-text">Run one marketing campaign from plan to results.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Campaign Manager + 3</span><span>4 craftbooks</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="business">
+<a href="../client-delivery/">
+<img class="mark" src="../client-delivery/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Client Delivery</strong>
+<span class="app-card-text">Deliver client work on time, with every handoff tracked.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Planner + 1</span><span>4 craftbooks</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="business">
+<a href="../compliance-register/">
+<img class="mark" src="../compliance-register/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Compliance Register</strong>
+<span class="app-card-text">Keep a small business in good standing.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Compliance Officer + 1</span><span>1 craftbook</span></span>
+</span>
+</a>
+</li></ul></section>
+</main>
+<footer>
+<p>© 2026 Bendyline · Free and open source under the MIT license</p>
+<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+</footer>
+</div>
+</body>
+</html>

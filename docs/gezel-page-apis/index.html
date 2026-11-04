@@ -71,7 +71,9 @@
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../what-leaves-this-computer/">What leaves this computer</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../governance/">Governance: who writes Gezel, and how</a></li>
 <li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
@@ -81,6 +83,8 @@
 <li><a href="../cli-reference/">The gezel command line</a></li>
 <li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
 <li><a href="../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../gezel-in-docker/">Gezel in Docker</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -167,6 +171,48 @@ void refresh();</code></pre>
 <p>Feature-detect optional additions such as <code>gezel.tables</code> and <code>gezel.data.open</code>, then handle their errors. Mode alone is not a promise that every engine or codec is installed. Avoid offering an action that cannot work in the current mode.</p>
 <p>For standalone demos, the website publisher, local preview server, or offline exporter injects a shared bootstrap before app scripts. App source contains its UI and sample handlers, not a copied SDK, component runtime, or font set. Initialize with <code>const api = window.gezel || window.makeDemoGezel({ page, tools, data, existingPaths });</code>. In a real host the existing API wins; in a demo, the bootstrap installs the sample transport and <code>api.ui.components</code>. Import targets come from the manifest's <code>pages.imports</code>. Keep deterministic samples, a visible banner and Reset demo. A failed live call must remain a live error, not switch into demo mode.</p>
 <p>Pages have no daemon credentials, Node filesystem, unrestricted SQL connection, or arbitrary-path write API. Imports are a narrow exception for explicitly declared destinations. Stay on this shared surface.</p>
+<h2 id="fullscreen-layout-and-embedded-chat">Fullscreen layout and embedded chat</h2>
+<p>Read <code>gezel.ui.layout</code> at boot and subscribe with <code>gezel.ui.onLayout(callback)</code>. The snapshot contains <code>fullscreen</code>, <code>width</code>, and <code>height</code> in CSS pixels. In the Output pane, fullscreen means the page is maximized inside the Gezel window's main workspace. The project sidebar stays available on its configured side, expanded or collapsed as the user left it. Each project remembers whether its page is closed, open, or fullscreen when revisited, including after a restart. It does not mean that the operating system window is maximized. The same page stays mounted across maximize/restore; game state and drafts survive. The initial fullscreen value is false until the host handshake arrives. Browser, serve, and demo pages follow the browser Fullscreen API instead. The root also receives <code>data-gezel-fullscreen="true"</code> or <code>"false"</code> for CSS.</p>
+<p>Mount native chat with <code>gezel.ui.components.chat(element, options)</code>. Give the mount an explicit height. The handle has <code>element</code>, <code>update(partialOptions)</code>, <code>destroy()</code>, and <code>ready</code> (a promise that rejects when the host cannot mount it). Keep the mount in the document and hide it with CSS to preserve its current conversation. Destroy it when permanently discarding it.</p>
+<pre class="squisq-code-block"><code class="language-js">const chat = gezel.ui.components.chat('#game-chat', {
+  gezelRole: 'Opponent', // resolve a role from this project's crew
+  lockRecipient: true,
+  showAddress: false,
+  showThreads: false,
+  placeholder: 'Ask about a move…',
+});
+const arrange = ({ fullscreen, width }) =&gt; {
+  document.querySelector('#game').classList.toggle('with-chat', fullscreen &amp;&amp; width &gt;= 800);
+};
+arrange(gezel.ui.layout);
+const stopLayout = gezel.ui.onLayout(arrange);
+window.addEventListener('pagehide', () =&gt; { stopLayout(); chat.destroy(); });</code></pre>
+<pre class="squisq-code-block"><code class="language-css">#game { display: grid; min-height: 0; }
+#game-chat { display: none; height: 70vh; min-width: 0; }
+#game.with-chat { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 16px; }
+#game.with-chat #game-chat { display: block; }</code></pre>
+<p>Use <code>gezelId</code> for an exact crew member, <code>gezelRole</code> for a role, or omit both to use the project's crew lead (then its first member). An unavailable requested recipient displays an error rather than silently choosing someone else. <code>lockRecipient</code> defaults to true and disables recipient switching and mention fan-out. <code>showAddress</code> and <code>showThreads</code> default to true. <code>variant: 'composer'</code> omits the timeline; the default <code>'chat'</code> shows that recipient's project history. <code>attachments</code>, <code>dictation</code>, <code>promptAssist</code>, and <code>expand</code> default to false and can be enabled individually, subject to the host's capabilities.</p>
+<p>Chat currently requires the embedded Gezel host. Browser previews, app-serve visitors, and standalone demos show an explicit unavailable message; demos never call a model. The parent owns the native chat and composer, including their theme, accessibility, sessions, and ordinary permission prompts. Page scripts receive no transcript, input text, credentials, or programmatic send method. Options change presentation, not the gezel's tool authority.</p>
+<p>The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat: hide the slot while showing a page dialog that overlaps it. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.</p>
+<h2 id="building-a-full-page-workspace">Building a full-page workspace</h2>
+<p><code>gezel.ui.components.appLayout(main, options)</code> wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. The component hides the native slot while a visible page dialog is open, since iframe content cannot cover host-owned chat.</p>
+<pre class="squisq-code-block"><code class="language-js">const workspace = gezel.ui.components.appLayout('main', {
+  title: 'Practice with your tutor',
+  description: 'Choose a scene, then talk here.',
+  chat: { showAddress: false, lockRecipient: true, dictation: true },
+});</code></pre>
+<p><code>chat: false</code> gives a file-only application room to expand without recruiting a companion. Multi-person crews can use <code>lockRecipient: false, showAddress: true</code>. The page still owns its content, typography choices, and domain layout. Feature detect <code>appLayout</code> when supporting older hosts. Retain the handle and call <code>destroy()</code> if discarding the workspace; it also cleans up on <code>pagehide</code>.</p>
+<p>Use <code>actionForm</code> for a compact, accessible form that invokes one declared page tool. It validates required fields, numbers and dates; serializes one save at a time; and retains entered values after a failure. Fields can be text, number, date, URL, multiline text, or a selection. <code>mapInput</code> can map a simple form into the tool's input schema. It does not change the page's authority.</p>
+<pre class="squisq-code-block"><code class="language-js">const form = gezel.ui.components.actionForm('#add-guest', {
+  title: 'Add a guest', tool: 'page_add_guest',
+  fields: [
+    { name: 'name', label: 'Guest or household', required: true },
+    { name: 'party', label: 'Party size', type: 'number', min: 1, step: 1, required: true },
+  ],
+  onSaved: () =&gt; refreshGuests(),
+});</code></pre>
+<p>Give the page its own alias when a model already uses the action: <code>page_add_guest</code> and <code>add_guest</code> share the same script and bindings, while only the former appears in <code>pages.tools</code>. Workspace policy, tool schema validation, and script permissions still apply. Forms do not write files directly. Standalone demos provide in-memory handlers for the same aliases.</p>
+<p><code>collectionFilter('#search', { container: '#guests', selector: 'li', label: 'Find a guest' })</code> adds accent-insensitive search over rendered records. It updates when the collection changes and preserves existing buttons and controls. It searches only those rendered items; describe pagination or truncation honestly. Keep the handle and destroy it with the view.</p>
 <h2 id="file-cards-and-adding-files">File cards and adding files</h2>
 <p>The host injects <code>gezel.ui.components</code> with the page API. It works with ordinary HTML and has no React dependency. Pass a selector or an element; the component appends its own custom element with a shadow root. Retain its handle and call <code>destroy()</code> before discarding it. <code>update(partialOptions)</code> updates an existing instance. File adder handles also provide <code>refresh()</code> to recheck destination availability after a settings change.</p>
 <pre class="squisq-code-block"><code class="language-html">&lt;div id="add-files"&gt;&lt;/div&gt;
@@ -212,6 +258,27 @@ const added = components.demo?.files() ?? [];
 components.demo?.reset();</code></pre>
 <p>Demo imports exercise the same picker, drop, validation, progress and cards. They retain browser Files/object URLs in this tab, use deterministic metadata, and never write to disk or invoke a model. <code>data.url</code> resolves imported demo media. Reset the page's own sample state and remount the adder to clear its result list. Do not claim imported demo data was indexed: Data Analysis keeps its charts on labeled sample tables.</p>
 <p>React apps can mount either component in a ref inside an effect and call <code>destroy()</code> in cleanup. There is no separate React component implementation to keep in sync.</p>
+<h3 id="the-sample-conversation">The sample conversation</h3>
+<p>In a standalone demo, <code>appLayout</code> (or a bare <code>chat</code> slot) draws a sample conversation where Gezel's chat would be. A demo opens as the whole window: the layout reports <code>fullscreen: true</code> without the Fullscreen API, so the companion sits beside the page, or beneath it below 900 CSS pixels. Script the conversation and pass it as <code>chat</code>:</p>
+<pre class="squisq-code-block"><code class="language-js">const api = window.gezel || window.makeDemoGezel({
+  page: { typeName: 'Meal Planner' },
+  tools: { page_set_menu: input =&gt; setDemoMenu(input), grocery_list: () =&gt; demoGroceries() },
+  data: { 'menu.json': () =&gt; demoMenu },
+  chat: {
+    name: 'Mila',
+    role: 'Meal Planner',
+    greeting: 'Hello, I’m Mila. Sunday is still open.',
+    suggestions: ['Plan Sunday around what we have'],
+    respond: async (text, ctx) =&gt; {
+      if (!/sunday|plan/i.test(text)) return null;
+      await ctx.invoke('set_menu', { day: 'sunday', meal: 'Shakshuka' }, 'Sunday: Shakshuka');
+      return 'Sunday is shakshuka. Everything it needs is stocked.';
+    },
+    reactions: { page_set_menu: input =&gt; `${input.day} is set.` },
+  },
+});</code></pre>
+<p><code>ctx.read(path)</code> returns a snapshot of the sample data. <code>ctx.invoke(tool, input, summary)</code> runs the page's demo handler for the model's tool name, falling back to its <code>page_</code> alias, shows the step in the conversation, fires the page's watches and <code>gezel-app-data-changed</code>, and briefly highlights page text that changed. <code>ctx.say(text)</code> adds a line mid-turn, and <code>ctx.suggest(list)</code> swaps the suggestions without a reply. A read-only tool that changes nothing repaints nothing. A reply is a string, an array of strings, or <code>{ reply, suggestions }</code>; <code>null</code> gives the shared answer that the preview follows a few sample requests. <code>reactions</code>, keyed by page tool, are the demo form of a manifest <code>reaction</code>: the person's page action summons a reply, and a game answers with the companion's move through its turn tool.</p>
+<p>The composer labels the replies as scripted, nothing leaves the page, and a live host never runs this code. Without a script the conversation greets the visitor and gives the shared answer, naming the crew lead's role when the exporter supplies it. A demo configured with <code>layout: 'pane'</code> keeps the narrow Output-pane presentation.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>
@@ -222,8 +289,11 @@ components.demo?.reset();</code></pre>
 <li class="hb-h2"><a href="#declare-the-page-and-its-authority">Declare the page and its authority</a></li>
 <li class="hb-h2"><a href="#choose-the-smallest-api-that-does-the-job">Choose the smallest API that does the job</a></li>
 <li class="hb-h2"><a href="#account-for-the-host-mode">Account for the host mode</a></li>
+<li class="hb-h2"><a href="#fullscreen-layout-and-embedded-chat">Fullscreen layout and embedded chat</a></li>
+<li class="hb-h2"><a href="#building-a-full-page-workspace">Building a full-page workspace</a></li>
 <li class="hb-h2"><a href="#file-cards-and-adding-files">File cards and adding files</a></li>
 <li class="hb-h3"><a href="#standalone-component-demos">Standalone component demos</a></li>
+<li class="hb-h3"><a href="#the-sample-conversation">The sample conversation</a></li>
 </ul>
 </nav>
 </aside>

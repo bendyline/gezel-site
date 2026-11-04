@@ -68,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26307/">1.26307 — 3 November 2026</a></li>
 <li><a href="../../whats-new/1.26300/">1.26300 — 27 October 2026</a></li>
 <li><a href="../../whats-new/1.26287/">1.26287 — 14 October 2026</a></li>
 <li><a href="../../whats-new/1.26279/">1.26279 — 6 October 2026</a></li>
@@ -95,9 +96,9 @@
 <article class="hb-article">
 <h1>1.26261 — 18 September 2026</h1>
 <p>This release makes longer pieces of work easier to start and easier to inspect: you can see where a request is going before you send it, search is better at finding the source you named, and command-line batches can stay with a task until it finishes.</p>
-<p>If you read only one thing: ask your meester — the guildmaster who coordinates your crew — for a PowerPoint, Word document, PDF report, MP4 or GIF and the composer now shows the planned route before you press Send. The same route guides the model to the procedure that can make the real file.</p>
+<p>If you read only one thing: ask the Meester for a PowerPoint, Word document, PDF report, MP4 or GIF and the composer now shows the planned route before you press Send. The same route guides the model to the procedure that can make the real file.</p>
 <h2 id="you-can-see-where-a-request-is-going-before-you-send-it">You can see where a request is going before you send it</h2>
-<p>Asking for a file used to have an awkward failure mode: the meester or project voorman (foreman) could understand that you wanted a presentation, inspect their own immediate tools, and conclude that making one was impossible — even though the right craftbook was already on the shelf.</p>
+<p>Asking for a file used to have an awkward failure mode: the Meester or a project's Crew Lead could understand that you wanted a presentation, inspect their own immediate tools, and conclude that making one was impossible — even though the right craftbook was already on the shelf.</p>
 <p>For clear requests, the composer now shows the route while you are still typing. Ask for a PowerPoint, Word document, PDF report, or an animated slideshow as MP4 or GIF and a small label names the planned output. Ask a coordinator to implement or fix code and it shows that the work will go to a Developer. Ordinary conversation stays ordinary and shows no label.</p>
 <p>That preview is not decoration. The same plan is attached when you press Send, narrows the turn to the exact procedure where the output is unambiguous, and gives the coordinator one corrective chance if it claims the capability is unavailable instead of starting the work. You see the decision before the model acts, and the model sees the same decision you saw.</p>
 <h2 id="search-shows-what-the-model-actually-saw">Search shows what the model actually saw</h2>
@@ -113,7 +114,7 @@
 <h2 id="for-developers">For developers</h2>
 <ul><li><p><strong>A connected application can now bring Gezel with it.</strong> <code>@bendyline/gezel-app-sdk/host</code> first connects to the user's running Gezel and can otherwise start an isolated daemon for the application. Its projects and gezels live under the application's own home, while installed model weights are reused rather than downloaded twice. <code>ensureModel</code>, <code>ensureProject</code>, project-scoped chats and app-owned tools cover the complete embedded flow; model bundles can make first run work offline. The contract and examples are in <a href="../../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a>.</p></li><li><p><strong>Application tools cross the daemon boundary explicitly.</strong> A host registers a JSON-schema tool and handles the call in its own process; arguments are validated before they leave the daemon, disconnects have a bounded grace period, and a closed application cannot leave a tool hanging in the model's menu.</p></li><li><p><strong>The App SDK has a smaller stable surface.</strong> Node, browser and host entry points are separated; request-shaped calls take <code>AbortSignal</code>; product access uses the typed client behind an approved <code>product</code> scope; and stateful grants require a verification code visible in the requesting application.</p></li><li><p><strong>Knowledge catalogs gained a revised multilingual embedding profile.</strong> <code>multilingual-e5-small@2</code> changes the sign-bit prefilter while keeping the same full vector space, so older catalogs remain readable and readers can tell which fast-search encoding a catalog carries.</p></li><li><p><strong>Task and craftbook evaluation got stricter.</strong> Fixed-action reads can advance from durable evidence without another model turn, hand-off sends have bounded recovery, and pull-request-review batches retain their observations instead of grading only the final file.</p></li></ul>
 <h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
-<p>Ask your meester for a PowerPoint or PDF and watch the planned route appear beside the composer before you send it. After the reply, expand <strong>Consulted sources</strong> to see the exact excerpts that went into the answer and open the originals.</p>
+<p>Ask your Meester for a PowerPoint or PDF and watch the planned route appear beside the composer before you send it. After the reply, expand <strong>Consulted sources</strong> to see the exact excerpts that went into the answer and open the originals.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
 </main>

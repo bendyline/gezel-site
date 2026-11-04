@@ -68,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26307/">1.26307 — 3 November 2026</a></li>
 <li><a href="../../whats-new/1.26300/">1.26300 — 27 October 2026</a></li>
 <li><a href="../../whats-new/1.26287/">1.26287 — 14 October 2026</a></li>
 <li><a href="../../whats-new/1.26279/">1.26279 — 6 October 2026</a></li>
@@ -95,13 +96,13 @@
 <article class="hb-article">
 <h1>1.26224 — 12 August 2026</h1>
 <p>This is the first release with written release notes, so it covers everything since <strong>1.26219</strong> on 7 August.</p>
-<p>If you read only one thing: gezel now publishes <strong>measured scores</strong> for the models it ships, your gezellen are much more tightly fenced in about what they may install on your machine, and Word, PowerPoint, Excel and PDF files in a project can now be edited as ordinary text.</p>
+<p>If you read only one thing: gezel now publishes <strong>measured scores</strong> for the models it ships, your crew is much more tightly fenced in about what it may install on your machine, and Word, PowerPoint, Excel and PDF files in a project can now be edited as ordinary text.</p>
 <h2 id="model-scores-you-can-actually-check">Model scores you can actually check</h2>
 <p>Choosing a local model used to mean guessing. Now there is a scoreboard.</p>
 <p>The new <strong>Model scorecard</strong> in the Technical section of this Handboek lists every model we have tested and how many jobs it actually finished correctly — writing a small working program, fixing a bug from its symptoms, following a procedure and stopping when something is wrong, turning a pile of documents into one summary, and a set of everyday office and knowledge tasks. Each job is run three times on a real machine and checked by a program, not by an opinion. A companion article, <strong>How we test models</strong>, explains what was counted and what the numbers do not tell you.</p>
 <p>The first published set covers four models measured on an M4 Max: gemma4-e4b, gemma4-12b, gemma4-31b and ornith-9b, on both task sets. Alongside the pass counts you now also get speed, how much memory a model needed in practice, and a separate quality read from a judging pass.</p>
 <p>Two rules keep the board honest. A model that was only partly measured is <strong>withheld</strong> rather than shown with a flattering gap, and earlier rounds of testing are kept visible separately instead of being quietly overwritten.</p>
-<h2 id="your-gezellen-are-better-managed">Your gezellen are better managed</h2>
+<h2 id="your-crew-is-better-managed">Your crew is better managed</h2>
 <p>A gezel that can install software is useful. A gezel that can install <em>anything, anywhere</em> is not something you should have to think about. This release closes that gap.</p>
 <ul><li><p><strong>Installing packages is now registry-only and tied to one project.</strong> A gezel can ask for a published package by name and version, into a project that already exists, and nothing else. Names, versions and destinations are all checked before anything runs.</p></li><li><p><strong>Approving a command now approves that exact command.</strong> Previously, approving a script meant approving the words in it. Now gezel takes a fingerprint of the actual files the command would read — the script, its wrapper, the files it imports — so an approval you gave yesterday cannot be reused tomorrow for a script whose contents have changed underneath it.</p></li><li><p><strong>Names are checked everywhere.</strong> Gezel, project, session and document identifiers now go through one shared rule, applied on disk, in the schemas, and on every web request, so a hand-crafted name cannot walk out of the folder it belongs in.</p></li><li><p><strong>On Linux and macOS, gezel's home folder is now locked to your account</strong> (<code>0700</code>). Other accounts on the same machine can no longer read your conversations or files.</p></li></ul>
 <p>None of this changes anything you do day to day. It changes what happens when something goes wrong.</p>
@@ -116,7 +117,7 @@
 <h2 id="connecting-gezel-to-other-things">Connecting gezel to other things</h2>
 <ul><li><p><strong>Codex CLI can now use your local models.</strong> A setup card in Settings writes a dedicated profile for the OpenAI Codex command-line tool that points it at gezel, so a coding tool you already use can run against a model on your own machine.</p></li><li><p><strong>New GitHub connectors</strong> bring pull requests, releases and wiki pages in as project material, alongside the existing Google Calendar connector. Connector output now lands in the project's artifacts, where the rest of your work lives.</p></li><li><p><strong>The OpenAI-compatible endpoint speaks the Responses API</strong>, including streaming — so apps built against the newer OpenAI shape work against gezel without a translation layer of their own.</p></li><li><p>Four new Handboek articles document all of this for developers: the npm package map, writing scripts with the gezel SDK, building connected apps with the app SDK, and how we test models.</p></li></ul>
 <h2 id="catalog-updates-without-an-app-update">Catalog updates without an app update</h2>
-<p>Gezel's descriptions of models, craftbooks and roles — the <em>gilde</em> content — can now be refreshed on its own, without waiting for a new version of the app. It checks about once a day, verifies what it downloads, and only switches over after confirming that everything that worked before still works.</p>
+<p>Gezel's catalog of models, craftbooks and roles can now be refreshed on its own, without waiting for a new version of the app. It checks about once a day, verifies what it downloads, and only switches over after confirming that everything that worked before still works.</p>
 <p>It is <strong>off unless you turn it on</strong>, under Settings → About → Catalog content, and it will never touch a machine that has been pointed at a local content folder.</p>
 <h2 id="smaller-things">Smaller things</h2>
 <ul><li><p>Windows machines without a working CUDA setup no longer get probed for one.</p></li><li><p>The Nemotron model family is recognized under its aliases and given the right tool format.</p></li><li><p>Installing gezel from npm no longer runs any install-time scripts; a permission repair that used to happen at install time now happens once, lazily, the first time it is needed.</p></li><li><p>Refreshed underlying editor and content packages (squisq 2.7.1, gilde 0.1.21).</p></li><li><p>A large set of new automated tests covering everyday office work — meeting follow-ups, research briefs, document round-trips, and whether a gezel reaches for the right tool — so regressions in ordinary tasks get caught before you meet them.</p></li></ul>
@@ -130,7 +131,7 @@
 <h2>On this page</h2>
 <ul>
 <li class="hb-h2"><a href="#model-scores-you-can-actually-check">Model scores you can actually check</a></li>
-<li class="hb-h2"><a href="#your-gezellen-are-better-managed">Your gezellen are better managed</a></li>
+<li class="hb-h2"><a href="#your-crew-is-better-managed">Your crew is better managed</a></li>
 <li class="hb-h2"><a href="#word-powerpoint-excel-and-pdf-files-are-editable-now">Word, PowerPoint, Excel and PDF files are editable now</a></li>
 <li class="hb-h2"><a href="#real-control-over-local-models-and-memory">Real control over local models and memory</a></li>
 <li class="hb-h2"><a href="#threads-that-are-easier-to-follow">Threads that are easier to follow</a></li>

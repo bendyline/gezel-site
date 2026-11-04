@@ -5,7 +5,7 @@
       "specHash": "e5c680641e026059d10e1cbb0bdc871ddc4f060e8586da75b62e7b233ce00858"
     },
     "the-crew": {
-      "specHash": "5f4e65f25a85701b2f2453543ab936f8e23a30315b554f22ced95b0852148812"
+      "specHash": "8a70c887f538a6b9954bd7059a06c838ed825170c0ee6d8e61bf5cfa22b08cb8"
     },
     "character-and-growth": {
       "specHash": "de06bd8162a9a11af9b818b13eda6ae888dcc23bc6970ff9a4bb84c91c142c33"
@@ -15,6 +15,9 @@
     },
     "memory-and-documents": {
       "specHash": "07f68fd9ee1ae2bd83658213c4fb4517dc8e7bf5358b510e8f4c9f442bdc14a4"
+    },
+    "making-documents": {
+      "specHash": "a72bf3449de8daac63d0d17e3f283393b72aea2ed7b332d3b747c6012f5b70c4"
     },
     "craftbooks-overview": {
       "specHash": "4cefd949701076764bdcdcccd1e8f9cbc14d53b8c95310ef5c14c3e439162586"
@@ -147,6 +150,9 @@
     },
     "craftbook/audio-highlight-reel": {
       "specHash": "5dc46e5e3e1c27c6fc367ed1a70aeb4410286ff3e9e31a01cde7c30a28bbe132"
+    },
+    "craftbook/audit-evidence-pack": {
+      "specHash": "758fd8b6716aca6891986ac92d7438148f7d2da359fdba314875762c781c8586"
     },
     "craftbook/subscription-audit": {
       "specHash": "00692a2904aac81299c24563f677ecffa811eb4b057e608eb158e8a745627be2"
@@ -769,6 +775,9 @@
     "craftbook/reliability-review": {
       "specHash": "0ff042711fd73efb1ec85617a51397b7ab45a4a676739dbd1fe67ddaf0daf44e"
     },
+    "craftbook/reorder-run": {
+      "specHash": "cce291bee4379747bb05430c3cf77a64c9cf3608b9ef2c0058a4b8fc7860bb00"
+    },
     "craftbook/bug-fix-tdd": {
       "specHash": "aeb901f68eea4ee624595359e965d91447eda98072797beac172a7d63340d7c7"
     },
@@ -790,6 +799,9 @@
     "craftbook/review-code-folder": {
       "specHash": "aa22994db397c0ed4b4bdf27ec7ce2e949789678d5554695fe9cb4aa39c9ca75"
     },
+    "craftbook/review-reply-batch": {
+      "specHash": "48458741b497d18724556ae37bb87c0c94c3ee5a8b163e360bca03576f768c0c"
+    },
     "craftbook/reviewer-loop": {
       "specHash": "e20e96387939b1b7ce220b66b66d90fd36ab715ae2a2eb210a1dcfbb619f7227"
     },
@@ -804,6 +816,9 @@
     },
     "craftbook/digest-from-feeds": {
       "specHash": "b69a61ed67c62d3cfc94aed502ab02f7585ceda7acc31bc14486dd9991a38977"
+    },
+    "craftbook/run-of-show": {
+      "specHash": "493431102914fce601628484f07c1ddfcd2f2d7eb0a100624556cc24220b693a"
     },
     "craftbook/mod-scaffold": {
       "specHash": "7bd254266b7b47626321d178d409901674f398b6dcdf17306908253d12e8bb90"
@@ -861,6 +876,9 @@
     },
     "craftbook/standup-summary": {
       "specHash": "a15279ee76f2e549056d6449b793e75f0e0066a0f91135f17310e49fb8d49080"
+    },
+    "craftbook/structured-interview-kit": {
+      "specHash": "3d2f85fdb93426e45b0114c45608661fde4d9b1ce8dd43b7e75a5695bbbe4df0"
     },
     "craftbook/subtitle-generator": {
       "specHash": "7ac1337f3e36c097722b5f6b90771b9fe3285830b390699abea3f9f2fb0f5f11"
@@ -967,6 +985,9 @@
     "craftbook/weekly-pipeline-review": {
       "specHash": "62c77eceff4681f265da6555f9ec6e662d3dc935e1321eec32fef0be98fa4132"
     },
+    "craftbook/weekly-schedule-draft": {
+      "specHash": "b95d283c2e8ac0289d9f273eb059483920f589e814a92f871eef3c280afe6dbf"
+    },
     "craftbook/whitepaper": {
       "specHash": "2c4241622acbaaa78f38ffca6f30f52cbd631205fa69e521cf1c44e6b691eb31"
     },
@@ -985,8 +1006,17 @@
     "project-types-index": {
       "specHash": "5728cd4a1b423e34bbf73703b2a3bb870a9f56cfc2f281daf007d0cfe68797ed"
     },
+    "project-type/books-and-close": {
+      "specHash": "2062d17c413aaa201c23666e5a570865a0ac657da6b4c153c252510b6419a75a"
+    },
+    "project-type/campaign-room": {
+      "specHash": "f33a492b3eeac7b8eccac63f8b597d9acde1521c544a4d5552a01455526a3721"
+    },
     "project-type/caregiving-binder": {
       "specHash": "39b19758b9e4df851640a90495011a5d83e0721177f930240c634498efa901a7"
+    },
+    "project-type/cash-flow-planner": {
+      "specHash": "d169a46f364eeb3bf588295ca387f5d3cd90b777c7fecb607be804707a193fbc"
     },
     "project-type/just-chat": {
       "specHash": "6a40564091147f00f93af04fc4c5ac579711023da4910254f8d0a92edf69b31f"
@@ -997,6 +1027,18 @@
     "project-type/chess": {
       "specHash": "db9372254d0dcc0813250b394cca0d1032a8a4b50a9615ea164407922455e556"
     },
+    "project-type/client-delivery": {
+      "specHash": "1a48bc77ea271374b8f280b30ccd156974679063f6d935cf48bc2d90ce9b209d"
+    },
+    "project-type/compliance-register": {
+      "specHash": "fb793a95665a66aa2251bc33e504fe9ca0161badb5b052eb0e4e3dbf3a984499"
+    },
+    "project-type/content-studio": {
+      "specHash": "6132a08c797f7a623ff088bc7217db3d3ecaec6eb6071d4a240611c818697f6b"
+    },
+    "project-type/customer-voice": {
+      "specHash": "f686943bf32c28d8a0e933465b27cfe50def7b411eb16b374573184827eb216c"
+    },
     "project-type/data-analysis": {
       "specHash": "00cf764c5bcdb76770e60331c3434f210fd38ca1bc8028d57f5512a16628f182"
     },
@@ -1005,6 +1047,9 @@
     },
     "project-type/email": {
       "specHash": "8f60d83aa48537152a12db7517b9e392bde6dd7953425fe96c927bb037a517d2"
+    },
+    "project-type/event-desk": {
+      "specHash": "4c145a1ebf8124371dad68cce8d535d3169ceca9bd76b5bdd852e214a6d47a2a"
     },
     "project-type/event-planner": {
       "specHash": "a9cac448b477656b2af87a99e3f21aa24a76fa5d21120fc6dfb8202d61fd6849"
@@ -1024,6 +1069,12 @@
     "project-type/go": {
       "specHash": "9e902f54bef3ca2ed3ea2398e85942cea7cb2f4f87c713b56da1f56e4e0ccd66"
     },
+    "project-type/grants-and-proposals": {
+      "specHash": "b27932b7432e1d16bfd6a9666c4c9b786cfb45f40543ef1a828df6b742dc1bfc"
+    },
+    "project-type/hiring-desk": {
+      "specHash": "3963ac29c15d454bc63c159cc45184430c7463ede583ceff19826694def45cd1"
+    },
     "project-type/household-budget": {
       "specHash": "d6317edcce0f643110b43b502b7d85948df8b0861f3fe9cfc06bf62c0f4b8ded"
     },
@@ -1032,6 +1083,9 @@
     },
     "project-type/image-feed": {
       "specHash": "9adf749b7fcda528ebe546991f21dbd6f799e76aa94d3958405d75d363d109ab"
+    },
+    "project-type/inventory-reorder": {
+      "specHash": "72bbd5d5114280c7a72f59cb719babe60cee4456389d98cda25e01fba14bcb58"
     },
     "project-type/job-hunt": {
       "specHash": "8374249eef58e620726556b961d6dd00caf00e84ea2c1877400f5f9c00c6fc72"
@@ -1048,8 +1102,20 @@
     "project-type/media-library": {
       "specHash": "fe17996cb500356c7459d926fa795af6a04460f4040e37a0bfbb36702eedf933"
     },
+    "project-type/new-hire-onboarding": {
+      "specHash": "64b25be260878ce5b70fde88d0cc8a631786a8480e94173ac82dd3b3331970f8"
+    },
     "project-type/novel-writing-room": {
       "specHash": "718e103eb991fce1b3b585f6da7ad55badb8ed20885c435784e64362b6ccd42f"
+    },
+    "project-type/quotes-and-bids": {
+      "specHash": "68f54cd04012610b20252caf84d8203dad9425a12e3a37714621d74b762d479d"
+    },
+    "project-type/sales-pipeline": {
+      "specHash": "11d1a8eba3bad0ed6ae66cd436b6980011162a900668e60589ebf9812cf07d93"
+    },
+    "project-type/shift-roster": {
+      "specHash": "1cc43c909aec912daa6962000578cfc9ee2d675ae854142ba5758f3e3a83e2b0"
     },
     "project-type/social-feed": {
       "specHash": "d8da5c681ca4b2ebf0e99e71688c6f7efa0507114d613716395a5fe15c462558"
@@ -1057,8 +1123,23 @@
     "project-type/software-project": {
       "specHash": "f12785efc4825ffeb0292f58ef9cb3c7aa643ae78ba3710573992d3cc74e627d"
     },
+    "project-type/sop-library": {
+      "specHash": "126e9823589ab8dee7dfab49e68c7b4e85768a64ff702b02145de727fb4c209d"
+    },
+    "project-type/support-desk": {
+      "specHash": "74e5afef8e39713a6f84878921d77e38518996a113134623ab28cab6a74b3738"
+    },
+    "project-type/team-goals": {
+      "specHash": "decd93823895622f166ff256300b5e7f40a329c71cedb2b3de8557c51495bb66"
+    },
+    "project-type/training-tracker": {
+      "specHash": "3976eb9c89cf377d854b8e0ec01315bf6a50ac4a9989439fe576b04203e36898"
+    },
     "project-type/trip-planner": {
       "specHash": "a612b92e1131a7b3895222f6d8aadf0687ae019fb103a624e36a9ab97008c29b"
+    },
+    "project-type/vendor-contracts": {
+      "specHash": "c83feb88a2c6451cdcba0b67d537be3b7a45ccfc4c6745e394049f43a6aad9c9"
     },
     "project-type/word-clues": {
       "specHash": "ea673ea41184a2e96a74c0558a39a86b1ef98aa97083fb87ca2da6830ccde29d"
@@ -1081,8 +1162,14 @@
     "security-model": {
       "specHash": "84b6a9a21490423de04147117cb5f5b9b276dd865e5f275b07edbcfc9161ce45"
     },
+    "what-leaves-this-computer": {
+      "specHash": "9741401a855379baaaadffd2b6b5f7797343fa346657e79b578d4f2feb48ffc4"
+    },
     "verifying-your-download": {
       "specHash": "afbb72c22a9ae7c900407c69f27193059ae8134809d369b1378b8b6aadf20d35"
+    },
+    "governance": {
+      "specHash": "ef98a65c80f8176209f1ac62cbba27f4b160f2c140d2b1080d0e4030a0421c51"
     },
     "how-knowledge-works": {
       "specHash": "a6b44815b8544775a196de98f277588b2cd322def0bb973dcbd0492ef258420a"
@@ -1102,8 +1189,14 @@
     "building-connected-apps-with-gezel-app-sdk": {
       "specHash": "bdda119c8be0184b450ba886314024d2a311890381ca461ffea9ea934c72b494"
     },
+    "gezel-on-a-server": {
+      "specHash": "adab29e6614ede77ec8b99de8842143cec95a79ab218e035ba9f6fcbb8c5b400"
+    },
     "building-ai-apps-inside-gezel": {
       "specHash": "60fab2af4e79fdca647d8b9e67de306f2b05cdec07f044444a1bd1811104da51"
+    },
+    "gezel-in-docker": {
+      "specHash": "9ada25be0df070f4285cf5cc465199fb63b02c3ccbc33e3e67c562e3839f9f53"
     },
     "docblocks-text-ai-with-gezel": {
       "specHash": "e3c30a4ed8e7c67c59684b47e86d7c6ad6166ecf174a935601b110724427578d"
@@ -1125,6 +1218,9 @@
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26307": {
+      "specHash": "d425470d625a83cd7bb66a16d771b1470532b2f5590ebd300b22ceeacbd94917"
     },
     "whats-new/1.26300": {
       "specHash": "3cd846c0332609cdb4bab2ff4f785c8c018abd37531966b207552b71e3d34141"
@@ -1279,6 +1375,9 @@
     "model/lfm2.5-24b-a2b-q4": {
       "specHash": "0a0552c348faf2ccf95f98e8995404b269471664759ddb1f1620a50e96ce0cf8"
     },
+    "model/lfm3-1.7b-q4": {
+      "specHash": "88ae0d44657c5d59c1d6025519597c94a022b980d98f7bb45581ab83a217de18"
+    },
     "model/llama3.2-3b-q4": {
       "specHash": "2c1867a976b3e636f33a61b18d0255f3a4167e2f4b88a46e7b1f62ba9cbe3f08"
     },
@@ -1381,11 +1480,20 @@
     "model/underdog-saluki-27b-iq2-mix": {
       "specHash": "488f4ec884a66f090131e6588d063f525868c13179bdf475774e7186a291fbea"
     },
+    "role-template/account-manager": {
+      "specHash": "a88176ee4eed7ee81ae6875453b7807e9310cb170657457e0f6d13a6811cc7db"
+    },
     "role-template/archivaris": {
       "specHash": "a0330a8cc8a4f8f750e7a766e165d8b5f58fc815f41faa31f29f93b267ba7c51"
     },
+    "role-template/bookkeeper": {
+      "specHash": "913a8ec526a09ce348cf931713405270776e725b0b4b2cbb41264e31205f30f5"
+    },
     "role-template/builder": {
       "specHash": "5071c5fca5131e63e187f3e93906d1003a47c5524bf3f449e9038ce85cbffad3"
+    },
+    "role-template/campaign-manager": {
+      "specHash": "f060727fbca1604f987048c93a1097aabf3a1e63e60f4e6cfb1055a71692c024"
     },
     "role-template/zorgcoordinator": {
       "specHash": "0ce685ca9c251bd2e91c70f6992435efd6f7e8368df510c3dbcf5f9503a58c75"
@@ -1408,6 +1516,9 @@
     "role-template/coach": {
       "specHash": "e7d119e1a995b65324f543da6130b95ddf792700693ceba2a25af7f45f3b8424"
     },
+    "role-template/compliance-officer": {
+      "specHash": "30a3a1ed22883986734a5316e48163db02fee640085f1310488987911224332a"
+    },
     "role-template/conversationalist": {
       "specHash": "ed2856086c4cc815104230e21998c48fa74a3580a5e27d9e5e06e3fab7c6d978"
     },
@@ -1425,6 +1536,9 @@
     },
     "role-template/developer": {
       "specHash": "877aa4fab3514020465dfeb02b8dae1be3d06c2250364be3b1a6f240cce69b73"
+    },
+    "role-template/estimator": {
+      "specHash": "a363272618c42f88f5006eaf2feee5dd9aead93fd450bd032dcf4d8c87ce2a5e"
     },
     "role-template/ceremoniemeester": {
       "specHash": "f76ffaaee425c9998fd257beffbb0b18fd00b0cd2b6458ae32caea1cd2149609"
@@ -1462,6 +1576,9 @@
     "role-template/boekwachter": {
       "specHash": "2fb44570d57454c66690a3c1e37c981a2d191f058ca81e44a1456b6b076c8471"
     },
+    "role-template/managing-editor": {
+      "specHash": "a500b026bddd4820dc954b8bd7659be5bef66db63f7a4532e6ec12911bf1a1a4"
+    },
     "role-template/maaltijdplanner": {
       "specHash": "0f17b716db053b21263e2182f83d88645500b50655f791e45b420e99565833f1"
     },
@@ -1480,17 +1597,32 @@
     "role-template/puzzelaar": {
       "specHash": "8b34c1ac4384ad3d0288d66d702f28543c4bc35a2ff7e389d3d9add205e329e0"
     },
+    "role-template/recruiter": {
+      "specHash": "169740493896166c56bf2f30c19a47e24a9a47ef1e491366087048f7877a0ddf"
+    },
     "role-template/researcher": {
       "specHash": "847f20ff849c7e4f8725e08e9f83a51f722c7778c41e15e9c984f44d5708631e"
     },
     "role-template/reviewer": {
       "specHash": "bb8817f48f33a6e7596656525aa8aa9433a1d6100aef7d2ede30e3d662b52315"
     },
+    "role-template/shift-scheduler": {
+      "specHash": "b593f0fc6e0242a51f99a8a43372fda96d66050586a5174515d35fcb9087751a"
+    },
     "role-template/omroeper": {
       "specHash": "ccf2c4c05c874341b70147ed9fcbddad92d8d58b51949eace81498fe5dc0ad1a"
     },
+    "role-template/stock-keeper": {
+      "specHash": "15f837ece8e7e20f389bc01f10c5422f27ac6b51709fb89bec888fea53098b47"
+    },
     "role-template/study-buddy": {
       "specHash": "0973bf5d6154391429f0dc041350b5ad92bab2269639a18ee8172281f366c5a2"
+    },
+    "role-template/support-lead": {
+      "specHash": "0154bea043dd5d1894de6163ac8fe47ac9358f4cb707881729784e734e35fe36"
+    },
+    "role-template/training-coordinator": {
+      "specHash": "ca983b38dcd0ae72315184f4b3ed6c2c63b79d8ee6316b7b714c59e23929eb6a"
     },
     "role-template/vertaler": {
       "specHash": "25dcb1e438e166f964a3ea83f8c9e5a2a8b3cce1f5ad2fa135b3771bf6aec375"
@@ -1503,6 +1635,9 @@
     },
     "role-template/schrijfmaat": {
       "specHash": "a356612f108e3cddc086757b407d36406e283c24946ee22d377b65dde8417007"
+    },
+    "model-scorecard/2026-11-03-m5max-fixed-paired": {
+      "specHash": "db23108fdf9bd263abe5385a8a594b54fb0fb7afdf830c27db6cc53385677bd3"
     },
     "model-scorecard/2026-10-30-spark-native-0-1-54-final-six": {
       "specHash": "f8e38334f7e628d8dcf88d4e142da7bb0e5e48b42b7df96ec6e52624e0b25a56"
@@ -1524,6 +1659,9 @@
     },
     "model-scorecard/2026-10-28-spark-native-0-1-54-original": {
       "specHash": "2afc1b69df05420c34613f8d9019112f8339a8ca5bff045742b3ae2632f6990d"
+    },
+    "model-scorecard/2026-10-27-m5max-native-0-1-54": {
+      "specHash": "1c74cfcd3394cc1c34aac3f9d2095666004b527b52b0b959da2191e371d5ed95"
     },
     "model-scorecard/2026-10-25-m5max-bolt-five": {
       "specHash": "c386d5e80993cfa01108ba8a013e620d1a23fd4cd4a6156b4ba4272b1726a58e"

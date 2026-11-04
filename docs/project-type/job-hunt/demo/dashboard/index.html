@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Career Coach"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -46,14 +46,14 @@
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        font: 15px/1.5 var(--font-body, system-ui, sans-serif);
         background: var(--bg);
         color: var(--ink);
         padding: 1.5rem 1.25rem 2rem;
       }
       main { max-width: 960px; margin: 0 auto; }
       h1 {
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.4rem;
         font-weight: 600;
         margin: 0 0 0.15rem;
@@ -116,6 +116,7 @@
       .panel .when { color: var(--muted); font-size: 0.78rem; }
       .overdue { color: var(--warn); font-weight: 600; }
       .empty { color: var(--muted); font-style: italic; }
+      .panel li.empty { list-style: none; margin-left: -1.05rem; }
       .board-empty {
         background: var(--card);
         border: 1px dashed var(--track);
@@ -157,9 +158,16 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
         <span><strong>Demo mode</strong> — sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
@@ -187,7 +195,7 @@
         </div>
       </div>
     </main>
-    
+    <script src="demo-chat.js"></script>
     <script>
       // Reads the pipeline and activity records through window.gezel (both
       // paths are declared in the manifest's pages.reads).
@@ -199,28 +207,54 @@
 
         // ── demo pipeline (used only when the page opens as a raw file) ──
         var demoPipeline = {
-          role: 'Product designer',
+          role: 'Product Designer',
           stages: FALLBACK_STAGES,
           records: [
             { id: 'app-12', status: 'applied', updatedAt: new Date(Date.now() - 3 * DAY).toISOString(), fields: { company: 'Canal Labs', role: 'Senior Product Designer' }, history: [{ at: new Date(Date.now() - 3 * DAY).toISOString() }] },
             { id: 'app-11', status: 'screening', updatedAt: new Date(Date.now() - 9 * DAY).toISOString(), fields: { company: 'Northwind', role: 'Product Designer' }, history: [{ at: new Date(Date.now() - 9 * DAY).toISOString() }] },
             { id: 'app-10', status: 'interview', updatedAt: new Date(Date.now() - DAY).toISOString(), fields: { company: 'Veld Works', role: 'Staff Product Designer' }, history: [{ at: new Date(Date.now() - 5 * DAY).toISOString() }] },
             { id: 'app-09', status: 'offer', updatedAt: new Date().toISOString(), fields: { company: 'Juniper Press', role: 'Design Lead' }, history: [{ at: new Date().toISOString() }] },
-            { id: 'app-08', status: 'closed', updatedAt: new Date(Date.now() - 12 * DAY).toISOString(), fields: { company: 'Old Mill', role: 'Product Designer', outcome: 'withdrew' }, history: [{ at: new Date(Date.now() - 12 * DAY).toISOString() }] },
+            { id: 'app-08', status: 'closed', updatedAt: new Date(Date.now() - 12 * DAY).toISOString(), fields: { company: 'Old Mill', role: 'Product Designer', outcome: 'withdrawn' }, history: [{ at: new Date(Date.now() - 12 * DAY).toISOString() }] },
           ],
         };
         var demoActivity = { events: [
           { kind: 'note', at: new Date(Date.now() - 2 * DAY).toISOString(), note: 'Prepared portfolio stories for Veld Works.' },
-          { kind: 'follow-up', at: new Date(Date.now() - DAY).toISOString(), note: 'Send Northwind a short follow-up', data: { dueAt: new Date(Date.now() + DAY).toISOString() } },
+          { kind: 'follow-up', at: new Date(Date.now() - DAY).toISOString(), note: 'Thank the Veld Works panel', data: { applicationId: 'app-10', dueAt: new Date(Date.now() + DAY).toISOString() } },
           { kind: 'interview', at: new Date().toISOString(), note: 'Juniper Press final conversation completed.' },
         ] };
+        // The demo answers the way application-store does: same ids, same matching, same activity lines.
+        function demoSlug(text) { return String(text).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'application'; }
+        function demoFind(input) {
+          if (input.id) { var byId = demoPipeline.records.find(function (r) { return r.id === input.id; }); if (!byId) throw new Error("No application '" + input.id + "'."); return byId; }
+          var wanted = String(input.company || '').toLowerCase();
+          var matches = demoPipeline.records.filter(function (r) { return String(r.fields.company || '').toLowerCase() === wanted; });
+          if (matches.length === 1) return matches[0];
+          if (matches.length > 1) throw new Error("Multiple applications match company '" + input.company + "': " + matches.map(function (m) { return m.id; }).join(', ') + '. Pass id.');
+          throw new Error("Pass 'id' or a unique 'company' to identify the application.");
+        }
+        function demoLog(kind, note, data) { demoActivity.events.push({ kind: kind, at: new Date().toISOString(), note: note, data: data || {} }); }
+        function demoSummary() {
+          var now = Date.now(), inPlay = demoPipeline.records.filter(function (r) { return r.status !== 'closed'; });
+          var stale = inPlay.filter(function (r) { return now - Date.parse(r.updatedAt) > 7 * DAY; }).map(function (r) { return { id: r.id, company: r.fields.company, stage: r.status, daysQuiet: Math.floor((now - Date.parse(r.updatedAt)) / DAY) }; });
+          var followUps = demoActivity.events.filter(function (e) { return e.kind === 'follow-up' && e.data && e.data.dueAt && Date.parse(e.data.dueAt) <= now + 7 * DAY && !followUpAnswered(e, demoActivity.events, demoPipeline.records); }).map(function (e) { return { note: e.note, dueAt: e.data.dueAt, applicationId: e.data.applicationId, overdue: Date.parse(e.data.dueAt) < now }; });
+          var stageLine = FALLBACK_STAGES.map(function (s) { var n = demoPipeline.records.filter(function (r) { return r.status === s; }).length; return n ? s + ' ' + n : ''; }).filter(Boolean).join(', ');
+          return { applications: demoPipeline.records.length, stale: stale, followUps: followUps,
+            summary: demoPipeline.records.length ? inPlay.length + ' application(s) in play (' + (stageLine || 'none') + '). ' + stale.length + ' stale, ' + followUps.length + ' follow-up(s) due this week.' : 'No applications tracked yet.' };
+        }
 
-        makeDemoGezel({
-          page: { entry: 'dashboard/index.html', typeName: 'Job Hunt', params: { role: 'Software Engineer', focus: 'Just getting started.' } },
-          data: {
+        window.gezel || window.makeDemoGezel({
+          page: { entry: 'dashboard/index.html', typeName: 'Job Hunt', params: { role: 'Product Designer', focus: 'Remote or hybrid; portfolio-heavy roles.' } },
+          tools: {
+"page_record_application": function(input) { if(!input.company)throw new Error("record_application needs 'company'."); var base=demoSlug(input.role?input.company+' '+input.role:input.company),id=base; for(var n=2;demoPipeline.records.some(function(r){return r.id===id;});n++)id=base+'-'+n; var now=new Date().toISOString(),fields={company:input.company}; ['role','link','notes'].forEach(function(k){if(input[k])fields[k]=input[k];}); demoPipeline.records.push({id:id,status:'applied',fields:fields,createdAt:now,updatedAt:now,history:[{at:now,status:'applied'}]}); demoLog('applied','Applied to '+input.company+(input.role?' for '+input.role:'')+'.',{applicationId:id}); return demoSummary(); },
+"page_advance_stage": function(input) { if(FALLBACK_STAGES.indexOf(input.stage)<0)throw new Error("Unknown stage '"+input.stage+"'. Stages: "+FALLBACK_STAGES.join(', ')+'.'); if(input.outcome&&input.stage!=='closed')throw new Error("'outcome' only applies when closing (stage 'closed')."); var r=demoFind(input),now=new Date().toISOString(); r.status=input.stage; r.updatedAt=now; r.history=(r.history||[]).concat({at:now,status:input.stage,note:input.note}); if(input.outcome)r.fields.outcome=input.outcome; demoLog('stage',r.fields.company+' moved to '+input.stage+(input.outcome?' ('+input.outcome+')':'')+'.',{applicationId:r.id}); return demoSummary(); },
+"log_activity": function(input) { if(!input.note)throw new Error("log_activity needs 'note'."); var data={}; if(input.id||input.company){var r=demoFind(input);r.updatedAt=new Date().toISOString();data.applicationId=r.id;} if(input.due)data.dueAt=input.due; demoLog(input.kind||'note',input.note,data); return demoSummary(); },
+"pipeline_status": function() { return demoSummary(); }
+},
+data: {
             'pipeline.json': function () { return demoPipeline; },
             'activity.json': function () { return demoActivity; },
           },
+          chat: window.demoChat,
         });
 
         // ── one code path from here: window.gezel exists in every mode ──
@@ -230,7 +264,7 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
 
@@ -240,6 +274,15 @@
           });
         }
         function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+        // As the application-store script decides: a closed application or any
+        // later touch on it (a stage move, an interview, a note) answers a follow-up.
+        function followUpAnswered(e, events, records) {
+          var app = e.data && e.data.applicationId;
+          if (typeof app !== 'string') return false;
+          if (records.some(function (r) { return r.id === app && r.status === 'closed'; })) return true;
+          var at = Date.parse(e.at);
+          return events.some(function (later) { return later !== e && later.data && later.data.applicationId === app && Date.parse(later.at) > at; });
+        }
         function daysAgo(iso) { return Math.floor((Date.now() - Date.parse(iso)) / DAY); }
 
         function render(pipeline, act) {
@@ -253,7 +296,7 @@
           var inPlay = records.filter(function (r) { return r.status !== 'closed'; });
           var followUps = events.filter(function (e) {
             var due = e.data && typeof e.data.dueAt === 'string' ? Date.parse(e.data.dueAt) : null;
-            return e.kind === 'follow-up' && due !== null && due <= now + WEEK;
+            return e.kind === 'follow-up' && due !== null && due <= now + WEEK && !followUpAnswered(e, events, records);
           });
           document.getElementById('t-play').textContent = inPlay.length;
           document.getElementById('t-interview').textContent = records.filter(function (r) { return r.status === 'interview'; }).length;
@@ -327,22 +370,17 @@
           }
         }
 
-        function loadPipeline() {
-          return Promise.all([
-            gezel.data.read('pipeline.json'),
-            gezel.data.read('activity.json').catch(function () { return { events: [] }; }),
-          ])
-            .then(function (results) { render(results[0] || {}, results[1] || { events: [] }); })
-            .catch(function () {
-              document.getElementById('sub').textContent =
-                'No pipeline yet — tell your career coach about your first application.';
-            });
-        }
+        window.addEventListener('gezel-app-data-changed', function(){ loadPipeline(); });
+        function loadPipeline(){
+var revision=++appLoadRevision;
+return Promise.all([gezel.data.read('pipeline.json'),gezel.data.read('activity.json')]).then(function(values){if(appDisposed||revision!==appLoadRevision)return;reportAppError(null);render(values[0]||{},values[1]||{});}).catch(function(error){if(!appDisposed&&revision===appLoadRevision)reportAppError(error);});
+}
 
         loadPipeline();
-        gezel.data.watch('pipeline.json', function () { loadPipeline(); });
-        gezel.data.watch('activity.json', function () { loadPipeline(); });
+        appSubscriptions.push(gezel.data.watch('pipeline.json', function () { loadPipeline(); }));
+        appSubscriptions.push(gezel.data.watch('activity.json', function () { loadPipeline(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

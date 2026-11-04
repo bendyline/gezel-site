@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{"imports":[{"id":"data","source":"workspace","path":".","accept":[".csv",".tsv",".tab",".xlsx",".xls",".xlsm",".xlsb",".ods",".numbers",".json",".jsonl",".ndjson",".parquet",".arrow",".feather",".sqlite",".sqlite3",".db",".duckdb",".h5",".hdf5",".rds",".rdata",".sav",".dta",".sas7bdat",".xml",".html",".htm",".pdf",".md",".docx",".pptx",".ipynb"],"maxFileBytes":268435456}]}</script>
-<script src="../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"imports":[{"id":"data","source":"workspace","path":".","accept":[".csv",".tsv",".tab",".xlsx",".xls",".xlsm",".xlsb",".ods",".numbers",".json",".jsonl",".ndjson",".parquet",".arrow",".feather",".sqlite",".sqlite3",".db",".duckdb",".h5",".hdf5",".rds",".rdata",".sav",".dta",".sas7bdat",".xml",".html",".htm",".pdf",".md",".docx",".pptx",".ipynb"],"maxFileBytes":268435456}],"companion":{"role":"Researcher"}}</script>
+<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -14,14 +14,22 @@
       :root { color-scheme: light dark; }
       @media (prefers-color-scheme: dark) { :root { color-scheme: dark; } }
     </style>
+    <script src="demo-chat.js" defer></script>
     <script src="demo.js" defer></script>
     <script src="datasets.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="insights.js" defer></script>
     <script src="dashboard.js" defer></script>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <aside data-gezel-demo-banner hidden>
         <span>Sample project. These files stay in this page.</span>
         <button id="reset-demo" type="button">Reset demo</button>
@@ -111,5 +119,6 @@
       <table><thead><tr><th>Month</th><th>Revenue</th><th>Orders</th></tr></thead><tbody><tr><td>July</td><td>12,480</td><td>156</td></tr><tr><td>August</td><td>14,560</td><td>182</td></tr><tr><td>September</td><td>16,240</td><td>203</td></tr></tbody></table>
       <button type="button" id="close-demo-preview">Close preview</button>
     </dialog>
+  <script src="application.js" defer></script>
   </body>
 </html>

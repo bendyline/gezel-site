@@ -68,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26307/">1.26307 — 3 November 2026</a></li>
 <li><a href="../../whats-new/1.26300/">1.26300 — 27 October 2026</a></li>
 <li><a href="../../whats-new/1.26287/">1.26287 — 14 October 2026</a></li>
 <li><a href="../../whats-new/1.26279/">1.26279 — 6 October 2026</a></li>
@@ -94,7 +95,7 @@
 </nav>
 <article class="hb-article">
 <h1>1.26244 — 1 September 2026</h1>
-<p>Seven days after <strong>1.26237</strong>, and this one is mostly about data you already had and couldn't use.</p>
+<p>This release is mostly about data you already had and couldn't use.</p>
 <p>If you read only one thing: a spreadsheet or a big CSV sitting in your project is now something a <strong>gezel</strong> — one of the AI workers on your crew — can count, group and total, rather than something it can only read prose about.</p>
 <h2 id="your-spreadsheets-become-something-your-crew-can-count">Your spreadsheets become something your crew can count</h2>
 <p>Two kinds of file were handled badly, at exactly the sizes where it hurt.</p>
@@ -118,7 +119,7 @@
 <p>That second deadline is gone. The only limit on a local turn now is the one gezel set for it, sized to how much there is to read.</p>
 <p>Batch work also got faster. When a job fans out into several pieces running at once — a review split across a few dozen files at a time — those pieces share the same crew member, the same project and the same recipe, and differ only in which files they're looking at. They used to each read the identical shared preamble from cold. Now the first one through warms it and the rest inherit it: in a matched before-and-after, 22,500 tokens read cold became 12,800. On the llama.cpp engine, models that can predict several tokens at once now do so by default.</p>
 <h2 id="chat-shows-what-your-crew-is-actually-doing">Chat shows what your crew is actually doing</h2>
-<p>When a gezel starts a <strong>craftbook</strong> — a saved recipe for a piece of work — the conversation now shows a card for it: which recipe, what its steps are, and how far along it is. Before, that arrived as a line of tool output that told you a tool had been called and little else.</p>
+<p>When a gezel starts a <strong>craftbook</strong>, the conversation now shows a card for it: which recipe, what its steps are, and how far along it is. Before, that arrived as a line of tool output that told you a tool had been called and little else.</p>
 <p>Half-written messages also survive now. The chat box used to lose a draft the moment you went to Settings and came back, or switched to another gezel. It keeps them.</p>
 <h2 id="smaller-things">Smaller things</h2>
 <ul><li><p><strong>You can check that your download is really ours.</strong> <a href="../../verifying-your-download/">Verifying your download</a> is a new page explaining the two things published beside every release: a list of checksums, and a signed record naming the build that produced them. Most people never need it — macOS and Windows check our signature for you. On Linux it's the only verification there is, because <code>.deb</code> and <code>.rpm</code> files carry no signature your package manager looks at.</p></li><li><p><strong>Knowledge catalogs are verified before they install.</strong> Publisher keys are built into the app, and settings can add trust but never remove it, so nothing you configure can quietly turn the check off.</p></li><li><p><strong>The scoreboard on gezel.com can be filtered.</strong> Pick a machine, a model, a size class or a date and the <a href="../../model-scorecard/">model scorecard</a> narrows to it — useful now that the rounds span a Mac, a Windows desktop with a Radeon card, and a DGX Spark. Inside the app it stays a plain stack of rounds.</p></li><li><p><strong><a href="../../how-we-test-models/">How we test models</a> explains the two hard sets.</strong> One is developer work; the other asks a model to write the recipe rather than follow it. Nobody scores full marks on either, and the article now says so — a low number there is headroom, not breakage.</p></li><li><p><strong>A finished document typed into the chat gets saved anyway.</strong> Caught in the wild: twelve kilobytes of completed review that the model wrote out in conversation instead of saving to a file, and which was then thrown away. It's recovered now.</p></li><li><p><strong>Granite models are supported</strong>, and DGX Spark machines have experimental support through the ds4 engine.</p></li><li><p><strong>When a gezel is told it has rambled</strong>, the correction it reads now names only tools that turn actually has. It used to recommend file-writing tools to sessions that had none, which is a hard instruction to follow.</p></li><li><p><strong>Files show what they are in the file lists</strong>, with an icon per type.</p></li><li><p>Catalog content moved to <code>@bendyline/gilde</code> 0.1.51.</p></li></ul>

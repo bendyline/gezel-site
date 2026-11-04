@@ -43,10 +43,12 @@ svg { width: 36px; height: 36px; stroke: currentColor; stroke-width: 1.4; fill: 
 #gallery[data-view="list"] { grid-template-columns: 1fr; gap: 8px; }
 #show-more { display: block; margin: 24px auto; }
 .empty { padding: 40px 20px; text-align: center; border: 1px dashed var(--border); border-radius: 10px; background: var(--surface); }
+.empty h3 { margin: 0; font-family: var(--font-heading, Georgia, serif); font-size: 1.3rem; font-weight: 400; line-height: 1.25; }
 .empty p { margin: 12px 0 0; color: var(--muted); }
 #error,#preview-error { color: var(--danger); overflow-wrap: anywhere; }
 .notice,[data-gezel-demo-banner] { padding: 12px 16px; background: var(--soft); border-radius: 6px; font-size: .85rem; }
 [data-gezel-demo-banner] { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+[data-gezel-demo-banner] button { flex: none; white-space: nowrap; }
 footer { margin-top: 32px; }
 dialog { width: min(1040px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 20px; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 10px; }
 dialog::backdrop { background: #000b; }

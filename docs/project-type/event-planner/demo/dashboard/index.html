@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Event Planner"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -26,9 +26,9 @@
         }
       }
       * { box-sizing: border-box; }
-      body { margin: 0; font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
+      body { margin: 0; font: 15px/1.5 var(--font-body, system-ui, sans-serif); background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
       main { max-width: 680px; margin: 0 auto; }
-      h1 { font-family: Georgia, 'PT Serif', 'Times New Roman', serif; font-size: 1.35rem; font-weight: 600; margin: 0 0 0.15rem; }
+      h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.35rem; font-weight: 600; margin: 0 0 0.15rem; }
       .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.9rem; }
       .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-bottom: 0.9rem; }
       .tile { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.7rem 0.85rem; }
@@ -48,6 +48,7 @@
       .bar > span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
       .amt { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
       .empty { color: var(--muted); font-style: italic; }
+      .panel li.empty { list-style: none; margin-left: -1.05rem; }
       @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } .tiles { grid-template-columns: 1fr 1fr; } }
       .demo-banner {
         display: flex;
@@ -76,9 +77,16 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
         <span><strong>Demo mode</strong> — sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
@@ -102,7 +110,7 @@
         </div>
       </div>
     </main>
-    
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
@@ -118,19 +126,45 @@
             { id: 'guest-5', status: 'no', fields: { name: 'Leo Martins', party: 1 } },
           ],
         };
-        var demoBudget = { entries: [
-          { kind: 'out', category: 'Venue', amountCents: 185000 },
-          { kind: 'out', category: 'Food', amountCents: 92000 },
-          { kind: 'out', category: 'Flowers', amountCents: 36000 },
-          { kind: 'out', category: 'Music', amountCents: 54000 },
+        var demoBudget = { currency: 'USD', entries: [
+          { id: 'ledger-1', kind: 'out', category: 'venue', amountCents: 185000, note: 'Deposit' },
+          { id: 'ledger-2', kind: 'out', category: 'food', amountCents: 92000, note: 'Caterer deposit' },
+          { id: 'ledger-3', kind: 'out', category: 'flowers', amountCents: 36000 },
+          { id: 'ledger-4', kind: 'out', category: 'music', amountCents: 54000, note: 'Band deposit' },
         ] };
+        // The demo answers the way event-store does: same ids, same matching, same totals.
+        function demoGuest(input) {
+          var wanted = String(input.name || '').toLowerCase();
+          var r = demoGuests.records.find(function (g) { return g.id === input.id; }) ||
+            (wanted ? demoGuests.records.find(function (g) { return String(g.fields.name).toLowerCase() === wanted; }) : null);
+          if (!r) throw new Error("Pass 'id' (e.g. 'guest-4') or an exact guest 'name'.");
+          return r;
+        }
+        function demoStatus(listing) {
+          var invited = 0, coming = 0, awaiting = 0, spent = 0;
+          demoGuests.records.forEach(function (g) {
+            var size = typeof g.fields.party === 'number' && g.fields.party >= 1 ? Math.floor(g.fields.party) : 1;
+            invited += size; if (g.status === 'yes') coming += size; if (g.status === 'invited') awaiting += size;
+          });
+          demoBudget.entries.forEach(function (e) { if (e.kind === 'out') spent += e.amountCents; });
+          var days = Math.ceil((Date.parse(demoGuests.eventDate) - Date.now()) / 86400000);
+          return { invited: invited, coming: coming, spentCents: spent, summary: listing || (days + ' day(s) to go. ' + coming + ' coming, ' + awaiting + ' awaiting reply (' + invited + ' invited). Spent ' + (spent / 100).toFixed(2) + '.') };
+        }
 
-        makeDemoGezel({
-          page: { entry: 'dashboard/index.html', typeName: 'Event Planner', params: { occasion: 'a big celebration', date: '2026-12-31' } },
-          data: {
+        window.gezel || window.makeDemoGezel({
+          page: { entry: 'dashboard/index.html', typeName: 'Event Planner', params: { occasion: 'a big celebration', date: demoGuests.eventDate.slice(0, 10) } },
+          tools: {
+"page_add_guest": function(input) { if(!input.name)throw new Error("add_guest needs 'name'."); var fields={name:input.name}; if(typeof input.party==='number'&&input.party>=1)fields.party=Math.floor(input.party); if(input.note)fields.note=input.note; demoGuests.records.push({id:'guest-'+(demoGuests.records.length+1),status:'invited',fields:fields}); return demoStatus(); },
+"page_guest_status": function(input) { if(['invited','yes','no'].indexOf(input.status)<0)throw new Error("guest_status needs status 'invited', 'yes', or 'no'."); var r=demoGuest(input); r.status=input.status; if(input.note)r.fields.note=input.note; return demoStatus(); },
+"page_record_spend": function(input) { if(!(input.amount>0)||!input.category)throw new Error("record_spend needs a positive 'amount' and a 'category' (e.g. 'venue')."); var e={id:'ledger-'+(demoBudget.entries.length+1),kind:'out',amountCents:Math.round(input.amount*100),category:String(input.category).toLowerCase()}; if(input.note)e.note=input.note; demoBudget.entries.push(e); return demoStatus(); },
+"event_status": function() { return demoStatus(); },
+"guest_list": function() { return demoStatus(demoGuests.records.map(function(g){return g.id+' ['+g.status+'] '+g.fields.name+(g.fields.party>1?' (party of '+g.fields.party+')':'');}).join('\n')||'The guest list is empty.'); }
+},
+data: {
             'guests.json': function () { return demoGuests; },
             'budget.json': function () { return demoBudget; },
           },
+          chat: window.demoChat,
         });
 
         // ── one code path from here: window.gezel exists in every mode ──
@@ -140,17 +174,35 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
 
         function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-        function fmt(cents) { var abs = Math.abs(cents); return (cents < 0 ? '-' : '') + Math.floor(abs / 100) + '.' + String(abs % 100).padStart(2, '0'); }
+        // Money in the budget's currency when it names one; whole amounts drop the cents.
+        function money(cents, currency) {
+          var whole = cents % 100 === 0, opts = { minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: 2 };
+          if (/^[A-Z]{3}$/.test(String(currency || ''))) {
+            try { return (cents / 100).toLocaleString(undefined, Object.assign({ style: 'currency', currency: currency }, opts)); } catch (e) { /* unknown code: plain number */ }
+          }
+          return (cents / 100).toLocaleString(undefined, opts);
+        }
+        function cap(s) { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+        function dayText(raw) {
+          var text = String(raw || ''), iso = text.match(/^\d{4}-\d{2}-\d{2}/);
+          if (!iso) return text;
+          var when = new Date(iso[0] + 'T12:00:00Z');
+          if (!isFinite(when.getTime())) return text;
+          var opts = { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' };
+          if (when.getUTCFullYear() !== new Date().getUTCFullYear()) opts.year = 'numeric';
+          return when.toLocaleDateString(undefined, opts);
+        }
         function partyOf(r) { var p = r.fields && r.fields.party; return typeof p === 'number' && p >= 1 ? Math.floor(p) : 1; }
 
         function render(guestsDoc, budgetDoc) {
           var records = (guestsDoc && guestsDoc.records) || [];
           var entries = (budgetDoc && budgetDoc.entries) || [];
+          var currency = budgetDoc && budgetDoc.currency;
           var coming = 0, awaiting = 0;
           records.forEach(function (r) {
             if (r.status === 'yes') coming += partyOf(r);
@@ -158,44 +210,45 @@
           });
           var spent = 0; var byCat = {};
           entries.forEach(function (e) {
-            if (e.kind === 'out') { spent += e.amountCents; byCat[e.category] = (byCat[e.category] || 0) + e.amountCents; }
+            var key = String(e.category || 'other').toLowerCase();
+            if (e.kind === 'out') { spent += e.amountCents; byCat[key] = (byCat[key] || 0) + e.amountCents; }
           });
           var days = guestsDoc && guestsDoc.eventDate ? Math.ceil((Date.parse(guestsDoc.eventDate) - Date.now()) / 86400000) : null;
 
           document.getElementById('sub').textContent =
-            (guestsDoc && guestsDoc.eventDate ? 'The day: ' + String(guestsDoc.eventDate).slice(0, 10) + ' · ' : '') +
-            records.length + ' invitation(s) on the list';
+            (guestsDoc && guestsDoc.eventDate ? 'The day: ' + dayText(guestsDoc.eventDate) + ' · ' : '') +
+            records.length + (records.length === 1 ? ' invitation' : ' invitations') + ' on the list';
           document.getElementById('t-days').textContent = days === null || !isFinite(days) ? '—' : Math.max(0, days);
           document.getElementById('t-coming').textContent = coming;
           document.getElementById('t-await').textContent = awaiting;
-          document.getElementById('t-spent').textContent = fmt(spent);
+          document.getElementById('t-spent').textContent = money(spent, currency);
 
           if (records.length) {
-            document.getElementById('guests').innerHTML = records.slice(0, 12).map(function (r) {
+            document.getElementById('guests').innerHTML = records.map(function (r) {
               return '<li>' + esc((r.fields && r.fields.name) || r.id) + (partyOf(r) > 1 ? ' (+' + (partyOf(r) - 1) + ')' : '') +
-                ' <span class="rsvp ' + r.status + '">' + (r.status === 'invited' ? 'awaiting' : r.status) + '</span></li>';
-            }).join('') + (records.length > 12 ? '<li class="empty">and ' + (records.length - 12) + ' more…</li>' : '');
+                ' <span class="rsvp ' + esc(r.status) + '">' + ({ invited: 'awaiting', yes: 'coming', no: 'declined' }[r.status] || esc(r.status)) + '</span></li>';
+            }).join('');
           }
           var cats = Object.entries(byCat).sort(function (a, b) { return b[1] - a[1]; }).slice(0, 6);
           if (cats.length) {
             var max = cats[0][1];
             document.getElementById('budget').innerHTML = cats.map(function (pair) {
-              return '<div class="bar-row"><span>' + esc(pair[0]) + '</span><span class="bar"><span style="width:' + Math.max(4, Math.round((pair[1] / max) * 100)) + '%"></span></span><span class="amt">' + fmt(pair[1]) + '</span></div>';
+              return '<div class="bar-row"><span>' + esc(cap(pair[0])) + '</span><span class="bar"><span style="width:' + Math.max(4, Math.round((pair[1] / max) * 100)) + '%"></span></span><span class="amt">' + money(pair[1], currency) + '</span></div>';
             }).join('');
           }
         }
 
-        function loadPlan() {
-          return Promise.all([
-            gezel.data.read('guests.json').catch(function () { return { records: [] }; }),
-            gezel.data.read('budget.json').catch(function () { return { entries: [] }; }),
-          ]).then(function (results) { render(results[0], results[1]); });
-        }
+        window.addEventListener('gezel-app-data-changed', function(){ loadPlan(); });
+        function loadPlan(){
+var revision=++appLoadRevision;
+return Promise.all([gezel.data.read('guests.json'),gezel.data.read('budget.json')]).then(function(values){if(appDisposed||revision!==appLoadRevision)return;reportAppError(null);render(values[0]||{},values[1]||{});}).catch(function(error){if(!appDisposed&&revision===appLoadRevision)reportAppError(error);});
+}
 
         loadPlan();
-        gezel.data.watch('guests.json', function () { loadPlan(); });
-        gezel.data.watch('budget.json', function () { loadPlan(); });
+        appSubscriptions.push(gezel.data.watch('guests.json', function () { loadPlan(); }));
+        appSubscriptions.push(gezel.data.watch('budget.json', function () { loadPlan(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Go Player"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -65,7 +65,7 @@
         padding: 1.25rem;
         background: var(--bg);
         color: var(--ink);
-        font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+        font: 15px/1.5 var(--font-body, system-ui, sans-serif);
       }
       main { max-width: 820px; margin: 0 auto; }
       header {
@@ -77,7 +77,7 @@
       }
       h1 {
         margin: 0;
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.35rem;
       }
       button { font: inherit; }
@@ -130,7 +130,9 @@
       }
       .board {
         display: grid;
-        grid-template-columns: repeat(var(--board-size), 1fr);
+        grid-template-columns: repeat(var(--board-size), minmax(0, 1fr));
+        /* Fixed rows: without them a row holding stones grows and the grid goes uneven. */
+        grid-template-rows: repeat(var(--board-size), minmax(0, 1fr));
         aspect-ratio: 1;
         user-select: none;
       }
@@ -209,13 +211,14 @@
         position: absolute;
         z-index: 3;
         color: rgba(44, 27, 16, 0.72);
-        font-size: clamp(0.38rem, 1vw, 0.62rem);
+        font-size: clamp(0.5rem, 1vw, 0.66rem);
         font-weight: 700;
         line-height: 1;
         pointer-events: none;
       }
-      .coord.rank { top: 4%; left: 4%; }
-      .coord.file { right: 4%; bottom: 4%; }
+      /* Labels sit on their line (beside the left edge, under the bottom edge), not in a cell corner. */
+      .coord.rank { top: 50%; left: 1%; transform: translateY(-50%); }
+      .coord.file { bottom: 1%; left: 50%; transform: translateX(-50%); }
       .aside { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
       .panel {
         padding: 0.7rem 0.85rem;
@@ -241,9 +244,10 @@
       }
       .game-actions { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
       .capture-count { color: var(--muted); font-size: 0.78rem; }
-      .log { max-height: 210px; margin: 0; padding-left: 1.2rem; overflow-y: auto; }
+      .log { max-height: 210px; margin: 0; padding-left: 2.1rem; overflow-y: auto; }
       .log li { margin: 0.12rem 0; color: var(--muted); }
       .log li.latest { color: var(--ink); }
+      .log li.empty { list-style: none; margin-left: -2.1rem; }
       dialog {
         width: min(430px, calc(100vw - 2rem));
         padding: 0;
@@ -257,7 +261,7 @@
       .dialog-content { padding: 1rem; }
       .dialog-content h2 {
         margin: 0;
-        font-family: Georgia, 'PT Serif', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.1rem;
       }
       .dialog-intro { margin: 0.2rem 0 0.85rem; color: var(--muted); font-size: 0.85rem; }
@@ -342,11 +346,18 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script><style data-app-narrow-board>@media(max-width:480px){.aside{grid-template-columns:minmax(0,1fr)}}html[data-gezel-fullscreen=true] body{padding:0}</style></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
-        <span><strong>Demo mode</strong> — sample data stays in this page.</span>
+        <span><strong>Demo mode</strong> — you play black against Sora; sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
       </div>
       <p class="note" id="browser-note" hidden>
@@ -371,7 +382,7 @@
           </div>
           <div class="panel">
             <h2>Moves</h2>
-            <ol class="log" id="log"><li>No moves yet — black opens.</li></ol>
+            <ol class="log" id="log"><li class="empty">No moves yet — black opens.</li></ol>
           </div>
         </div>
       </div>
@@ -411,7 +422,7 @@
         </div>
       </dialog>
     </main>
-    
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
@@ -421,122 +432,285 @@
         var busy = false;
         var newBoardSize = 9;
         var newKomi = 6.5;
-        var demoGame = null;
 
         function pointName(x, y, size) { return GO_FILES[x] + String(size - y); }
-        function demoCoords(name, size) { return { x: GO_FILES.indexOf(name[0]), y: size - Number(name.slice(1)) }; }
-        function demoNeighbors(x, y, size) {
-          return [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]].filter(function (p) {
-            return p[0] >= 0 && p[0] < size && p[1] >= 0 && p[1] < size;
-          });
-        }
-        function demoGroup(board, x, y, size) {
-          var color = board[y * size + x];
-          var seen = {}; var stones = []; var liberties = {};
-          var queue = [[x, y]];
-          while (queue.length) {
-            var p = queue.pop(); var key = p[0] + ',' + p[1];
-            if (seen[key]) continue;
-            seen[key] = true; stones.push(p);
-            demoNeighbors(p[0], p[1], size).forEach(function (n) {
-              var ch = board[n[1] * size + n[0]];
-              if (ch === '.') liberties[n[0] + ',' + n[1]] = true;
-              else if (ch === color && !seen[n[0] + ',' + n[1]]) queue.push(n);
-            });
-          }
-          return { stones: stones, liberties: Object.keys(liberties).length };
-        }
-        function demoTryMove(game, move) {
-          if (move === 'pass') return { squares: game.squares, captures: [] };
-          var size = game.boardSize; var at = demoCoords(move, size);
-          if (at.x < 0 || at.y < 0 || at.x >= size || at.y >= size) return null;
-          var board = game.squares.split('');
-          var index = at.y * size + at.x;
-          if (board[index] !== '.') return null;
-          var color = game.turn === 'user' ? 'X' : 'O';
-          var other = color === 'X' ? 'O' : 'X';
-          board[index] = color;
-          var captures = [];
-          demoNeighbors(at.x, at.y, size).forEach(function (n) {
-            if (board[n[1] * size + n[0]] !== other) return;
-            var group = demoGroup(board, n[0], n[1], size);
-            if (group.liberties === 0) group.stones.forEach(function (p) {
-              board[p[1] * size + p[0]] = '.';
-              captures.push(pointName(p[0], p[1], size));
-            });
-          });
-          if (demoGroup(board, at.x, at.y, size).liberties === 0) return null;
-          var squares = board.join('');
-          if (game.previousPosition && squares === game.previousPosition) return null;
-          return { squares: squares, captures: captures };
-        }
-        function demoLegalMoves(game) {
-          var out = [];
-          for (var y = 0; y < game.boardSize; y += 1) for (var x = 0; x < game.boardSize; x += 1) {
-            if (game.squares[y * game.boardSize + x] !== '.') continue;
-            var name = pointName(x, y, game.boardSize);
-            if (demoTryMove(game, name)) out.push(name);
-          }
-          return out;
-        }
-        function demoScore(game) {
-          var black = game.captures.user; var white = game.captures.ai + game.komi;
-          for (var i = 0; i < game.squares.length; i += 1) {
-            if (game.squares[i] === 'X') black += 1;
-            if (game.squares[i] === 'O') white += 1;
-          }
-          if (black === white) return { winner: 'draw', margin: 0 };
-          return { winner: black > white ? 'user' : 'ai', margin: Math.abs(black - white) };
-        }
-        function demoNewGame(boardSize, komi) {
-          var game = {
-            version: 1, boardSize: boardSize, squares: '.'.repeat(boardSize * boardSize),
-            turn: 'user', status: 'playing', komi: komi, consecutivePasses: 0,
-            previousPosition: null, legalMoves: [], captures: { user: 0, ai: 0 },
-            lastMove: null, lastMoveThought: '', moveLog: [], score: null,
-          };
-          demoGame = game;
-          game.legalMoves = demoLegalMoves(game);
-          return game;
-        }
-        function demoUserMove(input) {
-          var move = input.move;
-          if (move !== 'pass' && !demoGame.legalMoves.includes(move)) throw new Error('That point is not legal in the hot-seat demo.');
-          var result = demoTryMove(demoGame, move);
-          if (!result) throw new Error('That point is not legal in the hot-seat demo.');
-          var by = demoGame.turn;
-          var before = demoGame.squares;
-          demoGame.squares = result.squares;
-          demoGame.previousPosition = before;
-          demoGame.captures[by] += result.captures.length;
-          demoGame.consecutivePasses = move === 'pass' ? demoGame.consecutivePasses + 1 : 0;
-          demoGame.lastMove = { by: by, move: move };
-          demoGame.moveLog.push({ by: by, move: move, captures: result.captures });
-          demoGame.turn = by === 'user' ? 'ai' : 'user';
-          if (demoGame.consecutivePasses >= 2) {
-            demoGame.status = 'finished';
-            demoGame.score = demoScore(demoGame);
-            demoGame.legalMoves = [];
-          } else {
-            demoGame.legalMoves = demoLegalMoves(demoGame);
-          }
-          return { status: demoGame.status, turn: demoGame.turn, summary: 'Move played.' };
-        }
 
-        demoNewGame(9, 6.5);
-        makeDemoGezel({
-          page: { entry: 'board/index.html', typeName: 'Go', params: { personality: 'peppy', playStyle: 'Opponent' } },
-          tools: {
-            user_move: demoUserMove,
-            new_game: function (input) {
-              demoNewGame(Number(input.boardSize) || 9, input.komi === undefined ? 6.5 : Number(input.komi));
-              return { status: demoGame.status, turn: demoGame.turn, summary: 'New game.' };
+        // ── standalone demo: you play black, the companion answers with white ──
+        // Inside Gezel window.gezel already exists and none of this runs. The
+        // rules are the game-store script's own, so the sample plays exactly
+        // like a live table; demo-chat.js chooses the companion's moves.
+        window.gezel || window.makeDemoGezel((function () {
+          // ── go-rules-start ──
+          // Pure, annotation-free Go engine. Supports 9x9, 13x13, and 19x19.
+          // Squares are row-major, y0 at the top. X = black/user; O = white/AI.
+          // Coordinates follow Go convention and skip the letter I.
+
+          var GO_FILES = 'ABCDEFGHJKLMNOPQRST';
+
+          function buildInitial(size) {
+            return '.'.repeat(size * size);
+          }
+
+          function inBounds(x, y, size) {
+            return x >= 0 && x < size && y >= 0 && y < size;
+          }
+
+          function pointName(x, y, size) {
+            return GO_FILES[x] + String(size - y);
+          }
+
+          function parsePoint(name, size) {
+            if (typeof name !== 'string') return null;
+            var text = name.trim().toUpperCase();
+            var match = /^([A-HJ-T])(\d{1,2})$/.exec(text);
+            if (!match) return null;
+            var x = GO_FILES.indexOf(match[1]);
+            var rank = Number(match[2]);
+            if (x < 0 || x >= size || rank < 1 || rank > size) return null;
+            return { x: x, y: size - rank, index: (size - rank) * size + x };
+          }
+
+          function neighbors(index, size) {
+            var x = index % size;
+            var y = Math.floor(index / size);
+            var out = [];
+            if (x > 0) out.push(index - 1);
+            if (x + 1 < size) out.push(index + 1);
+            if (y > 0) out.push(index - size);
+            if (y + 1 < size) out.push(index + size);
+            return out;
+          }
+
+          function groupAt(squares, index, size) {
+            var color = squares[index];
+            var stones = [];
+            var liberties = {};
+            var seen = {};
+            var queue = [index];
+            seen[index] = true;
+            while (queue.length) {
+              var current = queue.pop();
+              stones.push(current);
+              for (var next of neighbors(current, size)) {
+                if (squares[next] === '.') liberties[next] = true;
+                else if (squares[next] === color && !seen[next]) {
+                  seen[next] = true;
+                  queue.push(next);
+                }
+              }
+            }
+            return { stones: stones, liberties: Object.keys(liberties).map(Number) };
+          }
+
+          function replaceAt(squares, index, ch) {
+            return squares.slice(0, index) + ch + squares.slice(index + 1);
+          }
+
+          function applyPlacement(squares, size, side, name, previousPosition) {
+            var point = parsePoint(name, size);
+            if (!point) return { error: 'bad-coordinate' };
+            if (squares[point.index] !== '.') return { error: 'occupied' };
+            var stone = side === 'user' ? 'X' : 'O';
+            var enemy = side === 'user' ? 'O' : 'X';
+            var next = replaceAt(squares, point.index, stone);
+            var captures = [];
+            var checked = {};
+            for (var adjacent of neighbors(point.index, size)) {
+              if (next[adjacent] !== enemy || checked[adjacent]) continue;
+              var enemyGroup = groupAt(next, adjacent, size);
+              for (var member of enemyGroup.stones) checked[member] = true;
+              if (enemyGroup.liberties.length === 0) {
+                for (var captured of enemyGroup.stones) {
+                  next = replaceAt(next, captured, '.');
+                  captures.push(pointName(captured % size, Math.floor(captured / size), size));
+                }
+              }
+            }
+            if (groupAt(next, point.index, size).liberties.length === 0) return { error: 'suicide' };
+            if (previousPosition && next === previousPosition) return { error: 'ko' };
+            return { squares: next, captures: captures };
+          }
+
+          function legalMovesFor(squares, size, side, previousPosition) {
+            var moves = [];
+            for (var y = 0; y < size; y += 1) {
+              for (var x = 0; x < size; x += 1) {
+                if (squares[y * size + x] !== '.') continue;
+                var name = pointName(x, y, size);
+                var result = applyPlacement(squares, size, side, name, previousPosition);
+                if (!result.error) moves.push(name);
+              }
+            }
+            moves.push('pass');
+            return moves;
+          }
+
+          function scoreArea(squares, size, komi) {
+            var blackStones = 0;
+            var whiteStones = 0;
+            var blackTerritory = 0;
+            var whiteTerritory = 0;
+            var seen = {};
+            for (var i = 0; i < squares.length; i += 1) {
+              if (squares[i] === 'X') {
+                blackStones += 1;
+                continue;
+              }
+              if (squares[i] === 'O') {
+                whiteStones += 1;
+                continue;
+              }
+              if (seen[i]) continue;
+              var region = [];
+              var borders = {};
+              var queue = [i];
+              seen[i] = true;
+              while (queue.length) {
+                var current = queue.pop();
+                region.push(current);
+                for (var next of neighbors(current, size)) {
+                  if (squares[next] === '.' && !seen[next]) {
+                    seen[next] = true;
+                    queue.push(next);
+                  } else if (squares[next] === 'X' || squares[next] === 'O') {
+                    borders[squares[next]] = true;
+                  }
+                }
+              }
+              if (borders.X && !borders.O) blackTerritory += region.length;
+              if (borders.O && !borders.X) whiteTerritory += region.length;
+            }
+            var black = blackStones + blackTerritory;
+            var white = whiteStones + whiteTerritory + komi;
+            return {
+              black: black,
+              white: white,
+              blackStones: blackStones,
+              whiteStones: whiteStones,
+              blackTerritory: blackTerritory,
+              whiteTerritory: whiteTerritory,
+              winner: black === white ? 'draw' : black > white ? 'user' : 'ai',
+              margin: Math.abs(black - white),
+            };
+          }
+
+          function statusAfter(squares, size, komi, consecutivePasses) {
+            if (consecutivePasses < 2) return 'playing';
+            var score = scoreArea(squares, size, komi);
+            return score.winner === 'draw' ? 'draw' : score.winner === 'user' ? 'user_won' : 'ai_won';
+          }
+
+          function renderAscii(squares, size) {
+            var labels = [];
+            for (var x = 0; x < size; x += 1) labels.push(GO_FILES[x]);
+            var pad = size >= 10 ? '   ' : '  ';
+            var lines = [pad + labels.join(' ')];
+            for (var y = 0; y < size; y += 1) {
+              var rank = String(size - y).padStart(size >= 10 ? 2 : 1, ' ');
+              var row = [];
+              for (var x = 0; x < size; x += 1) row.push(squares[y * size + x]);
+              lines.push(rank + ' ' + row.join(' ') + ' ' + rank);
+            }
+            lines.push(pad + labels.join(' '));
+            lines.push('X = black (user). O = white (you).');
+            return lines.join('\n');
+          }
+          // ── go-rules-end ──
+
+          // A few opening stones, so the sample starts with a game under way.
+          var OPENING = [
+            ['user', 'E5'],
+            ['ai', 'G4'],
+            ['user', 'C6'],
+            ['ai', 'C3', 'A quiet stone on C3. The corner looked lonely.'],
+          ];
+          var SIDE_NAMES = { user: 'black', ai: 'white' };
+          var game = null;
+
+          function validSize(value) { var size = Number(value); return size === 13 || size === 19 ? size : 9; }
+          function validKomi(value) { var komi = Number(value); return isFinite(komi) && komi >= 0 && komi <= 20 ? komi : 6.5; }
+          function freshGame(boardSize, komi) {
+            var size = validSize(boardSize);
+            var squares = buildInitial(size);
+            return {
+              version: 1, boardSize: size, squares: squares, turn: 'user', status: 'playing', komi: validKomi(komi),
+              consecutivePasses: 0, previousPosition: null, legalMoves: legalMovesFor(squares, size, 'user', null),
+              captures: { user: 0, ai: 0 }, score: null, moveLog: [], lastMove: null, lastMoveThought: '',
+            };
+          }
+          function renderLegal() { return game.status === 'playing' ? game.legalMoves.join(', ') : '(game over)'; }
+          function renderScore() {
+            if (!game.score) return '(not scored — play continues)';
+            var result = game.score.winner === 'draw' ? 'draw' : SIDE_NAMES[game.score.winner] + ' wins by ' + game.score.margin;
+            return 'Black ' + game.score.black + '; white ' + game.score.white + ' (includes ' + game.komi + ' komi): ' + result + '.';
+          }
+          function output() {
+            return {
+              board: renderAscii(game.squares, game.boardSize) + '\nTurn: ' + SIDE_NAMES[game.turn] + ' (' + game.turn + ').\nKomi: ' +
+                game.komi + '. Consecutive passes: ' + game.consecutivePasses + '.\nLegal moves: ' + renderLegal(),
+              turn: game.turn,
+              status: game.status,
+              lastMove: game.lastMove ? game.lastMove.move : '(none)',
+              legalMoves: renderLegal(),
+              score: renderScore(),
+            };
+          }
+          function play(by, input) {
+            if (game.status !== 'playing') throw new Error('The game is over. Start a new game to play again.');
+            if (game.turn !== by) throw new Error(by === 'ai' ? 'It is black’s move.' : 'White is still to move.');
+            var raw = String(input.move || '').trim();
+            var move = raw.toLowerCase() === 'pass' ? 'pass' : raw.toUpperCase();
+            if (game.legalMoves.indexOf(move) < 0) throw new Error('Illegal move \'' + raw + '\'. Legal moves for ' + SIDE_NAMES[by] + ': ' + renderLegal());
+            var thought = by === 'ai' && input.moveThought ? String(input.moveThought).trim().slice(0, 140) : '';
+            var before = game.squares;
+            var captured = [];
+            if (move === 'pass') {
+              game.consecutivePasses += 1;
+            } else {
+              var applied = applyPlacement(game.squares, game.boardSize, by, move, game.previousPosition);
+              if (applied.error) throw new Error('Illegal move \'' + raw + '\' (' + applied.error + ').');
+              game.squares = applied.squares;
+              captured = applied.captures || [];
+              game.captures[by] += captured.length;
+              game.consecutivePasses = 0;
+            }
+            game.previousPosition = before;
+            game.turn = by === 'user' ? 'ai' : 'user';
+            game.status = statusAfter(game.squares, game.boardSize, game.komi, game.consecutivePasses);
+            if (game.status !== 'playing') game.score = scoreArea(game.squares, game.boardSize, game.komi);
+            game.legalMoves = game.status === 'playing' ? legalMovesFor(game.squares, game.boardSize, game.turn, game.previousPosition) : [];
+            var entry = { by: by, move: move, captures: captured };
+            if (thought) entry.moveThought = thought;
+            game.moveLog.push(entry);
+            game.lastMove = { by: by, move: move, captures: captured };
+            if (thought) game.lastMoveThought = thought;
+            return output();
+          }
+          function sample() {
+            game = freshGame(9, 6.5);
+            OPENING.forEach(function (move) { play(move[0], { move: move[1], moveThought: move[2] }); });
+          }
+          sample();
+
+          return {
+            page: { entry: 'board/index.html', typeName: 'Go', params: { personality: 'zen', playStyle: 'Opponent' } },
+            tools: {
+              get_board: function () { return output(); },
+              user_move: function (input) { return play('user', input); },
+              make_move: function (input) { return play('ai', input); },
+              new_game: function (input) { game = freshGame(input && input.boardSize, input && input.komi); return output(); },
             },
-          },
-          data: {
-            'game.json': function () { return demoGame; },
-          },
-        });
+            data: {
+              'game.json': function () { return JSON.parse(JSON.stringify(game)); },
+            },
+            chat: window.demoChat && Object.assign(window.demoChat, {
+              rules: {
+                buildInitial: buildInitial, legalMovesFor: legalMovesFor, applyPlacement: applyPlacement, scoreArea: scoreArea,
+                groupAt: groupAt, neighbors: neighbors, parsePoint: parsePoint, pointName: pointName,
+              },
+            }),
+          };
+        })());
 
         // ── one code path from here: window.gezel exists in every mode ──
         var demoMode = gezel.page.mode === 'demo';
@@ -546,7 +720,7 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
         if (browserMode) document.getElementById('browser-note').hidden = false;
@@ -579,7 +753,6 @@
         function statusLine() {
           if (!state) return 'Setting up the board…';
           if (state.status !== 'playing') return scoreText() + ' Ready for another game?';
-          if (demoMode) return 'Hot seat — ' + (state.turn === 'user' ? 'black' : 'white') + ' to move, or pass.';
           if (busy) return 'Sending your move…';
           if (state.turn === 'ai') return 'Go player is thinking…';
           return 'Your move — place black, or pass.';
@@ -588,7 +761,7 @@
           var status = document.getElementById('status');
           status.textContent = statusLine();
           status.className =
-            state && !demoMode && state.turn === 'ai' && state.status === 'playing'
+            state && state.turn === 'ai' && state.status === 'playing'
               ? 'status thinking'
               : 'status';
 
@@ -603,7 +776,7 @@
             ? 'Captures — black ' + state.captures.user + ' / white ' + state.captures.ai
             : 'Captures — 0 / 0';
           document.getElementById('pass').disabled =
-            !state || (!demoMode && state.turn !== 'user') || state.status !== 'playing' || busy;
+            !state || state.turn !== 'user' || state.status !== 'playing' || busy;
 
           var log = document.getElementById('log');
           if (state && state.moveLog.length) {
@@ -619,7 +792,7 @@
             });
             log.scrollTop = log.scrollHeight;
           } else {
-            log.innerHTML = '<li>No moves yet — black opens.</li>';
+            log.innerHTML = '<li class="empty">No moves yet — black opens.</li>';
           }
 
           var board = document.getElementById('board');
@@ -628,7 +801,7 @@
           board.style.setProperty('--board-size', size);
           var legal = {};
           if (state) state.legalMoves.forEach(function (move) { legal[move] = true; });
-          var myTurn = state && (demoMode || state.turn === 'user') && state.status === 'playing' && !busy;
+          var myTurn = state && state.turn === 'user' && state.status === 'playing' && !busy;
           for (var y = 0; y < size; y += 1) {
             for (var x = 0; x < size; x += 1) {
               var name = pointName(x, y, size);
@@ -675,7 +848,7 @@
         }
 
         function onPointClick(event) {
-          if (!state || (!demoMode && state.turn !== 'user') || state.status !== 'playing' || busy) return;
+          if (!state || state.turn !== 'user' || state.status !== 'playing' || busy) return;
           var move = event.currentTarget.dataset.point;
           if (!state.legalMoves.includes(move)) return;
           submitMove(move);
@@ -766,8 +939,9 @@
           });
         });
         loadGame();
-        gezel.data.watch('game.json', function () { loadGame(); });
+        appSubscriptions.push(gezel.data.watch('game.json', function () { loadGame(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

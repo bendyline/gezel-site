@@ -3,14 +3,7 @@
   const $ = (id) => document.getElementById(id);
   const queries = window.dataAnalysisQueries;
   const api = window.gezel;
-  const sampleRows = [
-    { month: '2026-07-01', region: 'North', revenue: 7480, orders: 94 },
-    { month: '2026-07-01', region: 'South', revenue: 5000, orders: 62 },
-    { month: '2026-08-01', region: 'North', revenue: 8360, orders: 105 },
-    { month: '2026-08-01', region: 'South', revenue: 6200, orders: 77 },
-    { month: '2026-09-01', region: 'North', revenue: 9240, orders: 116 },
-    { month: '2026-09-01', region: 'South', revenue: 7000, orders: 87 },
-  ];
+  const sampleRows = window.dataAnalysisSampleRows || [];
   const sampleTable = { name: 'sample_sales', title: 'Quarterly sales', source: 'workspace', path: 'sales/quarterly-sales.csv', rows: 6, columnCount: 4 };
   const sampleColumns = [
     { name: 'month', type: 'DATE', role: 'time' }, { name: 'region', type: 'VARCHAR', role: 'dimension' },

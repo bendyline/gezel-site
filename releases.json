@@ -1,70 +1,70 @@
 {
   "schema": 1,
-  "generatedAt": "2026-11-01T01:56:38.236Z",
+  "generatedAt": "2026-11-04T17:48:59.900Z",
   "repo": "bendyline/gezel",
   "releasesUrl": "https://github.com/bendyline/gezel/releases",
-  "tag": "v1.26300.100",
-  "version": "1.26300.100",
-  "published": "2026-10-27T22:27:52Z",
-  "notesUrl": "https://github.com/bendyline/gezel/releases/tag/v1.26300.100",
-  "notesPath": "docs/whats-new/1.26300/",
-  "checksumsUrl": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/SHA256SUMS",
+  "tag": "v1.26307.102",
+  "version": "1.26307.102",
+  "published": "2026-11-04T15:31:56Z",
+  "notesUrl": "https://github.com/bendyline/gezel/releases/tag/v1.26307.102",
+  "notesPath": "docs/whats-new/1.26307/",
+  "checksumsUrl": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/SHA256SUMS",
   "builds": [
     {
-      "name": "Gezel-1.26300.100-linux-arm64.deb",
+      "name": "Gezel-1.26307.102-linux-arm64.deb",
       "platform": "linux",
       "arch": "arm64",
       "format": "deb",
-      "size": 1134060766,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/Gezel-1.26300.100-linux-arm64.deb"
+      "size": 1143338102,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/Gezel-1.26307.102-linux-arm64.deb"
     },
     {
-      "name": "Gezel-1.26300.100-linux-aarch64.rpm",
+      "name": "Gezel-1.26307.102-linux-aarch64.rpm",
       "platform": "linux",
       "arch": "arm64",
       "format": "rpm",
-      "size": 999201661,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/Gezel-1.26300.100-linux-aarch64.rpm"
+      "size": 1007954741,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/Gezel-1.26307.102-linux-aarch64.rpm"
     },
     {
-      "name": "Gezel-1.26300.100-linux-amd64.deb",
+      "name": "Gezel-1.26307.102-linux-amd64.deb",
       "platform": "linux",
       "arch": "x64",
       "format": "deb",
-      "size": 1675889600,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/Gezel-1.26300.100-linux-amd64.deb"
+      "size": 1689340024,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/Gezel-1.26307.102-linux-amd64.deb"
     },
     {
-      "name": "Gezel-1.26300.100-linux-x86_64.rpm",
+      "name": "Gezel-1.26307.102-linux-x86_64.rpm",
       "platform": "linux",
       "arch": "x64",
       "format": "rpm",
-      "size": 1458696921,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/Gezel-1.26300.100-linux-x86_64.rpm"
+      "size": 1474494481,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/Gezel-1.26307.102-linux-x86_64.rpm"
     },
     {
-      "name": "Gezel-1.26300.100-mac-arm64.pkg",
+      "name": "Gezel-1.26307.102-mac-arm64.pkg",
       "platform": "mac",
       "arch": "arm64",
       "format": "pkg",
-      "size": 541472257,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/Gezel-1.26300.100-mac-arm64.pkg"
+      "size": 549633628,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/Gezel-1.26307.102-mac-arm64.pkg"
     },
     {
-      "name": "Gezel-1.26300.100-windows-arm64.exe",
+      "name": "Gezel-1.26307.102-windows-arm64.exe",
       "platform": "windows",
       "arch": "arm64",
       "format": "exe",
-      "size": 724227120,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/Gezel-1.26300.100-windows-arm64.exe"
+      "size": 733421160,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/Gezel-1.26307.102-windows-arm64.exe"
     },
     {
-      "name": "Gezel-1.26300.100-windows-x64.exe",
+      "name": "Gezel-1.26307.102-windows-x64.exe",
       "platform": "windows",
       "arch": "x64",
       "format": "exe",
-      "size": 1185923424,
-      "url": "https://github.com/bendyline/gezel/releases/download/v1.26300.100/Gezel-1.26300.100-windows-x64.exe"
+      "size": 1200693344,
+      "url": "https://github.com/bendyline/gezel/releases/download/v1.26307.102/Gezel-1.26307.102-windows-x64.exe"
     }
   ]
 }

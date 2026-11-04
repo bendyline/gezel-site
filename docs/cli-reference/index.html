@@ -71,7 +71,9 @@
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../what-leaves-this-computer/">What leaves this computer</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../governance/">Governance: who writes Gezel, and how</a></li>
 <li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
@@ -81,6 +83,8 @@
 <li><a class="hb-current" aria-current="page" href="../cli-reference/">The gezel command line</a></li>
 <li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
 <li><a href="../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../gezel-in-docker/">Gezel in Docker</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -119,10 +123,14 @@
 <article class="hb-article">
 <h1>The gezel command line</h1>
 <p>The <code>gezel</code> command drives the same service the desktop app uses — handy on servers, in scripts, or when you just live in a terminal.</p>
-<p>Install the command-line package with Node.js 24 or newer:</p>
-<pre class="squisq-code-block"><code class="language-bash">npm install -g @bendyline/gezel-cli
+<p>The command line needs Node.js 24 or newer. Check with <code>node --version</code>; if it is older or missing, one line installs a current version:</p>
+<ul><li><p>macOS: <code>brew install node</code></p></li><li><p>Windows: <code>winget install OpenJS.NodeJS.LTS</code></p></li><li><p>Ubuntu or Debian: <code>curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash - &amp;&amp; sudo apt-get install -y nodejs</code></p></li><li><p>Anywhere, with <a href="https://github.com/nvm-sh/nvm">nvm</a>: <code>nvm install 24</code></p></li></ul>
+<p>To try Gezel without installing anything else, run:</p>
+<pre class="squisq-code-block"><code class="language-bash">npx gezel</code></pre>
+<p>To keep it installed:</p>
+<pre class="squisq-code-block"><code class="language-bash">npm install -g gezel
 gezel</code></pre>
-<p>To try it without installing, run <code>npx -p @bendyline/gezel-cli gezel</code>. Name the <code>@bendyline/</code> package whenever you use <code>npx</code>: a bare <code>npx gezel</code> outside a folder where the CLI is installed asks npm for an unrelated package.</p>
+<p>The <code>gezel</code> package is the short name for <code>@bendyline/gezel-cli</code>, and the two are the same program. If you installed <code>@bendyline/gezel-cli</code> before, keep using it, or remove it with <code>npm uninstall -g @bendyline/gezel-cli</code> before you install <code>gezel</code>. They both provide the <code>gezel</code> command, and npm will not install a second one over the first.</p>
 <p>The CLI is one of Gezel's public JavaScript packages. See <a href="../npm-packages/">Gezel on npm</a> for the complete package map and the SDKs to use when a shell command is not the right integration boundary.</p>
 <h2 id="local-use-and-external-connections">Local use and external connections</h2>
 <p>The npm package is sufficient for local CLI use, including first use. The CLI discovers your per-user daemon through its runtime files and pinned TLS certificate, then connects with your same-user owner credential. You do not need to install or open the desktop app or approve a connection to your own local daemon.</p>
@@ -130,6 +138,7 @@ gezel</code></pre>
 <p>An explicit <code>--connect &lt;url&gt;</code> uses a separate CLI-scoped grant for that service. Without a valid saved grant or supplied <code>--token</code>, the terminal displays a six-character code and waits for you to approve Gezel CLI in the Gezel app. The resulting revocable credential is saved under <code>~/.gezel/cli/tokens/</code>. A valid saved grant or <code>--connect &lt;url&gt; --token &lt;token&gt;</code> lets you connect without that interaction.</p>
 <p>Rolling-upgrade compatibility may also select an older <code>legacy-full</code> machine service, which uses that approval path. Use <code>--standalone</code> to skip this compatibility choice; <code>--home &lt;path&gt;</code> or an explicit <code>GEZEL_HOME</code> also implies standalone operation. A modern machine service is an engine broker; your per-user daemon handles product data and connects to that broker for inference.</p>
 <p>A home you name with <code>--home</code> is also kept separate from what the Gezel desktop app's machine install publishes: its shared gezels and projects, and the models it downloaded. Set <code>GEZEL_DISABLE_MACHINE_SHARED=0</code> to include them anyway. Your default home, <code>~/.gezel</code>, still sees them.</p>
+<p>To run Gezel headless on a machine of its own, see <a href="../gezel-on-a-server/">Gezel on a server</a>.</p>
 <h2 id="everyday-commands">Everyday commands</h2>
 <pre class="squisq-code-block"><code>gezel                       open the interactive terminal app for this folder's project
 gezel start                 ensure the service is running
@@ -138,6 +147,9 @@ gezel start --port 8080 --foreground
 gezel start --web --open    serve the web interface on this computer and open
                             it in your browser; the printed link signs you in
                             until the service restarts
+gezel start --web --accounts
+                            the same, but people sign in with a name and
+                            password; the first run prints a link to create one
 gezel status                is it up, and where (exits 1 if not running or unhealthy)
 gezel stop                  cancel any AI work and shut the service down
 gezel stop --keep-running   emergency brake: cancel AI work, unload engines,
@@ -148,6 +160,8 @@ gezel growth [on|off]       show or set gezel growth (XP and level-ups); off
                             computes no XP, for homes that run bulk workflows
 gezel run "..."             one-shot: send a prompt, print the reply
 gezel doctor                check the installation</code></pre>
+<p>The first time you use Gezel on a computer, it has no model to answer with. <code>gezel</code> and <code>gezel run</code> then show the same setup: they suggest a model that fits this computer, download it with your OK, and carry on. <code>gezel run</code> goes straight on to your prompt afterward. When <code>gezel run</code> is not in a terminal, for example in a script or with its prompt piped in, it prints the setup commands instead and downloads nothing.</p>
+<p>A new install starts in <code>full-play</code>. For a server nobody is watching, <code>reactive+tasks</code> is the better fit: messages, tasks you start and schedules still run, without proactive nudges. <a href="../gezel-on-a-server/">Gezel on a server</a> covers the rest of a headless setup.</p>
 <p>If the desktop app's machine-wide service is in use, <code>gezel stop</code> applies the emergency brake to it instead and says the service is managed by the operating system. It does the same for a service the Gezel app started for you, which the app would only start again: quit the app to shut that one down. <code>gezel stop</code> shuts a service down only after confirming the process is Gezel's. When the service has already exited, it removes the files the service left behind, and it never stops another program that happens to have reused the service's old process number. <code>gezel stop --daemon</code> still works and means the same as <code>gezel stop</code>.</p>
 <h2 id="which-project-a-command-uses">Which project a command uses</h2>
 <p><code>gezel</code>, <code>gezel run</code>, <code>gezel do</code>, and the other project commands work in the project for the folder you run them from, and create it the first time. Pass <code>--project &lt;folder&gt;</code> to use another folder without changing directory.</p>
@@ -161,11 +175,29 @@ gezel task pause &lt;ref&gt;      pause one task without stopping the others
 gezel task resume &lt;ref&gt;     retry a paused task and wait for its result
 gezel craftbook list [words]
                             craftbooks you can start in this folder's project
-                            (words filter by command, title, and tags)
+                            (words filter by command, title, and tags;
+                            --no-start answers from a running service only)
 gezel do &lt;craftbook&gt;        start a craftbook as a task in this folder's project
-                            (--wait to stay until it finishes)
+                            (--wait to stay until it finishes; --out &lt;dir&gt; to
+                            wait and copy what it made into that folder)
 gezel skills list           SKILL.md skills found in this project's workspace
 gezel skills import &lt;path&gt;  turn one of those skills into a craftbook</code></pre>
+<h2 id="who-can-reach-this-gezel">Who can reach this Gezel</h2>
+<p>These matter where people sign in from a browser: a <a href="../gezel-in-docker/">Gezel container</a>, or <code>gezel start --web --accounts</code>.</p>
+<pre class="squisq-code-block"><code>gezel account list          the accounts that can sign in
+gezel account create &lt;name&gt; add one (asks for a password; --password-stdin to pipe it)
+gezel account reset-password &lt;name&gt;
+                            set a new password and sign them out everywhere
+gezel account disable &lt;name&gt; / enable &lt;name&gt;
+gezel account remove &lt;name&gt; --yes
+gezel account sessions &lt;name&gt;
+                            where an account is signed in
+gezel account setup-link    a new link to create the first account
+gezel integrations token create &lt;app&gt;
+                            a key for another program to use Gezel's models
+                            (--scope to give it more than chat; shown once)
+gezel integrations token revoke &lt;app&gt;</code></pre>
+<p>Everyone with an account can do everything, including open a terminal. Add only people you trust with the computer Gezel runs on.</p>
 <h2 id="ai-apps">AI Apps</h2>
 <pre class="squisq-code-block"><code>gezel app new my-app        scaffold an app source folder
 gezel app validate my-app   check a source folder or .gezapp (--json for tooling)
@@ -176,8 +208,10 @@ gezel app serve my-app      share its page as a mini-site</code></pre>
 <p>The full story — the source-folder format, both script forms, and the loop an AI agent can drive — is <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a>.</p>
 <h2 id="models-and-engines">Models and engines</h2>
 <pre class="squisq-code-block"><code>gezel model list            local chat models for this computer's engine
+                            (--no-start: answer from a running service only)
 gezel model list --available
-                            catalog models that fit this computer, with sizes
+                            catalog models that fit this computer, with sizes and
+                            the published scorecard's measured pass rate for each
 gezel model pull &lt;id&gt;       download a chat model from the catalog
 gezel model use &lt;id&gt;        make chats use a downloaded model
 gezel model context &lt;id&gt; [tokens]
@@ -189,6 +223,19 @@ gezel model export &lt;id&gt; [file]
 gezel native install        download and verify the on-device engines
 gezel native status         engine release, platform, and backend
 gezel image models          local image-generation models (image pull / image rm)</code></pre>
+<h2 id="measuring-a-model">Measuring a model</h2>
+<p>The same tasks, checks and counting rules as the published <a href="../model-scorecard/">model scorecard</a>, run on your own computer through the service's benchmark runner. <code>gezel bench</code> and <strong>Settings → Benchmarks</strong> show the same runs.</p>
+<pre class="squisq-code-block"><code>gezel bench                 run the core set on the model chats use, one trial per task
+gezel bench --suite productivity|developer|complex-work|all
+                            another set, several, or all four
+gezel bench --smoke         the set's pulse check instead (fast; not a suite score)
+gezel bench --model &lt;id&gt; --count 3
+                            a particular model; three trials is what it takes to quote a rate
+gezel bench --json &lt;file&gt;   also write the results as a scorecard shard
+gezel bench list            every set, its size, and how long it can take
+gezel bench results         finished runs on this computer
+gezel bench submit &lt;file&gt;   share a results file as a GitHub issue (uses gh when installed)</code></pre>
+<p>A run that could take more than an hour asks before it starts; <code>--yes</code> skips the question. Below three trials a result prints as a count, never a rate, exactly as the scorecard does. The report ends with the run's provenance — hardware, engine build, gezel version, catalog version — because a number without those is not a measurement.</p>
 <h2 id="making-media">Making media</h2>
 <pre class="squisq-code-block"><code>gezel create-image "..."    generate an image with the configured image engine
 gezel create-video "..."    generate a video
@@ -210,6 +257,9 @@ gezel secret set &lt;name&gt; --env VARIABLE
                             store a key, read from an environment variable
                             (or --stdin to pipe it in)
 gezel secret remove &lt;name&gt;  forget a key
+gezel security level        the security level and what it allows
+gezel security level set &lt;super-lockdown|lockdown|free&gt;
+                            switch to a preset (free is Unrestricted in Settings)
 gezel security external-services [on|off]
                             let gezels use web search and other outside services
 gezel env indexing [on|off] pause or resume background indexing for this project</code></pre>
@@ -238,8 +288,10 @@ gezel restore &lt;file&gt;        bring them back (--list to look first)</code><
 <li class="hb-h2"><a href="#everyday-commands">Everyday commands</a></li>
 <li class="hb-h2"><a href="#which-project-a-command-uses">Which project a command uses</a></li>
 <li class="hb-h2"><a href="#working-with-the-crew">Working with the crew</a></li>
+<li class="hb-h2"><a href="#who-can-reach-this-gezel">Who can reach this Gezel</a></li>
 <li class="hb-h2"><a href="#ai-apps">AI Apps</a></li>
 <li class="hb-h2"><a href="#models-and-engines">Models and engines</a></li>
+<li class="hb-h2"><a href="#measuring-a-model">Measuring a model</a></li>
 <li class="hb-h2"><a href="#making-media">Making media</a></li>
 <li class="hb-h2"><a href="#knowledge-catalogs">Knowledge catalogs</a></li>
 <li class="hb-h2"><a href="#keys-and-security-settings">Keys and security settings</a></li>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Archivist"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -26,9 +26,9 @@
         }
       }
       * { box-sizing: border-box; }
-      body { margin: 0; font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
+      body { margin: 0; font: 15px/1.5 var(--font-body, system-ui, sans-serif); background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
       main { max-width: 620px; margin: 0 auto; }
-      h1 { font-family: Georgia, 'PT Serif', 'Times New Roman', serif; font-size: 1.35rem; font-weight: 600; margin: 0 0 0.15rem; }
+      h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.35rem; font-weight: 600; margin: 0 0 0.15rem; }
       .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.9rem; }
       .meter { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.75rem; }
       .meter .line { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.4rem; }
@@ -41,6 +41,8 @@
       .row.present .mark { color: var(--good); }
       .row.missing .mark { color: var(--warn); }
       .row .where { color: var(--muted); font-size: 0.78rem; }
+      .row .hint { display: block; color: var(--muted); font-size: 0.78rem; }
+      .list:empty { display: none; }
       .chip { display: inline-block; border: 1px solid var(--warn); color: var(--warn); border-radius: 4px; padding: 0 0.3rem; font-size: 0.7rem; line-height: 1.4; }
       .privacy { color: var(--muted); font-size: 0.78rem; text-align: center; margin-top: 0.75rem; }
       .demo-banner {
@@ -70,9 +72,16 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
         <span><strong>Demo mode</strong> — sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
@@ -86,26 +95,88 @@
       <div class="list" id="list"></div>
       <p class="privacy">Locations, never contents.</p>
     </main>
-    
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
         var YEAR = 365 * 24 * 60 * 60 * 1000;
 
         // ── demo checklist (used only when the page opens as a raw file) ──
+        function demoAgo(days) { return new Date(Date.now() - days * 86400000).toISOString(); }
+        function demoDoc(n, status, reviewed, fields) {
+          var at = demoAgo(reviewed);
+          if (status === 'present') fields.reviewedAt = at;
+          return { id: 'doc-' + n, status: status, createdAt: demoAgo(500), updatedAt: at, fields: fields, history: [{ at: demoAgo(500), from: null, to: 'missing' }].concat(status === 'present' ? [{ at: at, from: 'missing', to: 'present' }] : []) };
+        }
         var demoBinder = { records: [
-          { id: 'doc-1', status: 'present', updatedAt: new Date(Date.now() - 40 * 86400000).toISOString(), fields: { name: 'Will', location: 'Blue fire box', reviewedAt: new Date(Date.now() - 40 * 86400000).toISOString() } },
-          { id: 'doc-2', status: 'present', updatedAt: new Date(Date.now() - 420 * 86400000).toISOString(), fields: { name: 'Home insurance', location: 'Blue fire box', reviewedAt: new Date(Date.now() - 420 * 86400000).toISOString() } },
-          { id: 'doc-3', status: 'missing', updatedAt: new Date().toISOString(), fields: { name: 'Emergency contacts' } },
-          { id: 'doc-4', status: 'present', updatedAt: new Date(Date.now() - 20 * 86400000).toISOString(), fields: { name: 'Passport copies', location: 'Travel folder' } },
-          { id: 'doc-5', status: 'missing', updatedAt: new Date().toISOString(), fields: { name: 'Pet care instructions' } },
+          demoDoc(1, 'present', 40, { name: 'Will', location: 'Blue fire box, hall closet', note: 'Signed original; a copy is with the family lawyer.' }),
+          demoDoc(2, 'missing', 500, { name: 'Medical directives', note: 'Living will and healthcare proxy.' }),
+          demoDoc(3, 'present', 430, { name: 'Life insurance policy', location: 'Filing cabinet, top drawer' }),
+          demoDoc(4, 'present', 410, { name: 'Home insurance', location: 'Blue fire box, hall closet' }),
+          demoDoc(5, 'present', 90, { name: 'Accounts list', location: 'Filing cabinet, top drawer', note: 'Institutions only, no credentials.' }),
+          demoDoc(6, 'present', 60, { name: 'Passwords location', location: 'Sealed envelope in the blue fire box' }),
+          demoDoc(7, 'missing', 500, { name: 'Emergency contacts', note: 'Who to call first: family, lawyer, doctor.' }),
+          demoDoc(8, 'present', 200, { name: 'Deeds and titles', location: 'Safe deposit box at the credit union' }),
+          demoDoc(9, 'present', 20, { name: 'Passport copies', location: 'Travel folder' }),
+          demoDoc(10, 'missing', 500, { name: 'Pet care instructions', note: 'Feeding, the vet, and who can take the dog.' }),
         ] };
 
-        makeDemoGezel({
+        window.gezel || window.makeDemoGezel({
           page: { entry: 'dashboard/index.html', typeName: 'Life Binder', params: { household: 'our family' } },
+          tools: (function () {
+            // Mirrors the binder-store script: a document by id or exact name, missing -> present.
+            var YEAR_MS = 365 * 86400000;
+            function find(input) {
+              var r = input.id ? demoBinder.records.find(function (x) { return x.id === input.id; })
+                : input.name ? demoBinder.records.find(function (x) { return String(x.fields.name).toLowerCase() === String(input.name).toLowerCase(); }) : null;
+              if (!r) throw new Error('Choose a document.');
+              return r;
+            }
+            function move(r, to) {
+              var at = new Date().toISOString();
+              if (r.status !== to) r.history = (r.history || []).concat([{ at: at, from: r.status, to: to }]);
+              r.status = to;
+              r.updatedAt = at;
+            }
+            function status() {
+              var now = Date.now(), present = 0, missing = [], stale = [];
+              demoBinder.records.forEach(function (r) {
+                if (r.status !== 'present') { missing.push(r.fields.name); return; }
+                present += 1;
+                if (now - Date.parse(r.fields.reviewedAt || r.updatedAt) > YEAR_MS) stale.push(r.fields.name);
+              });
+              return { total: demoBinder.records.length, present: present, missing: missing.length, stale: stale.length,
+                summary: present + ' of ' + demoBinder.records.length + ' in place' + (missing.length ? '. Missing: ' + missing.join(', ') : '. Nothing missing') + (stale.length ? '. Due a review: ' + stale.join(', ') + '.' : '.') };
+            }
+            return {
+              page_record_document: function (input) {
+                if (!input.name || !String(input.name).trim()) throw new Error('Name the document.');
+                var r = demoBinder.records.find(function (x) { return String(x.fields.name).toLowerCase() === String(input.name).trim().toLowerCase(); });
+                if (!r) {
+                  var max = demoBinder.records.reduce(function (n, x) { return Math.max(n, Number(x.id.slice(4)) || 0); }, 0);
+                  r = { id: 'doc-' + (max + 1), status: 'missing', createdAt: new Date().toISOString(), fields: { name: String(input.name).trim() }, history: [] };
+                  demoBinder.records.push(r);
+                }
+                if (input.location) r.fields.location = String(input.location);
+                if (input.note) r.fields.note = String(input.note);
+                r.fields.reviewedAt = new Date().toISOString();
+                move(r, 'present');
+                return status();
+              },
+              page_mark_reviewed: function (input) {
+                var r = find(input);
+                r.fields.reviewedAt = new Date().toISOString();
+                move(r, 'present');
+                return status();
+              },
+              page_mark_missing: function (input) { move(find(input), 'missing'); return status(); },
+              binder_status: function () { return status(); },
+            };
+          })(),
           data: {
             'documents.json': function () { return demoBinder; },
           },
+          chat: window.demoChat,
         });
 
         // ── one code path from here: window.gezel exists in every mode ──
@@ -115,7 +186,7 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
 
@@ -125,10 +196,15 @@
           var records = Array.isArray(binder.records) ? binder.records : [];
           var present = records.filter(function (r) { return r.status === 'present'; });
           var now = Date.now();
+          var gaps = records.length - present.length;
+          var due = present.filter(function (r) {
+            var f = r.fields || {}, reviewed = typeof f.reviewedAt === 'string' ? Date.parse(f.reviewedAt) : Date.parse(r.updatedAt);
+            return isFinite(reviewed) && now - reviewed > YEAR;
+          }).length;
           document.getElementById('sub').textContent =
-            present.length === records.length && records.length > 0
-              ? 'Everything in place. Well done.'
-              : (records.length - present.length) + ' gap(s) to close.';
+            records.length === 0 ? 'The checklist is empty. Start with one document you know exists.'
+              : (gaps === 0 ? 'Everything in place.' : gaps + (gaps === 1 ? ' gap' : ' gaps') + ' to close.') +
+                (due ? ' ' + due + (due === 1 ? ' document is' : ' documents are') + ' due a review.' : gaps === 0 ? ' Well done.' : '');
           document.getElementById('m-label').textContent = 'In place';
           document.getElementById('m-count').textContent = present.length + ' of ' + records.length;
           document.getElementById('m-bar').style.width =
@@ -144,23 +220,24 @@
               return (
                 '<div class="row ' + r.status + '"><span class="mark">' + (r.status === 'present' ? '+' : '-') + '</span>' +
                 '<span>' + esc(f.name || r.id) +
-                (f.location ? '<span class="where"> — ' + esc(f.location) + '</span>' : '') + '</span>' +
+                (f.location ? '<span class="where"> — ' + esc(f.location) + '</span>' : '') +
+                (r.status !== 'present' && f.note ? '<span class="hint">' + esc(f.note) + '</span>' : '') + '</span>' +
                 '<span>' + (stale ? '<span class="chip">review due</span>' : '') + '</span></div>'
               );
             })
             .join('');
         }
 
-        function loadBinder() {
-          return gezel.data
-            .read('documents.json')
-            .then(function (next) { if (next) render(next); })
-            .catch(function () {});
-        }
+        window.addEventListener('gezel-app-data-changed', function(){ loadBinder(); });
+        function loadBinder(){
+var revision=++appLoadRevision;
+return Promise.all([gezel.data.read('documents.json')]).then(function(values){if(appDisposed||revision!==appLoadRevision)return;reportAppError(null);render(values[0]||{});}).catch(function(error){if(!appDisposed&&revision===appLoadRevision)reportAppError(error);});
+}
 
         loadBinder();
-        gezel.data.watch('documents.json', function () { loadBinder(); });
+        appSubscriptions.push(gezel.data.watch('documents.json', function () { loadBinder(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

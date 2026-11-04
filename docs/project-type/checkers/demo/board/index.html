@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Checkers Player"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -77,17 +77,30 @@
         }
       }
       * { box-sizing: border-box; }
+      [hidden] { display: none !important; }
       body {
         margin: 0;
-        font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        font-family: var(--font-body, system-ui, sans-serif);
+        font-size: 15px;
+        line-height: 1.5;
         background: var(--bg);
         color: var(--ink);
         padding: 1.25rem;
       }
       main { max-width: 720px; margin: 0 auto; }
+      main.with-opponent-chat { max-width: 1100px; }
+      .with-opponent-chat .table { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); }
+      .opponent-chat-panel { min-width: 0; }
+      .opponent-chat-panel h2 { font-size: 1rem; margin: 0 0 0.5rem; }
+      #opponent-chat { height: clamp(300px, calc(100dvh - 260px), 580px); min-width: 0; }
+      .chat-unavailable { color: var(--muted); font-size: 0.9rem; }
+      @media (max-width: 800px) {
+        .with-opponent-chat .table { grid-template-columns: minmax(0, 1fr); }
+        #opponent-chat { height: 380px; }
+      }
       header { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
       h1 {
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.35rem;
         font-weight: 600;
         margin: 0;
@@ -118,7 +131,7 @@
       dialog::backdrop { background: rgba(20, 17, 14, 0.62); }
       .new-game-form { padding: 1rem; }
       .new-game-form h2 {
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.1rem;
         margin: 0;
       }
@@ -305,9 +318,10 @@
       .panel h2 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.35rem; }
       .moveThought { font-style: italic; }
       .moveThought .who { color: var(--muted); font-style: normal; font-size: 0.78rem; display: block; margin-bottom: 0.15rem; }
-      .log { margin: 0; padding-left: 1.05rem; max-height: 200px; overflow-y: auto; }
+      .log { margin: 0; padding-left: 1.9rem; max-height: 200px; overflow-y: auto; }
       .log li { margin: 0.15rem 0; color: var(--muted); }
       .log li.latest { color: var(--ink); }
+      .log li.empty { list-style: none; margin-left: -1.9rem; }
       .banner {
         border: 1px solid var(--accent);
         border-radius: 6px;
@@ -358,11 +372,18 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
-        <span><strong>Demo mode</strong> — hot-seat play, sample data stays in this page.</span>
+        <span><strong>Demo mode</strong> — you play red against Bram; sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
       </div>
       <p class="note" id="browser-note" hidden>
@@ -383,7 +404,7 @@
           </div>
           <div class="panel">
             <h2>Moves</h2>
-            <ol class="log" id="log"><li>No moves yet — red opens.</li></ol>
+            <ol class="log" id="log"><li class="empty">No moves yet — red opens.</li></ol>
           </div>
         </div>
       </div>
@@ -411,7 +432,7 @@
         </form>
       </dialog>
     </main>
-    
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
@@ -438,85 +459,317 @@
           return withPiece(next, end.x, end.y, ch);
         }
 
-        // ── demo rules engine: hot-seat play when the page opens as a raw file ──
-        function demoSide(ch) {
-          if (ch === 'r' || ch === 'R') return 'user';
-          if (ch === 'b' || ch === 'B') return 'ai';
-          return null;
-        }
-        function demoDirections(ch) {
-          if (ch === 'R' || ch === 'B') return [[-1,-1],[1,-1],[-1,1],[1,1]];
-          return ch === 'r' ? [[-1,-1],[1,-1]] : [[-1,1],[1,1]];
-        }
-        function demoCaptures(squares, x, y, ch, origin, path, captures, out) {
-          var found = false;
-          demoDirections(ch).forEach(function (d) {
-            var mx = x + d[0]; var my = y + d[1];
-            var tx = x + d[0] * 2; var ty = y + d[1] * 2;
-            if (tx < 0 || tx > 7 || ty < 0 || ty > 7 || mx < 0 || mx > 7 || my < 0 || my > 7) return;
-            var middle = squares[my * 8 + mx];
-            if (demoSide(middle) === null || demoSide(middle) === demoSide(ch) || squares[ty * 8 + tx] !== '.') return;
-            found = true;
-            var next = withPiece(withPiece(withPiece(squares, x, y, '.'), mx, my, '.'), tx, ty, ch);
-            demoCaptures(next, tx, ty, ch, origin, path.concat(sqName(tx, ty)), captures.concat(sqName(mx, my)), out);
-          });
-          if (!found && captures.length) out.push({ from: origin, to: path[path.length - 1], path: path, captures: captures });
-        }
-        function demoMoves(game) {
-          var captures = []; var simple = [];
-          for (var y = 0; y < 8; y += 1) {
-            for (var x = 0; x < 8; x += 1) {
-              var ch = game.squares[y * 8 + x];
-              if (demoSide(ch) !== game.turn) continue;
-              var from = sqName(x, y);
-              demoCaptures(game.squares, x, y, ch, from, [from], [], captures);
-              demoDirections(ch).forEach(function (d) {
-                var tx = x + d[0]; var ty = y + d[1];
-                if (tx >= 0 && tx < 8 && ty >= 0 && ty < 8 && game.squares[ty * 8 + tx] === '.') {
-                  simple.push({ from: from, to: sqName(tx, ty), path: [from, sqName(tx, ty)], captures: [] });
-                }
-              });
-            }
-          }
-          return captures.length && game.forceCaptures !== false ? captures : captures.concat(simple);
-        }
-        function demoNewGame(forceCaptures) {
-          var game = {
-            version: 1,
-            squares: '.b.b.b.bb.b.b.b..b.b.b.b................r.r.r.r..r.r.r.rr.r.r.r.',
-            turn: 'user', status: 'playing', userColor: 'red', forceCaptures: forceCaptures !== false,
-            legalMoves: [], lastMove: null, lastMoveThought: '', moveLog: [],
-          };
-          game.legalMoves = demoMoves(game);
-          return game;
-        }
-        var demoGame = demoNewGame(true);
+        // ── standalone demo: you play red, the companion answers with black ──
+        // Inside Gezel window.gezel already exists and none of this runs. The
+        // rules are the game-store script's own, so the sample plays exactly
+        // like a live table; demo-chat.js chooses the companion's moves.
+        var gezel = window.gezel || window.makeDemoGezel((function () {
+          // ── checkers-rules-start ──
+          // Pure, annotation-free rules engine (American/English draughts, 8x8).
+          // Squares: 64-char row-major string, index = y*8+x, y0 = rank 8, x0 = file a.
+          // 'r'/'R' = red (the user, moving toward rank 8 / decreasing y);
+          // 'b'/'B' = black (the AI, moving toward rank 1 / increasing y); '.' empty.
+          // Kept self-contained between these sentinels so unit tests execute the
+          // shipped bytes directly (new Function) on every platform.
 
-        makeDemoGezel({
-          page: { entry: 'board/index.html', typeName: 'Checkers' },
-          tools: {
-            user_move: function (input) {
-              var move = demoGame.legalMoves.find(function (m) { return m.from === input.from && m.to === input.to; });
-              if (!move) throw new Error('That move is not available in the hot-seat demo.');
-              var next = demoGame.squares;
-              for (var i = 1; i < move.path.length; i += 1) next = applyPreviewHop(next, move.path[i - 1], move.path[i]);
-              demoGame.squares = next;
-              demoGame.lastMove = { by: demoGame.turn, from: move.from, to: move.to };
-              demoGame.moveLog.push({ by: demoGame.turn, from: move.from, to: move.to, captures: move.captures.slice() });
-              demoGame.turn = demoGame.turn === 'user' ? 'ai' : 'user';
-              demoGame.legalMoves = demoMoves(demoGame);
-              if (demoGame.legalMoves.length === 0) demoGame.status = demoGame.turn === 'user' ? 'ai_won' : 'user_won';
-              return { status: demoGame.status, turn: demoGame.turn, summary: 'Move played.' };
+          var FILES = 'abcdefgh';
+
+          function sqName(x, y) {
+            return FILES[x] + String(8 - y);
+          }
+
+          function parseSq(name) {
+            if (typeof name !== 'string' || name.length !== 2) return null;
+            var x = FILES.indexOf(name[0].toLowerCase());
+            var rank = Number(name[1]);
+            if (x < 0 || !(rank >= 1 && rank <= 8)) return null;
+            return { x: x, y: 8 - rank };
+          }
+
+          function pieceAt(squares, x, y) {
+            return squares[y * 8 + x];
+          }
+
+          function withPiece(squares, x, y, ch) {
+            var i = y * 8 + x;
+            return squares.slice(0, i) + ch + squares.slice(i + 1);
+          }
+
+          function sideOf(ch) {
+            if (ch === 'r' || ch === 'R') return 'user';
+            if (ch === 'b' || ch === 'B') return 'ai';
+            return null;
+          }
+
+          function isKing(ch) {
+            return ch === 'R' || ch === 'B';
+          }
+
+          function kingRowY(side) {
+            return side === 'user' ? 0 : 7;
+          }
+
+          function dirsFor(ch) {
+            if (isKing(ch)) {
+              return [
+                { dx: -1, dy: -1 },
+                { dx: 1, dy: -1 },
+                { dx: -1, dy: 1 },
+                { dx: 1, dy: 1 },
+              ];
+            }
+            var dy = ch === 'r' ? -1 : 1;
+            return [
+              { dx: -1, dy: dy },
+              { dx: 1, dy: dy },
+            ];
+          }
+
+          function inBounds(x, y) {
+            return x >= 0 && x < 8 && y >= 0 && y < 8;
+          }
+
+          function buildInitial() {
+            var out = '';
+            for (var y = 0; y < 8; y += 1) {
+              for (var x = 0; x < 8; x += 1) {
+                var dark = (x + y) % 2 === 1;
+                if (dark && y <= 2) out += 'b';
+                else if (dark && y >= 5) out += 'r';
+                else out += '.';
+              }
+            }
+            return out;
+          }
+
+          // All complete jump sequences for the piece at (x, y). A sequence keeps
+          // jumping with the same piece while another capture is available; a man
+          // that reaches the king row STOPS there (standard rule — the move ends on
+          // crowning). Each result: { from, to, path, captures } (square names).
+          function jumpSequencesFrom(squares, x, y, ch) {
+            var side = sideOf(ch);
+            var results = [];
+
+            function explore(sq, cx, cy, curCh, path, captures) {
+              var extended = false;
+              var dirs = dirsFor(curCh);
+              for (var i = 0; i < dirs.length; i += 1) {
+                var mx = cx + dirs[i].dx;
+                var my = cy + dirs[i].dy;
+                var lx = cx + dirs[i].dx * 2;
+                var ly = cy + dirs[i].dy * 2;
+                if (!inBounds(lx, ly)) continue;
+                var mid = pieceAt(sq, mx, my);
+                if (sideOf(mid) === null || sideOf(mid) === side) continue;
+                if (pieceAt(sq, lx, ly) !== '.') continue;
+
+                var nextCh = curCh;
+                var crowned = false;
+                if (!isKing(curCh) && ly === kingRowY(side)) {
+                  nextCh = side === 'user' ? 'R' : 'B';
+                  crowned = true;
+                }
+                var nextSq = withPiece(withPiece(withPiece(sq, cx, cy, '.'), mx, my, '.'), lx, ly, nextCh);
+                var nextPath = path.concat([sqName(lx, ly)]);
+                var nextCaptures = captures.concat([sqName(mx, my)]);
+                extended = true;
+                if (crowned) {
+                  results.push({
+                    from: path[0],
+                    to: sqName(lx, ly),
+                    path: nextPath,
+                    captures: nextCaptures,
+                  });
+                } else {
+                  explore(nextSq, lx, ly, nextCh, nextPath, nextCaptures);
+                }
+              }
+              if (!extended && captures.length > 0) {
+                results.push({ from: path[0], to: path[path.length - 1], path: path, captures: captures });
+              }
+            }
+
+            explore(squares, x, y, ch, [sqName(x, y)], []);
+            return results;
+          }
+
+          // Every legal move for `side`. With standard forced captures, any jump
+          // masks quiet moves. In the optional-capture variant, both remain legal.
+          // Simple moves are single diagonal steps.
+          function legalMovesFor(squares, side, forceCaptures) {
+            var jumps = [];
+            var steps = [];
+            for (var y = 0; y < 8; y += 1) {
+              for (var x = 0; x < 8; x += 1) {
+                var ch = pieceAt(squares, x, y);
+                if (sideOf(ch) !== side) continue;
+                var seqs = jumpSequencesFrom(squares, x, y, ch);
+                for (var j = 0; j < seqs.length; j += 1) jumps.push(seqs[j]);
+                var dirs = dirsFor(ch);
+                for (var i = 0; i < dirs.length; i += 1) {
+                  var nx = x + dirs[i].dx;
+                  var ny = y + dirs[i].dy;
+                  if (!inBounds(nx, ny) || pieceAt(squares, nx, ny) !== '.') continue;
+                  steps.push({
+                    from: sqName(x, y),
+                    to: sqName(nx, ny),
+                    path: [sqName(x, y), sqName(nx, ny)],
+                    captures: [],
+                  });
+                }
+              }
+            }
+            return forceCaptures !== false && jumps.length > 0 ? jumps : jumps.concat(steps);
+          }
+
+          // Apply a legal sequence, returning the new squares string. Crowns a man
+          // that ends on the king row (mid-sequence crowning already ended the
+          // sequence in jumpSequencesFrom, so end-of-path crowning is complete).
+          function applySequence(squares, seq) {
+            var start = parseSq(seq.from);
+            var end = parseSq(seq.to);
+            var ch = pieceAt(squares, start.x, start.y);
+            var side = sideOf(ch);
+            var next = withPiece(squares, start.x, start.y, '.');
+            for (var i = 0; i < seq.captures.length; i += 1) {
+              var cap = parseSq(seq.captures[i]);
+              next = withPiece(next, cap.x, cap.y, '.');
+            }
+            var finalCh = ch;
+            if (!isKing(ch) && end.y === kingRowY(side)) finalCh = side === 'user' ? 'R' : 'B';
+            return withPiece(next, end.x, end.y, finalCh);
+          }
+
+          // The side to move with no legal move has lost (covers zero pieces too).
+          function statusAfter(squares, sideToMove, forceCaptures) {
+            if (legalMovesFor(squares, sideToMove, forceCaptures).length > 0) return 'playing';
+            return sideToMove === 'user' ? 'ai_won' : 'user_won';
+          }
+
+          function describeMove(seq) {
+            var joiner = seq.captures.length > 0 ? 'x' : '-';
+            var text = seq.path.join(joiner);
+            if (seq.captures.length > 0) text += ' (captures ' + seq.captures.join(', ') + ')';
+            return text;
+          }
+
+          function renderAscii(squares) {
+            var lines = ['  a b c d e f g h'];
+            for (var y = 0; y < 8; y += 1) {
+              var row = String(8 - y);
+              for (var x = 0; x < 8; x += 1) {
+                row += ' ' + pieceAt(squares, x, y);
+              }
+              lines.push(row);
+            }
+            lines.push('r/R = red (your opponent, moving up). b/B = black (you, moving down). Capitals are kings.');
+            return lines.join('\n');
+          }
+
+          function renderPieces(squares) {
+            var redMen = [];
+            var redKings = [];
+            var blackMen = [];
+            var blackKings = [];
+            for (var y = 0; y < 8; y += 1) {
+              for (var x = 0; x < 8; x += 1) {
+                var ch = pieceAt(squares, x, y);
+                var name = sqName(x, y);
+                if (ch === 'r') redMen.push(name);
+                else if (ch === 'R') redKings.push(name);
+                else if (ch === 'b') blackMen.push(name);
+                else if (ch === 'B') blackKings.push(name);
+              }
+            }
+            return { redMen: redMen, redKings: redKings, blackMen: blackMen, blackKings: blackKings };
+          }
+          // ── checkers-rules-end ──
+
+          // A few opening moves, so the sample starts with a game under way.
+          var OPENING = [
+            ['user', 'c3', 'd4'],
+            ['ai', 'b6', 'a5'],
+            ['user', 'b2', 'c3'],
+            ['ai', 'f6', 'g5', 'Tucking a man onto g5. Snug as a bug.'],
+          ];
+          var game = null;
+
+          function freshGame(forceCaptures) {
+            var squares = buildInitial();
+            var force = forceCaptures !== false;
+            return {
+              version: 1, squares: squares, turn: 'user', status: 'playing', userColor: 'red',
+              forceCaptures: force, legalMoves: legalMovesFor(squares, 'user', force),
+              moveLog: [], lastMove: null, lastMoveThought: '',
+            };
+          }
+          function modelState() {
+            return {
+              status: game.status,
+              sideToMove: game.turn === 'user' ? 'red' : 'black',
+              pieces: renderPieces(game.squares),
+              capturePolicy: game.forceCaptures ? 'mandatory-if-available' : 'optional',
+              capturesAvailable: game.legalMoves.some(function (m) { return m.captures.length > 0; }),
+              legalMoves: game.legalMoves.map(function (m) {
+                return { from: m.from, to: m.to, path: m.path, captures: m.captures, type: m.captures.length ? 'capture' : 'step' };
+              }),
+            };
+          }
+          function output(lastMove) {
+            return {
+              board: renderAscii(game.squares),
+              modelState: modelState(),
+              turn: game.turn,
+              status: game.status,
+              lastMove: lastMove || '(none)',
+              legalMoves: game.status === 'playing' ? game.legalMoves.map(describeMove).join(', ') : '(game over)',
+              captureRule: game.forceCaptures ? 'forced' : 'optional',
+            };
+          }
+          function play(by, input) {
+            if (game.status !== 'playing') throw new Error('The game is over. Start a new game to play again.');
+            if (game.turn !== by) throw new Error(by === 'ai' ? 'It is red’s move.' : 'Black is still to move.');
+            var from = String(input.from || '').toLowerCase();
+            var to = String(input.to || '').toLowerCase();
+            var seq = game.legalMoves.find(function (m) { return m.from === from && m.to === to; });
+            if (!seq) throw new Error('Illegal move ' + from + '-' + to + '. Legal moves: ' + game.legalMoves.map(describeMove).join(', '));
+            var thought = by === 'ai' && input.moveThought ? String(input.moveThought).trim().slice(0, 140) : '';
+            game.squares = applySequence(game.squares, seq);
+            game.turn = by === 'user' ? 'ai' : 'user';
+            game.status = statusAfter(game.squares, game.turn, game.forceCaptures);
+            game.legalMoves = game.status === 'playing' ? legalMovesFor(game.squares, game.turn, game.forceCaptures) : [];
+            var entry = { by: by, from: seq.from, to: seq.to, captures: seq.captures.slice() };
+            if (thought) entry.moveThought = thought;
+            game.moveLog.push(entry);
+            game.lastMove = { by: by, from: seq.from, to: seq.to, captures: seq.captures.slice() };
+            if (thought) game.lastMoveThought = thought;
+            return output(describeMove(seq));
+          }
+          function sample() {
+            game = freshGame(true);
+            OPENING.forEach(function (move) { play(move[0], { from: move[1], to: move[2], moveThought: move[3] }); });
+          }
+          sample();
+
+          return {
+            page: { entry: 'board/index.html', typeName: 'Checkers', params: { personality: 'peppy', playStyle: 'Opponent' } },
+            tools: {
+              get_board: function () { return output(); },
+              user_move: function (input) { return play('user', input); },
+              make_move: function (input) { return play('ai', input); },
+              new_game: function (input) {
+                game = freshGame(!input || input.forceCaptures !== false);
+                return output();
+              },
             },
-            new_game: function (input) {
-              demoGame = demoNewGame(input && input.forceCaptures);
-              return { status: demoGame.status, turn: demoGame.turn, summary: 'New game.' };
+            data: {
+              'game.json': function () { return JSON.parse(JSON.stringify(game)); },
             },
-          },
-          data: {
-            'game.json': function () { return demoGame; },
-          },
-        });
+            chat: window.demoChat && Object.assign(window.demoChat, {
+              rules: { legalMovesFor: legalMovesFor, applySequence: applySequence, describeMove: describeMove, buildInitial: buildInitial },
+            }),
+          };
+        })());
 
         // ── one code path from here: window.gezel exists in every mode ──
         var demoMode = gezel.page.mode === 'demo';
@@ -526,7 +779,9 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        var stopTheme = gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+
+
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
         if (browserMode) document.getElementById('browser-note').hidden = false;
@@ -608,12 +863,6 @@
 
         function statusLine() {
           if (!state) return 'Setting up the board…';
-          if (demoMode && state.status === 'playing') {
-            var demoCaps = state.legalMoves.some(function (m) { return m.captures.length > 0; });
-            return 'Hot seat — ' + (state.turn === 'user' ? 'red' : 'black') + ' to move' + (demoCaps ? ' (capture available).' : '.');
-          }
-          if (demoMode && state.status === 'user_won') return 'Red wins the hot-seat demo.';
-          if (demoMode && state.status === 'ai_won') return 'Black wins the hot-seat demo.';
           if (state.status === 'user_won') return 'You won! A gracious rematch awaits.';
           if (state.status === 'ai_won') return 'The checkers player takes this one — rematch?';
           if (animating) return 'Piece in motion…';
@@ -630,7 +879,7 @@
 
         function render() {
           document.getElementById('status').innerHTML =
-            state && !demoMode && state.turn === 'ai' && state.status === 'playing'
+            state && state.turn === 'ai' && state.status === 'playing'
               ? '<span class="thinking">' + esc(statusLine()) + '</span>'
               : esc(statusLine());
 
@@ -644,6 +893,7 @@
 
           var log = document.getElementById('log');
           if (state && state.moveLog.length) {
+            log.start = Math.max(1, state.moveLog.length - 7);
             log.innerHTML = state.moveLog
               .slice(-8)
               .map(function (m, i, arr) {
@@ -652,12 +902,15 @@
                 return '<li' + (i === arr.length - 1 ? ' class="latest"' : '') + '>' + esc(text) + '</li>';
               })
               .join('');
+          } else {
+            log.start = 1;
+            log.innerHTML = '<li class="empty">No moves yet — red opens.</li>';
           }
 
           var board = document.getElementById('board');
           board.innerHTML = '';
           if (!state) return;
-          var myTurn = (demoMode || state.turn === 'user') && state.status === 'playing' && !busy && !animating;
+          var myTurn = state.turn === 'user' && state.status === 'playing' && !busy && !animating;
           var origins = myTurn ? originMap() : {};
           var hints = myTurn && selected ? currentHints() : {};
           var shownSquares = squaresForRender();
@@ -771,10 +1024,10 @@
               ],
               { duration: 190, delay: 100, easing: 'ease-in' },
             );
-            captureFinished = captureMotion.finished.catch(function () {});
+            captureFinished = captureMotion.finished.catch(reportAppError);
           }
 
-          return Promise.all([motion.finished.catch(function () {}), captureFinished]).then(function () {
+          return Promise.all([motion.finished.catch(reportAppError), captureFinished]).then(function () {
             clone.remove();
             sourcePiece.classList.remove('move-source');
           });
@@ -884,7 +1137,7 @@
                 ],
                 { duration: 180, easing: 'cubic-bezier(.2,.8,.3,1)' },
               );
-              rebound.finished.catch(function () {}).then(render);
+              rebound.finished.catch(reportAppError).then(render);
             }
 
             piece.addEventListener('pointermove', onMove);
@@ -1069,8 +1322,13 @@
         });
 
         loadGame();
-        gezel.data.watch('game.json', function () { loadGame(); });
+        var stopWatch = gezel.data.watch('game.json', function () { loadGame(); });
+        window.addEventListener('pagehide', function () {
+          stopTheme();
+          stopWatch();
+        }, { once: true });
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

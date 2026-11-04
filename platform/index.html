@@ -234,7 +234,16 @@
       margin: 1.6rem 0 0;
     }
     .hero-actions .cmd { width: 100%; max-width: 440px; margin: 0; }
+    .cmd-label { margin: 4px 0 -6px; font-size: 0.88rem; color: var(--muted); }
+    /* "One container, three ways in": each feature note ends with its command. */
+    .docker-ways .cmd { margin-top: 14px; }
+    .docker-ways .cmd code { font-size: 0.8rem; }
     .text-link { font-weight: 600; white-space: nowrap; }
+    .hero-proof { margin: 1.1rem 0 0; font-size: 0.92rem; color: var(--muted); max-width: 520px; }
+    .hero-proof a { font-weight: 600; }
+    /* "Why build on Gezel" and "For teams": plain sections of feature notes. */
+    .why { margin: 0 0 var(--section-gap); }
+    .why .features a { font-weight: 600; white-space: nowrap; }
 
     /* Copyable command, as in the landing page's download card. */
     .cmd {
@@ -718,9 +727,9 @@
     <header class="masthead">
       <a class="logotype" href="/" aria-label="Gezel home">gezel</a>
       <nav class="masthead-nav">
-        <a href="/platform/" aria-current="page">Platform</a>
         <a href="/docs/">Docs</a>
         <a href="/docs/model-scorecard/">Model scorecard</a>
+        <a href="/platform/" aria-current="page">For developers</a>
         <a href="https://github.com/bendyline/gezel">
           <!-- GitHub's official mark (octicon mark-github-16). -->
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -742,7 +751,8 @@
             The desktop app is one way into a local service that runs the crew,
             the craftbooks, the tools and the models. The same service answers a
             <strong>command line</strong>, an <strong>SDK for your own apps</strong>,
-            and <strong>AI Apps</strong> that install right into Gezel.
+            and <strong>AI Apps</strong> that install right into Gezel, and it runs
+            in <strong>one container</strong> on any machine with Docker.
           </p>
           <p class="gloss">
             Open source under the MIT license and published on npm. It all runs on
@@ -756,8 +766,17 @@
                 <span class="copy-slot"><span class="copy-label">Copy</span></span>
               </button>
             </div>
+            <p class="cmd-label">Or run all of it in a container:</p>
+            <div class="cmd">
+              <code>docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel</code>
+              <button class="copy" type="button" data-copy="docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel">
+                <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                <span class="copy-slot"><span class="copy-label">Copy</span></span>
+              </button>
+            </div>
             <a class="text-link" href="/docs/npm-packages/">Developer docs&nbsp;<span aria-hidden="true">→</span></a>
           </div>
+          <p class="hero-proof">Measured, not promised: the <a href="/docs/model-scorecard/">model scorecard</a> shows which local models finish real jobs, and on which hardware.</p>
         </div>
 
         <!-- Follows "How gezel runs" in the Handboek: the app, the CLI and
@@ -794,9 +813,87 @@
       <ul class="proof" aria-label="The Gezel platform at a glance">
         <li>Open source, MIT license</li>
         <li><a href="/docs/npm-packages/">Packages on npm</a></li>
+        <li><a href="/docs/gezel-in-docker/">One-command container</a></li>
         <li>OpenAI-style model APIs</li>
         <li>No Gezel server in between</li>
       </ul>
+
+      <!-- The container: one image runs the whole service, every engine
+           inside. Each note is one way to use it, ending in its command.
+           Claims follow the Handboek's gezel-in-docker article. -->
+      <section class="why" id="docker">
+        <h2 class="section-title">One container, three ways in</h2>
+        <p class="section-lede">The whole of Gezel in one image, with every engine for local models already inside. What it downloads is models: the one you choose, and small ones for searching files and reading pictures, plus a browser for tasks that visit websites.</p>
+        <ul class="features docker-ways">
+          <li>
+            <h3>Your workshop in a browser</h3>
+            <p>Start it, open the link in its log, and create your account. Add the people you trust, each with a sign-in of their own.</p>
+            <div class="cmd">
+              <code>docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel</code>
+              <button class="copy" type="button" data-copy="docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel">
+                <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                <span class="copy-slot"><span class="copy-label">Copy</span></span>
+              </button>
+            </div>
+          </li>
+          <li>
+            <h3>Local AI for your other apps</h3>
+            <p>Make a key, then point any OpenAI-style client at <code>http://localhost:6228/v1</code>. Every key shows in Integrations, where you can revoke it.</p>
+            <div class="cmd">
+              <code>docker exec gezel gezel integrations token create my-app</code>
+              <button class="copy" type="button" data-copy="docker exec gezel gezel integrations token create my-app">
+                <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                <span class="copy-slot"><span class="copy-label">Copy</span></span>
+              </button>
+            </div>
+          </li>
+          <li>
+            <h3>Put the crew to work on a folder</h3>
+            <p>Run one craftbook on the folder you are in, and collect what it made in a folder beside it.</p>
+            <div class="cmd">
+              <code>docker run --rm -v "$PWD:$PWD" -w "$PWD" -v gezel:/gezel ghcr.io/bendyline/gezel do summarize-long "Summarize these notes for the board" --out ./gezel-out</code>
+              <button class="copy" type="button" data-copy='docker run --rm -v "$PWD:$PWD" -w "$PWD" -v gezel:/gezel ghcr.io/bendyline/gezel do summarize-long "Summarize these notes for the board" --out ./gezel-out'>
+                <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                <span class="copy-slot"><span class="copy-label">Copy</span></span>
+              </button>
+            </div>
+          </li>
+        </ul>
+        <p class="section-more">NVIDIA and AMD or Intel graphics cards each have an image. On GitHub's registry and Docker Hub. <a href="/docs/gezel-in-docker/">Gezel in Docker&nbsp;<span aria-hidden="true">→</span></a></p>
+      </section>
+
+      <!-- Why this harness rather than a model server plus your own glue.
+           Every claim links to the Handboek page that backs it. -->
+      <section class="why" id="why">
+        <h2 class="section-title">Why build on Gezel</h2>
+        <p class="section-lede">A model server gives you a model. Gezel gives it a job it can finish, and shows you how often it does.</p>
+        <ul class="features">
+          <li>
+            <h3>Plans small models can finish</h3>
+            <p>Each of <data data-count="craftbooks" data-floor="10" value="300">300</data>+ craftbooks breaks a job into steps, with a quality check at the end. That structure is what lets a model that fits on a laptop finish real work. <a href="/docs/craftbooks-overview/">Craftbooks</a></p>
+          </li>
+          <li>
+            <h3>Measured on real jobs</h3>
+            <p>Four published task sets, run on named hardware. A task run fewer than three times shows as a count, never a percentage, and failures caused by the machine are set aside, not blamed on the model. <a href="/docs/how-we-test-models/">How we test models</a></p>
+          </li>
+          <li>
+            <h3>A crew to start from</h3>
+            <p><data data-count="characters" value="52">52</data> role templates, from researcher to meal planner, each with a job and a working style, ready to put behind your app or workflow. <a href="/docs/role-catalog/">Every role</a></p>
+          </li>
+          <li>
+            <h3>Knowledge the model lacks</h3>
+            <p>Offline Wikipedia shelves, and catalogs you compile from your own documents, searched on the device so a small model can look things up and cite them. <a href="/docs/how-knowledge-works/">How knowledge works</a></p>
+          </li>
+          <li>
+            <h3>Real Office files</h3>
+            <p>The crew writes Word and PowerPoint files and PDFs, and works beside a document in Word, Excel, PowerPoint or LibreOffice. <a href="/docs/connected-apps/#word-excel-and-powerpoint">Office apps</a></p>
+          </li>
+          <li>
+            <h3>Limits that hold</h3>
+            <p>Security levels are enforced where each action happens, not only by hiding tools from the model, so a model that is talked into trying still meets a check. <a href="/docs/security-model/">The security model</a></p>
+          </li>
+        </ul>
+      </section>
 
       <!-- Moved from the landing page's "Use Gezel as a platform" row. Same
            marks and blurbs; the links now drop to the sections below, which
@@ -868,7 +965,7 @@
         <ul class="features">
           <li>
             <h3>Run any craftbook as a task</h3>
-            <p><code>gezel do</code> starts any of <data data-count="craftbooks" data-floor="10" value="294">290</data>+ tested plans in the folder’s project. Plain words become the request and <code>key=value</code> sets parameters. Add <code>--wait --json</code> for one result and an exit code a script can branch on.</p>
+            <p><code>gezel do</code> starts any of <data data-count="craftbooks" data-floor="10" value="300">300</data>+ tested plans in the folder’s project. Plain words become the request and <code>key=value</code> sets parameters. Add <code>--wait --json</code> for one result and an exit code a script can branch on.</p>
           </li>
           <li>
             <h3>One-shot prompts</h3>
@@ -982,7 +1079,7 @@
             <ul class="pillar-links">
               <li><a href="/docs/building-ai-apps-inside-gezel/">Building AI Apps&nbsp;<span aria-hidden="true">→</span></a></li>
               <li><a href="/docs/gezel-page-apis/">Page APIs&nbsp;<span aria-hidden="true">→</span></a></li>
-              <li><a href="/docs/project-types-index/">Try <data data-count="projectTypeDemos" value="23">23</data> apps in your browser&nbsp;<span aria-hidden="true">→</span></a></li>
+              <li><a href="/apps/">Try <data data-count="projectTypeDemos" value="43">43</data> apps in your browser&nbsp;<span aria-hidden="true">→</span></a></li>
             </ul>
           </div>
           <div class="code-card">
@@ -1015,7 +1112,7 @@
           </li>
           <li>
             <h3>A crew and repeatable work</h3>
-            <p>Give the app helpers with a working character each, and craftbooks that turn a job into checked steps. Or reuse any of the <data data-count="characters" value="41">41</data> characters and <data data-count="craftbooks" data-floor="10" value="294">290</data>+ craftbooks in the catalog.</p>
+            <p>Give the app helpers with a working character each, and craftbooks that turn a job into checked steps. Or reuse any of the <data data-count="characters" value="52">52</data> characters and <data data-count="craftbooks" data-floor="10" value="300">300</data>+ craftbooks in the catalog.</p>
           </li>
           <li>
             <h3>Validate, pack and share</h3>
@@ -1093,6 +1190,27 @@
         <p class="section-more"><a href="/docs/npm-packages/">The full package map&nbsp;<span aria-hidden="true">→</span></a></p>
       </section>
 
+      <!-- The door for organisations: the three Handboek pages a security or
+           compliance reviewer asks for first. -->
+      <section class="why" id="for-teams">
+        <h2 class="section-title">For teams that can’t send data out</h2>
+        <p class="section-lede">Run the whole thing on machines you control, at a security level you choose, from code you can read.</p>
+        <ul class="features">
+          <li>
+            <h3>What leaves the computer</h3>
+            <p>Every kind of network traffic Gezel can make, and which security level allows it. At the strictest, local models only, and nothing goes out but the downloads you start. <a href="/docs/what-leaves-this-computer/">The traffic table</a></p>
+          </li>
+          <li>
+            <h3>Run it on a server</h3>
+            <p>The service runs headless under its own account, or as one container with every engine inside, with the security level and activity mode set from the terminal. <a href="/docs/gezel-on-a-server/">Gezel on a server</a> · <a href="/docs/gezel-in-docker/">Gezel in Docker</a></p>
+          </li>
+          <li>
+            <h3>Who writes the code</h3>
+            <p>Open source, but not open to outside code: one team writes every line, every release ships checksums and build provenance, and an installed copy keeps working whatever happens to us. <a href="/docs/governance/">Governance</a></p>
+          </li>
+        </ul>
+      </section>
+
       <!-- The claims here are the security model's, kept as modest as it is:
            "where one is available" is load-bearing. -->
       <section class="band" id="guardrails">
@@ -1100,7 +1218,7 @@
         <div class="band-cols">
           <div>
             <h3>Stays on the computer</h3>
-            <p>The service listens only on the person’s own machine, over an encrypted local connection whose credential changes every time it starts. API keys go straight to their provider. There’s no Gezel server to pass them through. <a href="/docs/security-model/">The security model</a></p>
+            <p>The service listens only on the person’s own machine, over an encrypted local connection whose credential changes every time it starts. In a container it answers only the people signed in and the apps given a key. API keys go straight to their provider. There’s no Gezel server to pass them through. <a href="/docs/security-model/">The security model</a></p>
           </div>
           <div>
             <h3>Consent people can see</h3>
@@ -1125,14 +1243,14 @@
         </button>
       </div>
       <p class="closing-alt">
-        <a href="/docs/npm-packages/">Developer docs</a><span class="sep" aria-hidden="true">·</span><a href="/#download">Download the desktop app</a>
+        <a href="/docs/npm-packages/">Developer docs</a><span class="sep" aria-hidden="true">·</span><a href="/docs/gezel-in-docker/">Run it in Docker</a><span class="sep" aria-hidden="true">·</span><a href="/#download">Download the desktop app</a>
       </p>
     </section>
 
     <footer>
       <p>© 2026 Bendyline · Free and open source under the MIT license</p>
       <p>
-        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
+        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
       </p>
     </footer>
   </div>

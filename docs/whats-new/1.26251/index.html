@@ -68,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26307/">1.26307 — 3 November 2026</a></li>
 <li><a href="../../whats-new/1.26300/">1.26300 — 27 October 2026</a></li>
 <li><a href="../../whats-new/1.26287/">1.26287 — 14 October 2026</a></li>
 <li><a href="../../whats-new/1.26279/">1.26279 — 6 October 2026</a></li>
@@ -94,7 +95,7 @@
 </nav>
 <article class="hb-article">
 <h1>1.26251 — 8 September 2026</h1>
-<p>Four days after <strong>1.26247</strong>, and this one lives mostly under the floor. The visible half is a set of new controls over how a local model loads; the invisible half is the reason those controls are now safe to use.</p>
+<p>This release lives mostly under the floor. The visible half is a set of new controls over how a local model loads; the invisible half is the reason those controls are now safe to use.</p>
 <p>If you read only one thing: when two things on your machine both want the memory, they now take turns instead of colliding.</p>
 <h2 id="engines-take-turns-with-your-memory">Engines take turns with your memory</h2>
 <p>Every model gezel starts on your own hardware — a chat model, the image reader, image and video generation, transcription — is a separate program that wants a large, specific amount of memory, and until now each of them found out whether that memory existed by trying to take it. When two of them tried at once, one of them lost, usually loudly and usually in the middle of something. On a machine with a frontier-sized model already resident, an ordinary background job asking for a second one was enough.</p>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Chess Player"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -88,7 +88,7 @@
         padding: 1.25rem;
         background: var(--bg);
         color: var(--ink);
-        font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+        font: 15px/1.5 var(--font-body, system-ui, sans-serif);
       }
       main { max-width: 760px; margin: 0 auto; }
       header {
@@ -100,7 +100,7 @@
       }
       h1 {
         margin: 0;
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.35rem;
       }
       button { font: inherit; }
@@ -204,7 +204,7 @@
         width: 100%;
         height: 100%;
         place-items: center;
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: clamp(1.5rem, 7vw, 3.25rem);
         line-height: 1;
         isolation: isolate;
@@ -286,9 +286,10 @@
         font-size: 0.78rem;
         font-style: normal;
       }
-      .log { max-height: 230px; margin: 0; padding-left: 1.2rem; overflow-y: auto; }
+      .log { max-height: 230px; margin: 0; padding-left: 2.1rem; overflow-y: auto; }
       .log li { margin: 0.12rem 0; color: var(--muted); }
       .log li.latest { color: var(--ink); }
+      .log li.empty { list-style: none; margin-left: -2.1rem; }
       dialog {
         width: min(410px, calc(100vw - 2rem));
         padding: 0;
@@ -302,7 +303,7 @@
       .dialog-content { padding: 1rem; }
       .dialog-content h2 {
         margin: 0 0 0.2rem;
-        font-family: Georgia, 'PT Serif', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.1rem;
       }
       .dialog-content p { margin: 0 0 0.85rem; color: var(--muted); font-size: 0.85rem; }
@@ -322,7 +323,7 @@
         background: var(--card);
         color: var(--ink);
         cursor: pointer;
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.8rem;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
       }
@@ -362,11 +363,18 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script><style data-app-narrow-board>@media(max-width:480px){.aside{grid-template-columns:minmax(0,1fr)}}html[data-gezel-fullscreen=true] body{padding:0}</style></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
-        <span><strong>Demo mode</strong> — sample data stays in this page.</span>
+        <span><strong>Demo mode</strong> — you play white against Ines; sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
       </div>
       <p class="note" id="browser-note" hidden>
@@ -387,7 +395,7 @@
           </div>
           <div class="panel">
             <h2>Moves</h2>
-            <ol class="log" id="log"><li>No moves yet — white opens.</li></ol>
+            <ol class="log" id="log"><li class="empty">No moves yet — white opens.</li></ol>
           </div>
         </div>
       </div>
@@ -402,139 +410,510 @@
         </div>
       </dialog>
     </main>
-    
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
 
         var FILES = 'abcdefgh';
+        // U+FE0E keeps the pawn a text glyph; without it some systems draw an emoji pawn.
+        var PAWN = '\u265F\uFE0E';
         var PIECES = {
-          K: '♚', Q: '♛', R: '♜', B: '♝', N: '♞', P: '♟',
-          k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟',
+          K: '♚', Q: '♛', R: '♜', B: '♝', N: '♞', P: PAWN,
+          k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: PAWN,
         };
         var PROMOTION_PIECES = { q: '♛', r: '♜', b: '♝', n: '♞' };
+        var PIECE_NAMES = { k: 'king', q: 'queen', r: 'rook', b: 'bishop', n: 'knight', p: 'pawn' };
         var state = null;
         var selected = null;
         var busy = false;
         var promotionMoves = [];
-        var demoGame = null;
 
         function squareName(x, y) { return FILES[x] + String(8 - y); }
         function sideOf(piece) {
           if (!piece || piece === '.') return null;
           return piece === piece.toUpperCase() ? 'user' : 'ai';
         }
-        function demoCoords(name) { return { x: FILES.indexOf(name[0]), y: 8 - Number(name[1]) }; }
-        function demoAt(squares, x, y) { return x < 0 || x > 7 || y < 0 || y > 7 ? null : squares[y * 8 + x]; }
-        function demoSet(squares, x, y, piece) {
-          var i = y * 8 + x;
-          return squares.slice(0, i) + piece + squares.slice(i + 1);
-        }
-        function demoMoves(game) {
-          var out = [];
-          var squares = game.squares;
-          var side = game.turn;
-          function add(fromX, fromY, toX, toY, extra) {
-            var target = demoAt(squares, toX, toY);
-            if (target === null || sideOf(target) === side) return;
-            var base = { from: squareName(fromX, fromY), to: squareName(toX, toY), capture: target !== '.' };
-            out.push(Object.assign(base, extra || {}));
+
+        // ── standalone demo: you play white, the companion answers with black ──
+        // Inside Gezel window.gezel already exists and none of this runs. The
+        // rules are the game-store script's own, so the sample plays exactly
+        // like a live table; demo-chat.js chooses the companion's moves.
+        window.gezel || window.makeDemoGezel((function () {
+          // ── chess-rules-start ──
+          // Pure, annotation-free chess engine. Squares are a 64-character row-major
+          // string: y0 is rank 8, x0 is file a. Uppercase pieces are white (the user);
+          // lowercase pieces are black (the AI).
+
+          var FILES = 'abcdefgh';
+          var PROMOTIONS = ['q', 'r', 'b', 'n'];
+
+          function sqName(x, y) {
+            return FILES[x] + String(8 - y);
           }
-          function ray(x, y, dx, dy) {
-            var tx = x + dx; var ty = y + dy;
-            while (demoAt(squares, tx, ty) !== null) {
-              var target = demoAt(squares, tx, ty);
-              if (sideOf(target) === side) break;
-              add(x, y, tx, ty);
-              if (target !== '.') break;
-              tx += dx; ty += dy;
+
+          function parseSq(name) {
+            if (typeof name !== 'string' || name.length !== 2) return null;
+            var x = FILES.indexOf(name[0].toLowerCase());
+            var rank = Number(name[1]);
+            if (x < 0 || !(rank >= 1 && rank <= 8)) return null;
+            return { x: x, y: 8 - rank };
+          }
+
+          function inBounds(x, y) {
+            return x >= 0 && x < 8 && y >= 0 && y < 8;
+          }
+
+          function pieceAt(squares, x, y) {
+            return squares[y * 8 + x];
+          }
+
+          function withPiece(squares, x, y, ch) {
+            var i = y * 8 + x;
+            return squares.slice(0, i) + ch + squares.slice(i + 1);
+          }
+
+          function sideOf(ch) {
+            if (!ch || ch === '.') return null;
+            return ch === ch.toUpperCase() ? 'user' : 'ai';
+          }
+
+          function otherSide(side) {
+            return side === 'user' ? 'ai' : 'user';
+          }
+
+          function kindOf(ch) {
+            return ch && ch !== '.' ? ch.toLowerCase() : '';
+          }
+
+          function buildInitial() {
+            return 'rnbqkbnr' + 'pppppppp' + '.'.repeat(32) + 'PPPPPPPP' + 'RNBQKBNR';
+          }
+
+          function findKing(squares, side) {
+            var needle = side === 'user' ? 'K' : 'k';
+            var i = squares.indexOf(needle);
+            return i < 0 ? null : { x: i % 8, y: Math.floor(i / 8) };
+          }
+
+          function isAttacked(squares, x, y, bySide) {
+            var pawn = bySide === 'user' ? 'P' : 'p';
+            var pawnY = y - (bySide === 'user' ? -1 : 1);
+            for (var pdx of [-1, 1]) {
+              var px = x - pdx;
+              if (inBounds(px, pawnY) && pieceAt(squares, px, pawnY) === pawn) return true;
             }
-          }
-          for (var y = 0; y < 8; y += 1) {
-            for (var x = 0; x < 8; x += 1) {
-              var piece = demoAt(squares, x, y);
-              if (sideOf(piece) !== side) continue;
-              var kind = piece.toLowerCase();
-              if (kind === 'p') {
-                var dir = side === 'user' ? -1 : 1;
-                var start = side === 'user' ? 6 : 1;
-                var last = side === 'user' ? 0 : 7;
-                if (demoAt(squares, x, y + dir) === '.') {
-                  if (y + dir === last) {
-                    ['q', 'r', 'b', 'n'].forEach(function (promotion) { add(x, y, x, y + dir, { promotion: promotion }); });
-                  } else {
-                    add(x, y, x, y + dir);
-                    if (y === start && demoAt(squares, x, y + dir * 2) === '.') add(x, y, x, y + dir * 2);
-                  }
-                }
-                [-1, 1].forEach(function (dx) {
-                  var target = demoAt(squares, x + dx, y + dir);
-                  if (target && target !== '.' && sideOf(target) !== side) {
-                    if (y + dir === last) ['q', 'r', 'b', 'n'].forEach(function (promotion) { add(x, y, x + dx, y + dir, { promotion: promotion }); });
-                    else add(x, y, x + dx, y + dir);
-                  }
-                });
-              } else if (kind === 'n') {
-                [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]].forEach(function (d) { add(x, y, x + d[0], y + d[1]); });
-              } else if (kind === 'k') {
-                for (var ky = -1; ky <= 1; ky += 1) for (var kx = -1; kx <= 1; kx += 1) if (kx || ky) add(x, y, x + kx, y + ky);
-              } else {
-                if (kind === 'b' || kind === 'q') [[-1,-1],[-1,1],[1,-1],[1,1]].forEach(function (d) { ray(x, y, d[0], d[1]); });
-                if (kind === 'r' || kind === 'q') [[-1,0],[1,0],[0,-1],[0,1]].forEach(function (d) { ray(x, y, d[0], d[1]); });
+
+            var knight = bySide === 'user' ? 'N' : 'n';
+            var knightSteps = [
+              [-2, -1],
+              [-2, 1],
+              [-1, -2],
+              [-1, 2],
+              [1, -2],
+              [1, 2],
+              [2, -1],
+              [2, 1],
+            ];
+            for (var n of knightSteps) {
+              if (inBounds(x + n[0], y + n[1]) && pieceAt(squares, x + n[0], y + n[1]) === knight) {
+                return true;
               }
             }
-          }
-          return out;
-        }
-        function demoNewGame() {
-          var game = {
-            version: 1,
-            squares: 'rnbqkbnrpppppppp................................PPPPPPPPRNBQKBNR',
-            turn: 'user', status: 'playing', legalMoves: [], lastMove: null,
-            lastMoveThought: '', moveLog: [], fullmoveNumber: 1,
-          };
-          demoGame = game;
-          game.legalMoves = demoMoves(game);
-          return game;
-        }
-        function demoUserMove(input) {
-          var move = demoGame.legalMoves.find(function (m) {
-            return m.from === input.from && m.to === input.to && (!m.promotion || m.promotion === (input.promotion || 'q'));
-          });
-          if (!move) throw new Error('That move is not available in the hot-seat demo.');
-          var from = demoCoords(move.from); var to = demoCoords(move.to);
-          var piece = demoAt(demoGame.squares, from.x, from.y);
-          var captured = demoAt(demoGame.squares, to.x, to.y);
-          demoGame.squares = demoSet(demoSet(demoGame.squares, from.x, from.y, '.'), to.x, to.y,
-            move.promotion ? (demoGame.turn === 'user' ? move.promotion.toUpperCase() : move.promotion) : piece);
-          demoGame.lastMove = { from: move.from, to: move.to };
-          demoGame.moveLog.push({ by: demoGame.turn, notation: move.from + '–' + move.to + (move.promotion ? '=' + move.promotion.toUpperCase() : '') });
-          if (captured && captured.toLowerCase() === 'k') {
-            demoGame.status = demoGame.turn === 'user' ? 'user_won' : 'ai_won';
-            demoGame.legalMoves = [];
-          } else {
-            demoGame.turn = demoGame.turn === 'user' ? 'ai' : 'user';
-            if (demoGame.turn === 'user') demoGame.fullmoveNumber += 1;
-            demoGame.legalMoves = demoMoves(demoGame);
-            if (demoGame.legalMoves.length === 0) demoGame.status = 'draw';
-          }
-          return { status: demoGame.status, turn: demoGame.turn, summary: 'Move played.' };
-        }
 
-        demoNewGame();
-        makeDemoGezel({
-          page: { entry: 'board/index.html', typeName: 'Chess', params: { personality: 'peppy', playStyle: 'Opponent' } },
-          tools: {
-            user_move: demoUserMove,
-            new_game: function () {
-              demoNewGame();
-              return { status: demoGame.status, turn: demoGame.turn, summary: 'New game.' };
+            var rays = [
+              [-1, 0, 'rq'],
+              [1, 0, 'rq'],
+              [0, -1, 'rq'],
+              [0, 1, 'rq'],
+              [-1, -1, 'bq'],
+              [-1, 1, 'bq'],
+              [1, -1, 'bq'],
+              [1, 1, 'bq'],
+            ];
+            for (var ray of rays) {
+              var rx = x + ray[0];
+              var ry = y + ray[1];
+              while (inBounds(rx, ry)) {
+                var seen = pieceAt(squares, rx, ry);
+                if (seen !== '.') {
+                  if (sideOf(seen) === bySide && ray[2].indexOf(kindOf(seen)) >= 0) return true;
+                  break;
+                }
+                rx += ray[0];
+                ry += ray[1];
+              }
+            }
+
+            var king = bySide === 'user' ? 'K' : 'k';
+            for (var ky = -1; ky <= 1; ky += 1) {
+              for (var kx = -1; kx <= 1; kx += 1) {
+                if (
+                  (kx !== 0 || ky !== 0) &&
+                  inBounds(x + kx, y + ky) &&
+                  pieceAt(squares, x + kx, y + ky) === king
+                ) {
+                  return true;
+                }
+              }
+            }
+            return false;
+          }
+
+          function inCheck(squares, side) {
+            var king = findKing(squares, side);
+            return !king || isAttacked(squares, king.x, king.y, otherSide(side));
+          }
+
+          function pushMove(out, fromX, fromY, toX, toY, extra) {
+            out.push(
+              Object.assign(
+                {
+                  from: sqName(fromX, fromY),
+                  to: sqName(toX, toY),
+                  capture: false,
+                },
+                extra || {},
+              ),
+            );
+          }
+
+          function pseudoMovesFor(squares, side, castling, enPassant) {
+            var out = [];
+            for (var y = 0; y < 8; y += 1) {
+              for (var x = 0; x < 8; x += 1) {
+                var ch = pieceAt(squares, x, y);
+                if (sideOf(ch) !== side) continue;
+                var kind = kindOf(ch);
+
+                if (kind === 'p') {
+                  var dir = side === 'user' ? -1 : 1;
+                  var startY = side === 'user' ? 6 : 1;
+                  var promotionY = side === 'user' ? 0 : 7;
+                  var oneY = y + dir;
+                  if (inBounds(x, oneY) && pieceAt(squares, x, oneY) === '.') {
+                    if (oneY === promotionY) {
+                      for (var promotion of PROMOTIONS) {
+                        pushMove(out, x, y, x, oneY, { promotion: promotion });
+                      }
+                    } else {
+                      pushMove(out, x, y, x, oneY);
+                      var twoY = y + dir * 2;
+                      if (y === startY && pieceAt(squares, x, twoY) === '.') {
+                        pushMove(out, x, y, x, twoY, { doublePawn: true });
+                      }
+                    }
+                  }
+                  for (var dx of [-1, 1]) {
+                    var cx = x + dx;
+                    var cy = y + dir;
+                    if (!inBounds(cx, cy)) continue;
+                    var target = pieceAt(squares, cx, cy);
+                    var targetName = sqName(cx, cy);
+                    var isEp = targetName === enPassant && target === '.';
+                    if ((target !== '.' && sideOf(target) === otherSide(side)) || isEp) {
+                      if (cy === promotionY) {
+                        for (var capturePromotion of PROMOTIONS) {
+                          pushMove(out, x, y, cx, cy, {
+                            capture: true,
+                            promotion: capturePromotion,
+                            enPassant: isEp,
+                          });
+                        }
+                      } else {
+                        pushMove(out, x, y, cx, cy, { capture: true, enPassant: isEp });
+                      }
+                    }
+                  }
+                  continue;
+                }
+
+                if (kind === 'n') {
+                  var jumps = [
+                    [-2, -1],
+                    [-2, 1],
+                    [-1, -2],
+                    [-1, 2],
+                    [1, -2],
+                    [1, 2],
+                    [2, -1],
+                    [2, 1],
+                  ];
+                  for (var jump of jumps) {
+                    var nx = x + jump[0];
+                    var ny = y + jump[1];
+                    if (!inBounds(nx, ny) || sideOf(pieceAt(squares, nx, ny)) === side) continue;
+                    pushMove(out, x, y, nx, ny, { capture: pieceAt(squares, nx, ny) !== '.' });
+                  }
+                  continue;
+                }
+
+                if (kind === 'b' || kind === 'r' || kind === 'q') {
+                  var dirs = [];
+                  if (kind === 'b' || kind === 'q') dirs.push([-1, -1], [-1, 1], [1, -1], [1, 1]);
+                  if (kind === 'r' || kind === 'q') dirs.push([-1, 0], [1, 0], [0, -1], [0, 1]);
+                  for (var d of dirs) {
+                    var sx = x + d[0];
+                    var sy = y + d[1];
+                    while (inBounds(sx, sy)) {
+                      var occupant = pieceAt(squares, sx, sy);
+                      if (sideOf(occupant) === side) break;
+                      pushMove(out, x, y, sx, sy, { capture: occupant !== '.' });
+                      if (occupant !== '.') break;
+                      sx += d[0];
+                      sy += d[1];
+                    }
+                  }
+                  continue;
+                }
+
+                if (kind === 'k') {
+                  for (var kdy = -1; kdy <= 1; kdy += 1) {
+                    for (var kdx = -1; kdx <= 1; kdx += 1) {
+                      if (kdx === 0 && kdy === 0) continue;
+                      var ktx = x + kdx;
+                      var kty = y + kdy;
+                      if (!inBounds(ktx, kty) || sideOf(pieceAt(squares, ktx, kty)) === side) continue;
+                      pushMove(out, x, y, ktx, kty, { capture: pieceAt(squares, ktx, kty) !== '.' });
+                    }
+                  }
+
+                  var homeY = side === 'user' ? 7 : 0;
+                  var kingChar = side === 'user' ? 'K' : 'k';
+                  var rookChar = side === 'user' ? 'R' : 'r';
+                  var enemy = otherSide(side);
+                  if (x === 4 && y === homeY && ch === kingChar && !isAttacked(squares, 4, homeY, enemy)) {
+                    var kingRight = side === 'user' ? castling.indexOf('K') >= 0 : castling.indexOf('k') >= 0;
+                    if (
+                      kingRight &&
+                      pieceAt(squares, 7, homeY) === rookChar &&
+                      pieceAt(squares, 5, homeY) === '.' &&
+                      pieceAt(squares, 6, homeY) === '.' &&
+                      !isAttacked(squares, 5, homeY, enemy) &&
+                      !isAttacked(squares, 6, homeY, enemy)
+                    ) {
+                      pushMove(out, x, y, 6, homeY, { castle: 'king' });
+                    }
+                    var queenRight = side === 'user' ? castling.indexOf('Q') >= 0 : castling.indexOf('q') >= 0;
+                    if (
+                      queenRight &&
+                      pieceAt(squares, 0, homeY) === rookChar &&
+                      pieceAt(squares, 1, homeY) === '.' &&
+                      pieceAt(squares, 2, homeY) === '.' &&
+                      pieceAt(squares, 3, homeY) === '.' &&
+                      !isAttacked(squares, 3, homeY, enemy) &&
+                      !isAttacked(squares, 2, homeY, enemy)
+                    ) {
+                      pushMove(out, x, y, 2, homeY, { castle: 'queen' });
+                    }
+                  }
+                }
+              }
+            }
+            return out;
+          }
+
+          function applyUnchecked(squares, move, side) {
+            var from = parseSq(move.from);
+            var to = parseSq(move.to);
+            var ch = pieceAt(squares, from.x, from.y);
+            var next = withPiece(squares, from.x, from.y, '.');
+            if (move.enPassant) {
+              next = withPiece(next, to.x, from.y, '.');
+            }
+            if (move.castle === 'king') {
+              next = withPiece(next, 7, from.y, '.');
+              next = withPiece(next, 5, from.y, side === 'user' ? 'R' : 'r');
+            } else if (move.castle === 'queen') {
+              next = withPiece(next, 0, from.y, '.');
+              next = withPiece(next, 3, from.y, side === 'user' ? 'R' : 'r');
+            }
+            if (move.promotion) ch = side === 'user' ? move.promotion.toUpperCase() : move.promotion;
+            return withPiece(next, to.x, to.y, ch);
+          }
+
+          function legalMovesFor(squares, side, castling, enPassant) {
+            return pseudoMovesFor(squares, side, castling || '', enPassant || null).filter(function (move) {
+              return !inCheck(applyUnchecked(squares, move, side), side);
+            });
+          }
+
+          function nextCastling(castling, squares, move) {
+            var rights = castling || '';
+            var ch = pieceAt(squares, parseSq(move.from).x, parseSq(move.from).y);
+            if (ch === 'K') rights = rights.replace(/K|Q/g, '');
+            if (ch === 'k') rights = rights.replace(/k|q/g, '');
+            if (move.from === 'a1' || move.to === 'a1') rights = rights.replace('Q', '');
+            if (move.from === 'h1' || move.to === 'h1') rights = rights.replace('K', '');
+            if (move.from === 'a8' || move.to === 'a8') rights = rights.replace('q', '');
+            if (move.from === 'h8' || move.to === 'h8') rights = rights.replace('k', '');
+            return rights;
+          }
+
+          function nextEnPassant(move, side) {
+            if (!move.doublePawn) return null;
+            var from = parseSq(move.from);
+            var to = parseSq(move.to);
+            return sqName(from.x, (from.y + to.y) / 2);
+          }
+
+          function isInsufficientMaterial(squares) {
+            var pieces = [];
+            for (var i = 0; i < squares.length; i += 1) {
+              var ch = squares[i];
+              if (ch !== '.' && kindOf(ch) !== 'k') pieces.push({ ch: ch, x: i % 8, y: Math.floor(i / 8) });
+            }
+            if (pieces.length === 0) return true;
+            if (pieces.length === 1 && (kindOf(pieces[0].ch) === 'b' || kindOf(pieces[0].ch) === 'n')) {
+              return true;
+            }
+            if (
+              pieces.length > 0 &&
+              pieces.every(function (p) {
+                return kindOf(p.ch) === 'b';
+              })
+            ) {
+              var color = (pieces[0].x + pieces[0].y) % 2;
+              return pieces.every(function (p) {
+                return (p.x + p.y) % 2 === color;
+              });
+            }
+            return false;
+          }
+
+          function positionKey(squares, side, castling, enPassant) {
+            var effectiveEnPassant =
+              enPassant &&
+              legalMovesFor(squares, side, castling, enPassant).some(function (move) {
+                return move.enPassant;
+              })
+                ? enPassant
+                : '-';
+            return [squares, side, castling || '-', effectiveEnPassant].join('|');
+          }
+
+          function statusAfter(squares, sideToMove, castling, enPassant) {
+            if (isInsufficientMaterial(squares)) return 'draw';
+            var moves = legalMovesFor(squares, sideToMove, castling, enPassant);
+            if (moves.length > 0) return 'playing';
+            if (!inCheck(squares, sideToMove)) return 'draw';
+            return sideToMove === 'user' ? 'ai_won' : 'user_won';
+          }
+
+          function describeMove(move) {
+            if (move.castle === 'king') return move.from + '-' + move.to + ' (O-O)';
+            if (move.castle === 'queen') return move.from + '-' + move.to + ' (O-O-O)';
+            var text = move.from + (move.capture ? 'x' : '-') + move.to;
+            if (move.promotion) text += '=' + move.promotion.toUpperCase();
+            if (move.enPassant) text += ' e.p.';
+            return text;
+          }
+
+          function renderAscii(squares) {
+            var lines = ['  a b c d e f g h'];
+            for (var y = 0; y < 8; y += 1) {
+              var row = String(8 - y);
+              for (var x = 0; x < 8; x += 1) row += ' ' + pieceAt(squares, x, y);
+              lines.push(row + ' ' + String(8 - y));
+            }
+            lines.push('  a b c d e f g h');
+            lines.push('Uppercase = white (user). Lowercase = black (you).');
+            return lines.join('\n');
+          }
+          // ── chess-rules-end ──
+
+          // A familiar opening, so the sample starts with a game under way.
+          var OPENING = [
+            ['user', 'e2', 'e4'],
+            ['ai', 'e7', 'e5'],
+            ['user', 'g1', 'f3'],
+            ['ai', 'b8', 'c6', 'Knight to c6. Every piece likes a little company.'],
+          ];
+          var SIDE_NAMES = { user: 'white', ai: 'black' };
+          var game = null;
+
+          function freshGame() {
+            var squares = buildInitial();
+            return {
+              version: 1, squares: squares, turn: 'user', status: 'playing', castling: 'KQkq', enPassant: null,
+              halfmoveClock: 0, fullmoveNumber: 1, positionHistory: [positionKey(squares, 'user', 'KQkq', null)],
+              legalMoves: legalMovesFor(squares, 'user', 'KQkq', null), moveLog: [], lastMove: null, lastMoveThought: '',
+            };
+          }
+          function renderLegal() {
+            return game.status === 'playing' ? game.legalMoves.map(describeMove).join(', ') || '(none)' : '(game over)';
+          }
+          function output(lastMove) {
+            var check = game.status === 'playing' && inCheck(game.squares, game.turn);
+            return {
+              board: renderAscii(game.squares) + '\nTurn: ' + SIDE_NAMES[game.turn] + ' (' + game.turn + ').' + (check ? ' CHECK.' : '') + '\nLegal moves: ' + renderLegal(),
+              turn: game.turn,
+              status: game.status,
+              lastMove: lastMove || (game.lastMove ? game.lastMove.notation : '(none)'),
+              legalMoves: renderLegal(),
+            };
+          }
+          function play(by, input) {
+            if (game.status !== 'playing') throw new Error('The game is over. Start a new game to play again.');
+            if (game.turn !== by) throw new Error(by === 'ai' ? 'It is white’s move.' : 'Black is still to move.');
+            var from = String(input.from || '').toLowerCase();
+            var to = String(input.to || '').toLowerCase();
+            var wanted = String(input.promotion || 'q').toLowerCase();
+            var candidates = game.legalMoves.filter(function (m) { return m.from === from && m.to === to; });
+            var move = candidates.find(function (m) { return (m.promotion || 'q') === wanted; }) ||
+              candidates.find(function (m) { return !m.promotion; });
+            if (!move) throw new Error('Illegal move ' + from + '-' + to + '. Legal moves for ' + SIDE_NAMES[by] + ': ' + renderLegal());
+            var thought = by === 'ai' && input.moveThought ? String(input.moveThought).trim().slice(0, 140) : '';
+            var start = parseSq(move.from);
+            var moving = pieceAt(game.squares, start.x, start.y);
+            game.castling = nextCastling(game.castling, game.squares, move);
+            game.squares = applyUnchecked(game.squares, move, by);
+            game.enPassant = nextEnPassant(move, by);
+            game.halfmoveClock = kindOf(moving) === 'p' || move.capture ? 0 : game.halfmoveClock + 1;
+            if (by === 'ai') game.fullmoveNumber += 1;
+            game.turn = otherSide(by);
+            var key = positionKey(game.squares, game.turn, game.castling, game.enPassant);
+            game.positionHistory.push(key);
+            game.status = statusAfter(game.squares, game.turn, game.castling, game.enPassant);
+            if (game.status === 'playing' && (game.halfmoveClock >= 100 ||
+              game.positionHistory.filter(function (k) { return k === key; }).length >= 3)) game.status = 'draw';
+            game.legalMoves = game.status === 'playing' ? legalMovesFor(game.squares, game.turn, game.castling, game.enPassant) : [];
+            var notation = describeMove(move);
+            var entry = { by: by, from: move.from, to: move.to, notation: notation };
+            if (move.promotion) entry.promotion = move.promotion;
+            if (thought) entry.moveThought = thought;
+            game.moveLog.push(entry);
+            game.lastMove = { by: by, from: move.from, to: move.to, notation: notation };
+            if (move.promotion) game.lastMove.promotion = move.promotion;
+            if (thought) game.lastMoveThought = thought;
+            return output(notation);
+          }
+          function sample() {
+            game = freshGame();
+            OPENING.forEach(function (move) { play(move[0], { from: move[1], to: move[2], moveThought: move[3] }); });
+          }
+          sample();
+
+          return {
+            page: { entry: 'board/index.html', typeName: 'Chess', params: { personality: 'gracious', playStyle: 'Opponent' } },
+            tools: {
+              get_board: function () { return output(); },
+              user_move: function (input) { return play('user', input); },
+              make_move: function (input) { return play('ai', input); },
+              new_game: function () { game = freshGame(); return output('(none)'); },
             },
-          },
-          data: {
-            'game.json': function () { return demoGame; },
-          },
-        });
+            data: {
+              'game.json': function () { return JSON.parse(JSON.stringify(game)); },
+            },
+            chat: window.demoChat && Object.assign(window.demoChat, {
+              rules: {
+                buildInitial: buildInitial, legalMovesFor: legalMovesFor, applyUnchecked: applyUnchecked,
+                nextCastling: nextCastling, nextEnPassant: nextEnPassant, inCheck: inCheck, isAttacked: isAttacked,
+                describeMove: describeMove,
+              },
+            }),
+          };
+        })());
 
         // ── one code path from here: window.gezel exists in every mode ──
         var demoMode = gezel.page.mode === 'demo';
@@ -544,7 +923,7 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
         if (browserMode) document.getElementById('browser-note').hidden = false;
@@ -562,10 +941,6 @@
         }
         function statusLine() {
           if (!state) return 'Setting up the board…';
-          if (demoMode && state.status === 'playing') return 'Hot seat — ' + (state.turn === 'user' ? 'white' : 'black') + ' to move.';
-          if (demoMode && state.status === 'user_won') return 'White wins the hot-seat demo.';
-          if (demoMode && state.status === 'ai_won') return 'Black wins the hot-seat demo.';
-          if (demoMode && state.status === 'draw') return 'Hot-seat draw — reset for another game.';
           if (state.status === 'user_won') return 'Checkmate — you won. The chess player is ready for a rematch.';
           if (state.status === 'ai_won') return 'Checkmate — the chess player takes this one.';
           if (state.status === 'draw') return 'Draw — a balanced board, and a rematch whenever you like.';
@@ -586,7 +961,7 @@
           var status = document.getElementById('status');
           status.textContent = statusLine();
           status.className =
-            state && !demoMode && state.turn === 'ai' && state.status === 'playing'
+            state && state.turn === 'ai' && state.status === 'playing'
               ? 'status thinking'
               : 'status';
 
@@ -609,12 +984,12 @@
             });
             log.scrollTop = log.scrollHeight;
           } else {
-            log.innerHTML = '<li>No moves yet — white opens.</li>';
+            log.innerHTML = '<li class="empty">No moves yet — white opens.</li>';
           }
 
           var board = document.getElementById('board');
           board.innerHTML = '';
-          var myTurn = state && (demoMode || state.turn === 'user') && state.status === 'playing' && !busy;
+          var myTurn = state && state.turn === 'user' && state.status === 'playing' && !busy;
           for (var y = 0; y < 8; y += 1) {
             for (var x = 0; x < 8; x += 1) {
               var name = squareName(x, y);
@@ -623,7 +998,7 @@
               var cell = document.createElement('button');
               cell.type = 'button';
               cell.className = 'cell ' + ((x + y) % 2 ? 'dark' : 'light');
-              cell.setAttribute('aria-label', name + (piece === '.' ? ', empty' : ', ' + piece));
+              cell.setAttribute('aria-label', name + (piece === '.' ? ', empty' : ', ' + (sideOf(piece) === 'user' ? 'white ' : 'black ') + PIECE_NAMES[piece.toLowerCase()]));
               cell.dataset.square = name;
               if (state && state.lastMove) {
                 if (state.lastMove.from === name) cell.className += ' last-from';
@@ -662,7 +1037,7 @@
         }
 
         function onSquareClick(event) {
-          if (!state || (!demoMode && state.turn !== 'user') || state.status !== 'playing' || busy) return;
+          if (!state || state.turn !== 'user' || state.status !== 'playing' || busy) return;
           var name = event.currentTarget.dataset.square;
           var destinations = movesTo(name);
           if (selected && destinations.length) {
@@ -687,7 +1062,7 @@
             button.type = 'button';
             button.className = 'promotion-key';
             button.textContent = PROMOTION_PIECES[move.promotion];
-            button.setAttribute('aria-label', 'Promote to ' + move.promotion);
+            button.setAttribute('aria-label', 'Promote to ' + PIECE_NAMES[move.promotion]);
             button.addEventListener('click', function () {
               document.getElementById('promotion-dialog').close();
               submitMove(move);
@@ -762,8 +1137,9 @@
           document.getElementById('promotion-dialog').close();
         });
         loadGame();
-        gezel.data.watch('game.json', function () { loadGame(); });
+        appSubscriptions.push(gezel.data.watch('game.json', function () { loadGame(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

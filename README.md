@@ -128,6 +128,24 @@ under the SIL Open Font License; the license texts sit beside them and
 [`NOTICE.md`](NOTICE.md) lists them. Hanken Grotesk is one variable file
 covering every weight.
 
+## Apps library (`apps/`)
+
+`apps/` is gezel.com/apps, the library of Gezel apps. It is **generated** by
+the same `pnpm docs:site` run (`gezel handboek export --apps-out`) from the
+catalog the docs read: an index of every project type, filterable by
+category, and one page per app with its page running on sample data, a
+scripted companion conversation beside it, and what is inside (crew,
+craftbooks, actions, files). Each demo lives at `apps/<id>/demo/`, sharing the
+content-hashed bootstrap in `apps/_gezel-demo/`; `apps/<id>/logo.webp` is the
+app's catalog mark.
+
+Like `docs/`, it is wiped on every run and carries its own marker,
+`.apps-export.json`. Never hand-edit it. Its styles (`apps/apps.css`) copy
+the landing page's tokens, masthead and footer, so retune them in gezel's
+`packages/cli/src/apps-site.ts` alongside `index.html`. The demos follow the
+catalog the export reads: run with `GEZEL_GILDE_DATA_DIR` pointing at a gilde
+checkout to preview apps that are not released yet.
+
 ## Social preview cards (`og/`)
 
 `og/` holds one 1200×630 Open Graph card per documentation page, plus a

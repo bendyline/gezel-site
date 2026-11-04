@@ -71,7 +71,9 @@
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../what-leaves-this-computer/">What leaves this computer</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../governance/">Governance: who writes Gezel, and how</a></li>
 <li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
@@ -81,6 +83,8 @@
 <li><a href="../cli-reference/">The gezel command line</a></li>
 <li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
 <li><a href="../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../gezel-in-docker/">Gezel in Docker</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -126,7 +130,7 @@
 <p>You do not need to install the SDK into each Gezel project. The daemon places its matching SDK in the sandbox at run time. Install <code>@bendyline/gezel-sdk</code> in a separate source repository only when that repository authors reusable scripts and should type-check them itself:</p>
 <pre class="squisq-code-block"><code class="language-bash">npm install --save-dev @bendyline/gezel-sdk</code></pre>
 <h2 id="the-shape-of-a-script">The shape of a script</h2>
-<p>Every script exports a static <code>meta</code> block, reads validated input from <code>gezel.input</code>, and stamps one final result with <code>gezel.output()</code>. This gate checks that a workspace contains a README before a task step can finish:</p>
+<p>Every script exports a static <code>meta</code> block, reads validated input from <code>gezel.input</code>, and stamps one final result with <code>gezel.output()</code>. This gate checks that a workspace contains a README with something in it before a task step can finish:</p>
 <pre class="squisq-code-block"><code class="language-ts">import {
   defineScript,
   gezel,
@@ -150,20 +154,36 @@ export const meta = defineScript({
 
 const input = gezel.input as InferredInput&lt;typeof meta&gt;;
 const files = await gezel.fs.listAll();
+const text = files.includes(input.path) ? await gezel.fs.read(input.path) : '';
 
-const result: GateScriptResult = files.includes(input.path)
-  ? { decision: 'approve', message: `${input.path} is present.` }
-  : {
-      decision: 'reject',
-      message: `Add ${input.path} with setup and usage instructions, then try again.`,
-    };
+const result: GateScriptResult =
+  text.trim().length &gt; 0
+    ? { decision: 'approve', message: `${input.path} is present.` }
+    : {
+        decision: 'reject',
+        message: `Add ${input.path} with setup and usage instructions, then try again.`,
+      };
 
 gezel.output(result);</code></pre>
 <p>The file name is the script's invocation name, so keep it aligned with <code>meta.name</code>. Input descriptors drive the manual-run form and <code>InferredInput</code>; output descriptors document an action script's result. A gate instead returns <code>approve</code> or <code>reject</code>. A rejection must include a useful <code>message</code> because Gezel gives it directly to the working gezel as the repair instruction.</p>
 <h2 id="declare-capabilities-before-using-them">Declare capabilities before using them</h2>
 <p>The <code>requires</code> list is both documentation and an enforced permission boundary. A call fails with <code>CAPABILITY_DENIED</code> when the matching capability was not declared, and project or installation policy can still deny a declared capability.</p>
-<div class="hb-table-scroll"><table><thead><tr><th>Capability</th><th>SDK surface</th></tr></thead><tbody><tr><td><code>workspace.read</code>, <code>workspace.write</code></td><td><code>gezel.fs</code> for project workspace files</td></tr><tr><td><code>artifacts.read</code>, <code>artifacts.write</code></td><td><code>gezel.artifacts</code> for generated project outputs</td></tr><tr><td><code>documents.read</code>, <code>documents.write</code></td><td><code>gezel.documents</code> for the shared document library</td></tr><tr><td><code>tasks.read</code>, <code>tasks.write</code></td><td><code>gezel.task</code> for task records, steps, and notes</td></tr><tr><td><code>memory.read</code>, <code>memory.write</code></td><td><code>gezel.memory</code> for project memories</td></tr><tr><td><code>index.read</code>, <code>index.refresh</code></td><td><code>gezel.index</code> for workspace-index status and the bounded make-it-fresh ensure</td></tr><tr><td><code>reminders</code></td><td><code>gezel.reminder.set()</code> / <code>clear()</code> for the project's one reminder</td></tr><tr><td><code>llm</code></td><td><code>gezel.llm.oneShot()</code></td></tr><tr><td><code>network</code></td><td><code>gezel.mcp.call()</code> and <code>gezel.http</code></td></tr><tr><td><code>credential:&lt;name&gt;</code> plus <code>network</code></td><td><code>gezel.http.authed()</code> with a project-approved named credential</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>Capability</th><th>SDK surface</th></tr></thead><tbody><tr><td><code>workspace.read</code>, <code>workspace.write</code></td><td><code>gezel.fs</code> for project workspace files: <code>read</code>, <code>write</code>, <code>list</code>, <code>listAll</code>, <code>stat</code>, <code>rm</code>, <code>mkdir</code>, <code>rename</code></td></tr><tr><td><code>artifacts.read</code>, <code>artifacts.write</code></td><td><code>gezel.artifacts</code> for generated project outputs</td></tr><tr><td><code>documents.read</code>, <code>documents.write</code></td><td><code>gezel.documents</code> for the shared document library</td></tr><tr><td><code>tasks.read</code>, <code>tasks.write</code></td><td><code>gezel.task</code> for task records, steps, and notes</td></tr><tr><td><code>memory.read</code>, <code>memory.write</code></td><td><code>gezel.memory</code> for project memories</td></tr><tr><td><code>index.read</code>, <code>index.refresh</code></td><td><code>gezel.index</code> for workspace-index status and the bounded make-it-fresh ensure</td></tr><tr><td><code>reminders</code></td><td><code>gezel.reminder.set()</code> / <code>clear()</code> for the project's one reminder</td></tr><tr><td><code>llm</code></td><td><code>gezel.llm.oneShot()</code></td></tr><tr><td><code>network</code></td><td><code>gezel.mcp.call()</code> and <code>gezel.http</code></td></tr><tr><td><code>credential:&lt;name&gt;</code> plus <code>network</code></td><td><code>gezel.http.authed()</code> with a project-approved named credential</td></tr></tbody></table></div>
 <p>A reminder is for a time the script worked out from the project's own state, such as when the next flashcard comes due. It is never a time picked for its own sake. <code>at</code> must be in the future and at most 30 days ahead, the title is up to 80 characters, and the body up to 160. Setting a reminder replaces the project's earlier one. The app turns it into a notification, within the person's daily allowance.</p>
+<p>A register of due dates (permits, contract notice dates, certificates that expire) keeps its one reminder on the soonest open item. End every action that changes the register with the same step: find the earliest open item, take its due date minus the app's lead time, and set the reminder for that moment when it falls within the next 30 days; otherwise clear it. An item further out arms nothing yet. The next run of any of the register's tools re-arms it, so a status tool the page or crew calls routinely should run the step too. Wrap the call in <code>try</code>: a host without reminders still keeps the register.</p>
+<pre class="squisq-code-block"><code class="language-ts">async function remindNextDue(items: Array&lt;{ title: string; dueAt: string; open: boolean }&gt;, leadDays: number) {
+  const now = Date.now();
+  const next = items
+    .filter((i) =&gt; i.open &amp;&amp; Date.parse(i.dueAt) - leadDays * 86_400_000 &gt; now)
+    .sort((a, b) =&gt; Date.parse(a.dueAt) - Date.parse(b.dueAt))[0];
+  const at = next ? Date.parse(next.dueAt) - leadDays * 86_400_000 : NaN;
+  try {
+    if (!next || at - now &gt; 30 * 86_400_000) await gezel.reminder.clear();
+    else await gezel.reminder.set({ at: new Date(at).toISOString(), title: `${next.title} is due soon`, body: `Due ${next.dueAt.slice(0, 10)}.` });
+  } catch {
+    // Reminders are a convenience; the register is the record.
+  }
+}</code></pre>
 <p><code>gezel.input</code>, <code>gezel.output()</code>, <code>gezel.log()</code>, and <code>gezel.script.run()</code> need no capability. A nested script runs under its own metadata and permission set, and nesting is limited to four levels.</p>
 <p>Ask only for what the script needs. In particular, use <code>gezel.fs</code> for workspace I/O rather than importing Node's <code>fs</code>: raw filesystem code runs in an isolated scratch directory and cannot see the project workspace. For authenticated HTTP, the service attaches the named credential and scrubs it from the response; the secret value never enters the script.</p>
 <h2 id="actions-gates-and-hooks">Actions, gates, and hooks</h2>

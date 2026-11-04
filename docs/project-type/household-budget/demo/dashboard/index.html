@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Household Treasurer"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -26,9 +26,9 @@
         }
       }
       * { box-sizing: border-box; }
-      body { margin: 0; font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
+      body { margin: 0; font: 15px/1.5 var(--font-body, system-ui, sans-serif); background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
       main { max-width: 760px; margin: 0 auto; }
-      h1 { font-family: Georgia, 'PT Serif', 'Times New Roman', serif; font-size: 1.35rem; font-weight: 600; margin: 0 0 0.15rem; }
+      h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.35rem; font-weight: 600; margin: 0 0 0.15rem; }
       .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
       .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 1rem; }
       .tile { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.7rem 0.85rem; }
@@ -84,9 +84,16 @@
       }
       .demo-reset:hover { border-color: var(--ink); }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
         <span><strong>Demo mode</strong> — sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
@@ -108,18 +115,18 @@
           <div id="cats"><p class="empty">No spending recorded this month.</p></div>
         </div>
         <div class="panel">
-          <h2>Recent entries</h2>
+          <h2>Entries</h2>
           <ul class="entries" id="entries"><li class="empty">Nothing yet — tell your household treasurer, or use quick add.</li></ul>
           <h2 style="margin-top: 0.9rem">Quick add expense</h2>
           <form id="quick">
-            <input id="q-amount" type="number" step="0.01" min="0.01" placeholder="12.50" required />
-            <input id="q-category" type="text" placeholder="groceries" required />
+            <input id="q-amount" type="number" step="0.01" min="0.01" placeholder="12.50" aria-label="Amount" required />
+            <input id="q-category" type="text" placeholder="groceries" aria-label="Category" required />
             <button type="button" id="q-go">Add</button>
           </form>
         </div>
       </div>
     </main>
-    
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
@@ -128,29 +135,66 @@
         var demoLedger = { currency: 'USD', entries: [
           { kind: 'in', amountCents: 520000, category: 'Income', note: 'Monthly pay', at: new Date().toISOString() },
           { kind: 'out', amountCents: 146000, category: 'Housing', note: 'Rent', at: new Date().toISOString() },
+          { kind: 'out', amountCents: 9640, category: 'Utilities', note: 'Electric bill', at: new Date().toISOString() },
+          { kind: 'out', amountCents: 1549, category: 'Subscriptions', note: 'Video streaming', at: new Date().toISOString() },
+          { kind: 'out', amountCents: 1099, category: 'Subscriptions', note: 'Music streaming', at: new Date().toISOString() },
           { kind: 'out', amountCents: 58200, category: 'Groceries', note: 'Weekly shops', at: new Date().toISOString() },
+          { kind: 'out', amountCents: 1199, category: 'Subscriptions', note: 'Second video streaming service', at: new Date().toISOString() },
           { kind: 'out', amountCents: 22400, category: 'Transport', note: 'Train and fuel', at: new Date().toISOString() },
+          { kind: 'out', amountCents: 299, category: 'Subscriptions', note: 'Cloud storage', at: new Date().toISOString() },
           { kind: 'out', amountCents: 18900, category: 'Eating out', note: 'Dinner with friends', at: new Date().toISOString() },
         ] };
 
-        makeDemoGezel({
+        window.gezel || window.makeDemoGezel({
           page: { entry: 'dashboard/index.html', typeName: 'Household Budget', params: { currency: 'USD' } },
-          tools: {
-            record_expense: function (input) {
+          tools: (function () {
+            // Mirrors the budget-store script: one ledger, cents, and the same month line.
+            function cents(input) {
               var amount = Number(input && input.amount);
-              if (!(amount > 0) || !input.category) throw new Error('Give an amount above zero and a category.');
-              demoLedger.entries.push({
-                kind: 'out',
-                amountCents: Math.round(amount * 100),
-                category: input.category,
-                at: new Date().toISOString(),
+              if (!(amount > 0) || !isFinite(amount)) throw new Error('Give an amount above zero, like 12.50.');
+              if (!input.category || !String(input.category).trim()) throw new Error('Give a category, like groceries.');
+              return Math.round(amount * 100);
+            }
+            // The live script lowercases categories; the sample keeps one spelling per category.
+            function category(name) {
+              var wanted = String(name).trim();
+              var known = demoLedger.entries.find(function (e) { return e.category.toLowerCase() === wanted.toLowerCase(); });
+              return known ? known.category : wanted.charAt(0).toUpperCase() + wanted.slice(1);
+            }
+            function add(kind, input) {
+              var amountCents = cents(input);
+              var entry = { kind: kind, amountCents: amountCents, category: category(input.category), at: new Date().toISOString() };
+              if (input.note && String(input.note).trim()) entry.note = String(input.note).trim();
+              demoLedger.entries.push(entry);
+              return status();
+            }
+            function money(c) { var abs = Math.abs(c); return (c < 0 ? '-' : '') + Math.floor(abs / 100) + '.' + String(abs % 100).padStart(2, '0'); }
+            function status() {
+              var month = new Date().toISOString().slice(0, 7), inC = 0, outC = 0, by = {};
+              demoLedger.entries.forEach(function (e) {
+                if (e.at.slice(0, 7) !== month) return;
+                if (e.kind === 'in') inC += e.amountCents;
+                else { outC += e.amountCents; by[e.category.toLowerCase()] = (by[e.category.toLowerCase()] || 0) + e.amountCents; }
               });
-              return { summary: 'Recorded ' + amount.toFixed(2) + ' for ' + input.category + '.' };
-            },
-          },
+              var top = Object.keys(by).sort(function (a, b) { return by[b] - by[a]; }).slice(0, 3)
+                .map(function (k) { return k + ' ' + money(by[k]); }).join(', ');
+              return {
+                entries: demoLedger.entries.length,
+                summary: month + ': in ' + money(inC) + ', out ' + money(outC) + ', net ' + money(inC - outC) + (top ? '. Biggest: ' + top + '.' : '. No spending recorded.'),
+                netCents: inC - outC,
+              };
+            }
+            return {
+              record_expense: function (input) { return add('out', input); },
+              page_add_income: function (input) { return add('in', input); },
+              add_expense: function (input) { return add('out', input); },
+              budget_status: function () { return status(); },
+            };
+          })(),
           data: {
             'ledger.json': function () { return demoLedger; },
           },
+          chat: window.demoChat,
         });
 
         // ── one code path from here: window.gezel exists in every mode ──
@@ -161,7 +205,7 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
         if (browserMode) document.getElementById('browser-note').hidden = false;
@@ -204,7 +248,7 @@
               }).join('')
             : '<p class="empty">No spending recorded this month.</p>';
 
-          var recent = entries.slice(-7).reverse();
+          var recent = entries.slice().reverse();
           if (recent.length) {
             document.getElementById('entries').innerHTML = recent.map(function (e) {
               return '<li><strong>' + (e.kind === 'in' ? '+' : '-') + fmt(e.amountCents) + '</strong> ' + esc(e.category) + (e.note ? ' — ' + esc(e.note) : '') + '</li>';
@@ -212,12 +256,11 @@
           }
         }
 
-        function loadLedger() {
-          return gezel.data
-            .read('ledger.json')
-            .then(function (next) { if (next) render(next); })
-            .catch(function () {});
-        }
+        window.addEventListener('gezel-app-data-changed', function(){ loadLedger(); });
+        function loadLedger(){
+var revision=++appLoadRevision;
+return Promise.all([gezel.data.read('ledger.json')]).then(function(values){if(appDisposed||revision!==appLoadRevision)return;reportAppError(null);render(values[0]||{});}).catch(function(error){if(!appDisposed&&revision===appLoadRevision)reportAppError(error);});
+}
 
         // The Output pane frame is sandboxed without allow-forms, which blocks
         // form submission before any submit event fires — so the quick add
@@ -251,8 +294,9 @@
         });
 
         loadLedger();
-        gezel.data.watch('ledger.json', function () { loadLedger(); });
+        appSubscriptions.push(gezel.data.watch('ledger.json', function () { loadLedger(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

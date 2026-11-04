@@ -71,7 +71,9 @@
 <li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
 <li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
 <li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../what-leaves-this-computer/">What leaves this computer</a></li>
 <li><a href="../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../governance/">Governance: who writes Gezel, and how</a></li>
 <li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
 </ul>
 </li>
@@ -81,6 +83,8 @@
 <li><a href="../cli-reference/">The gezel command line</a></li>
 <li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
 <li><a href="../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../gezel-in-docker/">Gezel in Docker</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -126,6 +130,10 @@
 <p><strong>Do not copy fonts, licenses, <code>@font-face</code> declarations, or a font CDN into each app.</strong> Gezel owns the hosted font assets. The defaults use low-specificity <code>:where()</code> selectors, so your authored styles can override them. A <code>font: … system-ui</code> shorthand on <code>body</code> also overrides them; avoid that accidental reset.</p>
 <p>The host supplies typography and an opt-in component kit, not a complete CSS framework. It does <strong>not</strong> inject the shell's color palette, spacing or radius tokens, a CSS reset, a body margin reset, a type size scale, general button styling, a chart library, or page layouts. Variables such as <code>--bg</code> and classes such as <code>.primary</code> have no built-in meaning inside the page. Define the ones your page uses. Shell CSS does not inherit through the sandboxed iframe.</p>
 <h2 id="shared-file-components">Shared file components</h2>
+<p>For a full application workspace, <code>ui.components.appLayout</code> wraps the existing main content and adds a responsive fullscreen conversation. It keeps the page mounted on restore, provides a conversation toggle, and suppresses its native chat slot while a page dialog is open. Use a specific companion title and a short description of useful work the person can do together. A file-only app can pass <code>chat: false</code>. Keep the content usable in the ordinary pane as well.</p>
+<p>In a standalone demo the same slot holds the <a href="../gezel-page-apis/#the-sample-conversation">sample conversation</a>, drawn to match Gezel's chat: replies in the heading serif, the visitor's messages in an accent-tinted bubble, each tool the companion uses as a quiet step row with a check, and suggestions as bare keys under the conversation (one scrolling row on narrow screens). It lives in the component's shadow root, so restyle it only through the <code>--gezel-component-*</code> properties below. Keep its copy in the role's voice: short, specific, American English, no emojis.</p>
+<p>Use <code>actionForm</code> for small, declared edits and <code>collectionFilter</code> for search over rendered records. These components supply controls and state handling, while the app owns field labels, domain data, allowed actions, and refresh behavior. Avoid duplicating the host's composer or building a separate persistence store. See <a href="../gezel-page-apis/#building-a-full-page-workspace">workspace components</a>.</p>
+<p>For a responsive game or other app, use <code>gezel.ui.layout</code> / <code>ui.onLayout</code> and <code>data-gezel-fullscreen</code> to adapt when the Output pane expands. Native chat slots use <code>ui.components.chat</code>; size their containing rectangle in page CSS and choose their controls through options. They inherit the shell's theme and fonts, not page CSS overrides. See <a href="../gezel-page-apis/#fullscreen-layout-and-embedded-chat">fullscreen and chat</a> for the layout example and clipping constraints.</p>
 <p>Prefer <code>gezel.ui.components.fileCard</code> for a file tile/row and <code>fileAdder</code> for uploads. The <a href="../gezel-page-apis/#file-cards-and-adding-files">page API guide</a> covers mounting, lifecycle, permission declarations and standalone demo setup. Both ship their own shadow-root styles, native buttons, focus outlines, status messages and light/dark colors. They inherit the host's <code>--font-ui</code>; published and exported demos receive the same fonts. A page's broad <code>button</code> or <code>img</code> rules do not change component internals.</p>
 <p>Pages own the containing grid/list, spacing and breakpoints. Choose <code>variant: 'tile'</code> or <code>'row'</code>; use <code>update</code> when changing layouts. Keep filenames as the primary label and preserve keyboard access. The adder states where files go and what was saved, so do not hide that destination or status.</p>
 <p>Optional CSS custom properties on the mount element are <code>--gezel-component-text</code>, <code>--gezel-component-surface</code>, <code>--gezel-component-border</code>, <code>--gezel-component-muted</code>, and <code>--gezel-component-accent</code>. Set both light and dark values if overriding them, and maintain contrast and a visible focus outline. No copied fonts, CSS framework, external icon service or per-app component fork is needed.</p>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
-<script type="application/json" id="gezel-demo-config">{}</script>
-<script src="../../../../_gezel-demo/bootstrap-1280e1bd305590c5.js"></script>
+<script type="application/json" id="gezel-demo-config">{"companion":{"role":"Study Partner"}}</script>
+<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -46,14 +46,14 @@
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        font: 15px/1.5 var(--font-body, system-ui, sans-serif);
         background: var(--bg);
         color: var(--ink);
         padding: 1.5rem 1.25rem;
       }
       main { max-width: 560px; margin: 0 auto; }
       h1 {
-        font-family: Georgia, 'PT Serif', 'Times New Roman', serif;
+        font-family: var(--font-heading, Georgia, serif);
         font-size: 1.35rem;
         font-weight: 600;
         margin: 0 0 0.15rem;
@@ -143,7 +143,8 @@
       .demo-banner strong { font-weight: 700; }
       .demo-reset {
         flex: none;
-        padding: 0.25rem 0.5rem;
+        min-height: 44px;
+        padding: 0.25rem 0.6rem;
         border: 1px solid var(--accent);
         border-radius: 6px;
         background: var(--card);
@@ -174,9 +175,16 @@
       }
       .forge .actions { justify-content: flex-start; }
     </style>
-  </head>
+  <style>
+ [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+  <script>
+var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
+function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
+window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
+</script><style>.deck-library{margin-top:32px;text-align:left}#deck-library{list-style:none;padding:0;display:grid;gap:8px}#deck-library details{padding:16px;border:1px solid var(--track);border-radius:10px;background:var(--card)}#deck-library summary{cursor:pointer}#deck-library p{white-space:pre-wrap;overflow-wrap:anywhere}</style></head>
   <body>
     <main>
+<p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
         <span><strong>Demo mode</strong> — sample data stays in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
@@ -192,68 +200,138 @@
       <p class="hint" id="hint"></p>
       <section class="forge" aria-labelledby="forge-title">
         <h2 id="forge-title">Make cards from notes</h2>
-        <p>Paste a page of notes. Your study mate turns the key facts into cards.</p>
+        <p>Paste a page of notes. Your study partner turns the key facts into cards.</p>
         <textarea id="forge-notes" maxlength="3000" aria-label="Notes to turn into cards"></textarea>
         <div class="actions"><button type="button" id="forge-go">Make cards</button></div>
         <p id="forge-status" role="status"></p>
       </section>
-    </main>
-    
+    <section class="deck-library"><h2>Your card library</h2><div id="deck-search"></div><ul id="deck-library"></ul></section></main>
+    <script src="demo-chat.js"></script>
     <script>
       (function () {
         'use strict';
 
-        // ── demo deck (used only when the page opens as a raw file) ──
-        var demoDeck = {
-          subject: 'Dutch for a market morning',
-          cards: [
-            { id: 'card-1', front: 'Hoeveel kost dit?', back: 'How much does this cost?' },
-            { id: 'card-2', front: 'een bos bloemen', back: 'a bunch of flowers' },
-            { id: 'card-3', front: 'Mag ik pinnen?', back: 'Can I pay by card?' },
-            { id: 'card-4', front: 'Dat is alles, dank u.', back: 'That is all, thank you.' },
-          ],
-          dueCardIds: ['card-1', 'card-2', 'card-3', 'card-4'],
-        };
-        function demoCard(id) {
-          return demoDeck.cards.find(function (c) { return c.id === id; }) || null;
-        }
-
-        makeDemoGezel({
-          page: { entry: 'review/index.html', typeName: 'Flashcards' },
-          tools: {
-            record_review: function (input) {
-              var card = demoCard(input && input.cardId);
-              if (!card) throw new Error("No card '" + (input && input.cardId) + "' in the demo deck.");
-              // The demo deck stays due so the session can be replayed;
-              // Reset demo restores everything else.
-              return { summary: card.id + ' marked ' + input.verdict + '.' };
+        window.gezel || window.makeDemoGezel((function () {
+          // ── standalone demo: a deck mid-week, scheduled by the same Leitner boxes as deck-store ──
+          var DAY = 24 * 60 * 60 * 1000;
+          var INTERVAL = { 1: 1, 2: 3, 3: 7 };
+          var now = Date.now();
+          function ago(days) { return days === null ? null : new Date(now - days * DAY).toISOString(); }
+          // [front, back, box, last reviewed (days ago), got it, missed]
+          var demoDeck = {
+            version: 1,
+            subject: 'Dutch for a market morning',
+            cards: [
+              ['Hoeveel kost dit?', 'How much does this cost?', 2, 4, 2, 0],
+              ['een bos bloemen', 'a bunch of flowers', 1, 2, 1, 3],
+              ['Mag ik pinnen?', 'Can I pay by card?', 1, 1.5, 1, 1],
+              ['Dat is alles, dank u.', 'That is all, thank you.', 1, null, 0, 0],
+              ['de markt', 'the market', 3, 2, 3, 0],
+              ['Goedemorgen!', 'Good morning!', 3, 5, 3, 0],
+              ['contant', 'cash', 2, 1, 1, 1],
+              ['een halve kilo', 'half a kilo', 2, 2, 2, 1],
+            ].map(function (c, i) {
+              return {
+                id: 'card-' + (i + 1), front: c[0], back: c[1], box: c[2], lastReviewedAt: ago(c[3]),
+                createdAt: ago(10 - i / 10), stats: { gotIt: c[4], missed: c[5] },
+              };
+            }),
+            dueCardIds: [],
+          };
+          function isDue(card, at) {
+            return !card.lastReviewedAt || at - Date.parse(card.lastReviewedAt) >= (INTERVAL[card.box] || 1) * DAY;
+          }
+          function reschedule() {
+            var at = Date.now();
+            demoDeck.dueCardIds = demoDeck.cards
+              .filter(function (c) { return isDue(c, at); })
+              .sort(function (a, b) { return a.box - b.box || (a.createdAt < b.createdAt ? -1 : a.createdAt > b.createdAt ? 1 : 0); })
+              .map(function (c) { return c.id; });
+          }
+          reschedule();
+          function cards(n) { return n + (n === 1 ? ' card' : ' cards'); }
+          function demoCard(id) {
+            return demoDeck.cards.find(function (c) { return c.id === id; }) || null;
+          }
+          function addCards(input) {
+            var added = 0;
+            ((input && input.cards) || []).slice(0, 8).forEach(function (entry) {
+              var front = String((entry && entry.front) || '').trim(), back = String((entry && entry.back) || '').trim();
+              if (!front || !back) return;
+              var max = demoDeck.cards.reduce(function (m, c) { return Math.max(m, Number(c.id.replace('card-', '')) || 0); }, 0);
+              demoDeck.cards.push({
+                id: 'card-' + (max + 1), front: front.slice(0, 300), back: back.slice(0, 500), box: 1,
+                lastReviewedAt: null, createdAt: new Date().toISOString(), stats: { gotIt: 0, missed: 0 },
+              });
+              added += 1;
+            });
+            if (!added) throw new Error("add_cards needs a non-empty 'cards' array of {front, back} objects.");
+            reschedule();
+            return {
+              total: demoDeck.cards.length, due: demoDeck.dueCardIds.length, status: 'idle',
+              summary: 'Added ' + cards(added) + '. ' + demoDeck.cards.length + ' in the deck, ' + demoDeck.dueCardIds.length + ' due now.',
+            };
+          }
+          // A sample page of notes, so Make cards works in one click.
+          document.getElementById('forge-notes').value =
+            'Een pond is half a kilo. Kassabon means receipt. Marktkoopman: a market trader. ' +
+            'The Albert Cuyp market in Amsterdam is open six days a week. Most stalls take cash and cards.';
+          return {
+            page: { entry: 'review/index.html', typeName: 'Flashcards' },
+            tools: {
+              add_cards: addCards,
+              page_add_cards: addCards,
+              deck_status: function () {
+                reschedule();
+                var boxes = { 1: 0, 2: 0, 3: 0 };
+                demoDeck.cards.forEach(function (c) { boxes[c.box] = (boxes[c.box] || 0) + 1; });
+                return {
+                  total: demoDeck.cards.length, due: demoDeck.dueCardIds.length, status: 'idle',
+                  summary: demoDeck.cards.length
+                    ? cards(demoDeck.cards.length) + ' on "' + demoDeck.subject + '": ' + demoDeck.dueCardIds.length + ' due now. Boxes: ' +
+                      boxes[1] + ' daily, ' + boxes[2] + ' every-3-days, ' + boxes[3] + ' weekly.'
+                    : 'The deck for "' + demoDeck.subject + '" is empty.',
+                };
+              },
+              list_deck: function () {
+                return {
+                  total: demoDeck.cards.length, due: demoDeck.dueCardIds.length, status: 'idle',
+                  summary: demoDeck.cards.map(function (c) { return c.id + ' [box ' + c.box + '] ' + c.front + ' -> ' + c.back; }).join('\n'),
+                };
+              },
+              record_review: function (input) {
+                var card = demoCard(input && input.cardId);
+                if (!card) throw new Error("No card '" + (input && input.cardId) + "' in the demo deck.");
+                card.box = input.verdict === 'got-it' ? Math.min(3, card.box + 1) : 1;
+                card.lastReviewedAt = new Date().toISOString();
+                card.stats[input.verdict === 'got-it' ? 'gotIt' : 'missed'] += 1;
+                reschedule();
+                return { summary: card.id + ' marked ' + input.verdict + ' (now box ' + card.box + '). ' + demoDeck.dueCardIds.length + ' still due.' };
+              },
+              forge_from_notes: function (input) {
+                var notes = String((input && input.notes) || '').trim().slice(0, 3000);
+                if (notes.length < 20) throw new Error('Paste a few sentences of notes to make cards from.');
+                return { status: 'forging', notes: notes, total: demoDeck.cards.length, due: demoDeck.dueCardIds.length, summary: 'Notes staged.' };
+              },
+              finish_session: function (input) {
+                var reviewed = (input && input.reviewed) || 0;
+                var missedIds = (input && input.missedIds) || [];
+                var fronts = missedIds.map(function (id) { return (demoCard(id) || {}).front; }).filter(Boolean);
+                reschedule();
+                return {
+                  total: demoDeck.cards.length, due: demoDeck.dueCardIds.length, status: 'idle',
+                  missedList: fronts.length ? fronts.join(' | ') : '(none)',
+                  summary: 'Reviewed ' + cards(reviewed) + ': ' + (reviewed - missedIds.length) + ' got it, ' + missedIds.length + ' missed. ' +
+                    demoDeck.dueCardIds.length + ' due next.',
+                };
+              },
             },
-            forge_from_notes: function (input) {
-              var notes = String((input && input.notes) || '').trim();
-              if (notes.length < 20) throw new Error('Paste a few sentences of notes to make cards from.');
-              var n = demoDeck.cards.length;
-              notes
-                .split(/[.\n]+/)
-                .map(function (line) { return line.trim(); })
-                .filter(function (line) { return line.length > 12; })
-                .slice(0, 3)
-                .forEach(function (line, i) {
-                  var id = 'card-' + (n + i + 1);
-                  demoDeck.cards.push({ id: id, front: 'Complete: ' + line.split(' ').slice(0, 4).join(' ') + '…', back: line });
-                  demoDeck.dueCardIds.push(id);
-                });
-              return { status: 'forging', summary: 'Notes staged.' };
+            data: {
+              'deck.json': function () { reschedule(); return demoDeck; },
             },
-            finish_session: function (input) {
-              var reviewed = (input && input.reviewed) || 0;
-              var missed = ((input && input.missedIds) || []).length;
-              return { summary: 'Reviewed ' + reviewed + ' card(s): ' + (reviewed - missed) + ' got it, ' + missed + ' missed.' };
-            },
-          },
-          data: {
-            'deck.json': function () { return demoDeck; },
-          },
-        });
+            chat: window.demoChat,
+          };
+        })());
 
         // ── one code path from here: window.gezel exists in every mode ──
         var demoMode = gezel.page.mode === 'demo';
@@ -263,7 +341,7 @@
           document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
         }
         applyTheme(gezel.ui.theme.mode);
-        gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); });
+        appSubscriptions.push(gezel.ui.onTheme(function (theme) { applyTheme(theme.mode); }));
 
         if (demoMode) document.querySelector('[data-gezel-demo-banner]').hidden = false;
         if (browserMode) document.getElementById('browser-note').hidden = false;
@@ -302,6 +380,7 @@
           var dots = document.getElementById('dots');
           var hint = document.getElementById('hint');
           if (!deck) return;
+document.getElementById('deck-library').innerHTML=(deck.cards||[]).map(function(card){return '<li><details><summary>'+esc(card.front)+'</summary><p>'+esc(card.back)+'</p></details></li>';}).join('');
           if (deck.subject) document.getElementById('title').textContent = 'Flashcards: ' + deck.subject;
 
           if (!deck.cards || deck.cards.length === 0) {
@@ -316,7 +395,7 @@
           if (queue === null || (idx >= queue.length && queue.length === 0)) {
             document.getElementById('sub').textContent =
               deck.dueCardIds.length > 0
-                ? deck.dueCardIds.length + ' card(s) due.'
+                ? deck.dueCardIds.length + (deck.dueCardIds.length === 1 ? ' card due.' : ' cards due.')
                 : 'Nothing due right now.';
             dots.innerHTML = '';
             hint.textContent = '';
@@ -334,7 +413,14 @@
             document.getElementById('sub').textContent =
               'Session done: ' + (results.length - missed) + ' got it, ' + missed + ' missed.';
             hint.textContent = '';
-            stage.innerHTML = '<div class="done">Nice work — your study partner has the recap.</div>';
+            // Cards added after the session (by the study partner or the form) can start a new one.
+            stage.innerHTML = '<div class="done">Nice work — your study partner has the recap.</div>' +
+              (deck.dueCardIds.length > 0
+                ? '<div class="actions"><button type="button" id="start">Review ' + deck.dueCardIds.length +
+                  (deck.dueCardIds.length === 1 ? ' more card' : ' more cards') + '</button></div>'
+                : '');
+            var again = document.getElementById('start');
+            if (again) again.addEventListener('click', startSession);
             return;
           }
 
@@ -354,7 +440,7 @@
             })
             .join('');
           stage.innerHTML =
-            '<div class="flashcard" id="card"><div><span class="face-label">' +
+            '<div class="flashcard" id="card"' + (flipped ? '' : ' role="button" tabindex="0"') + '><div><span class="face-label">' +
             (flipped ? 'Back' : 'Front') + '</span>' + esc(flipped ? card.back : card.front) +
             '</div></div>' +
             (flipped
@@ -364,10 +450,17 @@
                 '</div>'
               : '');
           hint.textContent = flipped ? '' : 'Tap the card to reveal the answer.';
-          document.getElementById('card').addEventListener('click', function () {
-            if (!flipped) {
-              flipped = true;
-              render();
+          function flip(byKey) {
+            if (flipped) return;
+            flipped = true;
+            render();
+            if (byKey) document.getElementById('got').focus();
+          }
+          document.getElementById('card').addEventListener('click', function () { flip(false); });
+          document.getElementById('card').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              flip(true);
             }
           });
           if (flipped) {
@@ -398,6 +491,9 @@
               flipped = false;
               if (idx >= queue.length) return finishSession();
               render();
+              // Keep keyboard review going: the next card takes the focus the grade button had.
+              var next = document.getElementById('card');
+              if (next) next.focus({ preventScroll: true });
             })
             .catch(function (err) {
               busy = false;
@@ -412,13 +508,15 @@
             .map(function (r) { return r.cardId; });
           return gezel.tools
             .invoke('finish_session', { reviewed: results.length, missedIds: missedIds })
-            .catch(function () {})
+            .catch(reportAppError)
             .then(function () {
               render();
               return loadDeck();
             });
         }
 
+        window.addEventListener('gezel-app-data-changed', function(){ loadDeck(); });
+        if(gezel.ui.components && gezel.ui.components.collectionFilter){var deckSearch=gezel.ui.components.collectionFilter('#deck-search',{container:'#deck-library',selector:'li',label:'Find a card'});window.addEventListener('pagehide',function(){deckSearch.destroy();},{once:true});}
         function loadDeck() {
           return gezel.data
             .read('deck.json')
@@ -428,7 +526,7 @@
               // snapshot queue drives the UI.
               if (queue === null || idx >= queue.length) render();
             })
-            .catch(function () {});
+            .catch(reportAppError);
         }
 
         var forgeButton = document.getElementById('forge-go');
@@ -445,9 +543,7 @@
             .invoke('forge_from_notes', { notes: notes })
             .then(function () {
               document.getElementById('forge-notes').value = '';
-              forgeStatus.textContent = demoMode
-                ? 'Added sample cards from your notes.'
-                : 'Your study mate is writing cards from your notes. They appear in the deck when ready.';
+              forgeStatus.textContent = 'Your study partner is writing cards from your notes. They appear in the deck when ready.';
               return loadDeck();
             })
             .catch(function (err) {
@@ -460,8 +556,9 @@
         };
 
         loadDeck();
-        gezel.data.watch('deck.json', function () { loadDeck(); });
+        appSubscriptions.push(gezel.data.watch('deck.json', function () { loadDeck(); }));
       })();
     </script>
+  <script src="application.js" defer></script>
   </body>
 </html>

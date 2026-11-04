@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Tracker — a Gezel app</title>
+<meta name="description" content="Track who has finished which training, and what is due next. A training coordinator keeps a people-by-courses matrix, records certificates with their expiry dates, books refreshers before anything lapses, and turns your own checklists into short quizzes.">
+<link rel="canonical" href="https://gezel.com/apps/training-tracker/">
+<meta name="theme-color" content="#eae5d6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg?v=outline" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=workbench" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/apps/training-tracker/">
+<meta property="og:title" content="Training Tracker — a Gezel app">
+<meta property="og:description" content="Track who has finished which training, and what is due next. A training coordinator keeps a people-by-courses matrix, records certificates with their expiry dates, books refreshers before anything lapses, and turns your own checklists into short quizzes.">
+<meta property="og:image" content="https://gezel.com/og-image.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+<a class="logotype" href="/" aria-label="Gezel home">gezel</a>
+<nav class="masthead-nav" aria-label="Site">
+<a href="/apps/" aria-current="page">Apps</a>
+<a href="/docs/">Docs</a>
+<a href="/docs/model-scorecard/">Model scorecard</a>
+<a href="/platform/">For developers</a>
+<a href="https://github.com/bendyline/gezel">GitHub</a>
+</nav>
+</header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/apps/">Apps</a><span aria-hidden="true"> / </span><span>Business &amp; Teams</span></nav>
+<section class="app-hero">
+<img class="mark" src="logo.webp" alt="" width="200" height="200" loading="lazy" decoding="async" data-ground="ochre">
+<div>
+<h1>Training Tracker</h1>
+<p class="lede">Track who has finished which training, and what is due next. A training coordinator keeps a people-by-courses matrix, records certificates with their expiry dates, books refreshers before anything lapses, and turns your own checklists into short quizzes.</p>
+<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/training-tracker/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+</div>
+</section>
+<section class="demo" aria-labelledby="try">
+<div class="demo-head"><h2 id="try">Try it</h2><a class="text-link" href="demo/tracker/index.html" target="_blank" rel="noreferrer">Open in a full window<span aria-hidden="true"> ↗</span></a></div>
+<p class="demo-note">Training Tracker running in your browser on sample data. Use the page, or talk with the training coordinator beside it: the conversation is scripted for this preview, and the changes stay in the page.</p>
+<div class="demo-frame"><iframe src="demo/tracker/index.html" title="Training Tracker, running on sample data" sandbox="allow-scripts allow-forms allow-modals" referrerpolicy="no-referrer"></iframe></div>
+</section>
+<section class="inside" aria-labelledby="inside">
+<h2 id="inside">What’s inside</h2>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/training-coordinator/"><strong>Training Coordinator</strong></a> <span class="tag">Crew lead</span><span>A steady training coordinator who knows who has finished which course, what expires when, and what a new hire needs in their first weeks, and books refreshers before anything lapses.</span></li><li><a href="/docs/role-template/study-buddy/"><strong>Study Partner</strong></a><span>A patient study companion who writes sharp flashcards, keeps the review rhythm going, and cheers the streak without ever shaming a miss.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/interactive-quiz/"><strong>Interactive Quiz Widget</strong></a><span>Build a single-file interactive quiz or assessment — multiple-choice, true/false, or a scored personality quiz — that asks questions one at a time, tracks the score, gives feedback, and shows a results screen.</span></li><li><a href="/docs/craftbook/handbook-section/"><strong>Team Handbook Section</strong></a><span>Write a clear, reference-grade section of a team/company handbook — a policy, process, or how-we-work doc that a new hire can read once and act on correctly.</span></li><li><a href="/docs/craftbook/onboarding-checklist/"><strong>Generate an Onboarding Checklist</strong></a><span>Produce a clear, role-specific onboarding checklist for a new hire, customer, or user — grouped by phase (before day one, week one, first 30 days), with each item owned, actionable, and verifiable.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Training status</strong><span>Who needs which course within the next 30 days, one list per course with lapsed certificates first, then training never done, then certificates about to run out, each with person and course ids and any booking.</span></li><li><strong>Add person</strong><span>Add someone to the training tracker or update them: full name, job role (it decides which courses they need) and first day.</span></li><li><strong>Add course</strong><span>Add or update a course or certificate the business tracks: title, months it stays valid (0 if it never expires), who needs it ('everyone' or roles such as 'barista, cook') and the provider.</span></li><li><strong>Record completion</strong><span>Record that one or more people finished a course: person (a name, or several separated by commas), course, the day (default today) and the certificate number exactly as given.</span></li><li><strong>Book training</strong><span>Book a session: course, the date (YYYY-MM-DD or a weekday like 'thursday', which the tracker turns into the date), and either person (one or several, comma-separated) or everyoneDue: true for everyone whose certificate has lapsed, runs out within 30 days, or was never done.</span></li><li><strong>Save quiz</strong><span>Save a short quiz written from the business's own document: title, the course it supports, the source document, and questions, one per line as 'Question?</span></li><li><strong>List training</strong><span>Everyone's training, or one person's: each course they need with its status, dates, certificate and booking.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>people.json</code>, <code>courses.json</code>, <code>completions.json</code>, <code>quizzes.json</code>.</p></section></div>
+</section>
+<section class="steps" aria-labelledby="start">
+<h2 id="start">Start one</h2>
+<ol>
+<li><a href="/#download">Download Gezel</a> for Mac, Windows or Linux. It’s free.</li>
+<li>Choose <strong>New project</strong>, then <strong>Business &amp; Teams</strong>, then <strong>Training Tracker</strong>.</li>
+<li>Answer its question: <em>What kind of business is this?</em></li>
+<li>Your training coordinator takes it from there, on the model you choose.</li>
+</ol>
+</section>
+<section class="more" aria-labelledby="more"><h2 id="more">More apps to try</h2><ul class="app-grid app-grid-small"><li class="app-card" data-category="business">
+<a href="../campaign-room/">
+<img class="mark" src="../campaign-room/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Campaign Room</strong>
+<span class="app-card-text">Run one marketing campaign from plan to results.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Campaign Manager + 3</span><span>4 craftbooks</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="business">
+<a href="../client-delivery/">
+<img class="mark" src="../client-delivery/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Client Delivery</strong>
+<span class="app-card-text">Deliver client work on time, with every handoff tracked.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Planner + 1</span><span>4 craftbooks</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="business">
+<a href="../compliance-register/">
+<img class="mark" src="../compliance-register/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="ochre">
+<span class="app-card-body">
+<span class="app-card-kicker">Business &amp; Teams</span>
+<strong>Compliance Register</strong>
+<span class="app-card-text">Keep a small business in good standing.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Compliance Officer + 1</span><span>1 craftbook</span></span>
+</span>
+</a>
+</li></ul></section>
+</main>
+<footer>
+<p>© 2026 Bendyline · Free and open source under the MIT license</p>
+<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+</footer>
+</div>
+</body>
+</html>

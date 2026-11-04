@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Planner — a Gezel app</title>
+<meta name="description" content="Plan a trip you'll actually be present for. A trip planner builds the day-by-day itinerary with slack in it, keeps the packing list checkable on a live board, and helps the journal happen.">
+<link rel="canonical" href="https://gezel.com/apps/trip-planner/">
+<meta name="theme-color" content="#eae5d6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg?v=outline" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=workbench" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/apps/trip-planner/">
+<meta property="og:title" content="Trip Planner — a Gezel app">
+<meta property="og:description" content="Plan a trip you'll actually be present for. A trip planner builds the day-by-day itinerary with slack in it, keeps the packing list checkable on a live board, and helps the journal happen.">
+<meta property="og:image" content="https://gezel.com/og-image.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+<a class="logotype" href="/" aria-label="Gezel home">gezel</a>
+<nav class="masthead-nav" aria-label="Site">
+<a href="/apps/" aria-current="page">Apps</a>
+<a href="/docs/">Docs</a>
+<a href="/docs/model-scorecard/">Model scorecard</a>
+<a href="/platform/">For developers</a>
+<a href="https://github.com/bendyline/gezel">GitHub</a>
+</nav>
+</header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/apps/">Apps</a><span aria-hidden="true"> / </span><span>Events &amp; Journeys</span></nav>
+<section class="app-hero">
+<img class="mark" src="logo.webp" alt="" width="200" height="200" loading="lazy" decoding="async" data-ground="rose">
+<div>
+<h1>Trip Planner</h1>
+<p class="lede">Plan a trip you'll actually be present for. A trip planner builds the day-by-day itinerary with slack in it, keeps the packing list checkable on a live board, and helps the journal happen.</p>
+<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/trip-planner/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+</div>
+</section>
+<section class="demo" aria-labelledby="try">
+<div class="demo-head"><h2 id="try">Try it</h2><a class="text-link" href="demo/dashboard/index.html" target="_blank" rel="noreferrer">Open in a full window<span aria-hidden="true"> ↗</span></a></div>
+<p class="demo-note">Trip Planner running in your browser on sample data. Use the page, or talk with the trip planner beside it: the conversation is scripted for this preview, and the changes stay in the page.</p>
+<div class="demo-frame"><iframe src="demo/dashboard/index.html" title="Trip Planner, running on sample data" sandbox="allow-scripts allow-forms allow-modals" referrerpolicy="no-referrer"></iframe></div>
+</section>
+<section class="inside" aria-labelledby="inside">
+<h2 id="inside">What’s inside</h2>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/reisleider/"><strong>Trip Planner</strong></a> <span class="tag">Crew lead</span><span>A well-traveled guide who plans trips people actually take: a day-by-day itinerary with slack in it, a packing list that fits the weather, and a journal worth keeping afterward.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/pre-departure-countdown/"><strong>Pre-Departure Countdown</strong></a><span>Audit a trip's readiness in the final stretch before departure: verify documents and bookings, close the packing gaps against the packing roster, sweep home-prep tasks, and produce a day-by-day countdown checklist to the departure date — so the last week runs on a list, not on 3am worry.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Set trip</strong><span>Change the trip's details: the departure date, who is going, or the destination.</span></li><li><strong>Plan day</strong><span>Set one day's plan in plain sentences, one per line: what the day is for, then a couple of alternatives, then the free time.</span></li><li><strong>Pack add</strong><span>Add an item to the packing list.</span></li><li><strong>Pack check</strong><span>Mark an item packed.</span></li><li><strong>Journal entry</strong><span>Capture a trip moment — a line a day.</span></li><li><strong>Trip status</strong><span>Who is going, the countdown, days planned, and the packing state.</span></li><li><strong>Itinerary</strong><span>Read the full day-by-day itinerary.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>trip.json</code>, <code>packing.json</code>, <code>journal.json</code>.</p></section></div>
+</section>
+<section class="steps" aria-labelledby="start">
+<h2 id="start">Start one</h2>
+<ol>
+<li><a href="/#download">Download Gezel</a> for Mac, Windows or Linux. It’s free.</li>
+<li>Choose <strong>New project</strong>, then <strong>Events &amp; Journeys</strong>, then <strong>Trip Planner</strong>.</li>
+<li>Answer a few questions: <em>Where to?</em> <em>Departure date</em> <em>Who's going?</em></li>
+<li>Your trip planner takes it from there, on the model you choose.</li>
+</ol>
+</section>
+<section class="more" aria-labelledby="more"><h2 id="more">More apps to try</h2><ul class="app-grid app-grid-small"><li class="app-card" data-category="events">
+<a href="../event-planner/">
+<img class="mark" src="../event-planner/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="rose">
+<span class="app-card-body">
+<span class="app-card-kicker">Events &amp; Journeys</span>
+<strong>Event Planner</strong>
+<span class="app-card-text">Plan the wedding, the milestone birthday, the reunion.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Event Planner</span><span>1 craftbook</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="events">
+<a href="../fundraiser-hq/">
+<img class="mark" src="../fundraiser-hq/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="rose">
+<span class="app-card-body">
+<span class="app-card-kicker">Events &amp; Journeys</span>
+<strong>Fundraiser HQ</strong>
+<span class="app-card-text">Rally a community drive.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Fundraiser</span><span>2 craftbooks</span></span>
+</span>
+</a>
+</li><li class="app-card" data-category="home">
+<a href="../caregiving-binder/">
+<img class="mark" src="../caregiving-binder/logo.webp" alt="" width="160" height="160" loading="lazy" decoding="async" data-ground="sage">
+<span class="app-card-body">
+<span class="app-card-kicker">Home &amp; Family</span>
+<strong>Caregiving Binder</strong>
+<span class="app-card-text">Coordinate a loved one's care without losing the thread.</span>
+<span class="app-card-facts"><span class="tag tag-try">Try it here</span><span>Crew: Care Coordinator</span><span>1 craftbook</span></span>
+</span>
+</a>
+</li></ul></section>
+</main>
+<footer>
+<p>© 2026 Bendyline · Free and open source under the MIT license</p>
+<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+</footer>
+</div>
+</body>
+</html>
