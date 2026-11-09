@@ -119,6 +119,28 @@ your crew" and "Why Gezel", so they follow the catalog instead of being edited
 by hand. The numbers written into `index.html` are the fallback if the file is
 missing; refresh them when you notice they lag.
 
+### Markdown for AI agents (`docs/<id>.md`, `docs/llms.txt`)
+
+Every article is also written as plain markdown beside its page:
+`docs/build-a-gezel-app/` has `docs/build-a-gezel-app.md`. Its links are
+absolute, because an agent reads it away from the site. `docs/llms.txt`
+indexes them all by area, following [llmstxt.org](https://llmstxt.org).
+
+[`llms.txt`](llms.txt) at the site root is hand-written. It is where AI tools
+look first, and it points at the index and at the one page an agent should
+read before building an app: [Build a Gezel app](docs/build-a-gezel-app/index.html).
+That article includes the four app-building guides in full here (and in
+`gezel app guide`), while the in-app Handboek lists them as links. The
+platform page's agent prompt points at its markdown copy.
+
+### Open in Gezel buttons
+
+Craftbook and app pages can carry a `gezel://` button that opens the item in
+the desktop app. The export leaves them out unless it is run with
+`--open-in-gezel` (`node scripts/export-handboek-site.mjs --open-in-gezel` in
+gezel). Turn it on only once a desktop release that answers those links is
+out; before then every click would open nothing.
+
 ## Fonts (`assets/fonts/`)
 
 PT Serif and Hanken Grotesk are served from this site, for both the landing
@@ -239,7 +261,7 @@ typewriter, a rubber stamp and binders were all taken.
 | `integrations-office.webp` | a cream desk stapler, slightly open | rose |
 | `platform-cli.webp` | a short row of five cream dominoes toppling one into the next | forest |
 | `platform-app-sdk.webp` | a compact cream motor block with a large brass flywheel and a charcoal drive belt | slate |
-| `platform-ai-apps.webp` | a dovetail joint, one board cream and one sage | terracotta |
+| `platform-ai-apps.webp` | a through-dovetail corner: a cream tail board and a sage pin board, two identical tails | terracotta |
 | `platform-scripts.webp` | a small picket garden gate standing slightly ajar, with a brass latch | indigo |
 | `platform-knowledge.webp` | a brass hurricane lantern with a clear glass chimney and a small warm flame | teal |
 | `platform-mcp.webp` | a wooden pegboard panel with a hammer, an open-end wrench and a screwdriver hanging on brass pegs | plum |
@@ -255,6 +277,16 @@ slate ground, as the prompt expects. Gilde has no committed cutout script, so
 its four documented steps were applied with a one-off script: the alpha remap,
 splitting into cells, an 88% fill, and the baked shadow, encoded at WebP q82 /
 m6 / alpha 90.
+
+`platform-ai-apps.webp` was redrawn on its own in November 2026. Drawn from a
+prompt alone, the image model gave the two tails different shapes, drew them as
+bow ties, and put a seam across the sage board's top. The redraw started from
+an exact flat-shaded render of a through dovetail made in code (tails on the
+cream board, a half pin at the top and bottom, so the sage top is one unbroken
+face). It was passed to Codex as the geometry to keep, with
+`platform-app-sdk.webp` and `platform-scripts.webp` on their grounds as the
+style references, and cut out with the same steps. Without the geometry
+reference, the joint came out wrong again.
 
 The video poster (`assets/video-poster.webp`) and the three "How it works"
 pictures (`assets/how/`) are collages of real screenshots from one run on a

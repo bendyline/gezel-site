@@ -197,13 +197,24 @@
       color: var(--sage);
       letter-spacing: -0.01em;
     }
+    /* The headline spans both columns; the copy and the video sit under it,
+       top-aligned, so the two columns start on one line and end near another.
+       Centering the video beside the whole stack left it floating in a column
+       twice its height. */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-      align-items: center;
-      gap: 48px;
-      padding: 24px 0 40px;
+      grid-template-areas:
+        "head head"
+        "copy media";
+      align-items: start;
+      column-gap: 48px;
+      row-gap: 28px;
+      padding: 24px 0 48px;
     }
+    .hero h1 { grid-area: head; }
+    .hero-copy { grid-area: copy; }
+    .hero-media { grid-area: media; }
     .hero-banner {
       display: block;
       max-width: 900px;
@@ -211,7 +222,7 @@
       width: 100%;
       height: auto;
     }
-    .hero h1 { margin: 0 0 0.6rem; }
+    .hero h1 { margin: 0; }
     .hero h1 .wordmark {
       display: block;
       font-family: var(--serif);
@@ -237,8 +248,13 @@
       margin: 0;
     }
     /* One sentence per line: left to wrap freely, the second sentence breaks
-       mid-phrase and strands "morning." on a line of its own. */
+       mid-phrase and strands "morning." on a line of its own. Where the
+       headline has the full width, both sentences fit on one line. */
     .tagline > span { display: block; }
+    @media (min-width: 861px) {
+      .tagline { max-width: none; }
+      .tagline > span { display: inline; }
+    }
     .lede {
       max-width: 640px;
       margin: 0;
@@ -251,6 +267,42 @@
        the main download button below once that resolves a build, so the two
        always offer the same file. */
     .hero-cta { margin: 1.6rem 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    /* Download beside the one step that needs no install: the browser demos.
+       The second key is quieter on purpose, so Download stays the first act. */
+    .hero-buttons { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; max-width: 460px; }
+    /* Side by side the pair keeps close to its natural width; when a narrow
+       column stacks them, both take the full row so they stay one width. */
+    .hero-buttons > a { flex: 1 1 auto; }
+    .hero-buttons .download-btn { justify-content: center; font-size: 1.15rem; padding: 12px 24px; }
+    .try-btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 1.08rem;
+      line-height: 1.15;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: 2px solid var(--accent-line);
+      background: var(--panel);
+      color: var(--text);
+      transition: border-color 120ms ease, color 120ms ease;
+    }
+    .try-btn:hover { border-color: var(--accent); color: var(--accent-hover); }
+    .try-btn .btn-sub {
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--muted-strong);
+      font-variant-numeric: tabular-nums;
+    }
+    /* On a phone the first act is sending the link to a computer; the demos
+       follow it rather than sitting above the note that explains it. */
+    .is-phone .hero-buttons { order: 1; }
+    .is-phone .hero-alt { order: 2; }
     .hero-fit, .hero-alt { margin: 0; font-size: 0.9rem; color: var(--muted); max-width: 520px; }
     .hero-fit a, .hero-alt a { color: var(--muted-strong); text-decoration: underline; text-decoration-color: var(--accent-line); text-underline-offset: 3px; }
     .hero-fit a:hover, .hero-alt a:hover { color: var(--accent); }
@@ -308,7 +360,8 @@
       .proof li + li::before { content: none; }
     }
     /* Video: a thumbnail + play button standing in for the real embed. */
-    .hero-media { transform: translateY(4px); }
+    /* Drops the frame to the lede's cap height rather than its line box. */
+    .hero-media { margin-top: 6px; }
     .video-frame {
       background: var(--panel);
       border: 1px solid var(--border);
@@ -896,6 +949,7 @@
     /* A quiet pointer under a row, to the page that carries the rest. */
     .section-more { text-align: center; color: var(--muted-strong); font-size: 0.98rem; margin: 28px 0 0; }
     .section-more a { font-weight: 600; }
+    .section-more .sep { opacity: 0.45; margin: 0 9px; }
     /* The page ends where it began, on the download: a quiet full-width band
        whose button mirrors whatever the main one resolved. */
     .closing {
@@ -1005,8 +1059,8 @@
     }
     /* Stack the hero before the two columns get too narrow to read. */
     @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; gap: 28px; }
-      .hero-media { max-width: 560px; }
+      .hero { grid-template-columns: 1fr; grid-template-areas: "head" "copy" "media"; gap: 28px; }
+      .hero-media { max-width: 560px; margin-top: 0; }
     }
     @media (max-width: 900px) {
       .picker {
@@ -1027,6 +1081,8 @@
       .closing { padding: 64px 0 72px; }
       .steps { grid-template-columns: 1fr; gap: 22px; }
       .download-btn { width: 100%; }
+      .hero-buttons { flex-direction: column; }
+      .try-btn { width: 100%; }
       .picker {
         grid-template-columns: 1fr;
         grid-template-areas: "tray" "main" "specs";
@@ -1077,7 +1133,7 @@
       <nav class="masthead-nav">
         <a href="/docs/">Docs</a>
         <a href="/docs/model-scorecard/">Model scorecard</a>
-        <a href="/platform/">For developers</a>
+        <a href="/platform/">Platform</a>
         <a href="https://github.com/bendyline/gezel">
           <!-- GitHub's official mark (octicon mark-github-16). -->
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -1089,15 +1145,15 @@
     </header>
 
     <section class="hero">
+      <!-- Wordmark and tagline are one H1 so the page's main heading reads as
+           a real phrase rather than a bare brand word. The tagline is the
+           promise every other channel repeats (GitHub description, social
+           card, launch posts) — change them together. -->
+      <h1>
+        <em class="wordmark">gezel</em>
+        <span class="tagline"><span>Hand off a job tonight.</span> <span>Review it in the morning.</span></span>
+      </h1>
       <div class="hero-copy">
-        <!-- Wordmark and tagline are one H1 so the page's main heading reads as
-             a real phrase rather than a bare brand word. The tagline is the
-             promise every other channel repeats (GitHub description, social
-             card, launch posts) — change them together. -->
-        <h1>
-          <em class="wordmark">gezel</em>
-          <span class="tagline"><span>Hand off a job tonight.</span> <span>Review it in the morning.</span></span>
-        </h1>
         <p class="lede">
           Gezel is a free app that gives you a <strong>crew of AI helpers</strong>:
           a researcher, a writer, a developer, and more. Tell them what you need
@@ -1109,10 +1165,16 @@
           ChatGPT or Copilot plan you already have. There’s no Gezel account to create.
         </p>
         <div class="hero-cta">
-          <a class="download-btn desktop-only" id="heroDownloadBtn" href="#download">
-            <span class="btn-main" id="heroBtnMain">Download Gezel</span>
-            <span class="btn-sub" id="heroBtnSub">Free for macOS, Windows and Linux</span>
-          </a>
+          <div class="hero-buttons">
+            <a class="download-btn desktop-only" id="heroDownloadBtn" href="#download">
+              <span class="btn-main" id="heroBtnMain">Download Gezel</span>
+              <span class="btn-sub" id="heroBtnSub">Free for macOS, Windows and Linux</span>
+            </a>
+            <a class="try-btn" href="/apps/">
+              <span class="btn-main">Try an app first</span>
+              <span class="btn-sub"><data data-count="projectTypeDemos" value="43">43</data> run in your browser</span>
+            </a>
+          </div>
           <p class="hero-fit desktop-only" id="heroFit">
             Local AI runs on an Apple-silicon Mac with 16&nbsp;GB of memory, or a PC with an
             8&nbsp;GB graphics card. <a href="#download">What you need</a>
@@ -1120,9 +1182,8 @@
           <!-- On a phone: nothing to install here, so keep the visit going. -->
           <p class="phone-note phone-only">Gezel is a desktop app for Mac, Windows and Linux. Send yourself the link and download it at your computer.</p>
           <button type="button" class="share-btn phone-only" data-share>Send this to my computer</button>
-          <p class="hero-alt">
-            <a href="/apps/">Try <data data-count="projectTypeDemos" value="43">43</data> Gezel apps in your browser first</a>
-            <span class="phone-only">· <a href="https://www.youtube.com/watch?v=bw1XFC6JcFA">Watch the overview</a></span>
+          <p class="hero-alt phone-only">
+            <a href="https://www.youtube.com/watch?v=bw1XFC6JcFA">Watch the overview</a>
           </p>
         </div>
       </div>
@@ -1158,6 +1219,47 @@
       <li><data data-count="craftbooks" data-floor="10" value="300">300</data>+ tested plans</li>
       <li><a href="/docs/model-scorecard/">Models tested on real jobs</a></li>
     </ul>
+
+    <section class="uses">
+      <h2 class="section-title">What your crew can take on</h2>
+      <!-- Each tile shows the craftbook that does the job and links to its
+           step-by-step page. The marks are the app's own, copied from the
+           pinned gilde release into assets/marks/ so a docs regeneration can't
+           change them; data-ground paints the category color behind each one.
+           The order runs from everyday to technical, which also keeps the two
+           indigo grounds apart. None repeats a mark from the strip below. -->
+      <div class="use-grid">
+        <a class="use" href="/docs/craftbook/fact-check/">
+          <img class="use-illustration" src="/assets/marks/fact-check.webp" alt="" data-ground="indigo"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Research a question</h3>
+          <p>A written answer with a source for every claim, and guesses labeled as guesses.</p>
+          <span class="use-cta">The fact-check plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/craftbook/topic-explainer/">
+          <img class="use-illustration" src="/assets/marks/topic-explainer.webp" alt="" data-ground="rose"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Learn something new</h3>
+          <p>Any topic explained at your level, from the basics up to the full picture.</p>
+          <span class="use-cta">The explainer plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/craftbook/spa-dashboard/">
+          <img class="use-illustration" src="/assets/marks/spa-dashboard.webp" alt="" data-ground="indigo"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Build a site or app</h3>
+          <p>Describe it in a sentence. Your crew plans, designs, builds, and checks it.</p>
+          <span class="use-cta">The dashboard plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="use" href="/docs/craftbook/nightly-fix-sweep/">
+          <img class="use-illustration" src="/assets/marks/nightly-fix-sweep.webp" alt="" data-ground="sage"
+               width="512" height="512" loading="lazy" decoding="async">
+          <h3>Look after your code</h3>
+          <p>Problems found overnight, fixes drafted by morning, and nothing changes until you approve.</p>
+          <span class="use-cta">The nightly fix plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+
 
     <section class="download" id="download">
       <div class="picker">
@@ -1292,47 +1394,6 @@
     </section>
 
 
-    <section class="uses">
-      <h2 class="section-title">What your crew can take on</h2>
-      <!-- Each tile shows the craftbook that does the job and links to its
-           step-by-step page. The marks are the app's own, copied from the
-           pinned gilde release into assets/marks/ so a docs regeneration can't
-           change them; data-ground paints the category color behind each one.
-           The order runs from everyday to technical, which also keeps the two
-           indigo grounds apart. None repeats a mark from the strip below. -->
-      <div class="use-grid">
-        <a class="use" href="/docs/craftbook/fact-check/">
-          <img class="use-illustration" src="/assets/marks/fact-check.webp" alt="" data-ground="indigo"
-               width="512" height="512" loading="lazy" decoding="async">
-          <h3>Research a question</h3>
-          <p>A written answer with a source for every claim, and guesses labeled as guesses.</p>
-          <span class="use-cta">The fact-check plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="use" href="/docs/craftbook/topic-explainer/">
-          <img class="use-illustration" src="/assets/marks/topic-explainer.webp" alt="" data-ground="rose"
-               width="512" height="512" loading="lazy" decoding="async">
-          <h3>Learn something new</h3>
-          <p>Any topic explained at your level, from the basics up to the full picture.</p>
-          <span class="use-cta">The explainer plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="use" href="/docs/craftbook/spa-dashboard/">
-          <img class="use-illustration" src="/assets/marks/spa-dashboard.webp" alt="" data-ground="indigo"
-               width="512" height="512" loading="lazy" decoding="async">
-          <h3>Build a site or app</h3>
-          <p>Describe it in a sentence. Your crew plans, designs, builds, and checks it.</p>
-          <span class="use-cta">The dashboard plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="use" href="/docs/craftbook/nightly-fix-sweep/">
-          <img class="use-illustration" src="/assets/marks/nightly-fix-sweep.webp" alt="" data-ground="sage"
-               width="512" height="512" loading="lazy" decoding="async">
-          <h3>Look after your code</h3>
-          <p>Problems found overnight, fixes drafted by morning, and nothing changes until you approve.</p>
-          <span class="use-cta">The nightly fix plan&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-      </div>
-    </section>
-
-
     <section class="how" id="how-it-works">
       <h2 class="section-title">How it works</h2>
       <!-- Each picture is from one real run on a local model: a fresh install's
@@ -1386,7 +1447,7 @@
       <ul class="catalog-links">
         <li><a href="/docs/craftbooks-index/"><strong><data data-count="craftbooks" data-floor="10" value="300">300</data>+ craftbooks</strong><span>Step-by-step plans for decks, reports, websites, games and family projects.</span></a></li>
         <li><a href="/docs/model-catalog/"><strong><data data-count="models" value="91">91</data> AI models</strong><span>Chat, image and video models that run on your own computer.</span></a></li>
-        <li><a href="/docs/role-catalog/"><strong><data data-count="characters" value="52">52</data> characters</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
+        <li><a href="/docs/role-catalog/"><strong><data data-count="characters" value="52">52</data> role templates</strong><span>From researcher and copywriter to meal planner and career coach.</span></a></li>
         <li><a href="/docs/project-types-index/"><strong><data data-count="projectTypes" value="46">46</data> project types</strong><span>Ready-made setups, and <data data-count="projectTypeDemos" value="43">43</data> of them you can try in your browser.</span></a></li>
         <li><a href="/docs/toolset-catalog/"><strong><data data-count="connectors" value="24">24</data> connectors</strong><span>Bring in mail, calendars, issues and posts as files your crew can read.</span></a></li>
       </ul>
@@ -1399,7 +1460,7 @@
       <div class="band-cols">
         <div>
           <h3>Made for the AI on your computer</h3>
-          <p>Each helper has one job, a few tools, and one of <data data-count="craftbooks" data-floor="10" value="300">300</data>+ <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. We test models on real jobs and <a href="/docs/model-scorecard/">publish the results</a>.</p>
+          <p>Each helper has one job, a few tools, and one of <data data-count="craftbooks" data-floor="10" value="300">300</data>+ <a href="/docs/craftbooks-index/">tested plans</a> to follow. That focus lets the AI on your own computer finish real work. On our 41-task test, a model running on one Mac passed 37, and the paid Claude and OpenAI APIs passed all 41. <a href="/docs/model-scorecard/">See every result</a>.</p>
         </div>
         <div>
           <h3>You stay in charge</h3>
@@ -1453,7 +1514,7 @@
           <span class="use-cta">Office and LibreOffice&nbsp;<span class="arrow" aria-hidden="true">→</span></span>
         </a>
       </div>
-      <p class="section-more">Building something of your own? <a href="/platform/">The command line, app SDK and AI Apps&nbsp;<span aria-hidden="true">→</span></a></p>
+      <p class="section-more">Building something of your own, or bringing Gezel to your team? <a href="/platform/">Build on Gezel&nbsp;<span aria-hidden="true">→</span></a><span class="sep" aria-hidden="true">·</span><a href="/platform/#partners">Become a design partner&nbsp;<span aria-hidden="true">→</span></a></p>
     </section>
 
     <section class="closing" id="get-gezel">
@@ -1472,7 +1533,7 @@
     <footer>
       <p>© 2026 Bendyline · Free and open source under the MIT license</p>
       <p>
-        <a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
+        <a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a>
       </p>
     </footer>
   </div>

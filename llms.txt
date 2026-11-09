@@ -1,0 +1,14 @@
+# Gezel
+
+> Gezel is a free, open-source app and platform for running a crew of AI agents on your own computer, with local models or a cloud plan you already have. Everything on this site is also available as plain markdown.
+
+## Start here
+
+- [Build a Gezel app: the complete guide](https://gezel.com/docs/build-a-gezel-app.md): read this before building a Gezel app. The working loop, the rules, and the four app-building guides in full. `gezel app guide` prints the same page.
+- [Build on Gezel](https://gezel.com/platform/): the command line, the app SDK for your own software, and AI Apps that install into Gezel.
+
+## Docs
+
+- [Every Handboek article as markdown](https://gezel.com/docs/llms.txt): the full index, by area.
+- [The gezel command line](https://gezel.com/docs/cli-reference.md): every command, for scripts and servers.
+- [Model scorecard](https://gezel.com/docs/model-scorecard.md): which local models finish real jobs, and on which hardware.
