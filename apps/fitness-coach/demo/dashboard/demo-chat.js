@@ -21,8 +21,10 @@ window.demoChat = (function () {
   function plural(n, one) { return word(n) + ' ' + (n === 1 ? one : one + 's'); }
   function minutesOf(e) { var m = e && e.data && Number(e.data.minutes); return isFinite(m) && m > 0 ? m : 0; }
   function activityOf(e) { return String((e && e.data && e.data.activity) || 'session'); }
-  function dayIndex(ms) { return (new Date(ms).getUTCDay() + 6) % 7; }
-  function weekStart(ms) { var d = Date.parse(new Date(ms).toISOString().slice(0, 10) + 'T00:00:00Z'); return d - dayIndex(ms) * DAY; }
+  // Local days and weeks, as the page shows them.
+  function dayIndex(ms) { return (new Date(ms).getDay() + 6) % 7; }
+  function weekStart(ms) { var d = new Date(ms); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - dayIndex(ms)); return d.getTime(); }
+  function localDay(value) { var d = new Date(value); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
 
   function state(ctx) {
     return ctx.read('training.json').then(function (doc) {
@@ -45,9 +47,10 @@ window.demoChat = (function () {
   function streak(events) {
     if (!events.length) return 0;
     var days = {};
-    events.forEach(function (e) { days[e.at.slice(0, 10)] = true; });
-    var cursor = Date.parse(events[events.length - 1].at.slice(0, 10) + 'T00:00:00Z'), n = 0;
-    while (days[new Date(cursor).toISOString().slice(0, 10)]) { n += 1; cursor -= DAY; }
+    events.forEach(function (e) { days[localDay(e.at)] = true; });
+    var cursor = new Date(events[events.length - 1].at), n = 0;
+    cursor.setHours(12, 0, 0, 0);
+    while (days[localDay(cursor)]) { n += 1; cursor.setDate(cursor.getDate() - 1); }
     return n;
   }
   // Spread the sessions still owed across the days left in the week.

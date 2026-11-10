@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>SOP Library</h1>
 <p class="lede">Write down how the work gets done, and keep it current. A librarian files every procedure by area with an owner and a last-reviewed date, flags the ones going stale, and answers “how do I…” from your own written steps.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/sop-library/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/sop-library">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/sop-library/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/boekwachter/"><strong>Librarian</strong></a> <span class="tag">Crew lead</span><span>The index-keeper.</span></li><li><a href="/docs/role-template/copywriter/"><strong>Copywriter</strong></a><span>Writes for humans.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/handbook-section/"><strong>Team Handbook Section</strong></a><span>Write a clear, reference-grade section of a team/company handbook — a policy, process, or how-we-work doc that a new hire can read once and act on correctly.</span></li><li><a href="/docs/craftbook/doc-rewrite/"><strong>Documentation Rewrite</strong></a><span>Rewrite confusing existing documentation into clear, scannable, task-oriented prose without losing any technical fact: it first audits the current doc to catalog every problem — buried steps, undefined jargon, missing prerequisites, broken structure — and locks a clarity checklist, then rewrites the doc to fix exactly those issues while preserving every accurate instruction.</span></li><li><a href="/docs/craftbook/knowledge-base-article/"><strong>Knowledge Base Article</strong></a><span>Write a support knowledge-base article that lets a user solve their problem without contacting support: it first scopes the exact user problem, the search terms they would use, prerequisites, and the success outcome, then writes a task-oriented article with a clear title, a short overview, numbered steps with expected results, screenshots/placeholders where needed, and a troubleshooting section, then a review pass verifies accuracy and self-service completeness.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Library status</strong><span>What in the library is out of date (flagged for an update or past its review date, most urgent first) and what is due for review within 30 days, each with owner and last-reviewed date, plus every procedure by area.</span></li><li><strong>Find procedure</strong><span>Answer a 'how do I…' question from the library: returns the best-matching procedure's steps exactly as written, with its owner and last-reviewed date.</span></li><li><strong>Save procedure</strong><span>Write a procedure into the library: title, area, owner and the steps in markdown (numbered, one action each).</span></li><li><strong>Mark reviewed</strong><span>Record that someone checked a procedure and it is still right; it restarts the review clock.</span></li><li><strong>Flag procedure</strong><span>Flag a procedure that no longer matches how the work is done, with what changed in the words the person used.</span></li><li><strong>Retire procedure</strong><span>Retire a procedure the business no longer uses.</span></li><li><strong>List procedures</strong><span>Every procedure by area with owner, status, file path and review dates.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>sops/index.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/boekwachter/"><strong>Librarian</strong></a> <span class="tag">Crew lead</span><span>The index-keeper.</span></li><li><a href="/docs/role-template/copywriter/"><strong>Copywriter</strong></a><span>Writes for humans.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/handbook-section/"><strong>Team Handbook Section</strong></a><span>Write a clear, reference-grade section of a team/company handbook — a policy, process, or how-we-work doc that a new hire can read once and act on correctly.</span></li><li><a href="/docs/craftbook/doc-rewrite/"><strong>Documentation Rewrite</strong></a><span>Rewrite confusing existing documentation into clear, scannable, task-oriented prose without losing any technical fact: it first audits the current doc to catalog every problem — buried steps, undefined jargon, missing prerequisites, broken structure — and locks a clarity checklist, then rewrites the doc to fix exactly those issues while preserving every accurate instruction.</span></li><li><a href="/docs/craftbook/knowledge-base-article/"><strong>Knowledge Base Article</strong></a><span>Write a support knowledge-base article that lets a user solve their problem without contacting support: it first scopes the exact user problem, the search terms they would use, prerequisites, and the success outcome, then writes a task-oriented article with a clear title, a short overview, numbered steps with expected results, screenshots/placeholders where needed, and a troubleshooting section, then a review pass verifies accuracy and self-service completeness.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Library status</strong><span>What in the library is out of date (flagged for an update or past its review date, most urgent first) and what is due for review within 30 days, each with owner and last-reviewed date, plus every procedure by area.</span></li><li><strong>Find procedure</strong><span>Answer a 'how do I…' question from the library: returns the best-matching procedure's steps exactly as written, with its owner and last-reviewed date.</span></li><li><strong>Save procedure</strong><span>Write a procedure into the library: title, area, owner and the steps in markdown (numbered, one action each).</span></li><li><strong>Mark reviewed</strong><span>Record that someone checked a procedure and it is still right; it restarts the review clock.</span></li><li><strong>Flag procedure</strong><span>Flag a procedure that no longer matches how the work is done, with what changed in the words the person used.</span></li><li><strong>Retire procedure</strong><span>Retire a procedure the business no longer uses.</span></li><li><strong>List procedures</strong><span>Every procedure by area with owner, status, file path and review dates.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>sops/index.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

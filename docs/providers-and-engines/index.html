@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
-<a href="../roles-index/">Gezel Roles</a>
-<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
 <a href="../project-types-index/">Project Types</a>
 <a aria-current="true" href="../architecture/">Technical</a>
 <a href="../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -122,31 +124,31 @@
 </nav>
 <article class="hb-article">
 <h1>Providers and engines</h1>
-<p>A <strong>provider</strong> is where a gezel's intelligence comes from. Gezel supports both kinds:</p>
+<p>A <strong>provider</strong> is where Gezel's intelligence comes from. Gezel supports both kinds:</p>
 <h2 id="cloud-providers">Cloud providers</h2>
 <p>Gezel reaches cloud models three ways: through a coding CLI you already use, directly through the Claude and OpenAI APIs, or through GitHub Copilot.</p>
 <p>Cloud models are the strongest option and need no hardware to speak of. The trade is that conversation content goes to that provider to be processed, under their terms.</p>
 <h3 id="claude-and-codex-clis">Claude and Codex CLIs</h3>
-<p>The first-class way to reach cloud models is through a coding CLI you already have installed and signed in:</p>
-<ul><li><p><strong>Claude CLI</strong> — if Anthropic's <code>claude</code> command (Claude Code) is on your machine, gezel finds it automatically and drives it directly. Your existing login carries over — a Claude subscription works as-is, with no API key to manage. Gezel wires its own tools (memories, tasks, team management, documents, history) into each conversation, so your gezels keep their full craft while Claude does the thinking.</p></li><li><p><strong>Codex CLI</strong> — same idea for OpenAI's <code>codex</code> command. Whatever the CLI is signed in with (a ChatGPT account via <code>codex login</code>, or an API key in your environment) is what gezel uses.</p></li></ul>
-<p>This interop is the recommended path because the account you already pay for keeps working, the CLIs bring their own strong agentic loop, and there's no separate credential to create or store. Settings shows whether each CLI was detected, and you can point gezel at a specific binary if it lives somewhere unusual.</p>
+<p>One way to reach cloud models is through a coding CLI you already have installed and signed in:</p>
+<ul><li><p><strong>Claude CLI</strong> — if Anthropic's <code>claude</code> command (Claude Code) is on your machine, gezel finds it automatically and drives it directly. It uses whatever the CLI is signed in with, so there is no separate key to set up in Gezel. Gezel wires its own tools (memories, tasks, team management, documents, history) into each conversation, so Gezel keeps its full craft while Claude does the thinking.</p></li><li><p><strong>Codex CLI</strong> — same idea for OpenAI's <code>codex</code> command. Whatever the CLI is signed in with (a ChatGPT account via <code>codex login</code>, or an API key in your environment) is what gezel uses.</p></li></ul>
+<p>With a CLI, Gezel stores no credential of its own, and the CLI brings its own agentic loop. The terms of the account a CLI is signed in with apply to how Gezel uses it, including work that runs while you are away, so check them before you give a subscription account night work. Settings shows whether each CLI was detected, and you can point gezel at a specific binary if it lives somewhere unusual.</p>
 <h3 id="codex-turn-recovery">Codex turn recovery</h3>
 <p>Gezel ends a Codex turn after ten minutes without a valid stream event when no tool is running. This catches silent model turns before the longer overall turn limit. Active tool calls keep their own limits and the overall turn limit; diagnostic heartbeats and stderr do not reset the inactivity timer. Both budgets count awake time, so a short machine sleep does not consume them.</p>
 <p>For task handoffs, a failed turn enters the existing bounded recovery: at most three sends, using the task's original procedure and completion gates. If recovery fails, the task pauses with a note containing the provider error. Retrying a paused task keeps its task identity and available session evidence.</p>
 <h3 id="claude-api-and-openai-api">Claude API and OpenAI API</h3>
 <p>Gezel also talks to both APIs directly, with no CLI involved:</p>
 <ul><li><p><strong>Claude API</strong> — create a key at <a href="https://platform.claude.com/settings/keys">platform.claude.com</a> and paste it in <strong>Settings → Anthropic Claude</strong>.</p></li><li><p><strong>OpenAI API</strong>, which serves the models behind ChatGPT — create a key at <a href="https://platform.openai.com/api-keys">platform.openai.com</a> and paste it in <strong>Settings → OpenAI</strong>. An organization ID is optional.</p></li></ul>
-<p>Gezel runs its own tools in these conversations too, so a gezel on an API key keeps the same craft as one on a CLI. Usage is billed per token by Anthropic or OpenAI, separately from any Claude or ChatGPT subscription. Choose this route on a machine without the CLIs, or when you would rather pay per use than through a subscription.</p>
+<p>Gezel runs its own tools in these conversations too, so a conversation on an API key keeps the same craft as one on a CLI. Usage is billed per token by Anthropic or OpenAI, separately from any Claude or ChatGPT subscription. Choose this route on a machine without the CLIs, or when you would rather pay per use than through a subscription.</p>
 <h3 id="github-copilot">GitHub Copilot</h3>
 <p>Sign in with your GitHub account from Settings; your Copilot plan's quota applies and gezel shows the real usage buckets.</p>
 <h2 id="local-engines">Local engines</h2>
-<p>Gezel bundles and manages native engines that run models directly on your machine — llama.cpp and friends, with Ollama supported too if you already use it. Local means private and free per use; the trade is that model quality depends on what your hardware can lift. The <a href="../local-models-and-tiers/">Models and tiers</a> article explains how gezel matches local models to roles, and the built-in fitness check ("de proeve") verifies a model actually behaves before your crew relies on it.</p>
+<p>Gezel bundles and manages native engines that run models directly on your machine — llama.cpp and friends, with Ollama supported too if you already use it. Local means private and free per use; the trade is that model quality depends on what your hardware can lift. The <a href="../local-models-and-tiers/">Models and tiers</a> article explains how gezel matches local models to roles, and the built-in fitness check ("de proeve") verifies a model actually behaves before any work relies on it.</p>
 <h2 id="mixing">Mixing</h2>
-<p>Providers are per-gezel, not all-or-nothing. A common setup: a local model for everyday companions, a cloud model for the roles where judgment matters most (reviewer, developer). Set the install default in Settings and override an individual gezel from its detail page.</p>
+<p>Providers are set per crew member, not all-or-nothing. A common setup: a local model for everyday chat, a cloud model for the roles where judgment matters most (reviewer, developer). Set the install default in Settings and override it for one crew member from their detail page.</p>
 <h2 id="credentials">Credentials</h2>
 <p>The CLI providers store no credentials in gezel at all — auth stays with the CLI's own login. For the key-based providers, keys live in your operating system's keychain (or, where there is none, in an encrypted file in gezel's folder), not in the settings file. They are sent only to their own provider and are never proxied through any gezel server — there isn't one.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../providers-and-engines.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">

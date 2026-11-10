@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"imports":[{"id":"reviews","source":"workspace","path":"imports","accept":[".csv",".tsv",".txt"],"maxFileBytes":10485760}],"companion":{"role":"Researcher"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -47,6 +47,12 @@
       .count { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.6rem; margin: 0.3rem 0 0.15rem; }
       .bar { height: 8px; border-radius: 4px; background: var(--chip); overflow: hidden; }
       .bar i { display: block; height: 100%; border-radius: 4px; background: var(--bar); }
+      .bar.problem i { background: color-mix(in srgb, var(--late) 70%, var(--card)); }
+      .bar.praise i { background: color-mix(in srgb, var(--ok) 75%, var(--card)); }
+      .theme-head .key { margin-left: auto; }
+      .draft .copy { margin: 0.45rem 0 0; }
+      .row-actions { text-align: right; white-space: nowrap; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
       .count span { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
       .chip { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.02rem 0.4rem; border-radius: 4px; background: var(--chip); color: var(--muted); }
       .chip.bad { background: var(--late-bg); color: var(--late); }
@@ -62,10 +68,10 @@
       .draft .label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
       .draft p { margin: 0.15rem 0 0; white-space: pre-line; overflow-wrap: anywhere; }
       .key { min-height: 36px; padding: 0.3rem 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.88rem; white-space: nowrap; }
-      .key:hover { border-color: var(--accent); }
+      .key:hover { background: var(--chip); }
       .key:disabled { opacity: 0.6; cursor: default; }
       .empty { color: var(--muted); font-style: italic; margin: 0; }
-      .table-wrap, .action-wrap { overflow-x: auto; }
+      .table-wrap, .action-wrap { overflow-x: auto; position: relative; }
       table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
       th { text-align: left; font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 0.5rem 0.4rem; border-bottom: 1px solid var(--line); }
       td { padding: 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -74,7 +80,7 @@
       .status { display: inline-block; font-size: 0.78rem; padding: 0.05rem 0.4rem; border-radius: 4px; background: var(--chip); }
       .status.doing { background: var(--soon-bg); color: var(--soon); }
       .status.done { background: var(--ok-bg); color: var(--ok); }
-      .import { margin: 1rem 0 0; padding: 0.8rem 0 0; border-top: 1px solid var(--line); }
+      .import p { max-width: 46rem; }
       .import p { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.88rem; }
       .files { display: grid; gap: 0.5rem; margin: 0 0 0.75rem; }
       .import-status { font-size: 0.88rem; }
@@ -89,6 +95,27 @@
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -107,7 +134,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <div class="tiles">
         <div class="tile"><b id="t-month">0</b><span>Feedback, last 30 days</span></div>
         <div class="tile"><b id="t-stars">–</b><span>Average stars, last 30 days</span></div>
-        <div class="tile late"><b id="t-owed">0</b><span>Replies owed</span></div>
+        <div class="tile"><b id="t-owed">0</b><span>Replies owed</span></div>
         <div class="tile"><b id="t-actions">0</b><span>Open actions</span></div>
       </div>
       <section id="themes-section">
@@ -123,7 +150,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <h2>Actions</h2>
         <div class="action-wrap">
           <table>
-            <thead><tr><th>Action</th><th>For</th><th>Owner</th><th>Due</th><th>Status</th></tr></thead>
+            <thead><tr><th>Action</th><th>For</th><th>Owner</th><th>Due</th><th>Status</th><th><span class="sr-only">Actions</span></th></tr></thead>
             <tbody id="action-body"></tbody>
           </table>
         </div>
@@ -136,13 +163,13 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             <tbody id="feedback-body"></tbody>
           </table>
         </div>
-        <div class="import">
-          <h3>Import reviews from a spreadsheet</h3>
-          <p>Add a CSV exported from Google, Yelp or your survey tool. A header row names the columns: the review or comment, and if you have them, the date, stars, name and source. Rows already here are skipped.</p>
-          <div class="files" id="import-files"></div>
-          <div id="add-csv"></div>
-          <p class="import-status" id="import-status" role="status" hidden></p>
-        </div>
+      </section>
+      <section id="import-section" class="import">
+        <h2>Import reviews from a spreadsheet</h2>
+        <p>Add a CSV exported from Google, Yelp or your survey tool. A header row names the columns: the review or comment, and if you have them, the date, stars, name and source. Rows already here are skipped.</p>
+        <div class="files" id="import-files"></div>
+        <div id="add-csv"></div>
+        <p class="import-status" id="import-status" role="status" hidden></p>
       </section>
     </main>
     <script src="demo-chat.js"></script>
@@ -630,6 +657,16 @@ function csvFeedback(text, defaultSource) {
         function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
         function niceDate(day) { var d = new Date(String(day).slice(0, 10) + 'T12:00:00'); return isFinite(d) ? d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : String(day); }
         function stars(rating) { return rating ? rating + ' of 5' : '–'; }
+        function cap(text) { return String(text).charAt(0).toUpperCase() + String(text).slice(1); }
+        // Row action: a small key that opens a shared dialog with these values filled in.
+        function rowKey(label, tool, values, aria) {
+          var key = el('button', label, 'key');
+          key.type = 'button';
+          key.setAttribute('data-app-action', tool);
+          key.setAttribute('data-app-values', JSON.stringify(values));
+          key.setAttribute('aria-label', aria);
+          return key;
+        }
         var SOURCE_LABEL = { google: 'Google', yelp: 'Yelp', tripadvisor: 'Tripadvisor', survey: 'Survey', email: 'Email', social: 'Social', 'in-person': 'In person', other: 'Other' };
         function trendClass(s) {
           if (s.trend === 'rising' || s.trend === 'new this month') return s.kind === 'praise' ? 'good' : s.kind === 'request' ? 'new' : 'bad';
@@ -652,10 +689,11 @@ function csvFeedback(text, defaultSource) {
           document.getElementById('t-month').textContent = month.length;
           document.getElementById('t-stars').textContent = rated.length ? (Math.round((rated.reduce(function (s, e) { return s + e.rating; }, 0) / rated.length) * 10) / 10).toFixed(1) : '–';
           document.getElementById('t-owed').textContent = owed.length;
+          document.getElementById('t-owed').parentNode.classList.toggle('late', owed.length > 0);
           document.getElementById('t-actions').textContent = open.length;
           var top = stats.filter(function (s) { return s.recent; })[0];
           document.getElementById('sub').textContent = !list.length
-            ? 'Nothing logged yet. Paste a review to your researcher, or import a CSV below.'
+            ? 'Nothing logged yet. Paste a review to your researcher, or import a CSV under Feedback.'
             : (top ? top.name + ' is the most mentioned theme this month (' + plural(top.recent, 'time', 'times') + ', ' + top.trend + '). ' : '') +
               (owed.length ? plural(owed.length, 'review still needs', 'reviews still need') + ' a reply.' : 'Every review that needs a reply has one.');
 
@@ -664,8 +702,9 @@ function csvFeedback(text, defaultSource) {
           if (!stats.length) themeList.append(el('li', 'No themes yet. Ask your researcher to sort the feedback, and the themes appear here with their counts.', 'empty'));
           var most = stats.reduce(function (m, s) { return Math.max(m, s.recent, s.before); }, 1);
           stats.forEach(function (s) {
-            var li = el('li'), head = el('div', undefined, 'theme-head'), count = el('div', undefined, 'count'), bar = el('div', undefined, 'bar'), fill = el('i');
-            head.append(el('b', s.name), el('span', s.kind, 'chip'), el('span', s.trend, 'chip ' + trendClass(s)));
+            var li = el('li'), head = el('div', undefined, 'theme-head'), count = el('div', undefined, 'count'), bar = el('div', undefined, 'bar ' + s.kind), fill = el('i');
+            head.append(el('b', s.name), el('span', cap(s.kind), 'chip'), el('span', cap(s.trend), 'chip ' + trendClass(s)));
+            if (s.kind !== 'praise') head.append(rowKey('Agree an action', 'add_action', { theme: s.id }, 'Agree an action for ' + s.name));
             fill.style.width = Math.round((s.recent / most) * 100) + '%';
             bar.append(fill);
             count.append(bar, el('span', s.recent + ' this month · ' + s.before + ' the month before'));
@@ -687,7 +726,16 @@ function csvFeedback(text, defaultSource) {
             body.append(el('p', '“' + e.text + '”', 'words'));
             if (e.reply) {
               var draft = el('div', undefined, 'draft');
-              draft.append(el('span', 'Reply, not posted yet', 'label'), el('p', e.reply));
+              var replyText = el('p', e.reply), copy = el('button', 'Copy reply', 'key copy');
+              copy.type = 'button';
+              copy.setAttribute('aria-label', 'Copy the drafted reply' + (e.author ? ' to ' + e.author : ''));
+              // Clipboard access can be refused inside the host frame; then the reply is selected for a manual copy.
+              copy.addEventListener('click', function () {
+                var done = function () { copy.textContent = 'Copied'; setTimeout(function () { copy.textContent = 'Copy reply'; }, 2000); };
+                var select = function () { var range = document.createRange(); range.selectNodeContents(replyText); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range); copy.textContent = 'Selected. Copy it now'; };
+                try { navigator.clipboard.writeText(e.reply).then(done, select); } catch (_) { select(); }
+              });
+              draft.append(el('span', 'Reply, not posted yet', 'label'), replyText, copy);
               body.append(draft);
             }
             var done = el('button', 'Mark replied', 'key');
@@ -703,12 +751,15 @@ function csvFeedback(text, defaultSource) {
 
           var actionBody = document.getElementById('action-body');
           actionBody.replaceChildren();
-          if (!actionRecords.length) { var a0 = el('tr'), c0 = el('td', 'No actions yet. When a theme needs fixing, agree an action with your researcher.', 'empty'); c0.colSpan = 5; a0.append(c0); actionBody.append(a0); }
+          if (!actionRecords.length) { var a0 = el('tr'), c0 = el('td', 'No actions yet. When a theme needs fixing, agree an action with your researcher.', 'empty'); c0.colSpan = 6; a0.append(c0); actionBody.append(a0); }
           var order = { doing: 0, todo: 1, done: 2 };
           actionRecords.slice().sort(function (a, b) { return (order[a.status] || 0) - (order[b.status] || 0) || String(a.fields.dueAt || '9').localeCompare(String(b.fields.dueAt || '9')); }).forEach(function (a) {
             var tr = el('tr');
             tr.append(el('td', a.fields.title), el('td', names[a.fields.theme] || '–'), el('td', a.fields.owner || '–'), el('td', a.status === 'done' ? (a.fields.doneAt ? 'Done ' + niceDate(a.fields.doneAt) : 'Done') : a.fields.dueAt ? niceDate(a.fields.dueAt) : '–'));
-            var st = el('td'); st.append(el('span', a.status === 'todo' ? 'to do' : a.status, 'status ' + a.status)); tr.append(st);
+            var st = el('td'); st.append(el('span', a.status === 'todo' ? 'To do' : cap(a.status), 'status ' + a.status)); tr.append(st);
+            var acts = el('td', undefined, 'row-actions');
+            if (a.status !== 'done') acts.append(rowKey('Update', 'set_action_status', { id: a.id, status: a.status === 'doing' ? 'done' : 'doing' }, 'Update ' + a.fields.title));
+            tr.append(acts);
             actionBody.append(tr);
           });
 
@@ -719,7 +770,7 @@ function csvFeedback(text, defaultSource) {
             var tr = el('tr'), from = el('td');
             from.append(el('span', SOURCE_LABEL[e.source] || e.source));
             if (e.author) from.append(el('span', e.author, 'meta'));
-            tr.append(el('td', niceDate(e.day)), from, el('td', stars(e.rating)), el('td', e.text, 'words-cell'), el('td', e.themes.length ? e.themes.map(function (id) { return names[id] || id; }).join(', ') : 'not sorted'));
+            tr.append(el('td', niceDate(e.day)), from, el('td', stars(e.rating)), el('td', e.text, 'words-cell'), el('td', e.themes.length ? e.themes.map(function (id) { return names[id] || id; }).join(', ') : 'Not sorted'));
             feedbackBody.append(tr);
           });
         }

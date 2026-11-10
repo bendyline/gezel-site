@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Support Desk</h1>
 <p class="lede">Answer customer questions and keep every request moving. A support lead logs each question as a ticket, drafts replies from your own help articles, and notices the questions those articles do not answer yet.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/support-desk/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/support-desk">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/support-desk/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/support-lead/"><strong>Support Lead</strong></a> <span class="tag">Crew lead</span><span>A calm, organized lead for a small business's customer questions: every request logged as a ticket, answered from the business's own help articles, and the questions those articles miss turned into new ones.</span></li><li><a href="/docs/role-template/boekwachter/"><strong>Librarian</strong></a><span>The index-keeper.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/inbox-triage/"><strong>Inbox Triage &amp; Reply Drafts</strong></a><span>Triage a batch of incoming emails or messages into priority buckets and draft replies for the ones that need them.</span></li><li><a href="/docs/craftbook/faq-from-docs/"><strong>FAQ from Source Docs</strong></a><span>Build a grounded FAQ page by mining real source documents for the questions users actually ask, then writing tight, accurate answers traced back to the source: it first researches the corpus to extract candidate questions, dedupes and groups them, and ranks by likely frequency, then writes clear question-and-answer pairs where every answer is supported by the docs.</span></li><li><a href="/docs/craftbook/knowledge-base-article/"><strong>Knowledge Base Article</strong></a><span>Write a support knowledge-base article that lets a user solve their problem without contacting support: it first scopes the exact user problem, the search terms they would use, prerequisites, and the success outcome, then writes a task-oriented article with a clear title, a short overview, numbered steps with expected results, screenshots/placeholders where needed, and a troubleshooting section, then a review pass verifies accuracy and self-service completeness.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Desk status</strong><span>The support desk now: every ticket that needs a reply (urgent first, then oldest) with what the customer asked and whether a reply is drafted, what waits on the customer, the questions no help article answers yet, and the help articles in kb/.</span></li><li><strong>Add ticket</strong><span>Log a customer request as a ticket: subject, customer, channel, category, priority, their message in their words, and the day it came in (YYYY-MM-DD, default today).</span></li><li><strong>Suggest reply</strong><span>Save a suggested reply on a ticket, ready for the person to send, with the help article in kb/ it draws on.</span></li><li><strong>Set ticket status</strong><span>Move a ticket: open (being worked on), waiting (on the customer), resolved, or back to new.</span></li><li><strong>Save kb article</strong><span>Write a help article to kb/ (title and markdown body) and close the knowledge-base gap it answers (topic, as the status names it).</span></li><li><strong>List tickets</strong><span>Every ticket, resolved ones too, with its status, category, customer, age and message.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>tickets.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/support-lead/"><strong>Support Lead</strong></a> <span class="tag">Crew lead</span><span>A calm, organized lead for a small business's customer questions: every request logged as a ticket, answered from the business's own help articles, and the questions those articles miss turned into new ones.</span></li><li><a href="/docs/role-template/boekwachter/"><strong>Librarian</strong></a><span>The index-keeper.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/inbox-triage/"><strong>Inbox Triage &amp; Reply Drafts</strong></a><span>Triage a batch of incoming emails or messages into priority buckets and draft replies for the ones that need them.</span></li><li><a href="/docs/craftbook/faq-from-docs/"><strong>FAQ from Source Docs</strong></a><span>Build a grounded FAQ page by mining real source documents for the questions users actually ask, then writing tight, accurate answers traced back to the source: it first researches the corpus to extract candidate questions, dedupes and groups them, and ranks by likely frequency, then writes clear question-and-answer pairs where every answer is supported by the docs.</span></li><li><a href="/docs/craftbook/knowledge-base-article/"><strong>Knowledge Base Article</strong></a><span>Write a support knowledge-base article that lets a user solve their problem without contacting support: it first scopes the exact user problem, the search terms they would use, prerequisites, and the success outcome, then writes a task-oriented article with a clear title, a short overview, numbered steps with expected results, screenshots/placeholders where needed, and a troubleshooting section, then a review pass verifies accuracy and self-service completeness.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Desk status</strong><span>The support desk now: every ticket that needs a reply (urgent first, then oldest) with what the customer asked and whether a reply is drafted, what waits on the customer, the questions no help article answers yet, and the help articles in kb/.</span></li><li><strong>Add ticket</strong><span>Log a customer request as a ticket: subject, customer, channel, category, priority, their message in their words, and the day it came in (YYYY-MM-DD, default today).</span></li><li><strong>Suggest reply</strong><span>Save a suggested reply on a ticket, ready for the person to send, with the help article in kb/ it draws on.</span></li><li><strong>Set ticket status</strong><span>Move a ticket: open (being worked on), waiting (on the customer), resolved, or back to new.</span></li><li><strong>Save kb article</strong><span>Write a help article to kb/ (title and markdown body) and close the knowledge-base gap it answers (topic, as the status names it).</span></li><li><strong>List tickets</strong><span>Every ticket, resolved ones too, with its status, category, customer, age and message.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>tickets.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

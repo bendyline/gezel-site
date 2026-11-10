@@ -1,0 +1,18 @@
+# Tasks, scheduled work, and supervision
+
+## Tasks
+
+A **task** is a unit of work with a life of its own: it has an assignee, a status, steps, and notes. When you hand Gezel something bigger than one chat reply — "prepare the quarterly review" — it becomes a task that Gezel can pick up, advance, and report on. The Tasks tab shows what's in flight.
+
+## Scheduled work
+
+Some work should happen on a rhythm: a weekly status report, a nightly check. Projects can carry schedules that start a plan automatically — with your consent, and visible in the same Tasks view as everything else. For schedules to run while the app is closed, enable the background service in Settings.
+
+## Supervision
+
+Autonomy is earned, not assumed. Several layers keep unattended work safe:
+
+- **Gates.** A plan's steps declare checks; a step that fails its checks doesn't advance, no matter how confident the model felt.
+- **Model floors.** A role's steps only run unsupervised on a model tier that can handle them; below the floor, work waits for a stronger model or for you.
+- **Consent.** Anything that touches your files, your git history, or the outside world goes through explicit permission — per project, inspectable in Settings.
+- **The activity record.** Task transitions, project and crew changes, and tool completions Gezel can observe land in History. Provider-native tools can expose less detail, so History is a strong review aid rather than a tamper-evident record of everything that happened on the machine.

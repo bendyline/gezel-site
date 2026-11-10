@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a aria-current="true" href="../../roles-index/">Gezel Roles</a>
-<a href="../../craftbooks-index/">Craftbooks</a>
+<a aria-current="true" href="../../roles-index/">Crew roles</a>
+<a href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
 <a href="../../whats-new-index/">What's New</a>
@@ -45,7 +45,7 @@
 
 </section>
 <section>
-<h2 class="hb-current">Gezel Roles</h2>
+<h2 class="hb-current">Crew roles</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../roles-index/">Roles at a glance</a></li>
 <li><a href="../../role/meester/">The Meester</a></li>
@@ -67,7 +67,7 @@
 
 </section>
 <section>
-<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -90,18 +90,18 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Gezel Roles</a>
+<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Crew roles</a>
 </nav>
 <article class="hb-article">
 <h1>The Image Generator</h1>
 <p>The <strong>Image Generator</strong> does one thing on purpose: turn descriptions into images. Illustrations, hero images, textures, mockup art — ask, refine, ask again. Results land in the project's artifacts, ready for a Designer or you to place.</p>
-<p>This is a deliberately narrow, fixed-function role. It doesn't edit your files or wander the workspace; keeping it single-purpose makes it safe to hand loose creative prompts without side effects. Gezel's install dialog gives these gezels painterly names — Picasso, Vermeer — because a character beats a button.</p>
+<p>This is a deliberately narrow, fixed-function role. It doesn't edit your files or wander the workspace; keeping it single-purpose makes it safe to hand loose creative prompts without side effects. Gezel's install dialog gives these crew members painterly names — Picasso, Vermeer — because a character beats a button.</p>
 <h2 id="editing-a-picture">Editing a picture</h2>
-<p>To change a picture rather than make a new one, add an <strong>Image editor</strong> gezel from the catalog. Attach a picture to your message and say what to change ("remove the people in the background," "turn it into a watercolor"). It changes that and keeps the rest. Send the next change without a picture and it keeps editing the last result, or attach up to three pictures to combine them. A message with no picture to change is turned away, so it never draws something new from words alone.</p>
-<p>On this computer, editing needs a model that can do it. <strong>Qwen Image Edit 2511</strong> is made for editing and does nothing else. <strong>FLUX.2 Klein</strong> draws new pictures and edits too. Whenever a picture comes with the request, from the Image editor or from any gezel, Gezel picks an installed model that can edit it, and the result keeps the picture's shape unless you choose another. Download them in <strong>Settings → Image generation</strong>.</p>
+<p>To change a picture rather than make a new one, add an <strong>Image editor</strong> to your crew from the catalog. Attach a picture to your message and say what to change ("remove the people in the background," "turn it into a watercolor"). It changes that and keeps the rest. Send the next change without a picture and it keeps editing the last result, or attach up to three pictures to combine them. A message with no picture to change is turned away, so it never draws something new from words alone.</p>
+<p>On this computer, editing needs a model that can do it. <strong>Qwen Image Edit 2511</strong> is made for editing and does nothing else. <strong>FLUX.2 Klein</strong> draws new pictures and edits too. Whenever a picture comes with the request, whether it went to the Image editor or to anyone else, Gezel picks an installed model that can edit it, and the result keeps the picture's shape unless you choose another. Download them in <strong>Settings → Image generation</strong>.</p>
 <h2 id="styles-and-fast-mode">Styles and fast mode</h2>
 <p>Models on this computer can take two kinds of add-on, both from <strong>Settings → Image generation → Styles and fast mode</strong>. Each works only with the models it names, so Settings offers only the ones that fit a model you have.</p>
-<ul><li><p><strong>Fast mode</strong> draws a picture in a few steps instead of dozens. Once you get it, it is on for that model; switch it off in the model's row. Asking for more steps than fast mode uses leaves it off for that picture.</p></li><li><p><strong>A style</strong> gives a picture a set look, such as pixel art or watercolor. Pick it in the <strong>Style</strong> menu above the message, or ask a gezel for it by name. A style that doesn't match leaves the picture without one, and the result names the styles the model has.</p></li></ul>
+<ul><li><p><strong>Fast mode</strong> draws a picture in a few steps instead of dozens. Once you get it, it is on for that model; switch it off in the model's row. Asking for more steps than fast mode uses leaves it off for that picture.</p></li><li><p><strong>A style</strong> gives a picture a set look, such as pixel art or watercolor. Pick it in the <strong>Style</strong> menu above the message, or ask for it by name. A style that doesn't match leaves the picture without one, and the result names the styles the model has.</p></li></ul>
 <p>A few styles carry their model's license, which restricts commercial use. Their license button says so.</p>
 <h2 id="using-github-copilot">Using GitHub Copilot</h2>
 <p>Choose <strong>GitHub Copilot CLI</strong> in <strong>Settings → Image generation → Engine</strong> to use Copilot's experimental image generator. Install or update the Copilot runtime there if needed. Gezel uses your existing Copilot sign-in, or the GitHub token configured in Gezel; no separate image API key is required. Your account's image access, organization policies, and usage limits still apply. Being signed in does not guarantee image generation is available.</p>
@@ -122,13 +122,13 @@
 <div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>full kit (61 tools)</td></tr><tr><td>small</td><td>5–12B</td><td>full kit (61 tools)</td></tr><tr><td>medium</td><td>12–45B</td><td>full kit (61 tools)</td></tr><tr><td>large</td><td>45B and up</td><td>full kit (61 tools)</td></tr><tr><td>cloud</td><td>hosted</td><td>full kit (61 tools)</td></tr></tbody></table></div>
 <h3 id="as-models-grow">As models grow</h3>
 <div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>full kit (61 tools)</td></tr><tr><td>small</td><td>5–12B</td><td>full kit (61 tools)</td></tr><tr><td>medium</td><td>12–45B</td><td>full kit (61 tools)</td></tr><tr><td>large</td><td>45B and up</td><td>full kit (61 tools)</td></tr><tr><td>cloud</td><td>hosted</td><td>full kit (61 tools)</td></tr></tbody></table></div>
-<h2 id="craftbooks-they-run-well">Craftbooks they run well</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>Craftbook</th><th>What it does</th></tr></thead><tbody><tr><td><a href="../../craftbook/icon-pack/">Coherent Icon Pack</a></td><td>Produce a coherent set of UI icons that look like they belong to one family — consistent grid, stroke weight, corner radius, optical sizing, and metaphor language — from a named list of concepts.</td></tr><tr><td><a href="../../craftbook/logo-set/">Logo &amp; Variant Set</a></td><td>Generate a coherent logo and the full set of variants a real brand needs — primary mark, horizontal lockup, stacked lockup, icon-only/favicon, plus light-on-dark and monochrome versions — from a written brief.</td></tr><tr><td><a href="../../craftbook/hero-image/">Marketing Hero Image</a></td><td>Create a single high-impact marketing hero image from a brief and place it into a working hero section.</td></tr><tr><td><a href="../../craftbook/thumbnail-generator/">Thumbnail Generator</a></td><td>Derive a consistent set of thumbnails or responsive size-variants from a folder of source images — square crops for grids, srcset widths for the web, smart-cropped to keep the subject centered — and emit them with predictable names.</td></tr></tbody></table></div>
+<h2 id="plans-they-run-well">Plans they run well</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Plan</th><th>What it does</th></tr></thead><tbody><tr><td><a href="../../craftbook/icon-pack/">Coherent Icon Pack</a></td><td>Produce a coherent set of UI icons that look like they belong to one family — consistent grid, stroke weight, corner radius, optical sizing, and metaphor language — from a named list of concepts.</td></tr><tr><td><a href="../../craftbook/logo-set/">Logo &amp; Variant Set</a></td><td>Generate a coherent logo and the full set of variants a real brand needs — primary mark, horizontal lockup, stacked lockup, icon-only/favicon, plus light-on-dark and monochrome versions — from a written brief.</td></tr><tr><td><a href="../../craftbook/hero-image/">Marketing Hero Image</a></td><td>Create a single high-impact marketing hero image from a brief and place it into a working hero section.</td></tr><tr><td><a href="../../craftbook/thumbnail-generator/">Thumbnail Generator</a></td><td>Derive a consistent set of thumbnails or responsive size-variants from a folder of source images — square crops for grids, srcset widths for the web, smart-cropped to keep the subject centered — and emit them with predictable names.</td></tr></tbody></table></div>
 <h3 id="codex-cli">Codex CLI</h3>
-<p>Choose <strong>OpenAI Codex CLI (cloud, experimental)</strong> in Settings → Image generation. Install or update Codex CLI and run <code>codex login</code> with your ChatGPT account. Gezel uses that existing sign-in and Codex usage limits; it does not need an image API key. The CLI runs on the machine hosting your per-user Gezel service. If needed, set its binary path in Settings → OpenAI Codex CLI → Advanced.</p>
+<p>Choose <strong>OpenAI Codex CLI (cloud, experimental)</strong> in Settings → Image generation. Install or update Codex CLI and sign it in with <code>codex login</code>. Gezel uses whatever the CLI is signed in with, under that account's usage limits and terms; it does not need a separate image API key. The CLI runs on the machine hosting your per-user Gezel service. If needed, set its binary path in Settings → OpenAI Codex CLI → Advanced.</p>
 <p>Chat, MCP, and direct image requests use the same provider. Prompts, reference images, negative instructions, size, aspect ratio, quality, and edit-strength guidance go into the image request. Codex controls the underlying image model and final render settings: size and quality are requests in the brief, and edit strength is approximate. Seeds and sampling steps are unavailable. Results include actual pixel dimensions and notes about unsupported controls or size differences. Only native image output is accepted; a text response claiming to have saved an image is not a successful render.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../image-generator.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">
@@ -144,7 +144,7 @@
 <li class="hb-h2"><a href="#what-they-can-do">What they can do</a></li>
 <li class="hb-h3"><a href="#on-this-device">On this device</a></li>
 <li class="hb-h3"><a href="#as-models-grow">As models grow</a></li>
-<li class="hb-h2"><a href="#craftbooks-they-run-well">Craftbooks they run well</a></li>
+<li class="hb-h2"><a href="#plans-they-run-well">Plans they run well</a></li>
 <li class="hb-h3"><a href="#codex-cli">Codex CLI</a></li>
 </ul>
 </nav>

@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Sales Pipeline</h1>
 <p class="lede">Follow every deal from first contact to close. An account manager keeps each deal’s stage, value and next follow-up, tells you who to call today, and keeps a weighted forecast you can plan the month around.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/sales-pipeline/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/sales-pipeline">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/sales-pipeline/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/account-manager/"><strong>Account Manager</strong></a> <span class="tag">Crew lead</span><span>A warm, organized keeper of a small business’s sales: every deal with its stage, value and next follow-up, the calls to make today, and a weighted forecast that stays honest.</span></li><li><a href="/docs/role-template/researcher/"><strong>Researcher</strong></a><span>Reads source, prior art, or external docs and files a substantive written analysis.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/proposal-sow/"><strong>Proposal / Statement of Work</strong></a><span>Draft a client proposal or statement of work that wins the deal and prevents scope creep — covering objectives, scope, deliverables, timeline/milestones, pricing, assumptions, and acceptance criteria.</span></li><li><a href="/docs/craftbook/meeting-prep-brief/"><strong>Meeting Prep Brief</strong></a><span>Walk into the meeting already warm: who's in the room, what was promised last time, what you want out of this one, and the two questions worth asking — one page, read in the elevator.</span></li><li><a href="/docs/craftbook/lead-enrichment/"><strong>Enrich a Leads List</strong></a><span>Take a raw leads or contacts list and enrich each row with derived and looked-up attributes — company domain, industry, size band, role seniority, normalized location, and a quality/score flag — into a clean CRM-ready file.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Pipeline status</strong><span>The whole pipeline: follow-ups due (overdue first), every open deal by stage with its id, value, chance and weighted value, the weighted forecast, and what was won or lost lately.</span></li><li><strong>Add deal</strong><span>Save a deal the moment it is mentioned, before you describe it: title, company, contact, value in dollars, stage, expected close date and next follow-up.</span></li><li><strong>Move deal</strong><span>Move a deal to another stage the moment the person says it moved: lead, qualified, proposal, negotiation, won, or lost (with the reason in note).</span></li><li><strong>Log activity</strong><span>Record a call, email, meeting or note on a deal as soon as it is mentioned, in the person’s words.</span></li><li><strong>Schedule follow up</strong><span>Set a deal’s next follow-up: a date (followUpAt, YYYY-MM-DD) or a number of days from today (inDays), and what it is for.</span></li><li><strong>List deals</strong><span>Every deal, open and closed, with its stage, value, follow-up and last touch.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>deals.json</code>, <code>activity.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/account-manager/"><strong>Account Manager</strong></a> <span class="tag">Crew lead</span><span>A warm, organized keeper of a small business’s sales: every deal with its stage, value and next follow-up, the calls to make today, and a weighted forecast that stays honest.</span></li><li><a href="/docs/role-template/researcher/"><strong>Researcher</strong></a><span>Reads source, prior art, or external docs and files a substantive written analysis.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/proposal-sow/"><strong>Proposal / Statement of Work</strong></a><span>Draft a client proposal or statement of work that wins the deal and prevents scope creep — covering objectives, scope, deliverables, timeline/milestones, pricing, assumptions, and acceptance criteria.</span></li><li><a href="/docs/craftbook/meeting-prep-brief/"><strong>Meeting Prep Brief</strong></a><span>Walk into the meeting already warm: who's in the room, what was promised last time, what you want out of this one, and the two questions worth asking — one page, read in the elevator.</span></li><li><a href="/docs/craftbook/lead-enrichment/"><strong>Enrich a Leads List</strong></a><span>Take a raw leads or contacts list and enrich each row with derived and looked-up attributes — company domain, industry, size band, role seniority, normalized location, and a quality/score flag — into a clean CRM-ready file.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Pipeline status</strong><span>The whole pipeline: follow-ups due (overdue first), every open deal by stage with its id, value, chance and weighted value, the weighted forecast, and what was won or lost lately.</span></li><li><strong>Add deal</strong><span>Save a deal the moment it is mentioned, before you describe it: title, company, contact, value in dollars, stage, expected close date and next follow-up.</span></li><li><strong>Move deal</strong><span>Move a deal to another stage the moment the person says it moved: lead, qualified, proposal, negotiation, won, or lost (with the reason in note).</span></li><li><strong>Log activity</strong><span>Record a call, email, meeting or note on a deal as soon as it is mentioned, in the person’s words.</span></li><li><strong>Schedule follow up</strong><span>Set a deal’s next follow-up: a date (followUpAt, YYYY-MM-DD) or a number of days from today (inDays), and what it is for.</span></li><li><strong>List deals</strong><span>Every deal, open and closed, with its stage, value, follow-up and last touch.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>deals.json</code>, <code>activity.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,97 @@
+# The Night Shift: work Gezel does while you sleep
+
+The **Night Shift** is a window — 22:00 to 06:00 unless you change it in Settings — when Gezel is allowed to work on things that don't need you. Reviews get written, indexes get refreshed, translations catch up. In the morning there's a report waiting instead of a backlog.
+
+The moon in the title bar shows when a shift is running and what it's working on. It also says **when the period started and when it ends** — a scheduled shift closes with its window, a manual one runs until the work is done — and keeps a **running tally** of what the shift has got through: tasks finished, files indexed and reviewed, files written, questions raised for you. During the day the same line tells you when the next window opens. You can start a shift manually too — stepping out for lunch is a perfectly good night.
+
+**Default is excluded from automatic night work unless you explicitly turn its overnight work on.** Its one-off questions, scratch work, and artifacts stay out of the nightly project review and content sweep. The consolidated nightly report is still saved there; storing it in Default does not put Default's contents in scope. Tasks you deliberately queue for tonight still run.
+
+## Tonight, not now
+
+Some work is better done while you sleep. When you attach a task to a message, press **Tonight** on it and it waits for the night shift instead of starting now. You can also just ask the Meester to do something tonight.
+
+## Roles that bring their own night work
+
+Some roles come with a standing suggestion for recurring work that suits them. Add a Chief Security Officer to a project, and they'll suggest a nightly security review; a Translator suggests keeping a translated shadow of your content in the project's designated language. The same goes for project types — a project set up for a job hunt suggests its weekly pipeline review.
+
+These are **suggestions, never surprises**: nothing runs until you turn it on. The toggles live with the crew list in each project's Settings, and appear the moment a suggesting role joins. Turning one off pauses it — your run history stays — and "don't suggest this" hides it for that project.
+
+| Role | Suggested plan | When |
+| --- | --- | --- |
+| Builder (Builder) | `bug-fix-tdd` | Night Shift, once per night |
+| Chief Security Officer (Chief Security Officer) | `security-architecture-review` | Night Shift, once per night |
+| Chief Security Officer (Chief Security Officer) | `dependency-audit` | Night Shift, once per night |
+| Curator (Curator) | `photo-library-nightly` | Night Shift, once per night |
+| Curator (Curator) | `album-curate` | on schedule (`0 3 * * 0`) |
+| Developer (Developer) | `bug-fix-tdd` | Night Shift, once per night |
+| Developer (Developer) | `test-suite-backfill` | Night Shift, once per night |
+| Librarian (Librarian) | `nightly-fix-sweep` | Night Shift, once per night |
+| Reviewer (Reviewer) | `codebase-refactoring-review` | Night Shift, once per night |
+| Reviewer (Reviewer) | `test-coverage-review` | Night Shift, once per night |
+| Social Media Writer (Social Media Writer) | `social-digest` | Night Shift, once per night |
+| Social Media Writer (Social Media Writer) | `reception-report` | on schedule (`0 15 * * 1`) |
+| Translator (Translator) | `translate-content` | Night Shift, once per night |
+
+## What night work looks like
+
+Night work is deliberately quiet-handed. The suggested plans write **reports, findings, and sidecar files** — a security posture report in the artifacts drawer, translations beside the originals — rather than editing your work in place. Each enabled item runs **at most once per night**, inside the window. Its task transitions and tool completions that Gezel observes land in History like other work.
+
+Some values are shared across night work: the Translator's target language, for instance, is a **project property** — set once in project Settings (or the first time you enable the translation run) and reused by every run after that.
+
+## Keeping your subscription quota safe
+
+Night work on a Claude, Codex, or Copilot subscription spends the same quota you use during the day, so the Night Shift keeps a **quota reserve**: by default it stops sending work to a subscription once you're within 20% of a quota, leaving the rest for you. You can adjust that floor in Settings → Night Shift, or add a daily reserve that scales with the time left — 10% a day with four days until your quota resets keeps the last 40% for you.
+
+Before you let night work use a subscription, check that its terms allow automated use: some consumer plans don't.
+
+Work that's already running always finishes; only new work is held. Held work resumes on its own when a quota window resets (if the machine is awake) or the next night, and the moon menu says what's being protected and why. Work on local models spends nothing and is never held.
+
+## Fixes that arrive as proposals
+
+A project with both a **Librarian** and a **developer** on its crew gets one more kind of night work: the Librarian finds problems in your files, and overnight the developer works through them.
+
+What arrives in the morning is not a changed project. It's a set of **change proposals** — one per group of problems the developer judged worth fixing together, each with the reasoning written out and the exact edits laid out line by line. Your files are untouched. You read the proposal, look at the diff, and apply it if you agree.
+
+That's deliberate, and it has a useful consequence: **it works on folders Gezel isn't allowed to edit.** You never have to hand over write access to get a fix drafted. It also works with nothing but the model on your own machine — no network, no service, nobody's cloud.
+
+Proposals live in the project's **Proposals** tab, which appears once there's something in it. Each one shows:
+
+- what the developer changed and why, what they were unsure of, and how to check it
+- every file it touches, with the diff
+- **Apply** (all of it, or one file at a time), **Export** (a zip of patches you can `git apply` yourself), or **Dismiss**
+
+Two things it will tell you plainly. If a file changed after the proposal was written — you edited it, or a teammate did — the proposal is marked **out of date** and applying it asks you to confirm first, naming the files that moved. And if two proposals touch the same file, both say so, because applying one will put the other out of date.
+
+You can start the same thing by hand any time: open a file the Librarian has flagged, and hit **Fix** on the issue. It doesn't wait for nightfall, and it produces the same reviewable proposal.
+
+Proposed fixes are for code. A folder of documents or photos gets its summaries, descriptions and reviews, but never a developer drafting edits to your Word files or captions.
+
+A proposal can also move things: put photos into folders, copy a set of files, make a new folder. Those appear after the edits as plain rows ("Move `Camera/IMG_0042.jpg` → `Birthday/IMG_0042.jpg`"), grouped by the folder they land in when there are many, and they never replace a file that's already there. A problem the Librarian found is marked fixed when you apply the proposal that fixes it, not when the fix is drafted, and goes back to open if you dismiss it.
+
+If you'd rather Gezel didn't do this, turn off nightly fixing in the project's settings. It's on by default only because the project's crew has both roles it takes.
+
+## The morning review
+
+When the window closes, gezel gathers what the shift accomplished and puts it where you'll see it: one notification on your desktop, Home opens on **This morning**, and the moon menu grows a **Done last night** list. This morning leads with what needs a decision (change proposals, then new reports), then what finished and how much Gezel read and described, then what is already queued for tonight. It stays until you dismiss it. On the first morning of a new week it also links **Your crew's week**, a one-page recap of every night and every folder's weekly digest.
+
+Every folder also leaves a short report of its own, written straight from the index, so it costs nothing and needs no model:
+
+- **Photos:** recent outings, photos from this day in earlier years, and the photos that are exact copies of each other (with how much space they take). Where a photo was taken never appears in it.
+- **Documents:** what was added or changed, each with a line saying what it is.
+- **Code:** the hotspots (files that change often and carry problems), the files everything else depends on, and the open issues by severity.
+
+A photo folder's **Curator** can also leave **albums**: for each recent outing, a slideshow of the frames that tell the day, in order, captioned, with gentle motion between them. Open one from the folder's Overview or the morning view to play it, change it — reorder photos, rewrite a caption, pick a theme — or export it as a video. The album keeps its own smaller copies of the photos, made without where they were taken; your originals stay exactly where they are. **Copy to a folder…** gathers the full-size originals in one place when you want them.
+
+Reports can go further than prose. A recommendation that is genuinely one click away — start a plan, delegate a fix, apply a reviewed set of file edits — appears **inside the report as an action card**. You see exactly what would run (including the full diff for file edits) and fire it, or dismiss it, right from the page. Nothing a report suggests ever runs on its own: firing is always your click, and Gezel records the resulting task and observed tool activity in History.
+
+A night gets a morning card when Gezel made something: a change proposal, a report, or finished work. A night held back for a reason you can fix also gets one, once: it ran on battery, or the quota reserve held the work. The card says why and offers the fix. A night when the computer was asleep, Gezel wasn't running, or there was nothing to do gets no card and no notification. A card with reports or finished work stays until you dismiss it; a newer card replaces an older one only when it shows the same things again. If the nightly project review didn't finish, the card says so; it tries again the next night on its own.
+
+## Keeping the computer ready
+
+The night shift needs Gezel running and the computer awake. In Settings → Night Shift:
+
+- **Start Gezel when I log in, without opening a window** keeps the app in the tray (the menu bar on a Mac) from the moment you log in.
+- **Keep this machine awake while night-shift work is running** stops it dozing off mid-shift.
+- **Pause night work while this computer runs on battery** is on by default: unplug and the shift stands down, plug back in and it picks up where it left off.
+
+A Mac that's already asleep stays asleep: macOS lets only administrators schedule a wake, so leave it plugged in and awake for the night. To run night work with the app closed altogether, enable the background service in Settings.

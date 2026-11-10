@@ -1,0 +1,49 @@
+# Providers and engines
+
+A **provider** is where Gezel's intelligence comes from. Gezel supports both kinds:
+
+## Cloud providers
+
+Gezel reaches cloud models three ways: through a coding CLI you already use, directly through the Claude and OpenAI APIs, or through GitHub Copilot.
+
+Cloud models are the strongest option and need no hardware to speak of. The trade is that conversation content goes to that provider to be processed, under their terms.
+
+### Claude and Codex CLIs
+
+One way to reach cloud models is through a coding CLI you already have installed and signed in:
+
+- **Claude CLI** — if Anthropic's `claude` command (Claude Code) is on your machine, gezel finds it automatically and drives it directly. It uses whatever the CLI is signed in with, so there is no separate key to set up in Gezel. Gezel wires its own tools (memories, tasks, team management, documents, history) into each conversation, so Gezel keeps its full craft while Claude does the thinking.
+- **Codex CLI** — same idea for OpenAI's `codex` command. Whatever the CLI is signed in with (a ChatGPT account via `codex login`, or an API key in your environment) is what gezel uses.
+
+With a CLI, Gezel stores no credential of its own, and the CLI brings its own agentic loop. The terms of the account a CLI is signed in with apply to how Gezel uses it, including work that runs while you are away, so check them before you give a subscription account night work. Settings shows whether each CLI was detected, and you can point gezel at a specific binary if it lives somewhere unusual.
+
+### Codex turn recovery
+
+Gezel ends a Codex turn after ten minutes without a valid stream event when no tool is running. This catches silent model turns before the longer overall turn limit. Active tool calls keep their own limits and the overall turn limit; diagnostic heartbeats and stderr do not reset the inactivity timer. Both budgets count awake time, so a short machine sleep does not consume them.
+
+For task handoffs, a failed turn enters the existing bounded recovery: at most three sends, using the task's original procedure and completion gates. If recovery fails, the task pauses with a note containing the provider error. Retrying a paused task keeps its task identity and available session evidence.
+
+### Claude API and OpenAI API
+
+Gezel also talks to both APIs directly, with no CLI involved:
+
+- **Claude API** — create a key at [platform.claude.com](https://platform.claude.com/settings/keys) and paste it in **Settings → Anthropic Claude**.
+- **OpenAI API**, which serves the models behind ChatGPT — create a key at [platform.openai.com](https://platform.openai.com/api-keys) and paste it in **Settings → OpenAI**. An organization ID is optional.
+
+Gezel runs its own tools in these conversations too, so a conversation on an API key keeps the same craft as one on a CLI. Usage is billed per token by Anthropic or OpenAI, separately from any Claude or ChatGPT subscription. Choose this route on a machine without the CLIs, or when you would rather pay per use than through a subscription.
+
+### GitHub Copilot
+
+Sign in with your GitHub account from Settings; your Copilot plan's quota applies and gezel shows the real usage buckets.
+
+## Local engines
+
+Gezel bundles and manages native engines that run models directly on your machine — llama.cpp and friends, with Ollama supported too if you already use it. Local means private and free per use; the trade is that model quality depends on what your hardware can lift. The [Models and tiers](https://gezel.com/docs/local-models-and-tiers/) article explains how gezel matches local models to roles, and the built-in fitness check ("de proeve") verifies a model actually behaves before any work relies on it.
+
+## Mixing
+
+Providers are set per crew member, not all-or-nothing. A common setup: a local model for everyday chat, a cloud model for the roles where judgment matters most (reviewer, developer). Set the install default in Settings and override it for one crew member from their detail page.
+
+## Credentials
+
+The CLI providers store no credentials in gezel at all — auth stays with the CLI's own login. For the key-based providers, keys live in your operating system's keychain (or, where there is none, in an encrypted file in gezel's folder), not in the settings file. They are sent only to their own provider and are never proxied through any gezel server — there isn't one.

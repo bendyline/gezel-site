@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a aria-current="true" href="../../roles-index/">Gezel Roles</a>
-<a href="../../craftbooks-index/">Craftbooks</a>
+<a aria-current="true" href="../../roles-index/">Crew roles</a>
+<a href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
 <a href="../../whats-new-index/">What's New</a>
@@ -45,7 +45,7 @@
 
 </section>
 <section>
-<h2 class="hb-current">Gezel Roles</h2>
+<h2 class="hb-current">Crew roles</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../roles-index/">Roles at a glance</a></li>
 <li><a href="../../role/meester/">The Meester</a></li>
@@ -67,7 +67,7 @@
 
 </section>
 <section>
-<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -90,7 +90,7 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Gezel Roles</a>
+<a href="../../">Handboek</a> <span>/</span> <a href="../../roles-index/">Crew roles</a>
 </nav>
 <article class="hb-article">
 <h1>The Developer</h1>
@@ -115,10 +115,10 @@
 <div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>86 of 88 tools — trimmed: User Interaction (1 of 3)</td></tr><tr><td>small</td><td>5–12B</td><td>full kit (88 tools)</td></tr><tr><td>medium</td><td>12–45B</td><td>full kit (88 tools)</td></tr><tr><td>large</td><td>45B and up</td><td>full kit (88 tools)</td></tr><tr><td>cloud</td><td>hosted</td><td>full kit (88 tools)</td></tr></tbody></table></div>
 <h3 id="as-models-grow">As models grow</h3>
 <div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Model size</th><th>Tool surface for this role</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>86 of 88 tools — trimmed: User Interaction (1 of 3)</td></tr><tr><td>small</td><td>5–12B</td><td>full kit (88 tools)</td></tr><tr><td>medium</td><td>12–45B</td><td>full kit (88 tools)</td></tr><tr><td>large</td><td>45B and up</td><td>full kit (88 tools)</td></tr><tr><td>cloud</td><td>hosted</td><td>full kit (88 tools)</td></tr></tbody></table></div>
-<h2 id="craftbooks-they-run-well">Craftbooks they run well</h2>
-<div class="hb-table-scroll"><table><thead><tr><th>Craftbook</th><th>What it does</th></tr></thead><tbody><tr><td><a href="../../craftbook/apply-review-findings/">Apply Review Findings</a></td><td>Take an existing review's findings and close them for real: triage each one against the current code, fix the real ones at their actual sites with the smallest correct change, verify per finding, and account for every finding end to end under an enforced review.</td></tr><tr><td><a href="../../craftbook/refactor-module/">Behavior-Preserving Refactor</a></td><td>Restructure code without changing what it does, with proof at every stage: a green suite recorded before anything moves (characterization tests pinned first when coverage is thin), small reversible stages that keep the tests green, a re-measured structure target, and an enforced independent review.</td></tr><tr><td><a href="../../craftbook/build-loop/">Build Loop</a></td><td>Generic make-something procedure: scope the work and lock concrete acceptance criteria, build it, evaluate the result against those criteria, and loop back to building until every criterion is met — then finish.</td></tr><tr><td><a href="../../craftbook/bug-fix-tdd/">Reproduce-Then-Fix a Bug</a></td><td>Fix a bug the disciplined way, with proof at every step: a failing test that reproduces it (verified red by a real test run), the smallest change at the real defect site, a green suite afterwards, and an enforced independent review of the fix.</td></tr><tr><td><a href="../../craftbook/test-suite-backfill/">Test Suite Backfill</a></td><td>Add tests that actually bite to untested code: rank the untested behavior by breakage cost, write tests in the project's real layout that a wrong implementation would fail, and prove the suite green with real run receipts — under an enforced independent review.</td></tr></tbody></table></div>
+<h2 id="plans-they-run-well">Plans they run well</h2>
+<div class="hb-table-scroll"><table><thead><tr><th>Plan</th><th>What it does</th></tr></thead><tbody><tr><td><a href="../../craftbook/apply-review-findings/">Apply Review Findings</a></td><td>Take an existing review's findings and close them for real: triage each one against the current code, fix the real ones at their actual sites with the smallest correct change, verify per finding, and account for every finding end to end under an enforced review.</td></tr><tr><td><a href="../../craftbook/refactor-module/">Behavior-Preserving Refactor</a></td><td>Restructure code without changing what it does, with proof at every stage: a green suite recorded before anything moves (characterization tests pinned first when coverage is thin), small reversible stages that keep the tests green, a re-measured structure target, and an enforced independent review.</td></tr><tr><td><a href="../../craftbook/build-loop/">Build Loop</a></td><td>Generic make-something procedure: scope the work and lock concrete acceptance criteria, build it, evaluate the result against those criteria, and loop back to building until every criterion is met — then finish.</td></tr><tr><td><a href="../../craftbook/bug-fix-tdd/">Reproduce-Then-Fix a Bug</a></td><td>Fix a bug the disciplined way, with proof at every step: a failing test that reproduces it (verified red by a real test run), the smallest change at the real defect site, a green suite afterwards, and an enforced independent review of the fix.</td></tr><tr><td><a href="../../craftbook/test-suite-backfill/">Test Suite Backfill</a></td><td>Add tests that actually bite to untested code: rank the untested behavior by breakage cost, write tests in the project's real layout that a wrong implementation would fail, and prove the suite green with real run receipts — under an enforced independent review.</td></tr></tbody></table></div>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../developer.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">
@@ -134,7 +134,7 @@
 <li class="hb-h2"><a href="#what-they-can-do">What they can do</a></li>
 <li class="hb-h3"><a href="#on-this-device">On this device</a></li>
 <li class="hb-h3"><a href="#as-models-grow">As models grow</a></li>
-<li class="hb-h2"><a href="#craftbooks-they-run-well">Craftbooks they run well</a></li>
+<li class="hb-h2"><a href="#plans-they-run-well">Plans they run well</a></li>
 </ul>
 </nav>
 </aside>

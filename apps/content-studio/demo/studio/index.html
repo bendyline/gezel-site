@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Managing Editor"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -44,7 +44,7 @@
       section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; margin: 0 0 1rem; min-width: 0; }
       .empty { color: var(--muted); font-style: italic; margin: 0; }
       .meta { display: block; color: var(--muted); font-size: 0.82rem; overflow-wrap: anywhere; }
-      .board { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem; }
+      .board { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 0.5rem; align-items: start; }
       .col { background: var(--col); border: 1px solid var(--line); border-radius: 6px; padding: 0.5rem; min-width: 0; }
       .col h3 { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.45rem; }
       .col h3 span { font-variant-numeric: tabular-nums; }
@@ -52,6 +52,11 @@
       .card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 0.45rem 0.55rem; font-size: 0.85rem; min-width: 0; }
       .card b { display: block; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
       .card.late { border-color: var(--late); }
+      .card .key { display: block; margin: 0.4rem 0 0; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .key { min-height: 30px; padding: 0.15rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.82rem; white-space: nowrap; }
+      .key:hover { background: var(--chip); }
+      .row-actions { text-align: right; white-space: nowrap; }
       .tag { display: inline-block; font-size: 0.74rem; padding: 0.02rem 0.38rem; border-radius: 4px; background: var(--chip); color: var(--ink); margin: 0.25rem 0.25rem 0 0; white-space: nowrap; }
       .tag.late { background: var(--late-bg); color: var(--late); }
       .tag.soon { background: var(--soon-bg); color: var(--soon); }
@@ -65,13 +70,16 @@
       .agenda .when.late { color: var(--late); }
       .agenda ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
       .agenda ul li { font-size: 0.9rem; overflow-wrap: anywhere; }
+      .agenda ul li .key { float: right; margin: 0 0 0.2rem 0.5rem; }
       .agenda ul li .tag { margin: 0 0.4rem 0 0; }
       .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 0.6rem; }
       .person { border: 1px solid var(--line); border-radius: 6px; padding: 0.6rem 0.7rem; min-width: 0; }
       .person h3 { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.95rem; font-weight: 600; margin: 0 0 0.35rem; }
       .person h3 span { color: var(--muted); font-weight: 400; font-size: 0.82rem; }
-      .person ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; font-size: 0.85rem; }
-      .table-wrap { overflow-x: auto; }
+      .person ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; font-size: 0.85rem; }
+      .person li { display: grid; justify-items: start; gap: 0.1rem; }
+      .person li .tag { margin: 0; }
+      .table-wrap { overflow-x: auto; position: relative; }
       table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 0.88rem; }
       th { text-align: left; font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 0.5rem 0.4rem; border-bottom: 1px solid var(--line); }
       td { padding: 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -89,6 +97,27 @@
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -106,9 +135,9 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <p class="sub" id="sub">Loading the studio…</p>
       <div class="tiles">
         <div class="tile"><b id="t-pipeline">0</b><span>In the pipeline</span></div>
-        <div class="tile soon"><b id="t-soon">0</b><span>Going out in 14 days</span></div>
-        <div class="tile late"><b id="t-late">0</b><span>Late</span></div>
-        <div class="tile ok"><b id="t-repurposed">–</b><span id="t-repurposed-label">Published pieces repurposed</span></div>
+        <div class="tile"><b id="t-soon">0</b><span>Going out in 14 days</span></div>
+        <div class="tile"><b id="t-late">0</b><span>Late</span></div>
+        <div class="tile" id="t-repurposed-tile"><b id="t-repurposed">–</b><span id="t-repurposed-label">Published pieces repurposed</span></div>
       </div>
       <section id="pipeline-section">
         <h2>Pipeline</h2>
@@ -124,10 +153,10 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <div class="people" id="people"></div>
       </section>
       <section id="repurpose-section">
-        <h2>Repurposing</h2>
+        <h2>Spin-offs</h2>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Piece</th><th>Newsletter</th><th>Social posts</th><th>Video chapters</th><th>More</th></tr></thead>
+            <thead><tr><th>Piece</th><th>Newsletter</th><th>Social posts</th><th>Video chapters</th><th>More</th><th><span class="sr-only">Actions</span></th></tr></thead>
             <tbody id="repurpose-body"></tbody>
           </table>
         </div>
@@ -281,6 +310,16 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
         function when(d) { return d < 0 ? -d + (d === -1 ? ' day late' : ' days late') : d === 0 ? 'today' : d === 1 ? 'tomorrow' : 'in ' + d + ' days'; }
         function label(format) { return String(format || 'article').replace(/-/g, ' '); }
+        function cap(text) { return String(text).charAt(0).toUpperCase() + String(text).slice(1); }
+        // Row action: a small key that opens a shared dialog with these values filled in.
+        function rowKey(text, tool, values, aria) {
+          var key = el('button', text, 'key');
+          key.type = 'button';
+          key.setAttribute('data-app-action', tool);
+          key.setAttribute('data-app-values', JSON.stringify(values));
+          key.setAttribute('aria-label', aria);
+          return key;
+        }
         function dateTag(day, done) {
           if (!day) return el('span', 'no date yet', 'tag');
           var d = daysLeft(day);
@@ -306,6 +345,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           document.getElementById('t-soon').textContent = soon.length;
           document.getElementById('t-late').textContent = late.length;
           document.getElementById('t-repurposed').textContent = published.length ? repurposed.length + ' of ' + published.length : '–';
+          document.getElementById('t-late').parentNode.classList.toggle('late', late.length > 0);
+          document.getElementById('t-repurposed-tile').classList.toggle('ok', published.length > 0 && repurposed.length === published.length);
           var bare = published.filter(function (p) { return !spinOf(p).length; });
           document.getElementById('sub').textContent = !pieces.length
             ? 'Nothing in the pipeline yet. Pitch a piece to your managing editor, or add one here.'
@@ -333,6 +374,10 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
               card.append(el('span', label(p.fields.format) + ' · ' + (p.fields.assignee || 'unassigned'), 'meta'));
               card.append(dateTag(stage === 'published' ? p.fields.publishedAt || p.fields.publishAt : p.fields.publishAt, stage === 'published'));
               if (stage === 'published') { var n = spinOf(p).length; card.append(el('span', n ? plural(n, 'spin-off', 'spin-offs') : 'not repurposed yet', 'tag ' + (n ? 'plan' : 'soon'))); }
+              var next = STAGES[STAGES.indexOf(stage) + 1];
+              card.append(stage === 'published'
+                ? rowKey('Plan spin-offs', 'repurpose_piece', { id: p.id }, 'Plan spin-offs for ' + p.fields.title)
+                : rowKey('Move', 'update_piece', next ? { id: p.id, status: next } : { id: p.id }, 'Move ' + p.fields.title));
               list.append(card);
             });
             if (stage === 'published' && mine.length > 4) list.append(el('p', '+' + (mine.length - 4) + ' earlier', 'meta'));
@@ -356,14 +401,16 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             byDay[key].forEach(function (i) {
               var row = el('li');
               if (i.piece) {
-                row.append(el('span', 'publishes', 'tag plan'));
+                row.append(rowKey('Move', 'update_piece', { id: i.piece.id, status: STAGES[STAGES.indexOf(i.piece.status) + 1] || i.piece.status }, 'Move ' + i.piece.fields.title));
+                row.append(el('span', cap(label(i.piece.fields.format)), 'tag plan'));
                 row.append(el('b', i.piece.fields.title));
-                row.append(el('span', label(i.piece.fields.format) + ', in ' + i.piece.status + ' · ' + (i.piece.fields.assignee || 'unassigned') + (key === 'late' ? ' · ' + when(daysLeft(i.day)) : ''), 'meta'));
+                row.append(el('span', 'In ' + i.piece.status + ' · ' + (i.piece.fields.assignee || 'unassigned') + (key === 'late' ? ' · ' + when(daysLeft(i.day)) : ''), 'meta'));
               } else {
                 var piece = pieces.find(function (p) { return p.id === i.spin.fields.pieceId; });
-                row.append(el('span', label(i.spin.fields.format), 'tag'));
+                row.append(rowKey('Move', 'update_spinoff', { id: i.spin.id, status: SPIN_STAGES[SPIN_STAGES.indexOf(i.spin.status) + 1] || i.spin.status }, 'Move the ' + label(i.spin.fields.format) + ' for ' + (piece ? piece.fields.title : i.spin.fields.title)));
+                row.append(el('span', cap(label(i.spin.fields.format)), 'tag'));
                 row.append(document.createTextNode((piece ? piece.fields.title : i.spin.fields.title) + (i.spin.fields.channel ? ' on ' + i.spin.fields.channel : '')));
-                row.append(el('span', i.spin.status + (i.spin.fields.assignee ? ' · ' + i.spin.fields.assignee : '') + (i.spin.fields.angle ? ' · ' + i.spin.fields.angle : '') + (key === 'late' ? ' · ' + when(daysLeft(i.day)) : ''), 'meta'));
+                row.append(el('span', cap(i.spin.status) + (i.spin.fields.assignee ? ' · ' + i.spin.fields.assignee : '') + (i.spin.fields.angle ? ' · ' + i.spin.fields.angle : '') + (key === 'late' ? ' · ' + when(daysLeft(i.day)) : ''), 'meta'));
               }
               list.append(row);
             });
@@ -379,7 +426,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var load = {}, names = [];
           function give(name, line, d) { var key = name || 'Unassigned'; if (!load[key]) { load[key] = []; names.push(key); } load[key].push({ line: line, d: d }); }
           open.forEach(function (p) { give(p.fields.assignee, p.fields.title + ' · ' + p.status, p.fields.publishAt); });
-          spinoffs.forEach(function (s) { if (s.status !== 'published' && s.fields.assignee) give(s.fields.assignee, label(s.fields.format) + ' · ' + s.status, s.fields.publishAt); });
+          spinoffs.forEach(function (s) { if (s.status !== 'published' && s.fields.assignee) give(s.fields.assignee, cap(label(s.fields.format)) + ' · ' + s.status, s.fields.publishAt); });
           names.sort(function (a, b) { return (a === 'Unassigned') - (b === 'Unassigned') || load[b].length - load[a].length || a.localeCompare(b); });
           if (!names.length) people.append(el('p', 'Nobody has open work.', 'empty'));
           names.forEach(function (name) {
@@ -397,7 +444,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var shown = pieces.filter(function (p) { return p.status === 'published' || spinOf(p).length; }).sort(function (a, b) {
             return String(b.fields.publishedAt || b.fields.publishAt || '').localeCompare(String(a.fields.publishedAt || a.fields.publishAt || ''));
           });
-          if (!shown.length) { var tr0 = el('tr'), td0 = el('td', 'Published pieces and their spin-offs appear here.', 'empty'); td0.colSpan = 5; tr0.append(td0); body.append(tr0); }
+          if (!shown.length) { var tr0 = el('tr'), td0 = el('td', 'Published pieces and their spin-offs appear here.', 'empty'); td0.colSpan = 6; tr0.append(td0); body.append(tr0); }
           shown.forEach(function (p) {
             var tr = el('tr'), name = el('td'), mine = spinOf(p);
             name.append(el('span', p.fields.title));
@@ -407,14 +454,17 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
               var cell = el('td'), these = mine.filter(function (s) { return formats.indexOf(s.fields.format) >= 0; });
               // A published piece is expected to get a newsletter and social posts; chapters only when it is a video or podcast.
               var expected = p.status === 'published' && (formats[0] === 'newsletter' || formats[0] === 'social-post' || (formats[0] === 'video-chapters' && /video|podcast/.test(p.fields.format)));
-              if (!these.length) cell.append(el('span', expected ? 'not yet' : '–', expected ? 'tag soon' : 'meta'));
+              if (!these.length) cell.append(el('span', expected ? 'Not yet' : '–', expected ? 'tag soon' : 'meta'));
               else {
                 var out = these.filter(function (s) { return s.status === 'published'; }).length;
-                cell.append(el('span', these.length === 1 ? these[0].status : out + ' of ' + these.length + ' out', 'tag ' + (out === these.length ? 'ok' : 'plan')));
-                if (formats.length > 1) cell.append(el('span', these.map(function (s) { return label(s.fields.format); }).filter(function (v, i, a) { return a.indexOf(v) === i; }).join(', '), 'meta'));
+                cell.append(el('span', these.length === 1 ? cap(these[0].status) : out + ' of ' + these.length + ' out', 'tag ' + (out === these.length ? 'ok' : 'plan')));
+                if (formats.length > 1) cell.append(el('span', these.map(function (s) { return cap(label(s.fields.format)); }).filter(function (v, i, a) { return a.indexOf(v) === i; }).join(', '), 'meta'));
               }
               tr.append(cell);
             });
+            var acts = el('td', undefined, 'row-actions');
+            if (p.status === 'published') acts.append(rowKey('Plan', 'repurpose_piece', { id: p.id }, 'Plan spin-offs for ' + p.fields.title));
+            tr.append(acts);
             body.append(tr);
           });
         }

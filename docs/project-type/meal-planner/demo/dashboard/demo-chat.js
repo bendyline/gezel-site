@@ -92,7 +92,7 @@ window.demoChat = (function () {
 
   function tonight(ctx) {
     return state(ctx).then(function (s) {
-      var today = DAYS[(new Date().getUTCDay() + 6) % 7];
+      var today = DAYS[(new Date().getDay() + 6) % 7];
       var meal = s.days[today];
       return meal
         ? 'Tonight is ' + meal.toLowerCase() + '. Want me to swap it for something quicker?'

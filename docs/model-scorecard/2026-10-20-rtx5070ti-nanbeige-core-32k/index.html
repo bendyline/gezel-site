@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a href="../../roles-index/">Gezel Roles</a>
-<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../roles-index/">Crew roles</a>
+<a href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a aria-current="true" href="../../architecture/">Technical</a>
 <a href="../../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a href="../../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -146,7 +148,7 @@
 <tr data-hb-model="nanbeige4.2-3b" data-hb-tier="tiny"><td>Nanbeige 4.2 (3B, Q4)</td><td>N12 · 10-22 20:05–10-22 20:21 UTC</td><td>3</td><td>42.39 (41.69–43.41; n=3)</td><td>1,276.71 (1,201.48–1,543.61; n=3)</td><td>3.9 (1.7–7.7; n=3)</td><td>9.12 (3.86–11.68; n=3)</td><td>8.02 (8.02–8.02; n=3)</td></tr>
 </tbody></table></div>
 <h6>Artifact reviews</h6>
-<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Judge: codex-inline/current-session. Review identity and limitations are recorded with the evaluation.</p>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Judge: the OpenAI Codex agent that ran the round (in-session review). Review identity and limitations are recorded with the evaluation.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Code quality</th><th scope="col">Document quality</th><th scope="col">HTML quality</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th></tr></thead><tbody>
 <tr data-hb-model="nanbeige4.2-3b" data-hb-tier="tiny"><td>Nanbeige 4.2 (3B, Q4)</td><td>N1 · 10-20 16:55–10-20 17:59 UTC</td><td>—</td><td>—</td><td>3.63/10 (2 pieces)</td><td>0</td><td>1</td></tr>
 <tr data-hb-model="nanbeige4.2-3b" data-hb-tier="tiny"><td>Nanbeige 4.2 (3B, Q4)</td><td>N2 · 10-20 18:15–10-20 18:22 UTC</td><td>2.75/10 (1 pieces)</td><td>—</td><td>—</td><td>0</td><td>1</td></tr>
@@ -185,7 +187,8 @@ input limit. Ten attempts produced no artifact to score. The four task
 rubrics stay separate: the <strong>Artifact reviews</strong> tables show HTML, code, data
 and document quality means with eligible artifact counts, plus counts for
 missing artifacts and excluded reviews. These were unblinded reviews by
-<code>codex-inline/current-session</code>; no combined quality score is calculated.</p>
+the OpenAI Codex agent that ran the round, in the same session; no combined
+quality score is calculated.</p>
 <p>The <strong>Task performance</strong> tables show output and prefill speed, wall time,
 peak system RSS and peak GPU memory as per-trial medians with ranges and
 sample counts. They include available observations from all attempts,
@@ -195,7 +198,7 @@ keeps its own measurement period, including Nanbeige's slower and later
 faster periods. <a href="../../assets/scorecards/2026-10-19-windows-small-model-core/README.md">Download notes</a>
 explain provenance, exclusions, memory headroom and validation.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../2026-10-20-rtx5070ti-nanbeige-core-32k.md">Read it as markdown, for AI agents</a></p>
 </main>
 
 </div>

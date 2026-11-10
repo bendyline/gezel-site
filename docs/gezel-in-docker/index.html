@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gezel in Docker — Gezel Handboek</title>
-<meta name="description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put the crew to work on a folder.">
+<meta name="description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put Gezel to work on a folder.">
 <link rel="canonical" href="https://gezel.com/docs/gezel-in-docker/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Gezel">
 <meta property="og:url" content="https://gezel.com/docs/gezel-in-docker/">
 <meta property="og:title" content="Gezel in Docker">
 <meta name="twitter:title" content="Gezel in Docker">
-<meta property="og:description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put the crew to work on a folder.">
-<meta name="twitter:description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put the crew to work on a folder.">
+<meta property="og:description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put Gezel to work on a folder.">
+<meta name="twitter:description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put Gezel to work on a folder.">
 <meta property="og:image" content="https://gezel.com/og/gezel-in-docker.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
-<a href="../roles-index/">Gezel Roles</a>
-<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
 <a href="../project-types-index/">Project Types</a>
 <a aria-current="true" href="../architecture/">Technical</a>
 <a href="../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -125,9 +127,9 @@
 <p>The Gezel image is the whole of Gezel in one container: the service, the web version of the workshop, the command line, and every engine that runs models on your own hardware. Nothing else needs installing. What it downloads is models: the one you choose, and smaller ones it uses to search your files and to read pictures, along with a web browser for tasks that visit websites.</p>
 <p>You need Docker. On Linux, Docker Engine; on Windows and macOS, Docker Desktop works too, with the limits under <a href="#good-to-know">Good to know</a>.</p>
 <h2 id="your-workshop-in-a-browser">Your workshop in a browser</h2>
-<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel
+<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyline/gezel
 docker logs gezel</code></pre>
-<p>The log ends with a link like <code>http://localhost:6228/?setup=…</code>. Open it, pick a name and a password, and you have the first account on this Gezel. The link works once, for an hour; if it runs out, run <code>docker logs gezel</code> again after opening <code>http://localhost:6228</code>, and a new one appears.</p>
+<p>The log ends with a link like <code>http://localhost:6230/?setup=…</code>. Open it, pick a name and a password, and you have the first account on this Gezel. The link works once, for an hour; if it runs out, run <code>docker logs gezel</code> again after opening <code>http://localhost:6230</code>, and a new one appears.</p>
 <p>Everything Gezel keeps (your crew, projects, chats, memories and models) lives in the <code>gezel</code> volume, so removing the container and starting a new one picks up where you left off.</p>
 <h3 id="with-a-graphics-card">With a graphics card</h3>
 <div class="hb-table-scroll"><table><thead><tr><th>Your GPU</th><th>Add to the command</th><th>Use the image</th></tr></thead><tbody><tr><td>NVIDIA</td><td><code>--gpus all</code></td><td><code>ghcr.io/bendyline/gezel:cuda</code></td></tr><tr><td>AMD or Intel</td><td><code>--device /dev/dri --group-add video --group-add $(getent group render | cut -d: -f3)</code></td><td><code>ghcr.io/bendyline/gezel:vulkan</code></td></tr></tbody></table></div>
@@ -135,11 +137,11 @@ docker logs gezel</code></pre>
 <h2 id="local-ai-for-your-other-apps">Local AI for your other apps</h2>
 <p>Your other programs can use Gezel's models through the same kind of web address they would use for OpenAI. Make a key for each program:</p>
 <pre class="squisq-code-block"><code class="language-sh">docker exec gezel gezel integrations token create my-notebook</code></pre>
-<p>Then point the program at <code>http://localhost:6228/v1</code> with that key. The key appears in Settings → Integrations, where you can see when it was last used and revoke it. To have a model ready without opening the workshop, name it when you start the container:</p>
-<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel \
+<p>Then point the program at <code>http://localhost:6230/v1</code> with that key. The key appears in Settings → Integrations, where you can see when it was last used and revoke it. To have a model ready without opening the workshop, name it when you start the container:</p>
+<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel \
   -e GEZEL_PULL_MODEL=&lt;model id&gt; ghcr.io/bendyline/gezel</code></pre>
 <p><code>docker exec gezel gezel model list --available</code> lists the model ids.</p>
-<h2 id="put-the-crew-to-work-on-a-folder">Put the crew to work on a folder</h2>
+<h2 id="put-gezel-to-work-on-a-folder">Put Gezel to work on a folder</h2>
 <p>To run one craftbook on the folder you are in and collect what it makes:</p>
 <pre class="squisq-code-block"><code class="language-sh">docker run --rm -v "$PWD:$PWD" -w "$PWD" -v gezel:/gezel ghcr.io/bendyline/gezel \
   do summarize-long "Summarize these notes for the board" --out ./gezel-out</code></pre>
@@ -155,11 +157,11 @@ docker logs gezel</code></pre>
 <p>If someone forgets their password, anyone who can sign in can set a new one in Settings → Accounts. If nobody can sign in, set one from the computer running Docker:</p>
 <pre class="squisq-code-block"><code class="language-sh">docker exec -it gezel gezel account reset-password Ana</code></pre>
 <p>To start without the setup link (for a server you set up by script), give the first account's name and keep its password in a file:</p>
-<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel \
+<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel \
   -e GEZEL_OWNER_NAME=you -e GEZEL_OWNER_PASSWORD_FILE=/run/secrets/owner \
   -v ./owner-password.txt:/run/secrets/owner:ro ghcr.io/bendyline/gezel</code></pre>
 <h2 id="security-level-and-activity">Security level and activity</h2>
-<p>A new container starts at the <code>lockdown</code> <a href="../security-model/">security level</a> and in the <strong>Reactive + tasks</strong> <a href="../gezel-on-a-server/#choose-the-activity-mode">activity mode</a>: the crew answers, runs the tasks you start and keeps to schedules, but does not start work of its own, which on a server would compete with your requests. To start differently, set them for the first start:</p>
+<p>A new container starts at the <code>lockdown</code> <a href="../security-model/">security level</a> and in the <strong>Reactive + tasks</strong> <a href="../gezel-on-a-server/#choose-the-activity-mode">activity mode</a>: Gezel answers, runs the tasks you start and keeps to schedules, but does not start work of its own, which on a server would compete with your requests. To start differently, set them for the first start:</p>
 <pre class="squisq-code-block"><code class="language-sh">-e GEZEL_INITIAL_SECURITY_LEVEL=super-lockdown -e GEZEL_INITIAL_MODE=reactive+tasks</code></pre>
 <p>They apply only to a new volume. After that, change them in Settings or with <code>docker exec gezel gezel security level set …</code> and <code>docker exec gezel gezel mode …</code>.</p>
 <h2 id="reaching-it-from-other-devices">Reaching it from other devices</h2>
@@ -170,13 +172,14 @@ docker logs gezel</code></pre>
 <p>Pull the new image and start a new container on the same volume:</p>
 <pre class="squisq-code-block"><code class="language-sh">docker pull ghcr.io/bendyline/gezel
 docker rm -f gezel
-docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel</code></pre>
+docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyline/gezel</code></pre>
+<p>The 1.2.12 image answered on port 6228, and newer images answer on 6230. If you started Gezel with <code>-p 127.0.0.1:6228:6228</code>, start the new container with the command above. Everything in the volume carries over, accounts and keys included: sign in again at <code>http://localhost:6230</code>, and point programs that use Gezel's models at <code>http://localhost:6230/v1</code>. To keep using 6228, start it with <code>-p 127.0.0.1:6228:6228 -e GEZEL_CONTAINER_PORT=6228</code> instead.</p>
 <p>Image versions match the <a href="../cli-reference/">command line's</a>: <code>ghcr.io/bendyline/gezel:1.2.12</code> is the same Gezel as <code>npm install -g @bendyline/gezel-cli@1.2.12</code>. The first image is 1.2.12. The same images are on Docker Hub as <code>bendyline/gezel</code>.</p>
 <p>Back up the <code>gezel</code> volume like any other data. It holds plain files; see <a href="../where-files-live/">Where files live</a>.</p>
 <h2 id="good-to-know">Good to know</h2>
-<ul><li><p><strong>The Gezel app uses port 6228 too.</strong> If it runs on the same computer, publish another port and tell the container the address to print in its setup link: <code>-p 127.0.0.1:6300:6228 -e GEZEL_PUBLIC_URL=http://localhost:6300</code>, then open <code>http://localhost:6300</code>.</p></li><li><p><strong>On a Mac, Docker cannot use the graphics chip</strong>, so models run on the processor and are slow. Use the Gezel app on a Mac.</p></li><li><p><strong>Docker Desktop on Windows</strong> passes NVIDIA cards through; it has no Vulkan, so AMD and Intel cards are not used there.</p></li><li><p><strong>The NVIDIA image for ARM computers</strong> is built for DGX Spark (GB10).</p></li><li><p><strong>Files Gezel writes into a folder you mounted</strong> belong to user 10001. Add <code>--user "$(id -u):$(id -g)"</code> to keep them yours.</p></li><li><p><strong>Some craftbook steps run small scripts that must not reach the network.</strong> The image runs them in a network sandbox. If a step says no sandbox is available, update to a newer image.</p></li></ul>
+<ul><li><p><strong>The container uses port 6230, so it can run beside the Gezel app</strong>, which uses 6228. To publish another port, tell the container the address to print in its setup link: <code>-p 127.0.0.1:6300:6230 -e GEZEL_PUBLIC_URL=http://localhost:6300</code>, then open <code>http://localhost:6300</code>.</p></li><li><p><strong>On a Mac, Docker cannot use the graphics chip</strong>, so models run on the processor and are slow. Use the Gezel app on a Mac.</p></li><li><p><strong>Docker Desktop on Windows</strong> passes NVIDIA cards through; it has no Vulkan, so AMD and Intel cards are not used there.</p></li><li><p><strong>The NVIDIA image for ARM computers</strong> is built for DGX Spark (GB10).</p></li><li><p><strong>Files Gezel writes into a folder you mounted</strong> belong to user 10001. Add <code>--user "$(id -u):$(id -g)"</code> to keep them yours.</p></li><li><p><strong>Some craftbook steps run small scripts that must not reach the network.</strong> The image runs them in a network sandbox. If a step says no sandbox is available, update to a newer image.</p></li></ul>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../gezel-in-docker.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">
@@ -185,7 +188,7 @@ docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyl
 <li class="hb-h2"><a href="#your-workshop-in-a-browser">Your workshop in a browser</a></li>
 <li class="hb-h3"><a href="#with-a-graphics-card">With a graphics card</a></li>
 <li class="hb-h2"><a href="#local-ai-for-your-other-apps">Local AI for your other apps</a></li>
-<li class="hb-h2"><a href="#put-the-crew-to-work-on-a-folder">Put the crew to work on a folder</a></li>
+<li class="hb-h2"><a href="#put-gezel-to-work-on-a-folder">Put Gezel to work on a folder</a></li>
 <li class="hb-h2"><a href="#people-and-passwords">People and passwords</a></li>
 <li class="hb-h2"><a href="#security-level-and-activity">Security level and activity</a></li>
 <li class="hb-h2"><a href="#reaching-it-from-other-devices">Reaching it from other devices</a></li>

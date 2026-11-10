@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Email / Inbox</h1>
 <p class="lede">Sync an email account into a project as canonical markdown, then triage, draft, and summarize correspondence with a gezel.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/email/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/email">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/email/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo demo-native" aria-labelledby="try">
@@ -57,7 +57,7 @@
 <li><a href="/#download">Download Gezel</a> for Mac, Windows or Linux. It’s free.</li>
 <li>Choose <strong>New project</strong>, then <strong>Communication</strong>, then <strong>Email / Inbox</strong>.</li>
 
-<li>Your crew takes it from there, on the model you choose.</li>
+<li>Gezel takes it from there, on the model you choose.</li>
 </ol>
 </section>
 <section class="more" aria-labelledby="more"><h2 id="more">More apps to try</h2><ul class="app-grid app-grid-small"><li class="app-card" data-category="communication">
@@ -94,8 +94,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"imports":[{"id":"inbox","source":"workspace","path":"inbox","accept":[".pdf",".png",".jpg",".jpeg",".webp",".heic",".txt",".md"],"maxFileBytes":26214400}],"companion":{"role":"Bookkeeper"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -33,7 +33,12 @@
       main { max-width: 900px; margin: 0 auto; }
       h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.5rem; font-weight: 400; margin: 0 0 0.2rem; }
       h2 { font-family: var(--font-heading, Georgia, serif); font-size: 1.1rem; font-weight: 400; margin: 0 0 0.6rem; }
-      h3 { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.5rem; }
+      h3, main h3 { font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.5rem; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .key { min-height: 32px; padding: 0.2rem 0.65rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.85rem; white-space: nowrap; }
+      .key:hover { background: var(--chip); }
+      .row-actions { text-align: right; white-space: nowrap; }
+      .file-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem; align-items: center; }
       .sub { color: var(--muted); margin: 0 0 1rem; }
       .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; margin: 0 0 1.2rem; }
       .tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem 0.9rem; min-width: 0; }
@@ -47,23 +52,22 @@
       .empty { color: var(--muted); font-style: italic; margin: 0; }
       .meta { display: block; color: var(--muted); font-size: 0.85rem; overflow-wrap: anywhere; }
       .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
-      .list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem; align-items: baseline; }
+      .list li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 0.5rem; align-items: baseline; }
       .list b { font-weight: 600; }
       .checklist { list-style: none; margin: 0 0 0.9rem; padding: 0; display: grid; gap: 0.45rem; }
-      .checklist li { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr); gap: 0.6rem; align-items: start; }
+      .checklist li { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr) auto; gap: 0.6rem; align-items: start; }
       .box { width: 1.1rem; height: 1.1rem; margin-top: 0.15rem; border: 1.5px solid var(--muted); border-radius: 4px; position: relative; }
+      .box.tickable { cursor: pointer; }
       .box.done { background: var(--accent); border-color: var(--accent); }
       .box.done::after { content: ''; position: absolute; left: 0.32rem; top: 0.08rem; width: 0.3rem; height: 0.6rem; border: solid var(--on-accent); border-width: 0 2px 2px 0; transform: rotate(45deg); }
       .checklist .done-text { color: var(--muted); }
       .close-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
-      .primary { min-height: 40px; padding: 0.4rem 0.9rem; border: 1px solid var(--accent); border-radius: 6px; background: var(--accent); color: var(--on-accent); font: inherit; font-weight: 600; cursor: pointer; }
-      .primary:disabled { background: transparent; color: var(--muted); border-color: var(--line); cursor: not-allowed; font-weight: 400; }
       .closed-note { color: var(--ok); font-weight: 600; }
       .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.75rem 0 0; }
       .chip { display: inline-block; font-size: 0.78rem; padding: 0.05rem 0.45rem; border-radius: 4px; background: var(--chip); color: var(--ink); }
       .chip.unsorted { background: var(--soon-bg); color: var(--soon); }
       .chip.ok { background: var(--ok-bg); color: var(--ok); }
-      .table-wrap { overflow-x: auto; }
+      .table-wrap { overflow-x: auto; position: relative; }
       table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
       th { text-align: left; font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 0.5rem 0.4rem; border-bottom: 1px solid var(--line); }
       td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -89,6 +93,27 @@
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -105,8 +130,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <h1>Books and month close</h1>
       <p class="sub" id="sub">Loading the books…</p>
       <div class="tiles">
-        <div class="tile soon"><b id="t-waiting">0</b><span>Receipts waiting</span></div>
-        <div class="tile soon"><b id="t-unsorted">0</b><span>Need a category</span></div>
+        <div class="tile"><b id="t-waiting">0</b><span>Receipts waiting</span></div>
+        <div class="tile"><b id="t-unsorted">0</b><span>Need a category</span></div>
         <div class="tile"><b id="t-close">–</b><span id="t-close-label">Month close</span></div>
         <div class="tile" id="t-net-tile"><b id="t-net">–</b><span id="t-net-label">Net profit</span></div>
       </div>
@@ -130,7 +155,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <p class="sub" id="close-sub"></p>
         <ul class="checklist" id="checklist"></ul>
         <div class="close-row">
-          <button type="button" class="primary" id="close-button" disabled>Close the month</button>
+          <button type="button" class="app-primary" id="close-button" disabled>Close the month</button>
           <span id="close-status" role="status"></span>
         </div>
         <div class="chips" id="closed-months"></div>
@@ -150,7 +175,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <h2>Ledger</h2>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Date</th><th>Payee</th><th>Category</th><th class="num">Amount</th><th>Receipt</th></tr></thead>
+            <thead><tr><th>Date</th><th>Payee</th><th>Category</th><th class="num">Amount</th><th><span class="sr-only">Actions</span></th></tr></thead>
             <tbody id="ledger-body"></tbody>
           </table>
         </div>
@@ -655,6 +680,15 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: currency }).format(cents / 100); } catch (_) { return money(cents); }
         }
         function label(category) { return LABELS[category] || category; }
+        // Row action: opens "Give an entry its category" with this entry chosen.
+        function sortKey(e) {
+          var key = el('button', 'Sort', 'key');
+          key.type = 'button';
+          key.setAttribute('aria-label', 'Give ' + payeeOf(e) + ' a category');
+          key.setAttribute('data-app-action', 'categorize_entry');
+          key.setAttribute('data-app-values', JSON.stringify({ id: e.id }));
+          return key;
+        }
 
         var state = { month: '', ready: false, closed: false };
         function render(ledgerDoc, closeDoc, files) {
@@ -672,6 +706,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
 
           document.getElementById('t-waiting').textContent = waiting.length;
           document.getElementById('t-unsorted').textContent = unsorted.length;
+          document.getElementById('t-waiting').parentNode.classList.toggle('soon', waiting.length > 0);
+          document.getElementById('t-unsorted').parentNode.classList.toggle('soon', unsorted.length > 0);
           document.getElementById('t-close').textContent = view.closed ? 'Closed' : (view.steps.length - view.left.length) + ' of ' + view.steps.length;
           document.getElementById('t-close-label').textContent = monthName(closing).split(' ')[0] + ' close';
           document.getElementById('t-net').textContent = a.count ? cash(a.netCents) : '–';
@@ -690,8 +726,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           unsorted.forEach(function (e) {
             var li = el('li'), what = el('div');
             what.append(el('b', payeeOf(e)));
-            what.append(el('span', niceDate(entryDate(e)) + ' · ' + e.id + (e.note ? ' · ' + e.note : ''), 'meta'));
-            li.append(what, el('span', (e.kind === 'in' ? '+' : '') + cash(e.amountCents), 'num' + (e.kind === 'in' ? ' in' : '')));
+            what.append(el('span', niceDate(entryDate(e)) + (e.note ? ' · ' + e.note : ''), 'meta'));
+            li.append(what, el('span', (e.kind === 'in' ? '+' : '') + cash(e.amountCents), 'num' + (e.kind === 'in' ? ' in' : '')), sortKey(e));
             unsortedList.append(li);
           });
           var bookedCount = names.length - waiting.length;
@@ -699,11 +735,14 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
 
           document.getElementById('close-sub').textContent = view.closed
             ? monthName(closing) + ' is closed' + (view.closedOn ? ' as of ' + niceDate(view.closedOn) : '') + '. Its entries are locked.'
-            : 'Closing ' + monthName(closing) + '. Two steps check themselves; tell your bookkeeper as the others are done.';
+            : view.ready
+              ? 'Every step of ' + monthName(closing) + ' is done, so you can close it.'
+              : 'Closing ' + monthName(closing) + ': ' + plural(view.left.length, 'step', 'steps') + ' left before it can close. Two check themselves; check off the others as they are done.';
           var list = document.getElementById('checklist');
           list.replaceChildren();
           view.steps.forEach(function (s) {
             var li = el('li'), box = el('span', undefined, 'box' + (s.done ? ' done' : '')), text = el('div');
+            var tickable = !view.closed && !s.done && s.id !== 'categories';
             box.setAttribute('role', 'img');
             box.setAttribute('aria-label', s.done ? 'Done' : 'Not done');
             text.append(el('span', s.label, s.done ? 'done-text' : ''));
@@ -714,6 +753,18 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
                 : s.done ? (s.on ? 'Done ' + niceDate(s.on) : 'Done') + (s.note ? ' · ' + s.note : '') : 'Not done yet';
             text.append(el('span', meta, 'meta'));
             li.append(box, text);
+            if (tickable) {
+              var tick = el('button', 'Check off', 'key');
+              tick.type = 'button';
+              tick.setAttribute('aria-label', 'Check off: ' + s.label);
+              tick.setAttribute('data-app-action', 'tick_close_step');
+              tick.setAttribute('data-app-values', JSON.stringify({ step: s.id }));
+              li.append(tick);
+              // The box opens the same dialog, so it does what it looks like. It forwards to the key rather than
+              // carrying the action itself, because older hosts hide every [data-app-action] element.
+              box.classList.add('tickable');
+              box.addEventListener('click', function () { tick.click(); });
+            }
             list.append(li);
           });
           var button = document.getElementById('close-button');
@@ -756,11 +807,13 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var rows = entries.slice().sort(function (x, y) { return entryDate(y).localeCompare(entryDate(x)) || String(y.id).localeCompare(String(x.id), undefined, { numeric: true }); });
           if (!rows.length) { var tr0 = el('tr'), td0 = el('td', 'Nothing booked yet.', 'empty'); td0.colSpan = 5; tr0.append(td0); ledgerBody.append(tr0); }
           rows.slice(0, 300).forEach(function (e) {
-            var tr = el('tr'), who = el('td'), cat = el('td');
+            var tr = el('tr'), who = el('td'), cat = el('td'), actions = el('td', undefined, 'row-actions');
             who.append(el('span', payeeOf(e)));
-            if (e.note) who.append(el('span', e.note, 'meta'));
+            var meta = [e.note, e.data && e.data.file ? 'Receipt ' + String(e.data.file).split('/').pop() : ''].filter(Boolean).join(' · ');
+            if (meta) who.append(el('span', meta, 'meta'));
             cat.append(el('span', label(e.category), 'chip' + (e.category === 'uncategorized' ? ' unsorted' : '')));
-            tr.append(el('td', niceDate(entryDate(e))), who, cat, el('td', (e.kind === 'in' ? '+' : '') + cash(e.amountCents), 'num' + (e.kind === 'in' ? ' in' : '')), el('td', e.data && e.data.file ? String(e.data.file).split('/').pop() : '–', 'meta'));
+            if (e.category === 'uncategorized') actions.append(sortKey(e));
+            tr.append(el('td', niceDate(entryDate(e))), who, cat, el('td', (e.kind === 'in' ? '+' : '') + cash(e.amountCents), 'num' + (e.kind === 'in' ? ' in' : '')), actions);
             ledgerBody.append(tr);
           });
           return waiting;
@@ -775,7 +828,13 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           if (!shown.length) holder.append(el('p', files.length ? 'Every receipt is booked.' : 'Receipts you add appear here until they are booked.', 'empty'));
           if (!components || !components.fileCard) return;
           shown.forEach(function (file) {
-            var mount = el('div'); holder.append(mount);
+            var row = el('div', undefined, 'file-row'), mount = el('div'), book = el('button', 'Book it', 'key');
+            book.type = 'button';
+            book.setAttribute('aria-label', 'Book the receipt ' + file.name);
+            book.setAttribute('data-app-action', 'record_entry');
+            book.setAttribute('data-app-values', JSON.stringify({ file: file.name }));
+            row.append(mount, book);
+            holder.append(row);
             cards.push(components.fileCard(mount, { file: Object.assign({ source: 'workspace' }, file), variant: 'row' }));
           });
         }

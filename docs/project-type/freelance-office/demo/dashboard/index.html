@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Office Administrator"}}</script>
-<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -32,19 +32,21 @@
       .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
       .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 1rem; }
       .tile { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.7rem 0.85rem; }
-      .tile .n { font-size: 1.35rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+      .tile .n { font-size: 1.35rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
       .tile .n.warn { color: var(--warn); }
       .tile .n.good { color: var(--good); }
-      .tile .l { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+      .tile .l { font-size: 0.85rem; color: var(--muted); }
       .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
       .col { min-width: 0; }
       .col-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 0.4rem; font-size: 0.72rem; }
-      .col-head h2 { font-size: inherit; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0; font-weight: 600; }
+      .col-head h2 { font-family: var(--font-ui, system-ui, sans-serif); font-size: inherit; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0; font-weight: 600; }
       .col-head .count { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
       .card { background: var(--card); border: 1px solid var(--track); border-radius: 6px; padding: 0.5rem 0.6rem; margin-bottom: 0.45rem; font-size: 0.85rem; }
       .card .co { font-weight: 600; overflow-wrap: anywhere; }
       .card .amt { color: var(--muted); font-variant-numeric: tabular-nums; }
       .card .note { color: var(--muted); font-size: 0.8rem; overflow-wrap: anywhere; margin-top: 0.1rem; }
+      .key { margin-top: 0.45rem; min-height: 30px; padding: 0.2rem 0.65rem; border: 1px solid var(--track); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.82rem; }
+      .key:hover { border-color: var(--muted); }
       .chip { display: inline-block; border: 1px solid var(--warn); color: var(--warn); border-radius: 4px; padding: 0 0.3rem; font-size: 0.7rem; line-height: 1.4; margin-left: 0.3rem; }
       .empty { color: var(--muted); font-style: italic; background: var(--card); border: 1px dashed var(--track); border-radius: 10px; padding: 0.85rem 1.25rem; text-align: center; margin-bottom: 0.75rem; }
       @media (max-width: 640px) { .board, .tiles { grid-template-columns: 1fr; } }
@@ -77,6 +79,27 @@
     </style>
   <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
   <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -86,15 +109,15 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
     <main>
 <p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
-        <span><strong>Demo mode</strong> — sample data stays in this page.</span>
+        <span><strong>Demo mode</strong>: a freelance designer’s sample invoice book. Changes stay in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
       </div>
       <h1>Freelance office</h1>
       <p class="sub" id="sub">Loading the invoice book…</p>
       <div class="tiles">
         <div class="tile"><div class="n" id="t-out">—</div><div class="l">Outstanding</div></div>
-        <div class="tile"><div class="n warn" id="t-over">—</div><div class="l">Overdue</div></div>
-        <div class="tile"><div class="n good" id="t-paid">—</div><div class="l">Paid this month</div></div>
+        <div class="tile"><div class="n" id="t-over">—</div><div class="l">Overdue</div></div>
+        <div class="tile"><div class="n" id="t-paid">—</div><div class="l">Paid this month</div></div>
       </div>
       <div class="empty" id="empty" hidden>No invoices yet — tell your office administrator when you bill something.</div>
       <div class="board" id="board"></div>
@@ -181,6 +204,18 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
         function fmt(cents) { var abs = Math.abs(cents); return (cents < 0 ? '-' : '') + String(Math.floor(abs / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.' + String(abs % 100).padStart(2, '0'); }
         function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+        function el(tag, text, cls) { var e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; }
+        // People read dates, not ISO strings: "2026-12-07" shows as "Dec 7".
+        function niceDate(day) { var d = new Date(String(day).slice(0, 10) + 'T12:00:00'); return isFinite(d) ? d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : String(day); }
+        // A key on a card opens that action's dialog with the invoice already chosen (the app shell wires data-app-action).
+        function rowKey(label, tool, id, aria) {
+          var b = el('button', label, 'key');
+          b.type = 'button';
+          b.setAttribute('aria-label', aria);
+          b.setAttribute('data-app-action', tool);
+          b.setAttribute('data-app-values', JSON.stringify({ id: id }));
+          return b;
+        }
 
         function render(book) {
           var records = Array.isArray(book.records) ? book.records : [];
@@ -200,25 +235,33 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           document.getElementById('t-out').textContent = fmt(outstanding);
           document.getElementById('t-over').textContent = overdue;
           document.getElementById('t-paid').textContent = fmt(paidMonth);
+          document.getElementById('t-over').classList.toggle('warn', overdue > 0);
+          document.getElementById('t-paid').classList.toggle('good', paidMonth > 0);
           document.getElementById('empty').hidden = records.length > 0;
 
-          document.getElementById('board').innerHTML = STAGES.map(function (stage) {
+          var board = document.getElementById('board');
+          board.replaceChildren();
+          STAGES.forEach(function (stage) {
             var here = records.filter(function (r) { return r.status === stage; });
-            var cards = here.map(function (r) {
-              var due = r.fields && r.fields.dueAt ? Date.parse(r.fields.dueAt) : NaN;
-              var isOver = stage === 'sent' && isFinite(due) && due < now;
-              var when = stage === 'paid' && r.updatedAt
-                ? ' · paid ' + esc(String(r.updatedAt).slice(0, 10))
-                : r.fields && r.fields.dueAt ? ' · due ' + esc(String(r.fields.dueAt).slice(0, 10)) : '';
-              return '<div class="card"><div class="co">' + esc((r.fields && r.fields.client) || r.id) +
-                (isOver ? '<span class="chip">overdue</span>' : '') + '</div><div class="amt">' +
-                fmt((r.fields && r.fields.amountCents) || 0) + when + '</div>' +
-                (r.fields && r.fields.note ? '<div class="note">' + esc(String(r.fields.note)) + '</div>' : '') +
-                '</div>';
-            }).join('');
+            var col = el('div', undefined, 'col'), head = el('div', undefined, 'col-head'), title = el('h2', cap(stage));
             // Stable heading ids keep the section links working after each repaint.
-            return '<div class="col"><div class="col-head"><h2 id="stage-' + stage + '">' + cap(stage) + '</h2><span class="count">' + here.length + '</span></div>' + cards + '</div>';
-          }).join('');
+            title.id = 'stage-' + stage;
+            head.append(title, el('span', String(here.length), 'count'));
+            col.append(head);
+            here.forEach(function (r) {
+              var f = r.fields || {}, due = f.dueAt ? Date.parse(f.dueAt) : NaN, name = f.client || r.id;
+              var isOver = stage === 'sent' && isFinite(due) && due < now;
+              var when = stage === 'paid' && r.updatedAt ? ' · paid ' + niceDate(r.updatedAt) : f.dueAt ? ' · due ' + niceDate(f.dueAt) : '';
+              var card = el('div', undefined, 'card'), co = el('div', name, 'co');
+              if (isOver) co.append(el('span', 'overdue', 'chip'));
+              card.append(co, el('div', fmt(f.amountCents || 0) + when, 'amt'));
+              if (f.note) card.append(el('div', String(f.note), 'note'));
+              if (stage === 'draft') card.append(rowKey('Mark sent', 'invoice_sent', r.id, 'Mark the ' + name + ' invoice sent'));
+              if (stage === 'sent') card.append(rowKey('Record payment', 'invoice_paid', r.id, 'Record payment of the ' + name + ' invoice'));
+              col.append(card);
+            });
+            board.append(col);
+          });
         }
 
         window.addEventListener('gezel-app-data-changed', function(){ loadBook(); });

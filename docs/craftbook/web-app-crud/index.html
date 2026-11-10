@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a href="../../roles-index/">Gezel Roles</a>
-<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../roles-index/">Crew roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
 <a href="../../whats-new-index/">What's New</a>
@@ -45,14 +45,14 @@
 
 </section>
 <section>
-<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2 class="hb-current">Craftbooks</h2>
+<h2 class="hb-current">Plans</h2>
 <ul class="hb-sidebar-entries">
-<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a href="../../craftbooks-index/">Every plan</a></li>
 <li class="hb-sidebar-subcategory">
 <h3 class="hb-sidebar-subcategory-title">Code · Build &amp; features</h3>
 <ul>
@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 300 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 300 plans</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -81,23 +81,24 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Plans</a>
 </nav>
 <article class="hb-article">
 <h1>CRUD Web App</h1>
 <img class="hb-craftbook-art" src="logo.webp" alt="CRUD Web App illustration" data-ground="indigo" width="160" height="160" decoding="async">
+<p class="hb-open"><span class="open-in-gezel" data-gezel-open hidden><a class="hb-open-button" href="gezel://craftbook/web-app-crud">Run this in Gezel</a><span class="hb-open-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span></p>
 <p>Build a small single-file CRUD web app — a todo list, notes, contacts, or inventory manager — with create, read, update, and delete plus localStorage persistence so data survives a reload. Locks the data model and the four operations first, then a clean list-plus-form UI design, then builds vanilla JS with real state and persistence. CRUD apps fail when delete or edit silently does nothing or data vanishes on reload, so the model phase pins every operation's behavior before coding, the ordering that gets a small model to a genuinely working app.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Model scope</td><td>Planner</td><td>entity fields + the four CRUD operations</td></tr><tr><td>2</td><td>UI design</td><td>Designer</td><td>list + form layout, item states, empty state</td></tr><tr><td>3</td><td>Build</td><td>Developer</td><td>implement index.html with full CRUD + persistence</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
 <p>Say something like "crud app" or "todo app" or "notes app" or "build a web app" or "contacts manager" or "inventory app" in chat to start it.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../web-app-crud.md">Read it as markdown, for AI agents</a></p>
 </main>
 
 </div>
 <footer class="hb-footer">
 <p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
-
+<script defer src="../../assets/open-in-gezel.js"></script>
 </body>
 </html>

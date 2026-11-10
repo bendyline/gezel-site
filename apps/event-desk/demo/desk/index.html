@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Event Planner"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -43,7 +43,7 @@
       .tile.late b { color: var(--late); }
       section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; margin: 0 0 1rem; }
       .lead { margin: 0 0 0.6rem; font-size: 0.9rem; color: var(--muted); }
-      .table-wrap { overflow-x: auto; }
+      .table-wrap { overflow-x: auto; position: relative; }
       table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
       .table-wrap table { min-width: 34rem; }
       th { text-align: left; font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 0.5rem 0.4rem; border-bottom: 1px solid var(--line); }
@@ -58,11 +58,15 @@
       .chip.soon { background: var(--soon-bg); color: var(--soon); }
       .chip.late { background: var(--late-bg); color: var(--late); }
       .short { color: var(--late); }
-      .key { min-height: 32px; padding: 0.2rem 0.65rem; border: 1px solid var(--accent); border-radius: 6px; background: var(--card); color: var(--ink); font: inherit; font-size: 0.85rem; cursor: pointer; }
-      .key:hover { background: color-mix(in srgb, var(--card) 85%, var(--accent)); }
+      .key { min-height: 32px; padding: 0.2rem 0.65rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); font: inherit; font-size: 0.85rem; cursor: pointer; white-space: nowrap; }
+      .key:hover { background: var(--chip); }
+      .row-actions { text-align: right; white-space: nowrap; }
+      td.meta { display: table-cell; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .show li > .key { justify-self: start; }
       .needs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.75rem; }
       .show { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
-      .show li { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
+      .show li { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) auto; gap: 0.75rem; align-items: start; }
       .show .at { font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; text-align: center; background: var(--chip); }
       .show li.arrival .at { background: transparent; border: 1px dashed var(--line); color: var(--muted); font-weight: 400; }
       .show li.arrival .what { color: var(--muted); }
@@ -75,7 +79,9 @@
       .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.35rem; vertical-align: baseline; }
       .empty { color: var(--muted); font-style: italic; margin: 0; }
       li.empty { display: block; }
-      #by-kind li { grid-template-columns: 5.5rem minmax(0, 1fr); align-items: center; }
+      #by-kind li { grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; padding: 0.2rem 0; border-bottom: 1px solid var(--line); }
+      #by-kind li:last-child { border-bottom: 0; }
+      #by-kind .at { order: 2; padding: 0; background: transparent; text-align: right; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
       .demo-banner { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin: 0 0 1rem; padding: 0.5rem 0.65rem; border: 1px solid var(--accent); border-radius: 6px; background: color-mix(in srgb, var(--card) 88%, var(--accent)); font-size: 0.85rem; }
       .demo-banner[hidden] { display: none; }
       .demo-reset { flex: none; min-height: 36px; padding: 0.3rem 0.7rem; border: 1px solid var(--accent); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; }
@@ -88,6 +94,27 @@
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -109,7 +136,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <div class="tiles">
         <div class="tile"><b id="t-days">–</b><span id="t-days-label">Days to go</span></div>
         <div class="tile"><b id="t-coming">0</b><span id="t-coming-label">Coming</span></div>
-        <div class="tile soon"><b id="t-diet">0</b><span>Dietary answers to chase</span></div>
+        <div class="tile"><b id="t-diet">0</b><span>Dietary answers to chase</span></div>
         <div class="tile"><b id="t-left">$0</b><span id="t-left-label">Left to commit</span></div>
       </div>
       <section id="venues-section">
@@ -126,7 +153,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <h2>Vendors and deposits</h2>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Vendor</th><th>Kind</th><th class="num">Contract</th><th class="num">Paid</th><th>Next payment</th><th>Status</th></tr></thead>
+            <thead><tr><th>Vendor</th><th>Kind</th><th class="num">Contract</th><th class="num">Paid</th><th>Next payment</th><th>Status</th><th><span class="sr-only">Actions</span></th></tr></thead>
             <tbody id="vendors-body"></tbody>
           </table>
         </div>
@@ -138,7 +165,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <div class="needs" id="needs"></div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Guest</th><th>Company</th><th>RSVP</th><th class="num">Party</th><th>Dietary</th></tr></thead>
+            <thead><tr><th>Guest</th><th>Company</th><th>RSVP</th><th class="num">Party</th><th>Dietary</th><th><span class="sr-only">Actions</span></th></tr></thead>
             <tbody id="guests-body"></tbody>
           </table>
         </div>
@@ -641,6 +668,16 @@ function deskPicture(event, venues, vendors, guests, entries, nowMs) {
         function chip(text, tone) { return el('span', text, 'chip' + (tone ? ' ' + tone : '')); }
         var KIND = { av: 'sound and screens', photography: 'photography', entertainment: 'entertainment' };
         function kind(k) { return KIND[k] || k || 'other'; }
+        function upperFirst(text) { return String(text).charAt(0).toUpperCase() + String(text).slice(1); }
+        // Row action: a small key that opens a shared dialog with these values filled in.
+        function rowKey(label, tool, values, aria) {
+          var key = el('button', label, 'key');
+          key.type = 'button';
+          key.setAttribute('data-app-action', tool);
+          key.setAttribute('data-app-values', JSON.stringify(values));
+          key.setAttribute('aria-label', aria);
+          return key;
+        }
         var TONE = { booked: 'ok', paid: 'ok', yes: 'ok', held: 'soon', visited: '', quoted: 'soon', invited: 'soon', no: '', declined: '', dropped: '', shortlisted: '' };
 
         function render(ev, venues, vendors, guests, entries) {
@@ -663,6 +700,7 @@ function deskPicture(event, venues, vendors, guests, entries, nowMs) {
           document.getElementById('t-coming').textContent = coming;
           document.getElementById('t-coming-label').textContent = ev.headcount ? 'Coming, of ' + ev.headcount + ' planned' : 'Coming';
           document.getElementById('t-diet').textContent = noDiet.length;
+          document.getElementById('t-diet').parentNode.classList.toggle('soon', noDiet.length > 0);
           document.getElementById('t-left').textContent = budget ? money(Math.abs(budget - contracted)) : '–';
           document.getElementById('t-left-label').textContent = !budget ? 'No budget set' : budget - contracted >= 0 ? 'Left to commit' : 'Over budget';
           document.getElementById('t-left').parentElement.className = 'tile' + (budget && budget < contracted ? ' late' : '');
@@ -688,7 +726,7 @@ function deskPicture(event, venues, vendors, guests, entries, nowMs) {
             if (count) all.append(el('span', cost.perHead ? money(cost.each) + ' a guest' : 'before catering', 'meta'));
             tr.append(all);
             var st = el('td', undefined, 'actions');
-            st.append(chip(v.status, TONE[v.status]));
+            st.append(chip(upperFirst(v.status), TONE[v.status]));
             if (v.status !== 'booked' && v.status !== 'declined') {
               var book = el('button', 'Book', 'key');
               book.type = 'button';
@@ -707,12 +745,12 @@ function deskPicture(event, venues, vendors, guests, entries, nowMs) {
           // Vendors with what is paid and the next payment.
           var db = document.getElementById('vendors-body');
           db.replaceChildren();
-          if (!vendors.length) { var tn = el('tr'), tdn = cell('No vendors yet.', 'empty'); tdn.colSpan = 6; tn.append(tdn); db.append(tn); }
+          if (!vendors.length) { var tn = el('tr'), tdn = cell('No vendors yet.', 'empty'); tdn.colSpan = 7; tn.append(tdn); db.append(tn); }
           vendors.slice().sort(function (a, b) { return (a.status === 'dropped') - (b.status === 'dropped'); }).forEach(function (v) {
             var f = v.fields, tr = el('tr'), name = el('td'), paid = paidFor(v.id, entries), contract = Number(f.contractCents) || 0, deposit = Number(f.depositCents) || 0;
             name.append(el('span', f.name));
             if (f.contact || f.arrival) name.append(el('span', [f.contact, f.arrival ? 'arrives ' + clock(f.arrival) : ''].filter(Boolean).join(' · '), 'meta'));
-            tr.append(name, cell(kind(f.category)), cell(contract ? money(contract) : '–', 'num'), cell(money(paid), 'num'));
+            tr.append(name, cell(upperFirst(kind(f.category))), cell(contract ? money(contract) : '–', 'num'), cell(money(paid), 'num'));
             var next = el('td');
             if (v.status === 'dropped') next.append(el('span', '–'));
             else if (v.status === 'quoted') next.append(el('span', deposit ? 'Deposit ' + money(deposit) + ' to book' : 'Not booked', 'meta'));
@@ -724,13 +762,18 @@ function deskPicture(event, venues, vendors, guests, entries, nowMs) {
             } else if (contract > paid) next.append(el('span', 'Balance ' + money(contract - paid)));
             else next.append(el('span', 'Paid in full', 'meta'));
             tr.append(next);
-            var st = el('td'); st.append(chip(v.status, TONE[v.status])); tr.append(st);
+            var st = el('td'); st.append(chip(upperFirst(v.status), TONE[v.status])); tr.append(st);
+            // Row action: pay what is due next, prefilled with the amount.
+            var acts = el('td', undefined, 'row-actions');
+            if (v.status === 'booked' && deposit > paid) acts.append(rowKey('Pay deposit', 'record_payment', { id: v.id, amount: (deposit - paid) / 100, kind: 'deposit' }, 'Record the deposit for ' + f.name));
+            else if (v.status === 'booked' && contract > paid) acts.append(rowKey('Pay balance', 'record_payment', { id: v.id, amount: (contract - paid) / 100, kind: 'balance' }, 'Record the balance for ' + f.name));
+            tr.append(acts);
             db.append(tr);
           });
 
           // Guests, with dietary needs for the caterer.
           var no = guests.filter(function (g) { return g.status === 'no'; }).length, waiting = guests.filter(function (g) { return g.status === 'invited'; }).length;
-          document.getElementById('guests-lead').textContent = guests.length ? plural(yes.length, 'yes', 'yes') + ' (' + plural(coming, 'person', 'people') + ') · ' + no + ' no · ' + waiting + ' not replied' + (noDiet.length ? ' · ' + plural(noDiet.length, 'dietary answer', 'dietary answers') + ' to chase' : '') : 'No guests yet. Add the invite list here or tell your event planner.';
+          document.getElementById('guests-lead').textContent = guests.length ? plural(yes.length, 'yes', 'yes') + ' (' + plural(coming, 'person', 'people') + ') · ' + no + ' no · ' + waiting + ' not replied' + (noDiet.length ? ' · ' + plural(noDiet.length, 'dietary answer', 'dietary answers') + ' to chase. In red: guests who are coming but have not said what they eat.' : '') : 'No guests yet. Add the invite list here or tell your event planner.';
           var tally = {};
           yes.forEach(function (g) { var d = g.fields.dietary; if (d && d !== 'none') tally[d] = (tally[d] || 0) + 1; });
           var needs = document.getElementById('needs');
@@ -739,21 +782,24 @@ function deskPicture(event, venues, vendors, guests, entries, nowMs) {
           if (noDiet.length) needs.append(chip(noDiet.length + ' still to answer', 'soon'));
           var gb = document.getElementById('guests-body');
           gb.replaceChildren();
-          if (!guests.length) { var tg = el('tr'), tdg = cell('The invite list is empty.', 'empty'); tdg.colSpan = 5; tg.append(tdg); gb.append(tg); }
+          if (!guests.length) { var tg = el('tr'), tdg = cell('The invite list is empty.', 'empty'); tdg.colSpan = 6; tg.append(tdg); gb.append(tg); }
           var order = { yes: 0, invited: 1, no: 2 };
           guests.slice().sort(function (a, b) { return order[a.status] - order[b.status] || String(a.fields.name).localeCompare(String(b.fields.name)); }).forEach(function (g) {
             var tr = el('tr'), st = el('td');
-            st.append(chip(g.status === 'invited' ? 'waiting' : g.status, TONE[g.status]));
+            st.append(chip(g.status === 'invited' ? 'Waiting' : upperFirst(g.status), TONE[g.status]));
             var diet = g.fields.dietary ? cell(g.fields.dietary === 'none' ? 'No needs' : g.fields.dietary) : cell(g.status === 'no' ? '–' : 'Not answered', g.status === 'yes' ? 'short' : 'meta');
-            tr.append(cell(g.fields.name), cell(g.fields.company || '–'), st, cell(String(people(g)), 'num'), diet);
+            var acts = el('td', undefined, 'row-actions');
+            if (g.status === 'invited') acts.append(rowKey('Record RSVP', 'record_rsvp', { id: g.id }, 'Record the RSVP from ' + g.fields.name));
+            else if (g.status === 'yes' && !g.fields.dietary) acts.append(rowKey('Add dietary', 'record_rsvp', { id: g.id, response: 'yes' }, 'Add dietary needs for ' + g.fields.name));
+            tr.append(cell(g.fields.name), cell(g.fields.company || '–'), st, cell(String(people(g)), 'num'), diet, acts);
             gb.append(tr);
           });
 
           // Run of show, with vendor arrivals in their place.
           var show = document.getElementById('show');
           show.replaceChildren();
-          var rows = (ev.program || []).map(function (p) { return { time: p.time, text: p.item, who: p.owner, arrival: false }; })
-            .concat(signed.filter(function (v) { return v.fields.arrival; }).map(function (v) { return { time: v.fields.arrival, text: v.fields.name + ' arrives', who: kind(v.fields.category), arrival: true }; }));
+          var rows = (ev.program || []).map(function (p) { return { time: p.time, text: p.item, who: p.owner, arrival: false, item: p }; })
+            .concat(signed.filter(function (v) { return v.fields.arrival; }).map(function (v) { return { time: v.fields.arrival, text: v.fields.name + ' arrives', who: upperFirst(kind(v.fields.category)), arrival: true }; }));
           rows.sort(function (a, b) { return String(a.time).localeCompare(String(b.time)) || (b.arrival - a.arrival); });
           if (!rows.length) show.append(el('li', 'Nothing on the run of show yet. Add the first item here or ask your event planner.', 'empty'));
           rows.forEach(function (r) {
@@ -762,6 +808,7 @@ function deskPicture(event, venues, vendors, guests, entries, nowMs) {
             what.append(el('span', r.text));
             if (r.who) what.append(el('span', r.arrival ? r.who : 'On point: ' + r.who, 'meta'));
             li.append(what);
+            if (r.item) li.append(rowKey('Change', 'set_program_item', { time: r.item.time, item: r.item.item, owner: r.item.owner || '' }, 'Change the time or who is on point for ' + r.item.item));
             show.append(li);
           });
 

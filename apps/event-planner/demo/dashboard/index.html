@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Event Planner"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -26,30 +26,42 @@
         }
       }
       * { box-sizing: border-box; }
-      body { margin: 0; font: 15px/1.5 var(--font-body, system-ui, sans-serif); background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
+      body { margin: 0; font: 16px/1.5 var(--font-body, system-ui, sans-serif); background: var(--bg); color: var(--ink); padding: 1.5rem 1.25rem; }
       main { max-width: 680px; margin: 0 auto; }
       h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.35rem; font-weight: 600; margin: 0 0 0.15rem; }
-      .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.9rem; }
+      .sub { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.9rem; }
       .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-bottom: 0.9rem; }
       .tile { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.7rem 0.85rem; }
-      .tile .n { font-size: 1.35rem; font-weight: 700; color: var(--accent); }
+      .tile .n { font-size: 1.35rem; font-weight: 700; color: var(--ink); }
       .tile .n.good { color: var(--good); }
-      .tile .l { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+      .tile .n.warn { color: var(--warn); }
+      .tile .l { font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
       .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-      .panel { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.85rem 1rem; font-size: 0.9rem; }
-      .panel h2 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.5rem; }
+      .panel { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.85rem 1rem; font-size: 0.95rem; margin: 0 0 0.75rem; }
+      .panel h2 { font-family: var(--font-ui, system-ui, sans-serif); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.5rem; }
       .panel ul { margin: 0; padding-left: 1.05rem; }
       .panel li { margin: 0.2rem 0; }
-      .rsvp { color: var(--muted); font-size: 0.78rem; }
-      .rsvp.yes { color: var(--good); }
-      .rsvp.no { color: var(--warn); }
+      .people { list-style: none; padding-left: 0 !important; }
+      .people li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.6rem; padding: 0.35rem 0; margin: 0; border-bottom: 1px solid var(--track); }
+      .people li:last-child { border-bottom: 0; }
+      .people .who { flex: 1 1 12rem; min-width: 0; }
+      .rsvp { display: inline-block; justify-self: start; border-radius: 4px; padding: 0 0.4rem; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.8rem; line-height: 1.6; color: var(--muted); background: color-mix(in srgb, var(--track) 70%, transparent); }
+      .rsvp.yes { color: var(--good); background: color-mix(in srgb, var(--good) 13%, transparent); }
+      .rsvp.no { color: var(--muted); background: transparent; border: 1px dashed var(--track); }
+      .key { min-height: 32px; padding: 0.2rem 0.7rem; border: 1px solid color-mix(in srgb, var(--muted) 40%, var(--track)); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.85rem; }
+      .key:hover { border-color: var(--ink); }
+      #awaiting .rsvp { display: none; }
+      .total { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.9rem; }
+      .spend li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.6rem; }
+      .spend .note { color: var(--muted); }
       .bar-row { display: grid; grid-template-columns: 6.5rem 1fr 4.5rem; gap: 0.5rem; align-items: center; margin: 0.3rem 0; }
       .bar { background: var(--track); border-radius: 4px; height: 10px; overflow: hidden; }
       .bar > span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
       .amt { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
       .empty { color: var(--muted); font-style: italic; }
-      .panel li.empty { list-style: none; margin-left: -1.05rem; }
-      @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } .tiles { grid-template-columns: 1fr 1fr; } }
+      .panel li.empty { list-style: none; margin-left: -1.05rem; border: 0; }
+      .people li.empty, .spend li.empty { margin-left: 0; }
+      @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } .tiles { grid-template-columns: 1fr 1fr; } .bar-row { grid-template-columns: 5.5rem 1fr 4.5rem; } }
       .demo-banner {
         display: flex;
         align-items: center;
@@ -79,6 +91,27 @@
     </style>
   <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
   <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -99,16 +132,23 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <div class="tile"><div class="n" id="t-await">—</div><div class="l">Awaiting reply</div></div>
         <div class="tile"><div class="n" id="t-spent">—</div><div class="l">Spent</div></div>
       </div>
-      <div class="cols">
-        <div class="panel">
-          <h2>Guest list</h2>
-          <ul id="guests"><li class="empty">No guests yet — start the list with your event planner.</li></ul>
-        </div>
-        <div class="panel">
-          <h2>Where the budget went</h2>
-          <div id="budget"><p class="empty">Nothing committed yet.</p></div>
-        </div>
-      </div>
+      <section class="panel" id="awaiting-section">
+        <h2>Still owe you an answer</h2>
+        <ul class="people" id="awaiting"><li class="empty">Nobody yet.</li></ul>
+      </section>
+      <section class="panel" id="guests-section">
+        <h2>Guest list</h2>
+        <ul class="people" id="guests"><li class="empty">No guests yet — start the list with your event planner.</li></ul>
+      </section>
+      <section class="panel" id="budget-section">
+        <h2>Where the budget went</h2>
+        <div id="budget"><p class="empty">Nothing committed yet.</p></div>
+        <p class="total" id="budget-total" hidden></p>
+      </section>
+      <section class="panel" id="spend-section">
+        <h2>All spending</h2>
+        <ul class="people spend" id="spend"><li class="empty">Nothing recorded yet.</li></ul>
+      </section>
     </main>
     <script src="demo-chat.js"></script>
     <script>
@@ -198,6 +238,25 @@ data: {
           return when.toLocaleDateString(undefined, opts);
         }
         function partyOf(r) { var p = r.fields && r.fields.party; return typeof p === 'number' && p >= 1 ? Math.floor(p) : 1; }
+        var RSVP_LABELS = { invited: 'Awaiting reply', yes: 'Coming', no: 'Can’t attend' };
+        var occasion = gezel.page && gezel.page.params && String(gezel.page.params.occasion || '').trim();
+        if (occasion) document.getElementById('title').textContent = cap(occasion);
+        function node(tag, text, className) { var n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (className) n.className = className; return n; }
+        function emptyRow(text) { return node('li', text, 'empty'); }
+        // One guest row: name and party, the reply in words, and a key that opens "Update an RSVP" for this guest.
+        function guestRow(r) {
+          var name = String((r.fields && r.fields.name) || r.id);
+          var li = node('li');
+          li.append(node('span', name + (partyOf(r) > 1 ? ' (+' + (partyOf(r) - 1) + ')' : ''), 'who'),
+            node('span', RSVP_LABELS[r.status] || String(r.status), 'rsvp ' + r.status));
+          var key = node('button', 'Update RSVP', 'key');
+          key.type = 'button';
+          key.setAttribute('aria-label', 'Update the RSVP for ' + name);
+          key.setAttribute('data-app-action', 'guest_status');
+          key.setAttribute('data-app-values', JSON.stringify({ id: r.id, status: r.status }));
+          li.append(key);
+          return li;
+        }
 
         function render(guestsDoc, budgetDoc) {
           var records = (guestsDoc && guestsDoc.records) || [];
@@ -220,16 +279,29 @@ data: {
             records.length + (records.length === 1 ? ' invitation' : ' invitations') + ' on the list';
           document.getElementById('t-days').textContent = days === null || !isFinite(days) ? '—' : Math.max(0, days);
           document.getElementById('t-coming').textContent = coming;
+          document.getElementById('t-coming').classList.toggle('good', coming > 0);
           document.getElementById('t-await').textContent = awaiting;
+          document.getElementById('t-await').classList.toggle('warn', awaiting > 0);
           document.getElementById('t-spent').textContent = money(spent, currency);
 
-          if (records.length) {
-            document.getElementById('guests').innerHTML = records.map(function (r) {
-              return '<li>' + esc((r.fields && r.fields.name) || r.id) + (partyOf(r) > 1 ? ' (+' + (partyOf(r) - 1) + ')' : '') +
-                ' <span class="rsvp ' + esc(r.status) + '">' + ({ invited: 'awaiting', yes: 'coming', no: 'declined' }[r.status] || esc(r.status)) + '</span></li>';
-            }).join('');
-          }
-          var cats = Object.entries(byCat).sort(function (a, b) { return b[1] - a[1]; }).slice(0, 6);
+          var list = document.getElementById('guests');
+          list.replaceChildren.apply(list, records.length ? records.map(guestRow) : [emptyRow('No guests yet — start the list with your event planner.')]);
+          var waiting = records.filter(function (r) { return r.status === 'invited'; });
+          var owe = document.getElementById('awaiting');
+          owe.replaceChildren.apply(owe, waiting.length ? waiting.map(guestRow) : [emptyRow(records.length ? 'Everyone has answered.' : 'Nobody is invited yet.')]);
+          var outs = entries.filter(function (e) { return e.kind === 'out'; });
+          var total = document.getElementById('budget-total');
+          total.hidden = !outs.length;
+          total.textContent = 'Total committed: ' + money(spent, currency) + ' across ' + outs.length + (outs.length === 1 ? ' payment.' : ' payments.');
+          var spendList = document.getElementById('spend');
+          spendList.replaceChildren.apply(spendList, outs.length ? outs.slice().reverse().map(function (e) {
+            var li = node('li'), what = node('span', cap(e.category || 'other'));
+            if (e.note) what.append(node('span', ' · ' + e.note, 'note'));
+            if (e.at) what.append(node('span', ' · ' + dayText(String(e.at)), 'note'));
+            li.append(what, node('span', money(e.amountCents, currency), 'amt'));
+            return li;
+          }) : [emptyRow('Nothing recorded yet.')]);
+          var cats = Object.entries(byCat).sort(function (a, b) { return b[1] - a[1]; });
           if (cats.length) {
             var max = cats[0][1];
             document.getElementById('budget').innerHTML = cats.map(function (pair) {

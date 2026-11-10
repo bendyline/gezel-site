@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Study Partner"}}</script>
-<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -84,6 +84,7 @@
         letter-spacing: 0.05em;
         color: var(--muted);
         margin-bottom: 0.6rem;
+        font-family: var(--font-ui, system-ui, sans-serif);
       }
       .actions { display: flex; gap: 0.6rem; margin-top: 0.85rem; justify-content: center; }
       .actions button {
@@ -153,18 +154,23 @@
         font: inherit;
       }
       .demo-reset:hover { border-color: var(--ink); }
+      .counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; margin: 0 0 1.2rem; }
+      .tile { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.75rem 0.9rem; }
+      .tile b { display: block; font-size: 1.5rem; font-weight: 600; line-height: 1.1; }
+      .tile span { color: var(--muted); font-size: 0.85rem; }
+      .start { margin-top: 0.85rem; }
       .forge {
-        margin-top: 1.5rem;
+        margin: 0 0 1.5rem;
         background: var(--card);
         border: 1px solid var(--track);
         border-radius: 10px;
         padding: 0.85rem 1rem;
       }
-      .forge h2 { font-size: 0.95rem; margin: 0 0 0.35rem; }
+      .forge h2 { font-size: 1.1rem; font-weight: 400; margin: 0 0 0.35rem; }
       .forge p { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.85rem; }
       .forge textarea {
         width: 100%;
-        min-height: 7rem;
+        min-height: 6rem;
         resize: vertical;
         font: inherit;
         color: var(--ink);
@@ -173,15 +179,37 @@
         border-radius: 6px;
         padding: 0.5rem;
       }
-      .forge .actions { justify-content: flex-start; }
+      .forge .actions { justify-content: flex-start; margin-top: 0.5rem; }
+      .forge #forge-status:empty { display: none; }
     </style>
   <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
   <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
 window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
-</script><style>.deck-library{margin-top:32px;text-align:left}#deck-library{list-style:none;padding:0;display:grid;gap:8px}#deck-library details{padding:16px;border:1px solid var(--track);border-radius:10px;background:var(--card)}#deck-library summary{cursor:pointer}#deck-library p{white-space:pre-wrap;overflow-wrap:anywhere}</style></head>
+</script><style>.deck-library h2{font-weight:400;margin:0 0 12px}#deck-library{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:8px}#deck-library li{padding:12px 16px;border:1px solid var(--track);border-radius:10px;background:var(--card)}#deck-library li.empty{color:var(--muted);border-style:dashed}#deck-library p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}#deck-library .front{font-weight:600}#deck-library .back{color:var(--ink)}#deck-library .meta{margin-top:6px;color:var(--muted);font:13px/1.4 var(--font-ui,system-ui,sans-serif)}</style></head>
   <body>
     <main>
 <p class="app-problem" id="app-load-error" role="status" hidden></p>
@@ -195,17 +223,23 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <div class="banner" id="banner"></div>
       <h1 id="title">Flashcards</h1>
       <p class="sub" id="sub">Loading the deck…</p>
+      <div class="counts" id="tiles">
+        <div class="tile"><b id="t-due">0</b><span>Due now</span></div>
+        <div class="tile"><b id="t-learning">0</b><span>Learning</span></div>
+        <div class="tile"><b id="t-known">0</b><span>Known</span></div>
+      </div>
       <div class="dots" id="dots"></div>
       <div id="stage"></div>
       <p class="hint" id="hint"></p>
-      <section class="forge" aria-labelledby="forge-title">
+      <section class="forge" id="forge-section" aria-labelledby="forge-title">
         <h2 id="forge-title">Make cards from notes</h2>
         <p>Paste a page of notes. Your study partner turns the key facts into cards.</p>
         <textarea id="forge-notes" maxlength="3000" aria-label="Notes to turn into cards"></textarea>
         <div class="actions"><button type="button" id="forge-go">Make cards</button></div>
         <p id="forge-status" role="status"></p>
       </section>
-    <section class="deck-library"><h2>Your card library</h2><div id="deck-search"></div><ul id="deck-library"></ul></section></main>
+      <section class="deck-library" id="cards-section"><h2>All cards</h2><ul id="deck-library"></ul></section>
+    </main>
     <script src="demo-chat.js"></script>
     <script>
       (function () {
@@ -375,12 +409,52 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           return (deck.cards || []).find(function (c) { return c.id === id; }) || null;
         }
 
+        function el(tag, text, className) {
+          var node = document.createElement(tag);
+          if (text !== undefined) node.textContent = text;
+          if (className) node.className = className;
+          return node;
+        }
+        // Leitner boxes: 1 daily and 2 every three days are still being learned; 3 is the weekly shelf.
+        function renderTiles() {
+          var cards = deck.cards || [];
+          document.getElementById('t-due').textContent = String((deck.dueCardIds || []).length);
+          document.getElementById('t-learning').textContent = String(cards.filter(function (c) { return c.box !== 3; }).length);
+          document.getElementById('t-known').textContent = String(cards.filter(function (c) { return c.box === 3; }).length);
+        }
+        function reviewedLabel(iso) {
+          if (!iso) return 'New';
+          var then = new Date(iso), today = new Date();
+          if (!isFinite(then)) return 'New';
+          var days = Math.round((new Date(today.getFullYear(), today.getMonth(), today.getDate()) -
+            new Date(then.getFullYear(), then.getMonth(), then.getDate())) / 86400000);
+          if (days <= 0) return 'Reviewed today';
+          if (days === 1) return 'Reviewed yesterday';
+          return 'Reviewed ' + then.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        }
+        function renderLibrary() {
+          var list = document.getElementById('deck-library');
+          var cards = deck.cards || [];
+          var due = deck.dueCardIds || [];
+          list.replaceChildren();
+          if (!cards.length) {
+            list.append(el('li', 'No cards yet. Write one, or ask your study partner for a few.', 'empty'));
+            return;
+          }
+          cards.forEach(function (card) {
+            var shelf = card.box === 3 ? 'Known' : 'Learning';
+            var meta = [due.indexOf(card.id) >= 0 ? 'Due now' : '', shelf, reviewedLabel(card.lastReviewedAt)].filter(Boolean).join(' · ');
+            var li = el('li');
+            li.append(el('p', card.front, 'front'), el('p', card.back, 'back'), el('p', meta, 'meta'));
+            list.append(li);
+          });
+        }
+
         function render() {
           var stage = document.getElementById('stage');
           var dots = document.getElementById('dots');
           var hint = document.getElementById('hint');
           if (!deck) return;
-document.getElementById('deck-library').innerHTML=(deck.cards||[]).map(function(card){return '<li><details><summary>'+esc(card.front)+'</summary><p>'+esc(card.back)+'</p></details></li>';}).join('');
           if (deck.subject) document.getElementById('title').textContent = 'Flashcards: ' + deck.subject;
 
           if (!deck.cards || deck.cards.length === 0) {
@@ -388,21 +462,19 @@ document.getElementById('deck-library').innerHTML=(deck.cards||[]).map(function(
             dots.innerHTML = '';
             hint.textContent = '';
             stage.innerHTML =
-              '<div class="empty">No cards yet — ask your study partner to write the first ones.</div>';
+              '<div class="empty">No cards yet. Write one, or ask your study partner to write the first ones.</div>';
             return;
           }
 
           if (queue === null || (idx >= queue.length && queue.length === 0)) {
             document.getElementById('sub').textContent =
-              deck.dueCardIds.length > 0
-                ? deck.dueCardIds.length + (deck.dueCardIds.length === 1 ? ' card due.' : ' cards due.')
-                : 'Nothing due right now.';
+              deck.cards.length + (deck.cards.length === 1 ? ' card in the deck.' : ' cards in the deck.');
             dots.innerHTML = '';
             hint.textContent = '';
             stage.innerHTML =
               deck.dueCardIds.length > 0
-                ? '<div class="actions"><button type="button" id="start">Start review (' + deck.dueCardIds.length + ')</button></div>'
-                : '<div class="done">All caught up — nothing due. Your study partner can always add more.</div>';
+                ? '<div class="start"><button type="button" class="app-primary" id="start">Start review</button></div>'
+                : '<div class="done">All caught up. Nothing is due, and your study partner can always add more.</div>';
             var startBtn = document.getElementById('start');
             if (startBtn) startBtn.addEventListener('click', startSession);
             return;
@@ -414,9 +486,9 @@ document.getElementById('deck-library').innerHTML=(deck.cards||[]).map(function(
               'Session done: ' + (results.length - missed) + ' got it, ' + missed + ' missed.';
             hint.textContent = '';
             // Cards added after the session (by the study partner or the form) can start a new one.
-            stage.innerHTML = '<div class="done">Nice work — your study partner has the recap.</div>' +
+            stage.innerHTML = '<div class="done">Nice work. Your study partner has the recap.</div>' +
               (deck.dueCardIds.length > 0
-                ? '<div class="actions"><button type="button" id="start">Review ' + deck.dueCardIds.length +
+                ? '<div class="start"><button type="button" class="app-primary" id="start">Review ' + deck.dueCardIds.length +
                   (deck.dueCardIds.length === 1 ? ' more card' : ' more cards') + '</button></div>'
                 : '');
             var again = document.getElementById('start');
@@ -494,6 +566,8 @@ document.getElementById('deck-library').innerHTML=(deck.cards||[]).map(function(
               // Keep keyboard review going: the next card takes the focus the grade button had.
               var next = document.getElementById('card');
               if (next) next.focus({ preventScroll: true });
+              // The counts and the library follow each grade; the stage keeps its session queue.
+              loadDeck();
             })
             .catch(function (err) {
               busy = false;
@@ -516,14 +590,15 @@ document.getElementById('deck-library').innerHTML=(deck.cards||[]).map(function(
         }
 
         window.addEventListener('gezel-app-data-changed', function(){ loadDeck(); });
-        if(gezel.ui.components && gezel.ui.components.collectionFilter){var deckSearch=gezel.ui.components.collectionFilter('#deck-search',{container:'#deck-library',selector:'li',label:'Find a card'});window.addEventListener('pagehide',function(){deckSearch.destroy();},{once:true});}
         function loadDeck() {
           return gezel.data
             .read('deck.json')
             .then(function (next) {
               deck = next;
-              // Only re-render outside an active session — mid-session the
-              // snapshot queue drives the UI.
+              // The tiles and the library follow every change; the review stage
+              // re-renders only outside an active session, where the snapshot queue drives it.
+              renderTiles();
+              renderLibrary();
               if (queue === null || idx >= queue.length) render();
             })
             .catch(reportAppError);

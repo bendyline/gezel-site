@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Fundraiser"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -33,7 +33,12 @@
       main { max-width: 860px; margin: 0 auto; }
       h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.5rem; font-weight: 400; margin: 0 0 0.2rem; }
       h2 { font-family: var(--font-heading, Georgia, serif); font-size: 1.1rem; font-weight: 400; margin: 0 0 0.6rem; }
-      h3 { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.5rem; }
+      h3, main h3 { font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.5rem; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .key { min-height: 32px; padding: 0.2rem 0.65rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.85rem; white-space: nowrap; }
+      .key:hover { background: var(--chip); }
+      .row-actions { text-align: right; white-space: nowrap; }
+      .opp .body > .key, .log li > .key { justify-self: start; margin-top: 0.2rem; }
       .sub { color: var(--muted); margin: 0 0 1rem; }
       .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; margin: 0 0 1.2rem; }
       .tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem 0.9rem; }
@@ -44,6 +49,8 @@
       section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; margin: 0 0 1rem; }
       .cards { display: grid; gap: 0.75rem; }
       .opp { border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem 0.9rem; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.4rem 0.8rem; align-items: start; }
+      .opp .when { justify-self: start; }
+      .log li { display: grid; }
       .opp > .body { display: grid; gap: 0.4rem; min-width: 0; }
       .opp header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.6rem; }
       .opp header b { font-weight: 600; overflow-wrap: anywhere; }
@@ -70,7 +77,7 @@
       .req-check[aria-checked='true'] .label { color: var(--muted); text-decoration: line-through; }
       .req-check .who { color: var(--muted); font-size: 0.82rem; }
       .empty { color: var(--muted); font-style: italic; margin: 0; }
-      .table-wrap { overflow-x: auto; }
+      .table-wrap { overflow-x: auto; position: relative; }
       table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
       th { text-align: left; font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 0.5rem 0.4rem; border-bottom: 1px solid var(--line); }
       td { padding: 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -92,6 +99,27 @@
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -109,9 +137,9 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <p class="sub" id="sub">Loading the pipeline…</p>
       <div class="tiles">
         <div class="tile"><b id="t-open">0</b><span>Open opportunities</span></div>
-        <div class="tile soon"><b id="t-soon">0</b><span>Due in 30 days</span></div>
+        <div class="tile"><b id="t-soon">0</b><span>Due in 30 days</span></div>
         <div class="tile"><b id="t-awaiting">0</b><span>Awaiting a decision</span></div>
-        <div class="tile ok"><b id="t-awarded">$0</b><span>Awarded</span></div>
+        <div class="tile"><b id="t-awarded">$0</b><span>Awarded</span></div>
       </div>
       <section id="deadlines-section">
         <h2>Deadlines</h2>
@@ -121,7 +149,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <h2>Pipeline</h2>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Opportunity</th><th>Kind</th><th>Fit</th><th>Ask</th><th>Deadline</th><th>Stage</th></tr></thead>
+            <thead><tr><th>Opportunity</th><th>Kind</th><th>Fit</th><th>Ask</th><th>Deadline</th><th>Stage</th><th><span class="sr-only">Actions</span></th></tr></thead>
             <tbody id="pipeline-body"></tbody>
           </table>
         </div>
@@ -316,6 +344,18 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         function niceDate(day) { var d = new Date(String(day).slice(0, 10) + 'T12:00:00'); return isFinite(d) ? d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : String(day); }
         function when(days) { return days < 0 ? -days + (days === -1 ? ' day late' : ' days late') : days === 0 ? 'Due today' : 'In ' + days + (days === 1 ? ' day' : ' days'); }
         function cap(text) { return String(text || '').replace(/^./, function (c) { return c.toUpperCase(); }); }
+        // One wording for fit everywhere: chips on cards and in the table.
+        var FIT = { strong: 'Strong fit', good: 'Good fit', 'long shot': 'Long shot' };
+        function fitLabel(fit) { return FIT[fit] || cap(fit); }
+        // Row action: a small key that opens a shared dialog with these values filled in.
+        function rowKey(label, tool, values, aria) {
+          var key = el('button', label, 'key');
+          key.type = 'button';
+          key.setAttribute('data-app-action', tool);
+          key.setAttribute('data-app-values', JSON.stringify(values));
+          key.setAttribute('aria-label', aria);
+          return key;
+        }
         var STAGE_ORDER = ['drafting', 'prospect', 'submitted', 'awarded', 'declined', 'passed'];
 
         function render(oppDoc, reqDoc) {
@@ -333,6 +373,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           document.getElementById('t-soon').textContent = soon.length;
           document.getElementById('t-awaiting').textContent = awaiting.length;
           document.getElementById('t-awarded').textContent = money(awardedCents);
+          document.getElementById('t-soon').parentNode.classList.toggle('soon', soon.length > 0);
+          document.getElementById('t-awarded').parentNode.classList.toggle('ok', awardedCents > 0);
           var next = open.filter(function (o) { return o.fields.deadline; })[0];
           var nextOpen = next ? reqsFor(next).filter(function (r) { return r.status !== 'done'; }).length : 0;
           document.getElementById('sub').textContent = !ops.length
@@ -350,7 +392,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             card.append(el('span', d === null ? 'No deadline' : when(d), 'when ' + (d === null ? '' : d < 0 ? 'late' : d <= 14 ? 'soon' : '')));
             var body = el('div', undefined, 'body'), head = el('header');
             head.append(el('b', f.title));
-            if (f.fit) head.append(el('span', cap(f.fit) + ' fit', 'chip ' + f.fit.replace(' ', '-')));
+            if (f.fit) head.append(el('span', fitLabel(f.fit), 'chip ' + f.fit.replace(' ', '-')));
             head.append(el('span', cap(o.status), 'chip'));
             body.append(head);
             body.append(el('span', [f.funder, f.kind === 'rfp' ? 'request for proposals' : f.kind, typeof f.askCents === 'number' ? 'ask ' + money(f.askCents) : '', f.deadline ? 'due ' + niceDate(f.deadline) : f.notes || ''].filter(Boolean).join(' · '), 'meta'));
@@ -380,20 +422,25 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             } else {
               body.append(el('span', 'No requirements listed yet. Add what the guidelines ask for.', 'meta'));
             }
+            body.append(rowKey('Add a requirement', 'add_requirement', { opportunity: o.id }, 'Add a requirement for ' + f.title));
             card.append(body);
             cards.append(card);
           });
 
           var tbody = document.getElementById('pipeline-body');
           tbody.replaceChildren();
-          if (!ops.length) { var tr0 = el('tr'), td0 = el('td', 'The pipeline is empty.', 'empty'); td0.colSpan = 6; tr0.append(td0); tbody.append(tr0); }
+          if (!ops.length) { var tr0 = el('tr'), td0 = el('td', 'The pipeline is empty.', 'empty'); td0.colSpan = 7; tr0.append(td0); tbody.append(tr0); }
           ops.slice().sort(function (a, b) { return STAGE_ORDER.indexOf(a.status) - STAGE_ORDER.indexOf(b.status) || String(a.fields.deadline || '9999').localeCompare(String(b.fields.deadline || '9999')); }).forEach(function (o) {
             var f = o.fields, tr = el('tr'), name = el('td');
             name.append(el('span', f.title));
             if (f.funder) name.append(el('span', f.funder, 'meta'));
-            var fit = el('td'); if (f.fit) fit.append(el('span', cap(f.fit), 'chip ' + f.fit.replace(' ', '-')));
+            var fit = el('td'); if (f.fit) fit.append(el('span', fitLabel(f.fit), 'chip ' + f.fit.replace(' ', '-')));
             var stage = el('td'); stage.append(el('span', cap(o.status), 'chip ' + o.status));
             tr.append(name, el('td', f.kind === 'rfp' ? 'RFP' : cap(f.kind || 'grant')), fit, el('td', typeof f.askCents === 'number' ? money(f.askCents) : '–', 'num'), el('td', f.deadline ? niceDate(f.deadline) : 'Rolling', 'num'), stage);
+            var acts = el('td', undefined, 'row-actions');
+            if (o.status === 'submitted') acts.append(rowKey('Record decision', 'record_outcome', { opportunity: o.id }, 'Record the decision on ' + f.title));
+            else if (OPEN.indexOf(o.status) >= 0) acts.append(rowKey('Move', 'set_stage', { opportunity: o.id, stage: o.status === 'prospect' ? 'drafting' : 'submitted' }, 'Move ' + f.title + ' to its next stage'));
+            tr.append(acts);
             tbody.append(tr);
           });
 
@@ -404,6 +451,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             var li = el('li');
             li.append(el('b', o.fields.title));
             li.append(el('span', [o.fields.funder, typeof o.fields.askCents === 'number' ? 'asked ' + money(o.fields.askCents) : '', o.fields.submittedAt ? 'submitted ' + niceDate(o.fields.submittedAt) : ''].filter(Boolean).join(' · '), 'meta'));
+            li.append(rowKey('Record decision', 'record_outcome', { opportunity: o.id }, 'Record the decision on ' + o.fields.title));
             wait.append(li);
           });
           var dec = document.getElementById('decided');

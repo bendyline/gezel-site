@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Bookkeeper"}}</script>
-<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -47,12 +47,12 @@
       section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; margin: 0 0 1rem; }
       .views { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.75rem; }
       .views button { min-height: 36px; padding: 0.3rem 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); font: inherit; font-size: 0.88rem; cursor: pointer; }
-      .views button[aria-pressed='true'] { border-color: var(--accent); background: color-mix(in srgb, var(--card) 85%, var(--accent)); font-weight: 600; }
+      .views button[aria-pressed='true'] { border-color: var(--app-action); background: color-mix(in srgb, var(--card) 88%, var(--app-action)); font-weight: 600; }
       .headline { margin: 0 0 0.75rem; }
       .chart { position: relative; margin: 0 0 0.5rem; }
       .chart svg { display: block; width: 100%; overflow: visible; }
       .chart text { fill: var(--muted); font-size: 11px; font-family: var(--font-ui, system-ui, sans-serif); }
-      .chart .value { fill: var(--ink); font-weight: 600; }
+      .chart .value { fill: var(--ink); font-weight: 600; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
       .chart .hit { fill: transparent; cursor: default; }
       .chart .col { pointer-events: none; }
       .chart .col.lift { opacity: 0.78; }
@@ -62,7 +62,7 @@
       .key { display: flex; flex-wrap: wrap; gap: 0.9rem; color: var(--muted); font-size: 0.82rem; margin: 0 0 0.75rem; }
       .key i { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 2px; margin-right: 0.35rem; vertical-align: -0.05rem; }
       .key .line { width: 1rem; height: 0; border-top: 2px dashed var(--muted); border-radius: 0; vertical-align: 0.2rem; }
-      .table-wrap { overflow-x: auto; }
+      .table-wrap { overflow-x: auto; position: relative; }
       table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
       th { text-align: left; font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 0.5rem 0.4rem; border-bottom: 1px solid var(--line); }
       td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -80,7 +80,12 @@
       .card { border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem 0.85rem; display: grid; gap: 0.4rem; align-content: start; }
       .card ul { margin: 0; padding-left: 1.1rem; font-size: 0.88rem; }
       .card p { margin: 0; font-size: 0.88rem; }
-      .card button { justify-self: start; min-height: 36px; padding: 0.3rem 0.7rem; border: 1px solid var(--accent); border-radius: 6px; background: var(--card); color: var(--ink); font: inherit; font-size: 0.85rem; cursor: pointer; }
+      .card button { justify-self: start; min-height: 36px; padding: 0.3rem 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); font: inherit; font-size: 0.85rem; cursor: pointer; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .row-key { min-height: 32px; padding: 0.2rem 0.65rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.85rem; white-space: nowrap; }
+      .row-key:hover, .card button:hover { background: var(--chip); }
+      .row-actions { text-align: right; white-space: nowrap; }
+      .row-actions .row-key + .row-key { margin-left: 0.35rem; }
       .empty { color: var(--muted); font-style: italic; margin: 0; }
       .demo-banner { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin: 0 0 1rem; padding: 0.5rem 0.65rem; border: 1px solid var(--accent); border-radius: 6px; background: color-mix(in srgb, var(--card) 88%, var(--accent)); font-size: 0.85rem; }
       .demo-banner[hidden] { display: none; }
@@ -93,6 +98,27 @@
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -136,7 +162,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <h2>The plan</h2>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Expected</th><th>Way</th><th class="num">Amount</th><th>Next date</th><th>Repeats</th></tr></thead>
+            <thead><tr><th>Expected</th><th class="num">Amount</th><th>Next date</th><th>Repeats</th><th><span class="sr-only">Actions</span></th></tr></thead>
             <tbody id="plan-body"></tbody>
           </table>
         </div>
@@ -612,7 +638,6 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var v = cents / 100, a = Math.abs(v);
           return (v < 0 ? '-' : '') + (a >= 1000000 ? Math.round(a / 100000) / 10 + 'M' : a >= 1000 ? Math.round(a / 100) / 10 + 'K' : String(Math.round(a)));
         }
-        var WAY = { 'in': 'In', out: 'Out' };
 
         var current = { file: null, selected: null };
         function weekStatus(f, w) { return w.closeCents < 0 ? 'crit' : w.closeCents < f.cushionCents ? 'warn' : ''; }
@@ -735,7 +760,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var views = document.getElementById('views');
           views.replaceChildren();
           [null].concat(names).forEach(function (name) {
-            var b = el('button', name ? 'What if: ' + name : 'The plan');
+            var b = el('button', name ? 'What if: ' + name : 'As planned');
             b.type = 'button';
             b.setAttribute('aria-pressed', String(current.selected === name));
             b.addEventListener('click', function () { current.selected = name; render(current.file); });
@@ -760,13 +785,24 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           planBody.replaceChildren();
           if (!expected.length) { var tr0 = el('tr'), td0 = el('td', 'Nothing expected yet.', 'empty'); td0.colSpan = 5; tr0.append(td0); planBody.append(tr0); }
           expected.map(function (r) { return { r: r, next: nextDate(r, today) }; }).sort(function (a, b) { return String(a.next).localeCompare(String(b.next)); }).forEach(function (row) {
-            var r = row.r, f = r.fields, tr = el('tr'), name = el('td'), when = el('td'), way = el('td');
+            var r = row.r, f = r.fields, tr = el('tr'), name = el('td'), when = el('td'), acts = el('td', undefined, 'row-actions');
             name.append(el('span', f.name));
             if (f.note) name.append(el('span', f.note, 'meta'));
-            way.append(el('span', WAY[f.direction] || f.direction, 'chip' + (f.direction === 'in' ? ' in' : '')));
+            // Row actions: settle this item, or try it arriving late without touching the plan.
+            var settle = el('button', f.direction === 'in' ? 'Received' : 'Paid', 'row-key');
+            settle.type = 'button';
+            settle.setAttribute('aria-label', (f.direction === 'in' ? 'Mark ' + f.name + ' received' : 'Mark ' + f.name + ' paid'));
+            settle.setAttribute('data-app-action', 'settle_cash_item');
+            settle.setAttribute('data-app-values', JSON.stringify({ item: r.id }));
+            var late = el('button', 'What if late?', 'row-key');
+            late.type = 'button';
+            late.setAttribute('aria-label', 'What if ' + f.name + ' comes later');
+            late.setAttribute('data-app-action', 'what_if');
+            late.setAttribute('data-app-values', JSON.stringify({ scenario: f.name + ' comes late', change: 'delay', item: r.id }));
+            acts.append(settle, late);
             when.append(document.createTextNode(niceDate(row.next)));
             if ((!f.recurs || f.recurs === 'none') && row.next < today) { when.append(document.createTextNode(' ')); when.append(el('span', 'Late', 'chip warn')); }
-            tr.append(name, way, el('td', cash(f.amountCents), 'num' + (f.direction === 'in' ? ' in' : '')), when, el('td', RECURS_TEXT[f.recurs || 'none'].replace(/^./, function (c) { return c.toUpperCase(); }) + (f.until ? ' until ' + niceDate(f.until) : '')));
+            tr.append(name, el('td', (f.direction === 'in' ? '+' : '') + cash(f.amountCents), 'num' + (f.direction === 'in' ? ' in' : '')), when, el('td', RECURS_TEXT[f.recurs || 'none'].replace(/^./, function (c) { return c.toUpperCase(); }) + (f.until ? ' until ' + niceDate(f.until) : '')), acts);
             planBody.append(tr);
           });
 
@@ -784,7 +820,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             card.append(el('p', 'After 13 weeks: ' + cash(alt.endCents) + ' (plan: ' + cash(plan.endCents) + ')'));
             var show = el('button', current.selected === name ? 'Showing on the chart' : 'Show on the chart');
             show.type = 'button';
-            show.addEventListener('click', function () { current.selected = name; render(current.file); document.getElementById('forecast-section').scrollIntoView({ block: 'start' }); });
+            show.addEventListener('click', function () { current.selected = name; render(current.file); if (window.appTabs) window.appTabs.select('home'); document.getElementById('forecast-section').scrollIntoView({ block: 'start' }); });
             card.append(show);
             cards.append(card);
           });

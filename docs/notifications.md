@@ -1,0 +1,24 @@
+# Notifications
+
+Gezel only sends you a notification when something actually happened:
+
+- **Gezel asked you a question** and is waiting on your answer,
+- **work you asked for is finished**,
+- **Gezel worked overnight** and the morning review is ready,
+- **a crew member reached a new level** (only with social mode on),
+- **a project worked out that something is due.** Flashcards, for example, remind you when your next cards come up for review. The time comes from your own cards, never from a schedule picked to bring you back.
+- **a lookout you set up saw what it was watching for.** See [Cameras and lookouts](https://gezel.com/docs/cameras-and-lookouts/).
+
+Gezel never sends a notification just because time passed. You won't get "haven't seen you in a while".
+
+## How many
+
+At most **three a day** by default. If several things happen at once, you get one notification ("3 things are waiting") instead of a pile. While you're looking at gezel, it doesn't notify you at all, because you can already see what happened.
+
+Lookout alerts are the exception: you asked to be told the moment it happens, so they arrive at once, on their own, and don't count toward the daily limit. Each lookout's own rest time and daily limit keep them in check. While gezel is open, the alert appears inside the app instead, with a **Stop sound** button.
+
+Change the number in **Settings → General → Notifications**: Off, 1, 3, 5 or 10 a day. Anything over the limit still waits for you where it always is, in Updates and in its chat. The limit only decides how often gezel interrupts you.
+
+## On your desktop and your phone
+
+On your desktop, notifications arrive even when the gezel window is closed, as long as the app is running. On a phone, gezel asks for permission the first time something worth a notification happens while you're using it. Reminders are handed to your phone, so they arrive even when gezel is closed.

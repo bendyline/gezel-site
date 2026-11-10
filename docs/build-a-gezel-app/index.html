@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a Gezel app: the complete guide — Gezel Handboek</title>
+<meta name="description" content="Everything a person or an AI agent needs to build a Gezel app on one page, from the working loop and the rules to the four maintained guides.">
+<link rel="canonical" href="https://gezel.com/docs/build-a-gezel-app/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gezel">
+<meta property="og:url" content="https://gezel.com/docs/build-a-gezel-app/">
+<meta property="og:title" content="Build a Gezel app: the complete guide">
+<meta name="twitter:title" content="Build a Gezel app: the complete guide">
+<meta property="og:description" content="Everything a person or an AI agent needs to build a Gezel app on one page, from the working loop and the rules to the four maintained guides.">
+<meta name="twitter:description" content="Everything a person or an AI agent needs to build a Gezel app on one page, from the working loop and the rules to the four maintained guides.">
+<meta property="og:image" content="https://gezel.com/og/build-a-gezel-app.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Build a Gezel app: the complete guide">
+<meta name="twitter:image" content="https://gezel.com/og/build-a-gezel-app.png">
+<meta name="twitter:image:alt" content="Build a Gezel app: the complete guide">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/handboek.css">
+<link rel="stylesheet" href="../../handboek.css">
+</head>
+<body class="hb hb-article-page">
+<header class="hb-masthead">
+<a class="hb-wordmark" href="/">gezel</a>
+<a class="hb-brand" href="../">Gezel Handboek</a>
+<nav class="hb-areanav">
+<a href="../craftbooks-overview/">Concepts</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
+<a href="../project-types-index/">Project Types</a>
+<a aria-current="true" href="../architecture/">Technical</a>
+<a href="../whats-new-index/">What's New</a>
+</nav>
+</header>
+<div class="hb-layout">
+<aside class="hb-sidebar">
+<nav aria-label="Handboek sections">
+<section>
+<h2><a href="../craftbooks-overview/">Concepts</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../roles-index/">Crew roles</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
+
+
+</section>
+<section>
+<h2><a href="../project-types-index/">Project Types</a></h2>
+
+
+</section>
+<section>
+<h2 class="hb-current">Technical</h2>
+<ul class="hb-sidebar-entries">
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">How Gezel works</h3>
+<ul>
+<li><a href="../architecture/">How gezel runs: app, daemon, and tools</a></li>
+<li><a href="../where-files-live/">Where files live</a></li>
+<li><a href="../providers-and-engines/">Providers and engines</a></li>
+<li><a href="../tools-and-toolsets/">Tools and toolsets</a></li>
+<li><a href="../toolset-catalog/">Add-on toolsets and connectors</a></li>
+<li><a href="../security-model/">The security model: tokens, sandboxing, and consent</a></li>
+<li><a href="../what-leaves-this-computer/">What leaves this computer</a></li>
+<li><a href="../verifying-your-download/">Verifying your download</a></li>
+<li><a href="../governance/">Governance: who writes Gezel, and how</a></li>
+<li><a href="../how-knowledge-works/">How knowledge works in Gezel</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">The Gezel Command Line</h3>
+<ul>
+<li><a href="../cli-reference/">The gezel command line</a></li>
+<li><a href="../npm-packages/">Gezel on npm: the package map</a></li>
+<li><a href="../knowledge-command-line/">Working with knowledge catalogs</a></li>
+<li><a href="../gezel-on-a-server/">Gezel on a server</a></li>
+<li><a href="../gezel-in-docker/">Gezel in Docker</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Developer</h3>
+<ul>
+<li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
+<li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a class="hb-current" aria-current="page" href="../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
+<li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
+<li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
+<li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
+<li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../gezel-app-ux-guide/">Gezel app UX guide</a></li>
+</ul>
+</li>
+<li class="hb-sidebar-subcategory">
+<h3 class="hb-sidebar-subcategory-title">Models and Testing</h3>
+<ul>
+<li><a href="../how-we-test-models/">How we test models</a></li>
+<li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../model-catalog/">Every model</a></li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section>
+<h2><a href="../whats-new-index/">What's New</a></h2>
+
+
+</section>
+</nav>
+</aside>
+<main class="hb-main">
+<nav class="hb-breadcrumb" aria-label="Breadcrumb">
+<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+</nav>
+<article class="hb-article">
+<h1>Build a Gezel app: the complete guide</h1>
+<p>This is the page to read, or to hand to an AI agent, before building a Gezel app. It starts with the working loop and the rules that keep an app working, then gives the four maintained guides: how an app is put together, how its page talks to Gezel, how it looks, and how it is organized. The exact references are linked at the end.</p>
+<p>A <strong>Gezel app</strong> is an experience: a page people use, a crew that works it, the craftbooks the crew follows, and the actions it takes. A <strong>project type</strong> is the app's reusable composition, a <strong>project</strong> is one person's copy of it, and a <code>.gezapp</code> is a package that carries the composition to another computer. Use only the parts an app needs: a page and a folder are already an app.</p>
+<h2 id="for-ai-agents-start-here">For AI agents: start here</h2>
+<p>Work the same loop a person does, using its machine-readable ends:</p>
+<ol><li><p>Install the command line with <code>npm install -g @bendyline/gezel-cli</code> (Node.js 24 or newer). <code>gezel app guide</code> prints this page for the version you installed. Add <code>--download</code> to any command that needs a model (<code>gezel run</code>, <code>gezel do</code>): it downloads the on-device engine and the model that fits this computer, printing each step, instead of stopping to ask.</p></li><li><p>Start from <code>gezel app new &lt;name&gt; --with-page</code>, or from one of the <a href="https://github.com/bendyline/gezel/tree/main/examples/apps">sample apps</a>.</p></li><li><p>Read the file formats with <code>gezel app schemas --json</code>. They are rendered from the build you installed, so they are never out of date.</p></li><li><p>Run <code>gezel app validate &lt;folder&gt; --json</code>. Fix every finding and run it again until <code>ok</code> is <code>true</code>.</p></li><li><p>Run <code>gezel app pack &lt;folder&gt;</code> to make the <code>.gezapp</code>.</p></li><li><p>Report what the app does, which files it owns, what it can read and change, what you tested, and how to install it with <code>gezel app add</code>.</p></li></ol>
+<p>These rules keep an app working:</p>
+<ul><li><p><strong>Decide data and permissions first.</strong> Name the files the app owns, what its page reads (<code>pages.reads</code>), where it adds files (<code>pages.imports</code>), and what each action may change.</p></li><li><p><strong>Use the page API, not a bridge of your own.</strong> Pages talk to Gezel through <code>window.gezel</code> and inherit Gezel's fonts. Never copy font files or platform scripts into an app, and never build a private file or query bridge.</p></li><li><p><strong>Change files only through declared tools.</strong> A page has no raw write API, and nothing may get around the workspace write policy.</p></li><li><p><strong>Reuse the shared file components.</strong> Anything that shows or adds files uses <code>gezel.ui.components.fileCard</code> and <code>fileAdder</code>.</p></li><li><p><strong>Reuse before you add.</strong> Prefer existing roles and craftbooks. Extend the shared runtime only when a reusable capability is missing.</p></li><li><p><strong>Organize the page the Gezel way.</strong> Home plus a tab per noun, actions as keys that open dialogs, and actions on the records themselves.</p></li><li><p><strong>Test what people will use.</strong> Try a real Gezel flow as well as the standalone demo, in both themes and at a narrow width.</p></li></ul>
+<p>The rest of this page is the four maintained guides, in this order:</p>
+<h2 id="building-ai-apps-inside-gezel">Building AI Apps inside Gezel</h2>
+<p>File-oriented apps should reuse the <a href="../gezel-page-apis/#file-cards-and-adding-files">shared file card and file adder</a>. Use explicit <code>pages.imports</code> destinations for uploads, alongside <code>pages.reads</code> for browsing. The components work with plain HTML, inherit shared typography, and include an in-memory standalone demo adapter. Test both demo and embedded flows, including write denial, partial failures and resetting demo state.</p>
+<p>An AI App is a reusable experience that runs <em>inside</em> Gezel: a tailored project, a purpose-built crew, repeatable craftbooks, scripts, data, and an optional interactive dashboard. A language trainer, research room, board game, or client-service workspace can all use the same underlying pieces while feeling like a distinct application.</p>
+<p>"Gezel app" and "AI App" name that experience. The <strong>project type</strong> is its reusable composition and setup recipe; the <strong>project</strong> is one person's instance. You can build a useful app with only a page and a folder, then add a crew member or a craftbook when the work calls for one. You do not need every component in every app.</p>
+<p>For the interface, read <a href="../gezel-page-apis/">Using the Gezel page APIs</a> and the <a href="../gezel-app-page-style-guide/">app page style guide</a>. The complete <a href="https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md">page API reference</a> and <a href="https://github.com/bendyline/gezel/blob/main/docs/project-types.md">project-type specification</a> provide the precise runtime contracts. These three Handboek guides are the starting path for people and AI agents building an app.</p>
+<p>The project type is the composition root and installer. Public AI Apps arrive through the <a href="https://gezel.com/docs/project-types-index/">project-type collection</a>; private or experimental apps travel as <code>.gezapp</code> packages. Both start life as the same thing: a source folder you can build with the command line, by hand, or with an AI agent — this article is the guide to that folder.</p>
+<p>An AI App is different from a connected app. A connected app runs in its own process and interface and reaches Gezel through <code>@bendyline/gezel-app-sdk</code>. See <a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a> when that is what you are building.</p>
+<h3 id="build-one-in-five-minutes">Build one in five minutes</h3>
+<p>Scaffolding, schema export, validation, and packing work without a running service. Installation and adoption use the Gezel daemon. Start with a disposable project folder while developing an app that writes data:</p>
+<pre class="squisq-code-block"><code class="language-bash">gezel app new my-app --with-page     # a minimal source folder that validates
+cd my-app
+gezel app schemas --out schemas     # the exact schemas this CLI understands
+# edit items/ — the role's about.md and the version manifest are the heart
+gezel app validate .                 # every finding at once; --json for tooling
+gezel app pack .                     # -&gt; my-app-1.0.0.gezapp
+gezel app add my-app-1.0.0.gezapp     # review and confirm the installation
+cd ~/the/folder/for/it &amp;&amp; gezel app apply my-app</code></pre>
+<p><code>apply</code> outfits the current folder as a project: it creates the crew from the embedded role templates, installs craftbooks and scripts, seeds the data files, and pins the Output page. From there, iterate — edit the source, <code>validate</code>, <code>pack</code>, <code>add</code> (an upgrade), and <code>apply --refresh</code>; <code>gezel app status</code> reports seed drift, and <code>gezel app serve</code> shares the finished page (and optional visitor chat) as a mini-site.</p>
+<p>The <code>--with-page</code> scaffold includes a working records page. Run <code>gezel app demo . --out ../my-app-demo</code> and open the generated <code>pages/dashboard/index.html</code> for a standalone demo with resettable, in-memory sample data. The exporter supplies the shared bootstrap, components and fonts; app source does not bundle them. Inside Gezel it reads the real <code>data.json</code>, inherits the shared body/UI/heading fonts, follows host theme changes, and displays failures without switching to sample data. It includes loading, empty, pending, and retry states and cleans up its subscriptions. The browser preview is read-only; embedded and shared-site actions remain subject to host permissions.</p>
+<p>The scaffold exposes <code>add_record</code> to the keeper and <code>page_add_record</code> to the page, both backed by the same <code>records-store</code> script. This distinction matters: a name in <code>pages.tools</code> is excluded from the model's tool roster. Keep separate names when both audiences need an action. The sample uses button and keyboard handlers because the page sandbox does not allow native form submissions. Extend this starting point using the style/API guides, and test your new actions against a real host as well as the demo.</p>
+<p>Three worked samples of graded size live in <a href="https://github.com/bendyline/gezel/tree/main/examples/apps">examples/apps</a> — <code>example-journal</code> (the minimal shape), <code>example-habit-tracker</code> (state, tools, a live page), and <code>example-reading-circle</code> (a crew, craftbooks, schedules, dependencies). Copying the smallest one that fits beats starting empty.</p>
+<p>For shared page APIs, inspect the <a href="https://github.com/bendyline/gilde/tree/main/data/project-types/me/media-library">Media Library</a> and <a href="https://github.com/bendyline/gilde/tree/main/data/project-types/da/data-analysis">Data Analysis</a> types: they show folder discovery, file-viewer navigation, inherited typography, and indexed summaries without private transports. Use the API reference as the contract; a sample's implementation choices are not additional requirements.</p>
+<h3 id="or-start-from-a-working-project">Or start from a working project</h3>
+<p>The other on-ramp is to prototype the experience as an ordinary project first: settle the crew roles in conversation, work through each craftbook, run the scripts by hand, and decide which files are durable state versus generated artifacts.</p>
+<p>When the composition feels right, ask someone on the crew who has the project-management tools to export the type applied to that project. Gezel writes a <code>.gezapp</code> into the project artifacts — and a <code>.gezapp</code> is a renamed zip of exactly the source layout below, so unzip it, drop in a small <code>gezapp.json</code>, and keep iterating with <code>validate</code> and <code>pack</code>.</p>
+<h3 id="the-source-folder">The source folder</h3>
+<p>A source folder is a <code>gezapp.json</code> beside an <code>items/</code> tree. The tree is the same layout the packed archive and the installed app use (items sharded by the first two characters of their id, identity separate from versioned content), which is why exports round-trip:</p>
+<pre class="squisq-code-block"><code class="language-text">my-app/
+  gezapp.json                        the source manifest — small on purpose
+  items/
+    project-types/my/my-app/
+      manifest.json                  identity: id, name, description, maintainer
+      versions/1.0.0/
+        manifest.json                the composition root (everything below hangs off it)
+        about.md                     param-templated project context
+        mission.md
+        records.json                 seed data (workspaceSeed)
+        scripts/
+          record-store.ts            sidecar script — folded inline at pack
+        craftbooks/
+          review-records.json        type-private craftbook document
+        pages/
+          dashboard/index.html       the Output page
+    gezel-templates/my/my-app-lead/
+      manifest.json                  role identity (kind, id, name, role)
+      versions/1.0.0/
+        manifest.json                points at about.md
+        about.md                     the role's working character
+    craftbook-templates/my/my-app-review/
+      manifest.json
+      versions/1.0.0/
+        craftbook.json               the reusable craftbook document
+        test.json                    its eval sidecar</code></pre>
+<p><code>gezapp.json</code> stays small on purpose — <code>format: "gezel-ai-app-source"</code>, <code>schemaVersion: 1</code>, and optionally an <code>entry</code> pin and a <code>publisher</code>. The item list, per-item SHA-256 hashes, the external dependency lock, <code>minGezelVersion</code>, and timestamps are all derived from the tree by <code>gezel app pack</code>; writing them by hand is a validation error, not a convention.</p>
+<p>Scripts have two equal authoring forms. The version manifest's <code>scripts</code> map holds inline TypeScript strings — the form models author most reliably — and <code>versions/&lt;v&gt;/scripts/&lt;name&gt;.ts</code> holds the same scripts as real files, which people and typecheckers prefer. Pack folds sidecars into the map and drops the files, so the shipped app is byte-identical either way; defining one name in both forms is a validation error.</p>
+<p>Craftbooks also have two homes. A procedure private to this app lives embedded at <code>versions/&lt;v&gt;/craftbooks/&lt;id&gt;.json</code> — it ships inside the project type and appears in no catalog. A reusable procedure is its own <code>craftbook-templates/</code> item with a <code>craftbook.json</code> and a <code>test.json</code> eval sidecar — or simply a reference to an existing recipe in the <a href="https://gezel.com/docs/craftbooks-index/">craftbook collection</a>. The version manifest's <code>craftbooks</code> list references both by id, and an embedded document wins over a catalog item with the same id.</p>
+<h3 id="the-parts-of-an-ai-app">The parts of an AI App</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Part</th><th>What it contributes</th></tr></thead><tbody><tr><td>Project type</td><td>Identity, version, setup params, project templates, crew roster, and references to every other part</td></tr><tr><td>Role templates</td><td>Each crew member's name, role, and <code>about.md</code> working character; one entry can be the crew lead (<code>voorman: true</code>), or a solo type presents its one crew member under a custom <code>leadLabel</code>. Browse the <a href="https://gezel.com/docs/role-catalog/">role collection</a> before writing a new one</td></tr><tr><td>Craftbooks</td><td>Repeatable procedures installed into each project — embedded (type-private) or referenced catalog items</td></tr><tr><td>Scripts and tools</td><td>Capability-declared TypeScript run in Gezel's sandbox; a <code>tools</code> entry exposes a script as a schema-validated tool for the model or the page</td></tr><tr><td>Output page</td><td>A read-limited HTML/CSS/JS experience pinned into the project's Output tab</td></tr><tr><td>Data</td><td>Ordinary JSON, Markdown, and media files seeded into the workspace or artifacts</td></tr><tr><td>Schedules</td><td>Consent-gated scheduled or Night Shift craftbook runs</td></tr><tr><td>Toolsets</td><td>Catalog references for capabilities the project needs or suggests; toolset code is never embedded</td></tr></tbody></table></div>
+<p>Nothing installs merely because Gezel detects a suitable project type: adoption is explicit, params render as a form and substitute into <code>nameTemplate</code>, the about/mission templates, and seed files, and toolsets and schedules remain subject to consent and security policy.</p>
+<h3 id="design-the-contract-before-building-the-interface">Design the contract before building the interface</h3>
+<p>Write a short brief with five decisions: what the person does, which files are authoritative, which actions change them, where judgment needs a model, and what successful completion looks like. Map each decision to an existing part of the platform:</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Requirement</th><th>Put it here</th></tr></thead><tbody><tr><td>Show, search, filter, or chart existing content</td><td>A type-owned page using the shared page APIs</td></tr><tr><td>Store a record or calculate a deterministic result</td><td>A capability-declared SDK script, exposed through a tool when needed</td></tr><tr><td>Make a judgment, explain, research, or converse</td><td>A focused crew role with the tools it actually needs</td></tr><tr><td>Carry out a repeatable multi-step job</td><td>A craftbook with clear inputs, step ownership, and completion gates</td></tr><tr><td>Set up the experience</td><td>The project type's params, about/mission, crew, scripts, seeds, and project defaults</td></tr></tbody></table></div>
+<p>Describe the data contract explicitly: path, workspace or artifacts, schema, owner, who writes it, and how the page learns about changes. Keep the source definition separate from user data. A gallery's HTML belongs to the catalog type; photos belong to the selected workspace. A generated report belongs in artifacts. The page should not create a second source of truth in local storage.</p>
+<p>For a folder app such as Media Library or Data Analysis, declare a page with read access and no <code>workspaceSeed</code>. On desktop, New Project can attach an existing folder to a seedless type without copying or moving its originals. Typed creation accepts <code>workingDir</code>; types with workspace starter files use an internal workspace instead. This does not imply that CLI <code>app apply</code> is read-only: applying a stateful type can seed files in the folder you choose.</p>
+<p>Start a new type with the smallest version manifest that fits. For a read-only folder app, a composition can be this small; its identity manifest still lives one level above <code>versions/</code>:</p>
+<pre class="squisq-code-block"><code class="language-json">{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "releasedAt": "2026-10-19T00:00:00Z",
+  "aboutTemplate": "about.md",
+  "missionTemplate": "mission.md",
+  "pages": {
+    "entry": "index.html",
+    "api": 1,
+    "reads": [{ "source": "workspace", "path": ".", "subtree": true }]
+  }
+}</code></pre>
+<p>Add <code>params</code> only for choices the person needs to make. <code>nameTemplate</code>, <code>aboutTemplate</code>, and <code>missionTemplate</code> describe the instance; they are not replacements for a role's character. <code>tabVisibility</code> can simplify supporting tabs, <code>mode</code> and <code>leadLabel</code> shape a solo experience, and <code>meesterManaged</code> controls progress check-ins. Set <code>indexingEnabled: false</code> only when the app does not need indexed search or tables. Omitting a default preserves the existing project choice; a declaration can change it during adoption.</p>
+<h3 id="add-a-crew-and-repeatable-work">Add a crew and repeatable work</h3>
+<p>A custom role is a <code>gezel-templates</code> item with an identity manifest, a version manifest, and an <code>about.md</code>. Reference its template id in <code>gezels[]</code>, marking the crew lead with <code>voorman: true</code> when appropriate. Reuse a suitable existing role before adding a new one. A role template defines expertise, temperament, working style, and boundaries; it does not define one person's project brief. Keep tool listings out of its prose because Gezel injects the actual available tools at runtime.</p>
+<p>A custom craftbook turns a job into a sequence that can be checked. Define its input parameters, a valid <code>entryStepId</code>, unique step ids, the role responsible for each step, concrete outputs, and success gates. Use a script for calculation or mechanical file manipulation and a model for judgment. Do not ask a model to reconstruct data already available to a script. Use <code>{{task.dir}}</code> for task-owned outputs instead of inventing global paths. See <a href="../craftbooks-overview/">Plans</a>, <a href="../writing-scripts-with-gezel-sdk/">the script SDK</a>, and the complete <a href="https://github.com/bendyline/gezel/tree/main/examples/apps/example-reading-circle">Reading Circle sample</a> for a crew with both embedded and reusable craftbooks.</p>
+<p>Validate craftbook documents against schemas exported by the installed CLI rather than guessing step or gate fields. Reusable catalog craftbooks carry a <code>test.json</code> sidecar; that sidecar is not proof the workflow has run successfully. Exercise a representative task and its gates. Schedules reference the craftbook id and should make their consent behavior explicit; start with <code>consent: "ask"</code> for work the person has not yet enabled.</p>
+<h3 id="choose-public-catalog-or-private-package-authoring">Choose public catalog or private package authoring</h3>
+<p>The app composition is the same in both cases; the authoring and release loops differ.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Target</th><th>Source</th><th>Check and use it</th></tr></thead><tbody><tr><td>Private, experimental, or portable app</td><td><code>gezapp.json</code> + <code>items/</code></td><td><code>gezel app validate</code>, <code>pack</code>, then install and apply against a test project</td></tr><tr><td>Public Gilde app</td><td><code>gilde/data/&lt;kind&gt;/&lt;shard&gt;/&lt;id&gt;/</code></td><td>Gilde's schema/content checks, page-demo checks, and local index build; then test with Gezel using that content root</td></tr></tbody></table></div>
+<p>In the Gezel repository, public catalog content belongs in the sibling Gilde checkout, not in Gezel's old <code>data/</code> tree or installed dependencies. <code>GEZEL_GILDE_DATA_DIR</code> can select the checkout's <code>data/</code> directory for a development service. The normal application still uses its pinned catalog unless configured otherwise. A catalog change must be released and consumed before it appears in an ordinary installation.</p>
+<p>The private source packer folds script sidecars into the version manifest. That preprocessing is specific to the source-package path: when authoring Gilde directly, follow its released-payload conventions and validators. Never hand-edit a released version; add a new version. Exported hashes, dependency locks, and catalog-root indexes are generated, not authored.</p>
+<h3 id="scripts-tools-and-the-output-page">Scripts, tools, and the Output page</h3>
+<p>Each script declares its capabilities, inputs, outputs, and whether it is an action or gate through <code>@bendyline/gezel-sdk</code>; the <a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a> article covers that contract. Adoption copies the scripts into the project with provenance.</p>
+<p>A <code>tools</code> entry gives a script a stable name, a JSON Schema <code>inputs</code> object validated before every run, and static <code>bind</code> values so several narrow tools can share one script without letting the caller replace the bound operation. A tool listed in <code>pages.tools</code> is page-only — kept off the model's roster — and can carry a <code>reaction</code> that summons a named crew member when the page invokes it, with the tool output interpolated into the reaction prompt.</p>
+<p>Design tools a small local model can use. These rules come from running app requests on Gemma 4 E4B and 12B, where each one fixed a request that otherwise failed:</p>
+<ul><li><p><strong>Give the status tool the whole picture a request needs.</strong> A meal planner whose status listed only the grocery gap could not plan "around what we have", because nothing said what was in stock. Include ids, owners, dates and totals, and lead with what changed. A <code>state: true</code> tool runs before each chat turn and the model often answers from its output without calling anything, literally: asked what was due in 60 days, it skipped a separate "Overdue" list. Put what a question selects in one list, most urgent first.</p></li><li><p><strong>Name people in an output field, don't just count them.</strong> Asked who still owed a dietary answer, a model read <code>missingDietary: 2</code> beside a list that also held a guest who had not replied, decided he was one of the two, and could not name the other. A <code>noDietaryAnswer</code> field listing the names leaves nothing to infer.</p></li><li><p><strong>Say when to call a write tool.</strong> "Call it as soon as the person mentions one, before you describe it" stops a model that would otherwise describe a plan it never saved.</p></li><li><p><strong>Make adds idempotent on name.</strong> "We ran out of olive oil" often arrives as an add; update the existing record instead of creating a twin.</p></li><li><p><strong>Give relative changes their own input.</strong> Told that someone joined a party of four, a model replaced the party with one name. A <code>joining</code> input the script adds to the count removes the arithmetic from the model.</p></li><li><p><strong>Keep money in integer cents and dates as local <code>YYYY-MM-DD</code></strong>, and roll a monthly date forward to the last day of a shorter month rather than into the next.</p></li><li><p><strong>Speak to the model in the units its inputs take.</strong> Store cents, but report dollars in tool outputs. After reading <code>openValueCents</code> in one result, a model passed <code>valueChange: 340000</code> for "another $3,400" to an input that takes dollars, and a $22,500 deal became $362,500.</p></li></ul>
+<p>The Output page runs in a sandbox and codes against the injected <code>window.gezel</code> API (typed definitions in <code>@bendyline/gezel-sdk/page</code>; set <code>pages.api</code> to <code>1</code>). Every readable file must appear in <code>pages.reads</code> and every callable tool in <code>pages.tools</code> — there is deliberately no raw page write API, so state changes flow through declared tools and stay auditable:</p>
+<pre class="squisq-code-block"><code class="language-js">async function refresh() {
+  render(await gezel.data.read('records.json', { as: 'json' }));
+}
+const stop = gezel.data.watch('records.json', () =&gt; { void refresh().catch(showError); });
+await refresh();
+const { output } = await gezel.tools.invoke('add_record', { title: 'First review' });
+window.addEventListener('pagehide', stop, { once: true });</code></pre>
+<p>Here <code>render</code> and <code>showError</code> are your UI functions. A watch reports that a file changed; it does not pass the file contents to <code>render</code>.</p>
+<p>Use <code>gezel.data.list()</code> to discover files, <code>data.url()</code> for media, and <code>data.open()</code> to navigate to their existing Gezel renditions. Use <code>gezel.tables.list/describe/query</code> for permission-scoped summaries and charts over indexed data. These capabilities are shared infrastructure; keep them out of app-specific transports. See the <a href="../gezel-page-apis/">page API guide</a> for host differences and failure states.</p>
+<p>Pages inherit Gezel's local body/UI and heading fonts. They still define their own layout, color variables, control styles, and responsive behavior. Follow the <a href="../gezel-app-page-style-guide/">page style guide</a>, including both themes and system fallbacks for standalone demos.</p>
+<h3 id="validate-pack-and-share">Validate, pack, and share</h3>
+<p><code>gezel app validate</code> collects every finding at once, in layers: folder shape and portable paths, every manifest and craftbook parsed with the same schemas the runtime uses, the exact verification an install runs (hashes, reference closure, dependency locks), referenced files and craftbook step graphs, script diagnostics from the real TypeScript compiler, page syntax and theme checks, and offline dependency availability. Errors mean install or adoption would break; warnings are advisory.</p>
+<p><code>gezel app pack</code> derives the manifest and produces the <code>.gezapp</code> — a renamed zip holding the root manifest and the <code>items/</code> tree, with a SHA-256 digest per embedded item. Exactly one entry project type travels, along with every role and craftbook template it references; toolsets, connectors, and models stay outside as an exact-version dependency lock — models remain separate catalog choices (browse <a href="https://gezel.com/docs/model-catalog/">every model</a>) and are never bundled into an app. Version 1 packages are explicitly <code>unsigned</code> — hashes detect corruption, not authorship, so install only from sources you trust.</p>
+<p>Installation is <code>gezel app add</code>: a first pass previews publisher, contents, compatibility, conflicts, and missing dependencies without writing anything; the confirmed pass installs atomically under <code>~/.gezel/ai-apps/</code>, records a receipt, and mounts the app as one catalog source. Import never executes package contents, and <code>gezel app list/show/enable/disable/remove/update</code> manage the installed lifecycle.</p>
+<p>For public distribution, contribute the same <code>items/</code> content to the <a href="https://github.com/bendyline/gilde">Gilde repository</a> — the catalog and a <code>.gezapp</code> share the layout, so a private app can graduate to the public collection without restructuring.</p>
+<h3 id="for-ai-agents-building-apps">For AI agents building apps</h3>
+<p>An AI agent building an app should work the same loop a person does, with the machine-readable ends of it:</p>
+<ul><li><p><code>gezel app schemas --out schemas</code> (or <code>--json</code>) — the JSON Schemas for every catalog content file plus the packed and source gezapp manifests, rendered live from the running build so they can never be stale.</p></li><li><p><code>gezel app validate &lt;folder&gt; --json</code> — the findings list with stable rule ids; fix and re-run until <code>ok</code> is true, then <code>pack</code>.</p></li><li><p><a href="https://github.com/bendyline/gezel/tree/main/examples/apps">examples/apps</a> — three complete source folders of graded complexity, each kept working against the real service by the repository's test suite.</p></li><li><p><code>gezel app new</code> — a guaranteed-valid starting shape when no sample is at hand.</p></li></ul>
+<p>Use this brief when asking an LLM to build an app:</p>
+<blockquote><p>Build a Gezel app for [person and task]. Read Building AI Apps inside Gezel, Using the Gezel page APIs, and the Gezel app page style guide first. Choose public Gilde content or a private <code>.gezapp</code> source folder. State the user flow, authoritative files and schemas, read/write permissions, crew responsibilities, and completion criteria. Reuse existing APIs, roles, and craftbooks. Implement only the components this app needs. Use shared fonts and <code>window.gezel</code>, deterministic scripts for actions, and gated craftbooks for repeatable work. Include labeled standalone samples where required, but never use samples after a live failure. Validate against the installed schemas, test the main flow in a real host, and report supported modes, remaining limitations, and the release/install step needed to use it.</p></blockquote>
+<p>Before handing over the app:</p>
+<ol><li><p>Validate the source or Gilde payload, including every referenced role, craftbook, script, page, and seed. Keep generated and authored files distinct.</p></li><li><p>Create or apply the app in an isolated test project. Verify the actual folder binding, permission denials, and every state-changing action. A folder explorer must leave originals unchanged.</p></li><li><p>Exercise the main craftbook with representative inputs and confirm its outputs and gates. Check disabled/consent-required schedules without silently arming them.</p></li><li><p>Test the page's live and standalone flows, light/dark themes, keyboard navigation, narrow layout, empty content, unavailable capabilities, and failed actions. Dispose watches and media players. A page with a conversation gets a <a href="../gezel-page-apis/#the-sample-conversation">sample conversation</a> for its demo; then ask the real crew lead the same suggestions on a small local model, so the demo never promises what the app cannot do.</p></li><li><p>If upgrading, check user-modified content and seed drift. Document any unsupported migration or reconciliation rather than overwriting it as a convenience.</p></li><li><p>Report what shipped, what was tested, which host modes are supported, and whether the normal app consumes the new catalog version yet.</p></li></ol>
+<h3 id="what-still-needs-improvement">What still needs improvement</h3>
+<p>The authoring loop above is real, but the surrounding lifecycle still has gaps:</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Gap</th><th>What is needed</th></tr></thead><tbody><tr><td>Project-to-app export</td><td>Export packages the catalog definition; a diff-and-review flow that turns organic project changes (edited scripts, new craftbooks, a redesigned page) into a new version does not exist yet</td></tr><tr><td>Import interface</td><td>The desktop app still routes import through project artifacts and model tools; file picking, bundle review, and conflict handling belong in the UI the way the CLI already has them</td></tr><tr><td>Updates and drift</td><td><code>gezel app status</code> reports per-seed drift and <code>apply</code> preserves user-modified seeds, but scripts still overwrite on upgrade and there is no three-way reconcile view</td></tr><tr><td>Schema evolution</td><td>App data-version declarations, migrations, backup, and rollback for custom records</td></tr><tr><td>Dashboard surface</td><td>First-class page templates, an in-app development preview, diagnostics, and possibly more than one app-owned project tab</td></tr><tr><td>Craftbook test harness</td><td><code>test.json</code> sidecars are validated at authoring time, but the eval harness does not yet run an installed app's craftbook tests</td></tr><tr><td>Signing and registries</td><td>v1 signature status is <code>unsigned</code>; a signing story and a private registry path alongside public Gilde contributions</td></tr></tbody></table></div>
+<p>Until those close, treat the source folder as the canonical form of an AI App: Gilde for public distribution, <code>.gezapp</code> for controlled sharing, and ordinary projects for prototypes whose composition is still changing.</p>
+<h2 id="using-the-gezel-page-apis">Using the Gezel page APIs</h2>
+<p>A project type can ship <code>pages/index.html</code> with relative JavaScript, CSS, and assets. Gezel hosts that page in the project's Output pane and injects <code>window.gezel</code> before its scripts run. You build a normal browser interface; Gezel supplies project identity, scoped file access, declared actions, and the theme. You do not need a React component inside the desktop shell or a new service for each app.</p>
+<p>Read <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a> for the whole app and the <a href="../gezel-app-page-style-guide/">app page style guide</a> for injected fonts and page-owned styles. The complete <a href="https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md">Output Pane API reference</a> owns method signatures, error codes, permissions, limits, and compatibility; <a href="https://github.com/bendyline/gezel/blob/main/packages/sdk/src/page.ts">the typed API</a> is exported as <code>@bendyline/gezel-sdk/page</code> for authoring tools.</p>
+<h3 id="declare-the-page-and-its-authority">Declare the page and its authority</h3>
+<p>This is a <code>pages</code> block inside a project type's <strong>version</strong> manifest:</p>
+<pre class="squisq-code-block"><code class="language-json">{
+  "pages": {
+    "entry": "index.html",
+    "api": 1,
+    "reads": [
+      { "source": "workspace", "path": "media", "subtree": true },
+      { "source": "artifacts", "path": "summary.json" }
+    ],
+    "tools": ["page_refresh_summary"]
+  }
+}</code></pre>
+<p>The entry is relative to <code>pages/</code>. Reads are project-relative; <code>workspace</code> and <code>artifacts</code> are different trees. An exact-file grant does not grant the surrounding directory. A folder explorer can deliberately grant <code>{"source":"workspace","path":".","subtree":true}</code> for the whole selected project folder. The host checks the grants and path containment. It binds the project; a page never supplies its own project id to escape that boundary.</p>
+<p>Every <code>pages.tools</code> name must also be declared in the type's <code>tools</code> array. Those names are page-only: they are removed from the model's tool roster. If both the page and the model need an action, declare two tool names sharing the same script and bound operation. A declared action still needs the script's capabilities and the user's project policy to permit it.</p>
+<h3 id="choose-the-smallest-api-that-does-the-job">Choose the smallest API that does the job</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Job</th><th>API</th><th>Important behavior</th></tr></thead><tbody><tr><td>Identify the app instance</td><td><code>gezel.page</code></td><td>Type name, params, project id, API version, and host mode</td></tr><tr><td>List a folder</td><td><code>gezel.data.list(path, opts?)</code></td><td>One directory at a time; recursion and scan bounds belong to the page</td></tr><tr><td>Read small state</td><td><code>gezel.data.read(path, opts?)</code></td><td>JSON, text, or bytes; bounded reads</td></tr><tr><td>Follow changes</td><td><code>gezel.data.watch(path, callback, opts?)</code></td><td>Callback signals a change; re-read the data; retain the unsubscribe function</td></tr><tr><td>Display media</td><td><code>gezel.data.url(path, opts?)</code></td><td>Assign to an image/audio/video element; hosted media can stream and seek</td></tr><tr><td>Open the original in Gezel</td><td><code>gezel.data.open(path, opts?)</code></td><td>Navigates to the existing file rendition in embedded mode</td></tr><tr><td>Render a consistent file tile or row</td><td><code>gezel.ui.components.fileCard(mount, options)</code></td><td>Thumbnail/fallback, metadata, keyboard action and existing file viewer</td></tr><tr><td>Add files with a picker or drop</td><td><code>gezel.ui.components.fileAdder(mount, options)</code></td><td>Explicit destination, progress, cancellation and per-file results</td></tr><tr><td>Discover upload destinations</td><td><code>gezel.data.importTargets()</code></td><td>Manifest targets plus current write permission</td></tr><tr><td>Copy selected files into a destination</td><td><code>gezel.data.importFiles(files, options)</code></td><td>Scoped, create-only uploads; returns saved paths and partial failures</td></tr><tr><td>Find indexed datasets</td><td><code>gezel.tables.list()</code></td><td>Only tables whose source files are within the page's readable scope</td></tr><tr><td>Inspect columns</td><td><code>gezel.tables.describe(tableName)</code></td><td>Column types and available metadata</td></tr><tr><td>Summarize or chart data</td><td><code>gezel.tables.query(sql, opts?)</code></td><td>Bounded, read-only DuckDB queries over permitted indexed tables</td></tr><tr><td>Change state or run an action</td><td><code>gezel.tools.invoke(name, input?)</code></td><td>Schema-validated, declared script-backed action</td></tr><tr><td>Follow the host theme</td><td><code>gezel.ui.theme</code>, <code>gezel.ui.onTheme(callback)</code></td><td>Apply at boot and keep the unsubscribe function</td></tr></tbody></table></div>
+<p>Use the existing file rendition instead of rebuilding a spreadsheet or CSV editor in your page. Use the shared query API instead of bundling DuckDB or fetching observation storage files. Tables describe an indexed snapshot: listing a CSV does not guarantee a table is ready. Handle missing indexing and unavailable query engines explicitly.</p>
+<p>For a simple live list, wire a change signal to a fresh read, and treat filenames as text:</p>
+<pre class="squisq-code-block"><code class="language-js">// Use the injected host or initialize sample handlers through the demo bootstrap.
+const list = document.querySelector('#files');
+const status = document.querySelector('#status');
+let revision = 0;
+async function refresh() {
+  const request = ++revision;
+  try {
+    const entries = await gezel.data.list('media');
+    if (request !== revision) return;
+    list.replaceChildren(...entries.map((entry) =&gt; {
+      const row = document.createElement('li');
+      row.textContent = entry.name;
+      return row;
+    }));
+    status.textContent = entries.length ? `${entries.length} items` : 'This folder is empty.';
+  } catch (error) {
+    if (request === revision) status.textContent = `Could not read this folder: ${error.message}`;
+  }
+}
+const stop = gezel.data.watch('media', refresh, { intervalMs: 15000 });
+window.addEventListener('pagehide', () =&gt; { revision++; stop(); }, { once: true });
+void refresh();</code></pre>
+<p>Do not treat the watch callback's <code>{path, etag}</code> as the file's contents. Avoid overlapping whole-folder scans and unbounded watchers. The browser fallback interval is configurable; embedded watches use the host's shared mechanism.</p>
+<h3 id="account-for-the-host-mode">Account for the host mode</h3>
+<div class="hb-table-scroll"><table><thead><tr><th>Host</th><th>Files/media</th><th>Tools</th><th>File viewer</th><th>Tables</th></tr></thead><tbody><tr><td>Desktop Output pane (<code>embedded</code>)</td><td>Scoped access</td><td>Declared actions</td><td><code>data.open()</code></td><td>When the query engine and index are available</td></tr><tr><td>Authenticated mini-site (<code>serve</code>)</td><td>Scoped access</td><td>Declared actions</td><td>Unavailable</td><td>When the query engine and index are available</td></tr><tr><td>Capability preview tab (<code>browser</code>)</td><td>Capability-scoped fallback</td><td>Unavailable</td><td>Unavailable</td><td>Unavailable</td></tr><tr><td>Published or exported standalone demo (<code>demo</code>)</td><td>Authored samples</td><td>In-memory demo handlers</td><td>Explain the live action</td><td>Authored sample summaries, if provided</td></tr><tr><td>Phone's embedded snapshot</td><td>Scoped bridge with bounded media relay</td><td>Supported portable actions</td><td>Host-dependent; handle unavailable</td><td>Unavailable in the portable runtime</td></tr></tbody></table></div>
+<p>Feature-detect optional additions such as <code>gezel.tables</code> and <code>gezel.data.open</code>, then handle their errors. Mode alone is not a promise that every engine or codec is installed. Avoid offering an action that cannot work in the current mode.</p>
+<p>For standalone demos, the website publisher, local preview server, or offline exporter injects a shared bootstrap before app scripts. App source contains its UI and sample handlers, not a copied SDK, component runtime, or font set. Initialize with <code>const api = window.gezel || window.makeDemoGezel({ page, tools, data, existingPaths });</code>. In a real host the existing API wins; in a demo, the bootstrap installs the sample transport and <code>api.ui.components</code>. Import targets come from the manifest's <code>pages.imports</code>. Keep deterministic samples, a visible banner and Reset demo. A failed live call must remain a live error, not switch into demo mode.</p>
+<p>Pages have no daemon credentials, Node filesystem, unrestricted SQL connection, or arbitrary-path write API. Imports are a narrow exception for explicitly declared destinations. Stay on this shared surface.</p>
+<h3 id="fullscreen-layout-and-embedded-chat">Fullscreen layout and embedded chat</h3>
+<p>Read <code>gezel.ui.layout</code> at boot and subscribe with <code>gezel.ui.onLayout(callback)</code>. The snapshot contains <code>fullscreen</code>, <code>width</code>, and <code>height</code> in CSS pixels. In the Output pane, fullscreen means the page is maximized inside the Gezel window's main workspace. The project sidebar stays available on its configured side, expanded or collapsed as the user left it. Each project remembers whether its page is closed, open, or fullscreen when revisited, including after a restart. It does not mean that the operating system window is maximized. The same page stays mounted across maximize/restore; game state and drafts survive. The initial fullscreen value is false until the host handshake arrives. Browser, serve, and demo pages follow the browser Fullscreen API instead. The root also receives <code>data-gezel-fullscreen="true"</code> or <code>"false"</code> for CSS.</p>
+<p>Mount native chat with <code>gezel.ui.components.chat(element, options)</code>. Give the mount an explicit height. The handle has <code>element</code>, <code>update(partialOptions)</code>, <code>destroy()</code>, and <code>ready</code> (a promise that rejects when the host cannot mount it). Keep the mount in the document and hide it with CSS to preserve its current conversation. Destroy it when permanently discarding it.</p>
+<pre class="squisq-code-block"><code class="language-js">const chat = gezel.ui.components.chat('#game-chat', {
+  gezelRole: 'Opponent', // resolve a role from this project's crew
+  lockRecipient: true,
+  showAddress: false,
+  showThreads: false,
+  placeholder: 'Ask about a move…',
+});
+const arrange = ({ fullscreen, width }) =&gt; {
+  document.querySelector('#game').classList.toggle('with-chat', fullscreen &amp;&amp; width &gt;= 800);
+};
+arrange(gezel.ui.layout);
+const stopLayout = gezel.ui.onLayout(arrange);
+window.addEventListener('pagehide', () =&gt; { stopLayout(); chat.destroy(); });</code></pre>
+<pre class="squisq-code-block"><code class="language-css">#game { display: grid; min-height: 0; }
+#game-chat { display: none; height: 70vh; min-width: 0; }
+#game.with-chat { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 16px; }
+#game.with-chat #game-chat { display: block; }</code></pre>
+<p>Use <code>gezelId</code> for an exact crew member, <code>gezelRole</code> for a role, or omit both to use the project's crew lead (then its first member). An unavailable requested recipient displays an error rather than silently choosing someone else. <code>lockRecipient</code> defaults to true and disables recipient switching and mention fan-out. <code>showAddress</code> and <code>showThreads</code> default to true. <code>variant: 'composer'</code> omits the timeline; the default <code>'chat'</code> shows that recipient's project history. <code>attachments</code>, <code>dictation</code>, <code>promptAssist</code>, and <code>expand</code> default to false and can be enabled individually, subject to the host's capabilities.</p>
+<p>Chat currently requires the embedded Gezel host. Browser previews, app-serve visitors, and standalone demos show an explicit unavailable message; demos never call a model. The parent owns the native chat and composer, including their theme, accessibility, sessions, and ordinary permission prompts. Page scripts receive no transcript, input text, credentials, or programmatic send method. Options change presentation, not the recipient's tool authority.</p>
+<p>The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat: hide the slot while showing a page dialog that overlaps it. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.</p>
+<h3 id="building-a-full-page-workspace">Building a full-page workspace</h3>
+<p><code>gezel.ui.components.appLayout(main, options)</code> wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. The component hides the native slot while a visible page dialog is open, since iframe content cannot cover host-owned chat.</p>
+<pre class="squisq-code-block"><code class="language-js">const workspace = gezel.ui.components.appLayout('main', {
+  title: 'Practice with your tutor',
+  description: 'Choose a scene, then talk here.',
+  chat: { showAddress: false, lockRecipient: true, dictation: true },
+});</code></pre>
+<p><code>chat: false</code> gives a file-only application room to expand without recruiting a companion. Multi-person crews can use <code>lockRecipient: false, showAddress: true</code>. The page still owns its content, typography choices, and domain layout. Feature detect <code>appLayout</code> when supporting older hosts. Retain the handle and call <code>destroy()</code> if discarding the workspace; it also cleans up on <code>pagehide</code>.</p>
+<p>Use <code>actionForm</code> for a compact, accessible form that invokes one declared page tool. It validates required fields, numbers and dates; serializes one save at a time; and retains entered values after a failure. Fields can be text, number, date, URL, multiline text, or a selection. <code>mapInput</code> can map a simple form into the tool's input schema. It does not change the page's authority.</p>
+<pre class="squisq-code-block"><code class="language-js">const form = gezel.ui.components.actionForm('#add-guest', {
+  title: 'Add a guest', tool: 'page_add_guest',
+  fields: [
+    { name: 'name', label: 'Guest or household', required: true },
+    { name: 'party', label: 'Party size', type: 'number', min: 1, step: 1, required: true },
+  ],
+  onSaved: () =&gt; refreshGuests(),
+});</code></pre>
+<p>On a current host, draw actions as keys that open dialogs, following the <a href="../gezel-app-ux-guide/">app UX guide</a>. A row's own key can open the same dialog filled in for that record:</p>
+<pre class="squisq-code-block"><code class="language-js">const components = gezel.ui.components;
+const modern = components.version &gt;= 2;
+const addGuest = components.actionForm('#guest-actions', {
+  title: 'Add a guest', tool: 'page_add_guest', presentation: 'dialog', primary: true,
+  submitLabel: 'Add guest',
+  fields: [
+    { name: 'name', label: 'Guest or household', required: true },
+    { name: 'party', label: 'Party size', type: 'number', min: 1, step: 1, required: true },
+  ],
+  onSaved: () =&gt; refreshGuests(),
+});
+function editParty(guest) {
+  if (modern) addGuest.open({ name: guest.name, party: guest.party });
+}</code></pre>
+<p><code>presentation: 'inline'</code> draws an always-open form for a settings panel; call <code>reset(values)</code> with the saved values after each read so it shows what is set now. Older hosts ignore <code>presentation</code> and draw a disclosure, so keep the action reachable there and feature-detect <code>open</code>.</p>
+<p><code>tabs</code> organizes a workspace into page-owned panels. Put the summary tiles and main view on Home, one noun per tab, and Settings last:</p>
+<pre class="squisq-code-block"><code class="language-js">const tabs = gezel.ui.components.tabs('#tabs', {
+  label: 'Guest list',
+  tabs: [
+    { id: 'home', label: 'Home', panel: '#home' },
+    { id: 'guests', label: 'Guests', panel: '#guests', badge: awaitingReply },
+    { id: 'settings', label: 'Settings', panel: '#settings' },
+  ],
+});</code></pre>
+<p>The component only labels, shows, and hides the panels; the page owns their content. <code>tabs.update({ tabs })</code> with new badges keeps keyboard focus. Destroy the handle with the view.</p>
+<p>Give the page its own alias when a model already uses the action: <code>page_add_guest</code> and <code>add_guest</code> share the same script and bindings, while only the former appears in <code>pages.tools</code>. Workspace policy, tool schema validation, and script permissions still apply. Forms do not write files directly. Standalone demos provide in-memory handlers for the same aliases.</p>
+<p><code>collectionFilter('#search', { container: '#guests', selector: 'li:not(.empty)', label: 'Find a guest', placeholder: 'Name or household', minItems: 8 })</code> adds accent-insensitive search over rendered records, shown once the list reaches <code>minItems</code>. It updates when the collection changes and preserves existing buttons and controls. It searches only those rendered items; describe pagination or truncation honestly. Keep the handle and destroy it with the view.</p>
+<h3 id="file-cards-and-adding-files">File cards and adding files</h3>
+<p>The host injects <code>gezel.ui.components</code> with the page API. It works with ordinary HTML and has no React dependency. Pass a selector or an element; the component appends its own custom element with a shadow root. Retain its handle and call <code>destroy()</code> before discarding it. <code>update(partialOptions)</code> updates an existing instance. File adder handles also provide <code>refresh()</code> to recheck destination availability after a settings change.</p>
+<pre class="squisq-code-block"><code class="language-html">&lt;div id="add-files"&gt;&lt;/div&gt;
+&lt;div id="selected-file"&gt;&lt;/div&gt;</code></pre>
+<pre class="squisq-code-block"><code class="language-js">const card = gezel.ui.components.fileCard('#selected-file', {
+  file: { source: 'workspace', path: 'media/garden.jpg', size: 24576 },
+  variant: 'tile', // 'row' for a compact list
+});
+const adder = gezel.ui.components.fileAdder('#add-files', {
+  target: 'library',
+  onAdded: async (savedFiles) =&gt; { await refreshListing(); },
+});
+window.addEventListener('pagehide', () =&gt; { card.destroy(); adder.destroy(); });</code></pre>
+<p>By default a card calls <code>data.open</code> and displays an error if the host viewer is unavailable. A gallery can supply <code>onActivate(file)</code> to show its own media preview; do not replace Gezel's spreadsheet/document renditions. <code>thumbnail: false</code> disables automatic image thumbnails; an explicit URL selects a local demo illustration. Filenames render as text. Components inherit <code>--font-ui</code> and track <code>ui.onTheme</code>; see the <a href="../gezel-app-page-style-guide/#shared-file-components">style guide</a>.</p>
+<p>Declare destinations in the project type, separately from readable files:</p>
+<pre class="squisq-code-block"><code class="language-json">{
+  "pages": {
+    "entry": "index.html",
+    "api": 1,
+    "reads": [{ "source": "workspace", "path": "media", "subtree": true }],
+    "imports": [{
+      "id": "library", "source": "workspace", "path": "media",
+      "accept": [".jpg", ".png", ".mp4"], "maxFileBytes": 268435456
+    }]
+  }
+}</code></pre>
+<p>Imports support workspace destinations only. <code>path: "."</code> means the project's selected folder. <code>accept</code> is an optional extension allowlist; the host enforces it and the byte limit independently of picker hints. An import declaration does not grant read access or override managed workspace writes. In particular, an external folder still needs the user's existing write opt-in in Project Settings. There is no page-facing bypass or permission toggle.</p>
+<p>Use the adder for the usual flow. A custom UI can call <code>data.importFiles(File[], { target, signal, onProgress })</code>; each result is <code>{ ok: true, name, file: { source, path, name, size, mtime } }</code> or <code>{ ok: false, name, error }</code>. <code>onProgress</code> reports <code>{ completed, total, name }</code> per file, not bytes. Save the returned paths: duplicates become <code>name (1).ext</code>, and existing files are never overwritten. Originals stay where the user selected them. Cancel stops pending work and does not undo files already saved. A file that finished committing as cancellation arrived may already exist; refresh the listing to reconcile.</p>
+<p>The current limits are 100 files per batch, 256 MiB per file (a target may lower it), two active uploads per project, four per daemon, 120 attempts per project per minute, and a five-minute upload deadline. The server streams bytes to private temporary storage, validates scopes and paths, rechecks the destination and write policy at commit, and publishes atomically through the Store. It rejects traversal, symlink escapes, hidden/reserved names, and alternate streams. Imports never accept host source paths from a page.</p>
+<p>Live imports currently require the embedded desktop host. Browser tabs, phone snapshots and app-serve visitors get an explicit unavailable state; a shareable site's read capability never grants uploads. Components themselves work across these hosts. Always handle unsupported hosts and permission failures without silently enabling demo mode.</p>
+<p>After <code>onAdded</code>, refresh the app's listing. Ordinary workspace indexing follows asynchronously, so a newly added spreadsheet may appear before its DuckDB tables are ready. Keep the indexing/empty state and normal table refresh behavior.</p>
+<h4>Standalone component demos</h4>
+<p>The demo host supplies the components and shared fonts before app code. Keep the visible banner and Reset demo control. For Gilde, use <code>npm run demos</code> or <code>npm run export-page-demo -- &lt;id&gt; --out &lt;new-directory&gt;</code>. For private source folders, run <code>gezel app demo . --out ../my-app-demo</code> and open its generated entry under <code>pages/</code>; the output works offline without a daemon. The website uses shared, content-hashed assets; each offline export contains its own generated asset set. Do not double-click the unprocessed source page or add platform files to its <code>pages/</code> tree.</p>
+<pre class="squisq-code-block"><code class="language-js">const api = window.gezel || window.makeDemoGezel({
+  page: { typeName: 'My library' },
+  existingPaths: samples.map(file =&gt; file.path),
+  // data and tools: app-owned sample handlers, when needed
+});
+const components = api.ui.components;
+// Merge these into your representative sample listing after onAdded:
+const added = components.demo?.files() ?? [];
+// In your Reset demo handler, clear imported descriptors and release object URLs:
+components.demo?.reset();</code></pre>
+<p>Demo imports exercise the same picker, drop, validation, progress and cards. They retain browser Files/object URLs in this tab, use deterministic metadata, and never write to disk or invoke a model. <code>data.url</code> resolves imported demo media. Reset the page's own sample state and remount the adder to clear its result list. Do not claim imported demo data was indexed: Data Analysis keeps its charts on labeled sample tables.</p>
+<p>React apps can mount either component in a ref inside an effect and call <code>destroy()</code> in cleanup. There is no separate React component implementation to keep in sync.</p>
+<h4>The sample conversation</h4>
+<p>In a standalone demo, <code>appLayout</code> (or a bare <code>chat</code> slot) draws a sample conversation where Gezel's chat would be. A demo opens as the whole window: the layout reports <code>fullscreen: true</code> without the Fullscreen API, so the companion sits beside the page, or beneath it below 900 CSS pixels. Script the conversation and pass it as <code>chat</code>:</p>
+<pre class="squisq-code-block"><code class="language-js">const api = window.gezel || window.makeDemoGezel({
+  page: { typeName: 'Meal Planner' },
+  tools: { page_set_menu: input =&gt; setDemoMenu(input), grocery_list: () =&gt; demoGroceries() },
+  data: { 'menu.json': () =&gt; demoMenu },
+  chat: {
+    name: 'Mila',
+    role: 'Meal Planner',
+    greeting: 'Hello, I’m Mila. Sunday is still open.',
+    suggestions: ['Plan Sunday around what we have'],
+    respond: async (text, ctx) =&gt; {
+      if (!/sunday|plan/i.test(text)) return null;
+      await ctx.invoke('set_menu', { day: 'sunday', meal: 'Shakshuka' }, 'Sunday: Shakshuka');
+      return 'Sunday is shakshuka. Everything it needs is stocked.';
+    },
+    reactions: { page_set_menu: input =&gt; `${input.day} is set.` },
+  },
+});</code></pre>
+<p><code>ctx.read(path)</code> returns a snapshot of the sample data. <code>ctx.invoke(tool, input, summary)</code> runs the page's demo handler for the model's tool name, falling back to its <code>page_</code> alias, shows the step in the conversation, fires the page's watches and <code>gezel-app-data-changed</code>, and briefly highlights page text that changed. <code>ctx.say(text)</code> adds a line mid-turn, and <code>ctx.suggest(list)</code> swaps the suggestions without a reply. A read-only tool that changes nothing repaints nothing. A reply is a string, an array of strings, or <code>{ reply, suggestions }</code>; <code>null</code> gives the shared answer that the preview follows a few sample requests. <code>reactions</code>, keyed by page tool, are the demo form of a manifest <code>reaction</code>: the person's page action summons a reply, and a game answers with the companion's move through its turn tool.</p>
+<p>The composer labels the replies as scripted, nothing leaves the page, and a live host never runs this code. Without a script the conversation greets the visitor and gives the shared answer, naming the crew lead's role when the exporter supplies it. A demo configured with <code>layout: 'pane'</code> keeps the narrow Output-pane presentation.</p>
+<h2 id="gezel-app-page-style-guide">Gezel app page style guide</h2>
+<p>An app page should feel like part of Gezel: readable, warm, and focused on the person's work. This guide applies to the HTML/CSS/JavaScript pages declared by a project type's <code>pages</code> block. Start with <a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a> for the composition and <a href="../gezel-page-apis/">Using the Gezel page APIs</a> for behavior. The <a href="../gezel-app-ux-guide/">app UX guide</a> says how an app is organized: Home and noun tabs, actions as keys that open dialogs, and actions on the records themselves.</p>
+<h3 id="what-the-host-supplies-today">What the host supplies today</h3>
+<p>Gezel injects a shared typography stylesheet into hosted project-type HTML, before the page's own styles. This works in desktop previews, app-serve, and the phone's offline page snapshot. It includes local font faces and these roles:</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Role</th><th>Default</th><th>Applied automatically to</th></tr></thead><tbody><tr><td><code>--font-body</code></td><td>Hanken Grotesk, with system sans fallbacks</td><td>The document root; ordinary body text inherits it</td></tr><tr><td><code>--font-ui</code></td><td>Hanken Grotesk, with system sans fallbacks</td><td>Buttons, inputs, selects, textareas, options, and option groups</td></tr><tr><td><code>--font-heading</code></td><td>PT Serif, with serif fallbacks</td><td><code>h1</code> through <code>h6</code></td></tr><tr><td><code>--font-display</code></td><td>The heading family</td><td>Compatibility alias used by <code>--font-heading</code></td></tr></tbody></table></div>
+<p>Hanken Grotesk has normal weights 400, 500, 600, and 700 plus 400 italic. PT Serif has normal 400 and 700 plus 400 italic. Use those weights rather than requesting an intermediate serif weight that the browser must synthesize.</p>
+<p><strong>Do not copy fonts, licenses, <code>@font-face</code> declarations, or a font CDN into each app.</strong> Gezel owns the hosted font assets. The defaults use low-specificity <code>:where()</code> selectors, so your authored styles can override them. A <code>font: … system-ui</code> shorthand on <code>body</code> also overrides them; avoid that accidental reset.</p>
+<p>The host supplies typography and an opt-in component kit, not a complete CSS framework. It does <strong>not</strong> inject the shell's color palette, spacing or radius tokens, a CSS reset, a body margin reset, a type size scale, general button styling, a chart library, or page layouts. Variables such as <code>--bg</code> and classes such as <code>.primary</code> have no built-in meaning inside the page. Define the ones your page uses. Shell CSS does not inherit through the sandboxed iframe.</p>
+<h3 id="shared-file-components">Shared file components</h3>
+<p>For a full application workspace, <code>ui.components.appLayout</code> wraps the existing main content and adds a responsive fullscreen conversation. It keeps the page mounted on restore, provides a conversation toggle, and suppresses its native chat slot while a page dialog is open. Use a specific companion title and a short description of useful work the person can do together. A file-only app can pass <code>chat: false</code>. Keep the content usable in the ordinary pane as well.</p>
+<p>In a standalone demo the same slot holds the <a href="../gezel-page-apis/#the-sample-conversation">sample conversation</a>, drawn to match Gezel's chat: replies in the heading serif, the visitor's messages in an accent-tinted bubble, each tool the companion uses as a quiet step row with a check, and suggestions as bare keys under the conversation (one scrolling row on narrow screens). It lives in the component's shadow root, so restyle it only through the <code>--gezel-component-*</code> properties below. Keep its copy in the role's voice: short, specific, American English, no emojis.</p>
+<p>Use <code>actionForm</code> for declared edits: <code>presentation: 'dialog'</code> for an action key that opens a modal, <code>'inline'</code> for a settings panel. Use <code>tabs</code> for a workspace's Home, noun, and Settings panels, and <code>collectionFilter</code> for search over long lists of rendered records. These components supply controls and state handling, while the app owns field labels, domain data, allowed actions, and refresh behavior. Avoid duplicating the host's composer or building a separate persistence store. See <a href="../gezel-page-apis/#building-a-full-page-workspace">workspace components</a>.</p>
+<p>For a responsive game or other app, use <code>gezel.ui.layout</code> / <code>ui.onLayout</code> and <code>data-gezel-fullscreen</code> to adapt when the Output pane expands. Native chat slots use <code>ui.components.chat</code>; size their containing rectangle in page CSS and choose their controls through options. They inherit the shell's theme and fonts, not page CSS overrides. See <a href="../gezel-page-apis/#fullscreen-layout-and-embedded-chat">fullscreen and chat</a> for the layout example and clipping constraints.</p>
+<p>Prefer <code>gezel.ui.components.fileCard</code> for a file tile/row and <code>fileAdder</code> for uploads. The <a href="../gezel-page-apis/#file-cards-and-adding-files">page API guide</a> covers mounting, lifecycle, permission declarations and standalone demo setup. Both ship their own shadow-root styles, native buttons, focus outlines, status messages and light/dark colors. They inherit the host's <code>--font-ui</code>; published and exported demos receive the same fonts. A page's broad <code>button</code> or <code>img</code> rules do not change component internals.</p>
+<p>Pages own the containing grid/list, spacing and breakpoints. Choose <code>variant: 'tile'</code> or <code>'row'</code>; use <code>update</code> when changing layouts. Keep filenames as the primary label and preserve keyboard access. The adder states where files go and what was saved, so do not hide that destination or status.</p>
+<p>Optional CSS custom properties on the mount element are <code>--gezel-component-text</code>, <code>--gezel-component-surface</code>, <code>--gezel-component-border</code>, <code>--gezel-component-muted</code>, and <code>--gezel-component-accent</code>. Set both light and dark values if overriding them, and maintain contrast and a visible focus outline. No copied fonts, CSS framework, external icon service or per-app component fork is needed.</p>
+<p>Ordinary workspace/artifact HTML keeps its own styles. The demo publisher/exporter supplies the same typography and components. Keep system fallbacks for degraded rendering without bundling a second font set into app source:</p>
+<pre class="squisq-code-block"><code class="language-css">body {
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, Georgia, serif);
+  font-weight: 400;
+}
+button, input, select, textarea {
+  font-family: var(--font-ui, system-ui, sans-serif);
+  font-size: inherit;
+}</code></pre>
+<p>The implementation contract is in <a href="https://github.com/bendyline/gezel/blob/main/packages/ui/src/assets/fonts/typography-tokens.css">the typography roles</a>, <a href="https://github.com/bendyline/gezel/blob/main/packages/ui/src/assets/fonts/page-defaults.css">the injected defaults</a>, and <a href="https://github.com/bendyline/gezel/blob/main/scripts/project-page-typography.mjs">the font builder</a>. Update this guide when that contract changes.</p>
+<h3 id="theme-and-page-owned-tokens">Theme and page-owned tokens</h3>
+<p>Use parchment and warm ink in light mode, dark neutral surfaces in dark mode, and terracotta for actions. Sage is an identity color. Use semantic variables in component rules; retain content colors for photographs, illustrations, charts, and other data.</p>
+<p>Use both the system preference and the host theme. The media query gives the page a correct initial appearance and supports a raw standalone demo. An explicit host theme should win over the operating system preference. This small starter uses the shell's palette values, but <strong>these declarations belong to the page; they are not injected</strong>:</p>
+<pre class="squisq-code-block"><code class="language-css">:root {
+  color-scheme: light dark;
+  --page-bg: #eae5d6;
+  --page-panel: #f3eddf;
+  --page-text: #1c1c1c;
+  --page-muted: #5a4f42;
+  --page-border: #8b7e6b;
+  --page-accent: #9a4e30;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page-bg: #141517;
+    --page-panel: #1c1d20;
+    --page-text: #f0f0f0;
+    --page-muted: #b9aea0;
+    --page-border: #8b7e6b;
+    --page-accent: #d5a07a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #141517;
+  --page-panel: #1c1d20;
+  --page-text: #f0f0f0;
+  --page-muted: #b9aea0;
+  --page-border: #8b7e6b;
+  --page-accent: #d5a07a;
+}
+:root[data-theme="light"] { color-scheme: light; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--page-bg); color: var(--page-text); }
+main { max-width: 72rem; margin: auto; padding: clamp(1rem, 3vw, 2.5rem); }
+button, input, select, textarea {
+  min-height: 44px;
+  padding: .5rem .75rem;
+  border: 1px solid var(--page-border);
+  border-radius: 6px;
+  background: var(--page-panel);
+  color: var(--page-text);
+}
+:focus-visible { outline: 2px solid var(--page-accent); outline-offset: 3px; }
+a { font-family: var(--font-ui, system-ui, sans-serif); color: var(--page-accent); }</code></pre>
+<p>After the real API or shared demo bootstrap has initialized <code>gezel</code>, apply and subscribe to its theme:</p>
+<pre class="squisq-code-block"><code class="language-js">const applyTheme = ({ mode }) =&gt; { document.documentElement.dataset.theme = mode; };
+applyTheme(gezel.ui.theme);
+const stopTheme = gezel.ui.onTheme(applyTheme);
+window.addEventListener('pagehide', stopTheme, { once: true });</code></pre>
+<h3 id="layout-controls-and-language">Layout, controls, and language</h3>
+<ul><li><p>Put the person's content first. Give the page one clear title, a short explanation when needed, and visible primary actions. Keep project ids, tool names, SQL, and host transport details out of ordinary flows.</p></li><li><p>Use serif for headings and sans for body text, labels, and controls. Start body text around 16px with a comfortable line-height. Keep captions readable and avoid shrinking controls to fit a narrow pane.</p></li><li><p>Use mostly-square controls: 4px for small badges, 6px for buttons and inputs, and around 10px for trays and small surfaces. Choice controls are keys in a tray with a clear pressed state. Avoid capsule buttons, emoji navigation, and decorative dashboard clutter.</p></li><li><p>Use native elements: a <code>button</code> for an action, an <code>a</code> for a real destination, labels for inputs, and a real table for tabular data. Give toggles <code>aria-pressed</code> and icon-only controls an accessible name.</p></li><li><p>The embedded page sandbox permits scripts but not native form submissions. Use <code>button type="button"</code> and explicit action handlers; support Enter in single-line inputs without relying on a form's <code>submit</code> event. Invoke declared tools through <code>gezel.tools.invoke</code>.</p></li><li><p>Keep focus visible, support keyboard operation, and restore focus after closing dialogs. Native video/audio controls are a useful baseline. Do not autoplay media.</p></li><li><p>Check contrast in both themes, including helper text and selected states. Communicate errors and chart series with text or shape as well as color. Honor reduced-motion preferences when adding animation.</p></li><li><p>Check a narrow Output pane and a 320px viewport. Wrap filters, allow long filenames to break, and contain necessary table overflow within its region. A page should not force the whole host to scroll sideways.</p></li></ul>
+<p>The full product direction remains in <a href="https://github.com/bendyline/gezel/blob/main/docs/ux.md">Gezel UX</a>; the <a href="https://github.com/bendyline/gezel/blob/main/docs/design-guidelines.md">brand guidelines</a> cover other surfaces. Their shell class names and token declarations are references, not automatically available page APIs.</p>
+<h3 id="data-and-state-are-part-of-the-design">Data and state are part of the design</h3>
+<p>Show distinct loading, empty, permission-denied, unavailable, partial-result, and failed-action states. Keep useful content visible when an optional capability fails; a data dashboard can still list files without DuckDB, and a gallery can still list a file whose codec cannot play. Tell the person when a listing or query is truncated, or when a chart describes an indexed snapshot rather than the latest file bytes.</p>
+<p>Use <code>textContent</code> for filenames and data labels. Read files through <code>gezel.data</code>, use <code>data.url()</code> for media, and use declared tools for writes. Debounce refreshes, limit rendered cards, unsubscribe watches, stop players on close, and ignore stale asynchronous results after a selection changes.</p>
+<p>Standalone samples must be clearly labeled and deterministic. Keep their mutations in memory and provide Reset demo. Never substitute sample data after a live permission or query failure. The <a href="../gezel-page-apis/">page API guide</a> describes the host modes and the shared demo bootstrap.</p>
+<p>Before delivery, inspect light and dark mode, keyboard focus, long labels, an empty folder, a failed operation, narrow layouts, and the real host flow. Structural validation cannot establish that a page is usable.</p>
+<h2 id="gezel-app-ux-guide">Gezel app UX guide</h2>
+<p>This guide says how an app page is organized and how people act in it. The <a href="../gezel-app-page-style-guide/">page style guide</a> covers what Gezel supplies to a page and how it looks: fonts, color, controls, and states. <a href="../gezel-page-apis/">Using the Gezel page APIs</a> covers the components named here.</p>
+<p>It is a living standard. Each practice has a number, so a review can cite it ("B3: this form picks a record that is already on screen"). The open questions at the end record what is not settled. When a pass over the apps teaches something new, change the practice and add a line to the change list.</p>
+<h3 id="start-from-the-app-s-shape">Start from the app's shape</h3>
+<p>Most apps fall into one of five shapes. Pick the shape first; it decides the structure.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Shape</th><th>Examples</th><th>Structure</th></tr></thead><tbody><tr><td>Workspace</td><td>Shift Roster, Sales Pipeline, Event Desk</td><td>Home, then one tab per noun the person manages, then Settings when there is something to set</td></tr><tr><td>Single list</td><td>Household Manual, Life Binder</td><td>One view with a key bar under the title and actions on each row</td></tr><tr><td>Board</td><td>Checkers, Chess, Word Clues</td><td>The board is the page. New game opens a dialog</td></tr><tr><td>Practice</td><td>Flashcards, Language Trainer</td><td>Home is today's practice, with tabs for what you collect and for progress</td></tr><tr><td>Collection</td><td>Media Library, Design Scheme</td><td>The gallery is the page, with filter keys, an Add key, and a preview dialog per item</td></tr></tbody></table></div>
+<h3 id="a-structure">A. Structure</h3>
+<p><strong>A1. One title and one summary line.</strong> The <code>h1</code> names the person's subject when there is one ("Trip: Lisbon", "The Glass Cartographer"), otherwise the app. Under it, one line says the state in plain words and what needs attention: "The week is approved, with 2 spots still open." Compute it from the data; never leave a static description there.</p>
+<p><strong>A2. Home comes first and answers "what needs me now?"</strong> In a workspace app, Home holds up to four summary tiles, the list of things that need the person, the app's main view, and the app's top two or three actions.</p>
+<p><strong>A3. One tab per noun.</strong> Each thing the person manages (People, Deals, Quotes, Vendors) gets a tab with its full list, its search, and its create and update actions. Label tabs with short plural nouns in sentence case. Two to five tabs is right; more means two nouns should merge.</p>
+<p><strong>A4. Settings comes last, and only when there is something to set.</strong> Rules, rates, targets, and event or campaign details belong there. Settings forms are open on the tab, not behind a key, and show the values saved now. Never show an empty Settings tab.</p>
+<p><strong>A5. No tab repeats Home.</strong> When the app's main view already is a noun's list, that noun lives on Home and gets no tab of its own. Shift Roster's week grid is its list of shifts, so Shift Roster has Home, People, and Settings, and no Shifts tab.</p>
+<p><strong>A6. Declare navigation; don't derive it from headings.</strong> Many section headings are dashboard panels ("Coming up", "Reorder now"), not places to go. Name the tabs and what each holds. Do not add an "On this page" row of links.</p>
+<p><strong>A7. A single-view app has no tabs.</strong> A key bar under the title and actions on each row are enough. Add tabs when a second noun needs its own list, not before.</p>
+<h3 id="b-actions">B. Actions</h3>
+<p><strong>B1. An action is a key that opens a dialog.</strong> Never put a form on the page behind an expandable card. The disclosure presentation of <code>actionForm</code> exists only for older pages. One exception: a quick add of one field and its key (a grocery item, a record's title) can sit open at the top of the list it adds to.</p>
+<p><strong>B2. Three keys at most, and one filled primary per view.</strong> The primary is the action that creates or commits. When the view already has a commit key of its own (Approve the week), every action key in that view is secondary.</p>
+<p><strong>B3. Act on the record where it is.</strong> When a form starts by picking a record that is already on screen (a shift, a deal, an invoice), put a small key on that record's row or card instead: Fill, Time off, Move, Mark paid. It opens the same dialog with the record filled in. Keep a general key only when people also start that action from nowhere in particular.</p>
+<p><strong>B4. Dialogs follow one pattern.</strong> The title is the action ("Add a person"), and fields sit in one column. Cancel comes before the verb on the right ("Assign", "Add person"). Escape and a click on the backdrop close the dialog. A failed save keeps the dialog open with the typed values and says what went wrong. A successful save closes it and confirms beside the key that opened it, and the page shows the change.</p>
+<p><strong>B5. Ask before discarding work.</strong> New game, remove, and anything else that loses state opens a dialog first.</p>
+<p><strong>B6. Keys name a verb and its object.</strong> "Add a shift", in sentence case. When the dialog title is long, give the key a shorter label.</p>
+<h3 id="c-showing-records">C. Showing records</h3>
+<p><strong>C1. Show values the way people say them.</strong> Write "Thu, Nov 12", "$1,529", and "In review", never <code>2026-11-12</code>, <code>1529</code>, <code>in-review</code>, or an internal id like <code>ch-4</code>. Do date math in local time.</p>
+<p><strong>C2. Color follows the value.</strong> A count is ink. Red and amber mean a problem now, so 0 conflicts is not red. The accent is not a color for counts.</p>
+<p><strong>C3. Empty states span their list and say how to fill it.</strong> "Open spots appear here once the week has shifts." Never squeeze the message into a list's first grid column.</p>
+<p><strong>C4. Say when a list is cut.</strong> Write "Showing 4 of 12" when only part of a list is shown.</p>
+<p><strong>C5. Search only long lists.</strong> Show a search box from about eight items, inside the list's section, with a placeholder that says what to type ("Name or role"). Do not count the empty-state row as an item.</p>
+<p><strong>C6. Everything the companion can change has a place on the page.</strong> If it can edit sessions, past visits, or a voice guide, the person can see them somewhere.</p>
+<h3 id="d-color-and-type">D. Color and type</h3>
+<p>The <a href="../gezel-app-page-style-guide/">page style guide</a> holds the detail. These are the rules apps most often break.</p>
+<p><strong>D1. Actions use Gezel's action color.</strong> Primary keys, focus rings, and Send use terracotta. The app's own accent is identity: charts, bars, and chips. Never set <code>--gezel-component-accent</code> to restyle Gezel's components in an app color.</p>
+<p><strong>D2. One demo banner.</strong> The banner is a quiet parchment strip with Reset demo, the same in every app. It is a notice, not an action or an error.</p>
+<p><strong>D3. Headings use PT Serif at weight 400.</strong> Small uppercase labels and eyebrows use the UI sans. Do not mark one up as a styled-down <code>h2</code> or <code>h3</code>, which turns it serif.</p>
+<p><strong>D4. Body text is about 16px.</strong> Nothing you can press is smaller than 28px, and keys are 44px tall.</p>
+<h3 id="e-the-companion">E. The companion</h3>
+<p><strong>E1. The conversation's title says where you are, and its description suggests what to ask.</strong> For example: "At the scheduling desk" and "Add a shift, mark when someone can't work, or ask where the week is short."</p>
+<p><strong>E2. Keep the composer's placeholder to about 28 characters.</strong> For example, "What changed this week?" A longer one is cut off in the panel.</p>
+<p><strong>E3. Demo suggestions do real work on the page.</strong> See <a href="../gezel-page-apis/#the-sample-conversation">the sample conversation</a>.</p>
+<h3 id="building-it">Building it</h3>
+<p>The components carry most of these practices. A page on a current host (page components version 2) can use:</p>
+<ul><li><p><code>actionForm(mount, { presentation: 'dialog', primary, buttonLabel, ... })</code>. It draws a key that opens the form in a modal. Its handle's <code>open(values)</code> opens the form filled in, for a row's key. Use <code>trigger: false</code> for a dialog that only rows open.</p></li><li><p><code>actionForm(mount, { presentation: 'inline' })</code> for a settings form, with <code>reset(values)</code> to show what is saved.</p></li><li><p><code>tabs(mount, { tabs: [{ id, label, panel, badge }] })</code> for underline tabs over the page's own panels.</p></li><li><p><code>collectionFilter(mount, { ..., placeholder, minItems: 8 })</code> for search that appears only when it helps.</p></li></ul>
+<p>Feature-detect version 2 (<code>gezel.ui.components.version &gt;= 2</code> and <code>typeof tabs === 'function'</code>). Keep an older host usable: there, an action form falls back to a disclosure.</p>
+<p>Catalog apps in Gilde share one composition script, <code>application.js</code>. Its <code>config</code> declares the structure, and the script builds the tabs, keys, settings forms, and row dialogs from it:</p>
+<pre class="squisq-code-block"><code class="language-json">"tabs": [
+  { "id": "home", "label": "Home", "sections": [".tiles", "#gaps-section", "#week-section"],
+    "actions": ["add_shift", "assign_shift", "set_availability"], "primary": false },
+  { "id": "people", "label": "People", "sections": ["#hours-section", "#away-section"],
+    "actions": ["add_staff", "set_availability"] },
+  { "id": "settings", "label": "Settings", "settings": ["set_rules"], "sections": ["#rules-section"] }
+]</code></pre>
+<p>A row action is a button in the page's own markup. The shared script opens the matching dialog filled in:</p>
+<pre class="squisq-code-block"><code class="language-js">const fill = document.createElement('button');
+fill.type = 'button';
+fill.className = 'key';
+fill.textContent = 'Fill';
+fill.setAttribute('aria-label', `Fill ${dayName} ${shift.fields.start} ${shift.fields.role}`);
+fill.setAttribute('data-app-action', 'assign_shift');
+fill.setAttribute('data-app-values', JSON.stringify({ id: shift.id }));</code></pre>
+<p>Shift Roster 1.1.0 is the reference implementation. Its page shows Home, People, and Settings, Fill keys on open spots, Time off keys on each person, and a settings form that shows the saved rules.</p>
+<h3 id="review-checklist">Review checklist</h3>
+<ul><li><p>The shape is chosen, and the structure matches it (A2–A7).</p></li><li><p>The summary line says the state and what needs attention (A1).</p></li><li><p>Every action opens a dialog. No view has more than three keys or more than one primary (B1, B2).</p></li><li><p>Forms that pick an on-screen record are row keys (B3).</p></li><li><p>No ISO dates, raw enum values, or ids are shown (C1). Tones follow values (C2).</p></li><li><p>Empty states span their list. Search appears only on long lists, with a real placeholder (C3, C5).</p></li><li><p>Actions and focus use the action color. The demo banner is the shared one (D1, D2).</p></li><li><p>The page works at 420px wide without scrolling sideways, in dark mode, and with the keyboard.</p></li></ul>
+<h3 id="open-questions">Open questions</h3>
+<ul><li><p><strong>Settings for what the person chose at creation.</strong> A business name, an event date, or a weekly word goal is a project parameter. Pages can read these but not change them, so most of them cannot appear in Settings today. A host-drawn Settings form generated from the parameter schema would serve every app at once.</p></li><li><p><strong>Nouns shared between apps.</strong> Shift Roster, New Hire Onboarding, and Training Tracker each keep their own list of the same café staff. Should one business keep one People list?</p></li><li><p><strong>Field types the forms lack.</strong> A rating, a yes/no choice, a color, and amounts stored in cents. Without them, some actions stay a free-text field or stay out of Settings.</p></li><li><p><strong>The companion's name on the page.</strong> Pages know the crew member's role but not their name, so page text says "Your shift scheduler" while the conversation says "Nina".</p></li><li><p><strong>Narrow tab rows.</strong> The shell's tab rows trade labels for icons as they narrow. App tabs scroll instead, which works for short labels but is not the shell's rule.</p></li><li><p><strong>Host-supplied tokens.</strong> Pages still declare their own colors, spacing, and title sizes. A small shared set (action color, surfaces, title scale) would remove most of the drift this guide polices.</p></li></ul>
+<h3 id="changes">Changes</h3>
+<ul><li><p><strong>November 7, 2026.</strong> First version, from a review of 43 catalog apps. It covers the five app shapes, Home and noun tabs, dialog actions, row actions, inline settings, and value formatting.</p></li></ul>
+<h2 id="references">References</h2>
+<p>Open these when you need an exact detail:</p>
+<ul><li><p><a href="https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md">Output Pane API reference</a>: every page method, permission, mode, limit, and error code.</p></li><li><p><a href="https://github.com/bendyline/gezel/blob/main/packages/sdk/src/page.ts">TypeScript declarations for pages</a>: the same API as types.</p></li><li><p><a href="https://github.com/bendyline/gezel/blob/main/docs/project-types.md">Project-type specification</a>: composition, adoption, upgrades, and the <code>.gezapp</code> format.</p></li><li><p><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a>: deterministic actions and the checks that hold a craftbook step until its work is right.</p></li><li><p><a href="https://github.com/bendyline/gezel/tree/main/examples/apps">Sample apps</a>: three complete source folders, kept working by Gezel's test suite.</p></li><li><p><a href="https://github.com/bendyline/gezel/blob/main/docs/app-serve.md">Sharing an app page with app serve</a>: a page outside the desktop app.</p></li></ul>
+</article>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../build-a-gezel-app.md">Read it as markdown, for AI agents</a></p>
+</main>
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#for-ai-agents-start-here">For AI agents: start here</a></li>
+<li class="hb-h2"><a href="#building-ai-apps-inside-gezel">Building AI Apps inside Gezel</a></li>
+<li class="hb-h3"><a href="#build-one-in-five-minutes">Build one in five minutes</a></li>
+<li class="hb-h3"><a href="#or-start-from-a-working-project">Or start from a working project</a></li>
+<li class="hb-h3"><a href="#the-source-folder">The source folder</a></li>
+<li class="hb-h3"><a href="#the-parts-of-an-ai-app">The parts of an AI App</a></li>
+<li class="hb-h3"><a href="#design-the-contract-before-building-the-interface">Design the contract before building the interface</a></li>
+<li class="hb-h3"><a href="#add-a-crew-and-repeatable-work">Add a crew and repeatable work</a></li>
+<li class="hb-h3"><a href="#choose-public-catalog-or-private-package-authoring">Choose public catalog or private package authoring</a></li>
+<li class="hb-h3"><a href="#scripts-tools-and-the-output-page">Scripts, tools, and the Output page</a></li>
+<li class="hb-h3"><a href="#validate-pack-and-share">Validate, pack, and share</a></li>
+<li class="hb-h3"><a href="#for-ai-agents-building-apps">For AI agents building apps</a></li>
+<li class="hb-h3"><a href="#what-still-needs-improvement">What still needs improvement</a></li>
+<li class="hb-h2"><a href="#using-the-gezel-page-apis">Using the Gezel page APIs</a></li>
+<li class="hb-h3"><a href="#declare-the-page-and-its-authority">Declare the page and its authority</a></li>
+<li class="hb-h3"><a href="#choose-the-smallest-api-that-does-the-job">Choose the smallest API that does the job</a></li>
+<li class="hb-h3"><a href="#account-for-the-host-mode">Account for the host mode</a></li>
+<li class="hb-h3"><a href="#fullscreen-layout-and-embedded-chat">Fullscreen layout and embedded chat</a></li>
+<li class="hb-h3"><a href="#building-a-full-page-workspace">Building a full-page workspace</a></li>
+<li class="hb-h3"><a href="#file-cards-and-adding-files">File cards and adding files</a></li>
+<li class="hb-h2"><a href="#gezel-app-page-style-guide">Gezel app page style guide</a></li>
+<li class="hb-h3"><a href="#what-the-host-supplies-today">What the host supplies today</a></li>
+<li class="hb-h3"><a href="#shared-file-components">Shared file components</a></li>
+<li class="hb-h3"><a href="#theme-and-page-owned-tokens">Theme and page-owned tokens</a></li>
+<li class="hb-h3"><a href="#layout-controls-and-language">Layout, controls, and language</a></li>
+<li class="hb-h3"><a href="#data-and-state-are-part-of-the-design">Data and state are part of the design</a></li>
+<li class="hb-h2"><a href="#gezel-app-ux-guide">Gezel app UX guide</a></li>
+<li class="hb-h3"><a href="#start-from-the-app-s-shape">Start from the app's shape</a></li>
+<li class="hb-h3"><a href="#a-structure">A. Structure</a></li>
+<li class="hb-h3"><a href="#b-actions">B. Actions</a></li>
+<li class="hb-h3"><a href="#c-showing-records">C. Showing records</a></li>
+<li class="hb-h3"><a href="#d-color-and-type">D. Color and type</a></li>
+<li class="hb-h3"><a href="#e-the-companion">E. The companion</a></li>
+<li class="hb-h3"><a href="#building-it">Building it</a></li>
+<li class="hb-h3"><a href="#review-checklist">Review checklist</a></li>
+<li class="hb-h3"><a href="#open-questions">Open questions</a></li>
+<li class="hb-h3"><a href="#changes">Changes</a></li>
+<li class="hb-h2"><a href="#references">References</a></li>
+</ul>
+</nav>
+</aside>
+</div>
+<footer class="hb-footer">
+<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+</footer>
+
+</body>
+</html>

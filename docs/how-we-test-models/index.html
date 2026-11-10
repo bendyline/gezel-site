@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
-<a href="../roles-index/">Gezel Roles</a>
-<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
 <a href="../project-types-index/">Project Types</a>
 <a aria-current="true" href="../architecture/">Technical</a>
 <a href="../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -139,7 +141,7 @@
 <p><strong>The engineering set</strong> (10 tests) is developer work, and it is deliberately harder than the first two. A model has to pick the right recipe out of a library of several hundred when two of them look almost identical, find real defects in a change set without flagging code that is perfectly correct, and prove a fix by running the tests rather than by claiming it works.</p>
 <h3 id="engineering-10-tests">Engineering (10 tests)</h3>
 <div class="hb-table-scroll"><table><thead><tr><th>Test</th><th>What the task entails</th></tr></thead><tbody><tr><td>Fix three documented bugs (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/scenarios/fix-squisq-bugs.ts"><code>fix-squisq-bugs</code></a>)</td><td>Find and fix three behavioral bugs in a seeded TypeScript codebase from its bug report — wrong distance math across the antimeridian, validation that only checks the top level, and functions that throw instead of returning safely — proven by running the code, with the type check as a guard.</td></tr><tr><td>Pick the right recipe (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/route-dev.ts"><code>dev-craftbook-routing</code></a>)</td><td>Given a plain developer brief, choose the one library recipe that fits out of three plausible ones that overlap (two share the trigger phrase "fix this bug"); a wrong-but-plausible pick fails.</td></tr><tr><td>Agree on a shared interface (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/scenarios/interface-contract.ts"><code>interface-contract</code></a>)</td><td>Two developers build the producer and consumer halves of a small event pipeline around a shared type module; the halves must type-check together and round-trip events through an integration script they never saw.</td></tr><tr><td>Code review (<a href="https://gezel.com/docs/craftbook/code-review/"><code>craftbook-code-review</code></a>)</td><td>Review one staged change set from its snapshot and diff, write a gated report, and deliver a verdict — graded on finding the real defect without flagging code that is correct.</td></tr><tr><td>API contract review (<a href="https://gezel.com/docs/craftbook/api-contract-review/"><code>craftbook-api-contract-review</code></a>)</td><td>Reconcile an OpenAPI contract against the implemented routes, lock a design checklist, and produce a findings report.</td></tr><tr><td>Deep security review (<a href="https://gezel.com/docs/craftbook/deep-security-review/"><code>craftbook-deep-security-review</code></a>)</td><td>Audit a whole seeded codebase for systemic weaknesses, cluster the findings into themes, and write a report plus a structured findings file — graded on precision as well as recall against planted source-to-sink vulnerabilities.</td></tr><tr><td>Large pull-request review (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/scenarios/large-pr-review.ts"><code>large-pr-review</code></a>)</td><td>Review a 120-file change set that contains one planted defect and one planted false-positive trap, and report coverage of every file.</td></tr><tr><td>Codemod sweep (<a href="https://gezel.com/docs/craftbook/codemod-sweep/"><code>craftbook-codemod-sweep</code></a>)</td><td>Rename a function across nine files — the export, the re-export, every import, call site and log string — while leaving the CHANGELOG untouched, with every claim reconciled by a real search.</td></tr><tr><td>Behavior-preserving refactor (<a href="https://gezel.com/docs/craftbook/refactor-module/"><code>craftbook-refactor-module</code></a>)</td><td>Extract duplicated, drifted logic into one shared module without changing behavior, proven by a behavior-equivalence matrix and a duplication check.</td></tr><tr><td>Reproduce, then fix (<a href="https://gezel.com/docs/craftbook/bug-fix-tdd/"><code>craftbook-bug-fix-tdd</code></a>)</td><td>Write a failing test that reproduces a reported pricing bug, make the smallest fix, and prove red-then-green by running the suite, with a mutant check that the new test really catches the bug.</td></tr></tbody></table></div>
-<p><strong>The complex-workflow set</strong> (9 tests) asks a model to build the recipe, not just follow one: write a reusable procedure with its own quality gates, run it twice against different inputs, repair one that is broken, and turn a job it just did by hand into something the crew can run again next quarter.</p>
+<p><strong>The complex-workflow set</strong> (9 tests) asks a model to build the recipe, not just follow one: write a reusable procedure with its own quality gates, run it twice against different inputs, repair one that is broken, and turn a job it just did by hand into something that can be run again next quarter.</p>
 <h3 id="complex-workflows-9-tests">Complex workflows (9 tests)</h3>
 <div class="hb-table-scroll"><table><thead><tr><th>Test</th><th>What the task entails</th></tr></thead><tbody><tr><td>Find, don't write (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/find-vs-create.ts"><code>craftbook-find-vs-create</code></a>)</td><td>Given a brief that paraphrases a bundled recipe's domain, find and start the library recipe instead of authoring a new one.</td></tr><tr><td>Repair a stuck recipe (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/edit-midtask.ts"><code>craftbook-edit-midtask</code></a>)</td><td>Diagnose a live task stuck on a quality gate it can never pass, rewrite the failing step of its recipe, add a verification step, and run it to completion.</td></tr><tr><td>Monthly invoice run (<a href="https://gezel.com/docs/craftbook/invoice-run/"><code>craftbook-invoice-run</code></a>)</td><td>Run a fan-out recipe: one invoice per client from the ledger, numbering that continues the sequence without a skip or a repeat, due dates per client's terms, and a one-page summary.</td></tr><tr><td>Author a recipe (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/author-linear.ts"><code>craftbook-author-linear</code></a>)</td><td>Write a reusable three-step recipe from scratch, with a file deliverable gating every step, then run it to completion.</td></tr><tr><td>Select, then execute (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/route-multi.ts"><code>craftbook-route-multi</code></a>)</td><td>Find the right library recipe and run it to a deliverable that holds up — graded on both the route taken and the properties a real deliverable of that kind has.</td></tr><tr><td>Generalize finished work (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/export-generalize.ts"><code>craftbook-export-generalize</code></a>)</td><td>Do one quarter's data clean-up by hand, then turn that one-off pass into a reusable recipe and run it on the next quarter's different data.</td></tr><tr><td>Author a parameterized recipe (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/author-params.ts"><code>craftbook-author-params</code></a>)</td><td>Write one recipe that serves two regions through an input parameter rather than by editing the recipe between runs; the two outputs must differ.</td></tr><tr><td>Author a gate script (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/gate-script.ts"><code>craftbook-author-gate-script</code></a>)</td><td>Write a recipe whose build step is checked by a custom script embedded in the recipe itself; a script that approves everything fails.</td></tr><tr><td>Author a fan-out recipe (<a href="https://github.com/bendyline/gezel/blob/main/evals/src/craftbooks/authoring/author-fanout.ts"><code>craftbook-author-fanout</code></a>)</td><td>Write a recipe whose spawn block reads a list and produces one child run per item, with no tool call driving it; repeating the steps once per item by hand does not score.</td></tr></tbody></table></div>
 <p>Nobody should expect full marks on either of these two. They exist because the best models now score close to full marks on the first two sets, and a column of near-perfect scores cannot tell you which model to choose. Low numbers here are headroom, not breakage. Each task has a time limit, and at one attempt per task the limits add up to 10 hours for the engineering set and 11 hours 25 minutes for the complex-workflow set. They are run less often than the first two, so not every round in the scorecard includes them.</p>
@@ -167,7 +169,7 @@
 <p>New models get added to the same rounds and run through the same jobs, with the same number of attempts, on the same machine. Nothing is graded on a curve, and nothing is added to a table it didn't actually run in.</p>
 <p>The current results are in <a href="../model-scorecard/">Model scorecard</a>.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../how-we-test-models.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">

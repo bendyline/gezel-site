@@ -1,0 +1,110 @@
+# 2026-10-28 · DGX Spark Class
+
+A model scorecard round on Arm Cortex-X925 + Cortex-A725 (20 cores) · NVIDIA GB10 · 122 GB: 2 models across 4 task sets. Every round is listed in the [model scorecard](https://gezel.com/docs/model-scorecard/), with its results side by side in one table.
+
+<div class="hb-scorecard-round hb-scorecard-round-page">
+<p class="hb-scorecard-stamp"><strong>Arm Cortex-X925 + Cortex-A725 (20 cores) · NVIDIA GB10 · 122 GB · llama-cpp · 3 trials per task · 2026-10-28 · gezel 22fec991 · catalog 0.3.1</strong></p>
+<p class="hb-scorecard-round-note">Qwen 3.8 27B Q4 and Gemma 4 12B Q4 on a DGX Spark (NVIDIA GB10, Linux) with native 0.1.54: llama.cpp on CUDA, with MTP speculative decoding on by default for both models. 258 trials, three per model and scenario, ran October 28–30, 2026; none was repeated or replaced, and every raw verdict is kept. Three failures are set aside as infrastructure: one Linux script-sandbox failure and two gates the model wrote itself, which the harness classed as setup failures. Evaluation homes had package scripts switched off, so bug-fix-tdd, codemod-sweep and refactor-module could not pass for either model; without those 18 trials the developer failure rate is 0/21 for Qwen and 7/21 for Gemma. docblocks-theme-roundtrip lacked its DocBlocks tools in all six trials, and the harness stopped two Qwen route-multi trials and one Qwen author-fanout trial while they were still progressing. Task speeds are engine-log medians over every attempt. Memory is not shown: the GB10 shares its memory with the GPU in a way the measurement cannot see. Artifact reviews are by Claude Sonnet 4.6, one column per rubric. The six A/B readout reviews used a mismatched rubric and seven reviews graded a starting or incidental page instead of the work, so those 13 are excluded.</p>
+<p class="hb-scorecard-memory-note">Memory isn't shown for this round. This machine's graphics chip shares the computer's memory in a way our measurement can't see, so the number would read far below what the model really uses.</p>
+<div class="hb-scorecard-suite" data-hb-suite="core">
+<h5 class="hb-scorecard-suite-title">General capability</h5>
+<table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>33/33 (100%)</td><td>256K</td></tr><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>32/33 (97%)</td><td>256K</td></tr></tbody></table>
+<h6>Task performance</h6>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>33</td><td>30.63 (20.73–37.71; n=33)</td><td>781.15 (733.93–816.27; n=33)</td><td>2.2 (0.7–9.7; n=33)</td><td>—</td><td>—</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>33</td><td>79.52 (63.35–90.79; n=33)</td><td>1,610.34 (1,169.66–1,697.62; n=33)</td><td>1.2 (0.5–5.4; n=33)</td><td>—</td><td>—</td></tr>
+</tbody></table>
+<h6>Artifact reviews</h6>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: anthropic-cli/claude-sonnet-4-6. Review identity and limitations are recorded with the evaluation.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">HTML quality</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th><th scope="col">Not applicable</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>8.23/10 (9 pieces)</td><td>0</td><td>0</td><td>24</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>6.88/10 (9 pieces)</td><td>0</td><td>0</td><td>24</td></tr>
+</tbody></table>
+<p class="hb-scorecard-taskcount">Tasks in this set: 11.</p>
+</div>
+<div class="hb-scorecard-suite" data-hb-suite="productivity">
+<h5 class="hb-scorecard-suite-title">Office and knowledge work</h5>
+<table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>34/39 (87%)</td><td>256K</td></tr><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>32/39 (82%)</td><td>256K</td></tr></tbody></table>
+<h6>Task performance</h6>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>39</td><td>29.38 (20.96–35.65; n=39)</td><td>790.15 (719.00–816.82; n=39)</td><td>6.1 (1.0–90.2; n=39)</td><td>—</td><td>—</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>39</td><td>76.90 (64.29–87.37; n=39)</td><td>1,578.28 (1,456.91–1,798.06; n=39)</td><td>3.0 (0.5–64.0; n=39)</td><td>—</td><td>—</td></tr>
+</tbody></table>
+<h6>Artifact reviews</h6>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: anthropic-cli/claude-sonnet-4-6. Review identity and limitations are recorded with the evaluation.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">craftbook-annotated-bibliography</th><th scope="col">craftbook-powerpoint-deck</th><th scope="col">craftbook-research-to-document</th><th scope="col">craftbook-spreadsheet-model</th><th scope="col">craftbook-week-plan</th><th scope="col">docblocks-theme-roundtrip</th><th scope="col">meeting-followup</th><th scope="col">wikipedia-research-brief</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th><th scope="col">Not applicable</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>8.80/10 (3 pieces)</td><td>7.27/10 (3 pieces)</td><td>8.70/10 (3 pieces)</td><td>8.50/10 (3 pieces)</td><td>8.77/10 (3 pieces)</td><td>8.57/10 (3 pieces)</td><td>8.70/10 (3 pieces)</td><td>8.43/10 (3 pieces)</td><td>0</td><td>3</td><td>12</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>7.70/10 (3 pieces)</td><td>7.37/10 (3 pieces)</td><td>8.03/10 (3 pieces)</td><td>8.00/10 (3 pieces)</td><td>5.27/10 (3 pieces)</td><td>4.77/10 (3 pieces)</td><td>8.20/10 (3 pieces)</td><td>7.43/10 (3 pieces)</td><td>0</td><td>3</td><td>12</td></tr>
+</tbody></table>
+<p class="hb-scorecard-taskcount">Tasks in this set: 13.</p>
+</div>
+<div class="hb-scorecard-suite" data-hb-suite="developer">
+<h5 class="hb-scorecard-suite-title">Engineering work</h5>
+<table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>21/30 (70%)</td><td>256K</td></tr><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>14/30 (47%)</td><td>256K</td></tr></tbody></table>
+<h6>Task performance</h6>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>30</td><td>28.59 (22.71–35.05; n=30)</td><td>769.68 (593.52–810.47; n=30)</td><td>12.7 (1.3–85.5; n=30)</td><td>—</td><td>—</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>30</td><td>78.30 (67.48–89.52; n=30)</td><td>1,488.67 (1,142.14–1,706.31; n=30)</td><td>6.5 (0.9–39.8; n=30)</td><td>—</td><td>—</td></tr>
+</tbody></table>
+<h6>Artifact reviews</h6>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: anthropic-cli/claude-sonnet-4-6. Review identity and limitations are recorded with the evaluation.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">craftbook-api-contract-review</th><th scope="col">craftbook-bug-fix-tdd</th><th scope="col">craftbook-code-review</th><th scope="col">craftbook-codemod-sweep</th><th scope="col">craftbook-deep-security-review</th><th scope="col">craftbook-refactor-module</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th><th scope="col">Not applicable</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>8.83/10 (3 pieces)</td><td>6.67/10 (3 pieces)</td><td>8.67/10 (3 pieces)</td><td>7.57/10 (3 pieces)</td><td>8.90/10 (3 pieces)</td><td>6.90/10 (3 pieces)</td><td>0</td><td>0</td><td>12</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>6.83/10 (3 pieces)</td><td>5.23/10 (3 pieces)</td><td>7.67/10 (3 pieces)</td><td>3.77/10 (3 pieces)</td><td>7.37/10 (3 pieces)</td><td>1.97/10 (3 pieces)</td><td>0</td><td>0</td><td>12</td></tr>
+</tbody></table>
+<p class="hb-scorecard-taskcount">Tasks in this set: 10.</p>
+</div>
+<div class="hb-scorecard-suite" data-hb-suite="complex-work">
+<h5 class="hb-scorecard-suite-title">Complex workflows</h5>
+<table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) (kv: f16)</td><td>27B</td><td>18/25 (72%)</td><td>256K</td></tr><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) (kv: f16)</td><td>12B</td><td>12/26 (46%)</td><td>256K</td></tr></tbody></table>
+<h6>Task performance</h6>
+<p>Task measurements include failures within each stated period or comparison subset. Measurement methods and exclusions are stated in period labels and round notes. Values are per-trial medians (minimum–maximum; sample count), not admission probes. Wall time includes tools. System RSS and GPU memory are separate peak measurements; do not add their medians. Periods remain separate because hardware performance can change.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">Trials</th><th scope="col">Output (tok/s)</th><th scope="col">Prefill (tok/s)</th><th scope="col">Wall time (min)</th><th scope="col">Peak system RSS (GiB)</th><th scope="col">Peak GPU memory (GiB)</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>27</td><td>24.82 (20.76–35.64; n=27)</td><td>757.21 (633.61–807.13; n=27)</td><td>19.8 (1.2–100.9; n=27)</td><td>—</td><td>—</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>27</td><td>69.77 (60.37–89.12; n=27)</td><td>1,488.31 (1,105.60–1,656.97; n=27)</td><td>9.4 (1.2–44.5; n=27)</td><td>—</td><td>—</td></tr>
+</tbody></table>
+<h6>Artifact reviews</h6>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: anthropic-cli/claude-sonnet-4-6. Review identity and limitations are recorded with the evaluation.</p>
+<table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">craftbook-invoice-run</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th><th scope="col">Not applicable</th></tr></thead><tbody>
+<tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>6.47/10 (3 pieces)</td><td>0</td><td>3</td><td>21</td></tr>
+<tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4)</td><td>Native 0.1.54 · CUDA · all attempts</td><td>4.93/10 (3 pieces)</td><td>0</td><td>4</td><td>20</td></tr>
+</tbody></table>
+<p class="hb-scorecard-taskcount">Tasks in this set: 9.</p>
+</div>
+</div>
+
+## October 28–30 DGX Spark results and review data
+
+Qwen 3.8 27B Q4 and Gemma 4 12B Q4 completed all **258 trials** on a DGX
+Spark (NVIDIA GB10, Linux) with native 0.1.54: three per model and scenario
+across the four task sets. Qwen passed 106 of 129 and Gemma 90 of 129. Three
+failures are set aside as infrastructure: a gap in Linux script sandboxing,
+and two gates the model wrote itself, which the harness classed as setup
+failures.
+
+Read the engineering set with care. Package scripts were switched off in the
+evaluation homes, so three tasks that need a test run could not pass for
+either model. The table keeps those 18 failures: Qwen failed 9 of 30
+engineering trials and Gemma 16 of 30. Excluding them, Qwen failed 0 of 21
+and Gemma 7 of 21. Docblocks-theme-roundtrip lacked its tools in all six
+trials, and the harness stopped three Qwen complex-workflow trials while they
+were still progressing. The reviewed report explains each case.
+
+Claude Sonnet 4.6 reviewed 121 artifacts after the sweep. The **Artifact
+reviews** tables use 108 of them, one column per rubric. They exclude 13
+reviews that used the wrong rubric or graded a starting page instead of the
+work; the other 137 tasks had no rubric to apply. The **Task performance**
+tables give output speed, prefill speed and wall time from the engine's logs
+for every attempt. Both models used speculative decoding, which is on by
+default. Memory is left out because this machine's shared memory is
+invisible to the measurement.
+
+Download the [scorecard data](https://gezel.com/docs/assets/scorecards/2026-10-28-dgx-spark-class/scorecard.json),
+[full results with judging and performance](https://gezel.com/docs/assets/scorecards/2026-10-28-dgx-spark-class/scorecard-details.json),
+[reviewed report](https://gezel.com/docs/assets/scorecards/2026-10-28-dgx-spark-class/report.md),
+and [all trials](https://gezel.com/docs/assets/scorecards/2026-10-28-dgx-spark-class/trials.csv).
+[Download notes](https://gezel.com/docs/assets/scorecards/2026-10-28-dgx-spark-class/README.md)
+explain the set-aside trials, the review selection and how to check the data.

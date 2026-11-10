@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a href="../../roles-index/">Gezel Roles</a>
-<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../roles-index/">Crew roles</a>
+<a href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a aria-current="true" href="../../architecture/">Technical</a>
 <a href="../../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a href="../../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -125,7 +127,7 @@
 <p>A focused rerun on M5 Max · Apple M5 Max (integrated GPU) · 128 GB: 2 models across 2 task sets. Every round is listed in the <a href="../../model-scorecard/">model scorecard</a>, with its results side by side in one table.</p>
 <div class="hb-scorecard-round hb-scorecard-round-page">
 <p class="hb-scorecard-stamp"><strong>M5 Max · Apple M5 Max (integrated GPU) · 128 GB · llama-cpp + mlx · focused subset · 1 trial per task · 2026-11-03 · gezel d0750db1712b45c304d3ba772e996f01a1da1b30 · catalog 0.3.5</strong></p>
-<p class="hb-scorecard-round-note">User-curtailed exploratory comparison: 72 matched trials, 18 pairs per model, one repetition over core and productivity; developer and complex-work were not run. Both models passed 16/18 on MLX and 18/18 on llama.cpp; equivalence within ±5 percentage points is not established. The passing, unpaired PowerPoint trial has a preserved fixture-identity flag and remains in downloads only. All four recorded failures remain unchanged, including one diagnosed gate false-positive. Native 0.1.55; generalist auto; Gilde 0.3.5 with the staged Gemma MLX assistant drafter candidate, not an installed catalog release. Observed MLX prefill is recovered from rounded, partial first-token chat events, not aggregate request throughput or pure prefill time. Engine quantizations and speculation differ. Raw scores, judgments, performance coverage and paired uncertainty are in the downloads.</p>
+<p class="hb-scorecard-round-note">Exploratory comparison, shortened from the planned 516 trials: 72 matched trials, 18 pairs per model, one repetition over core and productivity; developer and complex-work were not run. Both models passed 16/18 on MLX and 18/18 on llama.cpp; equivalence within ±5 percentage points is not established. The passing, unpaired PowerPoint trial has a preserved fixture-identity flag and remains in downloads only. All four recorded failures remain unchanged, including one diagnosed gate false-positive. Native 0.1.55; generalist auto; Gilde 0.3.5 with the staged Gemma MLX assistant drafter candidate, not an installed catalog release. Observed MLX prefill is recovered from rounded, partial first-token chat events, not aggregate request throughput or pure prefill time. Engine quantizations and speculation differ. Raw scores, judgments, performance coverage and paired uncertainty are in the downloads.</p>
 <div class="hb-scorecard-suite" data-hb-suite="core">
 <h5 class="hb-scorecard-suite-title">General capability</h5>
 <div class="hb-table-scroll"><table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Context</th><th>Memory used</th></tr></thead><tbody><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) · llama.cpp (kv: f16)</td><td>12B</td><td>11/11 (some tasks run once — count not rate)</td><td>256K</td><td>18.8 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) · llama.cpp (kv: f16)</td><td>27B</td><td>11/11 (some tasks run once — count not rate)</td><td>256K</td><td>39.0 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) · MLX</td><td>27B</td><td>10/11 (some tasks run once — count not rate)</td><td>—</td><td>—</td></tr><tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) · MLX</td><td>12B</td><td>9/11 (some tasks run once — count not rate)</td><td>—</td><td>—</td></tr></tbody></table></div>
@@ -138,7 +140,7 @@
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) · MLX</td><td>Matched subset · native 0.1.55</td><td>11</td><td>63.00 (47.00–80.00; n=11)</td><td>1,341.50 (1,046.00–1,963.00; n=11) observed</td><td>2.6 (0.5–10.8; n=11)</td><td>10.07 (9.87–18.06; n=11)</td><td>—</td></tr>
 </tbody></table></div>
 <h6>Artifact reviews</h6>
-<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: codex-inline/current-session. Review identity and limitations are recorded with the evaluation.</p>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: the OpenAI Codex agent that ran the round (in-session review). Review identity and limitations are recorded with the evaluation.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">HTML quality</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th><th scope="col">Not applicable</th></tr></thead><tbody>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) · llama.cpp</td><td>Matched subset · native 0.1.55</td><td>4.50/10 (3 pieces)</td><td>0</td><td>0</td><td>8</td></tr>
 <tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) · llama.cpp</td><td>Matched subset · native 0.1.55</td><td>4.75/10 (3 pieces)</td><td>0</td><td>0</td><td>8</td></tr>
@@ -159,7 +161,7 @@
 <tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>Qwen 3.8 (27B, Q4) · MLX</td><td>Matched subset · native 0.1.55</td><td>7</td><td>34.00 (25.00–49.00; n=6)</td><td>743.00 (522.00–943.00; n=7) observed</td><td>2.2 (1.0–21.1; n=7)</td><td>17.29 (17.15–17.58; n=7)</td><td>—</td></tr>
 </tbody></table></div>
 <h6>Artifact reviews</h6>
-<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: codex-inline/current-session. Review identity and limitations are recorded with the evaluation.</p>
+<p>Advisory means out of 10, with eligible artifact counts. Rubrics are separate and are not a combined model score. A dash means no eligible artifact was scored under that rubric. Missing artifacts have no score; excluded reviews do not enter these means. Not applicable means the task had no applicable qualitative rubric. Judge: the OpenAI Codex agent that ran the round (in-session review). Review identity and limitations are recorded with the evaluation.</p>
 <div class="hb-table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">Period</th><th scope="col">craftbook-spreadsheet-model</th><th scope="col">docblocks-theme-roundtrip</th><th scope="col">meeting-followup</th><th scope="col">No artifact</th><th scope="col">Excluded reviews</th><th scope="col">Not applicable</th></tr></thead><tbody>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) · llama.cpp</td><td>Matched subset · native 0.1.55</td><td>4.50/10 (1 pieces)</td><td>4.00/10 (1 pieces)</td><td>6.50/10 (1 pieces)</td><td>0</td><td>0</td><td>4</td></tr>
 <tr data-hb-model="gemma4-12b" data-hb-tier="medium"><td>Gemma 4 (12B, Q4) · MLX</td><td>Matched subset · native 0.1.55</td><td>4.50/10 (1 pieces)</td><td>5.67/10 (1 pieces)</td><td>5.25/10 (1 pieces)</td><td>0</td><td>0</td><td>4</td></tr>
@@ -172,13 +174,13 @@
 <h2 id="november-3-m5-max-condensed-engine-comparison">November 3 M5 Max condensed engine comparison</h2>
 <p>This follow-up compared Qwen 3.8 27B Q4 and Gemma 4 12B Q4 on MLX and
 llama.cpp after fixes, using native 0.1.55 on an Apple M5 Max with 128 GB
-of unified memory. The user shortened the original 516-trial plan for time.
+of unified memory. We shortened the original 516-trial plan to save time.
 The comparison contains <strong>72 matched trials: 18 pairs per model, one
 repetition</strong>, across core and productivity. Developer and complex-work were
 not run. This chronological subset was selected after outcomes were visible,
 so the findings are exploratory.</p>
 <p>Both models passed <strong>16/18 on MLX and 18/18 on llama.cpp</strong>. Practical
-equivalence within the user-selected <strong>±5 percentage points is not
+equivalence within our chosen margin of <strong>±5 percentage points is not
 established</strong>. The observed difference is −11.11 pp; the conservative paired
 95% interval is [−38.09, +20.66] pp and the scenario-cluster bootstrap interval
 is [−26.32, 0.00] pp for each model. These data also do not establish that the
@@ -215,7 +217,7 @@ The <a href="../../assets/scorecards/2026-11-03-m5max-fixed-paired/README.md">do
 also links all 73 trial records, postmortems, provenance, verification and the
 scope amendment. The earlier native-0.1.54 round remains a separate record.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../2026-11-03-m5max-fixed-paired.md">Read it as markdown, for AI agents</a></p>
 </main>
 
 </div>

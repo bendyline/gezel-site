@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Quotes &amp; Bids</h1>
 <p class="lede">Price the job and send quotes and bids that win work. An estimator builds each quote line by line from materials and labor at your own rates, keeps every total exact to the cent, follows up on what you sent, and tracks what you win and lose.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/quotes-and-bids/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/quotes-and-bids">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/quotes-and-bids/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/estimator/"><strong>Estimator</strong></a> <span class="tag">Crew lead</span><span>A careful, practical pricer for trade and service businesses: every quote built line by line from labor and materials at the business’s own rates, exact to the cent, and followed up until it is won or lost.</span></li><li><a href="/docs/role-template/kantoormeester/"><strong>Office Administrator</strong></a><span>The operations half of a freelancer's brain.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/proposal-sow/"><strong>Proposal / Statement of Work</strong></a><span>Draft a client proposal or statement of work that wins the deal and prevents scope creep — covering objectives, scope, deliverables, timeline/milestones, pricing, assumptions, and acceptance criteria.</span></li><li><a href="/docs/craftbook/invoice-generator/"><strong>Invoice Generator</strong></a><span>Generate a clean, professional, print-ready invoice from billing details — sender/recipient, line items with quantity and rate, subtotal, tax, total, invoice number, dates, and payment instructions.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Quotes status</strong><span>Every quote with its id and exact total: the follow-ups due (overdue first), the drafts being priced, the quotes sent and waiting, the win/loss record, and the saved rates, tax and terms.</span></li><li><strong>Start quote</strong><span>Start a quote the moment a job is mentioned, before you describe it: a short title for the job, the client, contact and site.</span></li><li><strong>Add quote line</strong><span>Add one line to a quote: labor, materials or other, with a description, quantity, unit and rate in dollars (or rateName for a saved rate).</span></li><li><strong>Remove quote line</strong><span>Take a line off a quote, by its number or description.</span></li><li><strong>Send quote</strong><span>Mark a quote sent the moment the person says it went out.</span></li><li><strong>Log quote follow up</strong><span>Record a follow-up on a sent quote (a call, an email, what the client said) and when to chase next: followUpAt or inDays, or the usual gap when not given.</span></li><li><strong>Record quote outcome</strong><span>Record that a quote was won or lost the moment the person says so, with the reason in note.</span></li><li><strong>Save rate</strong><span>Save one of the business’s rates: a name (e.g.</span></li></ul><p class="small">And 2 more.</p><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>quotes.json</code>, <code>rates.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/estimator/"><strong>Estimator</strong></a> <span class="tag">Crew lead</span><span>A careful, practical pricer for trade and service businesses: every quote built line by line from labor and materials at the business’s own rates, exact to the cent, and followed up until it is won or lost.</span></li><li><a href="/docs/role-template/kantoormeester/"><strong>Office Administrator</strong></a><span>The operations half of a freelancer's brain.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/proposal-sow/"><strong>Proposal / Statement of Work</strong></a><span>Draft a client proposal or statement of work that wins the deal and prevents scope creep — covering objectives, scope, deliverables, timeline/milestones, pricing, assumptions, and acceptance criteria.</span></li><li><a href="/docs/craftbook/invoice-generator/"><strong>Invoice Generator</strong></a><span>Generate a clean, professional, print-ready invoice from billing details — sender/recipient, line items with quantity and rate, subtotal, tax, total, invoice number, dates, and payment instructions.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Quotes status</strong><span>Every quote with its id and exact total: the follow-ups due (overdue first), the drafts being priced, the quotes sent and waiting, the win/loss record, and the saved rates, tax and terms.</span></li><li><strong>Start quote</strong><span>Start a quote the moment a job is mentioned, before you describe it: a short title for the job, the client, contact and site.</span></li><li><strong>Add quote line</strong><span>Add one line to a quote: labor, materials or other, with a description, quantity, unit and rate in dollars (or rateName for a saved rate).</span></li><li><strong>Remove quote line</strong><span>Take a line off a quote, by its number or description.</span></li><li><strong>Send quote</strong><span>Mark a quote sent the moment the person says it went out.</span></li><li><strong>Log quote follow up</strong><span>Record a follow-up on a sent quote (a call, an email, what the client said) and when to chase next: followUpAt or inDays, or the usual gap when not given.</span></li><li><strong>Record quote outcome</strong><span>Record that a quote was won or lost the moment the person says so, with the reason in note.</span></li><li><strong>Save rate</strong><span>Save one of the business’s rates: a name (e.g.</span></li></ul><p class="small">And 2 more.</p><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>quotes.json</code>, <code>rates.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
-<a href="../roles-index/">Gezel Roles</a>
-<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
 <a href="../project-types-index/">Project Types</a>
 <a aria-current="true" href="../architecture/">Technical</a>
 <a href="../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a class="hb-current" aria-current="page" href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -138,7 +140,7 @@
   }
 }</code></pre>
 <p>The entry is relative to <code>pages/</code>. Reads are project-relative; <code>workspace</code> and <code>artifacts</code> are different trees. An exact-file grant does not grant the surrounding directory. A folder explorer can deliberately grant <code>{"source":"workspace","path":".","subtree":true}</code> for the whole selected project folder. The host checks the grants and path containment. It binds the project; a page never supplies its own project id to escape that boundary.</p>
-<p>Every <code>pages.tools</code> name must also be declared in the type's <code>tools</code> array. Those names are page-only: they are removed from the model's tool roster. If both the page and a gezel need an action, declare two tool names sharing the same script and bound operation. A declared action still needs the script's capabilities and the user's project policy to permit it.</p>
+<p>Every <code>pages.tools</code> name must also be declared in the type's <code>tools</code> array. Those names are page-only: they are removed from the model's tool roster. If both the page and the model need an action, declare two tool names sharing the same script and bound operation. A declared action still needs the script's capabilities and the user's project policy to permit it.</p>
 <h2 id="choose-the-smallest-api-that-does-the-job">Choose the smallest API that does the job</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>Job</th><th>API</th><th>Important behavior</th></tr></thead><tbody><tr><td>Identify the app instance</td><td><code>gezel.page</code></td><td>Type name, params, project id, API version, and host mode</td></tr><tr><td>List a folder</td><td><code>gezel.data.list(path, opts?)</code></td><td>One directory at a time; recursion and scan bounds belong to the page</td></tr><tr><td>Read small state</td><td><code>gezel.data.read(path, opts?)</code></td><td>JSON, text, or bytes; bounded reads</td></tr><tr><td>Follow changes</td><td><code>gezel.data.watch(path, callback, opts?)</code></td><td>Callback signals a change; re-read the data; retain the unsubscribe function</td></tr><tr><td>Display media</td><td><code>gezel.data.url(path, opts?)</code></td><td>Assign to an image/audio/video element; hosted media can stream and seek</td></tr><tr><td>Open the original in Gezel</td><td><code>gezel.data.open(path, opts?)</code></td><td>Navigates to the existing file rendition in embedded mode</td></tr><tr><td>Render a consistent file tile or row</td><td><code>gezel.ui.components.fileCard(mount, options)</code></td><td>Thumbnail/fallback, metadata, keyboard action and existing file viewer</td></tr><tr><td>Add files with a picker or drop</td><td><code>gezel.ui.components.fileAdder(mount, options)</code></td><td>Explicit destination, progress, cancellation and per-file results</td></tr><tr><td>Discover upload destinations</td><td><code>gezel.data.importTargets()</code></td><td>Manifest targets plus current write permission</td></tr><tr><td>Copy selected files into a destination</td><td><code>gezel.data.importFiles(files, options)</code></td><td>Scoped, create-only uploads; returns saved paths and partial failures</td></tr><tr><td>Find indexed datasets</td><td><code>gezel.tables.list()</code></td><td>Only tables whose source files are within the page's readable scope</td></tr><tr><td>Inspect columns</td><td><code>gezel.tables.describe(tableName)</code></td><td>Column types and available metadata</td></tr><tr><td>Summarize or chart data</td><td><code>gezel.tables.query(sql, opts?)</code></td><td>Bounded, read-only DuckDB queries over permitted indexed tables</td></tr><tr><td>Change state or run an action</td><td><code>gezel.tools.invoke(name, input?)</code></td><td>Schema-validated, declared script-backed action</td></tr><tr><td>Follow the host theme</td><td><code>gezel.ui.theme</code>, <code>gezel.ui.onTheme(callback)</code></td><td>Apply at boot and keep the unsubscribe function</td></tr></tbody></table></div>
 <p>Use the existing file rendition instead of rebuilding a spreadsheet or CSV editor in your page. Use the shared query API instead of bundling DuckDB or fetching observation storage files. Tables describe an indexed snapshot: listing a CSV does not guarantee a table is ready. Handle missing indexing and unavailable query engines explicitly.</p>
@@ -192,7 +194,7 @@ window.addEventListener('pagehide', () =&gt; { stopLayout(); chat.destroy(); });
 #game.with-chat { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 16px; }
 #game.with-chat #game-chat { display: block; }</code></pre>
 <p>Use <code>gezelId</code> for an exact crew member, <code>gezelRole</code> for a role, or omit both to use the project's crew lead (then its first member). An unavailable requested recipient displays an error rather than silently choosing someone else. <code>lockRecipient</code> defaults to true and disables recipient switching and mention fan-out. <code>showAddress</code> and <code>showThreads</code> default to true. <code>variant: 'composer'</code> omits the timeline; the default <code>'chat'</code> shows that recipient's project history. <code>attachments</code>, <code>dictation</code>, <code>promptAssist</code>, and <code>expand</code> default to false and can be enabled individually, subject to the host's capabilities.</p>
-<p>Chat currently requires the embedded Gezel host. Browser previews, app-serve visitors, and standalone demos show an explicit unavailable message; demos never call a model. The parent owns the native chat and composer, including their theme, accessibility, sessions, and ordinary permission prompts. Page scripts receive no transcript, input text, credentials, or programmatic send method. Options change presentation, not the gezel's tool authority.</p>
+<p>Chat currently requires the embedded Gezel host. Browser previews, app-serve visitors, and standalone demos show an explicit unavailable message; demos never call a model. The parent owns the native chat and composer, including their theme, accessibility, sessions, and ordinary permission prompts. Page scripts receive no transcript, input text, credentials, or programmatic send method. Options change presentation, not the recipient's tool authority.</p>
 <p>The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat: hide the slot while showing a page dialog that overlaps it. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.</p>
 <h2 id="building-a-full-page-workspace">Building a full-page workspace</h2>
 <p><code>gezel.ui.components.appLayout(main, options)</code> wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. The component hides the native slot while a visible page dialog is open, since iframe content cannot cover host-owned chat.</p>
@@ -211,8 +213,34 @@ window.addEventListener('pagehide', () =&gt; { stopLayout(); chat.destroy(); });
   ],
   onSaved: () =&gt; refreshGuests(),
 });</code></pre>
+<p>On a current host, draw actions as keys that open dialogs, following the <a href="../gezel-app-ux-guide/">app UX guide</a>. A row's own key can open the same dialog filled in for that record:</p>
+<pre class="squisq-code-block"><code class="language-js">const components = gezel.ui.components;
+const modern = components.version &gt;= 2;
+const addGuest = components.actionForm('#guest-actions', {
+  title: 'Add a guest', tool: 'page_add_guest', presentation: 'dialog', primary: true,
+  submitLabel: 'Add guest',
+  fields: [
+    { name: 'name', label: 'Guest or household', required: true },
+    { name: 'party', label: 'Party size', type: 'number', min: 1, step: 1, required: true },
+  ],
+  onSaved: () =&gt; refreshGuests(),
+});
+function editParty(guest) {
+  if (modern) addGuest.open({ name: guest.name, party: guest.party });
+}</code></pre>
+<p><code>presentation: 'inline'</code> draws an always-open form for a settings panel; call <code>reset(values)</code> with the saved values after each read so it shows what is set now. Older hosts ignore <code>presentation</code> and draw a disclosure, so keep the action reachable there and feature-detect <code>open</code>.</p>
+<p><code>tabs</code> organizes a workspace into page-owned panels. Put the summary tiles and main view on Home, one noun per tab, and Settings last:</p>
+<pre class="squisq-code-block"><code class="language-js">const tabs = gezel.ui.components.tabs('#tabs', {
+  label: 'Guest list',
+  tabs: [
+    { id: 'home', label: 'Home', panel: '#home' },
+    { id: 'guests', label: 'Guests', panel: '#guests', badge: awaitingReply },
+    { id: 'settings', label: 'Settings', panel: '#settings' },
+  ],
+});</code></pre>
+<p>The component only labels, shows, and hides the panels; the page owns their content. <code>tabs.update({ tabs })</code> with new badges keeps keyboard focus. Destroy the handle with the view.</p>
 <p>Give the page its own alias when a model already uses the action: <code>page_add_guest</code> and <code>add_guest</code> share the same script and bindings, while only the former appears in <code>pages.tools</code>. Workspace policy, tool schema validation, and script permissions still apply. Forms do not write files directly. Standalone demos provide in-memory handlers for the same aliases.</p>
-<p><code>collectionFilter('#search', { container: '#guests', selector: 'li', label: 'Find a guest' })</code> adds accent-insensitive search over rendered records. It updates when the collection changes and preserves existing buttons and controls. It searches only those rendered items; describe pagination or truncation honestly. Keep the handle and destroy it with the view.</p>
+<p><code>collectionFilter('#search', { container: '#guests', selector: 'li:not(.empty)', label: 'Find a guest', placeholder: 'Name or household', minItems: 8 })</code> adds accent-insensitive search over rendered records, shown once the list reaches <code>minItems</code>. It updates when the collection changes and preserves existing buttons and controls. It searches only those rendered items; describe pagination or truncation honestly. Keep the handle and destroy it with the view.</p>
 <h2 id="file-cards-and-adding-files">File cards and adding files</h2>
 <p>The host injects <code>gezel.ui.components</code> with the page API. It works with ordinary HTML and has no React dependency. Pass a selector or an element; the component appends its own custom element with a shadow root. Retain its handle and call <code>destroy()</code> before discarding it. <code>update(partialOptions)</code> updates an existing instance. File adder handles also provide <code>refresh()</code> to recheck destination availability after a settings change.</p>
 <pre class="squisq-code-block"><code class="language-html">&lt;div id="add-files"&gt;&lt;/div&gt;
@@ -280,7 +308,7 @@ components.demo?.reset();</code></pre>
 <p><code>ctx.read(path)</code> returns a snapshot of the sample data. <code>ctx.invoke(tool, input, summary)</code> runs the page's demo handler for the model's tool name, falling back to its <code>page_</code> alias, shows the step in the conversation, fires the page's watches and <code>gezel-app-data-changed</code>, and briefly highlights page text that changed. <code>ctx.say(text)</code> adds a line mid-turn, and <code>ctx.suggest(list)</code> swaps the suggestions without a reply. A read-only tool that changes nothing repaints nothing. A reply is a string, an array of strings, or <code>{ reply, suggestions }</code>; <code>null</code> gives the shared answer that the preview follows a few sample requests. <code>reactions</code>, keyed by page tool, are the demo form of a manifest <code>reaction</code>: the person's page action summons a reply, and a game answers with the companion's move through its turn tool.</p>
 <p>The composer labels the replies as scripted, nothing leaves the page, and a live host never runs this code. Without a script the conversation greets the visitor and gives the shared answer, naming the crew lead's role when the exporter supplies it. A demo configured with <code>layout: 'pane'</code> keeps the narrow Output-pane presentation.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../gezel-page-apis.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Fundraiser"}}</script>
-<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -37,12 +37,16 @@
       .bar > span { display: block; height: 100%; background: var(--good); border-radius: 4px; transition: width 0.4s ease; }
       .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
       .panel { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.85rem 1rem; font-size: 0.9rem; }
-      .panel h2 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.5rem; }
+      .panel h2 { font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.5rem; }
       .panel ul { margin: 0; padding-left: 1.05rem; }
       .panel li { margin: 0.25rem 0; }
       .panel .amt { font-weight: 600; }
       .panel .who { color: var(--muted); }
-      .owed li { color: var(--warn); }
+      .panel .owed { list-style: none; padding-left: 0; }
+      .panel .owed li.empty { margin-left: 0; }
+      .owed li:not(.empty) { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem 0.6rem; margin: 0.4rem 0; }
+      .key { min-height: 30px; padding: 0.2rem 0.65rem; border: 1px solid var(--track); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.82rem; }
+      .key:hover { border-color: var(--muted); }
       .empty { color: var(--muted); font-style: italic; }
       .panel li.empty { color: var(--muted); list-style: none; margin-left: -1.05rem; }
       @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
@@ -75,6 +79,27 @@
     </style>
   <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
   <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -84,7 +109,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
     <main>
 <p class="app-problem" id="app-load-error" role="status" hidden></p>
       <div class="demo-banner" data-gezel-demo-banner hidden>
-        <span><strong>Demo mode</strong> — sample data stays in this page.</span>
+        <span><strong>Demo mode</strong>: a sample drive for a neighborhood reading garden. Changes stay in this page.</span>
         <button type="button" class="demo-reset" onclick="location.reload()">Reset demo</button>
       </div>
       <h1 id="title">Fundraiser HQ</h1>
@@ -95,11 +120,11 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         <div class="bar"><span id="bar" style="width: 0%"></span></div>
       </div>
       <div class="cols">
-        <div class="panel">
+        <div class="panel" id="gifts-panel">
           <h2>Donations</h2>
           <ul id="gifts"><li class="empty">No gifts yet — the first one starts the story.</li></ul>
         </div>
-        <div class="panel">
+        <div class="panel" id="owed-panel">
           <h2>Thank-yous owed</h2>
           <ul class="owed" id="owed"><li class="empty">All caught up.</li></ul>
         </div>
@@ -168,6 +193,8 @@ data: {
           return (cents / 100).toLocaleString(undefined, opts);
         }
 
+        function el(tag, text, cls) { var e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; }
+
         function render(doc) {
           var entries = Array.isArray(doc.entries) ? doc.entries : [];
           currency = String(doc.currency || '');
@@ -176,25 +203,37 @@ data: {
           var raised = 0;
           entries.forEach(function (e) { raised += e.amountCents; });
           if (doc.cause) document.getElementById('title').textContent = 'Fundraiser: ' + doc.cause;
-          document.getElementById('sub').textContent = entries.length ? entries.length + (entries.length === 1 ? ' gift' : ' gifts') + ' so far' : 'No gifts yet';
+          var owed = entries.filter(function (e) { return !e.data || e.data.thanked !== true; });
+          document.getElementById('sub').textContent = entries.length
+            ? entries.length + (entries.length === 1 ? ' gift' : ' gifts') + ' so far. ' + (owed.length ? owed.length + (owed.length === 1 ? ' thank-you is' : ' thank-yous are') + ' still owed.' : 'Everyone has been thanked.')
+            : 'No gifts yet';
           document.getElementById('raised').textContent = fmt(raised);
           document.getElementById('goal').textContent = goal > 0 ? 'of ' + fmt(goal) + ' — ' + Math.min(100, Math.round((raised / goal) * 100)) + ' percent there' : '';
           document.getElementById('bar').style.width = (goal > 0 ? Math.min(100, Math.round((raised / goal) * 100)) : raised > 0 ? 100 : 0) + '%';
 
           var recent = entries.slice().reverse();
+          var gifts = document.getElementById('gifts');
           if (recent.length) {
-            document.getElementById('gifts').innerHTML = recent.map(function (e) {
-              return '<li><span class="amt">' + fmt(e.amountCents) + '</span> <span class="who">from ' + esc((e.data && e.data.donor) || 'anonymous') + '</span></li>';
-            }).join('');
+            gifts.replaceChildren();
+            recent.forEach(function (e) {
+              var li = el('li');
+              li.append(el('span', fmt(e.amountCents), 'amt'), document.createTextNode(' '), el('span', 'from ' + ((e.data && e.data.donor) || 'anonymous'), 'who'));
+              gifts.append(li);
+            });
           }
-          var owed = entries.filter(function (e) { return !e.data || e.data.thanked !== true; });
-          if (owed.length) {
-            document.getElementById('owed').innerHTML = owed.map(function (e) {
-              return '<li>' + esc((e.data && e.data.donor) || 'anonymous') + ' (' + fmt(e.amountCents) + ')</li>';
-            }).join('');
-          } else {
-            document.getElementById('owed').innerHTML = '<li class="empty">All caught up.</li>';
-          }
+          var list = document.getElementById('owed');
+          list.replaceChildren();
+          if (!owed.length) list.append(el('li', 'All caught up.', 'empty'));
+          owed.forEach(function (e) {
+            var who = (e.data && e.data.donor) || 'anonymous', li = el('li'), key = el('button', 'Mark thanked', 'key');
+            // The key opens Mark a donor thanked with this gift chosen (the app shell wires data-app-action).
+            key.type = 'button';
+            key.setAttribute('aria-label', 'Mark ' + who + ' thanked for ' + fmt(e.amountCents));
+            key.setAttribute('data-app-action', 'mark_thanked');
+            key.setAttribute('data-app-values', JSON.stringify({ id: e.id }));
+            li.append(el('span', who + ' (' + fmt(e.amountCents) + ')'), key);
+            list.append(li);
+          });
         }
 
         window.addEventListener('gezel-app-data-changed', function(){ loadDrive(); });

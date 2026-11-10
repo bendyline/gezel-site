@@ -1,0 +1,294 @@
+# Using the Gezel page APIs
+
+A project type can ship `pages/index.html` with relative JavaScript, CSS, and assets. Gezel hosts that page in the project's Output pane and injects `window.gezel` before its scripts run. You build a normal browser interface; Gezel supplies project identity, scoped file access, declared actions, and the theme. You do not need a React component inside the desktop shell or a new service for each app.
+
+Read [Building AI Apps inside Gezel](https://gezel.com/docs/building-ai-apps-inside-gezel/) for the whole app and the [app page style guide](https://gezel.com/docs/gezel-app-page-style-guide/) for injected fonts and page-owned styles. The complete [Output Pane API reference](https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md) owns method signatures, error codes, permissions, limits, and compatibility; [the typed API](https://github.com/bendyline/gezel/blob/main/packages/sdk/src/page.ts) is exported as `@bendyline/gezel-sdk/page` for authoring tools.
+
+## Declare the page and its authority
+
+This is a `pages` block inside a project type's **version** manifest:
+
+```json
+{
+  "pages": {
+    "entry": "index.html",
+    "api": 1,
+    "reads": [
+      { "source": "workspace", "path": "media", "subtree": true },
+      { "source": "artifacts", "path": "summary.json" }
+    ],
+    "tools": ["page_refresh_summary"]
+  }
+}
+```
+
+The entry is relative to `pages/`. Reads are project-relative; `workspace` and `artifacts` are different trees. An exact-file grant does not grant the surrounding directory. A folder explorer can deliberately grant `{"source":"workspace","path":".","subtree":true}` for the whole selected project folder. The host checks the grants and path containment. It binds the project; a page never supplies its own project id to escape that boundary.
+
+Every `pages.tools` name must also be declared in the type's `tools` array. Those names are page-only: they are removed from the model's tool roster. If both the page and the model need an action, declare two tool names sharing the same script and bound operation. A declared action still needs the script's capabilities and the user's project policy to permit it.
+
+## Choose the smallest API that does the job
+
+| Job | API | Important behavior |
+| --- | --- | --- |
+| Identify the app instance | `gezel.page` | Type name, params, project id, API version, and host mode |
+| List a folder | `gezel.data.list(path, opts?)` | One directory at a time; recursion and scan bounds belong to the page |
+| Read small state | `gezel.data.read(path, opts?)` | JSON, text, or bytes; bounded reads |
+| Follow changes | `gezel.data.watch(path, callback, opts?)` | Callback signals a change; re-read the data; retain the unsubscribe function |
+| Display media | `gezel.data.url(path, opts?)` | Assign to an image/audio/video element; hosted media can stream and seek |
+| Open the original in Gezel | `gezel.data.open(path, opts?)` | Navigates to the existing file rendition in embedded mode |
+| Render a consistent file tile or row | `gezel.ui.components.fileCard(mount, options)` | Thumbnail/fallback, metadata, keyboard action and existing file viewer |
+| Add files with a picker or drop | `gezel.ui.components.fileAdder(mount, options)` | Explicit destination, progress, cancellation and per-file results |
+| Discover upload destinations | `gezel.data.importTargets()` | Manifest targets plus current write permission |
+| Copy selected files into a destination | `gezel.data.importFiles(files, options)` | Scoped, create-only uploads; returns saved paths and partial failures |
+| Find indexed datasets | `gezel.tables.list()` | Only tables whose source files are within the page's readable scope |
+| Inspect columns | `gezel.tables.describe(tableName)` | Column types and available metadata |
+| Summarize or chart data | `gezel.tables.query(sql, opts?)` | Bounded, read-only DuckDB queries over permitted indexed tables |
+| Change state or run an action | `gezel.tools.invoke(name, input?)` | Schema-validated, declared script-backed action |
+| Follow the host theme | `gezel.ui.theme`, `gezel.ui.onTheme(callback)` | Apply at boot and keep the unsubscribe function |
+
+Use the existing file rendition instead of rebuilding a spreadsheet or CSV editor in your page. Use the shared query API instead of bundling DuckDB or fetching observation storage files. Tables describe an indexed snapshot: listing a CSV does not guarantee a table is ready. Handle missing indexing and unavailable query engines explicitly.
+
+For a simple live list, wire a change signal to a fresh read, and treat filenames as text:
+
+```js
+// Use the injected host or initialize sample handlers through the demo bootstrap.
+const list = document.querySelector('#files');
+const status = document.querySelector('#status');
+let revision = 0;
+async function refresh() {
+  const request = ++revision;
+  try {
+    const entries = await gezel.data.list('media');
+    if (request !== revision) return;
+    list.replaceChildren(...entries.map((entry) => {
+      const row = document.createElement('li');
+      row.textContent = entry.name;
+      return row;
+    }));
+    status.textContent = entries.length ? `${entries.length} items` : 'This folder is empty.';
+  } catch (error) {
+    if (request === revision) status.textContent = `Could not read this folder: ${error.message}`;
+  }
+}
+const stop = gezel.data.watch('media', refresh, { intervalMs: 15000 });
+window.addEventListener('pagehide', () => { revision++; stop(); }, { once: true });
+void refresh();
+```
+
+Do not treat the watch callback's `{path, etag}` as the file's contents. Avoid overlapping whole-folder scans and unbounded watchers. The browser fallback interval is configurable; embedded watches use the host's shared mechanism.
+
+## Account for the host mode
+
+| Host | Files/media | Tools | File viewer | Tables |
+| --- | --- | --- | --- | --- |
+| Desktop Output pane (`embedded`) | Scoped access | Declared actions | `data.open()` | When the query engine and index are available |
+| Authenticated mini-site (`serve`) | Scoped access | Declared actions | Unavailable | When the query engine and index are available |
+| Capability preview tab (`browser`) | Capability-scoped fallback | Unavailable | Unavailable | Unavailable |
+| Published or exported standalone demo (`demo`) | Authored samples | In-memory demo handlers | Explain the live action | Authored sample summaries, if provided |
+| Phone's embedded snapshot | Scoped bridge with bounded media relay | Supported portable actions | Host-dependent; handle unavailable | Unavailable in the portable runtime |
+
+Feature-detect optional additions such as `gezel.tables` and `gezel.data.open`, then handle their errors. Mode alone is not a promise that every engine or codec is installed. Avoid offering an action that cannot work in the current mode.
+
+For standalone demos, the website publisher, local preview server, or offline exporter injects a shared bootstrap before app scripts. App source contains its UI and sample handlers, not a copied SDK, component runtime, or font set. Initialize with `const api = window.gezel || window.makeDemoGezel({ page, tools, data, existingPaths });`. In a real host the existing API wins; in a demo, the bootstrap installs the sample transport and `api.ui.components`. Import targets come from the manifest's `pages.imports`. Keep deterministic samples, a visible banner and Reset demo. A failed live call must remain a live error, not switch into demo mode.
+
+Pages have no daemon credentials, Node filesystem, unrestricted SQL connection, or arbitrary-path write API. Imports are a narrow exception for explicitly declared destinations. Stay on this shared surface.
+
+## Fullscreen layout and embedded chat
+
+Read `gezel.ui.layout` at boot and subscribe with `gezel.ui.onLayout(callback)`. The snapshot contains `fullscreen`, `width`, and `height` in CSS pixels. In the Output pane, fullscreen means the page is maximized inside the Gezel window's main workspace. The project sidebar stays available on its configured side, expanded or collapsed as the user left it. Each project remembers whether its page is closed, open, or fullscreen when revisited, including after a restart. It does not mean that the operating system window is maximized. The same page stays mounted across maximize/restore; game state and drafts survive. The initial fullscreen value is false until the host handshake arrives. Browser, serve, and demo pages follow the browser Fullscreen API instead. The root also receives `data-gezel-fullscreen="true"` or `"false"` for CSS.
+
+Mount native chat with `gezel.ui.components.chat(element, options)`. Give the mount an explicit height. The handle has `element`, `update(partialOptions)`, `destroy()`, and `ready` (a promise that rejects when the host cannot mount it). Keep the mount in the document and hide it with CSS to preserve its current conversation. Destroy it when permanently discarding it.
+
+```js
+const chat = gezel.ui.components.chat('#game-chat', {
+  gezelRole: 'Opponent', // resolve a role from this project's crew
+  lockRecipient: true,
+  showAddress: false,
+  showThreads: false,
+  placeholder: 'Ask about a move…',
+});
+const arrange = ({ fullscreen, width }) => {
+  document.querySelector('#game').classList.toggle('with-chat', fullscreen && width >= 800);
+};
+arrange(gezel.ui.layout);
+const stopLayout = gezel.ui.onLayout(arrange);
+window.addEventListener('pagehide', () => { stopLayout(); chat.destroy(); });
+```
+
+```css
+#game { display: grid; min-height: 0; }
+#game-chat { display: none; height: 70vh; min-width: 0; }
+#game.with-chat { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 16px; }
+#game.with-chat #game-chat { display: block; }
+```
+
+Use `gezelId` for an exact crew member, `gezelRole` for a role, or omit both to use the project's crew lead (then its first member). An unavailable requested recipient displays an error rather than silently choosing someone else. `lockRecipient` defaults to true and disables recipient switching and mention fan-out. `showAddress` and `showThreads` default to true. `variant: 'composer'` omits the timeline; the default `'chat'` shows that recipient's project history. `attachments`, `dictation`, `promptAssist`, and `expand` default to false and can be enabled individually, subject to the host's capabilities.
+
+Chat currently requires the embedded Gezel host. Browser previews, app-serve visitors, and standalone demos show an explicit unavailable message; demos never call a model. The parent owns the native chat and composer, including their theme, accessibility, sessions, and ordinary permission prompts. Page scripts receive no transcript, input text, credentials, or programmatic send method. Options change presentation, not the recipient's tool authority.
+
+The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat: hide the slot while showing a page dialog that overlaps it. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.
+
+## Building a full-page workspace
+
+`gezel.ui.components.appLayout(main, options)` wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. The component hides the native slot while a visible page dialog is open, since iframe content cannot cover host-owned chat.
+
+```js
+const workspace = gezel.ui.components.appLayout('main', {
+  title: 'Practice with your tutor',
+  description: 'Choose a scene, then talk here.',
+  chat: { showAddress: false, lockRecipient: true, dictation: true },
+});
+```
+
+`chat: false` gives a file-only application room to expand without recruiting a companion. Multi-person crews can use `lockRecipient: false, showAddress: true`. The page still owns its content, typography choices, and domain layout. Feature detect `appLayout` when supporting older hosts. Retain the handle and call `destroy()` if discarding the workspace; it also cleans up on `pagehide`.
+
+Use `actionForm` for a compact, accessible form that invokes one declared page tool. It validates required fields, numbers and dates; serializes one save at a time; and retains entered values after a failure. Fields can be text, number, date, URL, multiline text, or a selection. `mapInput` can map a simple form into the tool's input schema. It does not change the page's authority.
+
+```js
+const form = gezel.ui.components.actionForm('#add-guest', {
+  title: 'Add a guest', tool: 'page_add_guest',
+  fields: [
+    { name: 'name', label: 'Guest or household', required: true },
+    { name: 'party', label: 'Party size', type: 'number', min: 1, step: 1, required: true },
+  ],
+  onSaved: () => refreshGuests(),
+});
+```
+
+On a current host, draw actions as keys that open dialogs, following the [app UX guide](https://gezel.com/docs/gezel-app-ux-guide/). A row's own key can open the same dialog filled in for that record:
+
+```js
+const components = gezel.ui.components;
+const modern = components.version >= 2;
+const addGuest = components.actionForm('#guest-actions', {
+  title: 'Add a guest', tool: 'page_add_guest', presentation: 'dialog', primary: true,
+  submitLabel: 'Add guest',
+  fields: [
+    { name: 'name', label: 'Guest or household', required: true },
+    { name: 'party', label: 'Party size', type: 'number', min: 1, step: 1, required: true },
+  ],
+  onSaved: () => refreshGuests(),
+});
+function editParty(guest) {
+  if (modern) addGuest.open({ name: guest.name, party: guest.party });
+}
+```
+
+`presentation: 'inline'` draws an always-open form for a settings panel; call `reset(values)` with the saved values after each read so it shows what is set now. Older hosts ignore `presentation` and draw a disclosure, so keep the action reachable there and feature-detect `open`.
+
+`tabs` organizes a workspace into page-owned panels. Put the summary tiles and main view on Home, one noun per tab, and Settings last:
+
+```js
+const tabs = gezel.ui.components.tabs('#tabs', {
+  label: 'Guest list',
+  tabs: [
+    { id: 'home', label: 'Home', panel: '#home' },
+    { id: 'guests', label: 'Guests', panel: '#guests', badge: awaitingReply },
+    { id: 'settings', label: 'Settings', panel: '#settings' },
+  ],
+});
+```
+
+The component only labels, shows, and hides the panels; the page owns their content. `tabs.update({ tabs })` with new badges keeps keyboard focus. Destroy the handle with the view.
+
+Give the page its own alias when a model already uses the action: `page_add_guest` and `add_guest` share the same script and bindings, while only the former appears in `pages.tools`. Workspace policy, tool schema validation, and script permissions still apply. Forms do not write files directly. Standalone demos provide in-memory handlers for the same aliases.
+
+`collectionFilter('#search', { container: '#guests', selector: 'li:not(.empty)', label: 'Find a guest', placeholder: 'Name or household', minItems: 8 })` adds accent-insensitive search over rendered records, shown once the list reaches `minItems`. It updates when the collection changes and preserves existing buttons and controls. It searches only those rendered items; describe pagination or truncation honestly. Keep the handle and destroy it with the view.
+
+## File cards and adding files
+
+The host injects `gezel.ui.components` with the page API. It works with ordinary HTML and has no React dependency. Pass a selector or an element; the component appends its own custom element with a shadow root. Retain its handle and call `destroy()` before discarding it. `update(partialOptions)` updates an existing instance. File adder handles also provide `refresh()` to recheck destination availability after a settings change.
+
+```html
+<div id="add-files"></div>
+<div id="selected-file"></div>
+```
+
+```js
+const card = gezel.ui.components.fileCard('#selected-file', {
+  file: { source: 'workspace', path: 'media/garden.jpg', size: 24576 },
+  variant: 'tile', // 'row' for a compact list
+});
+const adder = gezel.ui.components.fileAdder('#add-files', {
+  target: 'library',
+  onAdded: async (savedFiles) => { await refreshListing(); },
+});
+window.addEventListener('pagehide', () => { card.destroy(); adder.destroy(); });
+```
+
+By default a card calls `data.open` and displays an error if the host viewer is unavailable. A gallery can supply `onActivate(file)` to show its own media preview; do not replace Gezel's spreadsheet/document renditions. `thumbnail: false` disables automatic image thumbnails; an explicit URL selects a local demo illustration. Filenames render as text. Components inherit `--font-ui` and track `ui.onTheme`; see the [style guide](https://gezel.com/docs/gezel-app-page-style-guide/#shared-file-components).
+
+Declare destinations in the project type, separately from readable files:
+
+```json
+{
+  "pages": {
+    "entry": "index.html",
+    "api": 1,
+    "reads": [{ "source": "workspace", "path": "media", "subtree": true }],
+    "imports": [{
+      "id": "library", "source": "workspace", "path": "media",
+      "accept": [".jpg", ".png", ".mp4"], "maxFileBytes": 268435456
+    }]
+  }
+}
+```
+
+Imports support workspace destinations only. `path: "."` means the project's selected folder. `accept` is an optional extension allowlist; the host enforces it and the byte limit independently of picker hints. An import declaration does not grant read access or override managed workspace writes. In particular, an external folder still needs the user's existing write opt-in in Project Settings. There is no page-facing bypass or permission toggle.
+
+Use the adder for the usual flow. A custom UI can call `data.importFiles(File[], { target, signal, onProgress })`; each result is `{ ok: true, name, file: { source, path, name, size, mtime } }` or `{ ok: false, name, error }`. `onProgress` reports `{ completed, total, name }` per file, not bytes. Save the returned paths: duplicates become `name (1).ext`, and existing files are never overwritten. Originals stay where the user selected them. Cancel stops pending work and does not undo files already saved. A file that finished committing as cancellation arrived may already exist; refresh the listing to reconcile.
+
+The current limits are 100 files per batch, 256 MiB per file (a target may lower it), two active uploads per project, four per daemon, 120 attempts per project per minute, and a five-minute upload deadline. The server streams bytes to private temporary storage, validates scopes and paths, rechecks the destination and write policy at commit, and publishes atomically through the Store. It rejects traversal, symlink escapes, hidden/reserved names, and alternate streams. Imports never accept host source paths from a page.
+
+Live imports currently require the embedded desktop host. Browser tabs, phone snapshots and app-serve visitors get an explicit unavailable state; a shareable site's read capability never grants uploads. Components themselves work across these hosts. Always handle unsupported hosts and permission failures without silently enabling demo mode.
+
+After `onAdded`, refresh the app's listing. Ordinary workspace indexing follows asynchronously, so a newly added spreadsheet may appear before its DuckDB tables are ready. Keep the indexing/empty state and normal table refresh behavior.
+
+### Standalone component demos
+
+The demo host supplies the components and shared fonts before app code. Keep the visible banner and Reset demo control. For Gilde, use `npm run demos` or `npm run export-page-demo -- <id> --out <new-directory>`. For private source folders, run `gezel app demo . --out ../my-app-demo` and open its generated entry under `pages/`; the output works offline without a daemon. The website uses shared, content-hashed assets; each offline export contains its own generated asset set. Do not double-click the unprocessed source page or add platform files to its `pages/` tree.
+
+```js
+const api = window.gezel || window.makeDemoGezel({
+  page: { typeName: 'My library' },
+  existingPaths: samples.map(file => file.path),
+  // data and tools: app-owned sample handlers, when needed
+});
+const components = api.ui.components;
+// Merge these into your representative sample listing after onAdded:
+const added = components.demo?.files() ?? [];
+// In your Reset demo handler, clear imported descriptors and release object URLs:
+components.demo?.reset();
+```
+
+Demo imports exercise the same picker, drop, validation, progress and cards. They retain browser Files/object URLs in this tab, use deterministic metadata, and never write to disk or invoke a model. `data.url` resolves imported demo media. Reset the page's own sample state and remount the adder to clear its result list. Do not claim imported demo data was indexed: Data Analysis keeps its charts on labeled sample tables.
+
+React apps can mount either component in a ref inside an effect and call `destroy()` in cleanup. There is no separate React component implementation to keep in sync.
+
+### The sample conversation
+
+In a standalone demo, `appLayout` (or a bare `chat` slot) draws a sample conversation where Gezel's chat would be. A demo opens as the whole window: the layout reports `fullscreen: true` without the Fullscreen API, so the companion sits beside the page, or beneath it below 900 CSS pixels. Script the conversation and pass it as `chat`:
+
+```js
+const api = window.gezel || window.makeDemoGezel({
+  page: { typeName: 'Meal Planner' },
+  tools: { page_set_menu: input => setDemoMenu(input), grocery_list: () => demoGroceries() },
+  data: { 'menu.json': () => demoMenu },
+  chat: {
+    name: 'Mila',
+    role: 'Meal Planner',
+    greeting: 'Hello, I’m Mila. Sunday is still open.',
+    suggestions: ['Plan Sunday around what we have'],
+    respond: async (text, ctx) => {
+      if (!/sunday|plan/i.test(text)) return null;
+      await ctx.invoke('set_menu', { day: 'sunday', meal: 'Shakshuka' }, 'Sunday: Shakshuka');
+      return 'Sunday is shakshuka. Everything it needs is stocked.';
+    },
+    reactions: { page_set_menu: input => `${input.day} is set.` },
+  },
+});
+```
+
+`ctx.read(path)` returns a snapshot of the sample data. `ctx.invoke(tool, input, summary)` runs the page's demo handler for the model's tool name, falling back to its `page_` alias, shows the step in the conversation, fires the page's watches and `gezel-app-data-changed`, and briefly highlights page text that changed. `ctx.say(text)` adds a line mid-turn, and `ctx.suggest(list)` swaps the suggestions without a reply. A read-only tool that changes nothing repaints nothing. A reply is a string, an array of strings, or `{ reply, suggestions }`; `null` gives the shared answer that the preview follows a few sample requests. `reactions`, keyed by page tool, are the demo form of a manifest `reaction`: the person's page action summons a reply, and a game answers with the companion's move through its turn tool.
+
+The composer labels the replies as scripted, nothing leaves the page, and a live host never runs this code. Without a script the conversation greets the visitor and gives the shared answer, naming the crew lead's role when the exporter supplies it. A demo configured with `layout: 'pane'` keeps the narrow Output-pane presentation.

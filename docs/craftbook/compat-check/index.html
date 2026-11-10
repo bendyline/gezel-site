@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a href="../../roles-index/">Gezel Roles</a>
-<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../roles-index/">Crew roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
 <a href="../../whats-new-index/">What's New</a>
@@ -45,14 +45,14 @@
 
 </section>
 <section>
-<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2 class="hb-current">Craftbooks</h2>
+<h2 class="hb-current">Plans</h2>
 <ul class="hb-sidebar-entries">
-<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a href="../../craftbooks-index/">Every plan</a></li>
 <li class="hb-sidebar-subcategory">
 <h3 class="hb-sidebar-subcategory-title">Code · Build &amp; features</h3>
 <ul>
@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 300 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 300 plans</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -81,23 +81,24 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Plans</a>
 </nav>
 <article class="hb-article">
 <h1>Compatibility Check</h1>
 <img class="hb-craftbook-art" src="logo.webp" alt="Compatibility Check illustration" data-ground="indigo" width="160" height="160" decoding="async">
+<p class="hb-open"><span class="open-in-gezel" data-gezel-open hidden><a class="hb-open-button" href="gezel://craftbook/compat-check">Run this in Gezel</a><span class="hb-open-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span></p>
 <p>Answer 'does it still work on the new version?' with a matrix, not a shrug: the datapack's files checked against each target version's format rules, every break named with the exact file and the exact fix, and the upgrade path written down in order. Locks the target version list and the compat criteria FIRST (format numbers, renamed folders, changed identifiers), then checks version by version, then writes the matrix and the fixes. Use for version compatibility checks, 'does the mod work on 1.21', update breakage sweeps, and upgrade planning.</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Scope the check</td><td>Developer</td><td>target versions, format rules, compat criteria locked</td></tr><tr><td>2</td><td>Check each version</td><td>Developer</td><td>the pack walked against each version's rules, findings recorded</td></tr><tr><td>3</td><td>Write the matrix</td><td>Reviewer</td><td>the compat matrix, the fixes, the ordered upgrade path</td></tr><tr><td>4</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>5</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
 <p>Say something like "check compatibility" or "does it work on the new version" or "will the mod break" or "version check the datapack" or "plan the upgrade" in chat to start it.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../compat-check.md">Read it as markdown, for AI agents</a></p>
 </main>
 
 </div>
 <footer class="hb-footer">
 <p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
-
+<script defer src="../../assets/open-in-gezel.js"></script>
 </body>
 </html>

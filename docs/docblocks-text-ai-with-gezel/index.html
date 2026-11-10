@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
-<a href="../roles-index/">Gezel Roles</a>
-<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
 <a href="../project-types-index/">Project Types</a>
 <a aria-current="true" href="../architecture/">Technical</a>
 <a href="../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a class="hb-current" aria-current="page" href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -310,7 +312,7 @@ await stageElectronNative({
 <p>Paths in the first rows are relative to the DocBlocks repository; the final row is relative to Gezel.</p>
 <div class="hb-table-scroll"><table><thead><tr><th>Source</th><th>What to read or verify</th></tr></thead><tbody><tr><td><code>packages/core/src/host/ai.ts</code>, <code>ai-wire-policy.ts</code></td><td>Provider-neutral types, bounded requests, and event parsing</td></tr><tr><td><code>packages/desktop/main/ipc-ai.ts</code>, <code>preload/preload.ts</code></td><td>Main-process setup, credential isolation, stream ownership, and cleanup</td></tr><tr><td><code>packages/desktop/main/ai/ai-service.ts</code>, <code>gezel-connector.ts</code></td><td>Opt-in state machine, SDK calls, hosting, and generation adaptation</td></tr><tr><td><code>packages/desktop/main/ai/gezel-knowledge.ts</code>, <code>ai-models.ts</code></td><td>SDK evidence policy arguments and bounded model translation</td></tr><tr><td><code>packages/desktop/main/ai/ai-credentials.ts</code>, <code>gezel-native-host.ts</code>, <code>gezel-mas-native.ts</code></td><td>Owner-only token file, native payload policy, and Mac App Store seal verification</td></tr><tr><td><code>packages/desktop/scripts/stage-gezel-native.cjs</code></td><td>electron-builder hook that calls the inference package's <code>stageElectronNative()</code></td></tr><tr><td><code>packages/react/src/Ai/ai-assistant.ts</code>, <code>AiEditorAssistant.tsx</code>, <code>draft-capacity.ts</code></td><td>Prompt construction, review parsing, draft continuation, and safe application</td></tr><tr><td><code>packages/react/src/Ai/illustrate-*.ts</code>, <code>illustration.ts</code>, <code>study-*.ts</code></td><td>Diagram and illustration suggestions, and study aids</td></tr><tr><td><code>packages/react/src/Presentation/presentation-ai.ts</code>, <code>Speech/narration-rewrite.ts</code></td><td>Structured slide refinement and transcript cleanup</td></tr><tr><td><code>packages/desktop/test/gezel-connector.test.ts</code>, <code>ai-service.test.ts</code>, <code>gezel-knowledge.test.ts</code>, <code>gezel-native-host.test.ts</code>, <code>stage-gezel-native.test.ts</code></td><td>Real-SDK fake-daemon contracts, deterministic lifecycle tests, and packaging policy</td></tr><tr><td><code>packages/desktop/e2e/ai-settings.spec.ts</code>, <code>ai-editor.spec.ts</code></td><td>Settings and editor behavior through Electron</td></tr><tr><td>Gezel <code>packages/app-sdk/src/embedding.ts</code>, <code>desktop-embedding.ts</code>, <code>model-manager.ts</code>, <code>knowledge-context.ts</code>; <code>docs/embedding-sdk.md</code></td><td>Upstream lifecycle/model APIs, packaging, and release qualification</td></tr></tbody></table></div>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../docblocks-text-ai-with-gezel.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">

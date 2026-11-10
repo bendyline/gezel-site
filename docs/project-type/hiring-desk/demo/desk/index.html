@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Recruiter"}}</script>
-<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -33,7 +33,11 @@
       main { max-width: 900px; margin: 0 auto; }
       h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.5rem; font-weight: 400; margin: 0 0 0.2rem; }
       h2 { font-family: var(--font-heading, Georgia, serif); font-size: 1.1rem; font-weight: 400; margin: 0 0 0.6rem; }
-      h3 { font-size: 1rem; font-weight: 600; margin: 0; }
+      h3, main h3 { font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.95rem; font-weight: 600; margin: 0; }
+      .key { min-height: 30px; padding: 0.15rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.82rem; white-space: nowrap; }
+      .key:hover { background: var(--chip); }
+      .cand .key { display: block; margin: 0.3rem 0 0; }
+      .role-head .key { margin-left: auto; }
       .sub { color: var(--muted); margin: 0 0 1rem; }
       .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; margin: 0 0 1.2rem; }
       .tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem 0.9rem; }
@@ -43,7 +47,8 @@
       .tile.soon b { color: var(--soon); }
       section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; margin: 0 0 1rem; }
       .due { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-      .due li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
+      .due li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; gap: 0.75rem; align-items: start; }
+      .due .when, .due li > .key { justify-self: start; }
       .due li.empty { display: block; }
       .when { font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; text-align: center; background: var(--chip); color: var(--muted); }
       .when.late { background: var(--late-bg); color: var(--late); }
@@ -58,7 +63,7 @@
       .paused { font-size: 0.78rem; padding: 0.05rem 0.4rem; border-radius: 4px; background: var(--soon-bg); color: var(--soon); }
       .reqs { list-style: none; margin: 0 0 0.6rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
       .reqs li { font-size: 0.8rem; padding: 0.1rem 0.45rem; border-radius: 4px; background: var(--chip); }
-      .stages { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; }
+      .stages { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; align-items: start; }
       .stage { background: var(--col); border: 1px solid var(--line); border-radius: 6px; padding: 0.5rem; min-width: 0; }
       .stage h4 { margin: 0 0 0.35rem; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; display: flex; justify-content: space-between; }
       .stage ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
@@ -66,7 +71,7 @@
       .cand small { display: block; color: var(--muted); font-size: 0.78rem; }
       .stage.hired .cand { border-color: var(--ok); }
       .closed-note { color: var(--muted); font-size: 0.82rem; margin: 0.4rem 0 0; }
-      .table-wrap { overflow-x: auto; }
+      .table-wrap { overflow-x: auto; position: relative; }
       table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
       th { text-align: left; font-weight: 600; color: var(--muted); font-size: 0.78rem; padding: 0 0.5rem 0.4rem; border-bottom: 1px solid var(--line); vertical-align: bottom; }
       td { padding: 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -93,6 +98,27 @@
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -111,15 +137,15 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <div class="tiles">
         <div class="tile"><b id="t-roles">0</b><span>Open roles</span></div>
         <div class="tile"><b id="t-play">0</b><span>Candidates in play</span></div>
-        <div class="tile soon"><b id="t-interviews">0</b><span>Interviews this week</span></div>
-        <div class="tile late"><b id="t-cards">0</b><span>Scorecards to collect</span></div>
+        <div class="tile"><b id="t-interviews">0</b><span>Interviews this week</span></div>
+        <div class="tile"><b id="t-cards">0</b><span>Scorecards to collect</span></div>
       </div>
       <section id="interviews-section">
-        <h2>This week’s interviews</h2>
+        <h2>Interviews and scorecards</h2>
         <ul class="due" id="interviews"></ul>
       </section>
       <section id="pipelines-section">
-        <h2>Pipelines</h2>
+        <h2>Candidates by role</h2>
         <div class="pipelines" id="pipelines"></div>
       </section>
       <section id="scorecards-section">
@@ -323,6 +349,17 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
         function niceDate(day) { var d = new Date(String(day).slice(0, 10) + 'T12:00:00'); return isFinite(d) ? d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) : String(day); }
         function whenLabel(day) { var d = daysLeft(day); return d === 0 ? 'Today' : d === 1 ? 'Tomorrow' : niceDate(day); }
+        function upperFirst(text) { return String(text).charAt(0).toUpperCase() + String(text).slice(1); }
+        // Row action: a small key that opens a shared dialog with these values filled in.
+        function rowKey(label, tool, values, aria) {
+          var key = el('button', label, 'key');
+          key.type = 'button';
+          key.setAttribute('data-app-action', tool);
+          key.setAttribute('data-app-values', JSON.stringify(values));
+          key.setAttribute('aria-label', aria);
+          return key;
+        }
+        var NEXT_STAGE = { sourced: 'screen', screen: 'interview', interview: 'offer', offer: 'hired' };
         var STAGE_LABELS = { sourced: 'Sourced', screen: 'Screen', interview: 'Interview', offer: 'Offer', hired: 'Hired' };
 
         function render(rolesDoc, candDoc, fbDoc) {
@@ -343,6 +380,9 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           document.getElementById('t-play').textContent = active.length;
           document.getElementById('t-interviews').textContent = soon.length;
           document.getElementById('t-cards').textContent = waiting.length;
+          document.getElementById('t-interviews').parentNode.classList.toggle('soon', soon.length > 0);
+          document.getElementById('t-cards').parentNode.classList.toggle('late', waiting.length > 0);
+          var roleOf = function (c) { return roles.find(function (x) { return x.id === c.fields.roleId; }); };
           document.getElementById('sub').textContent = !roles.length
             ? 'No roles yet. Tell your recruiter which role you are hiring for and what the job needs.'
             : (soon.length ? plural(soon.length, 'interview', 'interviews') + ' in the next 7 days. ' : 'No interviews booked this week. ') +
@@ -356,7 +396,12 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             li.append(el('span', 'Scorecard due', 'when late'));
             what.append(el('b', c.fields.name));
             what.append(el('small', [titleOf(c), 'interviewed ' + niceDate(c.fields.interviewAt), c.fields.interviewer ? 'with ' + c.fields.interviewer : ''].filter(Boolean).join(' · ')));
-            li.append(what);
+            // The scorecard opens with this candidate, the interviewer, and the role's requirements ready for a 1 to 4 each.
+            var role = roleOf(c), reqs = (role && role.fields.requirements) || [];
+            var values = { candidate: c.id };
+            if (c.fields.interviewer) values.by = c.fields.interviewer;
+            if (reqs.length) values.ratings = reqs.map(function (q) { return q + ': '; }).join(', ');
+            li.append(what, rowKey('Record scorecard', 'log_feedback', values, 'Record the scorecard for ' + c.fields.name));
             list.append(li);
           });
           soon.forEach(function (c) {
@@ -376,8 +421,9 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             var hired = mine.filter(function (c) { return c.status === 'hired'; }).length;
             var art = el('article', undefined, 'role'), head = el('div', undefined, 'role-head');
             head.append(el('h3', r.fields.title));
-            if (r.status === 'paused') head.append(el('span', 'paused', 'paused'));
+            if (r.status === 'paused') head.append(el('span', 'Paused', 'paused'));
             head.append(el('span', [hired + ' of ' + plural(r.fields.openings || 1, 'opening', 'openings') + ' filled', r.fields.manager ? 'Manager ' + r.fields.manager : '', r.fields.pay || ''].filter(Boolean).join(' · '), 'meta'));
+            head.append(rowKey('Add a candidate', 'add_candidate', { role: r.id }, 'Add a candidate for ' + r.fields.title));
             art.append(head);
             var reqs = el('ul', undefined, 'reqs');
             (r.fields.requirements || []).forEach(function (q) { reqs.append(el('li', q)); });
@@ -395,6 +441,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
                 var meta = s === 'interview' && c.fields.interviewAt ? (daysLeft(c.fields.interviewAt) < 0 ? 'interviewed ' : '') + niceDate(c.fields.interviewAt) : c.fields.source || '';
                 if (cards) meta = (meta ? meta + ' · ' : '') + plural(cards, 'scorecard', 'scorecards');
                 if (meta) li.append(el('small', meta));
+                if (NEXT_STAGE[s]) li.append(rowKey('Move', 'move_candidate', { candidate: c.id, status: NEXT_STAGE[s] }, 'Move ' + c.fields.name + ' to ' + STAGE_LABELS[NEXT_STAGE[s]].toLowerCase()));
                 ul.append(li);
               });
               col.append(ul);
@@ -426,14 +473,14 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             rated.forEach(function (c) {
               var tr = el('tr'), name = el('td'), cards = cardsFor(c);
               name.append(el('span', c.fields.name));
-              name.append(el('span', c.status, 'meta'));
+              name.append(el('span', upperFirst(c.status), 'meta'));
               tr.append(name);
               reqs.forEach(function (q) {
                 var vals = cards.map(function (e) { return e.data.ratings && e.data.ratings[q]; }).filter(function (v) { return typeof v === 'number'; });
                 var td = el('td');
                 if (vals.length) {
                   var avg = Math.round((vals.reduce(function (a, b) { return a + b; }, 0) / vals.length) * 10) / 10;
-                  td.append(el('span', avg + ' / 4', 'score ' + (avg >= 3 ? 'high' : avg < 2 ? 'low' : '')));
+                  td.append(el('span', avg + ' / 4', 'score ' + (avg >= 3.5 ? 'high' : avg < 2 ? 'low' : '')));
                 } else td.append(el('span', '–', 'meta'));
                 tr.append(td);
               });

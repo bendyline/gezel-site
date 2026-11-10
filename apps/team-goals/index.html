@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Team Goals</h1>
 <p class="lede">Set your team's goals and check progress toward them. A planner keeps each goal's key results, current against target, logs the weekly check-ins, and turns what a meeting agreed into actions with an owner and a date.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/team-goals/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/team-goals">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/team-goals/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/planner/"><strong>Planner</strong></a> <span class="tag">Crew lead</span><span>Turns fuzzy asks into concrete steps — good at the 'what' and the 'in what order', less opinionated on the 'how'.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/weekly-review/"><strong>Personal / Team Weekly Review</strong></a><span>Assemble a reflective weekly review that pulls the week's done-list, metrics, and open loops into a structured retrospective with wins, misses, lessons, and next-week priorities.</span></li><li><a href="/docs/craftbook/status-report/"><strong>Recurring Status Report</strong></a><span>Produce a recurring (weekly/biweekly) status report by gathering signals from the team's tools and writing a tight, skimmable update for stakeholders.</span></li><li><a href="/docs/craftbook/meeting-notes-to-actions/"><strong>Meeting Notes to Action Items</strong></a><span>Convert raw meeting notes or a transcript into a clean, assigned action-item list with owners, due dates, and the decisions that drove them.</span></li><li><a href="/docs/craftbook/standup-summary/"><strong>Standup / Team Update Summary</strong></a><span>Condense a pile of raw team updates (standup messages, async check-ins, channel dumps) into one clean summary grouped by person or workstream, surfacing blockers and decisions.</span></li><li><a href="/docs/craftbook/kpi-scorecard/"><strong>KPI Scorecard Page</strong></a><span>Build a single-page KPI scorecard that rolls a dataset up into the handful of numbers a team tracks, each shown with its current value, target, and period-over-period change.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Goals status</strong><span>The whole picture, furthest behind first: every active goal with its key results (current against target, with ids), its pace against the time gone, its last check-in, which goals have no check-in this week, and the open meeting actions with owners and due dates.</span></li><li><strong>Add goal</strong><span>Save a goal: its title, owner and due date (YYYY-MM-DD).</span></li><li><strong>Add key result</strong><span>Save a key result under a goal: what it measures, where it stands now, and the target.</span></li><li><strong>Update key result</strong><span>Record progress on a key result the moment the person reports it.</span></li><li><strong>Log checkin</strong><span>Log a weekly check-in on a goal: who, how confident they are (on-track, at-risk or off-track), and what they said.</span></li><li><strong>Add action</strong><span>Save one action agreed in a meeting: what, who owns it, when it is due (YYYY-MM-DD), and the goal it serves.</span></li><li><strong>Complete action</strong><span>Mark a meeting action done the moment the person says it is.</span></li><li><strong>Set goal status</strong><span>Close a goal as done or dropped, or reopen it.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>goals.json</code>, <code>keyresults.json</code>, <code>checkins.json</code>, <code>actions.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/planner/"><strong>Planner</strong></a> <span class="tag">Crew lead</span><span>Turns fuzzy asks into concrete steps — good at the 'what' and the 'in what order', less opinionated on the 'how'.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/weekly-review/"><strong>Personal / Team Weekly Review</strong></a><span>Assemble a reflective weekly review that pulls the week's done-list, metrics, and open loops into a structured retrospective with wins, misses, lessons, and next-week priorities.</span></li><li><a href="/docs/craftbook/status-report/"><strong>Recurring Status Report</strong></a><span>Produce a recurring (weekly/biweekly) status report by gathering signals from the team's tools and writing a tight, skimmable update for stakeholders.</span></li><li><a href="/docs/craftbook/meeting-notes-to-actions/"><strong>Meeting Notes to Action Items</strong></a><span>Convert raw meeting notes or a transcript into a clean, assigned action-item list with owners, due dates, and the decisions that drove them.</span></li><li><a href="/docs/craftbook/standup-summary/"><strong>Standup / Team Update Summary</strong></a><span>Condense a pile of raw team updates (standup messages, async check-ins, channel dumps) into one clean summary grouped by person or workstream, surfacing blockers and decisions.</span></li><li><a href="/docs/craftbook/kpi-scorecard/"><strong>KPI Scorecard Page</strong></a><span>Build a single-page KPI scorecard that rolls a dataset up into the handful of numbers a team tracks, each shown with its current value, target, and period-over-period change.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Goals status</strong><span>The whole picture, furthest behind first: every active goal with its key results (current against target, with ids), its pace against the time gone, its last check-in, which goals have no check-in this week, and the open meeting actions with owners and due dates.</span></li><li><strong>Add goal</strong><span>Save a goal: its title, owner and due date (YYYY-MM-DD).</span></li><li><strong>Add key result</strong><span>Save a key result under a goal: what it measures, where it stands now, and the target.</span></li><li><strong>Update key result</strong><span>Record progress on a key result the moment the person reports it.</span></li><li><strong>Log checkin</strong><span>Log a weekly check-in on a goal: who, how confident they are (on-track, at-risk or off-track), and what they said.</span></li><li><strong>Add action</strong><span>Save one action agreed in a meeting: what, who owns it, when it is due (YYYY-MM-DD), and the goal it serves.</span></li><li><strong>Complete action</strong><span>Mark a meeting action done the moment the person says it is.</span></li><li><strong>Set goal status</strong><span>Close a goal as done or dropped, or reopen it.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>goals.json</code>, <code>keyresults.json</code>, <code>checkins.json</code>, <code>actions.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

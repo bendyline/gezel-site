@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Social Media Writer"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -65,7 +65,8 @@
       .key {
         font: inherit;
         font-size: 0.8rem;
-        padding: 0.25rem 0.55rem;
+        min-height: 32px;
+        padding: 0.25rem 0.6rem;
         border: 1px solid var(--track);
         border-radius: 6px;
         background: var(--card);
@@ -135,9 +136,10 @@
         background: var(--card);
         color: var(--muted);
       }
-      .shot .st.st-draft, .shot .st.st-scheduled { color: var(--accent); border-color: var(--accent); }
+      /* Only the stage that waits on the person is warm; approved and later are green; the rest stay neutral. */
       .shot .st.st-in-review { color: var(--warn); border-color: var(--warn); }
-      .shot .st.st-approved, .shot .st.st-published { color: var(--good); border-color: var(--good); }
+      .shot .st.st-approved, .shot .st.st-scheduled, .shot .st.st-published { color: var(--good); border-color: var(--good); }
+      .shot .cap .why { display: block; margin-top: 0.2rem; color: var(--ink); font-size: 0.78rem; }
       .shot .cap { display: block; padding: 0.45rem 0.6rem 0.55rem; font-size: 0.83rem; }
       .shot .cap .ti { display: block; font-weight: 600; overflow-wrap: anywhere; }
       .shot .cap .ft { margin-top: 0.25rem; display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 0.72rem; }
@@ -162,6 +164,15 @@
         margin-bottom: 0.75rem;
       }
       .foot { color: var(--muted); font-size: 0.72rem; margin-top: 1rem; }
+      main h2 { font-size: 1.15rem; font-weight: 400; margin: 0 0 0.35rem; }
+      .lede { color: var(--muted); font-size: 0.85rem; margin: 0 0 0.75rem; }
+      .none { color: var(--muted); margin: 0; }
+      #needs-section, #coming-section { margin-bottom: 2rem; }
+      .stages { display: flex; flex-wrap: wrap; gap: 4px; width: fit-content; max-width: 100%; padding: 4px; margin: 0 0 1rem; background: var(--track); border-radius: 8px; }
+      .stages .key { border-color: transparent; background: transparent; }
+      .stages .key[aria-pressed='true'] { background: var(--card); border-color: var(--accent); color: var(--ink); }
+      .stages .key .n { margin-left: 0.3rem; color: var(--muted); }
+      @media (max-width: 480px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; } }
       .drawer {
         position: fixed;
         top: 0;
@@ -179,12 +190,13 @@
       .drawer .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
       .drawer h2 {
         font-family: var(--font-heading, Georgia, serif);
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 400;
         margin: 0 0 0.2rem;
         overflow-wrap: anywhere;
       }
       .drawer h3 {
+        font-family: var(--font-ui, system-ui, sans-serif);
         font-size: 0.72rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -245,6 +257,27 @@
     </style>
   <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
   <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -260,20 +293,29 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <p class="note" id="browser-note" hidden>
         Viewing from a browser tab — the gallery stays live, but moving posts happens in the app's Output pane.
       </p>
-      <div class="head">
-        <div>
-          <h1 id="title">Image feed</h1>
-          <p class="sub" id="sub">Loading the gallery…</p>
-        </div>
-        <button type="button" class="key" id="toggle-archived" aria-pressed="false">Show archived</button>
-      </div>
+      <h1 id="title">Image feed</h1>
+      <p class="sub" id="sub">Loading the gallery…</p>
+      <section id="needs-section">
+        <h2>Needs you</h2>
+        <p class="lede">Posts waiting for your review, and approved posts that still need a time.</p>
+        <div class="grid" id="needs-grid"></div>
+        <p class="none" id="needs-none" hidden>Nothing is waiting on you.</p>
+      </section>
+      <section id="coming-section">
+        <h2>Coming up</h2>
+        <div class="grid" id="coming-grid"></div>
+        <p class="none" id="coming-none" hidden>Nothing is scheduled yet.</p>
+      </section>
       <p class="hint" id="corpus-hint" hidden>
-        Connected feeds are syncing — reception reports read from the project's artifacts.
+        Your connected accounts are syncing, so your writer can see how each post did.
       </p>
-      <div class="grid-empty" id="grid-empty" hidden>
-        No posts yet — ask your social media writer for the first image of the feed.
-      </div>
-      <div class="grid" id="grid"></div>
+      <section id="posts-section">
+        <div class="stages" role="group" aria-label="Show posts by stage" id="stages"></div>
+        <div class="grid-empty" id="grid-empty" hidden>
+          No posts yet. Ask your social media writer for the first image of the feed.
+        </div>
+        <div class="grid" id="grid"></div>
+      </section>
     </main>
     <dialog class="drawer" id="drawer" aria-labelledby="d-title">
       <div class="top">
@@ -511,7 +553,6 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         var demoMode = gezel.page.mode === 'demo';
         var browserMode = gezel.page.mode === 'browser';
         var params = gezel.page.params || {};
-        var showArchived = false;
         var openPostId = null;
         var lastIndex = { posts: [] };
         var covers = {};
@@ -576,10 +617,88 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             });
         }
 
+        var STAGE_LABELS = {
+          idea: 'Idea', draft: 'Draft', 'in-review': 'In review', approved: 'Approved',
+          scheduled: 'Scheduled', published: 'Published', archived: 'Archived',
+        };
+        var PLATFORM_LABELS = { instagram: 'Instagram', bluesky: 'Bluesky', linkedin: 'LinkedIn', tiktok: 'TikTok', youtube: 'YouTube', facebook: 'Facebook', x: 'X', mastodon: 'Mastodon', threads: 'Threads', pinterest: 'Pinterest' };
+        function stageLabel(status) { return STAGE_LABELS[status] || String(status || ''); }
+        function platformLabel(name) {
+          var key = String(name || '');
+          return PLATFORM_LABELS[key.toLowerCase()] || key.charAt(0).toUpperCase() + key.slice(1);
+        }
+        // "2026-11-12" or an ISO time reads as "Nov 12"; with weekday, "Thu, Nov 12".
+        function dayLabel(value, weekday) {
+          var day = String(value || '').slice(0, 10);
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return String(value || '');
+          var date = new Date(day + 'T12:00:00');
+          var options = { month: 'short', day: 'numeric' };
+          if (weekday) options.weekday = 'short';
+          if (date.getFullYear() !== new Date().getFullYear()) options.year = 'numeric';
+          return isFinite(date) ? date.toLocaleDateString(undefined, options) : day;
+        }
+        function make(tag, text, className) {
+          var node = document.createElement(tag);
+          if (text !== undefined) node.textContent = text;
+          if (className) node.className = className;
+          return node;
+        }
+        function needsYou(post) {
+          if (post.status === 'in-review') return 'Waiting for your review';
+          if (post.status === 'approved' && !post.scheduledFor) return 'Approved, no time set yet';
+          return '';
+        }
+        function card(post, why) {
+          var shot = make('button', undefined, 'shot');
+          shot.type = 'button';
+          shot.setAttribute('data-post', post.id);
+          var pic = make('span', undefined, 'pic');
+          pic.setAttribute('data-pic', post.id);
+          pic.append(make('span', 'No picture yet', 'tcard'));
+          var cap = make('span', undefined, 'cap');
+          cap.append(make('span', post.title || post.id, 'ti'));
+          if (why) cap.append(make('span', why, 'why'));
+          var ft = make('span', undefined, 'ft');
+          (post.platforms || []).forEach(function (platform) { ft.append(make('span', platformLabel(platform), 'chip')); });
+          if (post.campaign) ft.append(make('span', post.campaign, 'chip tag'));
+          ft.append(make('span', post.status === 'scheduled' && post.scheduledFor ? 'For ' + dayLabel(post.scheduledFor, true) : dayLabel(post.created)));
+          cap.append(ft);
+          shot.append(pic, make('span', stageLabel(post.status), 'st st-' + post.status), cap);
+          resolveCover(post.id).then(function (src) {
+            if (!src || !pic.isConnected) return;
+            var img = document.createElement('img');
+            img.alt = post.title || post.id;
+            img.src = src;
+            pic.replaceChildren(img);
+          });
+          return shot;
+        }
+        function fill(gridId, noneId, posts, reason) {
+          var grid = el(gridId);
+          grid.replaceChildren();
+          posts.forEach(function (post) { grid.append(card(post, reason ? reason(post) : '')); });
+          if (noneId) el(noneId).hidden = posts.length > 0;
+        }
+        var stage = 'all';
+        function renderStages(posts) {
+          var box = el('stages');
+          var counts = { all: posts.filter(function (post) { return post.status !== 'archived'; }).length };
+          posts.forEach(function (post) { counts[post.status] = (counts[post.status] || 0) + 1; });
+          box.replaceChildren();
+          ['all'].concat(Object.keys(STAGE_LABELS)).forEach(function (id) {
+            var key = make('button', id === 'all' ? 'All' : stageLabel(id), 'key');
+            key.type = 'button';
+            key.setAttribute('data-stage', id);
+            key.setAttribute('aria-pressed', stage === id ? 'true' : 'false');
+            key.append(make('span', String(counts[id] || 0), 'n'));
+            box.append(key);
+          });
+          box.hidden = posts.length === 0;
+        }
+
         function renderGrid(index) {
           lastIndex = index && Array.isArray(index.posts) ? index : { posts: [] };
           var posts = lastIndex.posts;
-          var visible = posts.filter(function (post) { return showArchived || post.status !== 'archived'; });
           var live = posts.filter(function (post) { return post.status !== 'archived'; });
           var published = posts.filter(function (post) { return post.status === 'published'; }).length;
           var cadence = typeof params.cadence === 'string' && params.cadence ? params.cadence : '';
@@ -588,33 +707,12 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             live.length + ' post' + (live.length === 1 ? '' : 's') + ' in flight · ' + published + ' published';
           el('grid-empty').hidden = posts.length > 0;
 
-          el('grid').innerHTML = visible
-            .map(function (post) {
-              var chips = (post.platforms || [])
-                .map(function (platform) { return '<span class="chip">' + esc(platform) + '</span>'; })
-                .join('');
-              if (post.campaign) chips += '<span class="chip tag">' + esc(post.campaign) + '</span>';
-              var when = post.status === 'scheduled' && post.scheduledFor ? 'for ' + esc(String(post.scheduledFor).slice(0, 10)) : esc(String(post.created || '').slice(0, 10));
-              return (
-                '<button type="button" class="shot" data-post="' + esc(post.id) + '">' +
-                '<span class="pic" data-pic="' + esc(post.id) + '"><span class="tcard">' + esc(post.title || post.id) + '</span></span>' +
-                '<span class="st st-' + esc(post.status) + '">' + esc(post.status) + '</span>' +
-                '<span class="cap"><span class="ti">' + esc(post.title || post.id) + '</span>' +
-                '<span class="ft">' + chips + '<span>' + when + '</span></span></span>' +
-                '</button>'
-              );
-            })
-            .join('');
-
-          visible.forEach(function (post) {
-            resolveCover(post.id).then(function (src) {
-              if (!src) return;
-              var pic = document.querySelector('[data-pic="' + post.id + '"]');
-              if (pic) {
-                pic.innerHTML = '<img alt="' + esc(post.title || post.id) + '" src="' + esc(src) + '" />';
-              }
-            });
-          });
+          fill('needs-grid', 'needs-none', posts.filter(needsYou), needsYou);
+          fill('coming-grid', 'coming-none', posts
+            .filter(function (post) { return post.status === 'scheduled'; })
+            .sort(function (a, b) { return String(a.scheduledFor || '').localeCompare(String(b.scheduledFor || '')); }));
+          renderStages(posts);
+          fill('grid', null, posts.filter(function (post) { return stage === 'all' ? post.status !== 'archived' : post.status === stage; }));
         }
 
         function loadGrid() {
@@ -633,8 +731,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         function renderDrawer(post) {
           if(!el('drawer').open)el('drawer').showModal();
           el('d-title').textContent = post.title || post.id;
-          var meta = [post.status, 'created ' + String(post.created || '').slice(0, 10)];
-          if (post.scheduledFor) meta.push('scheduled for ' + String(post.scheduledFor).slice(0, 10));
+          var meta = [stageLabel(post.status), 'created ' + dayLabel(post.created)];
+          if (post.scheduledFor) meta.push('scheduled for ' + dayLabel(post.scheduledFor, true));
           if (post.campaign) meta.push('campaign: ' + post.campaign);
           el('d-meta').textContent = meta.join(' · ');
           el('d-body').textContent = post.body || '(no caption yet)';
@@ -642,10 +740,10 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var moves = legalNext(post.status);
           el('d-moves').innerHTML =
             moves.length === 0
-              ? '<span class="empty">' + esc(post.status) + ' is the end of the line.</span>'
+              ? '<span class="empty">' + esc(stageLabel(post.status)) + ' is the last stage.</span>'
               : moves
                   .map(function (stage) {
-                    return '<button type="button" class="key" data-move="' + esc(stage) + '">' + esc(stage) + '</button>';
+                    return '<button type="button" class="key" data-move="' + esc(stage) + '">' + esc(stageLabel(stage)) + '</button>';
                   })
                   .join('');
           if (browserMode && moves.length > 0) {
@@ -670,11 +768,11 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
               : names
                   .map(function (name) {
                     var variant = variants[name] || {};
-                    var head = '<span class="name">' + esc(name) + '</span>' +
-                      '<span class="chip">' + esc(String(variant.charCount || 0)) + ' chars</span>';
-                    if (variant.publishedAt) head += '<span class="chip st-published">live</span>';
+                    var head = '<span class="name">' + esc(platformLabel(name)) + '</span>' +
+                      '<span class="chip">' + esc(String(variant.charCount || 0)) + ' characters</span>';
+                    if (variant.publishedAt) head += '<span class="chip st-published">Live</span>';
                     if (variant.permalink) {
-                      head += '<a href="' + esc(variant.permalink) + '" rel="noreferrer">permalink</a>';
+                      head += '<a href="' + esc(variant.permalink) + '" rel="noreferrer">View post</a>';
                     }
                     return '<div class="variant"><div class="vh">' + head + '</div>' +
                       '<div class="vb">' + esc(variant.body || '') + '</div></div>';
@@ -770,9 +868,15 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             });
         }
 
-        el('grid').addEventListener('click', function (event) {
+        document.querySelector('main').addEventListener('click', function (event) {
           var card = event.target.closest('[data-post]');
           if (card) openPost(card.getAttribute('data-post'));
+        });
+        el('stages').addEventListener('click', function (event) {
+          var key = event.target.closest('[data-stage]');
+          if (!key) return;
+          stage = key.getAttribute('data-stage');
+          renderGrid(lastIndex);
         });
         el('d-moves').addEventListener('click', function (event) {
           var key = event.target.closest('[data-move]');
@@ -781,11 +885,6 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         el('d-close').addEventListener('click', closeDrawer);
         document.addEventListener('keydown', function (event) {
           if (event.key === 'Escape') closeDrawer();
-        });
-        el('toggle-archived').addEventListener('click', function () {
-          showArchived = !showArchived;
-          this.setAttribute('aria-pressed', showArchived ? 'true' : 'false');
-          renderGrid(lastIndex);
         });
 
         gezel.data

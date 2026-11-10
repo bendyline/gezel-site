@@ -9,7 +9,7 @@
     { name: 'month', type: 'DATE', role: 'time' }, { name: 'region', type: 'VARCHAR', role: 'dimension' },
     { name: 'revenue', type: 'DOUBLE', role: 'measure', unit: 'USD' }, { name: 'orders', type: 'BIGINT', role: 'measure' },
   ];
-  let selected, schema, pending = 0, running = false, revision = 0, stopped = false;
+  let selected, schema, pending = 0, running = false, revision = 0, stopped = false, known = [];
   const fmt = (value) => value == null || !Number.isFinite(Number(value)) ? '—' : new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(Number(value));
   const node = (tag, text) => { const el = document.createElement(tag); el.textContent = text; return el; };
   function options(id, items, previous) {
@@ -33,6 +33,10 @@
       if (!demoMode && !api.tables) throw new Error('Open this project in an updated Gezel app to see data summaries.');
       const tables = demoMode ? [sampleTable] : await api.tables.list();
       if (!current()) return;
+      // The Datasets list offers Explore on a file that has a table here.
+      const changed = tables.map((t) => t.path).join('|') !== known.map((t) => t.path).join('|');
+      known = tables;
+      if (changed) window.dispatchEvent(new Event('data-analysis-tables'));
       options('table-picker', tables.map((t) => [t.name, `${t.path} · ${t.title}`]), $('table-picker').value);
       $('table-picker-wrap').hidden = tables.length === 0;
       selected = tables.find((t) => t.name === $('table-picker').value);
@@ -117,6 +121,16 @@
     try { await api.data.open(selected.path); }
     catch (error) { $('insights-error').textContent = error.message; $('insights-error').hidden = false; }
   });
-  window.dataAnalysisInsights = { refresh: schedule, reset() { $('table-picker').value = ''; $('chart-group').value = ''; $('chart-measure').value = ''; schedule(); } };
+  const tableFor = (path) => known.find((t) => t.source !== 'artifacts' && t.path === path);
+  window.dataAnalysisInsights = {
+    has: (path) => !!tableFor(path),
+    explore(path) {
+      const table = tableFor(path);
+      if (!table) return false;
+      $('table-picker').value = table.name;
+      schedule();
+      return true;
+    },
+    refresh: schedule, reset() { $('table-picker').value = ''; $('chart-group').value = ''; $('chart-measure').value = ''; schedule(); } };
   window.addEventListener('pagehide', () => { stopped = true; revision++; }, { once: true });
 })();

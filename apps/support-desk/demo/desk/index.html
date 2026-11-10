@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"imports":[{"id":"kb","source":"workspace","path":"kb","accept":[".md",".markdown",".txt",".html",".docx",".pdf"],"maxFileBytes":26214400}],"companion":{"role":"Support Lead"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -43,20 +43,24 @@
       .tile.soon b { color: var(--soon); }
       section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; margin: 0 0 1rem; }
       .queue { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.8rem; }
-      .queue > li { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
+      .queue > li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
       .queue > li.empty { display: block; }
-      .when { font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; text-align: center; background: var(--chip); color: var(--muted); }
+      .when { justify-self: start; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; text-align: center; background: var(--chip); color: var(--muted); }
       .when.late { background: var(--late-bg); color: var(--late); }
       .when.soon { background: var(--soon-bg); color: var(--soon); }
       .what b { font-weight: 600; }
       .what small, .meta { display: block; color: var(--muted); font-size: 0.85rem; overflow-wrap: anywhere; }
       .msg { margin: 0.25rem 0 0; color: var(--muted); font-style: italic; overflow-wrap: anywhere; }
       .draft { margin: 0.45rem 0 0; padding: 0.55rem 0.7rem; border-left: 3px solid var(--accent); border-radius: 4px; background: var(--quote); }
-      .draft .label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+      .draft .label { display: block; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
       .draft p { margin: 0.15rem 0; white-space: pre-line; overflow-wrap: anywhere; }
       .chip { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.02rem 0.4rem; border-radius: 4px; background: var(--chip); color: var(--muted); margin-left: 0.3rem; vertical-align: 1px; }
       .chip.urgent { background: var(--late-bg); color: var(--late); }
       .empty { color: var(--muted); font-style: italic; margin: 0; }
+      .row-keys { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 0; }
+      .key { min-height: 32px; padding: 0.25rem 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.85rem; white-space: nowrap; }
+      .key:hover { border-color: var(--muted); }
+      td .key { display: block; margin-top: 0.35rem; min-height: 28px; padding: 0.1rem 0.55rem; font-size: 0.8rem; }
       .grid-wrap, .table-wrap { overflow-x: auto; }
       .grid-wrap { margin: 0 0 1rem; }
       table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
@@ -67,8 +71,7 @@
       .grid td.zero { color: var(--muted); }
       .grid td b { font-weight: 600; }
       .status { display: inline-block; font-size: 0.78rem; padding: 0.05rem 0.4rem; border-radius: 4px; background: var(--chip); }
-      .status.new { background: var(--late-bg); color: var(--late); }
-      .status.open { background: var(--soon-bg); color: var(--soon); }
+      .status.new { background: var(--soon-bg); color: var(--soon); }
       .status.resolved { background: var(--ok-bg); color: var(--ok); }
       .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
       .gaps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; font-size: 0.92rem; }
@@ -82,11 +85,31 @@
         .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .split { grid-template-columns: minmax(0, 1fr); }
         .queue > li { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
-        .when { justify-self: start; }
       }
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -103,8 +126,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <h1>Support desk</h1>
       <p class="sub" id="sub">Loading the desk…</p>
       <div class="tiles">
-        <div class="tile late"><b id="t-new">0</b><span>New, not picked up</span></div>
-        <div class="tile soon"><b id="t-reply">0</b><span>Need a reply</span></div>
+        <div class="tile"><b id="t-new">0</b><span>New, not picked up</span></div>
+        <div class="tile"><b id="t-reply">0</b><span>Need a reply</span></div>
         <div class="tile"><b id="t-waiting">0</b><span>Waiting on the customer</span></div>
         <div class="tile"><b id="t-gaps">0</b><span>Questions without an article</span></div>
       </div>
@@ -114,16 +137,19 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       </section>
       <section id="tickets-section">
         <h2>Tickets</h2>
-        <div class="grid-wrap">
-          <table class="grid">
-            <thead><tr><th>Category</th><th>New</th><th>Open</th><th>Waiting</th><th>Resolved</th></tr></thead>
-            <tbody id="grid-body"></tbody>
-          </table>
-        </div>
         <div class="table-wrap">
           <table>
             <thead><tr><th>Ticket</th><th>Category</th><th>Status</th><th>Came in</th><th>Reply</th></tr></thead>
             <tbody id="ticket-body"></tbody>
+          </table>
+        </div>
+      </section>
+      <section id="categories-section">
+        <h2>Tickets by category</h2>
+        <div class="grid-wrap">
+          <table class="grid">
+            <thead><tr><th>Category</th><th>New</th><th>Open</th><th>Waiting</th><th>Resolved</th></tr></thead>
+            <tbody id="grid-body"></tbody>
           </table>
         </div>
       </section>
@@ -418,6 +444,15 @@ function picture(records, articles, nowMs) {
         function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
         function niceDate(day) { var d = new Date(String(day).slice(0, 10) + 'T12:00:00'); return isFinite(d) ? d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : String(day); }
         function ageLabel(days) { return days === 0 ? 'Today' : days === 1 ? '1 day' : days + ' days'; }
+        // A key on a ticket opens that action's dialog with the ticket already chosen (the app shell wires data-app-action).
+        function rowKey(label, tool, values, aria) {
+          var b = el('button', label, 'key');
+          b.type = 'button';
+          b.setAttribute('aria-label', aria);
+          b.setAttribute('data-app-action', tool);
+          b.setAttribute('data-app-values', JSON.stringify(values));
+          return b;
+        }
         var STATUS_LABEL = { new: 'new', open: 'open', waiting: 'waiting', resolved: 'resolved' };
 
         function render(desk) {
@@ -430,8 +465,10 @@ function picture(records, articles, nowMs) {
           document.getElementById('t-reply').textContent = queue.length;
           document.getElementById('t-waiting').textContent = waiting.length;
           document.getElementById('t-gaps').textContent = gaps.length;
+          document.getElementById('t-new').parentNode.classList.toggle('late', fresh.length > 0);
+          document.getElementById('t-reply').parentNode.classList.toggle('soon', queue.length > 0);
           document.getElementById('sub').textContent = !records.length
-            ? 'No tickets yet. Tell your support lead about a customer question, or add one below.'
+            ? 'No tickets yet. Tell your support lead about a customer question, or log a ticket.'
             : (queue.length ? plural(queue.length, 'ticket needs', 'tickets need') + ' a reply' + (queue[0].fields.priority === 'urgent' ? ', one of them urgent. ' : '. ') : 'Every customer has an answer. ') +
               (gaps.length ? plural(gaps.length, 'question has', 'questions have') + ' no help article yet.' : 'The help articles cover what customers ask.');
 
@@ -454,6 +491,13 @@ function picture(records, articles, nowMs) {
             } else {
               what.append(el('small', 'No reply drafted yet. ' + (f.kbArticle ? 'Help article: ' + f.kbArticle + '.' : f.kbGap ? 'No help article covers “' + f.kbGap + '”.' : '')));
             }
+            var keys = el('div', undefined, 'row-keys'), replyValues = { id: r.id };
+            if (f.suggestedReply) replyValues.reply = f.suggestedReply;
+            keys.append(
+              rowKey(f.suggestedReply ? 'Edit reply' : 'Write reply', 'suggest_reply', replyValues, (f.suggestedReply ? 'Edit the reply to ' : 'Write a reply to ') + f.subject),
+              rowKey('Resolve', 'set_ticket_status', { id: r.id, status: 'resolved' }, 'Mark ' + f.subject + ' resolved')
+            );
+            what.append(keys);
             li.append(what);
             list.append(li);
           });
@@ -482,7 +526,9 @@ function picture(records, articles, nowMs) {
             title.append(el('span', f.subject));
             if (f.customer) title.append(el('span', f.customer + (f.channel ? ' · ' + f.channel : ''), 'meta'));
             tr.append(title, el('td', f.category || 'other'));
-            var st = el('td'); st.append(el('span', STATUS_LABEL[r.status] || r.status, 'status ' + r.status)); tr.append(st);
+            var st = el('td'); st.append(el('span', STATUS_LABEL[r.status] || r.status, 'status ' + r.status));
+            if (r.status !== 'resolved') st.append(rowKey('Move', 'set_ticket_status', { id: r.id, status: r.status === 'new' ? 'open' : 'resolved' }, 'Move ' + f.subject + ' along'));
+            tr.append(st);
             var came = el('td'); came.append(el('span', f.receivedAt ? niceDate(f.receivedAt) : '–'));
             if (r.status !== 'resolved' && f.receivedAt) came.append(el('span', ageLabel(ageDays(f.receivedAt, now)).toLowerCase() + (ageDays(f.receivedAt, now) ? ' old' : ''), 'meta'));
             tr.append(came);

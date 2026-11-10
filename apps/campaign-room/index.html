@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Campaign Room</h1>
 <p class="lede">Run one marketing campaign from plan to results. A campaign manager keeps the goal, a channel calendar, every asset from idea to live, the budget against what was spent, and the results day by day in one room, so a launch never rests on anyone’s memory.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/campaign-room/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/campaign-room">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/campaign-room/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/campaign-manager/"><strong>Campaign Manager</strong></a> <span class="tag">Crew lead</span><span>A steady, numbers-honest runner of one marketing campaign: the goal, the channel calendar, every asset from idea to live, the budget against what was spent, and the results that say what worked.</span></li><li><a href="/docs/role-template/omroeper/"><strong>Social Media Writer</strong></a><span>The town crier for your feeds.</span></li><li><a href="/docs/role-template/copywriter/"><strong>Copywriter</strong></a><span>Writes for humans.</span></li><li><a href="/docs/role-template/designer/"><strong>Designer</strong></a><span>Thinks in layout, hierarchy, and visual tone.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/ad-variations/"><strong>A/B Ad Copy Variations</strong></a><span>Generate a set of distinct, testable ad-copy variations for one offer across the angles worth A/B testing: it first locks the platform and its constraints (headline/description character limits), the offer, audience, and the distinct messaging angles to test (benefit, pain, social proof, urgency, curiosity), then drafts multiple complete variants per angle so each is a genuine test of a hypothesis rather than a trivial reword.</span></li><li><a href="/docs/craftbook/email-sequence/"><strong>Lifecycle Email Sequence</strong></a><span>Design and build a multi-email lifecycle sequence (welcome, onboarding, nurture, re-engagement) that moves a subscriber from one stage to the next: it first maps the customer journey — entry trigger, the goal of each email, send timing/cadence, and the one CTA per email — then drafts every email's subject line, preview text, and body to its single goal, then builds the sequence into a client-safe, inline-styled HTML email set ready to load into an ESP.</span></li><li><a href="/docs/craftbook/landing-copy/"><strong>Landing Page Copy</strong></a><span>Write conversion-focused copy for a single landing page: it first locks the offer, the one primary audience, the single desired action, and the core promise, then drafts a full message hierarchy — hero headline and subhead, value props, social proof, objection handling, and one repeated CTA — then edits ruthlessly for clarity, specificity, and persuasive flow.</span></li><li><a href="/docs/craftbook/social-thread/"><strong>Social Media Thread</strong></a><span>Write a multi-post social thread (X/Twitter, LinkedIn, Threads) that hooks, delivers, and converts: it first locks the single angle/big idea, the platform and its character limits, the target reader, and the CTA, then drafts the thread as numbered posts with a scroll-stopping hook, one idea per post, and a clear close.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Campaign status</strong><span>The whole campaign: the goal and the pace toward it, results by day for the last 8 days with each asset's numbers, the budget against spend by channel, and the calendar for the next 14 days (late items first) with ids, owners and stages.</span></li><li><strong>Set campaign</strong><span>Save the campaign itself: name, goal, audience, what the goal counts and the number to reach, launch, start and end dates (YYYY-MM-DD), and the budget in dollars.</span></li><li><strong>Add asset</strong><span>Put an asset on the campaign calendar: title, channel, the day it goes out (YYYY-MM-DD), owner and stage.</span></li><li><strong>Move asset</strong><span>Move an asset to another stage (idea, draft, approved, scheduled, live), or give it a new date or owner.</span></li><li><strong>Log result</strong><span>Record an asset's numbers for a day: reach (opens, views or impressions), clicks, and conversions (what the goal counts, such as preorders).</span></li><li><strong>Log spend</strong><span>Record money spent, in dollars, on a channel (and an asset when one is named).</span></li><li><strong>List assets</strong><span>Every asset with its channel, date, stage, owner and results.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>campaign.json</code>, <code>assets.json</code>, <code>results.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/campaign-manager/"><strong>Campaign Manager</strong></a> <span class="tag">Crew lead</span><span>A steady, numbers-honest runner of one marketing campaign: the goal, the channel calendar, every asset from idea to live, the budget against what was spent, and the results that say what worked.</span></li><li><a href="/docs/role-template/omroeper/"><strong>Social Media Writer</strong></a><span>The town crier for your feeds.</span></li><li><a href="/docs/role-template/copywriter/"><strong>Copywriter</strong></a><span>Writes for humans.</span></li><li><a href="/docs/role-template/designer/"><strong>Designer</strong></a><span>Thinks in layout, hierarchy, and visual tone.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/ad-variations/"><strong>A/B Ad Copy Variations</strong></a><span>Generate a set of distinct, testable ad-copy variations for one offer across the angles worth A/B testing: it first locks the platform and its constraints (headline/description character limits), the offer, audience, and the distinct messaging angles to test (benefit, pain, social proof, urgency, curiosity), then drafts multiple complete variants per angle so each is a genuine test of a hypothesis rather than a trivial reword.</span></li><li><a href="/docs/craftbook/email-sequence/"><strong>Lifecycle Email Sequence</strong></a><span>Design and build a multi-email lifecycle sequence (welcome, onboarding, nurture, re-engagement) that moves a subscriber from one stage to the next: it first maps the customer journey — entry trigger, the goal of each email, send timing/cadence, and the one CTA per email — then drafts every email's subject line, preview text, and body to its single goal, then builds the sequence into a client-safe, inline-styled HTML email set ready to load into an ESP.</span></li><li><a href="/docs/craftbook/landing-copy/"><strong>Landing Page Copy</strong></a><span>Write conversion-focused copy for a single landing page: it first locks the offer, the one primary audience, the single desired action, and the core promise, then drafts a full message hierarchy — hero headline and subhead, value props, social proof, objection handling, and one repeated CTA — then edits ruthlessly for clarity, specificity, and persuasive flow.</span></li><li><a href="/docs/craftbook/social-thread/"><strong>Social Media Thread</strong></a><span>Write a multi-post social thread (X/Twitter, LinkedIn, Threads) that hooks, delivers, and converts: it first locks the single angle/big idea, the platform and its character limits, the target reader, and the CTA, then drafts the thread as numbered posts with a scroll-stopping hook, one idea per post, and a clear close.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Campaign status</strong><span>The whole campaign: the goal and the pace toward it, results by day for the last 8 days with each asset's numbers, the budget against spend by channel, and the calendar for the next 14 days (late items first) with ids, owners and stages.</span></li><li><strong>Set campaign</strong><span>Save the campaign itself: name, goal, audience, what the goal counts and the number to reach, launch, start and end dates (YYYY-MM-DD), and the budget in dollars.</span></li><li><strong>Add asset</strong><span>Put an asset on the campaign calendar: title, channel, the day it goes out (YYYY-MM-DD), owner and stage.</span></li><li><strong>Move asset</strong><span>Move an asset to another stage (idea, draft, approved, scheduled, live), or give it a new date or owner.</span></li><li><strong>Log result</strong><span>Record an asset's numbers for a day: reach (opens, views or impressions), clicks, and conversions (what the goal counts, such as preorders).</span></li><li><strong>Log spend</strong><span>Record money spent, in dollars, on a channel (and an asset when one is named).</span></li><li><strong>List assets</strong><span>Every asset with its channel, date, stage, owner and results.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>campaign.json</code>, <code>assets.json</code>, <code>results.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

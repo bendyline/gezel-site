@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Language Trainer"}}</script>
-<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -58,9 +58,9 @@
         font-weight: 600;
         margin: 0 0 0.15rem;
       }
-      h2 { font-size: 0.95rem; margin: 1.25rem 0 0.5rem; }
+      h2 { font-size: 1.15rem; font-weight: 400; margin: 1.25rem 0 0.5rem; }
       .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
-      .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+      .counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
       .tile {
         background: var(--card);
         border: 1px solid var(--track);
@@ -69,7 +69,7 @@
         text-align: center;
       }
       .tile .n { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
-      .tile .l { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+      .tile .l { font-size: 0.72rem; color: var(--muted); font-family: var(--font-ui, system-ui, sans-serif); }
       .panel {
         background: var(--card);
         border: 1px solid var(--track);
@@ -129,13 +129,34 @@
     </style>
   <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
   <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
 window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++;appSubscriptions.forEach(function(stop){stop();});},{once:true});
 </script><style>
-body{padding:0}main{max-width:960px;padding:24px}.tiles{margin:24px 0}.tile{padding:18px;text-align:left}.tile .l{font-size:13px;text-transform:none;letter-spacing:0}.tile .n{color:var(--ink);font-size:28px}.practice-tabs{display:flex;gap:6px;padding:6px;background:var(--track);border-radius:10px;margin:28px 0 20px;flex-wrap:wrap}.practice-tabs button{flex:1;text-align:center;background:transparent;border-color:transparent}.practice-tabs button[aria-selected=true]{background:var(--card);border-color:var(--accent);box-shadow:inset 0 2px 3px #0001}.scenes{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}.scene-btn{padding:20px;min-height:140px;display:flex;flex-direction:column;justify-content:flex-start}.scene-btn .t{font:400 20px var(--font-heading,Georgia,serif);margin-bottom:10px}.scene-btn .r{font-size:14px}.scene-goal{display:block;margin-top:10px;font-size:14px}.panel{padding:24px}#scene-section{border-left:4px solid var(--accent);padding-left:16px}#scene-title{font:400 24px var(--font-heading,Georgia,serif)}.phrasebook{padding:0;list-style:none;display:grid;gap:12px}.phrasebook li{background:var(--card);border:1px solid var(--track);border-radius:10px;padding:18px}.phrasebook strong{font-size:20px}.phrasebook p{margin:6px 0}.history{line-height:2}.app-section-nav{display:none!important}
-@media(max-width:620px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px}.tile{padding:12px}.tile .n{font-size:24px}}
+body{padding:0}main{max-width:960px;padding:24px}.counts{margin:24px 0}.tile{padding:18px;text-align:left}.tile .l{font-size:13px}.tile .n{color:var(--ink);font-size:28px}#scene-section{margin-bottom:8px}#review-section h2,#scenes-section h2,#phrasebook-section h2,#progress-section h2{margin-top:0}#review-section{margin-bottom:28px}.scenes{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}.scene-btn{padding:20px;min-height:140px;display:flex;flex-direction:column;justify-content:flex-start}.scene-btn .t{font:400 20px var(--font-heading,Georgia,serif);margin-bottom:10px}.scene-btn .r{font-size:14px}.scene-goal{display:block;margin-top:10px;font-size:14px}.scene-btn .go{display:block;margin-top:auto;padding-top:14px;font-size:14px;font-weight:600}.scene-btn.locked:disabled{opacity:1;background:transparent;border-style:dashed}.scene-btn.locked .r{color:var(--ink);font-weight:600}.panel{padding:24px}#scene-section{border-left:4px solid var(--accent);padding-left:16px}#scene-title{font:400 24px var(--font-heading,Georgia,serif)}.phrasebook{padding:0;list-style:none;display:grid;gap:12px}.phrasebook li{background:var(--card);border:1px solid var(--track);border-radius:10px;padding:18px}.phrasebook strong{font-size:20px}.phrasebook p{margin:6px 0}.history{line-height:2}
+@media(max-width:620px){.counts{gap:8px}.tile{padding:12px}.tile .n{font-size:24px}}
 </style></head>
   <body>
     <main>
@@ -147,7 +168,7 @@ body{padding:0}main{max-width:960px;padding:24px}.tiles{margin:24px 0}.tile{padd
       <h1 id="title">Language studio</h1>
       <p class="sub" id="sub">Loading your progress…</p>
       <p class="banner" id="notice" hidden></p>
-      <div class="tiles">
+      <div class="counts">
         <div class="tile"><div class="n" id="level">-</div><div class="l">Level</div></div>
         <div class="tile"><div class="n" id="streak">-</div><div class="l">Day streak</div></div>
         <div class="tile"><div class="n" id="due">-</div><div class="l">Reviews due</div></div>
@@ -165,20 +186,15 @@ body{padding:0}main{max-width:960px;padding:24px}.tiles{margin:24px 0}.tile{padd
       </section>
 
 
-      <div class="practice-tabs" role="tablist" aria-label="Language workspace">
-        <button type="button" role="tab" id="tab-practice" aria-controls="panel-practice" aria-selected="true">Practice</button>
-        <button type="button" role="tab" id="tab-review" aria-controls="panel-review" aria-selected="false" tabindex="-1">Review & phrasebook</button>
-        <button type="button" role="tab" id="tab-history" aria-controls="panel-history" aria-selected="false" tabindex="-1">Your progress</button>
-      </div>
-      <section id="panel-practice" role="tabpanel" aria-labelledby="tab-practice">
-        <h2>A little practice, a real conversation</h2><p class="muted">Pick a situation you might actually find yourself in. Each scene has a clear goal; take as much time as you need.</p>
+      <section id="review-section" hidden><h2>Ready to practice again</h2><div class="panel" id="review"></div></section>
+      <section id="scenes-section">
+        <h2>Pick a scene</h2><p class="muted">Choose a situation you might actually find yourself in. Each scene has a clear goal; take as much time as you need.</p>
         <div id="scene-search"></div><div class="scenes" id="scenes"></div>
       </section>
-      <section id="panel-review" role="tabpanel" aria-labelledby="tab-review" hidden>
-        <section id="review-section"><h2>Ready to practice again</h2><div class="panel" id="review"></div></section>
-        <h2>Your phrasebook</h2><p class="muted">The corrections worth keeping, collected from your conversations.</p><div id="phrase-search"></div><ul id="phrasebook" class="phrasebook"></ul>
+      <section id="phrasebook-section">
+        <h2>Your phrasebook</h2><p class="muted">The corrections worth keeping, collected from your conversations.</p><p class="muted" id="next-review" hidden></p><div id="phrase-search"></div><ul id="phrasebook" class="phrasebook"></ul>
       </section>
-      <section id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden>
+      <section id="progress-section">
         <h2>Practice adds up</h2><p id="practice-summary" class="panel"></p>
         <section id="history-section" hidden><h2>Conversations you have practiced</h2><ul class="history" id="history"></ul></section>
         <p class="muted">Your tutor adjusts the level as you practice. Ask for a slower pace, a different situation, or a little more challenge.</p>
@@ -391,11 +407,16 @@ var practiceBusy=false;
           var due = dueCards();
           el('due').textContent = due.length;
           var box = el('review');
+          // Due corrections are what needs attention, so they lead the Home tab; otherwise the
+          // phrasebook says when the next one comes up.
+          el('review-section').hidden = !due.length;
+          var next = state.reviews.map(dueAt).filter(function (t) { return t > Date.now(); }).sort(function (a, b) { return a - b; })[0];
+          el('next-review').hidden = !!due.length || !next;
+          el('next-review').textContent = next
+            ? 'Nothing to review right now. The next correction comes up ' + new Date(next).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) + '.'
+            : '';
           if (!due.length) {
-            var next = state.reviews.map(dueAt).filter(function (t) { return t > Date.now(); }).sort()[0];
-            box.innerHTML = state.reviews.length
-              ? '<p class="muted">Nothing due. ' + (next ? 'Next review ' + esc(new Date(next).toLocaleDateString()) + '.' : '') + '</p>'
-              : '<p class="muted">No corrections yet. Mistakes from your scenes land here to practice.</p>';
+            box.replaceChildren();
             return;
           }
           var card = due[0];
@@ -417,21 +438,30 @@ var practiceBusy=false;
           });
         }
 
+        function node(tag, text, className) {
+          var made = document.createElement(tag);
+          if (text !== undefined) made.textContent = text;
+          if (className) made.className = className;
+          return made;
+        }
         function renderScenes() {
           var level = (state.progress && state.progress.level) || 1;
           var inPlay = !!(state.progress && state.progress.scene && state.progress.scene.status === 'active');
-          el('scenes').innerHTML = state.scenarios
-            .map(function (s) {
-              var locked = s.level > level;
-              return (
-                '<button type="button" class="scene-btn" data-scene="' + esc(s.id) + '"' + (locked || inPlay || practiceBusy ? ' disabled' : '') + '>' +
-                '<span class="t">' + esc(s.title) + '</span>' +
-                '<span class="r">' + (locked ? 'Level ' + s.level : 'You talk to the ' + esc(s.role)) + '</span><span class="scene-goal">' + esc(s.goal || s.setting || '') + '</span></button>'
-              );
-            })
-            .join('');
-          Array.prototype.forEach.call(el('scenes').querySelectorAll('[data-scene]'), function (b) {
-            b.onclick = function () { act('start_scene', { scenario: b.getAttribute('data-scene') }); };
+          var list = el('scenes');
+          list.replaceChildren();
+          state.scenarios.forEach(function (s) {
+            var locked = s.level > level;
+            var b = node('button', undefined, 'scene-btn' + (locked ? ' locked' : ''));
+            b.type = 'button';
+            b.disabled = locked || inPlay || practiceBusy;
+            b.append(
+              node('span', s.title, 't'),
+              node('span', locked ? 'Unlocks at level ' + s.level : 'You talk to the ' + s.role, 'r'),
+              node('span', s.goal || s.setting || '', 'scene-goal')
+            );
+            if (!locked && !inPlay) b.append(node('span', 'Play this scene', 'go'));
+            b.onclick = function () { act('start_scene', { scenario: s.id }); };
+            list.append(b);
           });
         }
 
@@ -451,8 +481,8 @@ var practiceBusy=false;
           var p = state.progress || {};
           el('title').textContent = 'Your ' + (p.language || 'language') + ' practice';
           el('practice-summary').textContent = (p.sessions||0)+' completed conversations · '+state.reviews.length+' phrases collected · '+(p.streak||0)+' days in your current streak.';
-          el('phrasebook').innerHTML=state.reviews.length?state.reviews.map(function(card){return '<li><strong>'+esc(card.right)+'</strong><p class="muted">Instead of: '+esc(card.wrong)+'</p><p>'+esc(card.note||'Keep practicing this phrase in a conversation.')+'</p></li>';}).join(''):'<li>Your phrasebook will grow as you practice with your tutor.</li>';
-          el('sub').textContent = (p.sessions || 0) + ' scene' + (p.sessions === 1 ? '' : 's') + ' played. Pick one below, or answer your tutor in the chat.';
+          el('phrasebook').innerHTML=state.reviews.length?state.reviews.map(function(card){return '<li><strong>'+esc(card.right)+'</strong><p class="muted">Instead of: '+esc(card.wrong)+'</p><p>'+esc(card.note||'Keep practicing this phrase in a conversation.')+'</p></li>';}).join(''):'<li class="empty">Your phrasebook will grow as you practice with your tutor.</li>';
+          el('sub').textContent = (p.sessions || 0) + ' scene' + (p.sessions === 1 ? '' : 's') + ' played. Pick a scene, or answer your tutor in the chat.';
           el('level').textContent = p.level || 1;
           el('streak').textContent = p.streak || 0;
           renderScene();
@@ -465,10 +495,7 @@ var practiceBusy=false;
         function load(){var revision=++appLoadRevision;return Promise.all(['progress.json','scenarios.json','reviews.json'].map(function(path){return gezel.data.read(path);})).then(function(data){if(appDisposed||revision!==appLoadRevision)return;state.progress=data[0];state.scenarios=data[1].scenarios||[];state.reviews=data[2].items||[];reportAppError(null);notice('');render();}).catch(reportAppError);}
 
 
-        var tabs=Array.from(document.querySelectorAll('[role=tab]'));
-        function selectTab(button){tabs.forEach(function(tab){var active=tab===button;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;document.getElementById(tab.getAttribute('aria-controls')).hidden=!active;});}
-        tabs.forEach(function(tab,index){tab.onclick=function(){selectTab(tab);};tab.onkeydown=function(event){var next=event.key==='ArrowRight'?tabs[(index+1)%tabs.length]:event.key==='ArrowLeft'?tabs[(index+tabs.length-1)%tabs.length]:event.key==='Home'?tabs[0]:event.key==='End'?tabs[tabs.length-1]:null;if(next){event.preventDefault();selectTab(next);next.focus();}};});
-        if(gezel.ui.components && gezel.ui.components.collectionFilter){var searches=[gezel.ui.components.collectionFilter('#scene-search',{container:'#scenes',selector:'.scene-btn',label:'Find a situation'}),gezel.ui.components.collectionFilter('#phrase-search',{container:'#phrasebook',selector:'li',label:'Find a phrase'})];window.addEventListener('pagehide',function(){searches.forEach(function(search){search.destroy();});},{once:true});}
+        if(gezel.ui.components && gezel.ui.components.collectionFilter){var searches=[gezel.ui.components.collectionFilter('#scene-search',{container:'#scenes',selector:'.scene-btn',label:'Find a scene',placeholder:'Place or person',minItems:8}),gezel.ui.components.collectionFilter('#phrase-search',{container:'#phrasebook',selector:'li:not(.empty)',label:'Find a phrase',placeholder:'Word or phrase',minItems:8})];window.addEventListener('pagehide',function(){searches.forEach(function(search){search.destroy();});},{once:true});}
         el('end-scene').onclick = function () { act('end_scene', {}); };
         load();
         appSubscriptions.push(gezel.data.watch('progress.json', function () { load(); }));

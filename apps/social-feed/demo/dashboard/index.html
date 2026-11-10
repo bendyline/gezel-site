@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Social Media Writer"}}</script>
-<script src="../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -46,7 +46,7 @@
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        font: 15px/1.5 var(--font-body, system-ui, sans-serif);
+        font: 16px/1.5 var(--font-body, system-ui, sans-serif);
         background: var(--bg);
         color: var(--ink);
         padding: 1.5rem 1.25rem 2rem;
@@ -60,13 +60,15 @@
         overflow-wrap: anywhere;
       }
       .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; }
-      .sub { color: var(--muted); margin: 0 0 1rem; font-size: 0.9rem; }
-      .hint { color: var(--muted); font-size: 0.8rem; margin: 0 0 0.9rem; }
+      .sub { color: var(--muted); margin: 0 0 1rem; font-size: 0.95rem; }
+      .hint { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.9rem; }
       .key {
         font: inherit;
-        font-size: 0.8rem;
-        padding: 0.25rem 0.55rem;
-        border: 1px solid var(--track);
+        font-family: var(--font-ui, system-ui, sans-serif);
+        font-size: 0.85rem;
+        min-height: 32px;
+        padding: 0.25rem 0.65rem;
+        border: 1px solid color-mix(in srgb, var(--muted) 40%, var(--track));
         border-radius: 6px;
         background: var(--card);
         color: var(--ink);
@@ -75,10 +77,12 @@
       }
       .key:hover { border-color: var(--muted); }
       .key[aria-pressed='true'] {
-        border-color: var(--accent);
-        color: var(--accent);
+        border-color: var(--ink);
+        background: color-mix(in srgb, var(--ink) 8%, var(--card));
+        font-weight: 600;
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
       }
+      .board-tools { display: flex; justify-content: flex-end; margin: 0 0 0.6rem; }
       .note {
         margin: 0 0 0.85rem;
         padding: 0.5rem 0.65rem;
@@ -92,7 +96,8 @@
       .board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(144px, 1fr); gap: 0.6rem; min-width: 900px; }
       .col { min-width: 0; }
       .col h2 {
-        font-size: 0.72rem;
+        font-family: var(--font-ui, system-ui, sans-serif);
+        font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: var(--muted);
@@ -114,18 +119,19 @@
         border-radius: 6px;
         padding: 0.5rem 0.6rem;
         margin-bottom: 0.45rem;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         cursor: pointer;
       }
       .card:hover { border-color: var(--muted); }
       .card .ti { display: block; font-weight: 600; overflow-wrap: anywhere; }
-      .card .ft { margin-top: 0.3rem; display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 0.72rem; }
+      .card .ft { margin-top: 0.3rem; display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 0.8rem; }
       .chip {
         display: inline-block;
         border: 1px solid var(--track);
         border-radius: 4px;
-        padding: 0 0.3rem;
-        font-size: 0.7rem;
+        padding: 0 0.35rem;
+        font-family: var(--font-ui, system-ui, sans-serif);
+        font-size: 0.75rem;
         line-height: 1.4;
         color: var(--muted);
       }
@@ -166,7 +172,8 @@
         overflow-wrap: anywhere;
       }
       .drawer h3 {
-        font-size: 0.72rem;
+        font-family: var(--font-ui, system-ui, sans-serif);
+        font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: var(--muted);
@@ -189,6 +196,13 @@
       .variant .vb { white-space: pre-wrap; color: var(--ink); overflow-wrap: anywhere; }
       .variant a { color: var(--accent); }
       .empty { color: var(--muted); font-style: italic; }
+      .voice { background: var(--card); border: 1px solid var(--track); border-radius: 10px; padding: 0.85rem 1.1rem; max-width: 760px; }
+      .voice h2 { font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.5rem; }
+      .voice h3 { font-size: 1.05rem; margin: 1rem 0 0.35rem; }
+      .voice p { margin: 0.4rem 0; }
+      .voice ul { margin: 0.3rem 0; padding-left: 1.2rem; }
+      .voice li { margin: 0.2rem 0; }
+      .voice .hint { margin: 1rem 0 0; }
       .demo-banner {
         display: flex;
         align-items: center;
@@ -221,6 +235,27 @@
     </style>
   <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:20px 0;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--border,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}html[data-gezel-fullscreen=true] .board{min-width:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.board,.columns{max-width:100%;overflow-x:auto}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
   <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -241,15 +276,22 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           <h1 id="title">Social feed</h1>
           <p class="sub" id="sub">Loading the pipeline…</p>
         </div>
-        <button type="button" class="key" id="toggle-archived" aria-pressed="false">Show archived</button>
       </div>
       <p class="hint" id="corpus-hint" hidden>
-        Connected feeds are syncing — reception reports read from the project's artifacts.
+        Your connected accounts are syncing, so the crew can see how each post landed.
       </p>
+      <div class="board-tools" id="board-tools">
+        <button type="button" class="key" id="toggle-archived" aria-pressed="false">Show archived</button>
+      </div>
       <div class="board-empty" id="board-empty" hidden>
         No posts yet — ask your social media writer to draft the first one.
       </div>
       <div class="board-wrap"><div class="board" id="board"></div></div>
+      <section class="voice" id="voice-section">
+        <h2>Voice guide</h2>
+        <div id="voice"><p class="empty">Loading the voice guide…</p></div>
+        <p class="hint">The crew follows this guide. Ask your writer to change it, or edit voice-guide.md in the project’s files.</p>
+      </section>
     </main>
     <dialog class="drawer" id="drawer" aria-labelledby="d-title">
       <div class="top">
@@ -501,6 +543,51 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           });
         }
         function el(id) { return document.getElementById(id); }
+        var STAGE_LABELS = { idea: 'Idea', draft: 'Draft', 'in-review': 'In review', approved: 'Approved', scheduled: 'Scheduled', published: 'Published', archived: 'Archived' };
+        var PLATFORM_LABELS = { bluesky: 'Bluesky', x: 'X', linkedin: 'LinkedIn', instagram: 'Instagram', mastodon: 'Mastodon', threads: 'Threads', facebook: 'Facebook', tiktok: 'TikTok', youtube: 'YouTube' };
+        function stageLabel(stage) { return STAGE_LABELS[stage] || String(stage); }
+        function platformLabel(name) { var key = String(name || ''); return PLATFORM_LABELS[key] || key.charAt(0).toUpperCase() + key.slice(1); }
+        // "2026-11-12" or an ISO time reads as "Thu, Nov 12".
+        function dayText(value) {
+          var text = String(value || ''), day = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
+          var d = day ? new Date(Number(day[1]), Number(day[2]) - 1, Number(day[3])) : new Date(text);
+          return isFinite(d.getTime()) ? d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : text;
+        }
+        function inline(node, text) {
+          String(text).split(/(\*\*[^*]+\*\*)/).forEach(function (part) {
+            if (/^\*\*[^*]+\*\*$/.test(part)) { var b = document.createElement('strong'); b.textContent = part.slice(2, -2); node.append(b); }
+            else if (part) node.append(part);
+          });
+        }
+        // The voice guide is short markdown: headings, bullets and paragraphs, built as DOM, never as HTML.
+        function renderVoice(text) {
+          var box = el('voice'), list = null, first = true;
+          box.replaceChildren();
+          String(text || '').split(/\r?\n/).forEach(function (line) {
+            var t = line.trim(), m;
+            if (!t) { list = null; return; }
+            if ((m = /^(#{1,6})\s+(.*)$/.exec(t))) {
+              list = null;
+              if (first && m[1].length === 1) { first = false; return; }
+              var h = document.createElement('h3'); inline(h, m[2]); box.append(h);
+            } else if ((m = /^[-*]\s+(.*)$/.exec(t))) {
+              if (!list) { list = document.createElement('ul'); box.append(list); }
+              var li = document.createElement('li'); inline(li, m[1]); list.append(li);
+            } else {
+              list = null;
+              var p = document.createElement('p'); inline(p, t); box.append(p);
+            }
+            first = false;
+          });
+          if (!box.childNodes.length) box.append(Object.assign(document.createElement('p'), { className: 'empty', textContent: 'The voice guide is empty.' }));
+        }
+        function loadVoice() {
+          return gezel.data.read('voice-guide.md').then(function (text) {
+            if (!appDisposed) renderVoice(typeof text === 'string' ? text : '');
+          }).catch(function () {
+            if (!appDisposed) el('voice').replaceChildren(Object.assign(document.createElement('p'), { className: 'empty', textContent: 'No voice guide yet.' }));
+          });
+        }
 
         var brand = typeof params.brand === 'string' && params.brand ? params.brand : gezel.page.typeName;
         el('title').textContent = brand;
@@ -532,10 +619,12 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var posts = lastIndex.posts;
           var live = posts.filter(function (post) { return post.status !== 'archived'; });
           var published = posts.filter(function (post) { return post.status === 'published'; }).length;
+          var reviewing = posts.filter(function (post) { return post.status === 'in-review'; }).length;
           var cadence = typeof params.cadence === 'string' && params.cadence ? params.cadence : '';
           el('sub').textContent =
             (cadence ? 'Aiming for ' + cadence + ' · ' : '') +
-            live.length + ' post' + (live.length === 1 ? '' : 's') + ' in flight · ' + published + ' published';
+            live.length + ' post' + (live.length === 1 ? '' : 's') + ' in flight · ' +
+            (reviewing ? reviewing + ' waiting for your review · ' : '') + published + ' published';
           el('board-empty').hidden = posts.length > 0;
 
           var columns = showArchived ? STAGES.concat(['archived']) : STAGES;
@@ -549,10 +638,10 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
               var cards = here
                 .map(function (post) {
                   var chips = (post.platforms || [])
-                    .map(function (platform) { return '<span class="chip">' + esc(platform) + '</span>'; })
+                    .map(function (platform) { return '<span class="chip">' + esc(platformLabel(platform)) + '</span>'; })
                     .join('');
                   if (post.campaign) chips += '<span class="chip tag">' + esc(post.campaign) + '</span>';
-                  var when = post.status === 'scheduled' && post.scheduledFor ? 'for ' + esc(String(post.scheduledFor).slice(0, 10)) : esc(String(post.created || '').slice(0, 10));
+                  var when = post.status === 'scheduled' && post.scheduledFor ? 'Goes out ' + esc(dayText(String(post.scheduledFor).slice(0, 10))) : post.created ? 'Added ' + esc(dayText(String(post.created).slice(0, 10))) : '';
                   return (
                     '<button type="button" class="card" data-post="' + esc(post.id) + '">' +
                     '<span class="ti">' + esc(post.title || post.id) + '</span>' +
@@ -562,7 +651,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
                 })
                 .join('');
               return (
-                '<div class="col"><h2><span>' + esc(stage) + '</span><span class="count">' + here.length + '</span></h2>' +
+                '<div class="col"><h2><span>' + esc(stageLabel(stage)) + '</span><span class="count">' + here.length + '</span></h2>' +
                 cards +
                 '</div>'
               );
@@ -586,8 +675,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
         function renderDrawer(post) {
           if(!el('drawer').open)el('drawer').showModal();
           el('d-title').textContent = post.title || post.id;
-          var meta = [post.status, 'created ' + String(post.created || '').slice(0, 10)];
-          if (post.scheduledFor) meta.push('scheduled for ' + String(post.scheduledFor).slice(0, 10));
+          var meta = [stageLabel(post.status), 'added ' + dayText(String(post.created || '').slice(0, 10))];
+          if (post.scheduledFor) meta.push('goes out ' + dayText(String(post.scheduledFor).slice(0, 10)));
           if (post.campaign) meta.push('campaign: ' + post.campaign);
           el('d-meta').textContent = meta.join(' · ');
           el('d-body').textContent = post.body || '(no body yet)';
@@ -595,10 +684,10 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           var moves = legalNext(post.status);
           el('d-moves').innerHTML =
             moves.length === 0
-              ? '<span class="empty">' + esc(post.status) + ' is the end of the line.</span>'
+              ? '<span class="empty">' + esc(stageLabel(post.status)) + ' is the end of the line.</span>'
               : moves
                   .map(function (stage) {
-                    return '<button type="button" class="key" data-move="' + esc(stage) + '">' + esc(stage) + '</button>';
+                    return '<button type="button" class="key" data-move="' + esc(stage) + '">' + esc(stageLabel(stage)) + '</button>';
                   })
                   .join('');
           if (browserMode && moves.length > 0) {
@@ -613,7 +702,7 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
               : names
                   .map(function (name) {
                     var variant = variants[name] || {};
-                    var head = '<span class="name">' + esc(name) + '</span>' +
+                    var head = '<span class="name">' + esc(platformLabel(name)) + '</span>' +
                       '<span class="chip">' + esc(String(variant.charCount || 0)) + ' chars</span>';
                     if (variant.publishedAt) head += '<span class="chip st-published">live</span>';
                     if (variant.permalink) {
@@ -742,7 +831,9 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           .catch(function () { /* Optional connector outputs do not exist in a new project. */ });
 
         loadBoard();
+        loadVoice();
         appSubscriptions.push(gezel.data.watch('posts/index.json', function () { loadBoard(); }));
+        appSubscriptions.push(gezel.data.watch('voice-guide.md', function () { loadVoice(); }));
       })();
     </script>
   <script src="application.js" defer></script>

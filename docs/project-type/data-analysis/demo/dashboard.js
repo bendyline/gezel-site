@@ -69,6 +69,20 @@
   function row(file) {
     const li = document.createElement('li');
     componentCards.push(components.fileCard(li, { file: { ...file, source: 'workspace' }, variant: 'row', onActivate: () => openFile(file) }));
+    if (DATA.has(extension(file.path)) && window.dataAnalysisInsights.has(file.path)) {
+      const explore = document.createElement('button');
+      explore.type = 'button';
+      explore.className = 'quiet';
+      explore.textContent = 'Explore';
+      explore.setAttribute('aria-label', `Explore ${file.path} on Home`);
+      explore.addEventListener('click', () => {
+        window.dataAnalysisInsights.explore(file.path);
+        if (window.appTabs) window.appTabs.select('home');
+        $('insights').scrollIntoView({ block: 'start' });
+      });
+      li.classList.add('with-action');
+      li.append(explore);
+    }
     return li;
   }
   function render() {
@@ -93,9 +107,11 @@
     $('empty').hidden = datasets.length > 0;
     $('no-matches').hidden = datasets.length === 0 || shown.length > 0;
     $('datasets').hidden = shown.length === 0;
-    const reports = files.filter((file) => REPORTS.has(extension(file.path)) && file.path.toLowerCase().includes(query)).sort(compare);
+    // Reports sit on their own tab, so the Datasets search does not narrow them.
+    const reports = files.filter((file) => REPORTS.has(extension(file.path))).sort(compare);
     $('reports').replaceChildren(...reports.map(row));
-    $('reports-section').hidden = reports.length === 0;
+    $('reports').hidden = reports.length === 0;
+    $('reports-empty').hidden = reports.length > 0;
     $('status').textContent = `${shown.length} of ${datasets.length} dataset${datasets.length === 1 ? '' : 's'}`;
   }
   async function refresh() {
@@ -124,6 +140,7 @@
     }
   }
 
+  window.addEventListener('data-analysis-tables', () => { if (!stopped) render(); });
   $('search').addEventListener('input', render);
   $('format').addEventListener('change', render);
   $('sort').addEventListener('change', render);

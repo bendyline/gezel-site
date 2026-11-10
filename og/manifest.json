@@ -20,7 +20,7 @@
       "specHash": "a72bf3449de8daac63d0d17e3f283393b72aea2ed7b332d3b747c6012f5b70c4"
     },
     "craftbooks-overview": {
-      "specHash": "4cefd949701076764bdcdcccd1e8f9cbc14d53b8c95310ef5c14c3e439162586"
+      "specHash": "d30f5e41446e2d359b6b9ec399ef9f1415c0d8b851179cba7b39096b56e011e6"
     },
     "local-models-and-tiers": {
       "specHash": "857bfff3c004b5ba5db77bc9be26966ed6b3028f682439541cc17cab5ea3f3a4"
@@ -29,13 +29,13 @@
       "specHash": "5c379885891519c80819e98c2095174c298875c142a693e75609a738fcfd5653"
     },
     "adding-folders": {
-      "specHash": "0e154cc961d8b774d64c16f518670a635f3fc966a978ee3df7d673b8bf501a5c"
+      "specHash": "b14fa8959a627234fc12648f9ddc77826fb300f43deef1eb6fc5baad469fb100"
     },
     "project-views": {
       "specHash": "4719f816a6c38f018a7b2567aca2cade6e2934f902971d0e33895a9658c6df32"
     },
     "night-shift": {
-      "specHash": "8d863a6456debfd071ee439b128a606032240b8a7413ff8a93744f71087cf3eb"
+      "specHash": "d31d710059c53266f9ff4b37f5e2ae0afb10437cadf1d613a1ddd61f7137e84b"
     },
     "notifications": {
       "specHash": "2b137dfb4d637e4f16b5a18f2141507319abde30c5c8c79755cda3bb8ae45dbe"
@@ -47,961 +47,961 @@
       "specHash": "eae5f22b514a03db16dae594fba71bd121caf7ef259bb2b5de18c936b3d9c45b"
     },
     "connected-apps": {
-      "specHash": "e3f63fb95f7efaf3cc00caff3ff845bf7d4a03d76204fb1810dad39587d43a1d"
+      "specHash": "80c6e74349f603be8873bdd7443e0056624cb6a916d74496cd26899e2764b486"
     },
     "generalist-mode": {
       "specHash": "c27f9a76e5852b8c54aaa8b8e550d5c90199d9a9b041d4a190d10f58e82b2daf"
     },
     "roles-index": {
-      "specHash": "f96969f876c4f27182845d706e0fa7f73cac88c16a414f740676063a1d5d93e2"
+      "specHash": "4a2d74bb36f58f1eb89e8e5f8e3f19bd953d7797dfdb27be4432c76b6011f2ce"
     },
     "role/meester": {
-      "specHash": "5864018b713780dc9c88f0da36861c6789b0a187e5b59c6592f5953cc26513d3"
+      "specHash": "bef6944411b24f6ec8b761514263173e217efe8daed6969564d02d23b2ee1a6f"
     },
     "role-catalog": {
-      "specHash": "afd5e765831dea39164df3ae4f0d7d011d884c38211ebcd45d7ff94c093e1355"
+      "specHash": "e3fd2d4736ce8a15513906a23b9d73e03b3f3c25a6ce0cc427ad7b14681c9fb7"
     },
     "role/voorman": {
-      "specHash": "8572453bcf1fdfe89a323a9440211ac555b03d1d7b04b0881d1297a75b68ef41"
+      "specHash": "eaa96480725a2f11fd5f4e61a523a4d2392def5f97498e181dcf7cb32b57494f"
     },
     "role/reviewer": {
-      "specHash": "1c62fce60c2e309b5692687311029674bc6786482f40fd48e20de9cbf3e6a922"
+      "specHash": "813bc27d4fb2685d066d4ae9cc62cb1c100bebc1bd7cbcffc5cea340de508921"
     },
     "role/researcher": {
-      "specHash": "c160bc9475a2cca0fd446b4ccec6a707d9bdb7d89599ef0d1d318144694863a2"
+      "specHash": "3fe5e7b4b4579229ebe7de4d54526ab298c8b5037f06cecf4f559aeae1d0f2ae"
     },
     "role/copywriter": {
-      "specHash": "d8a41125a8d66d2041f22658d155a779b52ba279b085a52e9733e0111b9a7069"
+      "specHash": "ead7216d0c2a27d84c88e65354d4823f5f593eb672e31a9d2b08274689df3385"
     },
     "role/designer": {
-      "specHash": "4c31555d606a5ae2edfd1745d8f8089869735ecadcf9800fc281caab803a4b7f"
+      "specHash": "0db2c48bf39f3a26e68539fa72f7afc7f51887207adc495bffe18bfeff0691ba"
     },
     "role/image-generator": {
-      "specHash": "77651b10546f1930d6f10265bf1976b8993ebdf5c9b4c4c9b2b28e35554eecf0"
+      "specHash": "a5fe046cdf22ecddfae92d75ede95ba53e8e70a4bce772f2f627f759aceaad57"
     },
     "role/video-generator": {
-      "specHash": "f78e658678552016c84835fac03ac7378e2c97ff2432d3f43ac632d95631b76d"
+      "specHash": "75f42e6a8e005694ffda41e8fd3d2c080852e51db1eaf601cffd4e7bf219ee98"
     },
     "role/developer": {
-      "specHash": "93dc5dbd6a761c7874cc8c108f1ca9a8be019dc8149b7713d0bb35142734ec79"
+      "specHash": "1ab7fa4cd24f09b96c7813c2070a01b17ff1c5a945e68d3bcfe86e61149b7ba1"
     },
     "role/web-developer": {
-      "specHash": "a71eb74a10a58edb050f6027fcd1fe8b201767d26f25898739169dea48859477"
+      "specHash": "4d25ea330f546e6bf57bbae811bea872954d7072862ca8aa9024037c81947a61"
     },
     "role/planner": {
-      "specHash": "203671ea80ca8fc28f5a56db437816a875fcb54ba288b1d1bc4f288ad3080d72"
+      "specHash": "7994a658638622c956dd13c31a3b8cd8b32041e7254c6d6ddd5282036e6eb1c0"
     },
     "role/generalist": {
-      "specHash": "a03a4dce57f9ab1e2544844db18772afd27d20ddd8deb2d8d72085d1055aba27"
+      "specHash": "79a09e0c1d943b491e2208c66b725f9936113dc8e2c888f51e6d879fdd3c178d"
     },
     "role/conversationalist": {
-      "specHash": "c34e6ba3c66e48a2496bf2d5b95518f6f9e81f086070aebf47550b4076e3a59c"
+      "specHash": "da7727898382bf268f45043f9bf855b58fe7f6837ee58454fc3817726c2595c8"
     },
     "role/curator": {
-      "specHash": "a1d8199e9d5f52d8277cd9635496ef78acc6d3394e7cfe20ab1d542ef8241033"
+      "specHash": "3ab70a23d28ace4c900598b84a97b84f3c3c989e478d633d1a36fb208ce7c1d8"
     },
     "craftbooks-index": {
-      "specHash": "9c89fc24a39345edb18fd20a2c5e88e1f1be8904682709de6e38f9e83cbda329"
+      "specHash": "d8d441482575a459370758d0ece3efc28bba6efbcf57426f9bc7edc1b27ad51a"
     },
     "craftbook/ad-variations": {
-      "specHash": "7b673e4db8d99d913fa1ef0a39e9b341e5b10d888254794194f6f2f26f2019f5"
+      "specHash": "84eef05d78c7d4dcdae637d0068b1975b7a8ec009737a5b109466e059a9426b2"
     },
     "craftbook/ab-test-readout": {
-      "specHash": "2cdf4cba96dc4d927d414ab6026f402f25c6e2cb9a200af48a3882575e3de47b"
+      "specHash": "9f33b1d2c9108283d3f8016caecddd1921fdd1fc8180e1374322c44f6e1aaed9"
     },
     "craftbook/a11y-audit": {
-      "specHash": "710fe8455630ee7ead68c76f606d60717d462037908ee58b8f20b4dd7adbbec4"
+      "specHash": "1f4fcad29b58a618e8d87acacc9ed5442f65bbee4d0a37e363084b6571eab953"
     },
     "craftbook/accessibility-retrofit": {
-      "specHash": "b43d8db94067dd7b9cfd50d2440d86f06202d0f26f6e2991ae560bcb1eeb8bbe"
+      "specHash": "7639fde49ce05619790570fd86af4f025c19a3bb1fd51593b5fb366ef376b62e"
     },
     "craftbook/narrated-slideshow": {
-      "specHash": "30f90ae584f0fc9aac3575d31318c8c12556d45464d41aeb95ff42152ba30cd4"
+      "specHash": "b91bc148213052f2f9721a8700560bf77d2d4eaf2ddcbd27a111bf0556b1ef37"
     },
     "craftbook/svg-animation": {
-      "specHash": "edd3b0c9bd71876d12dad703b76a88b752ef2756e4f0a1f55a99bfee2201b7d3"
+      "specHash": "857583591a5c8bfde879bed5fe2d8656bc7d1cdc2425ca30df2b237d6646132f"
     },
     "craftbook/anniversary-cut": {
-      "specHash": "f2b66dd03a45db777ce0390c51da4f0cc9b23bfbf53039430ac3bc727a138676"
+      "specHash": "4f8aa9c2902fe34e0e9a84143ecc49927e8060b0c909626d06037be37bc3ac6d"
     },
     "craftbook/annotated-bibliography": {
-      "specHash": "595bd38326aaba11a730bb34eb33af2dc1fafedd9377df1c4ba2b69df8e3b63c"
+      "specHash": "7830bced118ec0a23399fe041202d907d340147b605f0ed06a9d1df96cc81565"
     },
     "craftbook/annual-document-review": {
-      "specHash": "69a6fa733f5e41017bbcf3e26a061396ecfa757b6eafe0866eb39a3c86de7d4e"
+      "specHash": "c9c87c98b68a0b05e4c7386a2943472db450c01e5c8a1252a7e2e2ee9beb895d"
     },
     "craftbook/anomaly-scan": {
-      "specHash": "791c2954bee9ace3d656e3f77a50fea35eb37e0d3219d0824d1e176865332426"
+      "specHash": "aa76d5943fe9ba6c97e7d287ffe37fbded24f098a3835657c94d46e0c71390c9"
     },
     "craftbook/sql-analysis": {
-      "specHash": "c203075d8bbda2c571b12ded812bc146d6bcf508131e22004624aeae7f387827"
+      "specHash": "9c0eaadac245e31a7777563182dc955d6fe489444ba670e69e4669ef2256821a"
     },
     "craftbook/api-contract-review": {
-      "specHash": "d60e941cac8192ff5e56a9e3c8246790d32ca1f9b5a825e68fdd5faa50292ba1"
+      "specHash": "8fd5bb92a9ee8f2363b157826acad29f3531ced95e9d0a5edb01b12f445ea7be"
     },
     "craftbook/apply-review-findings": {
-      "specHash": "d5cdbc75f47946dbf00162dc412c241d445d093bafe7688016123d60223f6dab"
+      "specHash": "137ad7aa19bfa3d8d0b9507fa179e9fcadf2656a9eba3085a8d164a816a74eab"
     },
     "craftbook/artifact-integrity-review": {
-      "specHash": "7734db02810cbc38453b1a4bcf4bd5b2494c0e4af3dee52cc72936f1782088a8"
+      "specHash": "4692ba0c44d03512b256279201b3eab27923f0681fbab34a1f16923513a3edc6"
     },
     "craftbook/audio-ad-spot": {
-      "specHash": "08e00902c0639123fac39a5fc4915524f7f86cc2c9922b80f6807c4c7600cf13"
+      "specHash": "0e529c3bdcf4bea23cbae7ff9819d85c0b0d1c8dd8ff2313fac82f17341a6596"
     },
     "craftbook/audio-highlight-reel": {
-      "specHash": "5dc46e5e3e1c27c6fc367ed1a70aeb4410286ff3e9e31a01cde7c30a28bbe132"
+      "specHash": "0c6a5be4a5d901fd6e8f36d7ad332a6716ee775bdf08b263da927a39cea94bc8"
     },
     "craftbook/audit-evidence-pack": {
-      "specHash": "758fd8b6716aca6891986ac92d7438148f7d2da359fdba314875762c781c8586"
+      "specHash": "589d471eb389324649bb40ebebf23ad5eecaaabf36712af342336a48c287feb6"
     },
     "craftbook/subscription-audit": {
-      "specHash": "00692a2904aac81299c24563f677ecffa811eb4b057e608eb158e8a745627be2"
+      "specHash": "d7062b5c9be70ca062ea6d7de622f0ad9a16bb7b9041412c5c6c3b4d9ac7a912"
     },
     "craftbook/auth-flow": {
-      "specHash": "31961fdcaa1327e83c62fdf87a03a5b2acdb01b935bdb5396c65b211a763d275"
+      "specHash": "10e4fb43cea2afaf9396105c73c5b8fcc896c11ad97d65be700847e1c12bb82c"
     },
     "craftbook/booking-automation": {
-      "specHash": "c06c7fae245fb91de41bcc512b4a441bbc460251c02153a9f3c4a6bec9588fe1"
+      "specHash": "29481303aa6cdba7e6523fc568df8cc8ee314d177b142774aa8392476527ac8d"
     },
     "craftbook/image-batch-edit": {
-      "specHash": "38c20d7854a626e27038f8ab9a128a2512cb6bc7cfb1e9111e999a1661e2112b"
+      "specHash": "45fa615751820911b1407a057295ec388a3e9600d61960e1e31ddc664944764c"
     },
     "craftbook/form-fill-batch": {
-      "specHash": "a2e640609b8f8cc2a140f7f47c6cf96ddaa852105dbd617de24d0f501b805559"
+      "specHash": "ace950ed6163dec0254b3692c3abacbabaf536320cdc066915aca21d365d4f4d"
     },
     "craftbook/refactor-module": {
-      "specHash": "e58c759b5805ec0b53118fd46d1b62430513c7f2d89f1e3edbdd195c3c701a66"
+      "specHash": "c1167569459b565d8b73521ee0bbb3bd4ae0b8eac0f377be32e79d6814441f4d"
     },
     "craftbook/board-deck": {
-      "specHash": "16f2d81110dbe07b9d8e88d3f5a950535d0f454948ce0884c64254d270e82114"
+      "specHash": "14540c57109f86496ab76ef4159c92aa221fcbd5fa7e2e97c2d2b894589facd9"
     },
     "craftbook/tone-rewrite": {
-      "specHash": "6cb912db960337ac455168f8cf33a33bb953ffd0e9041f998c687ce6d12c6100"
+      "specHash": "ec68619c2d080a945abdc6375848a87b5a9d2df4b9adecf7b1d4bf7418ee7077"
     },
     "craftbook/branding-website": {
-      "specHash": "3cd1c0f0115ed4fcc3afa0a50b4c3a95a3bf16bd1d331fe4a6fa14db49bf60d8"
+      "specHash": "e672388ab21a376d3f82267ee665d359257548513d5b093b19d8b4878d2357b0"
     },
     "craftbook/chrome-extension": {
-      "specHash": "4d9d42f28fc5a0c4286caab8f5968328580511850dcde050ca886d549805326a"
+      "specHash": "63eb37d060935c53e7d62a9ab0da8ccd0f42f0bc8dc22276d709bb84740e4309"
     },
     "craftbook/browser-qa-audit": {
-      "specHash": "7b0c5a7af92b534f80327c258bd27cf43b06866c1f5bed97b0b3016c8ed06443"
+      "specHash": "7ae7c32d522767d2d09cea3c1bc7130977f0fc2de6616127b0fa0c4a2c590fca"
     },
     "craftbook/regex-builder": {
-      "specHash": "e3e2458e5629fd19b05fe6bbff849a8ba4c2b54cbf2c71a90afd0e2ea6fef3e5"
+      "specHash": "dd15e7eb78a5a93876f0f5e7f9dcd32ce95c994a7accdadadb9c2a56c84f1599"
     },
     "craftbook/build-loop": {
-      "specHash": "d3fba62dd1ca731db89554e657dc1f43957a1b7150874a154e039a38947e179c"
+      "specHash": "f83bf5764ada80f6d0749a2e13082e8a79ac6be6fe57db523a267b2de788e12f"
     },
     "craftbook/crm-update-batch": {
-      "specHash": "c63468e91d616c99f74b0a935c37bd0b791b35215218a3f8f1f0d452a4030740"
+      "specHash": "a31b2a652427e0867a825c8c5610cba8abb41738b43ef2421af0c212fa415952"
     },
     "craftbook/product-descriptions": {
-      "specHash": "50d8690299329eeb73ffd5e7325c3e3e3a5f4ecd87c02bb42475a5c19d1ee472"
+      "specHash": "906396350cf8bad06a7c35933d3c7e207539da2f983dd15fd303a632c6619983"
     },
     "craftbook/canvas-generative-art": {
-      "specHash": "58ad637af4435479f3111399bf7a1d3f9ebf1ae9be11bb0386522dff335c91a2"
+      "specHash": "5267c0e4baf7fd1ff4d57a8cf7cbc421fb16fabc2f5dfcf4c9adc6ebd1608666"
     },
     "craftbook/recipe-capture": {
-      "specHash": "e304e4c2d5effa172a880639cebd987676524d7553d767e52570d296f4ec4422"
+      "specHash": "8b1e7b233cc02f0e76c33eab8f828933fdbce6d5ff5b295e0ba010b27043dca1"
     },
     "craftbook/visit-prep": {
-      "specHash": "d885da5a8f6c7fe58755b948609e07e7abdca5e55beb5f441b99053095469868"
+      "specHash": "8c981b8b24db01c0175d8d0e7a1edd376be99b344d603a70033da9dc60a1659f"
     },
     "craftbook/careful-mode": {
-      "specHash": "9edf52663e04b7abc1eee87b6eb2512d7aa5e473af72ff70c42a908341a23d9e"
+      "specHash": "f35a5f24c575c72813a19917f06dd89d8315d7b34b51ce72b74b5e76a903dc33"
     },
     "craftbook/item-intake": {
-      "specHash": "4d2c11341e861d1d4076225360eb146ce23ff2bdb32a3c47a777c9151f0ab217"
+      "specHash": "04828b059e7546d70c611bb92ee9422c0008a20c256b87d2352d857d2d49b2e1"
     },
     "craftbook/expense-categorize": {
-      "specHash": "f35288024397a92bf9fe2726dc9465f5ae5aedf054a1d9690932571e068009e3"
+      "specHash": "930f6e083475cff89d744c7e1c082f4893e9d058532ef3eb8f6fd67540d23c5b"
     },
     "craftbook/character-sheet": {
-      "specHash": "8284df61932daf63077e6e853e60fc4f3d8ca75341cae81867d83a619b57e970"
+      "specHash": "382347a2cc3aaa3984b537bec52e037ef0f36e1393bbc519968a85fce7872d24"
     },
     "craftbook/character-turnaround": {
-      "specHash": "8de2eba7c623aed2d0fa98b5bb12fde938eda408a2c58d19a07cf9bc134d3856"
+      "specHash": "724d785461c348bd6ac376058bfa00d54b749641a9dcb9581d8ce5bff7af06ac"
     },
     "craftbook/chart-pack": {
-      "specHash": "e1527ea19f46cb24b0897140070f302b9898590e46f4b244a72a55cbde078f78"
+      "specHash": "bf322e06f209a4372d03b6cdd4ee91b1dc84b715e792d2635254cd185b723ec1"
     },
     "craftbook/ci-pipeline": {
-      "specHash": "250d4c0f8c2951eea73e3212f4d55cfec0ff6b90d5b1967cd00654d886416eff"
+      "specHash": "048b63eacccf31636bb6f1147f0f36b394304e8d1cef6f4918c94dd40873d493"
     },
     "craftbook/citation-audit": {
-      "specHash": "6db6bdb515532785a08ad28727ca0704457b86327979dc631d098981b9b3163b"
+      "specHash": "3440a54056a209b9221dc246a6479a62ed3eb0ecf2a7f267d0ced23bd3384b14"
     },
     "craftbook/research-report": {
-      "specHash": "0d0bc871d797565e8506f1e45bd802a880749b4ae205589123cb5de1c88eb5db"
+      "specHash": "8af58432a91dfad3baa2a45a8e9a791848dfdd685cc2d10b98d1aaef84ed59a3"
     },
     "craftbook/doc-intake-pipeline": {
-      "specHash": "5e99afe09945e01376113e546dccd117fded476d266047ecd7f09998f137bc64"
+      "specHash": "003104c5fb688e4675bc7b94752e98589b228abe5c1fe4dc1178dd70efee25a1"
     },
     "craftbook/dataset-clean": {
-      "specHash": "be2e463be5b71dd9dc241fdcc2e89f7c1fe9e12b72d7270723ae56ba02095158"
+      "specHash": "d2d065deed6a48eeef40983b2307e2c7db75e1b595372bca81694d5fa037aedb"
     },
     "craftbook/month-close": {
-      "specHash": "09197e5c301d3275b15650dbd202061d0dce9632a92040ece16257920e3a5506"
+      "specHash": "89b2c6eb274df64423082c8364c83c89b10699298f19c18c6a0bf6847e993997"
     },
     "craftbook/code-review": {
-      "specHash": "964725998d71a341f9768ae1875c5eba57c8c5c1f2b127c05a0f41086fed38b8"
+      "specHash": "c3eee634b9777533528320315a02af3a2ac9e17baa75064f76def9ac887b2c0a"
     },
     "craftbook/codebase-refactoring-review": {
-      "specHash": "39e8d66e7cd344c93fb122f56b1cc6fddb7fb0e0e98826e60cf02098d33da756"
+      "specHash": "73e27acbcf454fe3feaa6967ef07ebd2ea927ad6f021a1200f25adcf9efbbc81"
     },
     "craftbook/codebase-ux-review": {
-      "specHash": "ae55f7246df0565c09f8c528ed196a1225a26eca3a605207c01995c566a9d62b"
+      "specHash": "f8048d31d00fb74a0dbdb194e3389fb08e3ecd4fb4edec92ffa2b1f9d515e5f2"
     },
     "craftbook/codemod-sweep": {
-      "specHash": "74c5dba152e2d708a2b463c5621918d82d72e362d0ee9402cc3fee7daf9e25b5"
+      "specHash": "4f6cfd384fedcee76ca18fa401ab2299c555d8a741d226001fe0e4d357b299ac"
     },
     "craftbook/icon-pack": {
-      "specHash": "ba2e5778d08254d46cca11c3f6ca522c3cf1e977993ccf10f4eec9ed01672fbb"
+      "specHash": "5c954e81bf06cf3952292e4d4d11252676e4691c0e3866d88539556bde1d9b5d"
     },
     "craftbook/cohort-analysis": {
-      "specHash": "a180261cc1159f651e7f58d7a4ab886f193141c7facada1b37ffc36886cc11fc"
+      "specHash": "1ca1c71961ba85620074143ee907c55fc65fcae586894fd8cf7b9255c131e29b"
     },
     "craftbook/cli-tool": {
-      "specHash": "273ae74fcfa0e478e56931a2c9f2a469d2a911ef8bd9164a77dadc7c086fa3d2"
+      "specHash": "b38312e992b799393c1e8bf675bfd9dda8105da4898aaba190a0164b1c6bbe78"
     },
     "craftbook/company-research-brief": {
-      "specHash": "b78254274661e6afcd3e12c82efbebc3f04ac8e6806e7785d8975f9f9faa25e5"
+      "specHash": "12eab1e800e8c2196e4ce474fa540c59e0586991a55323ae59df0e14cb74647b"
     },
     "craftbook/compat-check": {
-      "specHash": "b8c7329c7ae7fce642fb74087691a9d9b21cfb325c49220261f9ff502960b61b"
+      "specHash": "d600d8a75b639f1c80b35a42cd7f47c777c908f1520023c27b9e4003494dd479"
     },
     "craftbook/competitive-analysis": {
-      "specHash": "2a249151c712d02a207962e2c19980944b35a1dd3b4fcf63a0a1ea7c225823ac"
+      "specHash": "837d38e97e1eafdd718b8801cfa4c755ec5ebd068676123fe50125b7f332c55e"
     },
     "craftbook/comprehensive-codebase-review": {
-      "specHash": "31ab3d8127f9174ccff3326264c912430888aea80e22f872234cb2d005f32739"
+      "specHash": "f8ed254e5230f07316871d7a079d460e63a8a3403f6f493c9f04a363d3df7bb5"
     },
     "craftbook/dockerize-app": {
-      "specHash": "f46f4fc6ed13d7cb5da3e0535d2359e97f9c1fb71772dab86aaa7e5658e65962"
+      "specHash": "e270022fdd8be5b9580633c2680931096f7f22a2ba839f295526d810c805ff46"
     },
     "craftbook/content-accuracy-review": {
-      "specHash": "c5a363fd326957018bfd27f046713071959a456e52631377d0fc31f87d1d0e7a"
+      "specHash": "5d48368cb5a9838e758849a82a09a82bff757b629860fa5859debd61579efd0c"
     },
     "craftbook/contract-template": {
-      "specHash": "d86fbc26cadeec5e95ff6dca9355e40e63ff3999f077a9ef6e912c80d2c11a45"
+      "specHash": "1805d3482297024a3bb04867d5be51fb0fad27acbdecb593c2b878db49e58a46"
     },
     "craftbook/corpus-synthesis": {
-      "specHash": "8241af42166ae1d8648b929fcd82b4292ad1ba8e922662bb0df9b0ab8f814c73"
+      "specHash": "b8e9d33487a4998d6932597811cbfebdb4609a471e6b9349a03d02d0bab66e5a"
     },
     "craftbook/web-app-crud": {
-      "specHash": "ab2d176df3a75714ba3a809fb97c9ef6a8116e32e7de64ed2c1ad47c43511b0d"
+      "specHash": "568cd21d0a2a6573f889c26a2a8839438afe7708b42059686cbd49996f27dcc9"
     },
     "craftbook/csv-transformer": {
-      "specHash": "fc759dabed1d4aa85aa9463d4841d894a62a5e613b0bc569ce410809c1a805af"
+      "specHash": "a153820854b00b635f07b21b0ae8b7acfdf4ba9b672d231facba68679d151295"
     },
     "craftbook/album-curate": {
-      "specHash": "70d46f81ff73cf865c507694cb28fddca0a1e1e0683eb9f43e2260133e298e4a"
+      "specHash": "3d782154b898bfb2a10a9e18a512d351f09736b4b23ca52b8441ec4ed7f4b7bf"
     },
     "craftbook/reading-list": {
-      "specHash": "31d1d3d881c1c4f80f0d456bc6f7625f452d879b8ab877a2cc9bde4dcf2c89d5"
+      "specHash": "ed647b96b1698a76ef1fe9618214b2b85d1bb1ac445efb8fbfe6455b9eb0f7d5"
     },
     "craftbook/case-study": {
-      "specHash": "f44a3afa99a7cc01a8c5ac5183bb91bae9be539f1e44eb90a4d13980a7556ecd"
+      "specHash": "79dbf19d5e35671d7835d25c31d9f6914101f97ab473a623f005e3dfc74450c9"
     },
     "craftbook/case-study-writeup": {
-      "specHash": "f44a3afa99a7cc01a8c5ac5183bb91bae9be539f1e44eb90a4d13980a7556ecd"
+      "specHash": "79dbf19d5e35671d7835d25c31d9f6914101f97ab473a623f005e3dfc74450c9"
     },
     "craftbook/calendar-brief": {
-      "specHash": "fe5a8ecdbb0f5cf7a3ca064c562b1a71ea25d87a954ff4bb82e9af48a5222ecd"
+      "specHash": "e651e9100761a99db4759f36472e7de584c13fc72e3d8cdf553d83280c351c09"
     },
     "craftbook/corpus-email-digest": {
-      "specHash": "f10b56b1a6b280269cccbc068b626ad14837d3166b44e0441193c29b6d1e31bc"
+      "specHash": "258c82a427a4c01cf9502e1f38eeecfa702f2ef6d053e19765a68cfedc52995e"
     },
     "craftbook/dashboard-spec": {
-      "specHash": "e2c20820a6744ae1787e8b2a2760b463d34368edc640591928d7f692da6f424d"
+      "specHash": "dab44502a86489662929aaea81d064564ae3bd5e9b4cfb1087c22041838ba8a7"
     },
     "craftbook/data-dictionary": {
-      "specHash": "232cb75c68db846c7b79fb715e91a67bb42061151262279723e9aa2cb51b4637"
+      "specHash": "4c6124495a60a0d06594feab6a0244186ac0e2e1cc4308f872b41bb21eb61481"
     },
     "craftbook/data-quality-audit": {
-      "specHash": "4ded797111a81251f8a2a75e1a25062897e7c1f84e4acb3999fa97b6ce639c2b"
+      "specHash": "9778ac7116f40fe772bcf771457562bb76b6834198298b7027642e46c34368d4"
     },
     "craftbook/data-viz-page": {
-      "specHash": "079236b7c253f3835f2ae20ffb952b977b5757391497a52e115dfb1689780209"
+      "specHash": "26c2fa180814fe3a8a5980d3b8362058a5a683e6a82ad1621f3b1ed851a3602f"
     },
     "craftbook/data-to-report": {
-      "specHash": "a6204e76238055a7192479744736df7fa080f4d7641791abcb81aba19d49ed93"
+      "specHash": "b239d43adab484f2bba2a35dbc4b7eb38b8e8467fe768c05f8691e362ea236f1"
     },
     "craftbook/evidence-brief": {
-      "specHash": "5d15670354d69e8954c54c1d50abb58b2873b667b0ffd2ada908382ecbebf991"
+      "specHash": "024861e8382ce49b588fbc9852bc8b4f7484bcc6aebde8f6483f63f391bc8055"
     },
     "craftbook/deep-security-review": {
-      "specHash": "e5d2beaf870965f1cdb8977a2b95a71e160905f147687e4f82ffd77dc26e5980"
+      "specHash": "04a71f0c050ce6c206beca7d024f5684ac0415ece6f4c39371f6a8c55a877580"
     },
     "craftbook/dependency-audit": {
-      "specHash": "a38449d23c9c07d598670b20e12ba56bd80b0fb340726ec2a1037b486127a6c5"
+      "specHash": "1b948ce48235001c1f80e2d1fa317dd73e4b29f67b7a45dc20ab23006325919b"
     },
     "craftbook/deploy-checklist": {
-      "specHash": "19d95448d273dde2a7b5adbae588baf6233004b8770eb7eb15fb9223ae7d2279"
+      "specHash": "c7e35cea84d1d657067611605212b39b8dc241ec991a8bc09c3e010ffad8e7df"
     },
     "craftbook/design-system-consultation": {
-      "specHash": "ba8bc915bbfb12d0efdd87132fef8df1d2bdb2e6796f032c374bcebdab1652c4"
+      "specHash": "460fdf490ef3d911166f3619c080d34267e4630792738c173d0ea2ea827fd28c"
     },
     "craftbook/invitation-design": {
-      "specHash": "1db2e08a6a5ab1a30439c23f1cc5f74c2838527f4a622e9829aa77af4bd47214"
+      "specHash": "b547158d17189adcf86c049198bcc4a54b355ae5673217740cbfceaace148a63"
     },
     "craftbook/db-index-tuning": {
-      "specHash": "b12c1fdcff3e9dd291fa0b93e1c22a8227cb5aef1f60d69edcd5d494e533e465"
+      "specHash": "dc7a18d0ea20db8751841cd1f98fd7887df14b181cfbe0c5c522c1516f030e92"
     },
     "craftbook/diagram-from-text": {
-      "specHash": "614e25e68b5cbb442a83fa4706acafe69bba60705763eb2978f8261deb44edc3"
+      "specHash": "419b4088f6ce52a8fdf02cbcec858941e5e5659afaf276ad686b02e1a0ede9b6"
     },
     "craftbook/board-game-web": {
-      "specHash": "d85d518f0953ba20a527639379dfc21214aede4e21324c752b323d45c0505775"
+      "specHash": "dff27e321cedd19c99eff00ab4d73cf97f55235944364ccbcf2773182399627f"
     },
     "craftbook/documentation-drift-review": {
-      "specHash": "339f9ec99c9eb0288dd17afb6c328f074eed96d0d06be8ea29f21a43e8496849"
+      "specHash": "4e77be69333c431a66660c2bb48dbb94cfd5a84fa11b44ed3d281feb97d5327e"
     },
     "craftbook/doc-rewrite": {
-      "specHash": "d44135cffbef72c46eb3e8cc0e2d488b15dbc93cdc03a6eaaa9c55a9d3eae7ce"
+      "specHash": "c0afc781b31abce8c3b877f6a1a161a91daa29d7313eb89bd44983bd260fd635"
     },
     "craftbook/docs-site": {
-      "specHash": "e8f5816164320f2fce043cd95512932638c584700dfff89db344375527388e16"
+      "specHash": "86ac1c2e5f2cf4aeb284a865894e1a09257094a25b43ec9d7b7cc812ba107313"
     },
     "craftbook/glossary-build": {
-      "specHash": "a0e215c76551c60b9fc8c8cda78359c6907fc90933cc6110616aae792d68c74b"
+      "specHash": "8f927c763087274c5c1ac30b45104451821bae31687c8876e1854b1a58a70acc"
     },
     "craftbook/draft-social-post": {
-      "specHash": "34986adc4a979be9e05953ee1871f2409024d3802cfa27d784f91a60220f745c"
+      "specHash": "9f6b5aa95dd8f3a5f5e189fe35ddf65dce23a5b0ffb2b3995a80da42ea418f34"
     },
     "craftbook/due-diligence-brief": {
-      "specHash": "9f0e2fab6e72392ad43b1027d4a229d48004e35060058b73373a1052f37ffcd4"
+      "specHash": "569316639a029cf41d3ab4ba4bf2b0a999417f288557828a20a6569b3d1ed6f5"
     },
     "craftbook/ebook-compile": {
-      "specHash": "6d846053b6370bce59ac3bbd3a221c16fc62c0010d7b6495dac241715b8e7a7d"
+      "specHash": "154e8d148d0290c5bd0f6224ad25331161b7626329d5e99b70c9bc173a45b62a"
     },
     "craftbook/edit-notes": {
-      "specHash": "2e06e0dbeab4e4f5d4a8643925bae5640de6b3f92ccaaa52c8e6f1c8ce4daaf5"
+      "specHash": "3201cb44f3ee8c6de168f6b0821aa7e8ff32988d29563e88a9b220dc0f2d688f"
     },
     "craftbook/copy-review": {
-      "specHash": "776a82293a79f17971cd6c14d63910aaaaa72b6f4aa3e69344c731038473ee49"
+      "specHash": "8c8404143adfcc721c7a466172b12a14d3e79cd5fc4574c3a77f5fd2cfd12e31"
     },
     "craftbook/feedback-widget": {
-      "specHash": "84bd08374e5b0b267b75ed018969a2b2e6204fdd9a451c2c251bb5e74cde7617"
+      "specHash": "255c87454cb1edfcb562575f598aa225c2e5d32b02f5b1f214ea2959495559bd"
     },
     "craftbook/engineering-retrospective": {
-      "specHash": "657df43e74e35a22b82bc4017f494cd165b003caf929fcb7024f2413622dfe67"
+      "specHash": "3b36131031d88cdbbb86f9409752f16bfc7956afd0ef3509bcaf7fd406c0b6c7"
     },
     "craftbook/lead-enrichment": {
-      "specHash": "300f04cf1ba54e24bae554873acbac00174c08fa56123380f5d965ee4346dd72"
+      "specHash": "0dc806730a350fc785493434ebd04f761320e555ece9b27e99b47054d79fe355"
     },
     "craftbook/data-pipeline-etl": {
-      "specHash": "e638f5e6cc71a90f6071545dacf71cd826417dd2f40effc27850eb1c4b981d33"
+      "specHash": "7b4b4facc87774798a57259cce7df908278637618ab26d0e64bb910130e23247"
     },
     "craftbook/ops-runbook": {
-      "specHash": "49b5d5e74411fb220c91bea09d1484b811b9238971e7dc1711e8b7eb0123bfde"
+      "specHash": "d1c3aeab5f7d07ac2cf1aae48d2208bd30d8d04c6c7f99426eee93c7660d98f8"
     },
     "craftbook/executive-level-review": {
-      "specHash": "fc4044d93b847e0346edfec6e365c844c4289f4274b17ca505ce2460bd4c766e"
+      "specHash": "cdeba4c0622270d0791b646f7d56243038c662805134742bed8d8c6ecd93430d"
     },
     "craftbook/explain-code-folder": {
-      "specHash": "23d46eedc35e9abf814f62699799305ca51f26350d1cecda3f0884332642705a"
+      "specHash": "2ae18f25863f5e6474f5841c548f8e86f4bf9b059e44e3b9405cc784c14c3e02"
     },
     "craftbook/fact-check": {
-      "specHash": "dc727dae217cc61e1da99d1f6598ff6c6329202a31aedd963107854820efdd6c"
+      "specHash": "368a56ad2b5d8a74a1fce1fd1936edffbf689f6adfd8f5c4095b1648ec50b048"
     },
     "craftbook/family-story-chapter": {
-      "specHash": "e2c2209606943307a5a630af686ace483ab526a0f35325f53beed95042268a30"
+      "specHash": "6b34e7a4b7f6b02e04fc6bf3016e9103d554a0514456310c3b9be21263c93a45"
     },
     "craftbook/faq-from-docs": {
-      "specHash": "c6c5589afae641d011c84334875825fe4717be2ea4f4111a15a55691d8fbe83e"
+      "specHash": "3f2819ecbfcbf2f8e56bdd233fae4b63527a264441d0a58b22c1d3ab81a9ca62"
     },
     "craftbook/favicon-set": {
-      "specHash": "e02ab3c2fc633c75104e39aa4cb8461a66eddd062114c3e0a048758763169aff"
+      "specHash": "e69842b55d7b1a8996610fbb86a5e62919af0cf309d6a4cfcbb695993515b11d"
     },
     "craftbook/flaky-test-fix": {
-      "specHash": "a8872935919128c675258aa6e6f55f813128cdaa55ae9a25f24c31ee04377515"
+      "specHash": "e5f1cf1ba76369b76b09aee1d5ecd06d5c32586f1e72cc8bb68315d18df4f382"
     },
     "craftbook/feature-flag-rollout": {
-      "specHash": "78cfd6f46bb3ef016a773bc4a98944be6867a522e7c1e6cfa41cec860d628fc3"
+      "specHash": "c6418919b21e51aa22dded2e138223077721a0333d1039dd3e1634f9095d520f"
     },
     "craftbook/crossword-forge": {
-      "specHash": "9b6d474467da3511353d60c4cc355da84cb2b4465de7209d134808b28fb003e2"
+      "specHash": "16b859d712a8893c229e7a79ad017e31018e6b30c1d67fb27a0f213a83d6c767"
     },
     "craftbook/report-pdf": {
-      "specHash": "fa00d34d990a66800426c8d99bc2f2e9d5cadeacdfd503577a9f136f6d944922"
+      "specHash": "65875ec0155d7eace9c7c0a5fe720fbae966e5b84f306f2db597cbf59122d0aa"
     },
     "craftbook/freeze-scope": {
-      "specHash": "100af08bcf59bdb72013a51fdbae1c2901d4016209eb5c62c73936e5d2c1f854"
+      "specHash": "25e246fe948815b11d8cd0809f9c8504815361710f9f8a023fad035919795e19"
     },
     "craftbook/game-with-screens": {
-      "specHash": "9d8bdec4dad25b2953fea20dd17d4edebfaccd2727dd1188126a72c241ba2269"
+      "specHash": "6de80a2b53c864d56db2b550c723cc30e4d18b08af093881e315074f5fcda8f9"
     },
     "craftbook/drive-wrap-up": {
-      "specHash": "1f1c163eb891552b06b18471eaea967ce2845666597954835bb20be34a6dfede"
+      "specHash": "fd4896cd2d4530ec54048cca0a066e21538b3cc90a44ff963eb233198ff622f9"
     },
     "craftbook/sprite-sheet": {
-      "specHash": "91a866855f9b844620cfa2cd269afb09bdd871c9d45820cd41e233c7dc69211c"
+      "specHash": "4e16ed9ef35a3f8d80d24c54ab4b4dd4584b68261d180099534915b9b20a5eac"
     },
     "craftbook/onboarding-checklist": {
-      "specHash": "132e18cf289d78e59d7e04dfea0cbfe299bec80f5789cd3b36d77308cabc70a3"
+      "specHash": "9edf8eebdd11d9bc86079026a5cc06db9ca3cb47b8988f2b23b16fa2670ba315"
     },
     "craftbook/recurring-invoice-run": {
-      "specHash": "d652ac684eb5441cdb5bce8b8f82f0def92e51cc16eaade3b959a30c76110de2"
+      "specHash": "7d01666725cec459185cbf3680162a4090c0ce2fb145d46825f10bd1991fb54d"
     },
     "craftbook/graphql-api": {
-      "specHash": "343e7beaebf3b9fa69235f33e507fa40b0b7966d37260f8c450ebf3a89240d5b"
+      "specHash": "34a224ad0e354663c2a4045689781b13f9e514d919889b832b9429091abd1b42"
     },
     "craftbook/grpc-service": {
-      "specHash": "f1fd7c2793cf15082a652a7ef19e1055c432f838f69e8f9001712b6c0f52fa3b"
+      "specHash": "7bf405d754514edaded13feb05760159e56a897579dff072215b0e3a30599de8"
     },
     "craftbook/holiday-card-run": {
-      "specHash": "c8bb3a979660a0ff38e34641113ae30823b1f0b07f009b31fcf395759ea09fb5"
+      "specHash": "7f125ae30de256aa7572ef41b21160e77a595d4105242db75d9e1c79b2bd3bc8"
     },
     "craftbook/hotfix-flow": {
-      "specHash": "e66ca59cb689519b9f9919ccf8c73bbdfc859d7278e838b9a262c7ddbf72384c"
+      "specHash": "b1df8ebab0bec70ad46fa000e7b0db56e1f7c784961530bafd13b81825d92903"
     },
     "craftbook/html-arcade-game": {
-      "specHash": "11ad5ea4ccfcc707a2d74c398a542d0dcb1861066402dfcab26d2542cbb9c7e2"
+      "specHash": "a382758e87102049aacd7a214372ce4456c762734c2ef5d918fb51d309a52247"
     },
     "craftbook/html-puzzle-game": {
-      "specHash": "b16f0f01b41e0e81276f70ed66fb589c06511af87f75f9d244a7caf33560549f"
+      "specHash": "d76ccd3668912de12bf50bc613f19f9d0c42e34f42a7159da57627e514ec7818"
     },
     "craftbook/changelog-writeup": {
-      "specHash": "0fecb1e6d692b3830232b767361465218472f2d0771afa64c6c663a047e40cf9"
+      "specHash": "0c031e58b59bf2c319c1db2c12334ea7a08dbacff52290ddcd70cccf150c7d78"
     },
     "craftbook/idea-office-hours": {
-      "specHash": "324c249df141dc08d05f0d2deecfe842d45423566bee799eecca6b68e3b8b5a5"
+      "specHash": "282d6819a035f3f36a34eedae5d9dc169eb1121216c01a898990e642735f5bd2"
     },
     "craftbook/idle-clicker-game": {
-      "specHash": "a2f06c6674ee58e1633ef0cdb33c46fd24369d2d44b392c6f65fc2b1c9ed60b6"
+      "specHash": "5d8b020de2314b5fddcd48a44a8e6175017f1b710ef008fda2758277404c550a"
     },
     "craftbook/image-dedup-cluster": {
-      "specHash": "e7c3bd0fb2e7e66303875a7a671d11cd16b5ff4ee89f3179453e42eed1a96b8a"
+      "specHash": "1952f4a8844589a855d21c5e64187690a4c63bc6775813f94a3e3a118b1ce763"
     },
     "craftbook/image-palette-extract": {
-      "specHash": "6bfb51e813b70eb01d155164cb285bae6aafdfd50fafd7d4fe3ac507e0860620"
+      "specHash": "99fc42f172df334451bfa973605b80d2620f0afbae60f7565f0809fd84b614dd"
     },
     "craftbook/image-seo-rename": {
-      "specHash": "5db9186841dc0698b410ddbfcb540bd601a64cf90bf5172c0dfb62811673a7a3"
+      "specHash": "d5c092a742d5d82c5f5d4d432369b7cdd1cf091060ce6cfe2be595ba0c13271e"
     },
     "craftbook/ux-update": {
-      "specHash": "7ca453a3e7b22c8e7883331636ae1b5a2e1916b10d783f24e089d02b4eba9c55"
+      "specHash": "f7cd6cf1213a3e65c2ce8668e48b725796f0cc958b645355e172119670388bc6"
     },
     "craftbook/webhook-handler": {
-      "specHash": "8a6559877faafd6f30287a4b3955e682eb5710399ffec54d3f822b1b6af9b390"
+      "specHash": "75bc17fd30091330faafbe1c53d96c5bb3d5c0222d50fdc5e75761f4f40e719f"
     },
     "craftbook/inbox-triage": {
-      "specHash": "096b1040bd2328c9f910587fa2223cd864bfc1d07f566d0c92f8e7ef14b05203"
+      "specHash": "c2fa4a07abfc200360fcd50a63803b7152576e445eb114cd4dfba6127e244353"
     },
     "craftbook/incident-comms-templates": {
-      "specHash": "ce79c3c6f1509bc3f2033dc9ee572b6cc43c702ba526bc63194b231525b26981"
+      "specHash": "ac606178680a522c1fad90ab2b628e657eb0b5a5535ca62ea7d27df8fa99b5d2"
     },
     "craftbook/incident-postmortem": {
-      "specHash": "47e3bad23444785e717c36938f5895596112c60643b412a392ac3fa8e0ee497a"
+      "specHash": "96e3de8bd222688ee4568eeb173a936a5c642361bef55212828d6465afc28262"
     },
     "craftbook/image-set-index": {
-      "specHash": "0b73b44d87082427bf8c4e9d8d045f565e1b9bdb7cda52377f694fe6727dc4ff"
+      "specHash": "979006e01f1d05737d8d6e75951ba177db52048a60914d698e1b8e31265f192d"
     },
     "craftbook/pwa-offline": {
-      "specHash": "2a472fd5cadf6469da20c8148b91dd3c2c79b60990268b798bc038c5ace06dec"
+      "specHash": "06a9eb0bee5da3f7dcc48447efdf376130aa84a9010182424892f79c232e300c"
     },
     "craftbook/insurance-inventory": {
-      "specHash": "14817110c3ead1387745d046fe74f3cbff1782911a3d55da2ce7f08662ae8586"
+      "specHash": "c038b1b9dd32f4b2ab991e8de00a4bb9026793c90286800a6866fced679381d7"
     },
     "craftbook/physics-toy": {
-      "specHash": "dfc4ed37bd3843ac38d643a37923cf02ec5c0ae76d9dd34f8e58ce52d808f278"
+      "specHash": "fb6d6c1999a9f2078fcabfa2a485ba9cecc6d7dcc05d7a68f696039b0320bd91"
     },
     "craftbook/interactive-quiz": {
-      "specHash": "948409291f43c374f95cd877bd5852d78533dc78af21f84942ffe6e16a7005fd"
+      "specHash": "830bb77d4a09555f8c2e4dd8bab1f66fdbeb2b714f96fb66a206bb2215c79a57"
     },
     "craftbook/investigate": {
-      "specHash": "f9f9b8f5f4cc5e9d85c6c7ab16ecdf79d1fd21f5a928db8d49451d87ff9de4fa"
+      "specHash": "fc44d7c5e7bdd7288bf4d23004cad3aafb2e0c6e931b01ae97223b16852e38f7"
     },
     "craftbook/pitch-deck": {
-      "specHash": "025c2f8b5475fdda3489263a03a4cb78bc79f46f1474e4f8641b558267d74809"
+      "specHash": "3ae6fc29a4a72a487ebaf43841f39f8001a250ce7a9b92d564288659cf7d624d"
     },
     "craftbook/invoice-generator": {
-      "specHash": "cd991608ff48fb8a0adebd8b24c6bee39002d9ad967e75e73d9fb069658f3522"
+      "specHash": "f38e0528c97c40dabe2319d131fc657db91bfcdead3777a7c5d70205a84f00ed"
     },
     "craftbook/data-join-merge": {
-      "specHash": "e8aa094b819cec89c91544dd702c24cf6592835dd534e09e1d3befb4d4351d84"
+      "specHash": "d03a0e04a41421c5022eab8c8b300a5774dfcd64f9445a63c3cf9d404499747f"
     },
     "craftbook/juice-pass": {
-      "specHash": "f824b69c0286f1f123e1cab59ed624c0afa60525a578c782f9aa39f69a2b2ed3"
+      "specHash": "bd20bf78f294ce8969c6671880685876a90d7f6f4979228d24c5432cb4b37f72"
     },
     "craftbook/knowledge-base-article": {
-      "specHash": "f3a099c065c92cedf7cea5ba04c67ad50c23763c46664c2dbc3a5cf8b49bdc90"
+      "specHash": "60ed85d448618bc7c12f9a79ac635d7e53c2a4ea77b3a4185e76fe141c8c60e4"
     },
     "craftbook/kpi-scorecard": {
-      "specHash": "5de9d3702985a47839245b1d74c50e6974add1b1742e7cf05f264feb7a8ab1a1"
+      "specHash": "14dcc43cfacf3dea6743e91409dfaf2f654bd58897eca84fe0c375f806443e8f"
     },
     "craftbook/landing-page": {
-      "specHash": "bcbe13ea3dd7754b6db9a30343d1cb442cf18a056628364df25c86b04dfe5dd7"
+      "specHash": "0ab4ac30c03de94c848d14f930f956f6dfc6ccba20623c7cef3498bb51e282f0"
     },
     "craftbook/landing-copy": {
-      "specHash": "b17d2ce26e58653d8766d6b9bba70f4170305dff4c39cd370b74885f5ffaf880"
+      "specHash": "34e9ee87da2af3ef0dd67c8dce716de4380f60b278b0df243ba02a07d866d2b5"
     },
     "craftbook/cookbook-layout": {
-      "specHash": "4b3e1f5e49487343b45bb455783b745d3df85a3f13e6fc5b4ff389a065f93e52"
+      "specHash": "5414b5617f2a056350fc1218d6f75205744f838f7cfa440f2d39460f369a42f0"
     },
     "craftbook/puzzle-pack-layout": {
-      "specHash": "8a9c5ebbe934070d2efeacdef4543280f9c86ef7f2c90c89e7853f6badcfdbf9"
+      "specHash": "bcd5ef0733ad06ac06c79eaa670737af6672a3a400f3b08a017d93d24044f4ae"
     },
     "craftbook/email-sequence": {
-      "specHash": "609d0ca7e370f35aca2e9b23da94268f7949be3df13ea6d846dbca01873bb06f"
+      "specHash": "122cc41ab3547919c113c7b48134e37a15d0c3565d5a8ebfc8d5b8dd62359df5"
     },
     "craftbook/threat-model": {
-      "specHash": "e4493e50dc4087c29ae926f8a49e1fcdea85d51ba633c69c45338e755a24571e"
+      "specHash": "1bbf6b5e3b4d82d5b32cf41ce330849128a290190a6bb329f7d6d2733ba725ab"
     },
     "craftbook/literature-review": {
-      "specHash": "26f4fc41b426602c62fa1a4ec710731bbc847404e54c9c057610a4b648c70f16"
+      "specHash": "da372a035f2cbff25314893643d87a85cab604a20b38a5dd4e271aa422805bff"
     },
     "craftbook/localize-content": {
-      "specHash": "c7332d0bcac1b9218ffe58d2daa88086b98b4ab268ffcc96772abd16cf578645"
+      "specHash": "bbb6186805618b6f1e4db9161c6511ff0b3c2305f1a9dcd51f15f169763339b6"
     },
     "craftbook/practice-session": {
-      "specHash": "98fee54a718ff0969185cfdbc380582a697d925c005af631a204c5fedfb38d43"
+      "specHash": "f3a03894587ec40e842adcbe07a1d4b3b00bf0bee2ff31bad6d629f1bb4173a7"
     },
     "craftbook/logo-set": {
-      "specHash": "5597bf0e432355c88c8498fa6d63909a02c8979739a8667c8ca646cf3913445d"
+      "specHash": "6c264b014ab40821d1d269e49922c4c1b5ed5cfa81bfe8585d28ce4c1f8d18bc"
     },
     "craftbook/spreadsheet-findings": {
-      "specHash": "c9937e726799341c3d307fbfcc58342c368d8f30dbe35973f611a287e10b1816"
+      "specHash": "15a2bab7cd78f7e8d7020f215717487ac4fe6012e442b5764dbe95564b7a2f73"
     },
     "craftbook/market-scan": {
-      "specHash": "fa5b082a8d64d75c8067704409ad8c9c977deeb124d3fb7c6331af4c083fd229"
+      "specHash": "052137f3053111fc23f7f16e2a341e629dec2538f6633706225fb1a3b2420249"
     },
     "craftbook/hero-image": {
-      "specHash": "61d2eab9cd277167af13512fa29d1a59d3ae8a19e99a23d31665cad012f4116c"
+      "specHash": "e3e07cb4195c1c30fb48a2be8cb34a25d0fa2e3b134be3acb842b5e75649ffba"
     },
     "craftbook/audiobook-master-pack": {
-      "specHash": "661fcc1431fe3ebc85630c608fd715c895aed3fa26fd76bd4f8c1e50da9ddfb5"
+      "specHash": "d3353974cc0b5731e9f9153fa12ff481852dde882fcf8bd0d4a8676a6722b35d"
     },
     "craftbook/meeting-minutes": {
-      "specHash": "5d890dfe24aa6d0480c34eb2e2861a041df3bd3563016b630c5909fbd709dd8a"
+      "specHash": "13c8acf75a903259cd039ad4bc4f103734f38a7a407cad91ea637e3727d18bc9"
     },
     "craftbook/meeting-notes-to-actions": {
-      "specHash": "c54d3efdd567202ea8599fadaaee268a862add9160476c8f9609ae0973b35545"
+      "specHash": "2028a078d7ad3393f7bd81363ad5fbdadb502898b6a8ee2e8edada6c38bed68a"
     },
     "craftbook/meeting-prep-brief": {
-      "specHash": "988e4aad706d610f4ace64c8005ab6f5b63269878ec3852281bf80e68088e17d"
+      "specHash": "044961df4d23f3a719900ec5417f9bb88d02501b3be79be4bea933cd0d1ccaed"
     },
     "craftbook/meeting-summary-audio": {
-      "specHash": "791422208c6794e89002d4d6ed058cb4befb36e5fec5407074b920b077e47524"
+      "specHash": "75519e646abd3ff6e7bbf0937096cc9843c1b90130f792b52880e0d02acd4302"
     },
     "craftbook/memory-prompt-session": {
-      "specHash": "40f7f12c63a8df6dbd98a9e9bf4398a040edda9c6df94de45018e8b137bf8ff3"
+      "specHash": "d314a4e63125623ae341068e70464ea52824c703eb9e801c62d9ec5b8e62b51e"
     },
     "craftbook/message-queue-consumer": {
-      "specHash": "51df7011e75129b7cbd310f0c5b330ff8f6e0162d24718d673c0bbadbb2283cf"
+      "specHash": "e0f9f542a84899b656e7e24adeee88235a22218e7563fc0115400434cc2fc46c"
     },
     "craftbook/spa-dashboard": {
-      "specHash": "b0d095db707fc68551c0ccc01afaba22dcffbd74745c642087af26e7b458f56b"
+      "specHash": "54779e818f1a681f3358e825678196a1389ccb7c0aafb0c5859a5fc6d7f028b1"
     },
     "craftbook/micro-game-jam": {
-      "specHash": "571c05e09dd7b8be556a50703a4c458061d1a975d72f532beff03420e32bbfee"
+      "specHash": "ae3892f0b60a8098464f407959ad321fb6135806810a40c22d903041731c6d2c"
     },
     "craftbook/data-export-migrate": {
-      "specHash": "9a6f7b3e3d0e00dae31f54953f1d2421ceddba6da5a1557d4061cd23e5cfde3e"
+      "specHash": "ccb079cc7fc5ac83a1e10e8b5904a27c7dcfdeb1688cb7ad83068b686877a963"
     },
     "craftbook/mock-interview": {
-      "specHash": "a9e22e45d9566bcc3f6b1a71507cdb8eb7628b90323c0bc2df9dd7462ba9bec1"
+      "specHash": "2311ff37154eb6b992363c88a88037f141fa22aba4b812febe54c146225a1edb"
     },
     "craftbook/state-machine": {
-      "specHash": "ee85f089b0557334757669206c4e24c831d12921a89d41fe1b7ec771ab8a5d9e"
+      "specHash": "2d109eca357ee54a9cabf28ba595c249202a27ace59f941072ed96e4151b0821"
     },
     "craftbook/alert-rules": {
-      "specHash": "d4b408f82d63722c2d1c64d1fd85078e53a1074139e2295a37fa2598ab388786"
+      "specHash": "d84f892c8fcde608eee38b2d0db5ed72cb15524685c3f8d5dde43a0be0c73e7b"
     },
     "craftbook/invoice-run": {
-      "specHash": "cef521fd467a7317c48297dfeb7f0d180773aca51d62cb4618f05f6bd54508cb"
+      "specHash": "1a9ded108bd6b2d4ef69a9b583a054596273322a87b216087daef61cfcb90e44"
     },
     "craftbook/monthly-recording-review": {
-      "specHash": "4d5f368da3b4333aaa238d7685e205b3357ec96c74630e0162e00fc1a66c6381"
+      "specHash": "e7c7540a8b736438e82fc0c59efc756ba7618c289c31456702fe6eee446e76a9"
     },
     "craftbook/morning-report": {
-      "specHash": "7972321ec5249aaf87959d4f1c279b86d784dd9eb671e0340f6fb4aae947545b"
+      "specHash": "81591f963a3f027f2745807c374f77b5f48fdb7c1a23bc44fb385b886184677c"
     },
     "craftbook/morning-brief": {
-      "specHash": "c48afb0497bd417f7ccd0a83e7406912bc45b7b1cf5886145d6d8f5b54253491"
+      "specHash": "f02d39f56b78896db0301f09656de296c715840f69c1d8048860580b56865508"
     },
     "craftbook/broadcast-announcement": {
-      "specHash": "eeab43da44faf7e685e97d2070a961fdc31b020c0ed378094b27785e86170aae"
+      "specHash": "9500d24e6ef2fa01b9eb5ae937b909f1bd6f39f17ee7ff8f563b76dfdd134797"
     },
     "craftbook/form-wizard": {
-      "specHash": "4d9dc3976a9ccb961f42e5c2823ae061b6f22bb22f2a744fdd3f0a1bb3e86282"
+      "specHash": "07a54eb1b25f8f93ebee8a838488358fef098549012b3be9f4e25c7bc97a1f5f"
     },
     "craftbook/music-metadata-tag": {
-      "specHash": "9f435b4bb56b8d2d9ef8abd428997d7787fc05d9c75746ba3084b6b985aa64cf"
+      "specHash": "5c701d347bbb8d6cc4a799ad2c8d3d458f022c6338a391fda97d70fe1147e805"
     },
     "craftbook/chapter-narration-run": {
-      "specHash": "f62e5df0a1c371d71e2ec2630a8ffccbb85e6f61a03eef27918657aed3b3bf7e"
+      "specHash": "a3bdfa2d2798a0ec46c1b83b9a3035c5cd03838208b5e1f73adfc80ef23cb9a7"
     },
     "craftbook/newsletter-issue": {
-      "specHash": "5ec9f0302ef82cd5f9c3acdb4bbaab3f25d89a79168f37227d1013d551130638"
+      "specHash": "ac6250519cf3db715ba3d015e71ad7f8012a895093e0f9d17fb20c19cb85e120"
     },
     "craftbook/nightly-fix-sweep": {
-      "specHash": "c6e284f151d68117694af650febde6ff859106e331ad6bbe0272d6a735f36b54"
+      "specHash": "092e332930e1f993459b6725756b1191665ad523f5fb0428dd49378d8fe438e8"
     },
     "craftbook/photo-library-nightly": {
-      "specHash": "b362463f3abaf8a24697f42b47f06e3fbf85793e6862e43253444daaa151c6ab"
+      "specHash": "e95a3db5c55b566cc7c7f09879f3270815f766345e8012fb0b306dad76682016"
     },
     "craftbook/notification-router": {
-      "specHash": "6b290f405a2642fa143e76d6741e5a9e7509ecd19f31d880063e46991ad69119"
+      "specHash": "1937ee8825a92fd858193be464db6606c7fe2ed24fbb06b60c6cde01ae1bdf3f"
     },
     "craftbook/ocr-extract": {
-      "specHash": "e2a9466255c6b8a6c1486f719612192645893186bac602f23b7e389e372ba4df"
+      "specHash": "0a91dc9e86f90b31dff48302034305227a0c6556dd99b2780c62077bf0e6144f"
     },
     "craftbook/offer-compare": {
-      "specHash": "e4332325cdb01395ba22a71579d3788d3cb0487701cf7a73329e5de2cdddfc81"
+      "specHash": "ffdaa469839f8b89573df7b75d2463405f13c8fed296faf62652c984a4e403e7"
     },
     "craftbook/office-hours": {
-      "specHash": "337a50d77bd55b1bc4025582c2989b45c264159cbf8266bcdd6b02f69d93327d"
+      "specHash": "ff429c4a8eda1e4382b8f47ba69481a52dedd0b54b0c4b905ce80eb1e108f063"
     },
     "craftbook/escalation-playbook": {
-      "specHash": "24d61e6107cb0921b8ef39ec09add824b77dbc8c58fc24b32d2c267f2571c59f"
+      "specHash": "7f4734aac3dd9039a185c078313b1de9eceb8803e81c501ddd50572d09ce29a8"
     },
     "craftbook/oncall-handoff": {
-      "specHash": "d9b2c4ebd45414cf48d1363aecb58c58d2258a0b251649304ccef39c3dceb8cd"
+      "specHash": "1794c60fac262b181bc4453bd473e2deddc10fed83d123541c8e536d5102ef89"
     },
     "craftbook/script-automation": {
-      "specHash": "d125fc2eaf6d93a74f17b9b20e9d25ed553ab969471a15fc9843452e9fb353e4"
+      "specHash": "a0e499626e67d535d8d503cb3a60430fc21ffc5d60de61a54711142a5477dab0"
     },
     "craftbook/one-pager": {
-      "specHash": "a310d52a7713136414f1f6da2db0be8183d7f7f43f574333c027ba3abcf55f48"
+      "specHash": "54143400be4ec02e0b93e684d23ee798140ee8c95cc3861ea83cd1782a5e9fb8"
     },
     "craftbook/runbook": {
-      "specHash": "363af63616a3a22e20eac5db1362a918f43271333aa7dde5bad65198c1e5ca8d"
+      "specHash": "98079bfbcdedf1b63bebc2ab698e8e36de6b1a23ec1240d54da374137383d47f"
     },
     "craftbook/comparison-matrix": {
-      "specHash": "d93211ea43cc6e7befde6c362877f0169eef6168781648b90384958f8c236792"
+      "specHash": "d51af3ca90e11f0f77f68c03296bbd03d4cc9ae5969177b9e9686b7234d1c8c0"
     },
     "craftbook/page-spread": {
-      "specHash": "d9bf89ed7d2e73f3042ebb3e12a3db2ebdc9e403ac5b8dbc21e3230610b5e2fb"
+      "specHash": "3836091e1d64db3290662458221bb621ce24cb2fdf7ace4a797e44ade3cadd52"
     },
     "craftbook/parser-grammar": {
-      "specHash": "8c3e3f72ac22a627672bce79294996f4ed6851bceaf53184d1ad0fdb8c1da5dc"
+      "specHash": "2207fa9fd5100545cec59cb41ff628c08a72081cca39058bd150f1f9f16a46e2"
     },
     "craftbook/perf-audit": {
-      "specHash": "7f87810d31c60586b20ef410a4b7fe5f94dd2bba85073bb5365d759afcd317da"
+      "specHash": "961403467bb9b20b95764d3b8d9c4272f5447457bd514bc851a51d6b47ab901b"
     },
     "craftbook/weekly-review": {
-      "specHash": "19428c59a00022c96850072ad8995b516d66d786becb95b8ff691a1cea6c613d"
+      "specHash": "b41b5f4475d823bddadcd7414685c56c305b09b4f580da088828312e74148de1"
     },
     "craftbook/pest-diagnosis": {
-      "specHash": "d376ce9b2f43eb751db7f5b14224c30961e08f89b9f5572f75b718af2ffcbf95"
+      "specHash": "6a46b999ea35d878d3b19b1e5235efbd9ab004f2847374b97391661c5083d20d"
     },
     "craftbook/photo-cull": {
-      "specHash": "d291c03c34e84104533ff4c9f41380971aa61fd3557dde29bcfdbfe08bc9f18e"
+      "specHash": "eb6da72e9dd479ab48f9c6290926aa26cc5069dfabe91d5b7285d7336c82a6f5"
     },
     "craftbook/plan": {
-      "specHash": "eb93493cc138ed6ff584378c2cffe8f6bb9108dd897a12c84d1b9a3cd379e661"
+      "specHash": "15c29d5c9fb071903e9c919464e7a157f7686994df8c8f51422b661f3aa69ac6"
     },
     "craftbook/episode-plan": {
-      "specHash": "88ab087dab842ed5d8506656b94511938fca2fda20be75e1222b360c28d9f736"
+      "specHash": "050e469ef9a857f60f0bb4c781f65ffcb5c4c59ec224c041d45d9c9686e3b0ed"
     },
     "craftbook/week-plan": {
-      "specHash": "b16ae7490e208701f6fdcffa5fd241e67ad0bedde1a288da0f2d01c941ae3fb4"
+      "specHash": "2a31a15c7998a9fb66dd2553d7011046ef3f7fb18ba5fe0c7b87dbc18264d443"
     },
     "craftbook/weekly-menu-plan": {
-      "specHash": "f8d394ada2c4fbf57b2416bc2c06da670fb9ebeee8cf392551bb838295b8d439"
+      "specHash": "be2f79d42877f0ea34e7267b31a5a62a7106c85f1e7ef5decfc6539226f4c678"
     },
     "craftbook/playtest-report": {
-      "specHash": "d8c403b24f2c5939543fb66919628d6af26e70265cb467c457c5fbd9396fdc6c"
+      "specHash": "dc929cd253564207df81d42a773e448b07aa42f7bd430d5b70e9ac03ad0f31ca"
     },
     "craftbook/podcast-chaptering": {
-      "specHash": "58bec97a65f4ae6bd565b6a5de1d3f674e92c12d3e9cb259dffa0c2bed32eb48"
+      "specHash": "85fed48590c0bcad6864473f1a6c8a41b5e6bc28dc1df46db22b03fff874e48b"
     },
     "craftbook/portfolio-site": {
-      "specHash": "7d26fd9a33bf08fdffd1725a2ce42aac3cbf47fdb662d4aaf0357fe6e4c6f25a"
+      "specHash": "adcca5470fbfab2c9ace8c3a96611a9ebd7b029547a880e1c0ff36d91565e9dc"
     },
     "craftbook/thank-you-sweep": {
-      "specHash": "34bf98b19c8aff34808be354152eb14254c626a265950ed5d84e419ecd7a9ccd"
+      "specHash": "0d36c47e8eb1cab3260632c2ee81ac5ed452ed86550cd47df4093983fa078604"
     },
     "craftbook/powerpoint-deck": {
-      "specHash": "696996c89cf0c591a538a0f4be3b69e1e2779ef99e6abd00c1af0d2b5d1f9c55"
+      "specHash": "b04a4ede5436242d93bc282c3593f07d6e7a7f630410d92c62a147de1081b161"
     },
     "craftbook/practice-exam": {
-      "specHash": "d4792bf0eec3284323aa4afc983f2162686e8d5c79e14247d8f2a5748782e539"
+      "specHash": "389e2fd9c485719cbbeeea4f8e9878c7a59dc214299e307d722aae708ac9fbfd"
     },
     "craftbook/pre-departure-countdown": {
-      "specHash": "376ae78d3c1702c4e626ef110d9b67ecf8653eb77ad9b6e01c226967b2193ff9"
+      "specHash": "cfd30bc8854b0b3717219b216ed23ed13dd634cdd5452a0926ac6fd5a6b67159"
     },
     "craftbook/press-release": {
-      "specHash": "fbcad3033afaeac0eb8c547ffab187c3fddc7f6b1846b66a55e06ec798287ea9"
+      "specHash": "a3dce17060b3ee8dd9058c807299552565bdd66fbf35b5820bbc3c4fe5775097"
     },
     "craftbook/pricing-page": {
-      "specHash": "3d2e5c5adeb68cc5c17bd3cccad6e8b6aa3326ec32473ce7f3b0afe1872decd9"
+      "specHash": "2c93f42e0f51c441e17b0d6eda60e2b3b223e85a300a4c32558b8ce32c1b8036"
     },
     "craftbook/onboarding-flow": {
-      "specHash": "942f16fc94dea2e0b5d96a18cb4e6022e435165dbe17b565a402b14cd71005f5"
+      "specHash": "4daca8721682c3ae762505348ec1a1c22efb12850537fbe41f813dab0e6fe61d"
     },
     "craftbook/config-scaffold": {
-      "specHash": "711b15abbe215e5c21c13dd2e33bd62a3493fadad80e925d4ee0a8541ec29111"
+      "specHash": "422e894c51e17301da0df5a34f1ca0e64b2ce282ec310a1224cd7be829707ff8"
     },
     "craftbook/proposal-sow": {
-      "specHash": "f7dcba00325cb7e2d01095fcea633496f803597d2524a1e3ee51abf97b5583b0"
+      "specHash": "b0f43da02334aed9b7b203b2e2b95b904603752f7a607a16ab80781823a3d472"
     },
     "craftbook/pull-request-review": {
-      "specHash": "bba85809600194c405e68c0774a66b0dbdfb7286a0ee7138a23100c23cb9387a"
+      "specHash": "c7b86b0cd6397e726647bea4d6d4212384054c01f451cd22d87ee01a9001a55c"
     },
     "craftbook/quarterly-summary": {
-      "specHash": "be2f3a5968ae8670dfec8e07386c3993b570a2a820d930877e1ecfb6506a048e"
+      "specHash": "3cb67cbd17a14334e0c233e06598b2cf62ee7d5683ebd48c9d836ce43e3be2af"
     },
     "craftbook/receipt-intake": {
-      "specHash": "04a8dbbb5feea8149e315c967bd1a7997d1188be6e8b9d3cddb3f61309db2502"
+      "specHash": "1d24d291a77e5ae0976eac19c81b795b8efac4f6fdc30a7c7f1cb56d597ed91e"
     },
     "craftbook/receipt-ocr-ledger": {
-      "specHash": "5b764fa33e1f83a199443ea1a9b9c2308e524b1b64626251a56bff95677a69b4"
+      "specHash": "1e726bbfa2072716fecd0f3e51c0d7ef632afd39d230f43d0b2c071514dbaa6e"
     },
     "craftbook/reception-report": {
-      "specHash": "9227b67c7accfe9352819dc567d62d13caee1820c479765219d8b376159885fa"
+      "specHash": "cc6fef758ce3b2d560962819024ff52ccdad7e9a2c29c7b0de96ef6c5669534b"
     },
     "craftbook/record-a-relative": {
-      "specHash": "89638d9aacaf229ab30d65b4d7a4a4a00f08a3d54f7de289334d455ab6bb472e"
+      "specHash": "1d18caf1f6ee5e298ff47352a3b359b08f80bab57ba0ef7e25e36a24afe5b49e"
     },
     "craftbook/status-report": {
-      "specHash": "9b135aca454dfe08b7735438331eba3f1398c3a7ac1a868905b23ddc00cfdeb3"
+      "specHash": "7d62aaa5ee2b57ea07b4b2fd34085c85b182f262d660367e4300571be462c903"
     },
     "craftbook/release-announcement": {
-      "specHash": "5aeea12235f9b56d8a7f36b09cb571235b1827574c89d4c45220a811312f8cdc"
+      "specHash": "2cf9e6ff4f9f7ed52788acbde27de59657cd2857a9afafd695e679e6f0da88b1"
     },
     "craftbook/release-artifact-sanity-check": {
-      "specHash": "4c9671b56a275053fdf4b1668b468826a9434219566c0a224843346b25691200"
+      "specHash": "8246ff96fb5110a67dd8f9619ddbc7fcac0434ac938c384529b80ad79730636c"
     },
     "craftbook/release-notes": {
-      "specHash": "6d431f92b923c82c47d1bbde09309a38667b5af9f6da6e2eee4741ec3cdd7d88"
+      "specHash": "63db9a55e3b8801f80030b001a97ddfdc73998156c61123d008c4af8ea471a0b"
     },
     "craftbook/release-readiness-review": {
-      "specHash": "945f1b0984aef5a2aef31cd04a94bcc5ebdea78d97a51274d35272afdf47ce0b"
+      "specHash": "8c5913ee3cd306481aa81e77ac71450bfe9c465ae2fc2e078929dedbc741a340"
     },
     "craftbook/reliability-review": {
-      "specHash": "0ff042711fd73efb1ec85617a51397b7ab45a4a676739dbd1fe67ddaf0daf44e"
+      "specHash": "5c927130177789cc1a2862bb256d28c95b4b39e954c25fc4a90c75c00cf4fa27"
     },
     "craftbook/reorder-run": {
-      "specHash": "cce291bee4379747bb05430c3cf77a64c9cf3608b9ef2c0058a4b8fc7860bb00"
+      "specHash": "548bc8852e3ff6dd8d2dfe6c475d538877f3f2632aaa5a89e015424f0d5887fc"
     },
     "craftbook/bug-fix-tdd": {
-      "specHash": "aeb901f68eea4ee624595359e965d91447eda98072797beac172a7d63340d7c7"
+      "specHash": "bcbfa8a896e3b64133e1048cccb7948df6b1320321dba36ee946d7d04ea5e2eb"
     },
     "craftbook/email-template": {
-      "specHash": "9a3ba7e92e553e69d347339af3bb96746ae32e311b90e94405b647376711925e"
+      "specHash": "e10373a47ab67b0e05a8dd43a20ad1edf866109aa0b70a060d336006d2df8597"
     },
     "craftbook/rest-api": {
-      "specHash": "33d4a8351bea94519a6acbd2c8a49246adff96c30df4158f2ab611d2b25e9d08"
+      "specHash": "3bff6cd26e8a81d29ab26a292d7144d6b0beac3e625d11602bda1eacd8244ce0"
     },
     "craftbook/resume-cv": {
-      "specHash": "96099845cb5ebb545b124c67ccf6e1231e9f1538dfec5cbee99f86116389505e"
+      "specHash": "cee8804388bd8bcf129b9a6d5a7d18b7c08c172421e094b5e9bd54f6c5d84c1b"
     },
     "craftbook/library-package": {
-      "specHash": "5d57d687b22d489d23791a51ad59075264879e5a58d5b9ac1cec5a80480de6d1"
+      "specHash": "c74d33c6ea6589ebd161e0d3125da826395f46ca588c141be73b2c0379f02821"
     },
     "craftbook/web-component": {
-      "specHash": "dfe128201e3f8f67b8f5492b80ab0bb9697b1b5bbe910b6a439c822c33af7577"
+      "specHash": "0f3b01e48cbe7a4a6b24ea9c5395668cb8ec367751f004048c4e8ac99943e704"
     },
     "craftbook/review-code-folder": {
-      "specHash": "aa22994db397c0ed4b4bdf27ec7ce2e949789678d5554695fe9cb4aa39c9ca75"
+      "specHash": "0987e5edc8f3d217e0a76979571ae1ee2b1df94b4dad48e7abadfe1999082c36"
     },
     "craftbook/review-reply-batch": {
-      "specHash": "48458741b497d18724556ae37bb87c0c94c3ee5a8b163e360bca03576f768c0c"
+      "specHash": "3b730642eb827e79a8f61f974e0f1e05f664039780691fb1adeacb597f314c2b"
     },
     "craftbook/reviewer-loop": {
-      "specHash": "e20e96387939b1b7ce220b66b66d90fd36ab715ae2a2eb210a1dcfbb619f7227"
+      "specHash": "96b1d8d169b37d82be19b6f2fd3dfadec8621a257bfd0b92915208858a38508f"
     },
     "craftbook/rollback-plan": {
-      "specHash": "898757d46c1bde096eba2ee3128a15f9ca630d05a429bbd5fb67d04e981a3481"
+      "specHash": "61a681656c14814fbee926f03c71e68d0ba4249648a3ce1b9cd949ba18578dca"
     },
     "craftbook/root-cause-investigation": {
-      "specHash": "a5d6e239c72d09fc6bd1fe00195e953408fb4cc808f3a0fcebf4ddd365c961f7"
+      "specHash": "5b2095b6e5f13813163a333b1339ab6195f5619dbfd326657c61ff91639b584c"
     },
     "craftbook/rough-cut-assembly": {
-      "specHash": "d597e92e989440469674651b606c884e92ab1b8409acb7d845b8910a0bf27db0"
+      "specHash": "0731242612449e0ffbd7a0726162c4fbf18129c07b5b7d422b9ed3a6b9c05a84"
     },
     "craftbook/digest-from-feeds": {
-      "specHash": "b69a61ed67c62d3cfc94aed502ab02f7585ceda7acc31bc14486dd9991a38977"
+      "specHash": "9c8a68204e92feacc978f50cf2f3e2e2a962aac5e73b504ef400c871ebdc66e4"
     },
     "craftbook/run-of-show": {
-      "specHash": "493431102914fce601628484f07c1ddfcd2f2d7eb0a100624556cc24220b693a"
+      "specHash": "477b2dc5148c6d9eefccd4b38c94110227652873d81f3b0231d18d508692018a"
     },
     "craftbook/mod-scaffold": {
-      "specHash": "7bd254266b7b47626321d178d409901674f398b6dcdf17306908253d12e8bb90"
+      "specHash": "f1f14d7c02ea5a4971e367bdf95fb729cd21a96cae00fccb9e47075b8a1a0a73"
     },
     "craftbook/backup-routine": {
-      "specHash": "6d2981d96690ae89061d1256ac5326218f2d73b1447df906da852f73469ee5ca"
+      "specHash": "c568be7eaf5e0360cbb5dad984f75a2dc7c8d3c13502b98b07af0f65204c9742"
     },
     "craftbook/cron-job": {
-      "specHash": "f3b782327a4efc6c51657a5de63bf657273eadc079524f32e0178e1d17b140e2"
+      "specHash": "8f25d77ae943980c3abfcc26dc55145fca81616a1b68218332315e1e3576cab9"
     },
     "craftbook/schema-migration": {
-      "specHash": "bf884d9b23334b42e8153c9c6b1f0dd2cfa75b40f820c0bb27e93163d6ca7a79"
+      "specHash": "7a0977dfb3238fafbcb894f1104fd7759e26e078c013e073049f52eaf16a13de"
     },
     "craftbook/scrape-to-structured": {
-      "specHash": "2d08bd040b296d3e8a044decd99ba6051a553b539e0c0284637ba96dfcb47093"
+      "specHash": "2db1d3b2bec9ccb71203d2dbffe24d429ea3f1142631e36701daa750abc456c8"
     },
     "craftbook/seasonal-maintenance-sweep": {
-      "specHash": "693f87d8a855694d29d413d2b5e9bbd4d956b758dc6448f5296e88c555995fcf"
+      "specHash": "71251d4937a2949b952ed11cc601a0d45f2363c59bf91024e6720a313ffe867c"
     },
     "craftbook/security-architecture-review": {
-      "specHash": "92b31febdccfd14a56cfbf5d68942b653f3a41b89b434e23ba3df0c1ac82c590"
+      "specHash": "4a5c26d3f599ea1f413b72b3b5a7e70de9722327914cf0db942907f88ca77832"
     },
     "craftbook/pr-security-review": {
-      "specHash": "ad9b73e073110276c41c0dbe18caf67f142dcb8f7bb7da47a4a3d1011e515f19"
+      "specHash": "de4cc0e5c02534e4948cfe0e899efe6c0a7b2f621670d929377f75d44538059b"
     },
     "craftbook/blog-post": {
-      "specHash": "42f657788c58cb2ad2cc099eed169dd310d9c6484bade5604cd59efface004e2"
+      "specHash": "269e4242f21f1650600b580c3d5620387017f0223a2f5cbaa6a900795a20b722"
     },
     "craftbook/seo-meta-pack": {
-      "specHash": "c33bb6e33c12ad03e1c5463ddb51dcd6942c4959d502a10087eacebe45882e99"
+      "specHash": "57dae5f463ecf550293a6981b600a9a7c0765fe549a359f10dfcca3432ab524b"
     },
     "craftbook/ship": {
-      "specHash": "386f35afffbb2092b4f692eea496d44cd1c7d7ce8270a055a382461cd9879d82"
+      "specHash": "cda6ea414f47c2934ca79d55091f16c4ffc9988c0cd2d64730cf8c1dcf9322c8"
     },
     "craftbook/forecast-model": {
-      "specHash": "67578c727ddd82548bae1be206d75aff0662f5cd8193a7655514e6e3834ece90"
+      "specHash": "e83b01b33319ae3d3ee2ed17ad02637325545f632a6a7415ef4aedc84ee0c4f1"
     },
     "craftbook/content-deck": {
-      "specHash": "7b6756fcc1ed1c2aa2c3f87e596b12a7cdfbe85e2056ef2076d84d5fc634c8e5"
+      "specHash": "1baa17cea7e492f241f1c989528759c46ad4a366f4d60f8080c0f2bb027f0e2a"
     },
     "craftbook/social-digest": {
-      "specHash": "cddb0b63c03d7ad96e4284a06531fa234e9e21707715371e3f6eec5247ea6bac"
+      "specHash": "df17d87bddfa6766dbb42dc6daa3c508366759623ffdac22c2f275443280ee4d"
     },
     "craftbook/social-thread": {
-      "specHash": "5fa66ce4a66646a9569d05033e0975e3da58c3c3765ad7d2f5bb4131d27a6565"
+      "specHash": "9e3679b8516e0896aed2dc919b1c469c10c8ee8d19e54854deba923e0cb130b3"
     },
     "craftbook/source-quality-audit": {
-      "specHash": "1e55be1d371e3101e8f98b79ec30196daa86b0a07a7e04cbf697ac5bef12dfa4"
+      "specHash": "46e6fbc1d41976e48c08c3637a1f365811391cba2ca9792fc7584ea0eb0d66e5"
     },
     "craftbook/spec-authoring": {
-      "specHash": "435f43c2080520c1466022d0b6d3fbf2b8025ac82b7a69cfa20ae8d6f0550db7"
+      "specHash": "3d5c84114a3264c2197c523062a723cce8c3911ef5c41c2997432bc0ee8b5a3a"
     },
     "craftbook/spreadsheet-model": {
-      "specHash": "dd6966868da65c697cf3933cd8209bde5a6b365e3199ee5f40fbd6382f66c988"
+      "specHash": "5c2b053497c7ebc7d3b0098945694cf077d65c25b952f1e6777720de9d70434b"
     },
     "craftbook/standup-summary": {
-      "specHash": "a15279ee76f2e549056d6449b793e75f0e0066a0f91135f17310e49fb8d49080"
+      "specHash": "d8173392b7bc34cdaafec531ced78f9985c778934f7366afc452c94ff946a24c"
     },
     "craftbook/structured-interview-kit": {
-      "specHash": "3d2f85fdb93426e45b0114c45608661fde4d9b1ce8dd43b7e75a5695bbbe4df0"
+      "specHash": "87b1b24534f4fc5eb0fea223088700d7256186294f0d957350cba8de379077cd"
     },
     "craftbook/subtitle-generator": {
-      "specHash": "7ac1337f3e36c097722b5f6b90771b9fe3285830b390699abea3f9f2fb0f5f11"
+      "specHash": "61adad48b98ba9593b417f8b9605c389793e1df841711ce4b660e410003c07a4"
     },
     "craftbook/summarize-long": {
-      "specHash": "1d70492af9cc68d9106586d3f46f0e284e5b18bf46034ebb02f237f0afd5f009"
+      "specHash": "04ebfaa9f9e8234e370b658db4804d9ffe1c63c15edb66a04a167b3a2af940a4"
     },
     "craftbook/survey-analysis": {
-      "specHash": "686b8af469094ecb26294c45243a764c6896a6de632a37a0c0bf6c936541dbe7"
+      "specHash": "ae575385672994028c834a85766db1cdffc75f0a86b220b8aac2097cb5246206"
     },
     "craftbook/tailor-resume": {
-      "specHash": "4882032db19a234ea0e61e58ef46f6f1adfe74e8904c0420dee28284afbb20f9"
+      "specHash": "1addf0be1765dd97f62af6c98b4bb79a7976275a50af433c781fd119cbf21dc5"
     },
     "craftbook/cover-letter": {
-      "specHash": "42b9593e381cb3dbbf567e23ead0adf2d14370e3b0afa6792771f3a72182134d"
+      "specHash": "3689e16ea5dfe00eead5c95fa17c04b2f3567e78ef8b5e05b9ca1331dbd0c6a0"
     },
     "craftbook/perf-optimization": {
-      "specHash": "0f773718cd12489d2b806a2d198272d3f8dfa21d21a1b0c2383bafee22c6eb0e"
+      "specHash": "c810d7879087ec62a08e82a1f25e39e2d21c33ec9dbf41d478722801ae21ba15"
     },
     "craftbook/handbook-section": {
-      "specHash": "4886fa6ba891cac342f44424b7edb3311a020de2695d237ad7cfefc74183ac31"
+      "specHash": "fca4886abbacdaa345346fd6ecc5f23596f9bcf82221c0a4719c6f6ecf6664be"
     },
     "craftbook/spec-doc": {
-      "specHash": "43195c35222bfbd1ffcf9cf9655ba234970c13842fecd201168251deb910504c"
+      "specHash": "7d0f1a8df409a0040459ec76d5e2e68d722e1a51f37b759bedd4ad0abcc73eac"
     },
     "craftbook/technical-documentation": {
-      "specHash": "11c735ba36e4d502fa23e09b5650e8d96eeeef1d5fddd893b58ba70913f12b54"
+      "specHash": "03e25fd836e59c343dea2aeaf582096550f76c42d5c7a1566901c8aec5949861"
     },
     "craftbook/test-coverage-review": {
-      "specHash": "4c8d009d3a1dbe1970d6f46df2b43d9e6312b7604ea3f073e2290f5db306a5eb"
+      "specHash": "1064a7cc44ddb5cf0bf3a2f8117f8a1d232cb752f5e27deedcc0bff51b809291"
     },
     "craftbook/test-suite-backfill": {
-      "specHash": "318a4c63c273efd1f25c9347a0a8c82fa05ad3338a21d292f02dbb109bf563b1"
+      "specHash": "30c3a178ece00dfdfbd89371b2274e02a2dc26929a5b6eaecff1ed8595161359"
     },
     "craftbook/folder-to-audio": {
-      "specHash": "9888c09001349225a924fc668a1db64f3242401ce5a6a74b9e6090a988fd1b95"
+      "specHash": "de88b1a3f1177753aa874e25e142e7dd8e8d4d79cf248d6f60ef713ac102abf7"
     },
     "craftbook/thank-you-batch": {
-      "specHash": "8d2a7444842d0214b0640ed99c95fb81468563253a4f1f4a70eb792e1e0cc105"
+      "specHash": "88ceece0225bffcdb42f158f78ad5c91c8ba8482b7b1bcf573861ae69cd25d82"
     },
     "craftbook/thumbnail-generator": {
-      "specHash": "d9dd2109f94247a6021d34e09f8f56059a90cf90b672faeb7d1350bc6d0823b7"
+      "specHash": "0884663d6f72ad0ddbc955723bc1ff985fadc23e4da4f9b0a20d1beb2c1b8155"
     },
     "craftbook/tidy-spreadsheet": {
-      "specHash": "21f57eeb9c5354dee4ca00096580de360ee3325e1cd1d14fd184b2975e21b2c8"
+      "specHash": "87b81ac3594a523e7d5c123c226dea1cf96937dd3438dde6d4eca9ad970b18ec"
     },
     "craftbook/tileset-batch": {
-      "specHash": "e3812b79b623d2216734841611f11d8e280ac31dd22ff1a2e3956ab56990a269"
+      "specHash": "32b855d6dd9b4c515a2f24a8442e82e516e24f35e717fc1b0011006267dfad15"
     },
     "craftbook/topic-explainer": {
-      "specHash": "6113acbf319018574b4acdaacc4e23c47568d5e5f2ad53e53d1058b62181b26b"
+      "specHash": "25e454bb029fb040be63a81151a8cda6904e21580c87aab6dc287ab73927a0f3"
     },
     "craftbook/price-tracker": {
-      "specHash": "4ceb3af626eb82d48aa3304ff536a676cc26438fa612ed64b9e57ee605ba994d"
+      "specHash": "07ed40072f11fc0f9b9aa08aef4ad7e7b9cfb46c3867fe263c6055770b43dd53"
     },
     "craftbook/transcribe-index": {
-      "specHash": "bb4d3c48979c52507cfcc747bbffd329c67d02a19cd7fe61618746349c678d77"
+      "specHash": "1a4e2b9887cf763f4004ec2187b8d39488e60476a2da8ee723eedd3ca275869b"
     },
     "craftbook/transcribe-audio": {
-      "specHash": "75fdc4b96ac2f2997eee192071cee059d417950e0b8388475309f90ac97f7de4"
+      "specHash": "847b1d2bc17bd7e7e436f787e61a8640b61fa6a6112970033c8147c2d4f666db"
     },
     "craftbook/transcribe-and-shownotes": {
-      "specHash": "79cf1fe4e5585a7dff5ff41b36b6fde6d6d56f6c3a434ce5aed5a9e79f9b7915"
+      "specHash": "e0532e019ee9da15e8c702054150b698269b923a0d5d68b9fd5e3545fadafd7c"
     },
     "craftbook/translate-content": {
-      "specHash": "06c3848e9f667da244203920496abc50b49f49114c093e005cee4fc81a104158"
+      "specHash": "cc2579471f898f53495aa3108a48172996ecdb9d54fa02a7ddb77ecda6e3778f"
     },
     "craftbook/type-safety-pass": {
-      "specHash": "50bf8ae099cbe549a68db747b6d08d5f9e946ef075a5db8a5612b741681399de"
+      "specHash": "46f044d68cde5ecec391392481d3f3bd385e1752a3398a66783a6113796881ef"
     },
     "craftbook/sdk-wrapper": {
-      "specHash": "6ed99619bc3b01d1c839a202800137d1155a2c833b01921e9d05734e96e25672"
+      "specHash": "d99919000952a7aa98db043e82731324c0d8f0e611451d87b0bfcdcc3a834542"
     },
     "craftbook/dependency-upgrade": {
-      "specHash": "4344964985ddcede0320d18042b32d7a617baed056ecb090baf7f2352e080ced"
+      "specHash": "073d92b6827d624b9f514ba1444dd61bc99e444b4949f884354513158e8ad3b9"
     },
     "craftbook/design-review": {
-      "specHash": "8c9c786b5bd102ec08bf509d191bb850f913b9ac75d142ed332ab076e19291df"
+      "specHash": "2db03313c98e31c3b4897dc4c5798b5e60b4745e16c839ce7f120a0c7addb1cc"
     },
     "craftbook/version-bump": {
-      "specHash": "775ac636d2b15b87b095cd04eb0b451d62e15b1d33e059c7d06cc6e2fbf5f7a7"
+      "specHash": "88f2607aea033f37998603fa8f197e1882747d97eb13c80e8743e2aa45419d84"
     },
     "craftbook/video-storyboard": {
-      "specHash": "86fcdb29bd8b6594685ee653df52901d07437e4907c4c1c5abbdb0fc85e9abb1"
+      "specHash": "ac8332096b346a6baefb6e53c3d573a659ed2f2be8468f76728f892423e05841"
     },
     "craftbook/moodboard": {
-      "specHash": "7df4d5c7cd4bf27e8940b9d014f6e2283ac7ff2c3251419b0f1e8d491f9688ef"
+      "specHash": "9b002774e475619f6be34c0f6751f4c0dc72cdf17a75c200cf41fb6c3a4fcbba"
     },
     "craftbook/voiceover-script": {
-      "specHash": "7d4c0479fd4462155255e6e80cd8a223b3eb54d9e22d272891f71bc41307b131"
+      "specHash": "e7fa5f5cce5898358e966616d1ebe00fd9d8eb09f4ebc24058e52eddbea67aea"
     },
     "craftbook/monitor-and-alert": {
-      "specHash": "93244aa5d1468be7f25c8bbb7f9d7d0c103747f6186a19d97eade93089301480"
+      "specHash": "0806a3ec1693c9a95f31f20c64f13f422c6648ee49f44bcb8dc77479ced5fc53"
     },
     "craftbook/weak-spot-drill": {
-      "specHash": "6e1ecdd20fa10654ac0c0be3a63a38a6e82ef66310dc26014379a7f7f31a978d"
+      "specHash": "200417bd81f6b9b8764302c1e9d55d2bc6dfd4578693d079dbb9f65c79530759"
     },
     "craftbook/chapter-weave": {
-      "specHash": "d8d4060fddd4bc0dc334273fc9b7dd4e3cf465e200abb524103ea06f2980b1e3"
+      "specHash": "f76dc79f5657bf2654011830af8246d922fdbd0d0c0a9e17ef4ee2c4744c0980"
     },
     "craftbook/weekly-walkthrough": {
-      "specHash": "8b7ed648a17198c9821723c946a609e008e9343dc9cb1b769ca909bd24e331ab"
+      "specHash": "fb2947a8bc363001065b667595f7c8963efb85fc42452f1715f64d2691b45e85"
     },
     "craftbook/weekly-pipeline-review": {
-      "specHash": "62c77eceff4681f265da6555f9ec6e662d3dc935e1321eec32fef0be98fa4132"
+      "specHash": "be86a3adecad2e8113409e364bd97cf0793270d612e26864eab8c9cf9004a561"
     },
     "craftbook/weekly-schedule-draft": {
-      "specHash": "b95d283c2e8ac0289d9f273eb059483920f589e814a92f871eef3c280afe6dbf"
+      "specHash": "453fe9948b64b3ca0527313f3be1e6408e1bc26b3b54af6e50f39a32342c6fe2"
     },
     "craftbook/whitepaper": {
-      "specHash": "2c4241622acbaaa78f38ffca6f30f52cbd631205fa69e521cf1c44e6b691eb31"
+      "specHash": "22f9b1a0b05818d43aa41e1fefbf156eb6e4907c6d6c291a1a4e1e62ce6f189a"
     },
     "craftbook/research-to-document": {
-      "specHash": "07e002abdbb64e2746de4be7adb1117a2db9a9ecdd0dd60390029a209cd49b76"
+      "specHash": "e236a259e7b0c6226a4b28cde55b012b7966f7f24a9482286ec719eaeb6d0518"
     },
     "craftbook/automation-recipe": {
-      "specHash": "5b6b78e6ad277109f5c0e3226ab4f2b81cbfb55a707b13bac87ebcf9335787bc"
+      "specHash": "4c23462b60c9cdc9a940570efe4a7e7f48c27999e60837f78c6d2b6998060116"
     },
     "craftbook/year-in-review": {
-      "specHash": "025ec4b50b25a4b55aec74ae2a2d6323773fd38334c814c32f1d5002cbe341bf"
+      "specHash": "07e84bc4491fdbd524b7b615842c40137bb9fbffee3bb7b7143dddb91f6dfd8c"
     },
     "craftbook/youtube-chapters-seo": {
-      "specHash": "2a8050ef7f7d8b75bded5cf4085a385f972e984a849949484cc4d1b40d88db78"
+      "specHash": "3ffa6a99b62a3b19de5f70a49eb071ff64a53c45d7f4d218aa84356dfd167a8b"
     },
     "project-types-index": {
       "specHash": "5728cd4a1b423e34bbf73703b2a3bb870a9f56cfc2f281daf007d0cfe68797ed"
@@ -1192,6 +1192,9 @@
     "gezel-on-a-server": {
       "specHash": "adab29e6614ede77ec8b99de8842143cec95a79ab218e035ba9f6fcbb8c5b400"
     },
+    "build-a-gezel-app": {
+      "specHash": "6905de8e750d85286d25b607492a23b7f6c3cbadd3ac27cc23da843565cad56c"
+    },
     "building-ai-apps-inside-gezel": {
       "specHash": "60fab2af4e79fdca647d8b9e67de306f2b05cdec07f044444a1bd1811104da51"
     },
@@ -1213,11 +1216,17 @@
     "model-scorecard": {
       "specHash": "01be0bc30cc9bf2cf63ba8dffa87f9f2246eea4fc5477b274bd1874327d098c5"
     },
+    "gezel-app-ux-guide": {
+      "specHash": "2b71cea448ba9fd35e3a1afa3b67924bc0f0117f425bfa9a2ef26156953d4a7e"
+    },
     "model-catalog": {
       "specHash": "11b30f83fc18ad529a6ba3551ca1a7b9ef4f7302472b49a631128a6f874f631d"
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26313": {
+      "specHash": "527a983172fcc01f3ca25305b20c798c6cc3e1d14ff89bb7b251e45bb6cd632a"
     },
     "whats-new/1.26307": {
       "specHash": "d425470d625a83cd7bb66a16d771b1470532b2f5590ebd300b22ceeacbd94917"
@@ -1481,160 +1490,160 @@
       "specHash": "488f4ec884a66f090131e6588d063f525868c13179bdf475774e7186a291fbea"
     },
     "role-template/account-manager": {
-      "specHash": "a88176ee4eed7ee81ae6875453b7807e9310cb170657457e0f6d13a6811cc7db"
+      "specHash": "5143b7b30c9ddf43d5b33a6f3b5ae46e4a7fe444209cd701e9077371cd33d71c"
     },
     "role-template/archivaris": {
-      "specHash": "a0330a8cc8a4f8f750e7a766e165d8b5f58fc815f41faa31f29f93b267ba7c51"
+      "specHash": "124022ae9c59323b595b34c6511721341526c67ca6c7620979928a76daf08854"
     },
     "role-template/bookkeeper": {
-      "specHash": "913a8ec526a09ce348cf931713405270776e725b0b4b2cbb41264e31205f30f5"
+      "specHash": "2368f83ed09fbf32a7fa72eb6f09908a7e0553debc37b159e0669e7ccfa71a7d"
     },
     "role-template/builder": {
-      "specHash": "5071c5fca5131e63e187f3e93906d1003a47c5524bf3f449e9038ce85cbffad3"
+      "specHash": "f7a7c8e7974b1ceafa61562260312e960df501516cd2e4d02d43dce245a2ba53"
     },
     "role-template/campaign-manager": {
-      "specHash": "f060727fbca1604f987048c93a1097aabf3a1e63e60f4e6cfb1055a71692c024"
+      "specHash": "e425b7e03a67b5dcd7665988d281fccd2a6b0419e3165b028eea927058d4754d"
     },
     "role-template/zorgcoordinator": {
-      "specHash": "0ce685ca9c251bd2e91c70f6992435efd6f7e8368df510c3dbcf5f9503a58c75"
+      "specHash": "9c79a6b81f7dce10f058f987d519c3895cc3e492d5decc70978adb2365d52add"
     },
     "role-template/career-coach": {
-      "specHash": "47052d896723b7192fc254cde233c1def98f0f106cc91896aa1b21a56b3dd95b"
+      "specHash": "507348ace97af91af49f56c77f7f30c223594c7c8c2336af682090c63520d29f"
     },
     "role-template/checkers-player": {
-      "specHash": "2bd65f4b1cbb87e4ee0eb6c64254aa91a7c7f78c13f2339d74f42440c00e54c4"
+      "specHash": "afd5d51b98f0921baa3bb02f125cad98bd5d1c15ae12e9ec5c62a7edb233469b"
     },
     "role-template/chess-player": {
-      "specHash": "ca37c9585c3b0ef1bd255d9c684eb66edb57bee80e6ae964ff7d6cc3c2df9a9e"
+      "specHash": "03d3727acaa686f5aa2b0b1bc9dbe0c1ebba4251bbb71ecd25a37840ef010b33"
     },
     "role-template/veiligheidsmeester": {
-      "specHash": "89ea8c601f195abd6ee0c0c18b05d16957393ce9e258c9381ef29c61f3435009"
+      "specHash": "7721571e1282c8e02616980759e190ae872dc8ec0a7f7df921673a0e028ee417"
     },
     "role-template/woordsmid": {
-      "specHash": "bb9f1862648a21918023ebbe433b6e47345e1bc00b815cba88dd65e87cba5a81"
+      "specHash": "b2c42f983a5fa2070987ce61261ebe2e33aa62e450637ad157636eaca215a223"
     },
     "role-template/coach": {
-      "specHash": "e7d119e1a995b65324f543da6130b95ddf792700693ceba2a25af7f45f3b8424"
+      "specHash": "b61de50ac135ab93db625bef54cfbeadcd03b19f6f7788e3727dab77428952f0"
     },
     "role-template/compliance-officer": {
-      "specHash": "30a3a1ed22883986734a5316e48163db02fee640085f1310488987911224332a"
+      "specHash": "26015557327a49c1205ecedead18304528951e02d45007b671fc3b93454156f4"
     },
     "role-template/conversationalist": {
-      "specHash": "ed2856086c4cc815104230e21998c48fa74a3580a5e27d9e5e06e3fab7c6d978"
+      "specHash": "cd91186724273161c787326db8b27cbb0f09b7ac4e98a977f0e709c5d783f628"
     },
     "role-template/copywriter": {
-      "specHash": "0eaadb3dfb811c33c71742d61445977e0f1da4b7aec1cf4aee3111f4ae0403e1"
+      "specHash": "f8a8d9cfec034e3481063dcbe9c7f56cf5f34e36146bf81ede4b8799f6d78ad2"
     },
     "role-template/voorman": {
-      "specHash": "7cf4bec03c9fd5ac5efe8f415bcb4c5d6211ea7e186c5338b35e0746aeebc420"
+      "specHash": "f5bf70c9b68c7250ad4ecfdcd93297cf6f0d20d93802a36acfcef4a638d31d0d"
     },
     "role-template/curator": {
-      "specHash": "1e3ad59c0b1e2d5ead04f213ae76df803aae24995cdb0ef91ab6b5218094284b"
+      "specHash": "20156292f83407b9a368359b8e6e485d3ccea61f4775d89c04ee3e8e7a3dfb99"
     },
     "role-template/designer": {
-      "specHash": "9088280ca3acfd57b49b26636e86f07eda736deefb93a9365b1b823daa6cb9e6"
+      "specHash": "82c3ab74e5677f865e3de835a8fe5d22be2876924db21807c9c6bf56888199e7"
     },
     "role-template/developer": {
-      "specHash": "877aa4fab3514020465dfeb02b8dae1be3d06c2250364be3b1a6f240cce69b73"
+      "specHash": "558bb71e5c62222e90f7783ba92449ed85f046a7f99552ccf5c6d72341ff379e"
     },
     "role-template/estimator": {
-      "specHash": "a363272618c42f88f5006eaf2feee5dd9aead93fd450bd032dcf4d8c87ce2a5e"
+      "specHash": "46aa526562cb7dea1921dd0a6b32f2191c970aebd23dbeb5740b50ba179c6903"
     },
     "role-template/ceremoniemeester": {
-      "specHash": "f76ffaaee425c9998fd257beffbb0b18fd00b0cd2b6458ae32caea1cd2149609"
+      "specHash": "281d8f2a7537d1a46c050ee614b1193995ae5497948258f459262ca8a09ac78a"
     },
     "role-template/aanjager": {
-      "specHash": "374566780527763f6a2af8137b72decdd2f0e80eaca24862b6ac294f0852b920"
+      "specHash": "50255b20e585e592602bcfc1e820b74860c4cfdeb9b4f714ab31f78527aab76d"
     },
     "role-template/generalist": {
-      "specHash": "d156416edc31518dee2a2e7d4a9d1e60b3d764a24b4d68b4e66c9d0c66873304"
+      "specHash": "dad468cbe2cef7ac1b87222635a7228a2e56ab078ae4d1364ff6316b71b86ea5"
     },
     "role-template/go-player": {
-      "specHash": "1b685db0b40f44114d18dc6952d5c154a5b1347d5b28c551065aadc21108c777"
+      "specHash": "372862594d7a3d4756843be0cd4ddf5dd940d96212586c66a71b85f098bba76d"
     },
     "role-template/huismeester": {
-      "specHash": "a50ace4a2e6438938ebb4982a35dbcd1cc7142ba388d6f9eb6d14fc6219b23cd"
+      "specHash": "16859662759e439428afc774e35fbeb74b784aa5f9a220dec715f2c5f9a5780f"
     },
     "role-template/penningmeester": {
-      "specHash": "3eb9ba508fde29a8bca50ea1af841b100ce012b45efc5b7191807389d2ff7434"
+      "specHash": "bdaf3e3ecebaac2d70dd6fb90643379392012f920bc70d9e5175f991d5e9536d"
     },
     "role-template/illustrator": {
-      "specHash": "8c70e2fbbfb0ffa819d01e7e88a69c4cd6cd99fb3bcbeb1db34f0c81fdeb9d3c"
+      "specHash": "608d56163db0cd58654b8c1072f7080bdb8caf303a0ddd3f299392f82edf0014"
     },
     "role-template/image-editor": {
-      "specHash": "02e06428a802f0c8ba0a63f591338cd51831263d5adab05179b9c04f34315ad3"
+      "specHash": "2d58c7edbc1eccbc870b564b281ac1684e3825617404f104873daaa63c694389"
     },
     "role-template/image-generator": {
-      "specHash": "83e59b3c2f704c2149815599093000a1c9014d43badd3a92a2a23accd8d19420"
+      "specHash": "9ad9a290c0eff129bffde226278948f246b85e693fabfc758eff2ed8def9ae20"
     },
     "role-template/keurmeester": {
-      "specHash": "08074ccc43944cc253b1fcf4ebed0a39ed1f2156ff55f974891e5ee7c2245502"
+      "specHash": "e324c6e61e77207056c431eda0c91a3195f80714fb10e4728ceb27ba4d39018c"
     },
     "role-template/language-trainer": {
-      "specHash": "e9e7a7a2ba6841cd518fda57cc8405d06b1b62f3a65e960efc8607dbaecac89c"
+      "specHash": "b12cd6b65368b588915a3ff86ec7f57026047bca8a2664ad4c09700f193ef301"
     },
     "role-template/boekwachter": {
-      "specHash": "2fb44570d57454c66690a3c1e37c981a2d191f058ca81e44a1456b6b076c8471"
+      "specHash": "271b362c6a281985575f61dcfbb6a31ecfab0ec136602f670648d0228bbcf5fb"
     },
     "role-template/managing-editor": {
-      "specHash": "a500b026bddd4820dc954b8bd7659be5bef66db63f7a4532e6ec12911bf1a1a4"
+      "specHash": "96e489f8d2657843bc8cee0ca45b00acfd48ca8d23c917aab07aa1bf4819f45f"
     },
     "role-template/maaltijdplanner": {
-      "specHash": "0f17b716db053b21263e2182f83d88645500b50655f791e45b420e99565833f1"
+      "specHash": "02af4c470390f41593bcef2c3cf895214ba6a7ae83e8b74b9804b2e5eaadfa0e"
     },
     "role-template/meester": {
-      "specHash": "13e4a172410121e8ddc4ed73c99087ca88948b2088f7c73a122e94eacebef979"
+      "specHash": "43df2d966b18afa2b9475b2f68865ee296d090409553c87161ce26185abc935d"
     },
     "role-template/mock-interviewer": {
-      "specHash": "bda63c6564ec720fd817991c4e7287f2a7174a0d589b092d42440a581c6563ca"
+      "specHash": "99de5042d7bc6e7f1c3782451d74822b0ac19bd9041e59becf87099336983e57"
     },
     "role-template/kantoormeester": {
-      "specHash": "1ab5ae2e0de07c17de73e336e922f24c6596ae1f45083eb83e7e5c570d39e035"
+      "specHash": "96ce13830fcefb494638671d229c28d4cbf76d57d187597c29d947aa909eaf6e"
     },
     "role-template/planner": {
-      "specHash": "de842f28ae6a0d6032602cf7954c5aadb484172b99202d1c666cc3c408900f8d"
+      "specHash": "d072fa1a904a7e20f05cd861590a9a813d5daf16e32b6d5ee1f87bceecbb5916"
     },
     "role-template/puzzelaar": {
-      "specHash": "8b34c1ac4384ad3d0288d66d702f28543c4bc35a2ff7e389d3d9add205e329e0"
+      "specHash": "e6acff70b33dbe24e8c500b1fa77a555cbf0e2733790e470951203ba3767893d"
     },
     "role-template/recruiter": {
-      "specHash": "169740493896166c56bf2f30c19a47e24a9a47ef1e491366087048f7877a0ddf"
+      "specHash": "a1301a52e6897901a04207bee93bf1d9dd525cd4940962dbc97bafda7a48e2b5"
     },
     "role-template/researcher": {
-      "specHash": "847f20ff849c7e4f8725e08e9f83a51f722c7778c41e15e9c984f44d5708631e"
+      "specHash": "9babbab57463d4b1414ec968619f313d2a96287856494a9821f2dd8d5ef95d45"
     },
     "role-template/reviewer": {
-      "specHash": "bb8817f48f33a6e7596656525aa8aa9433a1d6100aef7d2ede30e3d662b52315"
+      "specHash": "188700cabc5d4aecd2fdca07b330cf606ccc0b7ec29fe642f45f46c9bd8af385"
     },
     "role-template/shift-scheduler": {
-      "specHash": "b593f0fc6e0242a51f99a8a43372fda96d66050586a5174515d35fcb9087751a"
+      "specHash": "6d5f4edbb1fbbc08c0a319f34b0027a2abb20242ada64ef10bc48a3116f9b281"
     },
     "role-template/omroeper": {
-      "specHash": "ccf2c4c05c874341b70147ed9fcbddad92d8d58b51949eace81498fe5dc0ad1a"
+      "specHash": "10182a705c87e8e0d0b2e76d27e39e065bb4abfc56db71011eb95dd8df3f2c1a"
     },
     "role-template/stock-keeper": {
-      "specHash": "15f837ece8e7e20f389bc01f10c5422f27ac6b51709fb89bec888fea53098b47"
+      "specHash": "0ee164a6216fef9c23904598b11860fd505a448c8f6679bf6f2ff4938f531ae7"
     },
     "role-template/study-buddy": {
-      "specHash": "0973bf5d6154391429f0dc041350b5ad92bab2269639a18ee8172281f366c5a2"
+      "specHash": "89b66af4af8a5ad62fd31fd666f937996e6ff75f445a9c38b398ef0d1f77d2c3"
     },
     "role-template/support-lead": {
-      "specHash": "0154bea043dd5d1894de6163ac8fe47ac9358f4cb707881729784e734e35fe36"
+      "specHash": "b281a9c835c4656aa281b157b34ba19373e850cee37f273ccb6b9a8a5a266d5b"
     },
     "role-template/training-coordinator": {
-      "specHash": "ca983b38dcd0ae72315184f4b3ed6c2c63b79d8ee6316b7b714c59e23929eb6a"
+      "specHash": "7ffcde896a86665ae57dc657ed0d9faa0c2a2eeee0c5d27b92b642dd8b61f534"
     },
     "role-template/vertaler": {
-      "specHash": "25dcb1e438e166f964a3ea83f8c9e5a2a8b3cce1f5ad2fa135b3771bf6aec375"
+      "specHash": "d6d990edb9e646a36ae75d5b50ffc4975cf8a53cf4b7cb69bd5c860442e84517"
     },
     "role-template/reisleider": {
-      "specHash": "544396a22fb8ed0fd9907d3455ea48910c11a1b3b32b7a559e5f9a20a2206bce"
+      "specHash": "aac7ec8346c6919a635486e1a83684bf2dd27ecffeee6e8498959e73b7dd3402"
     },
     "role-template/video-generator": {
-      "specHash": "785002250f35b7684736d1671f548d7b57e0f51f22aecda7a77c39f77182c6aa"
+      "specHash": "7b14938f92f812769e54a48079eff7e8d313d416da67161bca2417b8a7cbc695"
     },
     "role-template/schrijfmaat": {
-      "specHash": "a356612f108e3cddc086757b407d36406e283c24946ee22d377b65dde8417007"
+      "specHash": "2261127a9738654f1bbf17f41f01337fda6ea62c98e704c984cc5671d01e47c0"
     },
     "model-scorecard/2026-11-03-m5max-fixed-paired": {
       "specHash": "db23108fdf9bd263abe5385a8a594b54fb0fb7afdf830c27db6cc53385677bd3"

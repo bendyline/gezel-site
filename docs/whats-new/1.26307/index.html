@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a href="../../roles-index/">Gezel Roles</a>
-<a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../roles-index/">Crew roles</a>
+<a href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
 <a aria-current="true" href="../../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -68,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26313/">1.26313 — 9 November 2026</a></li>
 <li><a class="hb-current" aria-current="page" href="../../whats-new/1.26307/">1.26307 — 3 November 2026</a></li>
 <li><a href="../../whats-new/1.26300/">1.26300 — 27 October 2026</a></li>
 <li><a href="../../whats-new/1.26287/">1.26287 — 14 October 2026</a></li>
@@ -111,7 +112,7 @@
 <p><code>gezel doctor</code> now also checks the model it will use. It says whether the model starts, answers a tool call, writes fast enough and has room for a prompt, and how often it finished real jobs on the scorecard, with the hardware named. <code>gezel model list --available</code> shows each model's measured pass rate beside its size.</p>
 <h2 id="run-gezel-in-docker">Run gezel in Docker</h2>
 <p>Starting with this release, gezel also comes as a container image, for a server or any computer that runs Docker. One command runs the whole of it, with every engine for local models already inside. Besides the models you choose, it downloads a browser for web pages and the small models it uses for search the first time it needs them.</p>
-<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel</code></pre>
+<pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyline/gezel</code></pre>
 <p>The container's log has a link that creates your account, and from then on you sign in with a name and password from your browser. The same container gives your other programs local AI through an OpenAI-style address: make a key with <code>docker exec gezel gezel integrations token create &lt;app&gt;</code>. It can also run one craftbook on a folder and hand back what it made, with <code>gezel do … --out &lt;folder&gt;</code>. There are images for NVIDIA cards (<code>:cuda</code>) and for AMD and Intel cards (<code>:vulkan</code>), on GitHub's registry and on Docker Hub as <code>bendyline/gezel</code>. A new image comes out with every release, tagged with the same version as the <code>gezel</code> command-line tool. Craftbook steps that run small scripts with no network access run inside the container too, in a network sandbox of their own.</p>
 <p>Everyone you add in <strong>Settings → Accounts</strong> can do everything you can, so add only people you trust. More in <a href="../../gezel-in-docker/">Gezel in Docker</a>.</p>
 <h2 id="nineteen-new-projects-for-running-a-small-business">Nineteen new projects for running a small business</h2>
@@ -136,7 +137,7 @@
 <h2 id="things-to-see-and-do-after-update">Things to see and do after update</h2>
 <p>Open <strong>Settings → Image generation</strong> and look at <strong>Styles and fast mode</strong>. If the model you draw with has a fast mode, install it, and pick a style from the strip the next time you ask for a picture. To change a picture you already have, ask the Meester for the <strong>Image editor</strong>. And if you want to know how well your own computer does with the model you use, open <strong>Settings → Benchmarks</strong> or run <code>gezel bench</code>. If you run a small business, open <strong>New Project</strong> and look through the new project types. To run gezel on a server instead, start with <a href="../../gezel-in-docker/">Gezel in Docker</a>.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../1.26307.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">

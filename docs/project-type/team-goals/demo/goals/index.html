@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <link rel="stylesheet" data-gezel-typography href="../../../../_gezel-demo/typography-6a2ac062945ee8ec.css">
 <script type="application/json" id="gezel-demo-config">{"companion":{"role":"Planner"}}</script>
-<script src="../../../../_gezel-demo/bootstrap-c115b994beafc20c.js"></script>
+<script src="../../../../_gezel-demo/bootstrap-aec2947a0ee9a9b0.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="gezel-demo" content="standalone" />
@@ -34,6 +34,7 @@
       h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.5rem; font-weight: 400; margin: 0 0 0.2rem; }
       h2 { font-family: var(--font-heading, Georgia, serif); font-size: 1.1rem; font-weight: 400; margin: 0 0 0.6rem; }
       h3 { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.5rem; }
+      section h3 { font-family: var(--font-ui, system-ui, sans-serif); }
       .sub { color: var(--muted); margin: 0 0 1rem; }
       .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; margin: 0 0 1.2rem; }
       .tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem 0.9rem; }
@@ -56,16 +57,17 @@
       .bar span { display: block; height: 100%; border-radius: 4px; background: var(--accent); }
       .bar i { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--marker); opacity: 0.55; }
       .bar.thin { height: 5px; }
+      .bar.thin span { opacity: 0.5; }
       .krs { list-style: none; margin: 0.1rem 0 0; padding: 0; display: grid; gap: 0.45rem; }
-      .krs li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 0.75rem; font-size: 0.9rem; }
+      .krs li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 0.15rem 0.75rem; align-items: center; font-size: 0.9rem; }
       .krs li .bar { grid-column: 1 / -1; }
       .num { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
       .empty { color: var(--muted); font-style: italic; margin: 0; }
       .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
       .week, .log, .todo { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; font-size: 0.9rem; }
-      .week li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.6rem; align-items: start; }
+      .week li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; gap: 0.6rem; align-items: start; }
       .log time { color: var(--muted); font-size: 0.8rem; margin-right: 0.35rem; }
-      .when { font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; text-align: center; background: var(--chip); color: var(--muted); }
+      .when { justify-self: start; font-family: var(--font-ui, system-ui, sans-serif); font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; text-align: center; background: var(--chip); color: var(--muted); }
       .when.late { background: var(--late-bg); color: var(--late); }
       .when.soon { background: var(--soon-bg); color: var(--soon); }
       .when.ok { background: var(--ok-bg); color: var(--ok); }
@@ -75,6 +77,9 @@
       .done-btn:hover { border-color: var(--accent); }
       .done-btn:disabled { opacity: 0.6; cursor: wait; }
       .closed { margin: 0.75rem 0 0; }
+      .goal-keys { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+      .key { min-height: 30px; padding: 0.2rem 0.65rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; font-size: 0.82rem; white-space: nowrap; }
+      .key:hover { border-color: var(--muted); }
       .demo-banner { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin: 0 0 1rem; padding: 0.5rem 0.65rem; border: 1px solid var(--accent); border-radius: 6px; background: color-mix(in srgb, var(--card) 88%, var(--accent)); font-size: 0.85rem; }
       .demo-banner[hidden] { display: none; }
       .demo-reset { flex: none; min-height: 36px; padding: 0.3rem 0.7rem; border: 1px solid var(--accent); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; font: inherit; }
@@ -82,14 +87,35 @@
       @media (max-width: 640px) {
         .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .split { grid-template-columns: minmax(0, 1fr); }
-        .week li { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
+        .week li { grid-template-columns: minmax(0, 1fr) auto; gap: 0.2rem 0.6rem; }
+        .week .when { grid-column: 1 / -1; }
         .todo li { grid-template-columns: minmax(0, 1fr) auto; }
         .todo .when { grid-column: 1 / -1; justify-self: start; }
-        .week .when { justify-self: start; }
       }
     </style>
     <style>
  [hidden]{display:none!important}body{font-family:var(--font-body,system-ui,sans-serif);line-height:1.5}h1,h2,h3{font-family:var(--font-heading,Georgia,serif)}button,input,select,textarea{font-family:var(--font-ui,system-ui,sans-serif)}:focus-visible{outline:3px solid var(--accent,#a65334);outline-offset:3px}main{min-width:0}.app-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:24px 0;align-items:start}.app-search{margin:0 0 12px;max-width:540px}.app-problem{padding:12px;border:1px solid currentColor;border-radius:6px;overflow-wrap:anywhere}.app-section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.app-section-nav a{padding:8px 12px;border:1px solid var(--line,#92816a);border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.app-section-nav a:hover{background:color-mix(in srgb,currentColor 8%,transparent)}html[data-gezel-fullscreen=true] main>h1{font-size:clamp(28px,3vw,40px);margin-top:0}main section{scroll-margin-top:16px}@media(max-width:620px){main{padding:16px!important}h1{overflow-wrap:anywhere}button{min-height:40px}}</style>
+    <style data-app-shell="2">
+    /* Shared app furniture from the Gezel app UX guide. The page owns everything else. */
+    :root{--app-action:var(--gezel-component-accent,#805128);--app-on-action:#fffaf3;--app-banner-bg:#f3eddf;--app-banner-line:#d6cbb8}
+    :root[data-theme=dark]{--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--app-action:var(--gezel-component-accent,#e0b78b);--app-on-action:#1f1a16;--app-banner-bg:#25221f;--app-banner-line:#4a4238}}
+    main h1{font-weight:400}
+    html[data-gezel-fullscreen=true] main h1{font-size:clamp(28px,3vw,40px);margin-top:0}
+    .app-tabs{margin:20px 0 24px}
+    .app-actionbar{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:16px 0 24px}
+    .app-panel>.app-actionbar:first-child{margin-top:0}
+    .app-settings{display:grid;gap:16px;max-width:760px;margin:0 0 24px}
+    .app-search{margin:0}
+    .app-search gezel-collection-filter{margin:0 0 12px;max-width:540px}
+    .app-primary{min-height:44px;padding:8px 16px;border:1px solid var(--app-action);border-radius:6px;background:var(--app-action);color:var(--app-on-action);font-weight:600}
+    .app-primary:disabled{display:none}
+    main li.empty{display:block;grid-column:1/-1}
+    html[data-app-legacy] [data-app-action]{display:none!important}
+    [data-gezel-demo-banner]:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:0 0 16px;padding:8px 8px 8px 14px;border:1px solid var(--app-banner-line);border-radius:10px;background:var(--app-banner-bg);color:inherit;font-size:14px;line-height:1.4}
+    [data-gezel-demo-banner] button{min-height:32px;padding:4px 12px;border:1px solid var(--app-banner-line);border-radius:6px;background:transparent;color:inherit;font-size:13px}
+    @media(max-width:620px){.tiles,.stats,.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}:is(.tiles,.stats,.summary):has(>:only-child){grid-template-columns:minmax(0,1fr)!important}}
+    </style>
     <script>
 var appDisposed=false,appLoadRevision=0,appSubscriptions=[];
 function reportAppError(error){var output=document.getElementById('app-load-error');if(output){output.hidden=!error;output.textContent=error?'Could not refresh this view. '+(error.message||'Try again.'):'';}}
@@ -107,9 +133,9 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
       <p class="sub" id="sub">Loading the goals…</p>
       <div class="tiles">
         <div class="tile"><b id="t-active">0</b><span>Active goals</span></div>
-        <div class="tile ok"><b id="t-ontrack">0</b><span>On track</span></div>
-        <div class="tile late"><b id="t-offpace">0</b><span>At risk or behind</span></div>
-        <div class="tile soon"><b id="t-actions">0</b><span>Open actions</span></div>
+        <div class="tile"><b id="t-ontrack">0</b><span>On track</span></div>
+        <div class="tile"><b id="t-offpace">0</b><span>At risk or behind</span></div>
+        <div class="tile"><b id="t-actions">0</b><span>Open actions</span></div>
       </div>
       <section id="goals-section">
         <h2>Goals</h2>
@@ -363,6 +389,15 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           if (gone !== null && gone !== undefined) { var mark = el('i'); mark.style.left = pct(gone); b.append(mark); }
           return b;
         }
+        // A key on a goal or key result opens that action's dialog with it already chosen (the app shell wires data-app-action).
+        function rowKey(label, tool, values, aria) {
+          var b = el('button', label, 'key');
+          b.type = 'button';
+          b.setAttribute('aria-label', aria);
+          b.setAttribute('data-app-action', tool);
+          b.setAttribute('data-app-values', JSON.stringify(values));
+          return b;
+        }
         function when(days) { return days < 0 ? -days + (days === -1 ? ' day late' : ' days late') : days === 0 ? 'Due today' : 'In ' + days + (days === 1 ? ' day' : ' days'); }
 
         function render(goalsDoc, krDoc, logDoc, actionsDoc) {
@@ -381,6 +416,8 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
           document.getElementById('t-ontrack').textContent = onTrack;
           document.getElementById('t-offpace').textContent = offPace;
           document.getElementById('t-actions').textContent = open.length;
+          document.getElementById('t-ontrack').parentNode.classList.toggle('ok', onTrack > 0);
+          document.getElementById('t-offpace').parentNode.classList.toggle('late', offPace > 0);
           document.getElementById('sub').textContent = !goals.length
             ? 'No goals yet. Tell your planner what the team wants to reach this quarter, and the numbers that will show it.'
             : (offPace ? plural(offPace, 'goal needs', 'goals need') + ' attention. ' : 'Every active goal is on track. ') +
@@ -403,12 +440,16 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
               var kf = k.fields, li = el('li'), kp = krProgress(kf);
               li.append(el('span', kf.title));
               li.append(el('span', amount(kf.current, kf.unit) + ' of ' + amount(kf.target, kf.unit) + unitWord(kf.unit) + (Number(kf.start) ? ' (from ' + amount(kf.start, kf.unit) + ')' : ''), 'num'));
+              li.append(rowKey('Record', 'update_key_result', { keyResult: k.id }, 'Record progress on ' + kf.title));
               li.append(bar(kp, null, true, kf.title + ': ' + pct(kp) + ' of the way'));
               ul.append(li);
             });
             card.append(ul);
             var last = events.filter(function (e) { return e.kind === 'checkin' && e.data && e.data.goalId === g.id; }).pop();
             card.append(el('span', last ? 'Last check-in ' + niceDate(last.at) + (last.data.who ? ' by ' + last.data.who : '') + (last.data.confidence ? ', ' + last.data.confidence.replace('-', ' ') : '') + (last.note ? ': “' + last.note.replace(/[.\s]+$/, '') + '”' : '') : 'No check-in yet', 'meta'));
+            var keys = el('div', undefined, 'goal-keys');
+            keys.append(rowKey('Check in', 'log_checkin', { goal: g.id }, 'Log a check-in on ' + f.title), rowKey('Add key result', 'add_key_result', { goal: g.id }, 'Add a key result to ' + f.title));
+            card.append(keys);
             list.append(card);
           });
           var closed = goals.filter(function (g) { return g.status !== 'active'; });
@@ -424,11 +465,13 @@ window.addEventListener('pagehide',function(){appDisposed=true;appLoadRevision++
             var owner = String(g.fields.owner || '').toLowerCase();
             var hits = events.filter(function (e) { return e.kind === 'checkin' && e.data && Date.parse(e.at) >= since && (e.data.goalId ? e.data.goalId === g.id : owner && String(e.data.who || '').toLowerCase() === owner); });
             var hit = hits[hits.length - 1], li = el('li');
-            li.append(el('span', hit ? niceDate(hit.at) : 'Not yet', 'when ' + (hit ? (hit.data.confidence === 'off-track' ? 'late' : hit.data.confidence === 'at-risk' ? 'soon' : 'ok') : 'late')));
+            // The chip names the confidence its color shows; the date goes below.
+            var said = hit && hit.data.confidence ? hit.data.confidence.replace('-', ' ') : '';
+            li.append(el('span', hit ? (said ? said.charAt(0).toUpperCase() + said.slice(1) : 'Checked in') : 'Not yet', 'when ' + (hit ? (hit.data.confidence === 'off-track' ? 'late' : hit.data.confidence === 'at-risk' ? 'soon' : 'ok') : 'soon')));
             var what = el('div');
             what.append(el('span', (g.fields.owner || 'No owner') + ': ' + g.fields.title));
-            what.append(el('span', hit ? (hit.data.confidence ? hit.data.confidence.replace('-', ' ') : 'checked in') : 'no check-in in the last 7 days', 'meta'));
-            li.append(what);
+            what.append(el('span', hit ? 'checked in ' + niceDate(hit.at) : 'no check-in in the last 7 days', 'meta'));
+            li.append(what, rowKey('Check in', 'log_checkin', { goal: g.id }, 'Log a check-in on ' + g.fields.title));
             week.append(li);
           });
 

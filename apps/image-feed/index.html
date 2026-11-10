@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Image Feed</h1>
 <p class="lede">A visual feed with a working rhythm — your social media writer runs the posting pipeline, an image maker turns notions into pictures in the feed's own style, and a live gallery shows every post from first idea to published.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/image-feed/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/image-feed">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/image-feed/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/omroeper/"><strong>Social Media Writer</strong></a> <span class="tag">Crew lead</span><span>The town crier for your feeds.</span></li><li><a href="/docs/role-template/image-generator/"><strong>Image generator</strong></a><span>An image generator.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/draft-social-post/"><strong>Draft a Social Post</strong></a><span>Draft one social post from idea to approved copy.</span></li><li><a href="/docs/craftbook/social-digest/"><strong>Social Digest</strong></a><span>The overnight read of your social feeds.</span></li><li><a href="/docs/craftbook/reception-report/"><strong>Reception Report</strong></a><span>The weekly reception review for your social posting.</span></li></ul><p class="small">Runs Social Digest overnight, once you agree. Runs Reception Report on a schedule, once you agree.</p></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>List posts</strong><span>See the whole post pipeline: every post with its status, platforms, and dates.</span></li><li><strong>Get post</strong><span>Read one post in full: frontmatter, body, each platform variant with its character count (and permalink once live), and media files.</span></li><li><strong>Create post</strong><span>Commit the staged posts/_drafting/ folder as a real post.</span></li><li><strong>Update post</strong><span>Patch a post's frontmatter (fields object; null clears a key) and/or move it one pipeline stage.</span></li><li><strong>Record publication</strong><span>The moment a variant goes live, stamp it with its permalink and platform post id.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>style-guide.md</code>, <code>posts/index.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/omroeper/"><strong>Social Media Writer</strong></a> <span class="tag">Crew lead</span><span>The town crier for your feeds.</span></li><li><a href="/docs/role-template/image-generator/"><strong>Image generator</strong></a><span>An image generator.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/draft-social-post/"><strong>Draft a Social Post</strong></a><span>Draft one social post from idea to approved copy.</span></li><li><a href="/docs/craftbook/social-digest/"><strong>Social Digest</strong></a><span>The overnight read of your social feeds.</span></li><li><a href="/docs/craftbook/reception-report/"><strong>Reception Report</strong></a><span>The weekly reception review for your social posting.</span></li></ul><p class="small">Runs Social Digest overnight, once you agree. Runs Reception Report on a schedule, once you agree.</p></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>List posts</strong><span>See the whole post pipeline: every post with its status, platforms, and dates.</span></li><li><strong>Get post</strong><span>Read one post in full: frontmatter, body, each platform variant with its character count (and permalink once live), and media files.</span></li><li><strong>Create post</strong><span>Commit the staged posts/_drafting/ folder as a real post.</span></li><li><strong>Update post</strong><span>Patch a post's frontmatter (fields object; null clears a key) and/or move it one pipeline stage.</span></li><li><strong>Record publication</strong><span>The moment a variant goes live, stamp it with its permalink and platform post id.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>style-guide.md</code>, <code>posts/index.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

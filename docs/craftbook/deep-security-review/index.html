@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
-<a href="../../roles-index/">Gezel Roles</a>
-<a aria-current="true" href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../roles-index/">Crew roles</a>
+<a aria-current="true" href="../../craftbooks-index/">Plans</a>
 <a href="../../project-types-index/">Project Types</a>
 <a href="../../architecture/">Technical</a>
 <a href="../../whats-new-index/">What's New</a>
@@ -45,14 +45,14 @@
 
 </section>
 <section>
-<h2><a href="../../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2 class="hb-current">Craftbooks</h2>
+<h2 class="hb-current">Plans</h2>
 <ul class="hb-sidebar-entries">
-<li><a href="../../craftbooks-index/">Every craftbook</a></li>
+<li><a href="../../craftbooks-index/">Every plan</a></li>
 <li class="hb-sidebar-subcategory">
 <h3 class="hb-sidebar-subcategory-title">Code · Review &amp; security</h3>
 <ul>
@@ -60,7 +60,7 @@
 </ul>
 </li>
 </ul>
-<p class="hb-more"><a href="../../craftbooks-index/">All 300 craftbooks</a></p>
+<p class="hb-more"><a href="../../craftbooks-index/">All 300 plans</a></p>
 </section>
 <section>
 <h2><a href="../../project-types-index/">Project Types</a></h2>
@@ -81,24 +81,25 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Craftbooks</a>
+<a href="../../">Handboek</a> <span>/</span> <a href="../../craftbooks-index/">Plans</a>
 </nav>
 <article class="hb-article">
 <h1>Deep Security Review</h1>
 <img class="hb-craftbook-art" src="logo.webp" alt="Deep Security Review illustration" data-ground="terracotta" width="160" height="160" decoding="async">
+<p class="hb-open"><span class="open-in-gezel" data-gezel-open hidden><a class="hb-open-button" href="gezel://craftbook/deep-security-review">Run this in Gezel</a><span class="hb-open-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span></p>
 <p>Run a slow, thorough, WHOLE-CODEBASE security audit that looks for SYSTEMIC weaknesses — a vulnerability class repeated across many routes, a missing control at an architectural layer, inconsistent authorization, ad-hoc secret handling, a trust-boundary violation — not just isolated issues in one file. First reconnoiters the whole system using gezel's static security index (dependency inventory, attack surface, source/sink findings, taint reachability), then builds a threat model to find the highest-blast-radius areas, then audits those areas holistically confirming real source-to-sink paths and consistency of controls across every entry point, then clusters findings into root-cause systemic themes, then writes a prioritized report with a machine-readable findings file. Use this for a deep or systemic security review, a codebase security audit, a nightly security sweep, or finding security issues across a whole project — it is intentionally broader and deeper than a PR-time diff review (see pr-security-review for that).</p>
 <h2 id="how-it-runs">How it runs</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>#</th><th>Step</th><th>Who runs it</th><th>What happens</th></tr></thead><tbody><tr><td>1</td><td>Reconnoiter the whole system</td><td>Reviewer</td><td>build a whole-system security map from the static index</td></tr><tr><td>2</td><td>Threat-model the system</td><td>Reviewer</td><td>assets, actors, STRIDE per boundary, highest blast radius</td></tr><tr><td>3</td><td>Audit for systemic weaknesses</td><td>Reviewer</td><td>confirm real source→sink paths and control consistency across all entry points</td></tr><tr><td>4</td><td>Cluster findings into systemic themes</td><td>Reviewer</td><td>group findings by root cause; rank by blast radius</td></tr><tr><td>5</td><td>Write the security report</td><td>Reviewer</td><td>systemic report + machine-readable findings, all citing real files</td></tr><tr><td>6</td><td>Evaluate</td><td>Reviewer</td><td>Grade the deliverable against every acceptance criterion. All pass → finish; any fail → loop back and fix the gap.</td></tr><tr><td>7</td><td>Finish</td><td>Developer</td><td>All acceptance criteria met. Stamp a short summary and report DONE.</td></tr></tbody></table></div>
 <p>Say something like "deep security review" or "audit the codebase for vulnerabilities" or "systemic security review" or "find security issues across the whole codebase" or "whole-codebase security audit" or "nightly security audit" in chat to start it.</p>
 <p>Needs toolsets: <code>builtin.security-intel</code>, <code>builtin.code-intel</code>.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../deep-security-review.md">Read it as markdown, for AI agents</a></p>
 </main>
 
 </div>
 <footer class="hb-footer">
 <p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
-
+<script defer src="../../assets/open-in-gezel.js"></script>
 </body>
 </html>

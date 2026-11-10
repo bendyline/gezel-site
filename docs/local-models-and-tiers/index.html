@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a aria-current="true" href="../craftbooks-overview/">Concepts</a>
-<a href="../roles-index/">Gezel Roles</a>
-<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
 <a href="../project-types-index/">Project Types</a>
 <a href="../architecture/">Technical</a>
 <a href="../whats-new-index/">What's New</a>
@@ -48,27 +48,27 @@
 <li><a href="../projects-and-threads/">Projects, threads, and where work lives</a></li>
 <li><a href="../memory-and-documents/">Memory, documents, and the shared library</a></li>
 <li><a href="../making-documents/">Documents: make and convert Word, PowerPoint, and Excel files</a></li>
-<li><a href="../craftbooks-overview/">Craftbooks: procedures your crew can follow</a></li>
+<li><a href="../craftbooks-overview/">Plans: procedures Gezel can follow</a></li>
 <li><a class="hb-current" aria-current="page" href="../local-models-and-tiers/">Models, tiers, and what runs on this device</a></li>
 <li><a href="../tasks-and-supervision/">Tasks, scheduled work, and supervision</a></li>
-<li><a href="../adding-folders/">Adding folders: give your crew something to look after</a></li>
+<li><a href="../adding-folders/">Adding folders: give Gezel something to look after</a></li>
 <li><a href="../project-views/">Views: see what's in a folder</a></li>
-<li><a href="../night-shift/">The Night Shift: work your crew does while you sleep</a></li>
+<li><a href="../night-shift/">The Night Shift: work Gezel does while you sleep</a></li>
 <li><a href="../notifications/">Notifications: only when something happened</a></li>
 <li><a href="../cameras-and-lookouts/">Cameras and lookouts: keep an eye on a room</a></li>
 <li><a href="../privacy-local-first/">Local-first: your data stays on your disk</a></li>
-<li><a href="../connected-apps/">Integrations: let other tools use your gezels</a></li>
+<li><a href="../connected-apps/">Integrations: let other tools use Gezel</a></li>
 <li><a href="../generalist-mode/">Generalist mode</a></li>
 </ul>
 
 </section>
 <section>
-<h2><a href="../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -97,19 +97,19 @@
 <h1>Models, tiers, and what runs on this device</h1>
 <p>Gezel doesn't come with its own AI — it puts <em>your</em> choice of AI to work. That can be a cloud provider (OpenAI, Anthropic, GitHub Copilot) or a model running locally on your own machine. With a local model, your data never leaves the room.</p>
 <h2 id="tiers-matching-the-model-to-the-job">Tiers: matching the model to the job</h2>
-<p>Models come in sizes, and size matters for what a gezel can be trusted to do alone. Gezel groups them into <strong>tiers</strong>:</p>
+<p>Models come in sizes, and size matters for what a model can be trusted to do alone. Gezel groups them into <strong>tiers</strong>:</p>
 <div class="hb-table-scroll"><table><thead><tr><th>Tier</th><th>Size (in billions of parameters)</th><th>Good at</th></tr></thead><tbody><tr><td>tiny</td><td>under 5B</td><td>quick drafts, simple lookups</td></tr><tr><td>small</td><td>5–12B</td><td>everyday chat, focused single tasks</td></tr><tr><td>medium</td><td>12–45B</td><td>multi-step work with tools</td></tr><tr><td>large</td><td>45B and up, local</td><td>most roles, unsupervised steps</td></tr><tr><td>cloud</td><td>hosted frontier models</td><td>everything</td></tr></tbody></table></div>
-<p>Every role declares a <strong>model floor</strong> — the minimum tier it needs to work unsupervised. A reviewer gating your deliverables needs more headroom than a gezel drafting a shopping list, and gezel enforces that automatically.</p>
+<p>Every role declares a <strong>model floor</strong> — the minimum tier it needs to work unsupervised. A reviewer gating your deliverables needs more headroom than someone drafting a shopping list, and gezel enforces that automatically.</p>
 <p>A tier says what a size class <em>should</em> manage. For what individual models actually did — measured, on a real machine — see the <strong><a href="../model-scorecard/">Model scorecard</a></strong>. It is the fastest way to pick a local model you can trust with a given job, and <a href="../how-we-test-models/">How we test models</a> explains what the numbers do and do not tell you.</p>
 <h2 id="on-this-device">On this device</h2>
 <p>Gezel classifies each device as tiny, small, medium, or large from the memory available to local models.</p>
 <h3 id="installed-local-models">Installed local models</h3>
 <p>Gezel runs local models (llama.cpp, MLX, Ollama and friends) alongside cloud providers — the Models catalog in the app shows what fits your machine.</p>
 <h2 id="choosing">Choosing</h2>
-<p>You don't have to get this right up front. Set a default provider in Settings, and override it per gezel only when a companion needs something different — a big cloud model for your reviewer, a fast local one for day-to-day chat. Gezel checks each new model's fitness on your hardware before recommending it.</p>
+<p>You don't have to get this right up front. Set a default provider in Settings, and override it for one crew member only when they need something different — a big cloud model for your reviewer, a fast local one for day-to-day chat. Gezel checks each new model's fitness on your hardware before recommending it.</p>
 <p><a href="https://gezel.com/docs/model-catalog/">Every model</a> on gezel.com lists the local chat, image, and video models Gezel knows about, including their download size, context window, license, and the engines they run on. Once you have a shortlist that fits, the <a href="../model-scorecard/">Model scorecard</a> shows how those models actually performed.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../local-models-and-tiers.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">

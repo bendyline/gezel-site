@@ -29,8 +29,8 @@
 <a class="hb-brand" href="../">Gezel Handboek</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
-<a href="../roles-index/">Gezel Roles</a>
-<a href="../craftbooks-index/">Craftbooks</a>
+<a href="../roles-index/">Crew roles</a>
+<a href="../craftbooks-index/">Plans</a>
 <a href="../project-types-index/">Project Types</a>
 <a aria-current="true" href="../architecture/">Technical</a>
 <a href="../whats-new-index/">What's New</a>
@@ -45,12 +45,12 @@
 
 </section>
 <section>
-<h2><a href="../roles-index/">Gezel Roles</a></h2>
+<h2><a href="../roles-index/">Crew roles</a></h2>
 
 
 </section>
 <section>
-<h2><a href="../craftbooks-index/">Craftbooks</a></h2>
+<h2><a href="../craftbooks-index/">Plans</a></h2>
 
 
 </section>
@@ -92,10 +92,12 @@
 <ul>
 <li><a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a></li>
 <li><a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a></li>
+<li><a href="../build-a-gezel-app/">Build a Gezel app: the complete guide</a></li>
 <li><a href="../building-ai-apps-inside-gezel/">Building AI Apps inside Gezel</a></li>
 <li><a href="../docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel for text AI</a></li>
 <li><a href="../gezel-page-apis/">Using the Gezel page APIs</a></li>
 <li><a href="../gezel-app-page-style-guide/">Gezel app page style guide</a></li>
+<li><a href="../gezel-app-ux-guide/">Gezel app UX guide</a></li>
 </ul>
 </li>
 <li class="hb-sidebar-subcategory">
@@ -165,7 +167,7 @@ gezel knowledge validate ./team-guide/team-guide-1.0.0.gezk --deep
 gezel knowledge search ./team-guide/team-guide-1.0.0.gezk "expenses"
 gezel knowledge search ./team-guide/team-guide-1.0.0.gezk "How do I claim travel costs?" --semantic</code></pre>
 <p>The default output is <code>&lt;dir&gt;/&lt;id&gt;-&lt;version&gt;.gezk</code>. The build reports document, chunk, shard, and archive-size counts. Search prints document and passage references as <code>knowledge://</code> URIs.</p>
-<p>Once the checks pass, install it for your crew:</p>
+<p>Once the checks pass, install it:</p>
 <pre class="squisq-code-block"><code class="language-bash">gezel knowledge install ./team-guide/team-guide-1.0.0.gezk
 gezel knowledge list
 gezel knowledge find "How do I claim travel costs?"</code></pre>
@@ -215,7 +217,7 @@ gezel knowledge install &lt;catalog-id&gt; --private</code></pre>
 <pre class="squisq-code-block"><code class="language-text">gezel knowledge install https://example.org/team-guide-1.0.0.gezk --sha256 &lt;64-hexadecimal-character-digest&gt;</code></pre>
 <p>The digest is the archive's hash, not a manifest file hash. Obtain it through a source you trust. The <code>--sha256</code> option is valid only for URL installs.</p>
 <p>To update a catalog, install its catalog id again or install the replacement archive. There is currently no separate <code>knowledge update</code> command. <code>available</code> and <code>list</code> report newer catalog versions known to Gilde. The current CLI has no <code>knowledge enable</code> or <code>knowledge disable</code> subcommands; use Knowledge settings or the HTTP patch endpoint below.</p>
-<p><code>find</code> searches your installed catalogs directly. It does not select the project for the current directory or apply that project's catalog policy. For the session-scoped search used by a gezel, use its <code>search</code> tool.</p>
+<p><code>find</code> searches your installed catalogs directly. It does not select the project for the current directory or apply that project's catalog policy. For the session-scoped search a chat uses, see the <code>search</code> tool.</p>
 <p>Removing a private catalog deletes the daemon's installed copy, not the original <code>.gezk</code> archive you supplied. Removing a shared catalog removes your reference; public shared bytes have a separate reclamation lifecycle. The bundled Handboek is managed by Gezel and cannot be removed through this command; disable it in Knowledge settings if needed.</p>
 <h2 id="sign-and-export-a-catalog">Sign and export a catalog</h2>
 <p>If you have an Ed25519 private key in PKCS#8 PEM form, sign at build time:</p>
@@ -225,14 +227,14 @@ gezel knowledge install &lt;catalog-id&gt; --private</code></pre>
 <pre class="squisq-code-block"><code class="language-bash">gezel knowledge export-parquet ./team-guide-signed.gezk --out ./team-guide-parquet</code></pre>
 <p>The command needs the DuckDB CLI installed by Gezel, a discoverable DuckDB executable, or an explicit <code>--duckdb &lt;binary&gt;</code> / <code>GEZEL_DUCKDB_BIN</code>. It exports topics, documents and chunks by shard, and document locations when present, with the stored int8 and binary embeddings and profile metadata. It also writes <code>parquet-manifest.json</code>. It does not regenerate float32 embeddings or change the <code>.gezk</code> archive.</p>
 <h2 id="manipulate-knowledge-through-tools-and-apis">Manipulate knowledge through tools and APIs</h2>
-<p>Gezels use <code>search</code> to retrieve admitted project and reference material, <code>read_document</code> to open <code>knowledge://</code> citations, and <code>knowledge_nearby</code> for subject-location discovery. <code>save_memory</code>, <code>search_memory</code>, and <code>list_memories</code> manage the mutable memory sources. These tool names are distinct from CLI subcommands; there is no <code>gezel knowledge save-memory</code> command.</p>
+<p>In a chat, Gezel uses <code>search</code> to retrieve admitted project and reference material, <code>read_document</code> to open <code>knowledge://</code> citations, and <code>knowledge_nearby</code> for subject-location discovery. <code>save_memory</code>, <code>search_memory</code>, and <code>list_memories</code> manage the mutable memory sources. These tool names are distinct from CLI subcommands; there is no <code>gezel knowledge save-memory</code> command.</p>
 <p>For your editable shared library, <code>list_documents</code>, <code>read_document</code>, <code>write_document</code>, and <code>delete_document</code> operate on the library's original files, subject to the tool and security policy. Installed catalog documents remain read-only; change their source and build a new archive to publish a revision.</p>
 <p>Applications can use <code>@bendyline/gezel-client</code> against the authenticated user daemon. The main product endpoints are:</p>
 <div class="hb-table-scroll"><table><thead><tr><th>Endpoint</th><th>Purpose</th></tr></thead><tbody><tr><td><code>GET /api/knowledge/catalogs</code>, <code>GET /api/knowledge/available</code>, <code>GET /api/knowledge/updates</code></td><td>Installed state, available catalogs, and known updates</td></tr><tr><td><code>POST /api/knowledge/install</code></td><td>Start an install job and return its id</td></tr><tr><td><code>GET /api/knowledge/jobs/:jobId/events</code></td><td>Subscribe to install progress as server-sent events</td></tr><tr><td><code>DELETE /api/knowledge/jobs/:jobId</code></td><td>Explicitly cancel an install</td></tr><tr><td><code>PATCH /api/knowledge/catalogs/:catalogId</code></td><td>Set enabled state with, for example, <code>{ "enabled": false }</code></td></tr><tr><td><code>DELETE /api/knowledge/catalogs/:catalogId</code></td><td>Remove an installed reference and private bytes</td></tr><tr><td><code>POST /api/knowledge/search</code>, <code>POST /api/knowledge/nearby</code></td><td>Search or discover installed catalog documents</td></tr><tr><td><code>GET /api/knowledge/catalogs/:catalogId/topics</code></td><td>Browse the shipped topic tree</td></tr><tr><td><code>GET /api/knowledge/catalogs/:catalogId/documents</code></td><td>Page document metadata</td></tr><tr><td><code>GET /api/knowledge/catalogs/:catalogId/document?id=&lt;documentId&gt;</code></td><td>Read a complete document</td></tr><tr><td><code>GET /api/knowledge/catalogs/:catalogId/passage?id=&lt;documentId&gt;&amp;chunk=&lt;uid&gt;</code></td><td>Read a cited passage</td></tr><tr><td><code>POST /api/memory/save</code>, <code>POST /api/memory/search</code></td><td>Save and retrieve mutable memories</td></tr></tbody></table></div>
 <p>URL-encode document ids in query parameters; they can contain slashes and Unicode. Install and catalog-management routes require the first-party management boundary, rather than a model session token. A progress subscriber can disconnect without cancelling an install; use the explicit cancel endpoint when that is the intended action.</p>
 <p>For an independent compiler or reader, use <a href="https://github.com/bendyline/gezel/tree/main/packages/knowledge"><code>@bendyline/gezel-knowledge</code></a>. For the schemas, citation grammar, quantization, and signature helpers, use <a href="https://github.com/bendyline/gezel/tree/main/packages/gezk"><code>@bendyline/gezk</code></a>. The <a href="https://github.com/bendyline/gezk">specification repository</a>, <a href="https://github.com/bendyline/gezk/tree/main/reference/python">Python reader</a>, and <a href="https://github.com/bendyline/gezk/tree/main/conformance">conformance kit</a> support implementations outside Gezel.</p>
 </article>
-<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a></p>
+<p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../knowledge-command-line.md">Read it as markdown, for AI agents</a></p>
 </main>
 <aside class="hb-onthispage">
 <nav aria-label="On this page">

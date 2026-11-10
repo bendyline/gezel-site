@@ -1,0 +1,17 @@
+# 2026-08-26 · Mac · Apple M4 Max
+
+A model scorecard round on M4 Max · 64 GB: 4 models across 2 task sets. Every round is listed in the [model scorecard](https://gezel.com/docs/model-scorecard/), with its results side by side in one table.
+
+<div class="hb-scorecard-round hb-scorecard-round-page">
+<p class="hb-scorecard-stamp"><strong>M4 Max · 64 GB · llama-cpp + mlx · 3 trials per task · 2026-08-26 · gezel d1d5e5c0 · catalog 0.1.42</strong></p>
+<div class="hb-scorecard-suite" data-hb-suite="core">
+<h5 class="hb-scorecard-suite-title">General capability</h5>
+<table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Quality</th><th>Performance</th><th>Context</th><th>Memory used</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q2 (kv: q8_0)</td><td>27B</td><td>32/33 (97%)</td><td>7.9/10 (9 pieces)</td><td>24.1 tok/s output<br />241 tok/s prefill</td><td>256K</td><td>21.1 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q3 (kv: q8_0)</td><td>27B</td><td>32/33 (97%)</td><td>8/10 (9 pieces)</td><td>22.7 tok/s output<br />239 tok/s prefill</td><td>256K</td><td>24.5 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q4 (kv: q8_0)</td><td>27B</td><td>31/33 (94%)</td><td>7.8/10 (17 pieces)</td><td>21.9 tok/s output<br />232 tok/s prefill</td><td>256K</td><td>28.4 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q4</td><td>27B</td><td>31/33 (94%)</td><td>7.8/10 (17 pieces)</td><td>68.4 tok/s output<br />232 tok/s prefill</td><td>—</td><td>—</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-iq1-s (kv: q8_0)</td><td>27B</td><td>14/33 (42%)</td><td>—</td><td>11.1 tok/s output<br />190 tok/s prefill</td><td>256K</td><td>21.1 GB</td></tr></tbody></table>
+<p class="hb-scorecard-taskcount">Tasks in this set: 11.</p>
+</div>
+<div class="hb-scorecard-suite" data-hb-suite="productivity">
+<h5 class="hb-scorecard-suite-title">Office and knowledge work</h5>
+<table><thead><tr><th>Model</th><th>Size</th><th>Tasks passed</th><th>Quality</th><th>Performance</th><th>Context</th><th>Memory used</th></tr></thead><tbody><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q4 (kv: q8_0)</td><td>27B</td><td>36/39 (92%)</td><td>7.3/10 (53 pieces)</td><td>21.9 tok/s output<br />232 tok/s prefill</td><td>256K</td><td>26.2 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q4</td><td>27B</td><td>36/39 (92%)</td><td>7.3/10 (53 pieces)</td><td>68.4 tok/s output<br />232 tok/s prefill</td><td>—</td><td>—</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q2 (kv: q8_0)</td><td>27B</td><td>35/39 (90%)</td><td>7.3/10 (25 pieces)</td><td>24.1 tok/s output<br />241 tok/s prefill</td><td>256K</td><td>19.8 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-q3 (kv: q8_0)</td><td>27B</td><td>34/39 (87%)</td><td>7.1/10 (27 pieces)</td><td>22.7 tok/s output<br />239 tok/s prefill</td><td>256K</td><td>24.4 GB</td></tr><tr data-hb-model="qwen3.8-27b" data-hb-tier="medium"><td>qwen3.8-27b-iq1-s (kv: q8_0)</td><td>27B</td><td>14/39 (36%)</td><td>3.9/10 (25 pieces)</td><td>11.1 tok/s output<br />190 tok/s prefill</td><td>256K</td><td>20.2 GB</td></tr></tbody></table>
+<p class="hb-scorecard-taskcount">Tasks in this set: 13.</p>
+</div>
+</div>

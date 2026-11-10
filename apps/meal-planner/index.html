@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Meal Planner &amp; Pantry</h1>
 <p class="lede">Answer &quot;what's for dinner?&quot; once a week. A meal planner plans menus from what's actually in the pantry, keeps taste memory, and the grocery list writes itself.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/meal-planner/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/meal-planner">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/meal-planner/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/maaltijdplanner/"><strong>Meal Planner</strong></a> <span class="tag">Crew lead</span><span>A practical meal planner who answers &quot;what's for dinner?&quot; once a week instead of nightly — menus from what's actually in the pantry, one grocery run, less waste.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/weekly-menu-plan/"><strong>Plan the Week's Dinners</strong></a><span>Turn the pantry's real state into a planned week of dinners and one grocery list: check what is stocked, low, and out, plan seven dinners that use what is on hand and fit the household's tastes and schedule, write the menu onto the week, and produce a grocery list that covers the gaps.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Set menu</strong><span>Save a day's dinner to the kitchen board (day: monday..sunday).</span></li><li><strong>Pantry add</strong><span>Add a pantry staple to the board, or set its level if it is already there (stocked, low, or out).</span></li><li><strong>Pantry level</strong><span>Change a staple's level on the board as the kitchen changes (stocked, low, or out).</span></li><li><strong>Kitchen status</strong><span>Tonight's dinner, the open days, what's in stock, and the grocery gap.</span></li><li><strong>Grocery list</strong><span>The shopping run: everything low or out.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>menu.json</code>, <code>pantry.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/maaltijdplanner/"><strong>Meal Planner</strong></a> <span class="tag">Crew lead</span><span>A practical meal planner who answers &quot;what's for dinner?&quot; once a week instead of nightly — menus from what's actually in the pantry, one grocery run, less waste.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/weekly-menu-plan/"><strong>Plan the Week's Dinners</strong></a><span>Turn the pantry's real state into a planned week of dinners and one grocery list: check what is stocked, low, and out, plan seven dinners that use what is on hand and fit the household's tastes and schedule, write the menu onto the week, and produce a grocery list that covers the gaps.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Set menu</strong><span>Save a day's dinner to the kitchen board (day: monday..sunday).</span></li><li><strong>Pantry add</strong><span>Add a pantry staple to the board, or set its level if it is already there (stocked, low, or out).</span></li><li><strong>Pantry level</strong><span>Change a staple's level on the board as the kitchen changes (stocked, low, or out).</span></li><li><strong>Kitchen status</strong><span>Tonight's dinner, the open days, what's in stock, and the grocery gap.</span></li><li><strong>Grocery list</strong><span>The shopping run: everything low or out.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>menu.json</code>, <code>pantry.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>

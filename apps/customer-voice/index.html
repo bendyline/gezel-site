@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/apps/apps.css?v=407903422f">
+<link rel="stylesheet" href="/apps/apps.css?v=f69cd7d2bc">
 </head>
 <body>
 <div class="wrap">
@@ -29,7 +29,7 @@
 <a href="/apps/" aria-current="page">Apps</a>
 <a href="/docs/">Docs</a>
 <a href="/docs/model-scorecard/">Model scorecard</a>
-<a href="/platform/">For developers</a>
+<a href="/platform/">Platform</a>
 <a href="https://github.com/bendyline/gezel">GitHub</a>
 </nav>
 </header>
@@ -40,7 +40,7 @@
 <div>
 <h1>Customer Voice</h1>
 <p class="lede">Gather what customers say and turn it into what to fix next. A researcher sorts reviews and survey answers into themes with counts and trends, flags the reviews that need a reply, and keeps an action list for what the business will change.</p>
-<p class="app-actions"><a class="button" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/customer-voice/">Read about it in the docs<span aria-hidden="true"> →</span></a></p>
+<p class="app-actions"><span class="open-in-gezel" data-gezel-open hidden><a class="button" href="gezel://app/customer-voice">Open in Gezel</a><span class="open-in-gezel-note" hidden>Nothing opened? Opening from this site needs the latest Gezel. <a href="/#download">Get Gezel</a></span></span><a class="button button-quiet" href="/#download">Get Gezel</a><a class="text-link" href="/docs/project-type/customer-voice/">Read about it in the docs<span aria-hidden="true"> →</span></a><a class="text-link" href="/platform/#ai-apps">Make one like this<span aria-hidden="true"> →</span></a></p>
 </div>
 </section>
 <section class="demo" aria-labelledby="try">
@@ -50,7 +50,7 @@
 </section>
 <section class="inside" aria-labelledby="inside">
 <h2 id="inside">What’s inside</h2>
-<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/researcher/"><strong>Researcher</strong></a> <span class="tag">Crew lead</span><span>Reads source, prior art, or external docs and files a substantive written analysis.</span></li><li><a href="/docs/role-template/copywriter/"><strong>Copywriter</strong></a><span>Writes for humans.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/survey-analysis/"><strong>Survey Analysis</strong></a><span>Analyze survey responses into a clear summary of what respondents actually said, across both quantitative (rating/multiple-choice) and open-text questions.</span></li><li><a href="/docs/craftbook/review-reply-batch/"><strong>Review Reply Batch</strong></a><span>Draft replies to every customer review that still needs one, in the business's own voice: each reply thanks the reviewer, answers the specific point they raised, and mentions a fix only when the action list shows it under way.</span></li></ul></section><section class="inside-card"><h3>Actions the crew can take</h3><ul class="plain"><li><strong>Voice status</strong><span>What customers are saying now: each theme with its count over the last 30 days, the 30 before and the trend, the feedback not yet sorted into a theme, the reviews that still need a reply (oldest first), and the open actions.</span></li><li><strong>Log feedback</strong><span>Save a review, survey answer or comment exactly as the customer wrote it: text, source, rating (1 to 5 stars), author, the day it was written (YYYY-MM-DD), and its themes by name (comma-separated; reuse names from the status, a new name starts a theme).</span></li><li><strong>Tag feedback</strong><span>Sort feedback into themes: one id or several comma-separated ('fb-12, fb-13') and the theme names, reusing names from the status; a new name starts a new theme (kind: praise, problem or request).</span></li><li><strong>Save reply</strong><span>Save a reply to a review, ready for the person to post where the review lives.</span></li><li><strong>Add action</strong><span>Add an action the business agreed to take: title, the theme it answers (by name), owner and due date (YYYY-MM-DD).</span></li><li><strong>Set action status</strong><span>Move an action to todo, doing or done, by id or title.</span></li><li><strong>Import reviews</strong><span>Read a CSV of reviews or survey answers the person added under imports/ (e.g.</span></li><li><strong>List feedback</strong><span>Every piece of feedback with its themes and replies, or only one theme (by name), plus the actions.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>feedback.json</code>, <code>themes.json</code>, <code>actions.json</code>.</p></section></div>
+<div class="inside-grid"><section class="inside-card"><h3>The crew</h3><ul class="plain"><li><a href="/docs/role-template/researcher/"><strong>Researcher</strong></a> <span class="tag">Crew lead</span><span>Reads source, prior art, or external docs and files a substantive written analysis.</span></li><li><a href="/docs/role-template/copywriter/"><strong>Copywriter</strong></a><span>Writes for humans.</span></li></ul></section><section class="inside-card"><h3>Plans it follows</h3><ul class="plain"><li><a href="/docs/craftbook/survey-analysis/"><strong>Survey Analysis</strong></a><span>Analyze survey responses into a clear summary of what respondents actually said, across both quantitative (rating/multiple-choice) and open-text questions.</span></li><li><a href="/docs/craftbook/review-reply-batch/"><strong>Review Reply Batch</strong></a><span>Draft replies to every customer review that still needs one, in the business's own voice: each reply thanks the reviewer, answers the specific point they raised, and mentions a fix only when the action list shows it under way.</span></li></ul></section><section class="inside-card"><h3>Actions Gezel can take</h3><ul class="plain"><li><strong>Voice status</strong><span>What customers are saying now: each theme with its count over the last 30 days, the 30 before and the trend, the feedback not yet sorted into a theme, the reviews that still need a reply (oldest first), and the open actions.</span></li><li><strong>Log feedback</strong><span>Save a review, survey answer or comment exactly as the customer wrote it: text, source, rating (1 to 5 stars), author, the day it was written (YYYY-MM-DD), and its themes by name (comma-separated; reuse names from the status, a new name starts a theme).</span></li><li><strong>Tag feedback</strong><span>Sort feedback into themes: one id or several comma-separated ('fb-12, fb-13') and the theme names, reusing names from the status; a new name starts a new theme (kind: praise, problem or request).</span></li><li><strong>Save reply</strong><span>Save a reply to a review, ready for the person to post where the review lives.</span></li><li><strong>Add action</strong><span>Add an action the business agreed to take: title, the theme it answers (by name), owner and due date (YYYY-MM-DD).</span></li><li><strong>Set action status</strong><span>Move an action to todo, doing or done, by id or title.</span></li><li><strong>Import reviews</strong><span>Read a CSV of reviews or survey answers the person added under imports/ (e.g.</span></li><li><strong>List feedback</strong><span>Every piece of feedback with its themes and replies, or only one theme (by name), plus the actions.</span></li></ul><p class="small">Each action is a small script that changes the app’s files, checked by Gezel’s security settings before it runs.</p></section><section class="inside-card"><h3>Files it keeps</h3><p>Plain files in the project folder you can open, back up, and read: <code>feedback.json</code>, <code>themes.json</code>, <code>actions.json</code>.</p></section></div>
 </section>
 <section class="steps" aria-labelledby="start">
 <h2 id="start">Start one</h2>
@@ -95,8 +95,28 @@
 </main>
 <footer>
 <p>© 2026 Bendyline · Free and open source under the MIT license</p>
-<p><a href="https://github.com/bendyline/gezel">GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">For developers</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
+<p><a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gilde">Contribute an app</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
+  var wrappers = document.querySelectorAll('[data-gezel-open]');
+  Array.prototype.forEach.call(wrappers, function (wrapper) {
+    var link = wrapper.querySelector('a');
+    var note = wrapper.querySelector('span');
+    if (!link || !note) return;
+    wrapper.hidden = false;
+    link.addEventListener('click', function () {
+      var timer = setTimeout(function () {
+        if (document.hasFocus() && document.visibilityState === 'visible') note.hidden = false;
+      }, 2500);
+      var left = function () { clearTimeout(timer); };
+      window.addEventListener('blur', left, { once: true });
+      document.addEventListener('visibilitychange', left, { once: true });
+    });
+  });
+})();
+</script>
 </body>
 </html>
