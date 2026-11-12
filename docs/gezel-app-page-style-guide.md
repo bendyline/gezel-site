@@ -21,7 +21,7 @@ The host supplies typography and an opt-in component kit, not a complete CSS fra
 
 ## Shared file components
 
-For a full application workspace, `ui.components.appLayout` wraps the existing main content and adds a responsive fullscreen conversation. It keeps the page mounted on restore, provides a conversation toggle, and suppresses its native chat slot while a page dialog is open. Use a specific companion title and a short description of useful work the person can do together. A file-only app can pass `chat: false`. Keep the content usable in the ordinary pane as well.
+For a full application workspace, `ui.components.appLayout` wraps the existing main content and adds a responsive fullscreen conversation. It keeps the page mounted on restore, provides a conversation toggle, and dims its native chat slot with the rest of the page while a page dialog is open. Use a specific companion title and a short description of useful work the person can do together. A file-only app can pass `chat: false`. Keep the content usable in the ordinary pane as well.
 
 In a standalone demo the same slot holds the [sample conversation](https://gezel.com/docs/gezel-page-apis/#the-sample-conversation), drawn to match Gezel's chat: replies in the heading serif, the visitor's messages in an accent-tinted bubble, each tool the companion uses as a quiet step row with a check, and suggestions as bare keys under the conversation (one scrolling row on narrow screens). It lives in the component's shadow root, so restyle it only through the `--gezel-component-*` properties below. Keep its copy in the role's voice: short, specific, American English, no emojis.
 
@@ -33,7 +33,7 @@ Prefer `gezel.ui.components.fileCard` for a file tile/row and `fileAdder` for up
 
 Pages own the containing grid/list, spacing and breakpoints. Choose `variant: 'tile'` or `'row'`; use `update` when changing layouts. Keep filenames as the primary label and preserve keyboard access. The adder states where files go and what was saved, so do not hide that destination or status.
 
-Optional CSS custom properties on the mount element are `--gezel-component-text`, `--gezel-component-surface`, `--gezel-component-border`, `--gezel-component-muted`, and `--gezel-component-accent`. Set both light and dark values if overriding them, and maintain contrast and a visible focus outline. No copied fonts, CSS framework, external icon service or per-app component fork is needed.
+Optional CSS custom properties on the mount element are `--gezel-component-text`, `--gezel-component-surface`, `--gezel-component-border`, `--gezel-component-muted`, and `--gezel-component-accent`. Set both light and dark values if overriding them, and maintain contrast and a visible focus outline. In dark mode the components fill a primary key with deep terracotta (`#8c4428`) and cream ink, as the shell does, and keep the lighter accent for focus rings; a page's own filled keys should match. No copied fonts, CSS framework, external icon service or per-app component fork is needed.
 
 Ordinary workspace/artifact HTML keeps its own styles. The demo publisher/exporter supplies the same typography and components. Keep system fallbacks for degraded rendering without bundling a second font set into app source:
 

@@ -22,4 +22,4 @@ When you use local downloaded models, everything gezel does is powered by your d
 
 - Meet the Meester and the rest in [Your crew](https://gezel.com/docs/the-crew/).
 - See how work is organized in [Projects and threads](https://gezel.com/docs/projects-and-threads/).
-- Browse what each role can do in the Crew roles section of this Handboek.
+- Browse what each role can do in the Crew roles section of Help.

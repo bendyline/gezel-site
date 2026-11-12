@@ -557,6 +557,14 @@
       letter-spacing: -0.005em;
       margin: 0 0 14px;
     }
+    /* A second sample in one pillar: a short heading of its own beside the code. */
+    .pillar-next h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      margin: 0 0 12px;
+    }
     .pillar-lede { margin: 0 0 18px; font-size: 1.04rem; }
     .pillar-pkg { margin: 0 0 18px; font-size: 0.9rem; color: var(--muted); }
     .pillar-links {
@@ -921,7 +929,7 @@
             <img class="use-illustration" src="/assets/marks/platform-app-sdk.webp" alt="" data-ground="slate"
                  width="512" height="512" decoding="async">
             <h3>Add local AI to your app</h3>
-            <p>OpenAI-style chat on local models for Node.js and Electron. Use the person’s Gezel, or host one inside your app.</p>
+            <p>OpenAI-style chat on local models, from one HTTP call or through the SDK for Node.js and Electron. Use the person’s Gezel, or host one inside your app.</p>
             <span class="use-cta">Connected apps&nbsp;<span class="arrow" aria-hidden="true">↓</span></span>
           </a>
           <a class="use" href="#ai-apps">
@@ -1006,13 +1014,48 @@
             <p class="kicker">Connected apps</p>
             <h2>Add local AI to your app</h2>
             <p class="pillar-lede">
-              Give a Node.js or Electron app OpenAI-style chat and embeddings on
-              local models. Gezel takes care of model downloads, consent and the
-              inference service, and your app keeps its own interface.
+              Anything that speaks the OpenAI chat API can use the models on
+              this computer. Start with one HTTP call. When you ship, the SDK
+              adds model downloads, consent and a key the person can revoke.
+            </p>
+            <p class="pillar-pkg">
+              The port is the one Ollama uses, so tools that look for Ollama find Gezel too.
+              It takes no key, so it stays off until you turn it on, here or in
+              Settings → Integrations. Any model name works: your Meester answers,
+              on the model your chats use.
+            </p>
+            <ul class="pillar-links">
+              <li><a href="/docs/building-connected-apps-with-gezel-app-sdk/#quick-start-with-curl">The quick start, with Python and JavaScript&nbsp;<span aria-hidden="true">→</span></a></li>
+            </ul>
+          </div>
+          <div class="code-card">
+            <div class="code-bar">Terminal</div>
+<pre><code><span class="tok-c"># 1. Install, and download a model that fits this computer</span>
+<span class="tok-p">$ </span>npm install -g @bendyline/gezel-cli
+<span class="tok-p">$ </span>gezel run --download <span class="tok-s">"Say hello"</span>
+
+<span class="tok-c"># 2. Open a plain-HTTP port for other programs</span>
+<span class="tok-p">$ </span>gezel integrations ollama on
+
+<span class="tok-c"># 3. Ask, from anything that speaks the OpenAI API</span>
+<span class="tok-p">$ </span>curl http://127.0.0.1:11434/v1/chat/completions \
+    -H <span class="tok-s">"Content-Type: application/json"</span> \
+    -d <span class="tok-s">'{"model": "gezel", "reasoning_effort": "none",
+         "messages": [{"role": "user",
+           "content": "Say hello in five words."}]}'</span></code></pre>
+          </div>
+        </div>
+        <div class="pillar-top pillar-next">
+          <div>
+            <h3>Then ship it with the SDK</h3>
+            <p class="pillar-lede">
+              Give a Node.js or Electron app the same models with consent built
+              in. Gezel takes care of model downloads and the inference service,
+              and your app keeps its own interface.
             </p>
             <p class="pillar-pkg">Install <code>@bendyline/gezel-app-sdk</code> in your app. The Node entry needs Node.js 24 or newer.</p>
             <ul class="pillar-links">
-              <li><a href="/docs/building-connected-apps-with-gezel-app-sdk/">Building connected apps&nbsp;<span aria-hidden="true">→</span></a></li>
+              <li><a href="/docs/building-connected-apps-with-gezel-app-sdk/#install-and-connect">Building connected apps&nbsp;<span aria-hidden="true">→</span></a></li>
               <li><a href="/docs/docblocks-text-ai-with-gezel/">How DocBlocks uses Gezel&nbsp;<span aria-hidden="true">→</span></a></li>
             </ul>
           </div>
@@ -1020,12 +1063,21 @@
             <div class="code-bar">TypeScript</div>
 <pre><code><span class="tok-k">import</span> { connect } <span class="tok-k">from</span> <span class="tok-s">'@bendyline/gezel-app-sdk'</span>;
 
+<span class="tok-c">// Where your app keeps its token.</span>
+<span class="tok-c">// Use the OS keychain in a real app.</span>
+<span class="tok-k">const</span> tokens = <span class="tok-k">new</span> Map();
+<span class="tok-k">const</span> tokenStorage = {
+  save: (appId, token) =&gt; void tokens.set(appId, token),
+  load: (appId) =&gt; tokens.get(appId) ?? <span class="tok-k">null</span>,
+  delete: (appId) =&gt; void tokens.delete(appId),
+};
+
 <span class="tok-c">// The person approves this app once, in Gezel.</span>
 <span class="tok-k">const</span> app = <span class="tok-k">await</span> connect({
   appId: <span class="tok-s">'acme.notes'</span>,
   appName: <span class="tok-s">'Acme Notes'</span>,
   scopes: [<span class="tok-s">'openai'</span>],
-  tokenStorage, <span class="tok-c">// keep the token in the OS keychain</span>
+  tokenStorage,
 });
 
 <span class="tok-k">const</span> models = <span class="tok-k">await</span> app.models();
@@ -1173,8 +1225,8 @@ what it can read and change, and how to install it.</code></pre>
             <h3>Your workshop in a browser</h3>
             <p>Start it, open the link in its log, and create your account. Add the people you trust, each with a sign-in of their own.</p>
             <div class="cmd">
-              <code>docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel</code>
-              <button class="copy" type="button" data-copy="docker run -d --name gezel -p 127.0.0.1:6228:6228 -v gezel:/gezel ghcr.io/bendyline/gezel">
+              <code>docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyline/gezel</code>
+              <button class="copy" type="button" data-copy="docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyline/gezel">
                 <svg class="copy-icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
                 <span class="copy-slot"><span class="copy-label">Copy</span></span>
               </button>
@@ -1182,7 +1234,7 @@ what it can read and change, and how to install it.</code></pre>
           </li>
           <li>
             <h3>Local AI for your other apps</h3>
-            <p>Make a key, then point any OpenAI-style client at <code>http://localhost:6228/v1</code>. Every key shows in Integrations, where you can revoke it.</p>
+            <p>Make a key, then point any OpenAI-style client at <code>http://localhost:6230/v1</code>. Every key shows in Integrations, where you can revoke it.</p>
             <div class="cmd">
               <code>docker exec gezel gezel integrations token create my-app</code>
               <button class="copy" type="button" data-copy="docker exec gezel gezel integrations token create my-app">
@@ -1193,7 +1245,7 @@ what it can read and change, and how to install it.</code></pre>
           </li>
           <li>
             <h3>Put the crew to work on a folder</h3>
-            <p>Run one craftbook on the folder you are in, and collect what it made in a folder beside it.</p>
+            <p>Run one craftbook on the folder you are in, and collect what it made in a folder beside it. If the workshop container is already running, use <code>docker exec gezel gezel do …</code> instead: Gezel runs once per volume.</p>
             <div class="cmd">
               <code>docker run --rm -v "$PWD:$PWD" -w "$PWD" -v gezel:/gezel ghcr.io/bendyline/gezel do summarize-long "Summarize these notes for the board" --out ./gezel-out</code>
               <button class="copy" type="button" data-copy='docker run --rm -v "$PWD:$PWD" -w "$PWD" -v gezel:/gezel ghcr.io/bendyline/gezel do summarize-long "Summarize these notes for the board" --out ./gezel-out'>

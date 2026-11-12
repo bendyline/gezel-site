@@ -4,7 +4,7 @@ The Gezel image is the whole of Gezel in one container: the service, the web ver
 
 You need Docker. On Linux, Docker Engine; on Windows and macOS, Docker Desktop works too, with the limits under [Good to know](#good-to-know).
 
-## Your workshop in a browser
+## Gezel in a browser
 
 ```sh
 docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyline/gezel

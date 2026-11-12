@@ -23,6 +23,13 @@ Every [scorecard](https://gezel.com/docs/model-scorecard/) round that ran this m
 
 | Round | Build | Task set | Passed | Output speed | Prefill speed |
 | --- | --- | --- | --- | --- | --- |
+| [2026-11-09 · Windows x64 · RTX 5070 Ti Laptop (12 GB)](https://gezel.com/docs/model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3/) (partial) | underdog-saluki-27b-iq2-mix · llama.cpp | General capability | 11/11 (some tasks run once — count not rate) | 8.6 tok/s | 494.6 tok/s |
+| [2026-11-09 · Windows x64 · RTX 5070 Ti Laptop (12 GB)](https://gezel.com/docs/model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3/) (partial) | underdog-saluki-27b-iq2-mix · llama.cpp | Office and knowledge work | 8/13 (some tasks run once — count not rate) | 2.8 tok/s | 162.2 tok/s |
+| [2026-11-09 · Windows x64 · RTX 5070 Ti Laptop (12 GB)](https://gezel.com/docs/model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3/) (partial) | underdog-saluki-27b-iq2-mix · llama.cpp | Engineering work | 3/10 (some tasks run once — count not rate) | 2.8 tok/s | 158.4 tok/s |
+| [2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)](https://gezel.com/docs/model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/) | underdog-saluki-27b-iq2-mix · llama.cpp | General capability | 19/22 (some tasks run 2× — count not rate) | 8.4 tok/s | 383.1 tok/s |
+| [2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)](https://gezel.com/docs/model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/) | underdog-saluki-27b-iq2-mix · llama.cpp | Office and knowledge work | 20/26 (some tasks run 2× — count not rate) | 8.2 tok/s | 361.5 tok/s |
+| [2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)](https://gezel.com/docs/model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/) | underdog-saluki-27b-iq2-mix · llama.cpp | Engineering work | 19/20 (some tasks run 2× — count not rate) | 8.7 tok/s | 402.7 tok/s |
+| [2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)](https://gezel.com/docs/model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/) | underdog-saluki-27b-iq2-mix · llama.cpp | Complex workflows | 13/16 (some tasks run once — count not rate) | 8.3 tok/s | 360.9 tok/s |
 | [2026-10-20 · rtx5070ti-core-continuation-64k](https://gezel.com/docs/model-scorecard/2026-10-20-rtx5070ti-core-continuation-64k/) | underdog-saluki-27b-iq2-mix · llama.cpp | General capability | 23/26 (some tasks run 2× — count not rate) | 12.6 tok/s | 657.3 tok/s |
 | [2026-10-20 · rtx5070ti-core-original-64k](https://gezel.com/docs/model-scorecard/2026-10-20-rtx5070ti-core-original-64k/) (partial) | underdog-saluki-27b-iq2-mix · llama.cpp | General capability | 6/7 (some tasks run once — count not rate) | 12.9 tok/s | 669.4 tok/s |
 

@@ -6,7 +6,7 @@ Every workshop needs someone who knows the whole guild. The **Meester** (Dutch f
 ## What the Meester is for
 
 - **Building your crew.** Describe the work in plain words and the Meester adds whoever it calls for — role, character, and toolkit included.
-- **Setting up projects.** The Meester can create projects, write their mission, and put a crew lead in charge.
+- **Setting up projects.** The Meester can create projects, write their mission, and put a crew member in charge: usually a Builder who does the work, or a crew lead for a project that needs a crew. They pick someone already on your crew when there is one.
 - **Routing.** Not sure who to ask? Ask the Meester. Coordination is the craft; the Meester hands real work to whoever should do it rather than doing it directly.
 
 ## Their character
@@ -52,7 +52,7 @@ For advice, research, or an opinion that does not need a project, consult a spec
 | Shared document library | Cross-project shared library — mission docs, guidelines, and any markdown the user wants every gezel to be able to find | `list_documents`, `read_document`, `write_document`, `delete_document`, `search_documents` |
 | User Interaction | Pose a structured question mid-turn — to the user (`ask_user_question`), to a specific gezel (`ask_gezel`), or to a role-shaped specialist (`ask_specialist`) — instead of guessing | `ask_user_question`, `ask_gezel`, `ask_specialist` |
 | Audit & History | Search the install-wide audit log of who did what and when, plus past chat transcripts | `search_history`, `search_sessions` |
-| Handboek | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
+| Help | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
 
 ### On this device
 

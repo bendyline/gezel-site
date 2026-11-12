@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Working with knowledge catalogs — Gezel Handboek</title>
+<title>Working with knowledge catalogs — Gezel Help</title>
 <meta name="description" content="Build, validate, search, install, remove, and export .gezk catalogs with the gezel command line.">
 <link rel="canonical" href="https://gezel.com/docs/knowledge-command-line/">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../">Gezel Handboek</a>
+<a class="hb-brand" href="../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
 <a href="../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../craftbooks-overview/">Concepts</a></h2>
 
@@ -120,7 +120,7 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+<a href="../">Help</a> <span>/</span> <a href="../architecture/">Technical</a>
 </nav>
 <article class="hb-article">
 <h1>Working with knowledge catalogs</h1>
@@ -218,7 +218,7 @@ gezel knowledge install &lt;catalog-id&gt; --private</code></pre>
 <p>The digest is the archive's hash, not a manifest file hash. Obtain it through a source you trust. The <code>--sha256</code> option is valid only for URL installs.</p>
 <p>To update a catalog, install its catalog id again or install the replacement archive. There is currently no separate <code>knowledge update</code> command. <code>available</code> and <code>list</code> report newer catalog versions known to Gilde. The current CLI has no <code>knowledge enable</code> or <code>knowledge disable</code> subcommands; use Knowledge settings or the HTTP patch endpoint below.</p>
 <p><code>find</code> searches your installed catalogs directly. It does not select the project for the current directory or apply that project's catalog policy. For the session-scoped search a chat uses, see the <code>search</code> tool.</p>
-<p>Removing a private catalog deletes the daemon's installed copy, not the original <code>.gezk</code> archive you supplied. Removing a shared catalog removes your reference; public shared bytes have a separate reclamation lifecycle. The bundled Handboek is managed by Gezel and cannot be removed through this command; disable it in Knowledge settings if needed.</p>
+<p>Removing a private catalog deletes the daemon's installed copy, not the original <code>.gezk</code> archive you supplied. Removing a shared catalog removes your reference; public shared bytes have a separate reclamation lifecycle. The bundled Help is managed by Gezel and cannot be removed through this command; disable it in Knowledge settings if needed.</p>
 <h2 id="sign-and-export-a-catalog">Sign and export a catalog</h2>
 <p>If you have an Ed25519 private key in PKCS#8 PEM form, sign at build time:</p>
 <pre class="squisq-code-block"><code class="language-bash">gezel knowledge build ./team-guide --out ./team-guide-signed.gezk --sign-key ./publisher-key.pem</code></pre>
@@ -253,7 +253,7 @@ gezel knowledge install &lt;catalog-id&gt; --private</code></pre>
 </aside>
 </div>
 <footer class="hb-footer">
-<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>

@@ -315,6 +315,6 @@ Most plans can be started straight from chat — each one declares trigger phras
 | [Year in Review](https://gezel.com/docs/craftbook/year-in-review/) | Build the year-in-review that makes someone cry the good way: every month represented or its gap acknowledged, the people balanced, the closing image chosen on purpose — the annual ritual the whole photo archive exists for. |
 | [YouTube Chapters & SEO Metadata](https://gezel.com/docs/craftbook/youtube-chapters-seo/) | Turn a video (or its transcript) into a complete, paste-ready YouTube publishing kit — SEO title options, an optimized description with timestamped chapters, tags/keywords, and thumbnail text ideas — so an upload ranks and is navigable. |
 
-Every plan has its own article in the Plans section of this Handboek, with the full step-by-step walk of how it runs.
+Every plan has its own article in the Plans section of Help, with the full step-by-step walk of how it runs.
 
 You can also browse [every plan](https://gezel.com/docs/craftbooks-index/) on gezel.com, where the full shelf is grouped by kind of work and each entry shows its steps.

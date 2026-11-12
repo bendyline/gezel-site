@@ -60,7 +60,7 @@ For multi-file projects, read enough to diagnose, then hand the fix to a Develop
 | User Interaction | Pose a structured question mid-turn — to the user (`ask_user_question`), to a specific gezel (`ask_gezel`), or to a role-shaped specialist (`ask_specialist`) — instead of guessing | `ask_user_question`, `ask_gezel`, `ask_specialist` |
 | Audit & History | Search the install-wide audit log of who did what and when, plus past chat transcripts | `search_history`, `search_sessions` |
 | Workspace File Reading | Read, list, search, and diff files in the project workspace, and retrieve a referenced tracked issue's durable metadata | `list_dir`, `read_file`, `read_files`, `stat`, `validate`, `grep_files`, `find_files`, `diff_files`, `get_file_issue` |
-| Handboek | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
+| Help | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
 
 ### On this device
 

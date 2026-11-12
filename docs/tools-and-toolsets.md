@@ -203,7 +203,7 @@ Search the install-wide audit log of who did what and when, plus past chat trans
 
 Tools: `search_history`, `search_sessions`
 
-### Handboek
+### Help
 
 Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup. In every role's kit so a gezel answers 'how does gezel work?' from the real docs instead of guessing.
 

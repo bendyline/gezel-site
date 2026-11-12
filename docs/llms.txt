@@ -1,4 +1,4 @@
-# Gezel Handboek
+# Gezel Help
 
 > Gezel is a free, open-source app and platform for running a crew of AI agents on your own computer, with local models or a cloud plan you already have. Every article below is plain markdown.
 
@@ -7,7 +7,7 @@ To build a Gezel app, read [Build a Gezel app: the complete guide](https://gezel
 ## Concepts
 
 - [What is gezel?](https://gezel.com/docs/welcome.md): AI help with a name, a face, and a role, working for you from your own computer.
-- [Your crew: the Meester, the crew lead, and everyone else](https://gezel.com/docs/the-crew.md): Who's who in your workshop, and how the roles fit together.
+- [Your crew: the Meester, who runs each project, and everyone else](https://gezel.com/docs/the-crew.md): Who's who on your crew, and how the roles fit together.
 - [Social mode: character, growth, and what's waiting](https://gezel.com/docs/character-and-growth.md): How each crew member's character shapes their chat, how they grow with you, and the one switch that turns it all on or off.
 - [Projects, threads, and where work lives](https://gezel.com/docs/projects-and-threads.md): How gezel organizes work, and where the results end up.
 - [Memory, documents, and the shared library](https://gezel.com/docs/memory-and-documents.md): What Gezel remembers, and where shared knowledge lives.
@@ -417,7 +417,7 @@ To build a Gezel app, read [Build a Gezel app: the complete guide](https://gezel
 - [Gezel on a server](https://gezel.com/docs/gezel-on-a-server.md): Run the Gezel service headless, under your own account, with the security level and activity mode a server should have.
 - [Build a Gezel app: the complete guide](https://gezel.com/docs/build-a-gezel-app.md): Everything a person or an AI agent needs to build a Gezel app on one page, from the working loop and the rules to the four maintained guides.
 - [Building AI Apps inside Gezel](https://gezel.com/docs/building-ai-apps-inside-gezel.md): Combine a project type, dashboard, crew, craftbooks, scripts, and data into one reusable Gezel experience.
-- [Gezel in Docker](https://gezel.com/docs/gezel-in-docker.md): One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put Gezel to work on a folder.
+- [Gezel in Docker](https://gezel.com/docs/gezel-in-docker.md): One command runs Gezel in a container, with every engine inside. Use Gezel from your browser, give your other apps local AI, or put Gezel to work on a folder.
 - [How DocBlocks uses Gezel for text AI](https://gezel.com/docs/docblocks-text-ai-with-gezel.md): A developer walkthrough of consent, private hosting, streamed writing, knowledge retrieval, and the shared embedding APIs that simplify an editor integration.
 - [How we test models](https://gezel.com/docs/how-we-test-models.md): What the model scores mean, how they are measured, and what they don't tell you.
 - [Using the Gezel page APIs](https://gezel.com/docs/gezel-page-apis.md): Connect an app page to project files, file viewers, DuckDB summaries, declared actions, and the host theme.
@@ -429,6 +429,7 @@ To build a Gezel app, read [Build a Gezel app: the complete guide](https://gezel
 ## What's New
 
 - [What's new](https://gezel.com/docs/whats-new-index.md): Every gezel release, in plain language — what changed and what it means for you.
+- [1.26315 — 11 November 2026](https://gezel.com/docs/whats-new/1.26315.md): Add your own models from Hugging Face or a file, apps that update themselves, Back and Forward in the title bar, and Help and Plans as new names.
 - [1.26313 — 9 November 2026](https://gezel.com/docs/whats-new/1.26313.md): Connectors for every project, local models on AMD Radeon graphics, a large Qwen model on Macs with less memory, and links on gezel.com that open the app.
 - [1.26307 — 3 November 2026](https://gezel.com/docs/whats-new/1.26307.md): Change a picture you already have, give pictures a style, test a model on your own computer, start one of nineteen new projects for a small business, and run gezel in Docker.
 - [1.26300 — 27 October 2026](https://gezel.com/docs/whats-new/1.26300.md): Cameras that keep an eye on a room, new views of what is in your folders, Gezel's tools inside Claude Code and Codex, and pairing another computer with a code.

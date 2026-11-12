@@ -4,6 +4,16 @@ The **Video Generator** is the moving-picture sibling of the Image Generator: de
 
 Like its sibling, it's fixed-function by design: no file editing, no workspace access, just generation. Short clips take real compute — on local hardware expect renders to be measured in minutes, not seconds, and lean on the smallest length that sells the idea.
 
+## Animating a picture
+
+Attach a picture to your message and the Video Generator animates it: the picture becomes the clip's first frame and sets its shape, and your words say how it should move ("the waves roll in, the camera drifts closer"). Send a picture with no words and it moves gently, with a slow push in.
+
+Not every video model can start from a picture. When the model you use makes clips from words only, the Video Generator says so rather than quietly ignoring your picture. A model's description in Settings → Video generation says whether it starts from a picture.
+
+## Smaller models
+
+Some video models come in compact builds that run on your graphics card, whether that's Apple Silicon, NVIDIA, AMD or Intel, in a fraction of the memory the full models need. They save clips as WebM, which Gezel plays. If ffmpeg is installed on your computer, Gezel also saves an MP4 copy, which PowerPoint, Keynote and phones play.
+
 
 ## Their character
 
@@ -35,7 +45,7 @@ The video model is picked in Settings → Video generation. Per-gezel defaults �
 | Shared document library | Cross-project shared library — mission docs, guidelines, and any markdown the user wants every gezel to be able to find | `list_documents`, `read_document`, `write_document`, `delete_document`, `search_documents` |
 | Memory | Search indexed project knowledge through one unified surface, plus persistent notes a gezel can recall and write back | `search`, `knowledge_nearby`, `search_memory`, `save_memory`, `list_memories` |
 | User Interaction | Pose a structured question mid-turn — to the user (`ask_user_question`), to a specific gezel (`ask_gezel`), or to a role-shaped specialist (`ask_specialist`) — instead of guessing | `ask_user_question`, `ask_gezel`, `ask_specialist` |
-| Handboek | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
+| Help | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
 
 ### On this device
 

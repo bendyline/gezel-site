@@ -57,7 +57,7 @@ Before you call any step done, actually exercise the thing you made — run the 
 | Browser Automation | Drive a headless Chromium via Playwright scripts | `run_playwright_script` |
 | User Interaction | Pose a structured question mid-turn — to the user (`ask_user_question`), to a specific gezel (`ask_gezel`), or to a role-shaped specialist (`ask_specialist`) — instead of guessing | `ask_user_question`, `ask_gezel`, `ask_specialist` |
 | Audit & History | Search the install-wide audit log of who did what and when, plus past chat transcripts | `search_history`, `search_sessions` |
-| Handboek | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
+| Help | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
 
 ### On this device
 

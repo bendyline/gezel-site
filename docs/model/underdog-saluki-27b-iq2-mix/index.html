@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Underdog Saluki 1.0 (27B, IQ2 mix) — Gezel Handboek</title>
+<title>Underdog Saluki 1.0 (27B, IQ2 mix) — Gezel Help</title>
 <meta name="description" content="Conway Research's compact edition of Qwen 3.8 27B, with mixed 2-bit quantization tuned for tool calling.">
 <link rel="canonical" href="https://gezel.com/docs/model/underdog-saluki-27b-iq2-mix/">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../../">Gezel Handboek</a>
+<a class="hb-brand" href="../../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
 <a href="../../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../../craftbooks-overview/">Concepts</a></h2>
 
@@ -120,7 +120,7 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../../">Handboek</a> <span>/</span> <a href="../../architecture/">Technical</a>
+<a href="../../">Help</a> <span>/</span> <a href="../../architecture/">Technical</a>
 </nav>
 <article class="hb-article">
 <h1>Underdog Saluki 1.0 (27B, IQ2 mix)</h1>
@@ -129,7 +129,7 @@
 <p>Gezel downloads this model the first time it is needed, checks the file against its published hash, and applies tuned settings for it.</p>
 <h2 id="measured-results">Measured results</h2>
 <p>Every <a href="../../model-scorecard/">scorecard</a> round that ran this model or another build of it, newest first. Each round is one machine, one day, one version of Gezel and one version of the tests, so <strong>rounds are not comparable with each other</strong>: a change to any of those can move a score without the model changing. Where a task ran fewer than three times, the result is a count rather than a percentage. <a href="../../how-we-test-models/">How we test models</a> explains what each set contains.</p>
-<div class="hb-table-scroll"><table><thead><tr><th>Round</th><th>Build</th><th>Task set</th><th>Passed</th><th>Output speed</th><th>Prefill speed</th></tr></thead><tbody><tr><td><a href="../../model-scorecard/2026-10-20-rtx5070ti-core-continuation-64k/">2026-10-20 · rtx5070ti-core-continuation-64k</a></td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>General capability</td><td>23/26 (some tasks run 2× — count not rate)</td><td>12.6 tok/s</td><td>657.3 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-10-20-rtx5070ti-core-original-64k/">2026-10-20 · rtx5070ti-core-original-64k</a> (partial)</td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>General capability</td><td>6/7 (some tasks run once — count not rate)</td><td>12.9 tok/s</td><td>669.4 tok/s</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>Round</th><th>Build</th><th>Task set</th><th>Passed</th><th>Output speed</th><th>Prefill speed</th></tr></thead><tbody><tr><td><a href="../../model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3/">2026-11-09 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a> (partial)</td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>General capability</td><td>11/11 (some tasks run once — count not rate)</td><td>8.6 tok/s</td><td>494.6 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3/">2026-11-09 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a> (partial)</td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>Office and knowledge work</td><td>8/13 (some tasks run once — count not rate)</td><td>2.8 tok/s</td><td>162.2 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3/">2026-11-09 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a> (partial)</td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>Engineering work</td><td>3/10 (some tasks run once — count not rate)</td><td>2.8 tok/s</td><td>158.4 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/">2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a></td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>General capability</td><td>19/22 (some tasks run 2× — count not rate)</td><td>8.4 tok/s</td><td>383.1 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/">2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a></td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>Office and knowledge work</td><td>20/26 (some tasks run 2× — count not rate)</td><td>8.2 tok/s</td><td>361.5 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/">2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a></td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>Engineering work</td><td>19/20 (some tasks run 2× — count not rate)</td><td>8.7 tok/s</td><td>402.7 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/">2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a></td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>Complex workflows</td><td>13/16 (some tasks run once — count not rate)</td><td>8.3 tok/s</td><td>360.9 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-10-20-rtx5070ti-core-continuation-64k/">2026-10-20 · rtx5070ti-core-continuation-64k</a></td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>General capability</td><td>23/26 (some tasks run 2× — count not rate)</td><td>12.6 tok/s</td><td>657.3 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-10-20-rtx5070ti-core-original-64k/">2026-10-20 · rtx5070ti-core-original-64k</a> (partial)</td><td>underdog-saluki-27b-iq2-mix · llama.cpp</td><td>General capability</td><td>6/7 (some tasks run once — count not rate)</td><td>12.9 tok/s</td><td>669.4 tok/s</td></tr></tbody></table></div>
 <p>A partial round reran only some of a set’s tasks, usually to check a fix. It is not a score for the whole set.</p>
 <p><a href="https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0">The model’s own page</a> · <a href="../../model-catalog/">Every model</a> · <a href="../../model-scorecard/">Model scorecard</a></p>
 </article>
@@ -138,7 +138,7 @@
 
 </div>
 <footer class="hb-footer">
-<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>

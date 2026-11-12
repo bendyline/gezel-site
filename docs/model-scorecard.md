@@ -25,6 +25,18 @@ Every round laid end to end, one row per round, task set, and model, grouped by 
 <div class="hb-scorecard-controls" data-hb-scorecard-controls="1"></div>
 <h3 class="hb-scorecard-runs-title">Test rounds</h3>
 <ul class="hb-scorecard-runs">
+<li class="hb-scorecard-round hb-scorecard-run" data-hb-round="2026-11-09-windows-saluki-native-0-1-57-round3" data-hb-round-label="2026-11-09" data-hb-date="2026-11-09" data-hb-hardware="windows" data-hb-hardware-label="Windows" data-hb-models="underdog-saluki-27b-iq2-mix" data-hb-tiers="medium">
+<a class="hb-scorecard-run-link" href="../model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3/">2026-11-09 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a>
+<span class="hb-scorecard-run-meta">Partial round · AMD Ryzen AI 9 HX 370 w/ Radeon 890M · NVIDIA GeForce RTX 5070 Ti Laptop GPU · 31 GB · 1 model · General capability, Office and knowledge work, Engineering work, Complex workflows</span>
+</li>
+<li class="hb-scorecard-round hb-scorecard-run" data-hb-round="2026-11-06-windows-saluki-native-0-1-57-fanout" data-hb-round-label="2026-11-06" data-hb-date="2026-11-06" data-hb-hardware="windows" data-hb-hardware-label="Windows" data-hb-models="underdog-saluki-27b-iq2-mix" data-hb-tiers="medium">
+<a class="hb-scorecard-run-link" href="../model-scorecard/2026-11-06-windows-saluki-native-0-1-57-fanout/">2026-11-06 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a>
+<span class="hb-scorecard-run-meta">Partial round · AMD Ryzen AI 9 HX 370 w/ Radeon 890M · NVIDIA GeForce RTX 5070 Ti Laptop GPU · 31 GB · 1 model · Complex workflows</span>
+</li>
+<li class="hb-scorecard-round hb-scorecard-run" data-hb-round="2026-11-03-windows-saluki-native-0-1-57-original" data-hb-round-label="2026-11-04" data-hb-date="2026-11-04" data-hb-hardware="windows" data-hb-hardware-label="Windows" data-hb-models="underdog-saluki-27b-iq2-mix" data-hb-tiers="medium" data-hb-latest="1">
+<a class="hb-scorecard-run-link" href="../model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original/">2026-11-04 · Windows x64 · RTX 5070 Ti Laptop (12 GB)</a>
+<span class="hb-scorecard-run-meta">Latest round · AMD Ryzen AI 9 HX 370 w/ Radeon 890M · NVIDIA GeForce RTX 5070 Ti Laptop GPU · 31 GB · 1 model · General capability, Office and knowledge work, Engineering work, Complex workflows</span>
+</li>
 <li class="hb-scorecard-round hb-scorecard-run" data-hb-round="2026-11-03-m5max-fixed-paired" data-hb-round-label="2026-11-03" data-hb-date="2026-11-03" data-hb-hardware="mac" data-hb-hardware-label="Mac" data-hb-models="gemma4-12b qwen3.8-27b" data-hb-tiers="medium">
 <a class="hb-scorecard-run-link" href="../model-scorecard/2026-11-03-m5max-fixed-paired/">2026-11-03 · Mac · Apple M5 Max</a>
 <span class="hb-scorecard-run-meta">Partial round · M5 Max · Apple M5 Max (integrated GPU) · 128 GB · 2 models · General capability, Office and knowledge work</span>
@@ -41,9 +53,9 @@ Every round laid end to end, one row per round, task set, and model, grouped by 
 <a class="hb-scorecard-run-link" href="../model-scorecard/2026-10-29-spark-native-0-1-54-continuation/">2026-10-29 · Windows ARM64 · NVIDIA RTX Spark N1X</a>
 <span class="hb-scorecard-run-meta">Partial round · NVIDIA RTX Spark N1X (6144-core GPU, 20-core CPU) · NVIDIA RTX Spark N1X (6144-core Blackwell RTX GPU) · 23 GB · 2 models · General capability, Office and knowledge work, Engineering work, Complex workflows</span>
 </li>
-<li class="hb-scorecard-round hb-scorecard-run" data-hb-round="2026-10-28-dgx-spark-class" data-hb-round-label="2026-10-28 · Linux" data-hb-date="2026-10-28" data-hb-hardware="linux" data-hb-hardware-label="Linux" data-hb-models="gemma4-12b qwen3.8-27b" data-hb-tiers="medium" data-hb-latest="1">
+<li class="hb-scorecard-round hb-scorecard-run" data-hb-round="2026-10-28-dgx-spark-class" data-hb-round-label="2026-10-28 · Linux" data-hb-date="2026-10-28" data-hb-hardware="linux" data-hb-hardware-label="Linux" data-hb-models="gemma4-12b qwen3.8-27b" data-hb-tiers="medium">
 <a class="hb-scorecard-run-link" href="../model-scorecard/2026-10-28-dgx-spark-class/">2026-10-28 · DGX Spark Class</a>
-<span class="hb-scorecard-run-meta">Latest round · Arm Cortex-X925 + Cortex-A725 (20 cores) · NVIDIA GB10 · 122 GB · 2 models · General capability, Office and knowledge work, Engineering work, Complex workflows</span>
+<span class="hb-scorecard-run-meta">Earlier round · Arm Cortex-X925 + Cortex-A725 (20 cores) · NVIDIA GB10 · 122 GB · 2 models · General capability, Office and knowledge work, Engineering work, Complex workflows</span>
 </li>
 <li class="hb-scorecard-round hb-scorecard-run" data-hb-round="2026-10-27-windows-gemma4-12b-native-0-1-54" data-hb-round-label="2026-10-28 · 2026-10-27-windows-gemma4-12b-native-0-1-54" data-hb-date="2026-10-28" data-hb-hardware="windows" data-hb-hardware-label="Windows" data-hb-models="gemma4-12b" data-hb-tiers="medium">
 <a class="hb-scorecard-run-link" href="../model-scorecard/2026-10-27-windows-gemma4-12b-native-0-1-54/">2026-10-28 · win32 · AMD Ryzen AI 9 HX 370 w/ Radeon 890M</a>

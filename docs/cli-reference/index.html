@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The gezel command line — Gezel Handboek</title>
+<title>The gezel command line — Gezel Help</title>
 <meta name="description" content="Headless Gezel — start the service, run one-shot work, export docs.">
 <link rel="canonical" href="https://gezel.com/docs/cli-reference/">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../">Gezel Handboek</a>
+<a class="hb-brand" href="../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
 <a href="../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../craftbooks-overview/">Concepts</a></h2>
 
@@ -120,7 +120,7 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+<a href="../">Help</a> <span>/</span> <a href="../architecture/">Technical</a>
 </nav>
 <article class="hb-article">
 <h1>The gezel command line</h1>
@@ -169,20 +169,31 @@ gezel doctor                check the installation</code></pre>
 <h2 id="which-project-a-command-uses">Which project a command uses</h2>
 <p><code>gezel</code>, <code>gezel run</code>, <code>gezel do</code>, and the other project commands work in the project for the folder you run them from, and create it the first time. Pass <code>--project &lt;folder&gt;</code> to use another folder without changing directory.</p>
 <p>Gezel never makes a project of your home folder, the temp folder, or the top of a drive. Run a command from one of those and it uses the Default project instead, with a note saying so. Naming one of those folders with <code>--project</code> stops the command, so it never quietly uses a different project than the one you asked for.</p>
+<p>A folder's project starts read-only: Gezel reads the folder and keeps what it makes in its own task folders, which <code>--out &lt;dir&gt;</code> copies out. Some craftbooks save into the folder itself, such as a deck or a web page. At a terminal <code>gezel do</code> asks before it starts one of those. In a script, add <code>--allow-edits</code>, or run <code>gezel project edits on</code> once in the folder. <code>gezel project edits</code> shows the current setting, and <code>gezel craftbook show &lt;craftbook&gt;</code> says where a craftbook saves.</p>
 <h2 id="crew-projects-and-tasks">Crew, projects, and tasks</h2>
 <pre class="squisq-code-block"><code>gezel agent list            your crew
 gezel project list          your projects (gezel env is the same command)
+gezel project edits [on|off]
+                            show or set whether Gezel may change files in
+                            this folder's project (a folder starts read-only)
 gezel task list             tasks across every project (--status to filter)
 gezel task show &lt;ref&gt;       one task, such as default/12
 gezel task pause &lt;ref&gt;      pause one task without stopping the others
 gezel task resume &lt;ref&gt;     retry a paused task and wait for its result
+gezel task wait &lt;ref&gt;       wait for a task, then say where its result is
+                            (--out &lt;dir&gt; to copy what it made into that folder)
 gezel craftbook list [words]
                             craftbooks you can start in this folder's project
                             (words filter by command, title, and tags;
                             --no-start answers from a running service only)
+gezel craftbook show &lt;craftbook&gt;
+                            what one does, what it takes before your request,
+                            and where it saves
 gezel do &lt;craftbook&gt;        start a craftbook as a task in this folder's project
-                            (--wait to stay until it finishes; --out &lt;dir&gt; to
-                            wait and copy what it made into that folder)
+                            (--wait to stay until it finishes and print where
+                            its result is; --out &lt;dir&gt; to wait and copy what it
+                            made into that folder; --allow-edits when it saves
+                            into the folder itself)
 gezel skills list           SKILL.md skills found in this project's workspace
 gezel skills import &lt;path&gt;  turn one of those skills into a craftbook</code></pre>
 <h2 id="who-can-reach-this-gezel">Who can reach this Gezel</h2>
@@ -199,8 +210,18 @@ gezel account setup-link    a new link to create the first account
 gezel integrations token create &lt;app&gt;
                             a key for another program to use Gezel's models
                             (--scope to give it more than chat; shown once)
-gezel integrations token revoke &lt;app&gt;</code></pre>
+gezel integrations token revoke &lt;app&gt;
+gezel integrations address  where other programs reach this Gezel's models
+gezel integrations ollama [on|off]
+                            show or set a plain-HTTP port on this computer
+                            that needs no key (Ollama emulation, port 11434)
+gezel integrations list     apps connected to this Gezel, and apps waiting
+                            for your approval
+gezel integrations approve &lt;app&gt; / deny &lt;app&gt;
+                            answer an app that asked to connect (--code for
+                            one that shows a code)</code></pre>
 <p>Everyone with an account can do everything, including open a terminal. Add only people you trust with the computer Gezel runs on.</p>
+<p>A program with a key reaches the models at the address <code>gezel integrations address</code> prints. Outside a container that address uses Gezel's own certificate, which a program has to trust or skip checking, and its port is 6228 when that port is free. For a program that cannot do either, <code>gezel integrations ollama on</code> opens <code>http://127.0.0.1:11434/v1</code> (and Ollama's own paths on the same port): plain HTTP, always that port, no key. While it is on, any program on this computer can use your models without asking, so it stays off until you turn it on. Gezel leaves the port alone when Ollama itself is running.</p>
 <h2 id="ai-apps">AI Apps</h2>
 <pre class="squisq-code-block"><code>gezel app new my-app        scaffold an app source folder
 gezel app validate my-app   check a source folder or .gezapp (--json for tooling)
@@ -275,7 +296,7 @@ gezel backup &lt;file&gt;         write your crew, projects, and documents to a 
 gezel restore &lt;file&gt;        bring them back (--list to look first)</code></pre>
 <h2 id="this-documentation">This documentation</h2>
 <pre class="squisq-code-block"><code>gezel handboek export --out ./site</code></pre>
-<p>renders the Handboek — the same articles you're reading now — as a static website, for publishing or offline reading.</p>
+<p>renders Help — the same articles you're reading now — as a static website, for publishing or offline reading.</p>
 <p>Run <code>gezel --help</code> (or <code>--help</code> on any subcommand) for the full surface.</p>
 <p>To automate work <em>inside</em> a project, continue with <a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a>. To let another application use Gezel, see <a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a>.</p>
 <h2 id="watching-tasks">Watching tasks</h2>
@@ -307,7 +328,7 @@ gezel restore &lt;file&gt;        bring them back (--list to look first)</code><
 </aside>
 </div>
 <footer class="hb-footer">
-<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>

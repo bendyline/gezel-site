@@ -35,7 +35,7 @@ An AI App is a reusable experience that runs *inside* Gezel: a tailored project,
 
 "Gezel app" and "AI App" name that experience. The **project type** is its reusable composition and setup recipe; the **project** is one person's instance. You can build a useful app with only a page and a folder, then add a crew member or a craftbook when the work calls for one. You do not need every component in every app.
 
-For the interface, read [Using the Gezel page APIs](https://gezel.com/docs/gezel-page-apis/) and the [app page style guide](https://gezel.com/docs/gezel-app-page-style-guide/). The complete [page API reference](https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md) and [project-type specification](https://github.com/bendyline/gezel/blob/main/docs/project-types.md) provide the precise runtime contracts. These three Handboek guides are the starting path for people and AI agents building an app.
+For the interface, read [Using the Gezel page APIs](https://gezel.com/docs/gezel-page-apis/) and the [app page style guide](https://gezel.com/docs/gezel-app-page-style-guide/). The complete [page API reference](https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md) and [project-type specification](https://github.com/bendyline/gezel/blob/main/docs/project-types.md) provide the precise runtime contracts. These three Help guides are the starting path for people and AI agents building an app.
 
 The project type is the composition root and installer. Public AI Apps arrive through the [project-type collection](https://gezel.com/docs/project-types-index/); private or experimental apps travel as `.gezapp` packages. Both start life as the same thing: a source folder you can build with the command line, by hand, or with an AI agent — this article is the guide to that folder.
 
@@ -182,6 +182,14 @@ In the Gezel repository, public catalog content belongs in the sibling Gilde che
 
 The private source packer folds script sidecars into the version manifest. That preprocessing is specific to the source-package path: when authoring Gilde directly, follow its released-payload conventions and validators. Never hand-edit a released version; add a new version. Exported hashes, dependency locks, and catalog-root indexes are generated, not authored.
 
+#### New versions reach existing projects
+
+Projects made from an earlier version of an app move to a newer one on their own, within the same major version, when the update would change nothing the person made: the page, tool declarations and scripts move together, and their data, edited About text and settings stay. An update that would replace a script edited in the project, add crew, connect a tool service, start a recurring run, or write new files into a person's folder waits for them to approve it in the project. Apps installed from a `.gezapp` always wait for approval. Write versions so this is safe:
+
+- A minor or patch version must read every data file an earlier version of the same major wrote. Change a data file's shape only in a new major version; existing projects stay on their major.
+- A param added within a major needs a `default`, or projects made earlier are not offered the update.
+- Keep page and script changes in step: they ship together, so a page may call a tool its own version's script provides.
+
 ### Scripts, tools, and the Output page
 
 Each script declares its capabilities, inputs, outputs, and whether it is an action or gate through `@bendyline/gezel-sdk`; the [Writing scripts with gezel-sdk](https://gezel.com/docs/writing-scripts-with-gezel-sdk/) article covers that contract. Adoption copies the scripts into the project with provenance.
@@ -245,7 +253,7 @@ Before handing over the app:
 2. Create or apply the app in an isolated test project. Verify the actual folder binding, permission denials, and every state-changing action. A folder explorer must leave originals unchanged.
 3. Exercise the main craftbook with representative inputs and confirm its outputs and gates. Check disabled/consent-required schedules without silently arming them.
 4. Test the page's live and standalone flows, light/dark themes, keyboard navigation, narrow layout, empty content, unavailable capabilities, and failed actions. Dispose watches and media players. A page with a conversation gets a [sample conversation](https://gezel.com/docs/gezel-page-apis/#the-sample-conversation) for its demo; then ask the real crew lead the same suggestions on a small local model, so the demo never promises what the app cannot do.
-5. If upgrading, check user-modified content and seed drift. Document any unsupported migration or reconciliation rather than overwriting it as a convenience.
+5. If upgrading, apply the new version to a project made with the old one (`gezel app apply <id>`, or `gezel app status` to see what is on offer) and confirm its data still loads. Document any unsupported migration rather than overwriting data as a convenience.
 6. Report what shipped, what was tested, which host modes are supported, and whether the normal app consumes the new catalog version yet.
 
 ### What still needs improvement
@@ -256,8 +264,8 @@ The authoring loop above is real, but the surrounding lifecycle still has gaps:
 | --- | --- |
 | Project-to-app export | Export packages the catalog definition; a diff-and-review flow that turns organic project changes (edited scripts, new craftbooks, a redesigned page) into a new version does not exist yet |
 | Import interface | The desktop app still routes import through project artifacts and model tools; file picking, bundle review, and conflict handling belong in the UI the way the CLI already has them |
-| Updates and drift | `gezel app status` reports per-seed drift and `apply` preserves user-modified seeds, but scripts still overwrite on upgrade and there is no three-way reconcile view |
-| Schema evolution | App data-version declarations, migrations, backup, and rollback for custom records |
+| Updates and drift | Updates keep the person's data, edits and settings, and an edited script is saved before it is replaced; there is no three-way merge of an edited script yet |
+| Schema evolution | App data-version declarations and migrations, so an existing project can cross a major version, plus backup and rollback for custom records |
 | Dashboard surface | First-class page templates, an in-app development preview, diagnostics, and possibly more than one app-owned project tab |
 | Craftbook test harness | `test.json` sidecars are validated at authoring time, but the eval harness does not yet run an installed app's craftbook tests |
 | Signing and registries | v1 signature status is `unsigned`; a signing story and a private registry path alongside public Gilde contributions |
@@ -392,11 +400,11 @@ Use `gezelId` for an exact crew member, `gezelRole` for a role, or omit both to 
 
 Chat currently requires the embedded Gezel host. Browser previews, app-serve visitors, and standalone demos show an explicit unavailable message; demos never call a model. The parent owns the native chat and composer, including their theme, accessibility, sessions, and ordinary permission prompts. Page scripts receive no transcript, input text, credentials, or programmatic send method. Options change presentation, not the recipient's tool authority.
 
-The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat: hide the slot while showing a page dialog that overlaps it. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.
+The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat. A modal page dialog (`dialog.showModal()`, `aria-modal="true"`, or a component dialog) dims the chat instead: the host draws the dialog's backdrop color over it, leaves the dialog's own area uncovered, and lets clicks reach the page until the dialog closes. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.
 
 ### Building a full-page workspace
 
-`gezel.ui.components.appLayout(main, options)` wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. The component hides the native slot while a visible page dialog is open, since iframe content cannot cover host-owned chat.
+`gezel.ui.components.appLayout(main, options)` wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. While a page dialog is open the conversation stays on screen, dimmed with the rest of the page, since iframe content cannot cover host-owned chat.
 
 ```js
 const workspace = gezel.ui.components.appLayout('main', {
@@ -582,7 +590,7 @@ The host supplies typography and an opt-in component kit, not a complete CSS fra
 
 ### Shared file components
 
-For a full application workspace, `ui.components.appLayout` wraps the existing main content and adds a responsive fullscreen conversation. It keeps the page mounted on restore, provides a conversation toggle, and suppresses its native chat slot while a page dialog is open. Use a specific companion title and a short description of useful work the person can do together. A file-only app can pass `chat: false`. Keep the content usable in the ordinary pane as well.
+For a full application workspace, `ui.components.appLayout` wraps the existing main content and adds a responsive fullscreen conversation. It keeps the page mounted on restore, provides a conversation toggle, and dims its native chat slot with the rest of the page while a page dialog is open. Use a specific companion title and a short description of useful work the person can do together. A file-only app can pass `chat: false`. Keep the content usable in the ordinary pane as well.
 
 In a standalone demo the same slot holds the [sample conversation](https://gezel.com/docs/gezel-page-apis/#the-sample-conversation), drawn to match Gezel's chat: replies in the heading serif, the visitor's messages in an accent-tinted bubble, each tool the companion uses as a quiet step row with a check, and suggestions as bare keys under the conversation (one scrolling row on narrow screens). It lives in the component's shadow root, so restyle it only through the `--gezel-component-*` properties below. Keep its copy in the role's voice: short, specific, American English, no emojis.
 
@@ -594,7 +602,7 @@ Prefer `gezel.ui.components.fileCard` for a file tile/row and `fileAdder` for up
 
 Pages own the containing grid/list, spacing and breakpoints. Choose `variant: 'tile'` or `'row'`; use `update` when changing layouts. Keep filenames as the primary label and preserve keyboard access. The adder states where files go and what was saved, so do not hide that destination or status.
 
-Optional CSS custom properties on the mount element are `--gezel-component-text`, `--gezel-component-surface`, `--gezel-component-border`, `--gezel-component-muted`, and `--gezel-component-accent`. Set both light and dark values if overriding them, and maintain contrast and a visible focus outline. No copied fonts, CSS framework, external icon service or per-app component fork is needed.
+Optional CSS custom properties on the mount element are `--gezel-component-text`, `--gezel-component-surface`, `--gezel-component-border`, `--gezel-component-muted`, and `--gezel-component-accent`. Set both light and dark values if overriding them, and maintain contrast and a visible focus outline. In dark mode the components fill a primary key with deep terracotta (`#8c4428`) and cream ink, as the shell does, and keep the lighter accent for focus rings; a page's own filled keys should match. No copied fonts, CSS framework, external icon service or per-app component fork is needed.
 
 Ordinary workspace/artifact HTML keeps its own styles. The demo publisher/exporter supplies the same typography and components. Keep system fallbacks for degraded rendering without bundling a second font set into app source:
 

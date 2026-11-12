@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Using the Gezel page APIs — Gezel Handboek</title>
+<title>Using the Gezel page APIs — Gezel Help</title>
 <meta name="description" content="Connect an app page to project files, file viewers, DuckDB summaries, declared actions, and the host theme.">
 <link rel="canonical" href="https://gezel.com/docs/gezel-page-apis/">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../">Gezel Handboek</a>
+<a class="hb-brand" href="../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
 <a href="../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../craftbooks-overview/">Concepts</a></h2>
 
@@ -120,7 +120,7 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+<a href="../">Help</a> <span>/</span> <a href="../architecture/">Technical</a>
 </nav>
 <article class="hb-article">
 <h1>Using the Gezel page APIs</h1>
@@ -195,9 +195,9 @@ window.addEventListener('pagehide', () =&gt; { stopLayout(); chat.destroy(); });
 #game.with-chat #game-chat { display: block; }</code></pre>
 <p>Use <code>gezelId</code> for an exact crew member, <code>gezelRole</code> for a role, or omit both to use the project's crew lead (then its first member). An unavailable requested recipient displays an error rather than silently choosing someone else. <code>lockRecipient</code> defaults to true and disables recipient switching and mention fan-out. <code>showAddress</code> and <code>showThreads</code> default to true. <code>variant: 'composer'</code> omits the timeline; the default <code>'chat'</code> shows that recipient's project history. <code>attachments</code>, <code>dictation</code>, <code>promptAssist</code>, and <code>expand</code> default to false and can be enabled individually, subject to the host's capabilities.</p>
 <p>Chat currently requires the embedded Gezel host. Browser previews, app-serve visitors, and standalone demos show an explicit unavailable message; demos never call a model. The parent owns the native chat and composer, including their theme, accessibility, sessions, and ordinary permission prompts. Page scripts receive no transcript, input text, credentials, or programmatic send method. Options change presentation, not the recipient's tool authority.</p>
-<p>The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat: hide the slot while showing a page dialog that overlaps it. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.</p>
+<p>The slot follows layout, scrolling, and hidden containers. Keep it rectangular and untransformed; the host clips it to the page viewport. Page CSS cannot restyle chat internals, and page popovers cannot cover native chat. A modal page dialog (<code>dialog.showModal()</code>, <code>aria-modal="true"</code>, or a component dialog) dims the chat instead: the host draws the dialog's backdrop color over it, leaves the dialog's own area uncovered, and lets clicks reach the page until the dialog closes. At most four slots can be mounted per page. Removing a slot from the document destroys it; create a new handle if you need to mount it again.</p>
 <h2 id="building-a-full-page-workspace">Building a full-page workspace</h2>
-<p><code>gezel.ui.components.appLayout(main, options)</code> wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. The component hides the native slot while a visible page dialog is open, since iframe content cannot cover host-owned chat.</p>
+<p><code>gezel.ui.components.appLayout(main, options)</code> wraps an existing content element without replacing its DOM. In fullscreen it opens a companion beside the content; below 900 CSS pixels the conversation stacks beneath it. Restoring the pane, hiding the conversation, or opening a native page dialog retains the conversation and its draft. While a page dialog is open the conversation stays on screen, dimmed with the rest of the page, since iframe content cannot cover host-owned chat.</p>
 <pre class="squisq-code-block"><code class="language-js">const workspace = gezel.ui.components.appLayout('main', {
   title: 'Practice with your tutor',
   description: 'Choose a scene, then talk here.',
@@ -327,7 +327,7 @@ components.demo?.reset();</code></pre>
 </aside>
 </div>
 <footer class="hb-footer">
-<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>

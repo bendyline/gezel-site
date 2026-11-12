@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How knowledge works in Gezel — Gezel Handboek</title>
+<title>How knowledge works in Gezel — Gezel Help</title>
 <meta name="description" content="The storage, embeddings, hybrid search, and portable .gezk catalogs behind Gezel's knowledge.">
 <link rel="canonical" href="https://gezel.com/docs/how-knowledge-works/">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../">Gezel Handboek</a>
+<a class="hb-brand" href="../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
 <a href="../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../craftbooks-overview/">Concepts</a></h2>
 
@@ -120,7 +120,7 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+<a href="../">Help</a> <span>/</span> <a href="../architecture/">Technical</a>
 </nav>
 <article class="hb-article">
 <h1>How knowledge works in Gezel</h1>
@@ -152,7 +152,7 @@
 <h3 id="catalog-embedding-profiles">Catalog embedding profiles</h3>
 <p>A <code>.gezk</code> embedding profile records enough information to reproduce its vectors: model repository and revision, ONNX graph path and digest, tokenizer identity and digest, query and passage instructions, pooling, normalization, dimensions, token limit, and quantization rules. The catalog echoes this profile in its manifest and database metadata.</p>
 <p>The current registered profiles are:</p>
-<div class="hb-table-scroll"><table><thead><tr><th>Profile</th><th>Language use</th><th>Query / passage instructions</th><th>Stage-one encoding</th></tr></thead><tbody><tr><td><code>bge-small-en-v1.5@1</code></td><td>English; default for local catalog builds and the Handboek</td><td>BGE query instruction / no passage prefix</td><td>Raw sign bits</td></tr><tr><td><code>multilingual-e5-small@2</code></td><td>Multilingual reference catalogs</td><td><code>query: </code> / <code>passage: </code></td><td>Centered sign bits</td></tr><tr><td><code>multilingual-e5-small@1</code></td><td>Existing catalogs using the earlier E5 profile</td><td><code>query: </code> / <code>passage: </code></td><td>Raw sign bits</td></tr><tr><td><code>embeddinggemma-2-512@1</code></td><td>Catalogs with searchable photos, video and audio</td><td><code>task: search result | query: </code> / <code>title: none | text: </code></td><td>Centered sign bits</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>Profile</th><th>Language use</th><th>Query / passage instructions</th><th>Stage-one encoding</th></tr></thead><tbody><tr><td><code>bge-small-en-v1.5@1</code></td><td>English; default for local catalog builds and Help</td><td>BGE query instruction / no passage prefix</td><td>Raw sign bits</td></tr><tr><td><code>multilingual-e5-small@2</code></td><td>Multilingual reference catalogs</td><td><code>query: </code> / <code>passage: </code></td><td>Centered sign bits</td></tr><tr><td><code>multilingual-e5-small@1</code></td><td>Existing catalogs using the earlier E5 profile</td><td><code>query: </code> / <code>passage: </code></td><td>Raw sign bits</td></tr><tr><td><code>embeddinggemma-2-512@1</code></td><td>Catalogs with searchable photos, video and audio</td><td><code>task: search result | query: </code> / <code>title: none | text: </code></td><td>Centered sign bits</td></tr></tbody></table></div>
 <p>The BGE and E5 profiles use 384 dimensions, a 512-token model window, and <code>bit+int8</code> storage. E5 revisions 1 and 2 share the underlying float vector space and int8 rerank representation; revision 2 changes the binary prefilter. The reader takes the centering vector from the catalog's own profile.</p>
 <p><code>embeddinggemma-2-512@1</code> is Google's EmbeddingGemma 2 at 8-bit precision. The model produces 768 values; the profile keeps the first 512 and re-normalizes them (Matryoshka truncation), which the profile records so every reader truncates the same way. Its vision and audio encoders put photos, video frames and sound into the same space as text, so a catalog built with it can carry <strong>media rows</strong>: one per photo and one per 30-second window of a clip or recording. A text question finds them directly. Media rows are searched in their own exact lane, because a photo sits further from its description than a passage does and would rarely survive the text shortlist, and at most four reach a search's results, one per document. A media kind with no measured cosine floor contributes no vector evidence. Catalogs using this profile need format 0.8.</p>
 <p>Gezel reuses the daemon query embedder for a catalog only when the declared vector space matches and the cached model and tokenizer bytes pass the profile's pinned hash checks. A different supported profile gets its own pinned query embedder. An unknown or unavailable profile leaves browsing and keyword search usable; Gezel does not substitute a same-sized vector from another model.</p>
@@ -226,7 +226,7 @@ knowledge://publisher/catalog/document#chunk=0123456789abcdef0123456789abcdef</c
 <p>The format supports Ed25519 manifest signatures over RFC 8785 canonical JSON. A signature is proof of origin only when verified against a trusted public key. File hashes establish consistency; they do not by themselves establish who published the content. The current Gilde install path trusts the archive identity and digest pinned by its catalog entry, and local file imports may be unsigned. Structural validation and a signature displayed by <code>inspect</code> should not be mistaken for an independent publisher-trust verdict.</p>
 <p>Trusted public catalog downloads can use the machine engine broker's immutable asset store, sharing the bytes once per computer. Your installed references, enabled state, and project selections remain per-user. Local imports and arbitrary URLs use private storage; a catalog-id install can also explicitly request private placement. If shared placement is unavailable, the user daemon can install privately.</p>
 <p>The broker receives a trusted catalog coordinate, not a user project path. It manages public immutable bytes; user documents, memories, query embedding work, and retrieval remain product-daemon concerns. Removing a catalog removes your reference and private files, while shared public bytes are reclaimed separately. Background update work respects the app-network policy; an explicitly requested install is the user's own download.</p>
-<p>The built-in Handboek is itself a <code>.gezk</code> catalog. Gezel builds it from these documentation articles and generated catalog material, then installs the bundled archive through the normal knowledge machinery. Updates replace changed bundled bytes while preserving your enabled setting.</p>
+<p>The built-in Help is itself a <code>.gezk</code> catalog. Gezel builds it from these documentation articles and generated catalog material, then installs the bundled archive through the normal knowledge machinery. Updates replace changed bundled bytes while preserving your enabled setting.</p>
 <h2 id="diagnosing-missing-results">Diagnosing missing results</h2>
 <div class="hb-table-scroll"><table><thead><tr><th>Symptom</th><th>What to check</th></tr></thead><tbody><tr><td>A file appears by name but not by meaning</td><td>Embedding readiness and project indexing/enrichment status; the structural pass can finish first</td></tr><tr><td>A memory cannot be recalled</td><td>Correct crew-member/project/user scope, saved Markdown, memory index health, and any status-note age</td></tr><tr><td>A catalog appears installed but supplies no results</td><td>Enabled/mounted state, quarantine reason, project selection, and the query profile's readiness</td></tr><tr><td>Offline keyword search works but semantic search fails</td><td>Embedding runtime installation, cached pinned model files, and supported profile</td></tr><tr><td>A title is found but a related passage is missed</td><td>Shard routing and candidate limits; compare keyword and semantic results</td></tr><tr><td>A citation stops opening after an update</td><td>Currently mounted version and whether the referenced document or chunk still exists</td></tr><tr><td>A new catalog is refused by an older installation</td><td>The reader's supported format/schema generations; readers do not migrate archives</td></tr></tbody></table></div>
 <p>Start with <a href="../knowledge-command-line/"><code>knowledge inspect</code>, <code>validate</code>, <code>list</code>, and <code>search</code></a>. Project <code>/index/status</code> and service <code>/api/health</code> also expose embedding readiness. A successful keyword query proves a lexical path works; it does not prove the embedding pipeline is ready.</p>
@@ -262,7 +262,7 @@ knowledge://publisher/catalog/document#chunk=0123456789abcdef0123456789abcdef</c
 </aside>
 </div>
 <footer class="hb-footer">
-<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>

@@ -78,7 +78,7 @@ The models Gezel thinks and writes with, recommended first. **Measured** is the 
 | [Qwen 3.8 Flash Next (180B-A6B, IQ3_XXS)](https://gezel.com/docs/model/qwen3.8-flash-next-iq3/) | [94% general (NVIDIA GB10)](https://gezel.com/docs/model/qwen3.8-flash-next-iq3/#measured-results) | 82.0 GB | 262K | Yes | Everyday work | llama.cpp | Qwen Community 1.0 |
 | [Talkie 1930 (13B, Q4)](https://gezel.com/docs/model/talkie-1930-13b-q4/) | Not yet | 8.6 GB | 2K | No | Everyday work | llama.cpp | Apache 2.0 |
 | [Ternary Bonsai 27B (2-bit)](https://gezel.com/docs/model/ternary-bonsai-27b-q2/) | Not yet | 8.5 GB | 262K | Yes | Everyday work | MLX | Apache 2.0 |
-| [Underdog Saluki 1.0 (27B, IQ2 mix)](https://gezel.com/docs/model/underdog-saluki-27b-iq2-mix/) | [23/26 general (NVIDIA GeForce RTX 5070 Ti Laptop GPU)](https://gezel.com/docs/model/underdog-saluki-27b-iq2-mix/#measured-results) | 7.9 GB | 262K | Yes | Everyday work | llama.cpp | Apache 2.0 |
+| [Underdog Saluki 1.0 (27B, IQ2 mix)](https://gezel.com/docs/model/underdog-saluki-27b-iq2-mix/) | [19/22 general (NVIDIA GeForce RTX 5070 Ti Laptop GPU)](https://gezel.com/docs/model/underdog-saluki-27b-iq2-mix/#measured-results) | 7.9 GB | 262K | Yes | Everyday work | llama.cpp | Apache 2.0 |
 
 ## Image models (14)
 

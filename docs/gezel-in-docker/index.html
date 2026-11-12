@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gezel in Docker — Gezel Handboek</title>
-<meta name="description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put Gezel to work on a folder.">
+<title>Gezel in Docker — Gezel Help</title>
+<meta name="description" content="One command runs Gezel in a container, with every engine inside. Use Gezel from your browser, give your other apps local AI, or put Gezel to work on a folder.">
 <link rel="canonical" href="https://gezel.com/docs/gezel-in-docker/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Gezel">
 <meta property="og:url" content="https://gezel.com/docs/gezel-in-docker/">
 <meta property="og:title" content="Gezel in Docker">
 <meta name="twitter:title" content="Gezel in Docker">
-<meta property="og:description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put Gezel to work on a folder.">
-<meta name="twitter:description" content="One command runs Gezel in a container, with every engine inside. Use the workshop from your browser, give your other apps local AI, or put Gezel to work on a folder.">
+<meta property="og:description" content="One command runs Gezel in a container, with every engine inside. Use Gezel from your browser, give your other apps local AI, or put Gezel to work on a folder.">
+<meta name="twitter:description" content="One command runs Gezel in a container, with every engine inside. Use Gezel from your browser, give your other apps local AI, or put Gezel to work on a folder.">
 <meta property="og:image" content="https://gezel.com/og/gezel-in-docker.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../">Gezel Handboek</a>
+<a class="hb-brand" href="../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
 <a href="../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../craftbooks-overview/">Concepts</a></h2>
 
@@ -120,13 +120,13 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+<a href="../">Help</a> <span>/</span> <a href="../architecture/">Technical</a>
 </nav>
 <article class="hb-article">
 <h1>Gezel in Docker</h1>
 <p>The Gezel image is the whole of Gezel in one container: the service, the web version of the workshop, the command line, and every engine that runs models on your own hardware. Nothing else needs installing. What it downloads is models: the one you choose, and smaller ones it uses to search your files and to read pictures, along with a web browser for tasks that visit websites.</p>
 <p>You need Docker. On Linux, Docker Engine; on Windows and macOS, Docker Desktop works too, with the limits under <a href="#good-to-know">Good to know</a>.</p>
-<h2 id="your-workshop-in-a-browser">Your workshop in a browser</h2>
+<h2 id="gezel-in-a-browser">Gezel in a browser</h2>
 <pre class="squisq-code-block"><code class="language-sh">docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyline/gezel
 docker logs gezel</code></pre>
 <p>The log ends with a link like <code>http://localhost:6230/?setup=…</code>. Open it, pick a name and a password, and you have the first account on this Gezel. The link works once, for an hour; if it runs out, run <code>docker logs gezel</code> again after opening <code>http://localhost:6230</code>, and a new one appears.</p>
@@ -185,7 +185,7 @@ docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyl
 <nav aria-label="On this page">
 <h2>On this page</h2>
 <ul>
-<li class="hb-h2"><a href="#your-workshop-in-a-browser">Your workshop in a browser</a></li>
+<li class="hb-h2"><a href="#gezel-in-a-browser">Gezel in a browser</a></li>
 <li class="hb-h3"><a href="#with-a-graphics-card">With a graphics card</a></li>
 <li class="hb-h2"><a href="#local-ai-for-your-other-apps">Local AI for your other apps</a></li>
 <li class="hb-h2"><a href="#put-gezel-to-work-on-a-folder">Put Gezel to work on a folder</a></li>
@@ -199,7 +199,7 @@ docker run -d --name gezel -p 127.0.0.1:6230:6230 -v gezel:/gezel ghcr.io/bendyl
 </aside>
 </div>
 <footer class="hb-footer">
-<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>

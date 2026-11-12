@@ -4,6 +4,7 @@ Gezel changes often. This section is the running record of those changes, one ar
 
 ## Recent releases
 
+- **[1.26315 — 11 November 2026](https://gezel.com/docs/whats-new/1.26315/)** — Add your own models from Hugging Face or a file, apps that update themselves, Back and Forward in the title bar, and Help and Plans as new names.
 - **[1.26313 — 9 November 2026](https://gezel.com/docs/whats-new/1.26313/)** — Connectors for every project, local models on AMD Radeon graphics, a large Qwen model on Macs with less memory, and links on gezel.com that open the app.
 - **[1.26307 — 3 November 2026](https://gezel.com/docs/whats-new/1.26307/)** — Change a picture you already have, give pictures a style, test a model on your own computer, start one of nineteen new projects for a small business, and run gezel in Docker.
 - **[1.26300 — 27 October 2026](https://gezel.com/docs/whats-new/1.26300/)** — Cameras that keep an eye on a room, new views of what is in your folders, Gezel's tools inside Claude Code and Codex, and pairing another computer with a code.
@@ -15,7 +16,6 @@ Gezel changes often. This section is the running record of those changes, one ar
 - **[1.26261 — 18 September 2026](https://gezel.com/docs/whats-new/1.26261/)** — Visible routes for requested files, sharper knowledge search, stronger command-line batch workflows, and app-hosted Gezel for developers.
 - **[1.26251 — 8 September 2026](https://gezel.com/docs/whats-new/1.26251/)** — Engines that reserve memory instead of colliding, llama.cpp v0.4 loading controls, GLM 5.3 on DwarfStar, and catalogs built from a folder of Markdown.
 - **[1.26247 — 4 September 2026](https://gezel.com/docs/whats-new/1.26247/)** — Spreadsheets you can sort, filter and edit in place, conversations that make their own room, drafts that survive a restart, and a Village with real streets.
-- **[1.26244 — 1 September 2026](https://gezel.com/docs/whats-new/1.26244/)** — Spreadsheets your crew can actually count, documents read aloud, dictation and spell-checking, and local models that stop stalling out at five minutes.
 
 ## Updating
 

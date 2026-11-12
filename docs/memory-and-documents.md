@@ -25,7 +25,7 @@ Gezel can read and (where you allow it) write documents itself, so the library g
 
 ## Reference catalogs
 
-You can also install **knowledge catalogs**: portable `.gezk` files containing reference documents and prepared search indexes. Gezel can search and cite them alongside project files and memories. The built-in Handboek uses this same format. Installing a catalog adds reference material; it does not train your chat model.
+You can also install **knowledge catalogs**: portable `.gezk` files containing reference documents and prepared search indexes. Gezel can search and cite them alongside project files and memories. The built-in Help uses this same format. Installing a catalog adds reference material; it does not train your chat model.
 
 For the technical details, see [How knowledge works in Gezel](https://gezel.com/docs/how-knowledge-works/). To make or install one, see [Working with knowledge catalogs](https://gezel.com/docs/knowledge-command-line/).
 

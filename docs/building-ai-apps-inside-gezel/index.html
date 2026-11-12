@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building AI Apps inside Gezel — Gezel Handboek</title>
+<title>Building AI Apps inside Gezel — Gezel Help</title>
 <meta name="description" content="Combine a project type, dashboard, crew, craftbooks, scripts, and data into one reusable Gezel experience.">
 <link rel="canonical" href="https://gezel.com/docs/building-ai-apps-inside-gezel/">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../">Gezel Handboek</a>
+<a class="hb-brand" href="../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../craftbooks-overview/">Concepts</a>
 <a href="../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../craftbooks-overview/">Concepts</a></h2>
 
@@ -120,14 +120,14 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../">Handboek</a> <span>/</span> <a href="../architecture/">Technical</a>
+<a href="../">Help</a> <span>/</span> <a href="../architecture/">Technical</a>
 </nav>
 <article class="hb-article">
 <h1>Building AI Apps inside Gezel</h1>
 <p>File-oriented apps should reuse the <a href="../gezel-page-apis/#file-cards-and-adding-files">shared file card and file adder</a>. Use explicit <code>pages.imports</code> destinations for uploads, alongside <code>pages.reads</code> for browsing. The components work with plain HTML, inherit shared typography, and include an in-memory standalone demo adapter. Test both demo and embedded flows, including write denial, partial failures and resetting demo state.</p>
 <p>An AI App is a reusable experience that runs <em>inside</em> Gezel: a tailored project, a purpose-built crew, repeatable craftbooks, scripts, data, and an optional interactive dashboard. A language trainer, research room, board game, or client-service workspace can all use the same underlying pieces while feeling like a distinct application.</p>
 <p>"Gezel app" and "AI App" name that experience. The <strong>project type</strong> is its reusable composition and setup recipe; the <strong>project</strong> is one person's instance. You can build a useful app with only a page and a folder, then add a crew member or a craftbook when the work calls for one. You do not need every component in every app.</p>
-<p>For the interface, read <a href="../gezel-page-apis/">Using the Gezel page APIs</a> and the <a href="../gezel-app-page-style-guide/">app page style guide</a>. The complete <a href="https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md">page API reference</a> and <a href="https://github.com/bendyline/gezel/blob/main/docs/project-types.md">project-type specification</a> provide the precise runtime contracts. These three Handboek guides are the starting path for people and AI agents building an app.</p>
+<p>For the interface, read <a href="../gezel-page-apis/">Using the Gezel page APIs</a> and the <a href="../gezel-app-page-style-guide/">app page style guide</a>. The complete <a href="https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md">page API reference</a> and <a href="https://github.com/bendyline/gezel/blob/main/docs/project-types.md">project-type specification</a> provide the precise runtime contracts. These three Help guides are the starting path for people and AI agents building an app.</p>
 <p>The project type is the composition root and installer. Public AI Apps arrive through the <a href="https://gezel.com/docs/project-types-index/">project-type collection</a>; private or experimental apps travel as <code>.gezapp</code> packages. Both start life as the same thing: a source folder you can build with the command line, by hand, or with an AI agent — this article is the guide to that folder.</p>
 <p>An AI App is different from a connected app. A connected app runs in its own process and interface and reaches Gezel through <code>@bendyline/gezel-app-sdk</code>. See <a href="../building-connected-apps-with-gezel-app-sdk/">Building connected apps with gezel-app-sdk</a> when that is what you are building.</p>
 <h2 id="build-one-in-five-minutes">Build one in five minutes</h2>
@@ -210,6 +210,9 @@ cd ~/the/folder/for/it &amp;&amp; gezel app apply my-app</code></pre>
 <div class="hb-table-scroll"><table><thead><tr><th>Target</th><th>Source</th><th>Check and use it</th></tr></thead><tbody><tr><td>Private, experimental, or portable app</td><td><code>gezapp.json</code> + <code>items/</code></td><td><code>gezel app validate</code>, <code>pack</code>, then install and apply against a test project</td></tr><tr><td>Public Gilde app</td><td><code>gilde/data/&lt;kind&gt;/&lt;shard&gt;/&lt;id&gt;/</code></td><td>Gilde's schema/content checks, page-demo checks, and local index build; then test with Gezel using that content root</td></tr></tbody></table></div>
 <p>In the Gezel repository, public catalog content belongs in the sibling Gilde checkout, not in Gezel's old <code>data/</code> tree or installed dependencies. <code>GEZEL_GILDE_DATA_DIR</code> can select the checkout's <code>data/</code> directory for a development service. The normal application still uses its pinned catalog unless configured otherwise. A catalog change must be released and consumed before it appears in an ordinary installation.</p>
 <p>The private source packer folds script sidecars into the version manifest. That preprocessing is specific to the source-package path: when authoring Gilde directly, follow its released-payload conventions and validators. Never hand-edit a released version; add a new version. Exported hashes, dependency locks, and catalog-root indexes are generated, not authored.</p>
+<h3 id="new-versions-reach-existing-projects">New versions reach existing projects</h3>
+<p>Projects made from an earlier version of an app move to a newer one on their own, within the same major version, when the update would change nothing the person made: the page, tool declarations and scripts move together, and their data, edited About text and settings stay. An update that would replace a script edited in the project, add crew, connect a tool service, start a recurring run, or write new files into a person's folder waits for them to approve it in the project. Apps installed from a <code>.gezapp</code> always wait for approval. Write versions so this is safe:</p>
+<ul><li><p>A minor or patch version must read every data file an earlier version of the same major wrote. Change a data file's shape only in a new major version; existing projects stay on their major.</p></li><li><p>A param added within a major needs a <code>default</code>, or projects made earlier are not offered the update.</p></li><li><p>Keep page and script changes in step: they ship together, so a page may call a tool its own version's script provides.</p></li></ul>
 <h2 id="scripts-tools-and-the-output-page">Scripts, tools, and the Output page</h2>
 <p>Each script declares its capabilities, inputs, outputs, and whether it is an action or gate through <code>@bendyline/gezel-sdk</code>; the <a href="../writing-scripts-with-gezel-sdk/">Writing scripts with gezel-sdk</a> article covers that contract. Adoption copies the scripts into the project with provenance.</p>
 <p>A <code>tools</code> entry gives a script a stable name, a JSON Schema <code>inputs</code> object validated before every run, and static <code>bind</code> values so several narrow tools can share one script without letting the caller replace the bound operation. A tool listed in <code>pages.tools</code> is page-only — kept off the model's roster — and can carry a <code>reaction</code> that summons a named crew member when the page invokes it, with the tool output interpolated into the reaction prompt.</p>
@@ -237,10 +240,10 @@ window.addEventListener('pagehide', stop, { once: true });</code></pre>
 <p>Use this brief when asking an LLM to build an app:</p>
 <blockquote><p>Build a Gezel app for [person and task]. Read Building AI Apps inside Gezel, Using the Gezel page APIs, and the Gezel app page style guide first. Choose public Gilde content or a private <code>.gezapp</code> source folder. State the user flow, authoritative files and schemas, read/write permissions, crew responsibilities, and completion criteria. Reuse existing APIs, roles, and craftbooks. Implement only the components this app needs. Use shared fonts and <code>window.gezel</code>, deterministic scripts for actions, and gated craftbooks for repeatable work. Include labeled standalone samples where required, but never use samples after a live failure. Validate against the installed schemas, test the main flow in a real host, and report supported modes, remaining limitations, and the release/install step needed to use it.</p></blockquote>
 <p>Before handing over the app:</p>
-<ol><li><p>Validate the source or Gilde payload, including every referenced role, craftbook, script, page, and seed. Keep generated and authored files distinct.</p></li><li><p>Create or apply the app in an isolated test project. Verify the actual folder binding, permission denials, and every state-changing action. A folder explorer must leave originals unchanged.</p></li><li><p>Exercise the main craftbook with representative inputs and confirm its outputs and gates. Check disabled/consent-required schedules without silently arming them.</p></li><li><p>Test the page's live and standalone flows, light/dark themes, keyboard navigation, narrow layout, empty content, unavailable capabilities, and failed actions. Dispose watches and media players. A page with a conversation gets a <a href="../gezel-page-apis/#the-sample-conversation">sample conversation</a> for its demo; then ask the real crew lead the same suggestions on a small local model, so the demo never promises what the app cannot do.</p></li><li><p>If upgrading, check user-modified content and seed drift. Document any unsupported migration or reconciliation rather than overwriting it as a convenience.</p></li><li><p>Report what shipped, what was tested, which host modes are supported, and whether the normal app consumes the new catalog version yet.</p></li></ol>
+<ol><li><p>Validate the source or Gilde payload, including every referenced role, craftbook, script, page, and seed. Keep generated and authored files distinct.</p></li><li><p>Create or apply the app in an isolated test project. Verify the actual folder binding, permission denials, and every state-changing action. A folder explorer must leave originals unchanged.</p></li><li><p>Exercise the main craftbook with representative inputs and confirm its outputs and gates. Check disabled/consent-required schedules without silently arming them.</p></li><li><p>Test the page's live and standalone flows, light/dark themes, keyboard navigation, narrow layout, empty content, unavailable capabilities, and failed actions. Dispose watches and media players. A page with a conversation gets a <a href="../gezel-page-apis/#the-sample-conversation">sample conversation</a> for its demo; then ask the real crew lead the same suggestions on a small local model, so the demo never promises what the app cannot do.</p></li><li><p>If upgrading, apply the new version to a project made with the old one (<code>gezel app apply &lt;id&gt;</code>, or <code>gezel app status</code> to see what is on offer) and confirm its data still loads. Document any unsupported migration rather than overwriting data as a convenience.</p></li><li><p>Report what shipped, what was tested, which host modes are supported, and whether the normal app consumes the new catalog version yet.</p></li></ol>
 <h2 id="what-still-needs-improvement">What still needs improvement</h2>
 <p>The authoring loop above is real, but the surrounding lifecycle still has gaps:</p>
-<div class="hb-table-scroll"><table><thead><tr><th>Gap</th><th>What is needed</th></tr></thead><tbody><tr><td>Project-to-app export</td><td>Export packages the catalog definition; a diff-and-review flow that turns organic project changes (edited scripts, new craftbooks, a redesigned page) into a new version does not exist yet</td></tr><tr><td>Import interface</td><td>The desktop app still routes import through project artifacts and model tools; file picking, bundle review, and conflict handling belong in the UI the way the CLI already has them</td></tr><tr><td>Updates and drift</td><td><code>gezel app status</code> reports per-seed drift and <code>apply</code> preserves user-modified seeds, but scripts still overwrite on upgrade and there is no three-way reconcile view</td></tr><tr><td>Schema evolution</td><td>App data-version declarations, migrations, backup, and rollback for custom records</td></tr><tr><td>Dashboard surface</td><td>First-class page templates, an in-app development preview, diagnostics, and possibly more than one app-owned project tab</td></tr><tr><td>Craftbook test harness</td><td><code>test.json</code> sidecars are validated at authoring time, but the eval harness does not yet run an installed app's craftbook tests</td></tr><tr><td>Signing and registries</td><td>v1 signature status is <code>unsigned</code>; a signing story and a private registry path alongside public Gilde contributions</td></tr></tbody></table></div>
+<div class="hb-table-scroll"><table><thead><tr><th>Gap</th><th>What is needed</th></tr></thead><tbody><tr><td>Project-to-app export</td><td>Export packages the catalog definition; a diff-and-review flow that turns organic project changes (edited scripts, new craftbooks, a redesigned page) into a new version does not exist yet</td></tr><tr><td>Import interface</td><td>The desktop app still routes import through project artifacts and model tools; file picking, bundle review, and conflict handling belong in the UI the way the CLI already has them</td></tr><tr><td>Updates and drift</td><td>Updates keep the person's data, edits and settings, and an edited script is saved before it is replaced; there is no three-way merge of an edited script yet</td></tr><tr><td>Schema evolution</td><td>App data-version declarations and migrations, so an existing project can cross a major version, plus backup and rollback for custom records</td></tr><tr><td>Dashboard surface</td><td>First-class page templates, an in-app development preview, diagnostics, and possibly more than one app-owned project tab</td></tr><tr><td>Craftbook test harness</td><td><code>test.json</code> sidecars are validated at authoring time, but the eval harness does not yet run an installed app's craftbook tests</td></tr><tr><td>Signing and registries</td><td>v1 signature status is <code>unsigned</code>; a signing story and a private registry path alongside public Gilde contributions</td></tr></tbody></table></div>
 <p>Until those close, treat the source folder as the canonical form of an AI App: Gilde for public distribution, <code>.gezapp</code> for controlled sharing, and ordinary projects for prototypes whose composition is still changing.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../building-ai-apps-inside-gezel.md">Read it as markdown, for AI agents</a></p>
@@ -256,6 +259,7 @@ window.addEventListener('pagehide', stop, { once: true });</code></pre>
 <li class="hb-h2"><a href="#design-the-contract-before-building-the-interface">Design the contract before building the interface</a></li>
 <li class="hb-h2"><a href="#add-a-crew-and-repeatable-work">Add a crew and repeatable work</a></li>
 <li class="hb-h2"><a href="#choose-public-catalog-or-private-package-authoring">Choose public catalog or private package authoring</a></li>
+<li class="hb-h3"><a href="#new-versions-reach-existing-projects">New versions reach existing projects</a></li>
 <li class="hb-h2"><a href="#scripts-tools-and-the-output-page">Scripts, tools, and the Output page</a></li>
 <li class="hb-h2"><a href="#validate-pack-and-share">Validate, pack, and share</a></li>
 <li class="hb-h2"><a href="#for-ai-agents-building-apps">For AI agents building apps</a></li>
@@ -265,7 +269,7 @@ window.addEventListener('pagehide', stop, { once: true });</code></pre>
 </aside>
 </div>
 <footer class="hb-footer">
-<p><a href="../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>

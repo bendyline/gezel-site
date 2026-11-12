@@ -5,7 +5,7 @@
       "specHash": "e5c680641e026059d10e1cbb0bdc871ddc4f060e8586da75b62e7b233ce00858"
     },
     "the-crew": {
-      "specHash": "8a70c887f538a6b9954bd7059a06c838ed825170c0ee6d8e61bf5cfa22b08cb8"
+      "specHash": "88e4671798c74a615bdbeccfeaf926c3721e7cea41ae68cabfa4174beb519973"
     },
     "character-and-growth": {
       "specHash": "de06bd8162a9a11af9b818b13eda6ae888dcc23bc6970ff9a4bb84c91c142c33"
@@ -1225,6 +1225,9 @@
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
     },
+    "whats-new/1.26315": {
+      "specHash": "dba261f8e5af62984be80c0ef47e52875ea4d7968a954a426de0aa3fde8d583c"
+    },
     "whats-new/1.26313": {
       "specHash": "527a983172fcc01f3ca25305b20c798c6cc3e1d14ff89bb7b251e45bb6cd632a"
     },
@@ -1645,6 +1648,15 @@
     "role-template/schrijfmaat": {
       "specHash": "2261127a9738654f1bbf17f41f01337fda6ea62c98e704c984cc5671d01e47c0"
     },
+    "model-scorecard/2026-11-09-windows-saluki-native-0-1-57-round3": {
+      "specHash": "e7a1781ace4124e24a2b450948b66d2e67e6f83535edcd9e4c29df5ceddf5f9c"
+    },
+    "model-scorecard/2026-11-06-windows-saluki-native-0-1-57-fanout": {
+      "specHash": "ed909894920764dc6d0f8feeaede8c8b1bb1c3cca5073ece3a86aa085d3cb451"
+    },
+    "model-scorecard/2026-11-03-windows-saluki-native-0-1-57-original": {
+      "specHash": "95e3c44ecfade2c23ebab4c470a030403d2de7fc703974694ff82f16a15d93a4"
+    },
     "model-scorecard/2026-11-03-m5max-fixed-paired": {
       "specHash": "db23108fdf9bd263abe5385a8a594b54fb0fb7afdf830c27db6cc53385677bd3"
     },
@@ -1748,7 +1760,7 @@
       "specHash": "b7072cc4078cfff93265502e97a833a2961fed6a07963f4d67932d6d22b37d88"
     },
     "index": {
-      "specHash": "b67ce0301d23ba414a0d30a80d8073ac2312d92aa7840eedc910854cd239ffc2"
+      "specHash": "1ef0eb8fbfdaa2ca7ced3b09ca5c053dac08179d9b719051c68d5d7e53b91162"
     }
   }
 }

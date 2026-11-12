@@ -6,7 +6,7 @@ An AI App is a reusable experience that runs *inside* Gezel: a tailored project,
 
 "Gezel app" and "AI App" name that experience. The **project type** is its reusable composition and setup recipe; the **project** is one person's instance. You can build a useful app with only a page and a folder, then add a crew member or a craftbook when the work calls for one. You do not need every component in every app.
 
-For the interface, read [Using the Gezel page APIs](https://gezel.com/docs/gezel-page-apis/) and the [app page style guide](https://gezel.com/docs/gezel-app-page-style-guide/). The complete [page API reference](https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md) and [project-type specification](https://github.com/bendyline/gezel/blob/main/docs/project-types.md) provide the precise runtime contracts. These three Handboek guides are the starting path for people and AI agents building an app.
+For the interface, read [Using the Gezel page APIs](https://gezel.com/docs/gezel-page-apis/) and the [app page style guide](https://gezel.com/docs/gezel-app-page-style-guide/). The complete [page API reference](https://github.com/bendyline/gezel/blob/main/docs/output-pane-api.md) and [project-type specification](https://github.com/bendyline/gezel/blob/main/docs/project-types.md) provide the precise runtime contracts. These three Help guides are the starting path for people and AI agents building an app.
 
 The project type is the composition root and installer. Public AI Apps arrive through the [project-type collection](https://gezel.com/docs/project-types-index/); private or experimental apps travel as `.gezapp` packages. Both start life as the same thing: a source folder you can build with the command line, by hand, or with an AI agent — this article is the guide to that folder.
 
@@ -153,6 +153,14 @@ In the Gezel repository, public catalog content belongs in the sibling Gilde che
 
 The private source packer folds script sidecars into the version manifest. That preprocessing is specific to the source-package path: when authoring Gilde directly, follow its released-payload conventions and validators. Never hand-edit a released version; add a new version. Exported hashes, dependency locks, and catalog-root indexes are generated, not authored.
 
+### New versions reach existing projects
+
+Projects made from an earlier version of an app move to a newer one on their own, within the same major version, when the update would change nothing the person made: the page, tool declarations and scripts move together, and their data, edited About text and settings stay. An update that would replace a script edited in the project, add crew, connect a tool service, start a recurring run, or write new files into a person's folder waits for them to approve it in the project. Apps installed from a `.gezapp` always wait for approval. Write versions so this is safe:
+
+- A minor or patch version must read every data file an earlier version of the same major wrote. Change a data file's shape only in a new major version; existing projects stay on their major.
+- A param added within a major needs a `default`, or projects made earlier are not offered the update.
+- Keep page and script changes in step: they ship together, so a page may call a tool its own version's script provides.
+
 ## Scripts, tools, and the Output page
 
 Each script declares its capabilities, inputs, outputs, and whether it is an action or gate through `@bendyline/gezel-sdk`; the [Writing scripts with gezel-sdk](https://gezel.com/docs/writing-scripts-with-gezel-sdk/) article covers that contract. Adoption copies the scripts into the project with provenance.
@@ -216,7 +224,7 @@ Before handing over the app:
 2. Create or apply the app in an isolated test project. Verify the actual folder binding, permission denials, and every state-changing action. A folder explorer must leave originals unchanged.
 3. Exercise the main craftbook with representative inputs and confirm its outputs and gates. Check disabled/consent-required schedules without silently arming them.
 4. Test the page's live and standalone flows, light/dark themes, keyboard navigation, narrow layout, empty content, unavailable capabilities, and failed actions. Dispose watches and media players. A page with a conversation gets a [sample conversation](https://gezel.com/docs/gezel-page-apis/#the-sample-conversation) for its demo; then ask the real crew lead the same suggestions on a small local model, so the demo never promises what the app cannot do.
-5. If upgrading, check user-modified content and seed drift. Document any unsupported migration or reconciliation rather than overwriting it as a convenience.
+5. If upgrading, apply the new version to a project made with the old one (`gezel app apply <id>`, or `gezel app status` to see what is on offer) and confirm its data still loads. Document any unsupported migration rather than overwriting data as a convenience.
 6. Report what shipped, what was tested, which host modes are supported, and whether the normal app consumes the new catalog version yet.
 
 ## What still needs improvement
@@ -227,8 +235,8 @@ The authoring loop above is real, but the surrounding lifecycle still has gaps:
 | --- | --- |
 | Project-to-app export | Export packages the catalog definition; a diff-and-review flow that turns organic project changes (edited scripts, new craftbooks, a redesigned page) into a new version does not exist yet |
 | Import interface | The desktop app still routes import through project artifacts and model tools; file picking, bundle review, and conflict handling belong in the UI the way the CLI already has them |
-| Updates and drift | `gezel app status` reports per-seed drift and `apply` preserves user-modified seeds, but scripts still overwrite on upgrade and there is no three-way reconcile view |
-| Schema evolution | App data-version declarations, migrations, backup, and rollback for custom records |
+| Updates and drift | Updates keep the person's data, edits and settings, and an edited script is saved before it is replaced; there is no three-way merge of an edited script yet |
+| Schema evolution | App data-version declarations and migrations, so an existing project can cross a major version, plus backup and rollback for custom records |
 | Dashboard surface | First-class page templates, an in-app development preview, diagnostics, and possibly more than one app-owned project tab |
 | Craftbook test harness | `test.json` sidecars are validated at authoring time, but the eval harness does not yet run an installed app's craftbook tests |
 | Signing and registries | v1 signature status is `unsigned`; a signing story and a private registry path alongside public Gilde contributions |

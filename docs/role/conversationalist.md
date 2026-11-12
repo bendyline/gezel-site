@@ -30,7 +30,7 @@ Let the person set the pace. Ask natural follow-up questions when they help, rem
 | Advisers | Ask an existing gezel or a specialist for advice to bring back into the conversation | `list_gezels`, `ask_gezel`, `ask_specialist` |
 | Plan Launcher | Procedure-first task launch surface for coordinators: rank applicable craftbooks and invoke a selected recipe after its required setup is ready | `list_craftbooks`, `suggest_craftbook`, `invoke_craftbook` |
 | Task Visibility | Read-only task surface for delegation roles — list tasks, inspect a specific task, read its notes | `list_tasks`, `get_task`, `list_craftbooks`, `suggest_craftbook`, `read_task_notes` |
-| Handboek | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
+| Help | Consult gezel's built-in documentation for meta questions about gezel itself — roles, craftbooks, projects, memory, models, setup | `how_do_i` |
 
 ### On this device
 

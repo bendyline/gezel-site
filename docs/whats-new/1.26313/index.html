@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1.26313 — 9 November 2026 — Gezel Handboek</title>
+<title>1.26313 — 9 November 2026 — Gezel Help</title>
 <meta name="description" content="Connectors for every project, local models on AMD Radeon graphics, a large Qwen model on Macs with less memory, and links on gezel.com that open the app.">
 <link rel="canonical" href="https://gezel.com/docs/whats-new/1.26313/">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <body class="hb hb-article-page">
 <header class="hb-masthead">
 <a class="hb-wordmark" href="/">gezel</a>
-<a class="hb-brand" href="../../">Gezel Handboek</a>
+<a class="hb-brand" href="../../">Gezel Help</a>
 <nav class="hb-areanav">
 <a href="../../craftbooks-overview/">Concepts</a>
 <a href="../../roles-index/">Crew roles</a>
@@ -38,7 +38,7 @@
 </header>
 <div class="hb-layout">
 <aside class="hb-sidebar">
-<nav aria-label="Handboek sections">
+<nav aria-label="Help sections">
 <section>
 <h2><a href="../../craftbooks-overview/">Concepts</a></h2>
 
@@ -68,6 +68,7 @@
 <h2 class="hb-current">What's New</h2>
 <ul class="hb-sidebar-entries">
 <li><a href="../../whats-new-index/">What's new</a></li>
+<li><a href="../../whats-new/1.26315/">1.26315 — 11 November 2026</a></li>
 <li><a class="hb-current" aria-current="page" href="../../whats-new/1.26313/">1.26313 — 9 November 2026</a></li>
 <li><a href="../../whats-new/1.26307/">1.26307 — 3 November 2026</a></li>
 <li><a href="../../whats-new/1.26300/">1.26300 — 27 October 2026</a></li>
@@ -92,7 +93,7 @@
 </aside>
 <main class="hb-main">
 <nav class="hb-breadcrumb" aria-label="Breadcrumb">
-<a href="../../">Handboek</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
+<a href="../../">Help</a> <span>/</span> <a href="../../whats-new-index/">What's New</a>
 </nav>
 <article class="hb-article">
 <h1>1.26313 — 9 November 2026</h1>
@@ -106,17 +107,17 @@
 <p><strong>Show preview features</strong> in <strong>Settings → About</strong> stays. It now covers one preview, <strong>Channels</strong>, which lets your crew send messages to a webhook such as a Slack channel or a phone notification service.</p>
 <h2 id="local-models-on-amd-radeon-graphics">Local models on AMD Radeon graphics</h2>
 <p>On a Windows or Linux computer with a recent AMD graphics card, the desktop app now runs local models on the card through ROCm, AMD's own compute engine. It covers the Radeon RX 7000 and Radeon Pro W7000 series, the Radeon RX 9000 series and Radeon AI PRO R9700, the Radeon 780M and 760M graphics built into many Ryzen laptops, and Ryzen AI processors such as Strix Halo.</p>
-<p>Older Radeon cards keep the Vulkan engine, which already ran them. When ROCm cannot be used, Vulkan runs instead and <strong>Settings → This PC (llama)</strong> says why. On Linux the usual reason is that your account is not yet in the <code>render</code> and <code>video</code> groups. The command-line install on Windows keeps using Vulkan.</p>
+<p>Older Radeon cards keep the Vulkan engine, which already ran them. When ROCm cannot be used, Vulkan runs instead and <strong>Settings → This PC (llama)</strong> says why. On Linux the usual reason is that your account is not yet in the <code>render</code> and <code>video</code> groups. On Windows, the command-line install uses ROCm too.</p>
 <p>The ROCm engine is why the Windows and Linux downloads for Intel and AMD computers are larger in this release, by about 140 MB on Windows and 160 to 240 MB on Linux.</p>
 <h2 id="a-large-model-on-a-mac-with-less-memory">A large model on a Mac with less memory</h2>
-<p><strong>Qwen 3.8 Flash Next</strong>, the 180-billion-parameter Qwen that runs on the DwarfStar engine, can now run on a Mac that cannot hold all of it. Gezel keeps the parts it uses most in memory and reads the rest from the SSD as it works, so it needs a little over 20 GB of memory instead of more than 50 GB. On a Mac with room for the whole model, it still loads all of it.</p>
+<p><strong>Qwen 3.8 Flash Next</strong>, the 180-billion-parameter Qwen that runs on the DwarfStar engine, can now run on a Mac that cannot hold all of it. Gezel keeps the parts it uses most in memory and reads the rest from the SSD as it works, so it needs about 23 GB of memory instead of nearly 50 GB. On a Mac with room for the whole model, it still loads all of it.</p>
 <p>Gezel now plans memory for the large DwarfStar models from measurements of how much each really uses, with the whole model in memory and when streaming. It sizes the cache to fit, and declines a model the computer cannot hold, with a message saying so, instead of starting it and running out of memory.</p>
 <h2 id="open-gezel-from-gezel-com">Open Gezel from gezel.com</h2>
 <p>Gezel now opens <code>gezel://</code> links. A link to a craftbook, a project type or a Handboek article opens that form or article in the app, so a page on gezel.com can take you straight to it. A link only opens the form. You still choose to start, and a link never runs, installs or downloads anything. On Windows, the app registers the link type for your account when it runs, and uninstalling removes it.</p>
 <h2 id="smaller-things">Smaller things</h2>
-<ul><li><p>Home's <strong>Make something</strong> tab is now called <strong>Create</strong>.</p></li><li><p>The <strong>Activity</strong> panel reads at a glance: what needs you is tinted rose, work underway and next is amber, and what is ready is green. A section's light is on only when it holds something.</p></li><li><p>The message box keeps its expanded size when you switch between chat and the terminal.</p></li><li><p>Files a conversation used or made show a thumbnail when they are pictures.</p></li><li><p>Model lists can group models under headings and describe each one. Claude's list is the first to use it.</p></li><li><p>File lists have a <strong>Copy file path</strong> action, and documents can be shown in Finder or File Explorer.</p></li><li><p>A task that is running opens on its chat, where the work is happening.</p></li><li><p>Code, keyboard shortcuts and error messages can be selected and copied anywhere they appear.</p></li><li><p>Background indexing shows one row per drive in <strong>Activity</strong>.</p></li><li><p>While you edit a document, it uses the app's own font. Its theme still applies when you play, preview or export it.</p></li><li><p>Picture models that can only edit, such as Qwen Image Edit, are no longer used to draw a new picture.</p></li><li><p>On a Mac, a conversation with pictures no longer looks full long before it is.</p></li><li><p>A folder with Swift code no longer crashes gezel's indexing, which could restart it many times a day.</p></li><li><p>Opening a project no longer sometimes shows "Gezel API transport unavailable … Failed to fetch". The Toolsets panel now loads only the toolsets it shows instead of the whole community registry, and large lists arrive compressed.</p></li><li><p>A scheduled job whose first step names no specialist now starts with the schedule's gezel, instead of sitting idle and holding back every later run.</p></li><li><p>A review that marks a check FAIL under a heading such as <strong>Sources</strong> or <strong>References</strong> now fails, where before that line could be skipped.</p></li><li><p>When a gezel hands work to others, its closing message names them.</p></li><li><p>Toolsets you add from an online server now work in GitHub Copilot and Claude Code sessions too.</p></li><li><p>The on-device engines are updated: llama.cpp 0.9.0, stable-diffusion.cpp master-1050 for pictures, and mlx-vlm 0.7.12 on Macs.</p></li></ul>
+<ul><li><p>Home's <strong>Make something</strong> tab is now called <strong>Create</strong>.</p></li><li><p>The <strong>Activity</strong> panel reads at a glance: what needs you is tinted rose, work underway and next is amber, and what is ready is green. A section's light is on only when it holds something.</p></li><li><p>The message box keeps its expanded size when you switch between chat and the terminal.</p></li><li><p>Files a conversation used or made show a thumbnail when they are pictures.</p></li><li><p>Model lists can group models under headings and describe each one. Claude's list is the first to use it.</p></li><li><p>File lists have a <strong>Copy file path</strong> action, and documents can be shown in Finder or File Explorer.</p></li><li><p>A task that is running opens on its chat, where the work is happening.</p></li><li><p>Code, keyboard shortcuts and error messages can be selected and copied anywhere they appear.</p></li><li><p>Background indexing shows one row per project in <strong>Activity</strong>.</p></li><li><p>While you edit a document, it uses the app's own font. Its theme still applies when you play, preview or export it.</p></li><li><p>Picture models that can only edit, such as Qwen Image Edit, are no longer used to draw a new picture.</p></li><li><p>On a Mac, a conversation with pictures no longer looks full long before it is.</p></li><li><p>A folder with Swift code no longer crashes gezel's indexing, which could restart it many times a day.</p></li><li><p>Opening a project no longer sometimes shows "Gezel API transport unavailable … Failed to fetch". The Toolsets panel now loads only the toolsets it shows instead of the whole community registry, and large lists arrive compressed.</p></li><li><p>A scheduled job whose first step names no specialist now starts with the schedule's gezel, instead of sitting idle and holding back every later run.</p></li><li><p>A review that marks a check FAIL under a heading such as <strong>Sources</strong> or <strong>References</strong> now fails, where before that line could be skipped.</p></li><li><p>On a Mac, when a gezel running on the computer's own model hands work to others, its closing message names them.</p></li><li><p>Toolsets you add from an online server now work in GitHub Copilot and Claude Code sessions too.</p></li><li><p>The on-device engines are updated: llama.cpp 0.9.0, stable-diffusion.cpp master-1050 for pictures, and mlx-vlm 0.7.12 on Macs.</p></li></ul>
 <h2 id="privacy-and-security">Privacy and security</h2>
-<ul><li><p><strong>Camera pictures and paired computers.</strong> A paired server is now treated like a cloud engine: unless you let cloud AI see a camera's pictures, it does not get them, whether a gezel asks it for a picture or a video. More in <a href="../../cameras-and-lookouts/">Cameras and lookouts</a>.</p></li><li><p><strong>Claude Code sessions use only Gezel's tools.</strong> A gezel running on Claude Code used to pick up your own MCP servers and claude.ai connectors, such as Gmail and Drive, past your security settings. It now gets only the tools Gezel gives it.</p></li><li><p><strong>Sign-in on a Docker install</strong> counts every attempt in a burst before checking the password, so a burst of guesses reaches the lockout like single tries do.</p></li><li><p>A daily check now also scans our published Docker images for known vulnerabilities.</p></li></ul>
+<ul><li><p><strong>Camera pictures and paired computers.</strong> A paired server is now treated like a cloud engine: unless you let cloud AI see a camera's pictures, it does not get them when a gezel asks it for a picture. More in <a href="../../cameras-and-lookouts/">Cameras and lookouts</a>.</p></li><li><p><strong>Claude Code sessions use only Gezel's tools.</strong> A gezel running on Claude Code used to pick up your own MCP servers and claude.ai connectors, such as Gmail and Drive, past your security settings. It now gets only the tools Gezel gives it.</p></li><li><p><strong>Sign-in on a Docker install</strong> counts every attempt in a burst before checking the password, so a burst of guesses reaches the lockout like single tries do.</p></li><li><p>A daily check now also scans our published Docker images for known vulnerabilities.</p></li></ul>
 <h2 id="gezel-in-docker">Gezel in Docker</h2>
 <ul><li><p><strong>The port is now 6230.</strong> Images before this one answered on 6228. Start the container with <code>-p 127.0.0.1:6230:6230</code> and sign in at <code>http://localhost:6230</code>. To keep 6228, add <code>-e GEZEL_CONTAINER_PORT=6228</code> and map 6228. Your accounts, keys and work carry over. <a href="../../gezel-in-docker/">Gezel in Docker</a> has the full command.</p></li><li><p>A second container started on a volume another container is using now stops with a message to run commands in the first one with <code>docker exec</code>.</p></li><li><p>A bare <code>docker exec gezel gezel run …</code> now lands in the Default project, instead of creating a project named "work" with a crew of its own.</p></li></ul>
 <h2 id="in-the-terminal">In the terminal</h2>
@@ -147,7 +148,7 @@
 </aside>
 </div>
 <footer class="hb-footer">
-<p><a href="../../">Gezel Handboek</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
+<p><a href="../../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>
 </footer>
 
 </body>
