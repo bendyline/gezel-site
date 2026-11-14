@@ -105,6 +105,7 @@
 <ul>
 <li><a href="../../how-we-test-models/">How we test models</a></li>
 <li><a href="../../model-scorecard/">Model scorecard</a></li>
+<li><a href="../../docbench/">Docbench: models for document work</a></li>
 <li><a href="../../model-catalog/">Every model</a></li>
 </ul>
 </li>
@@ -130,11 +131,23 @@
 <h2 id="measured-results">Measured results</h2>
 <p>Not measured yet. No <a href="../../model-scorecard/">scorecard</a> round has run this model or another build of it, which is not a verdict either way. <a href="../../how-we-test-models/">How we test models</a> explains what a round measures, and you can run the same tests on your own machine:</p>
 <pre class="squisq-code-block"><code class="language-sh">gezel bench --model granite4.2-8b-q4</code></pre>
+<h2 id="docbench">Docbench</h2>
+<p>How well this build does DocBlocks’ document work, judged from 0 to 100 in the <a href="../../docbench/">docbench</a> round of 2026-11-11 on llama.cpp: <strong>66</strong> (95% range 63–68, band 4). DocBlocks could use 96% of its answers.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Group</th><th>Score</th><th>95% range</th></tr></thead><tbody><tr><td>Review and feedback</td><td>38</td><td>30–45</td></tr><tr><td>Writing new content</td><td>82</td><td>79–86</td></tr><tr><td>Diagrams and illustrations</td><td>69</td><td>62–75</td></tr><tr><td>Presentations</td><td>82</td><td>78–87</td></tr><tr><td>Study aids</td><td>67</td><td>64–71</td></tr><tr><td>Narration cleanup</td><td>76</td><td>73–79</td></tr></tbody></table></div>
+<p>In general review it found, per document, 2.7 small fixes, 1.3 moderate changes and 0.0 substantial ones, and added 1.3 trivial and 0.0 wrong suggestions.</p>
 <p><a href="https://huggingface.co/ibm-granite/granite-4.2-8b">The model’s own page</a> · <a href="../../model-catalog/">Every model</a> · <a href="../../model-scorecard/">Model scorecard</a></p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../granite4.2-8b-q4.md">Read it as markdown, for AI agents</a></p>
 </main>
-
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#measured-results">Measured results</a></li>
+<li class="hb-h2"><a href="#docbench">Docbench</a></li>
+</ul>
+</nav>
+</aside>
 </div>
 <footer class="hb-footer">
 <p><a href="../../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>

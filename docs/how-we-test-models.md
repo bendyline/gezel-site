@@ -8,7 +8,7 @@ So we measure. This article explains how, because a score is only worth somethin
 
 We don't quiz models with trivia. We give them **real jobs** and check the work they hand back.
 
-A job looks like this: here is a meeting transcript, an out-of-date agenda, and a list of who works here. Produce a written brief and a table of action items with the right owner, the right date, and the right dependencies. Then we open the files and check them. Did the September 14th decision survive? Did the cancelled proposal stay cancelled? Is the action assigned to someone who actually works here?
+A job looks like this: here is a meeting transcript, an out-of-date agenda, and a list of who works here. Produce a written brief and a table of action items with the right owner, the right date, and the right dependencies. Then we open the files and check them. Did the September 14th decision survive? Did the canceled proposal stay canceled? Is the action assigned to someone who actually works here?
 
 Every task is checked the same way for every model, by a program rather than a person, so nobody's favorite gets the benefit of the doubt.
 

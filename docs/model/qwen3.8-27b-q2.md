@@ -104,4 +104,19 @@ A partial round reran only some of a set’s tasks, usually to check a fix. It i
 
 Observed prefill summarizes partial chat-event rates within each trial. It is not the aggregate throughput of every request or a measurement of pure prefill time; see the round for coverage and method.
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **79** (95% range 77–81, band 1). DocBlocks could use 100% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 69 | 64–74 |
+| Writing new content | 87 | 84–90 |
+| Diagrams and illustrations | 78 | 73–83 |
+| Presentations | 90 | 85–93 |
+| Study aids | 74 | 72–77 |
+| Narration cleanup | 87 | 83–92 |
+
+In general review it found, per document, 2.8 small fixes, 1.5 moderate changes and 0.3 substantial ones, and added 0.8 trivial and 0.0 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/Qwen/Qwen3.8-27B) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

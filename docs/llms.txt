@@ -423,12 +423,14 @@ To build a Gezel app, read [Build a Gezel app: the complete guide](https://gezel
 - [Using the Gezel page APIs](https://gezel.com/docs/gezel-page-apis.md): Connect an app page to project files, file viewers, DuckDB summaries, declared actions, and the host theme.
 - [Gezel app page style guide](https://gezel.com/docs/gezel-app-page-style-guide.md): What Gezel supplies to app pages, and how to build consistent typography, themes, layouts, and controls.
 - [Model scorecard](https://gezel.com/docs/model-scorecard.md): Measured results for every model we have tested, on each task set.
+- [Docbench: models for document work](https://gezel.com/docs/docbench.md): How well each local model reviews, writes, draws, and summarizes documents in DocBlocks, as one score from 0 to 100.
 - [Gezel app UX guide](https://gezel.com/docs/gezel-app-ux-guide.md): How a Gezel app is organized and how people act in it — Home, a tab per noun, Settings, action keys that open dialogs, and actions on the records themselves.
 - [Every model](https://gezel.com/docs/model-catalog.md): Every AI model Gezel can run on your own computer, with size, context and license.
 
 ## What's New
 
 - [What's new](https://gezel.com/docs/whats-new-index.md): Every gezel release, in plain language — what changed and what it means for you.
+- [1.26317 — 13 November 2026](https://gezel.com/docs/whats-new/1.26317.md): Reports checked once more before they are handed in, views that keep your place, project icons you can draw or upload, and a scorecard for document work.
 - [1.26315 — 11 November 2026](https://gezel.com/docs/whats-new/1.26315.md): Add your own models from Hugging Face or a file, apps that update themselves, Back and Forward in the title bar, and Help and Plans as new names.
 - [1.26313 — 9 November 2026](https://gezel.com/docs/whats-new/1.26313.md): Connectors for every project, local models on AMD Radeon graphics, a large Qwen model on Macs with less memory, and links on gezel.com that open the app.
 - [1.26307 — 3 November 2026](https://gezel.com/docs/whats-new/1.26307.md): Change a picture you already have, give pictures a style, test a model on your own computer, start one of nineteen new projects for a small business, and run gezel in Docker.

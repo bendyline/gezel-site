@@ -43,7 +43,7 @@ curl http://127.0.0.1:11434/v1/chat/completions \
   }'
 ```
 
-The reply comes from your Meester, the crew member who runs your workshop, on the model your chats use. Gezel answers any model name it does not know that way, so code written for another OpenAI-style service runs without a change to its model name. `"reasoning_effort": "none"` skips the model's thinking step, which is what you want for a quick reply.
+The reply comes from your Meester, the first crew member you meet in Gezel, on the model your chats use. Gezel answers any model name it does not know that way, so code written for another OpenAI-style service runs without a change to its model name. `"reasoning_effort": "none"` skips the model's thinking step, which is what you want for a quick reply.
 
 In PowerShell, send the same request with `Invoke-RestMethod`:
 
@@ -246,7 +246,7 @@ const chat = await project.openChat({ role: 'travel-guide' });
 
 `Gezel` is the central object — the connection, the models, the projects. Most work happens in the `GezelProject` it hands back, because chats and tools are both project-scoped, and an application that has the project never has to pass its id back in. `gezel.openProject(id)` reaches a project that already exists.
 
-A hosted daemon keeps its state under `~/.gezel/apps/<appId>/`, so the projects and crew members an application creates for itself never appear in the person's own workshop, and the two daemons never contend for one runtime directory. Models the person already installed are read from their home rather than downloaded again.
+A hosted daemon keeps its state under `~/.gezel/apps/<appId>/`, so the projects and crew members an application creates for itself never appear among the person's own, and the two daemons never contend for one runtime directory. Models the person already installed are read from their home rather than downloaded again.
 
 Both `ensureModel` and `ensureProject` are idempotent and meant to run on every launch. `ensureModel` uses an installed model first, then a `.gezmodel` bundle the application ships, and only then the network — so a first run can work offline. `ensureProject` keeps the person's edits to seeded files and reuses the crew already on the roster.
 

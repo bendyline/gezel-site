@@ -28,4 +28,19 @@ Every [scorecard](https://gezel.com/docs/model-scorecard/) round that ran this m
 | [2026-08-22 · Mac · Apple M4 Max](https://gezel.com/docs/model-scorecard/2026-08-22-mac-apple-m4-max/) | qwen3.5-2b-q4 · MLX | General capability | 9/33 (27%) | 155.3 tok/s | 3084.0 tok/s |
 | [2026-08-22 · Mac · Apple M4 Max](https://gezel.com/docs/model-scorecard/2026-08-22-mac-apple-m4-max/) | qwen3.5-2b-q4 · MLX | Office and knowledge work | 10/39 (26%) | 155.3 tok/s | 3084.0 tok/s |
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **56** (95% range 53–58, band 5). DocBlocks could use 95% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 30 | 26–34 |
+| Writing new content | 74 | 70–78 |
+| Diagrams and illustrations | 51 | 40–61 |
+| Presentations | 75 | 71–78 |
+| Study aids | 56 | 53–58 |
+| Narration cleanup | 71 | 66–77 |
+
+In general review it found, per document, 1.3 small fixes, 0.3 moderate changes and 0.0 substantial ones, and added 1.3 trivial and 0.8 wrong suggestions.
+
 [The model’s own page](https://ollama.com/library/qwen3.5) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

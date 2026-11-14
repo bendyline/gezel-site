@@ -105,6 +105,7 @@
 <ul>
 <li><a class="hb-current" aria-current="page" href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../docbench/">Docbench: models for document work</a></li>
 <li><a href="../model-catalog/">Every model</a></li>
 </ul>
 </li>
@@ -128,7 +129,7 @@
 <p>So we measure. This article explains how, because a score is only worth something if you know what was counted.</p>
 <h2 id="tasks-not-questions">Tasks, not questions</h2>
 <p>We don't quiz models with trivia. We give them <strong>real jobs</strong> and check the work they hand back.</p>
-<p>A job looks like this: here is a meeting transcript, an out-of-date agenda, and a list of who works here. Produce a written brief and a table of action items with the right owner, the right date, and the right dependencies. Then we open the files and check them. Did the September 14th decision survive? Did the cancelled proposal stay cancelled? Is the action assigned to someone who actually works here?</p>
+<p>A job looks like this: here is a meeting transcript, an out-of-date agenda, and a list of who works here. Produce a written brief and a table of action items with the right owner, the right date, and the right dependencies. Then we open the files and check them. Did the September 14th decision survive? Did the canceled proposal stay canceled? Is the action assigned to someone who actually works here?</p>
 <p>Every task is checked the same way for every model, by a program rather than a person, so nobody's favorite gets the benefit of the doubt.</p>
 <h2 id="four-sets-of-jobs">Four sets of jobs</h2>
 <p>Every test below links to what defines it. Most link to the scenario's source in the repository: the files it starts from, the instructions, and the checks that decide a pass. A test named <code>craftbook-</code> followed by a craftbook's name runs that library craftbook as it ships, so it links to the craftbook's own page; its inputs and checks travel with the craftbook in the catalog as a <code>test.json</code> file, and the harness that runs them is in <a href="https://github.com/bendyline/gezel/tree/main/evals/src/craftbooks"><code>evals/src/craftbooks</code></a>.</p>

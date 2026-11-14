@@ -105,6 +105,7 @@
 <ul>
 <li><a href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../docbench/">Docbench: models for document work</a></li>
 <li><a href="../model-catalog/">Every model</a></li>
 </ul>
 </li>
@@ -161,7 +162,7 @@
 <h2 id="folders-you-add">Folders you add</h2>
 <p>A folder you add to gezel — Pictures, Documents, a code repository — stays where it is. Gezel reads it in place and writes nothing into it: the search index, photo descriptions and summaries for that folder live under <code>projects/{project}/</code> in the gezel home. A file in your folder changes only when you apply a change you approved. Earlier versions kept the index in a hidden <code>.gezel</code> folder inside yours; gezel moves it out the first time it starts.</p>
 <h2 id="what-you-can-safely-do">What you can safely do</h2>
-<ul><li><p><strong>Read anything.</strong> It's your data; nothing breaks by looking.</p></li><li><p><strong>Back up or sync the whole folder.</strong> Copying the folder copies your entire workshop.</p></li><li><p><strong>Edit with care.</strong> Character files (<code>about.md</code>) and documents are meant to be edited — from the app or any text editor. For structured files (<code>config.json</code>, thread files), prefer the app so nothing gets malformed.</p></li></ul>
+<ul><li><p><strong>Read anything.</strong> It's your data; nothing breaks by looking.</p></li><li><p><strong>Back up or sync the whole folder.</strong> Copying the folder copies everything Gezel keeps.</p></li><li><p><strong>Edit with care.</strong> Character files (<code>about.md</code>) and documents are meant to be edited — from the app or any text editor. For structured files (<code>config.json</code>, thread files), prefer the app so nothing gets malformed.</p></li></ul>
 <p>A few subfolders are machinery rather than your data — <code>runtime/</code>, <code>service/</code>, <code>bin/</code>, <code>index/</code>, <code>logs/</code> hold the service's own working state and rebuildable caches. Leave those to gezel; deleting them is at worst an inconvenience, never data loss. The <code>ambient/</code> folder is regenerated too — point your wallpaper or lock-screen slideshow at it freely, but don't store your own images there.</p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../where-files-live.md">Read it as markdown, for AI agents</a></p>

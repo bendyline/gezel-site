@@ -1216,6 +1216,9 @@
     "model-scorecard": {
       "specHash": "01be0bc30cc9bf2cf63ba8dffa87f9f2246eea4fc5477b274bd1874327d098c5"
     },
+    "docbench": {
+      "specHash": "3f80cbacef2bc56819e1711e862e93d00bd23248899c4d9addb2fcb6b4666608"
+    },
     "gezel-app-ux-guide": {
       "specHash": "2b71cea448ba9fd35e3a1afa3b67924bc0f0117f425bfa9a2ef26156953d4a7e"
     },
@@ -1224,6 +1227,9 @@
     },
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
+    },
+    "whats-new/1.26317": {
+      "specHash": "8fafca25f78c2fb1efba3833d2f998d7add79914193e8fb0f8d5de3584d98a44"
     },
     "whats-new/1.26315": {
       "specHash": "dba261f8e5af62984be80c0ef47e52875ea4d7968a954a426de0aa3fde8d583c"
@@ -1271,7 +1277,7 @@
       "specHash": "45f39eab7cb5f56cc3c29244612986026de9bd0a62962d5394e554730a26386e"
     },
     "whats-new/1.26231": {
-      "specHash": "2c676fca0f9be82d6d9a341433fe16e4d2e4aee2e170caab3850465a09e2ed62"
+      "specHash": "35897e45a8cd16a2bf4096e44189ddd8c9988e73ea8b864fa9e268b3ba2205a3"
     },
     "whats-new/1.26226": {
       "specHash": "58ca809ed80dbaa781342e667f04c7f9c9b5189a99d2d28018c43a0c2365ae92"

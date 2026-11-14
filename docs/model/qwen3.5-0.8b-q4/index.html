@@ -105,6 +105,7 @@
 <ul>
 <li><a href="../../how-we-test-models/">How we test models</a></li>
 <li><a href="../../model-scorecard/">Model scorecard</a></li>
+<li><a href="../../docbench/">Docbench: models for document work</a></li>
 <li><a href="../../model-catalog/">Every model</a></li>
 </ul>
 </li>
@@ -130,11 +131,23 @@
 <h2 id="measured-results">Measured results</h2>
 <p>Not measured yet. No <a href="../../model-scorecard/">scorecard</a> round has run this model or another build of it, which is not a verdict either way. <a href="../../how-we-test-models/">How we test models</a> explains what a round measures, and you can run the same tests on your own machine:</p>
 <pre class="squisq-code-block"><code class="language-sh">gezel bench --model qwen3.5-0.8b-q4</code></pre>
+<h2 id="docbench">Docbench</h2>
+<p>How well this build does DocBlocks’ document work, judged from 0 to 100 in the <a href="../../docbench/">docbench</a> round of 2026-11-11 on llama.cpp: <strong>43</strong> (95% range 40–45, band 7). DocBlocks could use 88% of its answers.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Group</th><th>Score</th><th>95% range</th></tr></thead><tbody><tr><td>Review and feedback</td><td>20</td><td>16–25</td></tr><tr><td>Writing new content</td><td>56</td><td>52–60</td></tr><tr><td>Diagrams and illustrations</td><td>32</td><td>24–39</td></tr><tr><td>Presentations</td><td>70</td><td>65–75</td></tr><tr><td>Study aids</td><td>46</td><td>42–51</td></tr><tr><td>Narration cleanup</td><td>67</td><td>61–71</td></tr></tbody></table></div>
+<p>In general review it found, per document, 0.7 small fixes, 0.0 moderate changes and 0.0 substantial ones, and added 3.3 trivial and 0.3 wrong suggestions.</p>
 <p><a href="https://ollama.com/library/qwen3.5">The model’s own page</a> · <a href="../../model-catalog/">Every model</a> · <a href="../../model-scorecard/">Model scorecard</a></p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../qwen3.5-0.8b-q4.md">Read it as markdown, for AI agents</a></p>
 </main>
-
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#measured-results">Measured results</a></li>
+<li class="hb-h2"><a href="#docbench">Docbench</a></li>
+</ul>
+</nav>
+</aside>
 </div>
 <footer class="hb-footer">
 <p><a href="../../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>

@@ -25,4 +25,19 @@ Not measured yet. No [scorecard](https://gezel.com/docs/model-scorecard/) round 
 gezel bench --model lfm3-1.7b-q4
 ```
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **55** (95% range 52–58, band 5). DocBlocks could use 92% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 30 | 23–37 |
+| Writing new content | 68 | 64–71 |
+| Diagrams and illustrations | 70 | 62–76 |
+| Presentations | 76 | 71–79 |
+| Study aids | 57 | 54–61 |
+| Narration cleanup | 13 | 0–38 |
+
+In general review it found, per document, 3.0 small fixes, 0.3 moderate changes and 0.0 substantial ones, and added 4.0 trivial and 3.3 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/LiquidAI/LFM3-1.7B) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

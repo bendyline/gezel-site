@@ -25,4 +25,23 @@ Not measured yet. No [scorecard](https://gezel.com/docs/model-scorecard/) round 
 gezel bench --model nanbeige4.2-3b-q4
 ```
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) focused re-run of 2026-11-12 on llama.cpp: **71** (95% range 69–73, band 3). DocBlocks could use 97% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 53 | 46–59 |
+| Writing new content | 83 | 80–86 |
+| Diagrams and illustrations | 71 | 65–77 |
+| Presentations | 83 | 80–87 |
+| Study aids | 69 | 67–72 |
+| Narration cleanup | 79 | 74–83 |
+
+In general review it found, per document, 1.8 small fixes, 0.5 moderate changes and 0.3 substantial ones, and added 1.5 trivial and 0.3 wrong suggestions.
+
+Earlier results for this build, measured before the one above under their own round’s tests, reviewer and Gezel version:
+
+- 2026-11-11, pack 0.2.1: 61
+
 [The model’s own page](https://huggingface.co/Nanbeige/Nanbeige4.2-3B) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

@@ -105,6 +105,7 @@
 <ul>
 <li><a href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../docbench/">Docbench: models for document work</a></li>
 <li><a href="../model-catalog/">Every model</a></li>
 </ul>
 </li>
@@ -146,7 +147,7 @@ gezel run --download "Say hello"</code></pre>
     "reasoning_effort": "none",
     "messages": [{"role": "user", "content": "Say hello in five words."}]
   }'</code></pre>
-<p>The reply comes from your Meester, the crew member who runs your workshop, on the model your chats use. Gezel answers any model name it does not know that way, so code written for another OpenAI-style service runs without a change to its model name. <code>"reasoning_effort": "none"</code> skips the model's thinking step, which is what you want for a quick reply.</p>
+<p>The reply comes from your Meester, the first crew member you meet in Gezel, on the model your chats use. Gezel answers any model name it does not know that way, so code written for another OpenAI-style service runs without a change to its model name. <code>"reasoning_effort": "none"</code> skips the model's thinking step, which is what you want for a quick reply.</p>
 <p>In PowerShell, send the same request with <code>Invoke-RestMethod</code>:</p>
 <pre class="squisq-code-block"><code class="language-powershell">$body = '{"model":"gezel","reasoning_effort":"none","messages":[{"role":"user","content":"Say hello in five words."}]}'
 (Invoke-RestMethod http://127.0.0.1:11434/v1/chat/completions -Method Post -ContentType 'application/json' -Body $body).choices[0].message.content</code></pre>
@@ -274,7 +275,7 @@ await gezel.ensureModel({ model: 'gemma4-e2b-q4' });
 const project = await gezel.ensureProject({ package: shippedGezapp, folder: travelFolder });
 const chat = await project.openChat({ role: 'travel-guide' });</code></pre>
 <p><code>Gezel</code> is the central object — the connection, the models, the projects. Most work happens in the <code>GezelProject</code> it hands back, because chats and tools are both project-scoped, and an application that has the project never has to pass its id back in. <code>gezel.openProject(id)</code> reaches a project that already exists.</p>
-<p>A hosted daemon keeps its state under <code>~/.gezel/apps/&lt;appId&gt;/</code>, so the projects and crew members an application creates for itself never appear in the person's own workshop, and the two daemons never contend for one runtime directory. Models the person already installed are read from their home rather than downloaded again.</p>
+<p>A hosted daemon keeps its state under <code>~/.gezel/apps/&lt;appId&gt;/</code>, so the projects and crew members an application creates for itself never appear among the person's own, and the two daemons never contend for one runtime directory. Models the person already installed are read from their home rather than downloaded again.</p>
 <p>Both <code>ensureModel</code> and <code>ensureProject</code> are idempotent and meant to run on every launch. <code>ensureModel</code> uses an installed model first, then a <code>.gezmodel</code> bundle the application ships, and only then the network — so a first run can work offline. <code>ensureProject</code> keeps the person's edits to seeded files and reuses the crew already on the roster.</p>
 <p>Hosting requires <code>@bendyline/gezel-service</code> beside the SDK; it is an optional peer dependency, so applications that only connect never download it. Under Electron, pass a real Node binary as <code>host.nodePath</code>: Gezel runs its tool server as a child process, and an Electron binary cannot stand in for Node. Without one, the SDK uses the Node that a Gezel install keeps in its home, when there is one.</p>
 <p>By default the application hosts only when no Gezel is running; a person who declines the connection in Gezel is not overridden. An application whose AI is optional and switched on by the person inside it may pass <code>hostWhenRefused: true</code> to host after a refusal too.</p>

@@ -37,4 +37,19 @@ Every [scorecard](https://gezel.com/docs/model-scorecard/) round that ran this m
 
 A partial round reran only some of a set’s tasks, usually to check a fix. It is not a score for the whole set.
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **73** (95% range 71–75, band 2). DocBlocks could use 99% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 52 | 47–58 |
+| Writing new content | 86 | 82–89 |
+| Diagrams and illustrations | 74 | 69–79 |
+| Presentations | 86 | 82–89 |
+| Study aids | 69 | 67–72 |
+| Narration cleanup | 86 | 80–92 |
+
+In general review it found, per document, 2.3 small fixes, 1.0 moderate changes and 0.0 substantial ones, and added 0.8 trivial and 0.5 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/google/gemma-4-E4B-it) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

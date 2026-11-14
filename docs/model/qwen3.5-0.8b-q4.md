@@ -25,4 +25,19 @@ Not measured yet. No [scorecard](https://gezel.com/docs/model-scorecard/) round 
 gezel bench --model qwen3.5-0.8b-q4
 ```
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **43** (95% range 40–45, band 7). DocBlocks could use 88% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 20 | 16–25 |
+| Writing new content | 56 | 52–60 |
+| Diagrams and illustrations | 32 | 24–39 |
+| Presentations | 70 | 65–75 |
+| Study aids | 46 | 42–51 |
+| Narration cleanup | 67 | 61–71 |
+
+In general review it found, per document, 0.7 small fixes, 0.0 moderate changes and 0.0 substantial ones, and added 3.3 trivial and 0.3 wrong suggestions.
+
 [The model’s own page](https://ollama.com/library/qwen3.5) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

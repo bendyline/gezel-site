@@ -25,4 +25,19 @@ Not measured yet. No [scorecard](https://gezel.com/docs/model-scorecard/) round 
 gezel bench --model minicpm5-1b-q4
 ```
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **37** (95% range 35–40, band 8). DocBlocks could use 85% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 14 | 12–17 |
+| Writing new content | 54 | 49–59 |
+| Diagrams and illustrations | 32 | 23–42 |
+| Presentations | 63 | 55–70 |
+| Study aids | 34 | 30–38 |
+| Narration cleanup | 48 | 37–56 |
+
+In general review it found, per document, 0.0 small fixes, 0.0 moderate changes and 0.3 substantial ones, and added 3.3 trivial and 1.0 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/openbmb/MiniCPM5-1B) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

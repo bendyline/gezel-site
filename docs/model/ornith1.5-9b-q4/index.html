@@ -105,6 +105,7 @@
 <ul>
 <li><a href="../../how-we-test-models/">How we test models</a></li>
 <li><a href="../../model-scorecard/">Model scorecard</a></li>
+<li><a href="../../docbench/">Docbench: models for document work</a></li>
 <li><a href="../../model-catalog/">Every model</a></li>
 </ul>
 </li>
@@ -131,11 +132,23 @@
 <p>Every <a href="../../model-scorecard/">scorecard</a> round that ran this model or another build of it, newest first. Each round is one machine, one day, one version of Gezel and one version of the tests, so <strong>rounds are not comparable with each other</strong>: a change to any of those can move a score without the model changing. Where a task ran fewer than three times, the result is a count rather than a percentage. <a href="../../how-we-test-models/">How we test models</a> explains what each set contains.</p>
 <div class="hb-table-scroll"><table><thead><tr><th>Round</th><th>Build</th><th>Task set</th><th>Passed</th><th>Output speed</th><th>Prefill speed</th></tr></thead><tbody><tr><td><a href="../../model-scorecard/2026-10-20-rtx5070ti-core-continuation-64k/">2026-10-20 · rtx5070ti-core-continuation-64k</a></td><td>ornith1.5-9b-q4 · llama.cpp</td><td>General capability</td><td>16/26 (some tasks run 2× — count not rate)</td><td>56.6 tok/s</td><td>2618.6 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-10-20-rtx5070ti-core-original-64k/">2026-10-20 · rtx5070ti-core-original-64k</a> (partial)</td><td>ornith1.5-9b-q4 · llama.cpp</td><td>General capability</td><td>5/7 (some tasks run once — count not rate)</td><td>57.2 tok/s</td><td>2664.8 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-09-03-mac-apple-m2/">2026-09-03 · Mac · Apple M2</a></td><td>ornith1.5-9b-q4 · llama.cpp</td><td>General capability</td><td>10/11 (some tasks run once — count not rate)</td><td>9.8 tok/s</td><td>154.0 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-09-03-mac-apple-m2/">2026-09-03 · Mac · Apple M2</a></td><td>ornith1.5-9b-q4 · llama.cpp</td><td>Office and knowledge work</td><td>12/13 (some tasks run once — count not rate)</td><td>9.8 tok/s</td><td>154.0 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-09-02-ryzen-ai-hx-370-core-productivity/">2026-09-02 · Ryzen AI HX 370 + RTX 5070 Ti Laptop</a></td><td>ornith1.5-9b-q4 · llama.cpp</td><td>General capability</td><td>9/11 (some tasks run once — count not rate)</td><td>57.7 tok/s</td><td>2230.0 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-09-02-ryzen-ai-hx-370-core-productivity/">2026-09-02 · Ryzen AI HX 370 + RTX 5070 Ti Laptop</a></td><td>ornith1.5-9b-q4 · llama.cpp</td><td>Office and knowledge work</td><td>11/13 (some tasks run once — count not rate)</td><td>57.7 tok/s</td><td>2230.0 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-08-30-dgx-spark-class/">2026-08-30 · DGX Spark Class</a></td><td>ornith1.5-9b-q8 · llama.cpp</td><td>General capability</td><td>28/32 (88%)</td><td>25.6 tok/s</td><td>2117.0 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-08-30-dgx-spark-class/">2026-08-30 · DGX Spark Class</a></td><td>ornith1.5-9b-q8 · llama.cpp</td><td>Office and knowledge work</td><td>32/39 (82%)</td><td>25.6 tok/s</td><td>2117.0 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-08-22-mac-apple-m4-max/">2026-08-22 · Mac · Apple M4 Max</a></td><td>ornith1.5-9b-q8 · llama.cpp</td><td>General capability</td><td>28/33 (85%)</td><td>47.0 tok/s</td><td>823.0 tok/s</td></tr><tr><td><a href="../../model-scorecard/2026-08-22-mac-apple-m4-max/">2026-08-22 · Mac · Apple M4 Max</a></td><td>ornith1.5-9b-q8 · llama.cpp</td><td>Office and knowledge work</td><td>34/39 (87%)</td><td>47.0 tok/s</td><td>823.0 tok/s</td></tr></tbody></table></div>
 <p>A partial round reran only some of a set’s tasks, usually to check a fix. It is not a score for the whole set.</p>
+<h2 id="docbench">Docbench</h2>
+<p>How well this build does DocBlocks’ document work, judged from 0 to 100 in the <a href="../../docbench/">docbench</a> round of 2026-11-11 on llama.cpp: <strong>73</strong> (95% range 71–75, band 2). DocBlocks could use 96% of its answers.</p>
+<div class="hb-table-scroll"><table><thead><tr><th>Group</th><th>Score</th><th>95% range</th></tr></thead><tbody><tr><td>Review and feedback</td><td>50</td><td>44–57</td></tr><tr><td>Writing new content</td><td>87</td><td>84–89</td></tr><tr><td>Diagrams and illustrations</td><td>78</td><td>72–83</td></tr><tr><td>Presentations</td><td>86</td><td>81–90</td></tr><tr><td>Study aids</td><td>73</td><td>71–75</td></tr><tr><td>Narration cleanup</td><td>77</td><td>74–80</td></tr></tbody></table></div>
+<p>In general review it found, per document, 2.5 small fixes, 0.8 moderate changes and 0.3 substantial ones, and added 2.0 trivial and 1.0 wrong suggestions.</p>
 <p><a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B">The model’s own page</a> · <a href="../../model-catalog/">Every model</a> · <a href="../../model-scorecard/">Model scorecard</a></p>
 </article>
 <p class="hb-watch"><a href="watch.html">Watch this article as a slideshow</a> · <a href="../ornith1.5-9b-q4.md">Read it as markdown, for AI agents</a></p>
 </main>
-
+<aside class="hb-onthispage">
+<nav aria-label="On this page">
+<h2>On this page</h2>
+<ul>
+<li class="hb-h2"><a href="#measured-results">Measured results</a></li>
+<li class="hb-h2"><a href="#docbench">Docbench</a></li>
+</ul>
+</nav>
+</aside>
 </div>
 <footer class="hb-footer">
 <p><a href="../../">Gezel Help</a> — documentation for gezel, a crew of AI companions that works for you, from your own computer.</p>

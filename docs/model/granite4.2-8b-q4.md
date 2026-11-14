@@ -25,4 +25,19 @@ Not measured yet. No [scorecard](https://gezel.com/docs/model-scorecard/) round 
 gezel bench --model granite4.2-8b-q4
 ```
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **66** (95% range 63–68, band 4). DocBlocks could use 96% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 38 | 30–45 |
+| Writing new content | 82 | 79–86 |
+| Diagrams and illustrations | 69 | 62–75 |
+| Presentations | 82 | 78–87 |
+| Study aids | 67 | 64–71 |
+| Narration cleanup | 76 | 73–79 |
+
+In general review it found, per document, 2.7 small fixes, 1.3 moderate changes and 0.0 substantial ones, and added 1.3 trivial and 0.0 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/ibm-granite/granite-4.2-8b) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

@@ -4,6 +4,7 @@ Gezel changes often. This section is the running record of those changes, one ar
 
 ## Recent releases
 
+- **[1.26317 — 13 November 2026](https://gezel.com/docs/whats-new/1.26317/)** — Reports checked once more before they are handed in, views that keep your place, project icons you can draw or upload, and a scorecard for document work.
 - **[1.26315 — 11 November 2026](https://gezel.com/docs/whats-new/1.26315/)** — Add your own models from Hugging Face or a file, apps that update themselves, Back and Forward in the title bar, and Help and Plans as new names.
 - **[1.26313 — 9 November 2026](https://gezel.com/docs/whats-new/1.26313/)** — Connectors for every project, local models on AMD Radeon graphics, a large Qwen model on Macs with less memory, and links on gezel.com that open the app.
 - **[1.26307 — 3 November 2026](https://gezel.com/docs/whats-new/1.26307/)** — Change a picture you already have, give pictures a style, test a model on your own computer, start one of nineteen new projects for a small business, and run gezel in Docker.
@@ -15,7 +16,6 @@ Gezel changes often. This section is the running record of those changes, one ar
 - **[1.26273 — 30 September 2026](https://gezel.com/docs/whats-new/1.26273/)** — Start a craftbook from your message, get finished work back with its sums checked, search seventeen Wikipedia shelves offline, and let one gezel carry a whole task.
 - **[1.26261 — 18 September 2026](https://gezel.com/docs/whats-new/1.26261/)** — Visible routes for requested files, sharper knowledge search, stronger command-line batch workflows, and app-hosted Gezel for developers.
 - **[1.26251 — 8 September 2026](https://gezel.com/docs/whats-new/1.26251/)** — Engines that reserve memory instead of colliding, llama.cpp v0.4 loading controls, GLM 5.3 on DwarfStar, and catalogs built from a folder of Markdown.
-- **[1.26247 — 4 September 2026](https://gezel.com/docs/whats-new/1.26247/)** — Spreadsheets you can sort, filter and edit in place, conversations that make their own room, drafts that survive a restart, and a Village with real streets.
 
 ## Updating
 

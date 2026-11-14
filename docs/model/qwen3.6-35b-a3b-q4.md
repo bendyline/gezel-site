@@ -46,4 +46,19 @@ Every [scorecard](https://gezel.com/docs/model-scorecard/) round that ran this m
 | [2026-08-11 · Mac · Apple M4 Max](https://gezel.com/docs/model-scorecard/2026-08-11-m4max-llamacpp/) | qwen3.6-35b-a3b-q4 · llama.cpp | General capability | 32/33 (97%) | 76.4 tok/s | 1125.0 tok/s |
 | [2026-08-11 · Mac · Apple M4 Max](https://gezel.com/docs/model-scorecard/2026-08-11-m4max-llamacpp/) | qwen3.6-35b-a3b-q4 · llama.cpp | Office and knowledge work | 33/39 (85%) | 76.4 tok/s | 1125.0 tok/s |
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **76** (95% range 73–79, band 2). DocBlocks could use 99% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 62 | 52–69 |
+| Writing new content | 89 | 86–91 |
+| Diagrams and illustrations | 73 | 65–81 |
+| Presentations | 89 | 85–92 |
+| Study aids | 74 | 71–76 |
+| Narration cleanup | 86 | 80–92 |
+
+In general review it found, per document, 2.7 small fixes, 1.3 moderate changes and 0.3 substantial ones, and added 0.3 trivial and 0.3 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/Qwen/Qwen3.6-35B-A3B) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

@@ -105,6 +105,7 @@
 <ul>
 <li><a href="../how-we-test-models/">How we test models</a></li>
 <li><a href="../model-scorecard/">Model scorecard</a></li>
+<li><a href="../docbench/">Docbench: models for document work</a></li>
 <li><a href="../model-catalog/">Every model</a></li>
 </ul>
 </li>
@@ -127,7 +128,7 @@
 <p>Gezel is open source under the MIT license. Anyone can read it, audit it, fork it and build it. It is not open to outside code: every line in the repository is written by one team at Bendyline. This page explains why, how an idea from outside reaches a release anyway, and what checks a change has to pass.</p>
 <h2 id="open-source-not-open-contribution">Open source, not open contribution</h2>
 <p>Gezel runs scripts that models write, on people's own machines, with access to their files. For software like that, we think the safer arrangement is one accountable author for every line, one set of conventions throughout, and no path by which a change reaches you without that team having written and reviewed it. SQLite has worked this way for more than twenty years, for much the same reasons.</p>
-<p>So pull requests that change source code, tests, build configuration or dependencies are closed, however good they are. That is not a judgement on the change. It keeps the answer to "who wrote this?" simple.</p>
+<p>So pull requests that change source code, tests, build configuration or dependencies are closed, however good they are. That is not a judgment on the change. It keeps the answer to "who wrote this?" simple.</p>
 <h2 id="how-proposals-work">How proposals work</h2>
 <p>Ideas from outside are welcome, and this is how they get in:</p>
 <ol><li><p><strong>Write the problem down.</strong> Add a Markdown document to the <a href="https://github.com/bendyline/gezel/tree/main/specs"><code>specs/</code></a> folder: the problem, the behavior you want, the constraints, and examples or acceptance criteria.</p></li><li><p><strong>Open a pull request containing only that document.</strong> It is a request for consideration, not a commitment that it will be built.</p></li><li><p><strong>If it is accepted, the team implements it</strong> in the codebase's own conventions, with its tests.</p></li></ol>

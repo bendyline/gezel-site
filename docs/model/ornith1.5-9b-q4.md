@@ -36,4 +36,19 @@ Every [scorecard](https://gezel.com/docs/model-scorecard/) round that ran this m
 
 A partial round reran only some of a set’s tasks, usually to check a fix. It is not a score for the whole set.
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **73** (95% range 71–75, band 2). DocBlocks could use 96% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 50 | 44–57 |
+| Writing new content | 87 | 84–89 |
+| Diagrams and illustrations | 78 | 72–83 |
+| Presentations | 86 | 81–90 |
+| Study aids | 73 | 71–75 |
+| Narration cleanup | 77 | 74–80 |
+
+In general review it found, per document, 2.5 small fixes, 0.8 moderate changes and 0.3 substantial ones, and added 2.0 trivial and 1.0 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/ornith-ai/Ornith-1.5-9B) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

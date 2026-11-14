@@ -26,4 +26,19 @@ Every [scorecard](https://gezel.com/docs/model-scorecard/) round that ran this m
 | [2026-08-22 · Mac · Apple M4 Max](https://gezel.com/docs/model-scorecard/2026-08-22-mac-apple-m4-max/) | lfm2.5-2.6b-q4 · llama.cpp | General capability | 13/33 (39%) | 168.4 tok/s | 2125.0 tok/s |
 | [2026-08-22 · Mac · Apple M4 Max](https://gezel.com/docs/model-scorecard/2026-08-22-mac-apple-m4-max/) | lfm2.5-2.6b-q4 · llama.cpp | Office and knowledge work | 13/39 (33%) | 168.4 tok/s | 2125.0 tok/s |
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **47** (95% range 44–49, band 7). DocBlocks could use 85% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 40 | 35–46 |
+| Writing new content | 72 | 67–75 |
+| Diagrams and illustrations | 50 | 45–56 |
+| Presentations | 0 | 0–0 |
+| Study aids | 57 | 44–66 |
+| Narration cleanup | 0 | 0–0 |
+
+In general review it found, per document, 2.5 small fixes, 0.3 moderate changes and 0.0 substantial ones, and added 1.0 trivial and 0.3 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/LiquidAI/LFM2.5-2.6B) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)

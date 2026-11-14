@@ -25,4 +25,19 @@ Every [scorecard](https://gezel.com/docs/model-scorecard/) round that ran this m
 | --- | --- | --- | --- | --- | --- |
 | [2026-10-25 · Mac · Apple M5 Max](https://gezel.com/docs/model-scorecard/2026-10-25-m5max-bolt-five/) | nemotron3.5-bolt-e4b-q4 · llama.cpp | General capability | 26/33 (79%) | 72.0 tok/s | 2514.0 tok/s |
 
+## Docbench
+
+How well this build does DocBlocks’ document work, judged from 0 to 100 in the [docbench](https://gezel.com/docs/docbench/) round of 2026-11-11 on llama.cpp: **69** (95% range 67–72, band 3). DocBlocks could use 99% of its answers.
+
+| Group | Score | 95% range |
+| --- | --- | --- |
+| Review and feedback | 50 | 45–54 |
+| Writing new content | 85 | 82–88 |
+| Diagrams and illustrations | 66 | 56–76 |
+| Presentations | 82 | 78–87 |
+| Study aids | 68 | 66–69 |
+| Narration cleanup | 83 | 77–89 |
+
+In general review it found, per document, 1.8 small fixes, 0.3 moderate changes and 0.0 substantial ones, and added 0.5 trivial and 1.0 wrong suggestions.
+
 [The model’s own page](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) · [Every model](https://gezel.com/docs/model-catalog/) · [Model scorecard](https://gezel.com/docs/model-scorecard/)
