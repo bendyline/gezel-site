@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of use — Gezel</title>
+  <meta name="description" content="The terms for using Gezel, the free and open-source AI app from Bendyline, and the sign-in apps it uses to connect to Google and Microsoft accounts.">
+  <link rel="canonical" href="https://gezel.com/terms/">
+  <meta name="theme-color" content="#eae5d6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141517" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="/favicon.svg?v=outline" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=workbench" sizes="180x180">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gezel">
+  <meta property="og:url" content="https://gezel.com/terms/">
+  <meta property="og:title" content="Terms of use — Gezel">
+  <meta property="og:description" content="The terms for using Gezel and its sign-in apps for Google and Microsoft accounts.">
+  <meta property="og:image" content="https://gezel.com/og-image.png?v=2">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Gezel — hand off a job tonight, review it in the morning. Free and open source for macOS, Windows and Linux.">
+  <meta property="og:locale" content="en_US">
+
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Self-contained like the landing page. The tokens, fonts, masthead and
+       footer rules are copied from /index.html, and the page rules are shared
+       with /privacy/, so retune them in all three together. -->
+  <style>
+    @font-face { font-family: 'Hanken Grotesk'; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/hanken-grotesk-variable.woff2) format('woff2'); }
+    @font-face { font-family: 'Hanken Grotesk'; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/hanken-grotesk-400i.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 400; font-display: swap; src: url(/assets/fonts/pt-serif-400.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/pt-serif-400i.woff2) format('woff2'); }
+    @font-face { font-family: 'PT Serif'; font-weight: 700; font-display: swap; src: url(/assets/fonts/pt-serif-700.woff2) format('woff2'); }
+    :root {
+      --bg: #eae5d6;
+      --panel: #f3eddf;
+      --surface: #ddd3bd;
+      --text: #1c1c1c;
+      --muted: #666;
+      --muted-strong: #4d4d4d;
+      --accent: #b0724c;
+      --accent-hover: #996142;
+      --accent-line: rgba(176, 114, 76, 0.45);
+      --border: rgba(127,127,127,0.25);
+      --serif: 'PT Serif', Georgia, serif;
+      --sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141517;
+        --panel: #1c1d20;
+        --surface: #1f2124;
+        --text: #f0f0f0;
+        --muted: #999;
+        --muted-strong: #b8b8b8;
+        --accent: #c0875d;
+        --accent-hover: #d5a07a;
+        --accent-line: rgba(192, 135, 93, 0.45);
+        --border: rgba(127,127,127,0.25);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    [id] { scroll-margin-top: 24px; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--bg);
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(127,127,127,0.035) 0px,
+        rgba(127,127,127,0.035) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+    :focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header.masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 28px 0 8px;
+    }
+    .logotype {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.7rem;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      border-radius: 4px;
+    }
+    .logotype:hover { color: var(--accent); }
+    .masthead-nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+    }
+    .masthead-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .masthead-nav svg { width: 17px; height: 17px; flex: none; }
+
+    /* A reading page: one column at a comfortable measure. */
+    .doc {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 0 72px;
+    }
+    .doc h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(2.1rem, 5vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.35em;
+    }
+    .doc .updated { margin: 0 0 2rem; color: var(--muted); font-size: 0.95rem; }
+    .doc .lede { font-size: 1.12rem; color: var(--muted-strong); margin: 0 0 2rem; }
+    .doc h2 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      margin: 2.4rem 0 0.6rem;
+    }
+    .doc h3 {
+      font-size: 1.05rem;
+      font-weight: 650;
+      margin: 1.6rem 0 0.4rem;
+    }
+    .doc p, .doc li { font-size: 1.02rem; }
+    .doc p { margin: 0 0 1rem; }
+    .doc ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+    .doc li { margin: 0 0 0.45rem; }
+    .doc a {
+      text-decoration: underline;
+      text-decoration-color: var(--accent-line);
+      text-underline-offset: 2px;
+    }
+    .doc .summary {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 22px 6px;
+      margin: 0 0 1.5rem;
+    }
+    .doc .summary h2 { margin-top: 0; font-size: 1.15rem; }
+    .doc blockquote {
+      margin: 0 0 1rem;
+      padding: 12px 18px;
+      border-left: 3px solid var(--accent-line);
+      background: var(--panel);
+      border-radius: 0 6px 6px 0;
+    }
+    .doc blockquote p { margin: 0; }
+
+    footer {
+      padding: 28px 0 40px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    footer p { margin: 0.3em 0; }
+    footer a { color: var(--muted); }
+    footer a[aria-current="page"] { color: var(--text); }
+    footer .sep { opacity: 0.45; margin: 0 9px; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 720px) {
+      .doc { padding: 32px 0 56px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="masthead">
+      <a class="logotype" href="/" aria-label="Gezel home">gezel</a>
+      <nav class="masthead-nav">
+        <a href="/docs/">Docs</a>
+        <a href="/docs/model-scorecard/">Model scorecard</a>
+        <a href="/platform/">Platform</a>
+        <a href="https://github.com/bendyline/gezel">
+          <!-- GitHub's official mark (octicon mark-github-16). -->
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+          </svg>
+          GitHub
+        </a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Terms of use</h1>
+      <p class="updated">Last updated: November 18, 2026</p>
+      <p class="lede">Gezel is a free, open-source AI app made by Bendyline LLC. These terms cover your use of Gezel and of the sign-in apps Gezel uses to connect to Google and Microsoft accounts.</p>
+
+      <h2 id="license">The license</h2>
+      <p>Gezel is released under the <a href="https://github.com/bendyline/gezel/blob/main/LICENSE">MIT License</a>. It lets you use, copy, change and share Gezel freely. The license, not this page, sets out what you may do with the code. As the license says, Gezel is provided “as is”, without warranty of any kind.</p>
+
+      <h2 id="services">Accounts and AI providers you connect</h2>
+      <p>Gezel works with services you choose: AI providers such as OpenAI, Anthropic or GitHub Copilot, and accounts such as Google or Microsoft. Your use of each of those is governed by its own terms.</p>
+      <p>You are responsible for the accounts you connect and for what you ask Gezel to do with them. Only connect accounts you are allowed to use.</p>
+
+      <h2 id="ai-output">Check what AI makes</h2>
+      <p>AI models make mistakes. Review what Gezel produces before you rely on it, send it to anyone, or act on it.</p>
+
+      <h2 id="sign-in-apps">Gezel's sign-in apps</h2>
+      <p>Gezel's official releases sign in to Google and Microsoft accounts through apps that Bendyline has registered with those companies. Those sign-in apps are for use by Gezel only.</p>
+      <ul>
+        <li>If you build or distribute your own version of Gezel, register your own apps with Google and Microsoft. Gezel can use them in place of Bendyline's.</li>
+        <li>Bendyline may change or withdraw these sign-in apps, for example if Google or Microsoft requires it. You can still connect your accounts through apps of your own.</li>
+      </ul>
+
+      <h2 id="privacy">Privacy</h2>
+      <p>For what Gezel does with your information, including what it reads from accounts you connect, see the <a href="/privacy/">privacy policy</a>.</p>
+
+      <h2 id="changes">Changes to these terms</h2>
+      <p>If these terms change, the date at the top of this page changes with them.</p>
+
+      <h2 id="contact">Contact</h2>
+      <p>Questions about these terms? Email <a href="mailto:support@bendyline.com">support@bendyline.com</a>, or open an issue on <a href="https://github.com/bendyline/gezel/issues">GitHub</a>.</p>
+    </main>
+
+    <footer>
+      <p>© 2026 Bendyline · Free and open source under the MIT license</p>
+      <p>
+        <a href="https://github.com/bendyline/gezel">Star on GitHub</a><span class="sep" aria-hidden="true">·</span><a href="/platform/">Platform</a><span class="sep" aria-hidden="true">·</span><a href="/docs/craftbooks-index/">Craftbooks</a><span class="sep" aria-hidden="true">·</span><a href="/docs/model-catalog/">Models</a><span class="sep" aria-hidden="true">·</span><a href="https://github.com/bendyline/gezel/issues">Report an issue</a><span class="sep" aria-hidden="true">·</span><a href="/privacy/">Privacy</a><span class="sep" aria-hidden="true">·</span><a href="/terms/" aria-current="page">Terms</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

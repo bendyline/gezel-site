@@ -52,6 +52,29 @@ developer articles (`cli-reference`, `building-connected-apps-with-gezel-app-sdk
 `building-ai-apps-inside-gezel`, `npm-packages`, `security-model`). Check it
 when those change, and check the samples against `gezel --help`.
 
+## Privacy policy and terms (`privacy/`, `terms/`)
+
+[`privacy/index.html`](privacy/index.html) and [`terms/index.html`](terms/index.html)
+are hand-written and self-contained, like the platform page. Their tokens,
+fonts, masthead and footer are copied from `index.html`, and the reading-page
+rules are shared between the two, so retune them together. The landing page
+and the platform page link both from the footer.
+
+They are not ordinary pages. Gezel's official Google and Microsoft sign-in apps
+(recorded in gezel's `assets/app-registrations/`) point at these addresses, and
+Google's review checks them:
+
+- **Keep the landing page's footer link.** Google requires the privacy policy
+  to be on the same domain as the homepage and linked from it.
+- **Keep the privacy policy true to the code.** Google reviewers compare it
+  with what Gezel does. Update it, and its date, when Gezel starts reading
+  something new from a connected account, sends data somewhere new, or
+  changes what removing a connection deletes.
+- **Keep the Limited Use sentence** under "Google API Services User Data
+  Policy" word for word.
+- **Keep it consistent with bendyline.com/privacy**, whose Gezel section says
+  the same things in brief.
+
 ## Documentation (`docs/`)
 
 `docs/` is **generated** — it is the Gezel Handboek rendered to static HTML, not
