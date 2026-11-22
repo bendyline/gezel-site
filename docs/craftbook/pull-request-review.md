@@ -6,7 +6,7 @@ Staff-engineer-style PR review over a complete local PR corpus. Defaults to the 
 
 | # | Step | Who runs it | What happens |
 | --- | --- | --- | --- |
-| 1 | Map the pull request corpus | Reviewer | Read the launch-time PR overview and compact runtime scope evidence, capture CI/check status, and let the gate verify complete fanout batches mechanically. |
+| 1 | Map the pull request corpus | Reviewer | Read the launch-time PR overview and compact runtime scope evidence, capture CI/check status, summarize generated files without a reviewer, and let the gate verify complete fanout batches mechanically. |
 | 2 | Fan the batches out to the review crew | Reviewer | Spawn one child reviewer per published batch. The runtime performs the fanout with no model turn; the crew is the work. |
 | 3 | Merge the batch ledgers | Reviewer | Wait for the crew while the runtime deterministically rebuilds the run-wide ledger from exact per-batch coverage shards, then prove both corpus completeness and shard provenance. |
 | 4 | Synthesize the review | Reviewer | Synthesize every batch's observations into a cited report, re-verifying cross-file claims and keeping CI status distinct from code-review judgment. |

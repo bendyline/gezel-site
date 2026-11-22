@@ -101,6 +101,12 @@ See what a project camera sees right now, list the person's lookouts, and propos
 
 Tools: `look_at_camera`, `list_lookouts`, `propose_lookout`
 
+### Saved Web Pages
+
+Read the offline copies of web pages a project follows, and ask for a page the crawler already found as a link. Gezels never visit the web through these; an address that is not a found link is the person’s to save.
+
+Tools: `list_web_pages`, `read_web_page`, `request_web_page`
+
 ### Data Tables
 
 Read a project's mirrored data tables with SQL. `list_tables` shows what is there, `describe_table` explains a table's columns and units, and `query_table` runs one read-only query and returns the answer — never the underlying rows, which is what lets a table be far larger than the context window.

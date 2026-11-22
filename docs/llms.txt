@@ -20,6 +20,7 @@ To build a Gezel app, read [Build a Gezel app: the complete guide](https://gezel
 - [The Night Shift: work Gezel does while you sleep](https://gezel.com/docs/night-shift.md): A nightly window for quiet background work — and the roles that bring their own.
 - [Notifications: only when something happened](https://gezel.com/docs/notifications.md): What gezel notifies you about, how often, and how to turn it down or off.
 - [Cameras and lookouts: keep an eye on a room](https://gezel.com/docs/cameras-and-lookouts.md): Connect a webcam to a project, let gezel notice what happens in view, and tell it what to do when it sees something.
+- [Saved web pages: let Gezel read the web without browsing it](https://gezel.com/docs/saved-web-pages.md): Follow web pages from a project. Gezel keeps a copy of each one, with screenshots, refreshes it, and tells you what changed, so Gezel can work from the web without browsing while it works.
 - [Local-first: your data stays on your disk](https://gezel.com/docs/privacy-local-first.md): No gezel cloud, no hidden database — files you can open and back up.
 - [Integrations: let other tools use Gezel](https://gezel.com/docs/connected-apps.md): Editors and other programs can talk to Gezel through standard AI endpoints — with your approval, on your terms.
 - [Generalist mode](https://gezel.com/docs/generalist-mode.md): One pair of hands carries a task from first step to last in a single conversation.
@@ -430,6 +431,7 @@ To build a Gezel app, read [Build a Gezel app: the complete guide](https://gezel
 ## What's New
 
 - [What's new](https://gezel.com/docs/whats-new-index.md): Every gezel release, in plain language — what changed and what it means for you.
+- [1.26326 — 22 November 2026](https://gezel.com/docs/whats-new/1.26326.md): Projects that follow web pages, links Gezel saves and reads, pages that use 3D and chart libraries offline, calendars without a developer app, and tighter agent shells.
 - [1.26320 — 16 November 2026](https://gezel.com/docs/whats-new/1.26320.md): Faster prompts and loading for local models on PCs with a graphics card, Mac updates that restart by themselves, and a document View menu that holds everywhere.
 - [1.26317 — 13 November 2026](https://gezel.com/docs/whats-new/1.26317.md): Reports checked once more before they are handed in, views that keep your place, project icons you can draw or upload, and a scorecard for document work.
 - [1.26315 — 11 November 2026](https://gezel.com/docs/whats-new/1.26315.md): Add your own models from Hugging Face or a file, apps that update themselves, Back and Forward in the title bar, and Help and Plans as new names.

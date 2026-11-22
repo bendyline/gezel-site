@@ -31,7 +31,7 @@ Connectors copy data from outside services, such as mail, calendars and issue tr
 | Instagram Media | Keep a searchable copy of your Instagram presence: your posts, reels, and carousels with captions, links, like and comment counts and a daily engagement history, plus a daily follower count. |
 | JSON Rows over HTTP | Mirror rows from any JSON or NDJSON HTTP endpoint into a queryable data table. |
 | Linear Issues | Mirror recent Linear issues into a searchable corpus via Linear's MCP server. |
-| LinkedIn Posts | Publish to LinkedIn from Gezel: your crew drafts posts in your voice, and with your permission queues them — every publish still asks for your consent before anything goes out. |
+| LinkedIn Posts | Publish to LinkedIn from Gezel: your crew drafts posts in your voice and, once you allow publishing, posts them while working on something you asked for. |
 | Microsoft 365 Mail | Sync a Microsoft 365 (work/school) mailbox into a searchable corpus of messages: recent mail at first sync, then every new message. |
 | OneDrive Files | Keep a local, searchable copy of a folder in your OneDrive (personal, work, or school): text files inline, and Word, Excel, PowerPoint, PDF, and image files saved alongside up to a size limit. |
 | Outlook Calendar | Mirror Outlook calendars — Microsoft 365 work or school, or personal Outlook.com — into a normalized, searchable corpus of events (OAuth). |
@@ -39,9 +39,10 @@ Connectors copy data from outside services, such as mail, calendars and issue tr
 | RSS and Atom Feeds | Follow blogs, news sites, podcasts and newsletters through their RSS, Atom or JSON feeds. |
 | SharePoint Files | Keep a local, searchable copy of a SharePoint document library, or one folder in it: text files inline, and Word, Excel, PowerPoint, PDF, and image files saved alongside up to a size limit. |
 | Webcam | Watch a room with a webcam or a computer's built-in camera. |
+| Websites | Keep an offline copy of web pages you follow: what each page says, a few screenshots of how it looked, and what changed since last time. |
 | X Posts | Keep a searchable copy of your X (Twitter) presence: your posts with their like, repost, and view counts and a daily engagement history, optional mentions, and a daily follower count. |
 | YouTube Videos | Keep a searchable copy of the videos on YouTube channels you run or follow: titles, descriptions, tags, length and view counts, one file per video. |
 
 ## Community servers
 
-Gezel’s toolset browser also lists about 19,800 MCP servers from the public community registry, marked **Community**. They are third-party projects, so review one before you add it. You can also bring your own: see [Custom MCP toolsets](https://gezel.com/docs/tools-and-toolsets/#custom-mcp-toolsets).
+Gezel’s toolset browser also lists about 23,900 MCP servers from the public community registry, marked **Community**. They are third-party projects, so review one before you add it. You can also bring your own: see [Custom MCP toolsets](https://gezel.com/docs/tools-and-toolsets/#custom-mcp-toolsets).

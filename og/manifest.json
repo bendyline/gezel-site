@@ -43,6 +43,9 @@
     "cameras-and-lookouts": {
       "specHash": "a813a9c21ac5b33e6cc305367f8e4f99322dcfc911f1e440b39ed4e19b18f2d3"
     },
+    "saved-web-pages": {
+      "specHash": "abc6329fad54a66e7624d379c0a3205bf9ec508a6d678b17cadc664c3a99afae"
+    },
     "privacy-local-first": {
       "specHash": "eae5f22b514a03db16dae594fba71bd121caf7ef259bb2b5de18c936b3d9c45b"
     },
@@ -1228,6 +1231,9 @@
     "whats-new-index": {
       "specHash": "8817c23860efa8f639a0979edd2baa07480812ecb1f1d97c7ed4aa113a36ab0d"
     },
+    "whats-new/1.26326": {
+      "specHash": "891c60b3102b846f12ba4191bb9f040f83f53a7bcd4e87254869812a63561e36"
+    },
     "whats-new/1.26320": {
       "specHash": "b591fb50a99745e6de266c7d99c58e2465e153cacc092b80594eddfeb6ffcf9b"
     },
@@ -1491,6 +1497,9 @@
     },
     "model/qwen3.8-flash-next-iq3": {
       "specHash": "feaec80f64e127c118571dd522a643a594211677857b71ea81ee6f192a180410"
+    },
+    "model/spark-x2.6-4b-q4": {
+      "specHash": "961f7da430eed16ba7382c4f92bf350b178d4b60c484deab195b55bee4694c6d"
     },
     "model/talkie-1930-13b-q4": {
       "specHash": "840a65e325c9a912d305bf3c434b540311f4845d4ed72c5dac735bf641dfdc89"

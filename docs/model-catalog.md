@@ -2,7 +2,7 @@
 
 These are all the AI models in Gezel’s catalog. Each one runs on your own computer through an engine Gezel installs for you, and Gezel recommends the ones that fit your hardware when you set it up. The [model scorecard](https://gezel.com/docs/model-scorecard/) shows how the models we test actually do on real jobs, and [Local models and tiers](https://gezel.com/docs/local-models-and-tiers/) explains how to choose.
 
-## Chat models (71)
+## Chat models (72)
 
 The models Gezel thinks and writes with, recommended first. **Measured** is the share of tasks the model (or another build of it) passed in its most recent full [scorecard](https://gezel.com/docs/model-scorecard/) round, preferring the general set, with the machine that round ran on. Follow it to every round on the model’s page. Rounds are not comparable with each other, and a number from a workstation is not a promise about a laptop. **Docbench** is the build’s score from 0 to 100 on DocBlocks’ document work (review, writing, diagrams, slides, study aids) in its newest [docbench](https://gezel.com/docs/docbench/) round.
 
@@ -76,6 +76,7 @@ The models Gezel thinks and writes with, recommended first. **Measured** is the 
 | [Qwen 3.8 Flash Next (180B-A6B, 4-bit)](https://gezel.com/docs/model/qwen3.8-flash-next-iq4/) | [94% general (NVIDIA GB10)](https://gezel.com/docs/model/qwen3.8-flash-next-iq4/#measured-results) | Not yet | 93.7 GB | 262K | Yes | Everyday work | llama.cpp, MLX | Qwen Community 1.0 |
 | [Qwen 3.8 Flash Next (180B-A6B, IQ2_XXS/Q2_K, DS4)](https://gezel.com/docs/model/qwen3.8-flash-next-q2/) | [97% general (NVIDIA GB10)](https://gezel.com/docs/model/qwen3.8-flash-next-q2/#measured-results) | Not yet | 147.8 GB | 262K | Yes | Everyday work | DwarfStar | Qwen Community 1.0 |
 | [Qwen 3.8 Flash Next (180B-A6B, IQ3_XXS)](https://gezel.com/docs/model/qwen3.8-flash-next-iq3/) | [94% general (NVIDIA GB10)](https://gezel.com/docs/model/qwen3.8-flash-next-iq3/#measured-results) | Not yet | 82.0 GB | 262K | Yes | Everyday work | llama.cpp | Qwen Community 1.0 |
+| [Spark-X2.6 (4B, Q4)](https://gezel.com/docs/model/spark-x2.6-4b-q4/) | Not yet | Not yet | 3.5 GB | 262K | Yes | Everyday work | llama.cpp | Apache 2.0 |
 | [Talkie 1930 (13B, Q4)](https://gezel.com/docs/model/talkie-1930-13b-q4/) | Not yet | Not yet | 8.6 GB | 2K | No | Everyday work | llama.cpp | Apache 2.0 |
 | [Ternary Bonsai 27B (2-bit)](https://gezel.com/docs/model/ternary-bonsai-27b-q2/) | Not yet | Not yet | 8.5 GB | 262K | Yes | Everyday work | MLX | Apache 2.0 |
 | [Underdog Saluki 1.0 (27B, IQ2 mix)](https://gezel.com/docs/model/underdog-saluki-27b-iq2-mix/) | [19/22 general (NVIDIA GeForce RTX 5070 Ti Laptop GPU)](https://gezel.com/docs/model/underdog-saluki-27b-iq2-mix/#measured-results) | Not yet | 7.9 GB | 262K | Yes | Everyday work | llama.cpp | Apache 2.0 |
