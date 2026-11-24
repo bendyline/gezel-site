@@ -223,7 +223,7 @@
 
     <main class="doc">
       <h1>Privacy policy</h1>
-      <p class="updated">Last updated: November 18, 2026</p>
+      <p class="updated">Last updated: November 24, 2026</p>
       <p class="lede">Gezel is an AI app you install and run on your own computer, made by Bendyline LLC. This page explains what happens to your information when you use it, including what Gezel reads from Google and Microsoft accounts you connect.</p>
 
       <div class="summary">
@@ -232,13 +232,14 @@
           <li>There is no Gezel account and no Bendyline server between you and your work. Your projects, conversations, settings, and anything Gezel copies from your accounts stay on your computer.</li>
           <li>Bendyline never receives your information. Gezel has no telemetry, analytics or tracking.</li>
           <li>Gezel goes online only to do what you set up or ask for: an AI provider you choose, accounts you connect, the web, and the sites that host models and updates. What it sends goes straight from your computer to them.</li>
+          <li>What Gezel reads from your Google and Microsoft accounts travels over encrypted connections, and your sign-ins are stored encrypted. See <a href="#protection">how Gezel protects it</a>.</li>
           <li>Bendyline never sells your information, uses it for advertising, or uses it to train AI models.</li>
         </ul>
       </div>
 
       <h2 id="on-your-computer">What stays on your computer</h2>
       <p>Gezel keeps your projects, documents, conversations, memories and settings in its own folder on your computer. Bendyline has no copy and no way to see them.</p>
-      <p>Sign-ins for the services you connect are kept in your computer's secure credential store: Keychain on macOS, Credential Manager on Windows, or the Secret Service on Linux. Where none is available, Gezel keeps them in an encrypted file in its folder that only your user account can read.</p>
+      <p>Sign-ins for the services you connect are stored encrypted, in your computer's secure credential store: Keychain on macOS, Credential Manager on Windows, or the Secret Service on Linux. Where none is available, Gezel keeps them in a file in its folder that is encrypted with AES-256 and that only your user account can read.</p>
       <p>Gezel collects no usage statistics or crash reports, and it turns off the usage reporting built into the components it uses. (On Windows, one of them, Microsoft's ONNX Runtime, follows your Windows diagnostic data setting instead.) When something goes wrong, Gezel can prepare an issue report for GitHub, which you read before deciding whether to post it.</p>
 
       <h2 id="services">When Gezel connects to other services</h2>
@@ -261,24 +262,43 @@
         <li><strong>Microsoft:</strong> mail in Outlook or Microsoft 365, calendar events, and files in OneDrive and SharePoint.</li>
       </ul>
       <p>When you sign in, Gezel also reads the email address of the account that signed in, to check that it is the one you meant to connect.</p>
+      <p>Gezel's own Google sign-in asks only for that address and for read-only access to your list of calendars and the events in them. Gmail and Google Drive connect only through a Google developer app you create yourself.</p>
 
       <h3>How Gezel uses it</h3>
       <p>Gezel copies what the connection covers into that project's folder on your computer and keeps the copy up to date. Your gezels use it to do what you ask, such as finding a message, summarizing your week or planning around your calendar. Gezel uses it for nothing else.</p>
 
-      <h3>Who it is shared with</h3>
+      <h3 id="protection">How Gezel protects your Google and Microsoft data</h3>
+      <p>These protections cover your sign-ins and everything Gezel reads from your Google and Microsoft accounts, including sensitive information such as your calendar events.</p>
+      <ul>
+        <li><strong>Encrypted in transit.</strong> Gezel talks to Google and Microsoft directly from your computer, and only over encrypted connections (HTTPS). You sign in on Google's or Microsoft's own page in your browser, so Gezel never sees your password.</li>
+        <li><strong>Sign-ins encrypted at rest.</strong> The access that Google or Microsoft grants is stored encrypted, as described under <a href="#on-your-computer">What stays on your computer</a>. Gezel uses it only for the connection it was granted for, sends it only to the service that issued it, and never gives it to an AI model.</li>
+        <li><strong>Private to your user account.</strong> Copies are kept in Gezel's own folder, which other people's user accounts on the same computer cannot open. Gezel relies on your computer's disk encryption, such as FileVault on macOS or BitLocker on Windows, to encrypt them on the disk. We recommend that you keep it on. If you move a project's files to another folder or a cloud-synced one, that folder's protections apply instead.</li>
+        <li><strong>Not on any Bendyline server.</strong> None of it is sent to or stored on Bendyline's systems, so no one at Bendyline can see it and a breach of those systems could not expose it.</li>
+        <li><strong>Read-only access.</strong> Gezel's own sign-in apps ask only for permission to read. They cannot change anything in your account.</li>
+        <li><strong>Guarded against harmful content.</strong> Gezel treats everything it copies as untrusted. It scans it for hidden instructions aimed at AI models, marks what looks suspicious, and sets aside what looks dangerous. At Gezel's default security setting, your gezels cannot browse the open web or send mail on their own.</li>
+        <li><strong>Closed to other programs.</strong> Unless you choose to share it, the part of Gezel that holds this information answers only on your own computer, and only to apps that hold a key it issued.</li>
+        <li><strong>Open to inspection.</strong> Gezel is <a href="https://github.com/bendyline/gezel">open source</a>, so anyone can check how it handles your information. To report a security problem, see our <a href="https://github.com/bendyline/gezel/blob/main/SECURITY.md">security policy</a>.</li>
+      </ul>
+
+      <h3 id="sharing">Who it is shared with</h3>
       <ul>
         <li>Bendyline never receives it, and no one at Bendyline can read it.</li>
         <li>If you use a cloud AI provider, the parts your gezels read while working go from your computer to that provider as part of the conversation. With a model that runs on your computer, it never leaves your computer.</li>
         <li>Apps you connect to Gezel yourself, such as the add-ins above, receive what they ask Gezel's tools for.</li>
-        <li>It is never sold or used for advertising. Gezel and Bendyline never use it to create, train or improve AI models. What a cloud AI provider may do with what it receives is set by that provider's own terms.</li>
+        <li>It is never sold, used for advertising, or given to data brokers, and it is never used to decide anyone's creditworthiness.</li>
       </ul>
+
+      <h3 id="ai-training">AI training</h3>
+      <p>Gezel and Bendyline do not use information received from Google Workspace APIs to create, develop, train or improve generalized or non-personalized AI or machine learning models, and do not transfer it to anyone for that purpose. The same goes for information from Microsoft accounts.</p>
+      <p>If you choose a cloud AI provider, Gezel sends it only what your gezels need to do what you asked. Some providers' personal plans may train on conversations unless you turn that off, so before you use one with a connected account, choose a plan or setting that does not.</p>
 
       <h3>What Gezel can change in your accounts</h3>
       <p>Gezel's own sign-in apps for Google and Microsoft can only read. They cannot send, change or delete anything in your account.</p>
       <p>If you connect an account through a developer app of your own, a mail connection can also save drafts and send messages. It sends only to the addresses and domains you list for that connection, and at Gezel's default security setting your gezels cannot send mail on their own.</p>
 
-      <h3>Removing access</h3>
-      <p>To stop Gezel reading an account, remove the connection from the project's Connections. That deletes the stored sign-in. The copy Gezel made stays in the project unless you also tick “Also delete what it downloaded”.</p>
+      <h3 id="retention">How long it is kept, and how to delete it</h3>
+      <p>The copy stays on your computer until you delete it. While the connection is in place, an event that is deleted or canceled in Google Calendar is removed from the copy the next time Gezel refreshes it. Bendyline holds no copy.</p>
+      <p>To stop Gezel reading an account, remove the connection from the project's Connections. That deletes the stored sign-in. To delete the copy as well, tick “Also delete what it downloaded”. Anything your gezels wrote from it, such as a conversation or a summary, stays in the project until you delete that too.</p>
       <p>Removing a connection does not withdraw the permission you gave at Google or Microsoft. To do that too, visit <a href="https://myaccount.google.com/connections">your Google Account's connections</a> or, for a personal Microsoft account, <a href="https://account.live.com/consent/Manage">Microsoft's apps and services page</a>. For a work or school account, your organization's administrator can remove it.</p>
 
       <h3>Google API Services User Data Policy</h3>
